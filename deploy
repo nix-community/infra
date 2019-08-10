@@ -1,0 +1,13 @@
+#!/usr/bin/env nix-shell
+#! nix-shell ./shell.nix -i bash
+set -euo pipefail
+
+DEPLOYMENT_NAME="nix-community-infra"
+STATE_FILE="./state/deployment-state.nixops"
+
+mkdir -p state
+if [ $(nixops list --state $STATE_FILE | grep -c $DEPLOYMENT_NAME) -eq 0 ]; then
+    nixops create ./deployment.nix --deployment $DEPLOYMENT_NAME --state $STATE_FILE
+fi
+
+nixops deploy -d $DEPLOYMENT_NAME --state $STATE_FILE "$@"
