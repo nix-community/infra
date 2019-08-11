@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ./buildkite.nix
+
+    ../profiles/common.nix
+    ../profiles/docker.nix
+
+    ../users/adisbladis.nix
   ];
 
   # /boot is a mirror raid
@@ -29,17 +34,9 @@
     '';
   };
 
-  services.openssh.enable = true;
-
-  users.users.root.openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtr+rcxCZBAAqt8ocvhEEdBWfnRBCljjQPtC6Np24Y3H/HMe3rugsu3OhPscRV1k5hT+UlA2bpN8clMFAfK085orYY7DMUrgKQzFB7GDnOvuS1CqE1PRw7/OHLcWxDwf3YLpa8+ZIwMHFxR2gxsldCLGZV/VukNwhEvWs50SbXwVrjNkwA9LHy3Or0i6sAzU711V3B2heB83BnbT8lr3CKytF3uyoTEJvDE7XMmRdbvZK+c48bj6wDaqSmBEDrdNncsqnReDjScdNzXgP1849kMfIUwzXdhEF8QRVfU8n2A2kB0WRXiGgiL4ba5M+N9v1zLdzSHcmB0veWGgRyX8tN cardno:000607203159" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
 
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    22
-  ];
-
-  system.stateVersion = "18.03"; # Did you read the comment?
+  system.stateVersion = "19.09";
 
 }
