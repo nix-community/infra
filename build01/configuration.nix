@@ -35,6 +35,12 @@
     '';
   };
 
+  services.cron.enable = true;
+  services.cron.systemCronJobs = [
+    # record that this machine is alive
+    "*/5 * * * * root ${pkgs.curl}/bin/curl -sfL https://hc-ping.com/fcf6c029-5b57-44aa-b392-923f3d894dd9"
+  ];
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
 
