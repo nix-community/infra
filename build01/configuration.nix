@@ -9,6 +9,7 @@
     ../profiles/docker.nix
 
     ../users/adisbladis.nix
+    ../users/zimbatm.nix
   ];
 
   # /boot is a mirror raid
