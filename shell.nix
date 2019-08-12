@@ -1,8 +1,10 @@
 let
+  nixpkgs = import ./nixpkgs.nix;
 
-  channelUrl = "https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz";
-  nixpkgs = builtins.fetchTarball channelUrl;
-  pkgs = import nixpkgs {};
+  pkgs = import nixpkgs {
+    config = {};
+    overlays = [];
+  };
 
 in pkgs.mkShell {
 
