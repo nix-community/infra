@@ -3,7 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+
     ./buildkite.nix
+    ./gitlab.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix

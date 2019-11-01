@@ -33,6 +33,12 @@ in {
         permissions = "0600";
       };
 
+      deployment.keys.gitlab-runner-registration = {
+        text = secrets.gitlab-runner-registration;
+        user = "gitlab-runner";
+        permissions = "0600";
+      };
+
     };
 
 }
