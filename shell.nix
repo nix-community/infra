@@ -1,14 +1,14 @@
 let
-  nixpkgs = import ./nixpkgs.nix;
+  sources = import ./nix/sources.nix;
 
-  pkgs = import nixpkgs {
+  pkgs = import sources.nixpkgs {
     config = {};
     overlays = [];
   };
 
 in pkgs.mkShell {
 
-  NIX_PATH="nixpkgs=${nixpkgs}";
+  NIX_PATH="nixpkgs=${toString pkgs.path}";
 
   buildInputs = [
     pkgs.git-crypt
