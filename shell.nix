@@ -17,5 +17,16 @@ in pkgs.mkShell {
     pkgs.git-crypt
     pkgs.niv
     pkgs.nixops
+    (pkgs.terraform.withPlugins (p: [
+      p.cloudflare
+    ]))
   ];
+
+  # terraform cloud without the remote execution part
+  TF_FORCE_LOCAL_BACKEND = "1";
+  TF_CLI_CONFIG_FILE = toString ./secrets/terraformrc;
+
+  shellHooks = ''
+    export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
+  '';
 }
