@@ -3,13 +3,8 @@
 let
   userLib = import ../users/lib.nix { inherit lib; };
 
-  nixpkgs-update-src = pkgs.fetchFromGitHub {
-    owner = "ryantm";
-    repo = "nixpkgs-update";
-    rev = "02e6ccfd26572269e23dc46df615ee48aec470ca";
-    sha256 = "0rw1rzd9x3b4r6xjr2m7hd3xmyji26znn6lk83x1m1fnds10b6jr";
-  };
-  nixpkgs-update = import nixpkgs-update-src { };
+  sources = import ../nix/sources.nix;
+  nixpkgs-update = import sources.nixpkgs-update { };
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix
     git

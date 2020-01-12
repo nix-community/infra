@@ -11,6 +11,18 @@
         "url": "https://github.com/NixOS/nixpkgs-channels/archive/aa561c6fb4f48974639a9e2b76fdd3e15b2abfd4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-update": {
+        "branch": "master",
+        "description": "Semi-automatically updating nixpkgs packages since 2018",
+        "homepage": "",
+        "owner": "ryantm",
+        "repo": "nixpkgs-update",
+        "rev": "02e6ccfd26572269e23dc46df615ee48aec470ca",
+        "sha256": "0rw1rzd9x3b4r6xjr2m7hd3xmyji26znn6lk83x1m1fnds10b6jr",
+        "type": "tarball",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/02e6ccfd26572269e23dc46df615ee48aec470ca.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "simple-hydra": {
         "branch": "master",
         "description": "A simple module for enabling Hydra",
