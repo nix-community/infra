@@ -21,7 +21,7 @@ resource "cloudflare_record" "apex-A" {
   name    = "@"
   value   = "nix-community.github.io"
   type    = "CNAME"
-  proxied = true
+  proxied = false
 }
 
 # Any email coming from that domain are SPAM
