@@ -135,6 +135,10 @@ in
         permissions = "0400";
       };
 
+      deployment.keys.github-actions-nixpkgs-fmt-token = {
+        text = secrets.github-actions-nixpkgs-fmt-token;
+        user = "root";
+        permissions = "0600";
+      };
     };
-
 }

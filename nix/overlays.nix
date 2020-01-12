@@ -6,6 +6,8 @@ let
       nixops
       ;
 
+    actions-runner = pkgs.callPackage ./actions-runner { };
+
     terraform = pkgs.terraform.withPlugins (
       p: [
         p.cloudflare

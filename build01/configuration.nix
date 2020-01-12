@@ -17,17 +17,18 @@ in
     ./hardware-configuration.nix
 
     ./buildkite.nix
-    ./gitlab.nix
-    ./hydra.nix
-    ./hydra-declarative-projects.nix
     ./cache.nix
-    ./nixpkgs-update.nix
+    ./gitlab.nix
+    ./hydra-declarative-projects.nix
+    ./hydra.nix
     ./marvin-mk2.nix
     ./matterbridge.nix
+    ./nixpkgs-update.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix
 
+    ../services/github-actions-nixpkgs-fmt.nix
     ../services/hound
   ] ++ userImports;
 
