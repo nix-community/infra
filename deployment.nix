@@ -27,8 +27,8 @@ in {
         permissions = "0600";
       };
 
-      deployment.keys.buildkite-agent-key-pub = {
-        text = secrets.buildkite-agent-key-pub;
+      deployment.keys."buildkite-agent-key.pub" = {
+        text = secrets."buildkite-agent-key.pub";
         user = "buildkite-agent";
         permissions = "0600";
       };
