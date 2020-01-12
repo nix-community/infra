@@ -15,6 +15,7 @@ in pkgs.mkShell {
 
   buildInputs = [
     pkgs.git-crypt
+    pkgs.niv
     pkgs.nixops
   ];
 }
