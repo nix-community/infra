@@ -6,6 +6,7 @@
 
     ./buildkite.nix
     ./gitlab.nix
+    ./hydra.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix

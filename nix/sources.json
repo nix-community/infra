@@ -10,5 +10,17 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs-channels/archive/aa561c6fb4f48974639a9e2b76fdd3e15b2abfd4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "simple-hydra": {
+        "branch": "master",
+        "description": "A simple module for enabling Hydra",
+        "homepage": null,
+        "owner": "ElvishJerricco",
+        "repo": "simple-hydra",
+        "rev": "0d28b0b66136082d0cbfd90ede4436a580e3e8d0",
+        "sha256": "0x5x047cb3i5pvic6gb3xid7dkx3sg535rfrrrgiapny3291pkma",
+        "type": "tarball",
+        "url": "https://github.com/ElvishJerricco/simple-hydra/archive/0d28b0b66136082d0cbfd90ede4436a580e3e8d0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

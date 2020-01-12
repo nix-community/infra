@@ -16,6 +16,13 @@ resource "cloudflare_record" "build01-AAAA" {
   type    = "AAAA"
 }
 
+resource "cloudflare_record" "hydra-CNAME" {
+  zone_id = local.cloudflare_zone_id
+  name    = "hydra"
+  value   = "build01.nix-community.com"
+  type    = "CNAME"
+}
+
 resource "cloudflare_record" "apex-A" {
   zone_id = local.cloudflare_zone_id
   name    = "@"
