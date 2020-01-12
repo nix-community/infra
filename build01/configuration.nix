@@ -6,6 +6,7 @@
 
     ./buildkite.nix
     ./gitlab.nix
+    ./nixpkgs-update.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix
