@@ -12,6 +12,7 @@
 
     ../users/adisbladis.nix
     ../users/zimbatm.nix
+    ../users/ryantm.nix
   ];
 
   # /boot is a mirror raid
