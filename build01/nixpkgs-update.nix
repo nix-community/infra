@@ -26,6 +26,7 @@ let
     RuntimeDirectoryMode = "700";
     CacheDirectory = "nixpkgs-update";
     CacheDirectoryMode = "700";
+    StandardOutput="journal";
   };
 in {
   users.groups.r-ryantm = { };
@@ -35,6 +36,10 @@ in {
     uid = userLib.mkUid "rrtm";
     extraGroups = [ "r-ryantm" ];
   };
+  nix.trustedUsers = [
+    "r-ryantm"
+  ];
+
 
   systemd.services.nixpkgs-update = {
     description = "nixpkgs-update service";
