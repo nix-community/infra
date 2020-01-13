@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  userImports = builtins.map (f: ../users/. + "/${f}") (builtins.filter (x: x != "lib.nix") (lib.attrNames (builtins.readDir ../users)));
+
+in {
   imports = [
     ./hardware-configuration.nix
 
@@ -10,11 +13,7 @@
 
     ../profiles/common.nix
     ../profiles/docker.nix
-
-    ../users/adisbladis.nix
-    ../users/zimbatm.nix
-    ../users/ryantm.nix
-  ];
+  ] ++ userImports;
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
