@@ -39,17 +39,19 @@ in {
         permissions = "0600";
       };
 
-      deployment.keys.github-r-ryantm-key = {
+      deployment.keys."id_rsa" = {
         text = secrets.github-r-ryantm-key;
         destDir = "/home/r-ryantm/.ssh";
         user = "r-ryantm";
+        group = "r-ryantm";
         permissions = "0600";
       };
 
-      deployment.keys.github-r-ryantm-token = {
+      deployment.keys."github_token.txt" = {
         text = secrets.github-r-ryantm-token;
         destDir = "/var/lib/nixpkgs-update";
         user = "r-ryantm";
+        group = "r-ryantm";
         permissions = "0600";
       };
 

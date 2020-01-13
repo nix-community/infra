@@ -4,7 +4,7 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
 
   sources = import ../nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update { };
+  nixpkgs-update = import sources.nixpkgs-update { returnShellEnv = false; };
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix
     git
@@ -19,6 +19,7 @@ let
     Type = "oneshot";
     User = "r-ryantm";
     Group = "r-ryantm";
+    WorkingDirectory = "/var/lib/nixpkgs-update";
     StateDirectory = "nixpkgs-update";
     StateDirectoryMode = "700";
     RuntimeDirectory = "nixpkgs-update";
@@ -30,6 +31,7 @@ in {
   users.groups.r-ryantm = { };
   users.users.r-ryantm = {
     useDefaultShell = true;
+    isNormalUser = true; # The hub cli seems to really want stuff to be set up like a normal user
     uid = userLib.mkUid "rrtm";
     extraGroups = [ "r-ryantm" ];
   };
@@ -38,6 +40,9 @@ in {
     description = "nixpkgs-update service";
     enable = true;
     path = nixpkgsUpdateSystemDependencies;
+    environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
+    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update";
+    environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
     script = "${nixpkgs-update}/bin/nixpkgs-update update";
@@ -47,6 +52,9 @@ in {
     description = "nixpkgs-update delete done branches";
     enable = true;
     path = nixpkgsUpdateSystemDependencies;
+    environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
+    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update";
+    environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
     script = "${nixpkgs-update}/bin/nixpkgs-update delete-done";
