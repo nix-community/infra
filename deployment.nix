@@ -55,6 +55,14 @@ in {
         permissions = "0600";
       };
 
+      deployment.keys."cachix.dhall" = {
+        text = secrets."cachix.dhall";
+        destDir = "/home/r-ryantm/.config/cachix";
+        user = "r-ryantm";
+        group = "r-ryantm";
+        permissions = "0600";
+      };
+
     };
 
 }

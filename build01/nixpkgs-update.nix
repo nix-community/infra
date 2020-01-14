@@ -13,6 +13,7 @@ let
     jq
     tree
     gist
+    cachix
   ];
 
   nixpkgsUpdateServiceConfigCommon = {
