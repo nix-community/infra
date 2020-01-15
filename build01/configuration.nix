@@ -10,6 +10,7 @@ in {
     ./buildkite.nix
     ./gitlab.nix
     ./hydra.nix
+    ./nixpkgs-update.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix
