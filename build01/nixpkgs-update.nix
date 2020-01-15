@@ -30,6 +30,7 @@ let
     StandardOutput="journal";
   };
 in {
+  users.users.r-ryantm.packages = [ pkgs.cachix ];
   users.groups.r-ryantm = { };
   users.users.r-ryantm = {
     useDefaultShell = true;

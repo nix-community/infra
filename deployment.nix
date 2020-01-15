@@ -57,7 +57,7 @@ in {
 
       deployment.keys."cachix.dhall" = {
         text = secrets."cachix.dhall";
-        destDir = "/home/r-ryantm/.config/cachix";
+        destDir = "/var/lib/nixpkgs-update/cachix";
         user = "r-ryantm";
         group = "r-ryantm";
         permissions = "0600";
