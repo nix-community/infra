@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "3f559eb4c24aab547447c248d32ee791fe937cf0",
-        "sha256": "1xyaja08cv57gbnzyal9iryb0dc4yg986hdm6yy9mg5fajgh7gr9",
+        "rev": "d58957768a9ba154548431539e7b81eae97f9199",
+        "sha256": "02lx7y2ckaiv75708qc8n7kgdns8fw5gmxn2v2yg3r8cgd0crwxm",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/3f559eb4c24aab547447c248d32ee791fe937cf0.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/d58957768a9ba154548431539e7b81eae97f9199.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {
