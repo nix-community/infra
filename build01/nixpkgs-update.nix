@@ -23,10 +23,10 @@ let
     WorkingDirectory = "/var/lib/nixpkgs-update";
     StateDirectory = "nixpkgs-update";
     StateDirectoryMode = "700";
-    RuntimeDirectory = "nixpkgs-update";
-    RuntimeDirectoryMode = "700";
     CacheDirectory = "nixpkgs-update";
     CacheDirectoryMode = "700";
+    LogsDirectory = "nixpkgs-update";
+    LogsDirectoryMode = "700";
     StandardOutput="journal";
   };
 in {
@@ -42,33 +42,24 @@ in {
     "r-ryantm"
   ];
 
-
   systemd.services.nixpkgs-update = {
     description = "nixpkgs-update service";
     enable = true;
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
-    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
-    script = "${nixpkgs-update}/bin/nixpkgs-update update";
+    script = ''
+      sleep 10
+      ${nixpkgs-update}/bin/nixpkgs-update delete-done
+      ${nixpkgs-update}/bin/nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
+      ${nixpkgs-update}/bin/nixpkgs-update update
+    '';
   };
 
-  systemd.services.nixpkgs-update-delete-done = {
-    description = "nixpkgs-update delete done branches";
-    enable = true;
-    path = nixpkgsUpdateSystemDependencies;
-    environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
-    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update";
-    environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
-
-    serviceConfig = nixpkgsUpdateServiceConfigCommon;
-    script = "${nixpkgs-update}/bin/nixpkgs-update delete-done";
-  };
-
-  systemd.timers.nixpkgs-update-delete-done = {
-    description = "nixpkgs-update delete done branches";
+  systemd.timers.nixpkgs-update = {
+    description = "nixpkgs-update";
     enable = true;
     timerConfig = { OnCalendar = "daily"; };
   };
