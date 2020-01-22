@@ -12,7 +12,7 @@ pkgs.mkShell {
   NIX_PATH = "nixpkgs=${toString pkgs.path}";
 
   NIXOPS_DEPLOYMENT = "nix-community-infra";
-  NIXOPS_STATE = "./state/deployment-state.nixops";
+  NIXOPS_STATE = toString ./state/deployment-state.nixops;
 
   buildInputs = [
     pkgs.git-crypt
