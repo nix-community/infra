@@ -6,20 +6,25 @@ let
     overlays = [];
   };
 
-in pkgs.mkShell {
+in
+pkgs.mkShell {
 
-  NIX_PATH="nixpkgs=${toString pkgs.path}";
+  NIX_PATH = "nixpkgs=${toString pkgs.path}";
 
-  NIXOPS_DEPLOYMENT="nix-community-infra";
-  NIXOPS_STATE="./state/deployment-state.nixops";
+  NIXOPS_DEPLOYMENT = "nix-community-infra";
+  NIXOPS_STATE = "./state/deployment-state.nixops";
 
   buildInputs = [
     pkgs.git-crypt
     pkgs.niv
     pkgs.nixops
-    (pkgs.terraform.withPlugins (p: [
-      p.cloudflare
-    ]))
+    (
+      pkgs.terraform.withPlugins (
+        p: [
+          p.cloudflare
+        ]
+      )
+    )
   ];
 
   # terraform cloud without the remote execution part

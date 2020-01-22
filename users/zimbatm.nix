@@ -7,7 +7,8 @@ let
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxiMI0QgaxBTRgzhCtgiyFEcRiZ7SH6LC0byweSlThcpevN6W8ZQZFqv9BhEmq/Hukrgytm8WkdYHCWWRdDcC94AUHxNG+wF4ONLUaX+xpuuwd6KQVHAOZ9kDyPNdXIO9Ad6YiqiVD4fI4wi9wl/hBQQgB7jF+BKPjOfoE2D95psyEqFcD13mlFQAMZnPzYVSv72uWu4Cf6ft4XbrMeqxa71TIoEsjlZ+BVOg+mVmfZNtThtwJ1FZ+tEX6pwFGNAacZWx4TZmPojZaauwBmTJDC5DKgPH4ZmejIgCerjIUsjmNcRXNRinKitWpaV3KIAPc+lrNZPB4I3lmKuW5uFQr"
   ];
 
-in {
+in
+{
   users.users.zimbatm = {
     openssh.authorizedKeys.keys = keys;
     useDefaultShell = true;

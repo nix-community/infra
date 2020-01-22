@@ -6,7 +6,8 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGEkPcumvhBjIZ44tnhN6+hZR8vsCSLD4r1dFzlnXA4 Nix Community - worldofpeace"
   ];
 
-in {
+in
+{
   users.users.worldofpeace = {
     openssh.authorizedKeys.keys = keys;
     useDefaultShell = true;

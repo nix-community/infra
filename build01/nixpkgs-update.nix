@@ -27,11 +27,12 @@ let
     CacheDirectoryMode = "700";
     LogsDirectory = "nixpkgs-update";
     LogsDirectoryMode = "700";
-    StandardOutput="journal";
+    StandardOutput = "journal";
   };
-in {
+in
+{
   users.users.r-ryantm.packages = [ pkgs.cachix ];
-  users.groups.r-ryantm = { };
+  users.groups.r-ryantm = {};
   users.users.r-ryantm = {
     useDefaultShell = true;
     isNormalUser = true; # The hub cli seems to really want stuff to be set up like a normal user

@@ -3,7 +3,8 @@
 let
   userImports = builtins.map (f: ../users/. + "/${f}") (builtins.filter (x: x != "lib.nix") (lib.attrNames (builtins.readDir ../users)));
 
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
 

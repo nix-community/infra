@@ -21,18 +21,19 @@
 
   nix = let
     asGB = size: toString (size * 1024 * 1024);
-  in {
-    extraOptions = ''
-      # auto-free the /nix/store
-      min-free = ${asGB 10}
-      max-free = ${asGB 200}
+  in
+    {
+      extraOptions = ''
+        # auto-free the /nix/store
+        min-free = ${asGB 10}
+        max-free = ${asGB 200}
 
-      # avoid copying unecessary stuff over SSH
-      builders-use-substitutes = true
-    '';
-    # Hard-link duplicated files
-    autoOptimiseStore = true;
-  };
+        # avoid copying unecessary stuff over SSH
+        builders-use-substitutes = true
+      '';
+      # Hard-link duplicated files
+      autoOptimiseStore = true;
+    };
 
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [
@@ -56,10 +57,17 @@
 
   # Assign keys from all users in wheel group
   # This is only done because nixops cant be deployed from any other account
-  users.extraUsers.root.openssh.authorizedKeys.keys = lib.unique (lib.flatten (
-    builtins.map (u: u.openssh.authorizedKeys.keys)
-      (lib.attrValues (lib.filterAttrs (_: u: lib.elem "wheel" u.extraGroups)
-        config.users.extraUsers))));
+  users.extraUsers.root.openssh.authorizedKeys.keys = lib.unique (
+    lib.flatten (
+      builtins.map (u: u.openssh.authorizedKeys.keys)
+        (
+          lib.attrValues (
+            lib.filterAttrs (_: u: lib.elem "wheel" u.extraGroups)
+              config.users.extraUsers
+          )
+        )
+    )
+  );
 
 
 }
