@@ -56,6 +56,14 @@ in
           permissions = "0600";
         };
 
+        deployment.keys."github_token_with_username.txt" = {
+          text = "r-ryantm:${secrets.github-r-ryantm-token}";
+          destDir = "/var/lib/nixpkgs-update";
+          user = "r-ryantm";
+          group = "r-ryantm";
+          permissions = "0600";
+        };
+
         deployment.keys."cachix.dhall" = {
           text = secrets."cachix.dhall";
           destDir = "/var/lib/nixpkgs-update/cachix";

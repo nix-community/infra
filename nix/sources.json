@@ -29,10 +29,10 @@
         "homepage": null,
         "owner": "ryantm",
         "repo": "nixpkgs-update-github-releases",
-        "rev": "94d627337f499632e5f8bb32800eaec884dc18df",
-        "sha256": "09x8k5mb8mp5q9ihnragypccdydc2jhp4jzxqma9z8zspnxcqrys",
+        "rev": "f7a471cd6e3e092432d42487e7797ca28a21da69",
+        "sha256": "13wd0q9zbl551saaplrq88irbk6mqpa5rlkffdw0f95qldkxmipa",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update-github-releases/archive/94d627337f499632e5f8bb32800eaec884dc18df.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update-github-releases/archive/f7a471cd6e3e092432d42487e7797ca28a21da69.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {

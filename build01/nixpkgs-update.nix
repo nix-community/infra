@@ -52,7 +52,7 @@ in
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
     # API_TOKEN is used by nixpkgs-update-github-releases
-    environment.API_TOKEN = "r-ryantm:${deployment.keys."github_token.txt".text}";
+    environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
     script = ''
