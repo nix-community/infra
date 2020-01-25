@@ -16,6 +16,8 @@ let
     cachix
   ];
 
+  nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
+
   nixpkgsUpdateServiceConfigCommon = {
     Type = "oneshot";
     User = "r-ryantm";
@@ -49,13 +51,17 @@ in
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
+    # API_TOKEN is used by nixpkgs-update-github-releases
+    environment.API_TOKEN = "r-ryantm:${deployment.keys."github_token.txt".text}";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
     script = ''
-      sleep 10
+      ${nixpkgs-update}/bin/nixpkgs-update delete-done
+      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs/packages-to-update.txt
+      ${nixpkgs-update}/bin/nixpkgs-update update-list
       ${nixpkgs-update}/bin/nixpkgs-update delete-done
       ${nixpkgs-update}/bin/nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update}/bin/nixpkgs-update update
+      ${nixpkgs-update}/bin/nixpkgs-update update-list
     '';
   };
 
