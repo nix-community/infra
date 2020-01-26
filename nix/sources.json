@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "e31db559492725cdee8bdc0db06814f91d590aca",
-        "sha256": "10jkykls7ignfxf6vzcyl50wghynm4zbj4b482n2w1is9s8zc3gq",
+        "rev": "a6fd377407eec362a8f6b0edd971c8e33d2ffa5a",
+        "sha256": "1p6mvksrcpvgkviy4y774qc6h70f7scvdc8ivmh11iw5spbahd83",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/e31db559492725cdee8bdc0db06814f91d590aca.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/a6fd377407eec362a8f6b0edd971c8e33d2ffa5a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update-github-releases": {
@@ -29,10 +29,10 @@
         "homepage": null,
         "owner": "ryantm",
         "repo": "nixpkgs-update-github-releases",
-        "rev": "f7a471cd6e3e092432d42487e7797ca28a21da69",
-        "sha256": "13wd0q9zbl551saaplrq88irbk6mqpa5rlkffdw0f95qldkxmipa",
+        "rev": "a1e7e23fd67090477b46b066da465c3e4eec91fc",
+        "sha256": "0d85jhwqgz3pax408inp77bam8pkgvwbakfagdiyqz3bhwm0yxwv",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update-github-releases/archive/f7a471cd6e3e092432d42487e7797ca28a21da69.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update-github-releases/archive/a1e7e23fd67090477b46b066da465c3e4eec91fc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {

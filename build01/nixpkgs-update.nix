@@ -48,16 +48,19 @@ in
   systemd.services.nixpkgs-update = {
     description = "nixpkgs-update service";
     enable = true;
+    restartIfChanged = false;
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
     # API_TOKEN is used by nixpkgs-update-github-releases
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
+    # Used by nixpkgs-update-github-releases to install python dependencies
+    environment.NIX_PATH = "nixpkgs=${sources.nixpkgs}";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
     script = ''
       ${nixpkgs-update}/bin/nixpkgs-update delete-done
-      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs/packages-to-update.txt
+      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
       ${nixpkgs-update}/bin/nixpkgs-update update-list
       ${nixpkgs-update}/bin/nixpkgs-update delete-done
       ${nixpkgs-update}/bin/nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
