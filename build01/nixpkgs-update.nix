@@ -14,6 +14,7 @@ let
     tree
     gist
     cachix
+    curl
   ];
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
