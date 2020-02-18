@@ -62,10 +62,10 @@ in
     script = ''
       ${nixpkgs-update}/bin/nixpkgs-update delete-done
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update}/bin/nixpkgs-update update-list
+      ${nixpkgs-update}/bin/nixpkgs-update update-list --cachix
       ${nixpkgs-update}/bin/nixpkgs-update delete-done
       ${nixpkgs-update}/bin/nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update}/bin/nixpkgs-update update-list
+      ${nixpkgs-update}/bin/nixpkgs-update update-list --cachix
     '';
   };
 
