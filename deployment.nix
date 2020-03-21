@@ -72,6 +72,11 @@ in
           permissions = "0600";
         };
 
+        deployment.keys.github-nixpkgs-swh-key = {
+          text = secrets.github-nixpkgs-swh-key;
+          user = "buildkite-agent";
+          permissions = "0400";
+        };
       };
 
 }
