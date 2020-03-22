@@ -29,7 +29,7 @@ let
     CacheDirectory = "nixpkgs-update";
     CacheDirectoryMode = "700";
     LogsDirectory = "nixpkgs-update";
-    LogsDirectoryMode = "700";
+    LogsDirectoryMode = "755";
     StandardOutput = "journal";
   };
 in
@@ -73,6 +73,15 @@ in
     description = "nixpkgs-update";
     enable = true;
     timerConfig = { OnCalendar = "daily"; };
+  };
+
+  services.nginx.virtualHosts."r.ryantm.com" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/log/" = {
+      alias = "/var/log/nixpkgs-update/";
+      extraConfig = "autoindex on;";
+    };
   };
 
 }
