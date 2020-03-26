@@ -14,7 +14,7 @@ in
     extraGroups = [
       "wheel"
     ];
-    uid = userLib.mkUid "flokli";
+    uid = userLib.mkUid "flok";
   };
 
   nix.trustedUsers = [ "flokli" ];
