@@ -10,14 +10,16 @@ let
     git
     getent
     gitAndTools.hub
+    gnugrep
     jq
     tree
     gist
     cachix
     curl
-  ];
+  ] ++ [ nixpkgs-update ];
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
+  nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
 
   nixpkgsUpdateServiceConfigCommon = {
     Type = "oneshot";
@@ -59,13 +61,18 @@ in
     environment.NIX_PATH = "nixpkgs=${sources.nixpkgs}";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
+
     script = ''
-      ${nixpkgs-update}/bin/nixpkgs-update delete-done
+      nixpkgs-update delete-done
+      grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
+        ${nixpkgs-update-pypi-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
+      nixpkgs-update update-list --cachix --outpaths
+      nixpkgs-update delete-done
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update}/bin/nixpkgs-update update-list --cachix --outpaths
-      ${nixpkgs-update}/bin/nixpkgs-update delete-done
-      ${nixpkgs-update}/bin/nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update}/bin/nixpkgs-update update-list --cachix --outpaths
+      nixpkgs-update update-list --cachix --outpaths
+      nixpkgs-update delete-done
+      nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
+      nixpkgs-update update-list --cachix --outpaths
     '';
   };
 
