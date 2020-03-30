@@ -35,6 +35,18 @@
         "url": "https://github.com/ryantm/nixpkgs-update-github-releases/archive/e31b003d8edd400d06b718c717c19532585389f9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-update-pypi-releases": {
+        "branch": "master",
+        "description": "Fetches releases from pypi for https://github.com/ryantm/nixpkgs-update",
+        "homepage": null,
+        "owner": "jonringer",
+        "repo": "nixpkgs-update-pypi-releases",
+        "rev": "06107e06d086a1c89f53a563876799e3d7f363b2",
+        "sha256": "1r7zf0a5ybbi808qkjdn38142kwi2mfanrn0qkc0ajscp6v5yihn",
+        "type": "tarball",
+        "url": "https://github.com/jonringer/nixpkgs-update-pypi-releases/archive/06107e06d086a1c89f53a563876799e3d7f363b2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "simple-hydra": {
         "branch": "master",
         "description": "A simple module for enabling Hydra",
