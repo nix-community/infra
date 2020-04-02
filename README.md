@@ -14,7 +14,7 @@ This documents and configures the infrastructure used for the `nix-community` Gi
 
 The list of people who can deploy:
 
-* @adisblading
+* @adisbladis
 * @flokli
 * @grahamc
 * @nlewo
