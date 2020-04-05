@@ -19,10 +19,16 @@
   # Entropy gathering daemon
   services.haveged.enable = true;
 
-  nix = let
-    asGB = size: toString (size * 1024 * 1024);
-  in
+  nix =
+    let asGB = size: toString (size * 1024 * 1024); in
     {
+      binaryCachePublicKeys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      binaryCaches = [
+        "https://nix-community.cachix.org"
+      ];
+
       extraOptions = ''
         # auto-free the /nix/store
         min-free = ${asGB 10}
