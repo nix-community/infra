@@ -5,7 +5,7 @@ let
   pkgs = import sources.nixpkgs {
     inherit system;
     config = {};
-    overlays = [ (import ./overlay.nix) ];
+    overlays = import ./overlays.nix;
   };
 in
   pkgs

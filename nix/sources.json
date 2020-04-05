@@ -70,5 +70,17 @@
         "type": "tarball",
         "url": "https://github.com/ElvishJerricco/simple-hydra/archive/0d28b0b66136082d0cbfd90ede4436a580e3e8d0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "terraform-provider-vpsadmin": {
+        "branch": "master",
+        "description": "Terraform provider for vpsAdmin",
+        "homepage": null,
+        "owner": "vpsfreecz",
+        "repo": "terraform-provider-vpsadmin",
+        "rev": "bf2d3ffa6abe5b6dfdb83dcf9b13a7cd54e4fa1c",
+        "sha256": "1vny6w9arbbra04bjjafisaswinm93ic1phy59l0g78sqf6x3a7v",
+        "type": "tarball",
+        "url": "https://github.com/vpsfreecz/terraform-provider-vpsadmin/archive/bf2d3ffa6abe5b6dfdb83dcf9b13a7cd54e4fa1c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
