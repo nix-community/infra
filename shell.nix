@@ -1,11 +1,6 @@
+{ system ? builtins.currentSystem }:
 let
-  sources = import ./nix/sources.nix;
-
-  pkgs = import sources.nixpkgs {
-    config = {};
-    overlays = [];
-  };
-
+  pkgs = import ./nix { inherit system; };
 in
 pkgs.mkShell {
 
@@ -14,17 +9,11 @@ pkgs.mkShell {
   NIXOPS_DEPLOYMENT = "nix-community-infra";
   NIXOPS_STATE = toString ./state/deployment-state.nixops;
 
-  buildInputs = [
-    pkgs.git-crypt
-    pkgs.niv
-    pkgs.nixops
-    (
-      pkgs.terraform.withPlugins (
-        p: [
-          p.cloudflare
-        ]
-      )
-    )
+  buildInputs = with pkgs.nix-community-infra; [
+    git-crypt
+    niv
+    nixops
+    terraform
   ];
 
   # terraform cloud without the remote execution part
