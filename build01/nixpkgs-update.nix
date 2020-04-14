@@ -4,7 +4,7 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
 
   sources = import ../nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update { returnShellEnv = false; };
+  nixpkgs-update = import sources.nixpkgs-update;
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix
     git
@@ -66,13 +66,13 @@ in
       # nixpkgs-update delete-done
       # grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
       #   ${nixpkgs-update-pypi-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      # nixpkgs-update update-list --cachix --outpaths
+      # nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
       nixpkgs-update delete-done
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      nixpkgs-update update-list --cachix --outpaths
+      nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
       nixpkgs-update delete-done
       nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      nixpkgs-update update-list --cachix --outpaths
+      nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
     '';
   };
 
