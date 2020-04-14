@@ -4,7 +4,7 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
 
   sources = import ../nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update;
+  nixpkgs-update = import sources.nixpkgs-update {};
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix
     git
