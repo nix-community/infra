@@ -16,7 +16,7 @@ let
     gist
     cachix
     curl
-  ] ++ [ nixpkgs-update ];
+  ] ++ [ nixpkgs-update ] ++ nixpkgs-update.propagatedBuildInputs;
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
   nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
