@@ -41,10 +41,10 @@
         "homepage": null,
         "owner": "jonringer",
         "repo": "nixpkgs-update-pypi-releases",
-        "rev": "8c65d950f17eca1fb46f0f3074b979302290d9f5",
-        "sha256": "04bmxxdabmwfibnsjdijq6y79dsmw514vqjvl57lj1x8fzgjmfz4",
+        "rev": "cf72f9a94b0ccc306c025eba222a70456378433d",
+        "sha256": "05slhzn56gn2pipqi7a9d49q3avh2w7x9q4pibh1adc1wfs60r1w",
         "type": "tarball",
-        "url": "https://github.com/jonringer/nixpkgs-update-pypi-releases/archive/8c65d950f17eca1fb46f0f3074b979302290d9f5.tar.gz",
+        "url": "https://github.com/jonringer/nixpkgs-update-pypi-releases/archive/cf72f9a94b0ccc306c025eba222a70456378433d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {
