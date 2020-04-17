@@ -11,6 +11,7 @@ in
     ./buildkite.nix
     ./gitlab.nix
     ./hydra.nix
+    ./hydra-declarative-projects.nix
     ./cache.nix
     ./nixpkgs-update.nix
 
