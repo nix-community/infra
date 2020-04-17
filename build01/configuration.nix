@@ -50,6 +50,9 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
 
+  security.acme.email = "trash@nix-community.org";
+  security.acme.acceptTerms = true;
+
   system.stateVersion = "19.09";
 
 }
