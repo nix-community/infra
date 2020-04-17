@@ -53,6 +53,6 @@ in
   security.acme.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
 
-  system.stateVersion = "19.09";
+  system.stateVersion = "20.03";
 
 }
