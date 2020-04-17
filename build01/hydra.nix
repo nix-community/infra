@@ -18,7 +18,6 @@ in
     enable = true;
     useSubstitutes = true;
     extraConfig = ''
-      store_uri = ${config.simple-hydra.store_uri}
       max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
     '';
   };
