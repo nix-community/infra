@@ -72,6 +72,13 @@ in
           permissions = "0600";
         };
 
+        deployment.keys."nix-community-cachix.dhall" = {
+          text = secrets."nix-community-cachix.dhall";
+          destDir = "/var/lib/post-build-hook";
+          user = "root";
+          permissions = "0400";
+        };
+
         deployment.keys.github-nixpkgs-swh-key = {
           text = secrets.github-nixpkgs-swh-key;
           user = "buildkite-agent";
