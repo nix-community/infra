@@ -11,4 +11,4 @@ jobs:
       with:
         name: nix-community
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: ./deploy --build-only
+    - run: nix-build
