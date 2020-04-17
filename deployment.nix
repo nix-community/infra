@@ -18,19 +18,19 @@ in
 
         deployment.keys.buildkite-token = {
           text = secrets.buildkite-token;
-          user = "buildkite-agent";
+          user = "buildkite-agent-ci";
           permissions = "0600";
         };
 
         deployment.keys.buildkite-agent-key = {
           text = secrets.buildkite-agent-key;
-          user = "buildkite-agent";
+          user = "buildkite-agent-ci";
           permissions = "0600";
         };
 
         deployment.keys."buildkite-agent-key.pub" = {
           text = secrets."buildkite-agent-key.pub";
-          user = "buildkite-agent";
+          user = "buildkite-agent-ci";
           permissions = "0600";
         };
 
@@ -81,7 +81,7 @@ in
 
         deployment.keys.github-nixpkgs-swh-key = {
           text = secrets.github-nixpkgs-swh-key;
-          user = "buildkite-agent";
+          user = "buildkite-agent-ci";
           permissions = "0400";
         };
 
