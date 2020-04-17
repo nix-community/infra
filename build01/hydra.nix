@@ -7,7 +7,7 @@ let
 
   hydraPort = 3000;
   hydraAdmin = "admin";
-  hydraAdminPasswordFile = "/var/keys/hydra-admin-password";
+  hydraAdminPasswordFile = "/run/keys/hydra-admin-password";
 
   createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
     name = "create-declarative-project";
