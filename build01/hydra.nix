@@ -122,7 +122,7 @@ in {
         hostName = "localhost";
         systems = [ "x86_64-linux" "builtin" ];
         maxJobs = 8;
-        supportedFeatures = [ "nixos-test" "big-parallel" ];
+        supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
       }];
     };
 
