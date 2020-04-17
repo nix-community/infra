@@ -1,17 +1,9 @@
 { pkgs, ... }:
 
 {
-  services.buildkite-agent = {
+  services.buildkite-agents.ci = {
     enable = true;
     tokenPath = "/run/keys/buildkite-token";
-    openssh.privateKeyPath = builtins.toPath "/run/keys/buildkite-agent-key";
-    openssh.publicKeyPath = builtins.toPath "/run/keys/buildkite-agent-key.pub";
-
-    runtimePackages = [
-      pkgs.gnutar
-      pkgs.bash
-      pkgs.nix
-      pkgs.gzip
-    ];
+    privateSshKeyPath = builtins.toPath "/run/keys/buildkite-agent-key";
   };
 }
