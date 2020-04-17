@@ -1,0 +1,16 @@
+diff --git a/src/Utils.hs b/src/Utils.hs
+index 00e539e..461b234 100644
+--- a/src/Utils.hs
++++ b/src/Utils.hs
+@@ -252,7 +252,10 @@ nixBuildOptions =
+     "true",
+     "--option",
+     "restrict-eval",
+-    "true"
++    "true",
++    "--option",
++    "post-build-hook",
++    "/run/current-system/sw/bin/true"
+   ]
+     <> nixCommonOptions
+ 

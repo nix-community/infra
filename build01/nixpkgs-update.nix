@@ -4,7 +4,12 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
 
   sources = import ../nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update {};
+  nixpkgs-update = (import sources.nixpkgs-update {}).overrideAttrs(old: {
+    patches = old.patches or [] ++ [
+      ./nixpkgs-update-disable-post-build-hook.patch
+    ];
+  });
+
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix
     git
