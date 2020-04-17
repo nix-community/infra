@@ -7,7 +7,7 @@ let
 
   hydraPort = 3000;
   hydraAdmin = "admin";
-  hydraAdminPasswordFile = "/var/keys/hydra-admin-password";
+  hydraAdminPasswordFile = "/run/keys/hydra-admin-password";
 
   createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
     name = "create-declarative-project";
@@ -84,7 +84,7 @@ in {
     services.nginx = {
       enable = true;
       virtualHosts = {
-        "hydra.nix-community.com" = {
+        "hydra.nix-community.org" = {
           forceSSL = true;
           enableACME = true;
           locations."/" = {
@@ -138,7 +138,7 @@ in {
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [ hydra netcat ];
+      path = with pkgs; [ hydra-unstable netcat ];
       script = ''
         set -e
         export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})

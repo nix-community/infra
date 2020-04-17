@@ -8,7 +8,7 @@ let
       inherit configuration system;
     };
 in
-  pkgs.nix-community-infra // rec {
-    build01 = importNixOS ./build01/configuration.nix "x86_64-linux";
-    build01-system = build01.system;
-  }
+pkgs.nix-community-infra // rec {
+  build01 = importNixOS ./build01/configuration.nix "x86_64-linux";
+  build01-system = build01.system;
+}

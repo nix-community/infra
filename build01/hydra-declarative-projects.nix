@@ -1,0 +1,13 @@
+{ lib, pkgs, config, ... }:
+
+{
+  services.hydra.declarativeProjects = {
+    emacs-overlay = {
+      displayName = "Emacs Overlay";
+      inputValue = "https://github.com/nix-community/emacs-overlay";
+      specFile = "hydra/spec.json";
+      description = "Bleeding edge emacs overlay";
+      homepage = "https://github.com/nix-community/emacs-overlay";
+    };
+  };
+}

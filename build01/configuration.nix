@@ -11,6 +11,7 @@ in
     ./buildkite.nix
     ./gitlab.nix
     ./hydra.nix
+    ./hydra-declarative-projects.nix
     ./cache.nix
     ./nixpkgs-update.nix
 
@@ -50,6 +51,9 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
 
-  system.stateVersion = "19.09";
+  security.acme.email = "trash@nix-community.org";
+  security.acme.acceptTerms = true;
+
+  system.stateVersion = "20.03";
 
 }
