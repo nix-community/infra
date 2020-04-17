@@ -84,7 +84,7 @@ in {
     services.nginx = {
       enable = true;
       virtualHosts = {
-        "hydra.nix-community.com" = {
+        "hydra.nix-community.org" = {
           forceSSL = true;
           enableACME = true;
           locations."/" = {
