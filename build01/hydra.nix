@@ -138,7 +138,7 @@ in {
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [ hydra netcat ];
+      path = with pkgs; [ hydra-unstable netcat ];
       script = ''
         set -e
         export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
