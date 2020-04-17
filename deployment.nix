@@ -1,7 +1,5 @@
 let
-
-  secrets = import ./secrets;
-
+  secrets = import ./secrets.nix;
 in
 {
 
