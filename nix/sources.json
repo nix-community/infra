@@ -47,6 +47,18 @@
         "url": "https://github.com/jonringer/nixpkgs-update-pypi-releases/archive/cf72f9a94b0ccc306c025eba222a70456378433d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "queued-build-hook": {
+        "branch": "master",
+        "description": "Queue and retry Nix post-build-hook",
+        "homepage": null,
+        "owner": "nix-community",
+        "repo": "queued-build-hook",
+        "rev": "24882efb9b61fc39273c6421b914d45701f85cb8",
+        "sha256": "0q1bvbsny5xs5wnzn17zwgigb3xkrjxy7vm1yxk24kam1vcwymv9",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/queued-build-hook/archive/24882efb9b61fc39273c6421b914d45701f85cb8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "simple-hydra": {
         "branch": "master",
         "description": "A simple module for enabling Hydra",
