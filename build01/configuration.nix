@@ -1,8 +1,17 @@
 { config, pkgs, lib, ... }:
 
 let
-  userImports = builtins.map (f: ../users/. + "/${f}") (builtins.filter (x: x != "lib.nix") (lib.attrNames (builtins.readDir ../users)));
-
+  userImports =
+    let
+      toUserPath = f: ../users/. + "/${f}";
+      onlyUserFiles = x:
+        lib.hasSuffix ".nix" x &&
+        x != "lib.nix"
+        ;
+      userDirEntries = builtins.readDir ../users;
+      userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
+    in
+    builtins.map toUserPath userFiles;
 in
 {
   imports = [
