@@ -7,7 +7,7 @@ let
       ;
 
     terraform-provider-vpsadmin =
-      pkgs.callPackage ./nix/terraform-provider-vpsadmin.nix {};
+      pkgs.callPackage ./terraform-provider-vpsadmin.nix {};
 
     terraform = pkgs.terraform.withPlugins (
       p: [
