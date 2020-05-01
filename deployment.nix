@@ -1,5 +1,21 @@
+with builtins;
+
 let
   secrets = import ./secrets.nix;
+
+  # Copied from <nixpkgs/lib>
+  removeSuffix = suffix: str:
+    let
+      sufLen = stringLength suffix;
+      sLen = stringLength str;
+    in
+    if
+      sufLen <= sLen && suffix == substring (sLen - sufLen) sufLen str
+    then
+      substring 0 (sLen - sufLen) str
+    else
+      str;
+
 in
 {
 
@@ -15,7 +31,7 @@ in
         deployment.targetHost = "94.130.143.84";
 
         deployment.keys.buildkite-token = {
-          text = secrets.buildkite-token;
+          text = removeSuffix "\n" secrets.buildkite-token;
           user = "buildkite-agent-ci";
           permissions = "0600";
         };
