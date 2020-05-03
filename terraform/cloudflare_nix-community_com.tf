@@ -1,3 +1,4 @@
+# This domain is deprecated. We use nix-community.org
 locals {
   cloudflare_zone_id = "ea3afc8656765143b2d5b7501c243aa7"
 }
@@ -16,13 +17,6 @@ resource "cloudflare_record" "build01-AAAA" {
   type    = "AAAA"
 }
 
-resource "cloudflare_record" "hydra-CNAME" {
-  zone_id = local.cloudflare_zone_id
-  name    = "hydra"
-  value   = "build01.nix-community.com"
-  type    = "CNAME"
-}
-
 resource "cloudflare_record" "apex-A" {
   zone_id = local.cloudflare_zone_id
   name    = "@"
@@ -37,18 +31,4 @@ resource "cloudflare_record" "apex-TXT" {
   name    = "@"
   value   = "v=spf1 -all"
   type    = "TXT"
-}
-
-# ehmry's mumble server at vps-free
-resource "cloudflare_record" "mumble-A" {
-  zone_id = local.cloudflare_zone_id
-  name    = "mumble"
-  value   = "37.205.14.171"
-  type    = "A"
-}
-resource "cloudflare_record" "mumble-AAAA" {
-  zone_id = local.cloudflare_zone_id
-  name    = "mumble"
-  value   = "2a03:3b40:fe:ab::1"
-  type    = "AAAA"
 }
