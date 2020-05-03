@@ -41,13 +41,13 @@ resource "cloudflare_record" "nix-community-org-apex-TXT" {
 
 # ehmry's mumble server at vps-free
 resource "cloudflare_record" "mumble-A" {
-  zone_id = local.cloudflare_zone_id
+  zone_id = local.nix_community_org_zone_id
   name    = "mumble"
   value   = "37.205.14.171"
   type    = "A"
 }
 resource "cloudflare_record" "mumble-AAAA" {
-  zone_id = local.cloudflare_zone_id
+  zone_id = local.nix_community_org_zone_id
   name    = "mumble"
   value   = "2a03:3b40:fe:ab::1"
   type    = "AAAA"
