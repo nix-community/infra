@@ -64,7 +64,7 @@ in
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
     # Used by nixpkgs-update-github-releases to install python dependencies
     # Used by nixpkgs-update-pypi-releases
-    environment.NIX_PATH = "nixpkgs=$XDG_CACHE_HOME/nixpkgs";
+    environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/nixpkgs";
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
 
