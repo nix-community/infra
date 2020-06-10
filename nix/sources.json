@@ -1,4 +1,16 @@
 {
+    "marvin-mk2": {
+        "branch": "master",
+        "description": "Helpful nixpkgs PR bot with an improved Genuine People Personality",
+        "homepage": "https://github.com/timokau/marvin-mk2",
+        "owner": "timokau",
+        "repo": "marvin-mk2",
+        "rev": "112ce885daa8de41f41a9891f6f70f15fd5552ce",
+        "sha256": "0fgi699dasmijbs15yjhbfrb5yqbas9rfycrp2a3kz3m5c910mrh",
+        "type": "tarball",
+        "url": "https://github.com/timokau/marvin-mk2/archive/112ce885daa8de41f41a9891f6f70f15fd5552ce.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "nixos-unstable",
         "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
