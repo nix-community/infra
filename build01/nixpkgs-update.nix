@@ -55,7 +55,7 @@ in
 
   systemd.services.nixpkgs-update = {
     description = "nixpkgs-update service";
-    enable = true;
+    enable = false;
     restartIfChanged = false;
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
@@ -84,7 +84,7 @@ in
 
   systemd.timers.nixpkgs-update = {
     description = "nixpkgs-update";
-    enable = true;
+    enable = false;
     timerConfig = { OnCalendar = "daily"; };
   };
 
