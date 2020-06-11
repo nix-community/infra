@@ -23,6 +23,7 @@ in
     ./hydra-declarative-projects.nix
     ./cache.nix
     ./nixpkgs-update.nix
+    ./marvin-mk2.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix

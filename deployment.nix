@@ -78,6 +78,30 @@ in
           permissions = "0600";
         };
 
+        deployment.keys."marvin-mk2-key.pem" = {
+          text = secrets."marvin-mk2-key.pem";
+          destDir = "/var/lib/marvin-mk2";
+          user = "marvin-mk2";
+          group = "marvin-mk2";
+          permissions = "0600";
+        };
+
+        deployment.keys."marvin_mk2_id.txt" = {
+          text = secrets."marvin_mk2_id.txt";
+          destDir = "/var/lib/marvin-mk2";
+          user = "marvin-mk2";
+          group = "marvin-mk2";
+          permissions = "0600";
+        };
+
+        deployment.keys."marvin-mk2-webhook-secret.txt" = {
+          text = secrets."marvin-mk2-webhook-secret.txt";
+          destDir = "/var/lib/marvin-mk2";
+          user = "marvin-mk2";
+          group = "marvin-mk2";
+          permissions = "0600";
+        };
+
         deployment.keys."cachix.dhall" = {
           text = secrets."cachix.dhall";
           destDir = "/var/lib/nixpkgs-update/cachix";
