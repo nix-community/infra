@@ -24,6 +24,8 @@ in
     extraGroups = [ "marvin-mk2" ];
   };
 
+  networking.firewall.allowedTCPPorts = [ 3001 ];
+
   systemd.services.marvin-mk2 = {
     description = "marvin-mk2 service";
     enable = true;
