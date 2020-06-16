@@ -4,6 +4,7 @@ let
   sources = import ../nix/sources.nix;
 
   marvinNixpkgs = (import (sources.marvin-mk2.outPath + "/definitions.nix") {}).pkgs;
+  marvinPort = 3001;
 
   marvin-mk2 = marvinNixpkgs.python3.pkgs.buildPythonApplication rec {
     pname = "marvin-mk2";
@@ -31,7 +32,7 @@ in
       marvin-mk2
     ];
     environment.BOT_NAME = "marvin-mk2";
-    environment.PORT = "3001";
+    environment.PORT = "${marvinPort}";
     environment.GH_PRIVATE_KEY_FILE = "/var/lib/marvin-mk2/marvin-mk2-key.pem";
     environment.GH_APP_ID_FILE = "/var/lib/marvin-mk2/marvin_mk2_id.txt";
     environment.WEBHOOK_SECRET_FILE = "/var/lib/marvin-mk2/marvin-mk2-webhook-secret.txt";
@@ -55,4 +56,5 @@ in
 
     wantedBy = [ "multi-user.target" ];
   };
+  networking.firewall.allowedTCPPorts = [ marvinPort ];
 }
