@@ -86,6 +86,7 @@ in
     description = "nixpkgs-update";
     enable = true;
     timerConfig = { OnCalendar = "daily"; };
+    wantedBy = [ "timers.target" ];
   };
 
   services.nginx.virtualHosts."r.ryantm.com" = {
