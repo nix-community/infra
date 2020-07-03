@@ -38,6 +38,10 @@ in
     environment.GH_APP_ID_FILE = "/var/lib/marvin-mk2/marvin_mk2_id.txt";
     environment.WEBHOOK_SECRET_FILE = "/var/lib/marvin-mk2/marvin-mk2-webhook-secret.txt";
 
+    # Disable python stdout buffering to avoid log messages getting stuck in
+    # the buffer. Should probably use a proper logging framework instead.
+    environment.PYTHONUNBUFFERED = "1";
+
     serviceConfig = {
       User = "marvin-mk2";
       Group = "marvin-mk2";
