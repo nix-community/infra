@@ -94,7 +94,10 @@ in
     enableACME = true;
     locations."/log/" = {
       alias = "/var/log/nixpkgs-update/";
-      extraConfig = "autoindex on;";
+      extraConfig = ''
+        charset utf-8;
+        autoindex on;
+      '';
     };
   };
 
