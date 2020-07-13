@@ -5,10 +5,10 @@
         "homepage": "https://github.com/timokau/marvin-mk2",
         "owner": "timokau",
         "repo": "marvin-mk2",
-        "rev": "6f5068ac1c062db5e8652974bf8be210bfcd397a",
-        "sha256": "1908z16rb6qr7bx4fw43vkn7zh43whz86pyd0r89mz7yl4b7mz0w",
+        "rev": "2bef944b0ec2be90840c963ba9c0f57a9c2be626",
+        "sha256": "16yznzq2pdl0xf962qgn2gyr2wsmbn0crn9ya10i2hfkj4s8z41j",
         "type": "tarball",
-        "url": "https://github.com/timokau/marvin-mk2/archive/6f5068ac1c062db5e8652974bf8be210bfcd397a.tar.gz",
+        "url": "https://github.com/timokau/marvin-mk2/archive/2bef944b0ec2be90840c963ba9c0f57a9c2be626.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
