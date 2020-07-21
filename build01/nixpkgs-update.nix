@@ -11,14 +11,7 @@ let
   });
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
-    nix
-    git
-    getent
-    gitAndTools.hub
     gnugrep
-    jq
-    tree
-    gist
     cachix
     curl
   ] ++ [ nixpkgs-update ] ++ nixpkgs-update.propagatedBuildInputs;
