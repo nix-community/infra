@@ -16,5 +16,12 @@
       description = "A complete and Simple Nixos Mailserver";
       homepage = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver";
     };
+    redoxpkgs = {
+      displayName = "Redoxpkgs";
+      inputValue = "https://github.com/nix-community/redoxpkgs";
+      specFile = ".hydra/spec.json";
+      description = "Packages for Redox";
+      homepage = "https://github.com/nix-community/redoxpkgs";
+    };
   };
 }
