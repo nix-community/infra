@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "f07e4069ccecb8d60f61331888edd4947e3461b2",
-        "sha256": "1zk2aiawsws2pqfh73xjilxy1ah9aj74sv65s0xjpl2rf84biqs5",
+        "rev": "a2a9bcafc118e186c440881ccd08b07d24ec808e",
+        "sha256": "0pxzv4ibzal4jawqzji637wrmzxlprbkz8anv53is2534xms82v5",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/f07e4069ccecb8d60f61331888edd4947e3461b2.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/a2a9bcafc118e186c440881ccd08b07d24ec808e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update-github-releases": {
