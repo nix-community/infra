@@ -10,12 +10,14 @@ let
     ];
   });
 
+  nixpkgs-update-bin = "${nixpkgs-update}/bin/nixpkgs-update";
+
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix # for nix-shell used by python packges to update fetchers
     gnugrep
     cachix
     curl
-  ] ++ [ nixpkgs-update ] ++ nixpkgs-update.propagatedBuildInputs;
+  ];
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
   nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
@@ -63,16 +65,16 @@ in
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
 
     script = ''
-      nixpkgs-update delete-done --delete
+      ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
-      nixpkgs-update delete-done --delete
+      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
-      nixpkgs-update delete-done --delete
-      nixpkgs-update fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      nixpkgs-update update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} delete-done --delete
+      ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
+      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
     '';
   };
 
