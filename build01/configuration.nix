@@ -24,6 +24,7 @@ in
     ./cache.nix
     ./nixpkgs-update.nix
     ./marvin-mk2.nix
+    ./matterbridge.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix

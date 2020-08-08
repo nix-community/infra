@@ -102,6 +102,13 @@ in
           permissions = "0600";
         };
 
+        deployment.keys."matterbridge.toml" = {
+          text = secrets."matterbridge.toml";
+          user = "matterbridge";
+          group = "matterbridge";
+          permissions = "0400";
+        };
+
         deployment.keys."cachix.dhall" = {
           text = secrets."cachix.dhall";
           destDir = "/var/lib/nixpkgs-update/cachix";
