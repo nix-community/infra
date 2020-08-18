@@ -4,18 +4,13 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
 
   sources = import ../nix/sources.nix;
-  nixpkgs-update = (import sources.nixpkgs-update {}).overrideAttrs(old: {
-    patches = old.patches or [] ++ [
-      ./nixpkgs-update-disable-post-build-hook.patch
-    ];
-  });
+  nixpkgs-update = import sources.nixpkgs-update { };
 
   nixpkgs-update-bin = "${nixpkgs-update}/bin/nixpkgs-update";
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix # for nix-shell used by python packges to update fetchers
     gnugrep
-    cachix
     curl
   ];
 
@@ -37,7 +32,6 @@ let
   };
 in
 {
-  users.users.r-ryantm.packages = [ pkgs.cachix ];
   users.groups.r-ryantm = {};
   users.users.r-ryantm = {
     useDefaultShell = true;
@@ -45,9 +39,6 @@ in
     uid = userLib.mkUid "rrtm";
     extraGroups = [ "r-ryantm" ];
   };
-  nix.trustedUsers = [
-    "r-ryantm"
-  ];
 
   systemd.services.nixpkgs-update = {
     description = "nixpkgs-update service";
@@ -68,13 +59,13 @@ in
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --cve --cachix --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
     '';
   };
 
