@@ -9,6 +9,13 @@
       description = "Bleeding edge emacs overlay";
       homepage = "https://github.com/nix-community/emacs-overlay";
     };
+    nix-data = {
+      displayName = "nix-data";
+      inputValue = "https://github.com/nix-community/nix-data";
+      specFile = "spec.json";
+      description = "Standard set of packages and overlays for data-scientists";
+      homepage = "https://github.com/nix-community/nix-data";
+    };
     simple-nixos-mailserver = {
       displayName = "Simple NixOS MailServer";
       inputValue = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver";
