@@ -217,12 +217,6 @@
             "vcs-config": {
                 "ref": "master"
             }
-        },
-        "nixos-users-wiki-wiki": {
-            "url": "https://github.com/nixos-users/wiki.wiki.git",
-            "url-pattern": {
-                "base-url": "{url}/{path}"
-            }
         }
     }
 }
