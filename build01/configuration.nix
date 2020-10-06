@@ -28,6 +28,8 @@ in
 
     ../profiles/common.nix
     ../profiles/docker.nix
+
+    ../services/hound
   ] ++ userImports;
 
   # /boot is a mirror raid
@@ -40,6 +42,12 @@ in
 
   networking.usePredictableInterfaceNames = false;
   networking.dhcpcd.enable = false;
+
+  networking.firewall = {
+    # for Nginx
+    allowedTCPPorts = [ 443 80 ];
+  };
+
   systemd.network = {
     enable = true;
     networks."eth0".extraConfig = ''
@@ -52,6 +60,10 @@ in
       Gateway = 94.130.143.65
     '';
   };
+
+  # nginx is being used as the frontend HTTP server for all the services
+  # running on the box
+  services.nginx.enable = true;
 
   services.cron.enable = true;
   services.cron.systemCronJobs = [

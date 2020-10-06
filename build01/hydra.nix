@@ -66,10 +66,6 @@ in {
     };
   };
   config = {
-    networking.firewall = {
-      allowedTCPPorts = [ 443 80 ];
-    };
-
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [
         unfreeRedistributable
@@ -81,21 +77,18 @@ in {
       ];
     };
 
-    services.nginx = {
-      enable = true;
-      virtualHosts = {
-        "hydra.nix-community.org" = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://localhost:${toString(hydraPort)}";
-            extraConfig = ''
-              proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-            '';
-          };
+    services.nginx.virtualHosts = {
+      "hydra.nix-community.org" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:${toString(hydraPort)}";
+          extraConfig = ''
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+          '';
         };
       };
     };

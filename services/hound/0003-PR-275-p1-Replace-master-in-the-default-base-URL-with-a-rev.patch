@@ -1,0 +1,25 @@
+From 6b4c532f46e88f93d3619f7e3c5983f573510714 Mon Sep 17 00:00:00 2001
+From: Graham Christensen <graham@grahamc.com>
+Date: Tue, 10 Jul 2018 12:55:59 -0400
+Subject: [PATCH] Replace master in the default base URL with a rev
+
+---
+ config/config.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/config.go b/config/config.go
+index ebda60d..b4a29fb 100644
+--- a/config/config.go
++++ b/config/config.go
+@@ -13,7 +13,7 @@ const (
+ 	defaultPushEnabled           = false
+ 	defaultPollEnabled           = true
+ 	defaultVcs                   = "git"
+-	defaultBaseUrl               = "{url}/blob/master/{path}{anchor}"
++	defaultBaseUrl               = "{url}/blob/{rev}/{path}{anchor}"
+ 	defaultAnchor                = "#L{line}"
+ )
+ 
+-- 
+2.16.4
+

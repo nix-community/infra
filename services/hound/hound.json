@@ -1,0 +1,228 @@
+{
+    "dbpath": "/var/lib/hound/data",
+    "max-concurrent-indexers": 1,
+    "repos": {
+        "NixOS-.github": {
+            "url": "https://github.com/NixOS/.github.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-cabal2nix": {
+            "url": "https://github.com/NixOS/cabal2nix.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-flake-registry": {
+            "url": "https://github.com/NixOS/flake-registry.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-hydra": {
+            "url": "https://github.com/NixOS/hydra.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-hydra-ant-logger": {
+            "url": "https://github.com/NixOS/hydra-ant-logger.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-hydra-provisioner": {
+            "url": "https://github.com/NixOS/hydra-provisioner.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-mobile-nixos": {
+            "url": "https://github.com/NixOS/mobile-nixos.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-mobile-nixos-website": {
+            "url": "https://github.com/NixOS/mobile-nixos-website.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-mvn2nix-maven-plugin": {
+            "url": "https://github.com/NixOS/mvn2nix-maven-plugin.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nix": {
+            "url": "https://github.com/NixOS/nix.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nix-eclipse": {
+            "url": "https://github.com/NixOS/nix-eclipse.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nix-idea": {
+            "url": "https://github.com/NixOS/nix-idea.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nix-mode": {
+            "url": "https://github.com/NixOS/nix-mode.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nix-pills": {
+            "url": "https://github.com/NixOS/nix-pills.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixops": {
+            "url": "https://github.com/NixOS/nixops.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixops-aws": {
+            "url": "https://github.com/NixOS/nixops-aws.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixops-hetzner": {
+            "url": "https://github.com/NixOS/nixops-hetzner.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-artwork": {
+            "url": "https://github.com/NixOS/nixos-artwork.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-channel-scripts": {
+            "url": "https://github.com/NixOS/nixos-channel-scripts.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-hardware": {
+            "url": "https://github.com/NixOS/nixos-hardware.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-homepage": {
+            "url": "https://github.com/NixOS/nixos-homepage.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-org-configurations": {
+            "url": "https://github.com/NixOS/nixos-org-configurations.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-planet": {
+            "url": "https://github.com/NixOS/nixos-planet.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-search": {
+            "url": "https://github.com/NixOS/nixos-search.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixos-weekly": {
+            "url": "https://github.com/NixOS/nixos-weekly.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixpart": {
+            "url": "https://github.com/NixOS/nixpart.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-nixpkgs": {
+            "url": "https://github.com/NixOS/nixpkgs.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-npm2nix": {
+            "url": "https://github.com/NixOS/npm2nix.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-ofborg": {
+            "url": "https://github.com/NixOS/ofborg.git",
+            "vcs-config": {
+                "ref": "released"
+            }
+        },
+        "NixOS-patchelf": {
+            "url": "https://github.com/NixOS/patchelf.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-rfc-steering-committee": {
+            "url": "https://github.com/NixOS/rfc-steering-committee.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-rfc39": {
+            "url": "https://github.com/NixOS/rfc39.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-rfcs": {
+            "url": "https://github.com/NixOS/rfcs.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-security": {
+            "url": "https://github.com/NixOS/security.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-snapd-nix-base": {
+            "url": "https://github.com/NixOS/snapd-nix-base.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "NixOS-templates": {
+            "url": "https://github.com/NixOS/templates.git",
+            "vcs-config": {
+                "ref": "master"
+            }
+        },
+        "nixos-users-wiki-wiki": {
+            "url": "https://github.com/nixos-users/wiki.wiki.git",
+            "url-pattern": {
+                "base-url": "{url}/{path}"
+            }
+        }
+    }
+}

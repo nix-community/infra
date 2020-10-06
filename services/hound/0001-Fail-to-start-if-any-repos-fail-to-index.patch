@@ -1,0 +1,25 @@
+From f976792420843bd079cea3aa85e70cc2cdbe98c2 Mon Sep 17 00:00:00 2001
+From: Graham Christensen <graham@grahamc.com>
+Date: Sun, 8 Oct 2017 10:59:05 -0400
+Subject: [PATCH] Fail to start if any repos fail to index
+
+---
+ cmds/houndd/main.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmds/houndd/main.go b/cmds/houndd/main.go
+index 60152ca..dfba0fc 100644
+--- a/cmds/houndd/main.go
++++ b/cmds/houndd/main.go
+@@ -132,7 +132,7 @@ func main() {
+ 		log.Panic(err)
+ 	}
+ 	if !ok {
+-		info_log.Println("Some repos failed to index, see output above")
++		info_log.Fatalf("Some repos failed to index, see output above")
+ 	} else {
+ 		info_log.Println("All indexes built!")
+ 	}
+-- 
+2.14.2
+
