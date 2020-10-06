@@ -14,7 +14,7 @@ blacklist = [
     'https://github.com/NixOS/nixos-foundation.git',
 ];
 
-def all_for_org(org, blacklist):
+def all_for_org(org):
 
     resp = {}
 
@@ -42,13 +42,7 @@ def all_for_org(org, blacklist):
 
     return resp
 
-repos = all_for_org('NixOS', blacklist)
-repos['nixos-users-wiki-wiki'] = {
-    "url" : "https://github.com/nixos-users/wiki.wiki.git",
-    "url-pattern" : {
-        "base-url" : "{url}/{path}"
-    }
-}
+repos = {**all_for_org('NixOS'), **all_for_org('nix-community')}
 
 print(json.dumps(
     {
