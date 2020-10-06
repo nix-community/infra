@@ -217,6 +217,12 @@
             "vcs-config": {
                 "ref": "master"
             }
+        },
+        "nix-community-nur-combined": {
+            "url": "https://github.com/nix-community/nur-combined.git",
+            "vcs-config": {
+                "ref": "master"
+            }
         }
     }
 }
