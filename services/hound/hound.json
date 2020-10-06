@@ -223,6 +223,12 @@
             "vcs-config": {
                 "ref": "master"
             }
+        },
+        "nix-community-home-manager": {
+            "url": "https://github.com/nix-community/home-manager.git",
+            "vcs-config": {
+                "ref": "master"
+            }
         }
     }
 }
