@@ -18,19 +18,6 @@ let
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
   nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
 
-  nixpkgsUpdateServiceConfigCommon = {
-    Type = "oneshot";
-    User = "r-ryantm";
-    Group = "r-ryantm";
-    WorkingDirectory = "/var/lib/nixpkgs-update";
-    StateDirectory = "nixpkgs-update";
-    StateDirectoryMode = "700";
-    CacheDirectory = "nixpkgs-update";
-    CacheDirectoryMode = "700";
-    LogsDirectory = "nixpkgs-update";
-    LogsDirectoryMode = "755";
-    StandardOutput = "journal";
-  };
 in
 {
   users.groups.r-ryantm = {};
@@ -54,12 +41,21 @@ in
     # Used by nixpkgs-update-pypi-releases
     environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/nixpkgs";
 
-    serviceConfig = nixpkgsUpdateServiceConfigCommon;
+    serviceConfig =  {
+      Type = "simple";
+      User = "r-ryantm";
+      Group = "r-ryantm";
+      WorkingDirectory = "/var/lib/nixpkgs-update";
+      StateDirectory = "nixpkgs-update";
+      StateDirectoryMode = "700";
+      CacheDirectory = "nixpkgs-update";
+      CacheDirectoryMode = "700";
+      LogsDirectory = "nixpkgs-update";
+      LogsDirectoryMode = "755";
+      StandardOutput = "journal";
+    };
 
-    # Since this script is long-running, put it in postStart, so
-    # systemctl start nixpkgs-update runs right away
-    script = "true";
-    postStart = ''
+    script = ''
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/nixpkgs > /var/lib/nixpkgs-update/packages-to-update.txt
