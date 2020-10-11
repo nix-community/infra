@@ -56,7 +56,9 @@ in
 
     serviceConfig = nixpkgsUpdateServiceConfigCommon;
 
-    script = ''
+    # Since this script is long-running, put it in postStart, so
+    # systemctl start nixpkgs-update runs right away
+    postStart = ''
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/nixpkgs > /var/lib/nixpkgs-update/packages-to-update.txt
