@@ -10,6 +10,7 @@ let
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix # for nix-shell used by python packges to update fetchers
+    git # used by update-scripts
     gnugrep
     curl
   ];
