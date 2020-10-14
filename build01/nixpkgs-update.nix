@@ -59,10 +59,10 @@ in
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/nixpkgs > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review || true
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
+      ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review || true
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
       ${nixpkgs-update-bin} update-list --pr --cve --outpaths --nixpkgs-review
