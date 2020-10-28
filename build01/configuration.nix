@@ -77,6 +77,9 @@ in
   security.acme.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
 
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 30d";
+
   system.stateVersion = "20.03";
 
 }
