@@ -20,7 +20,7 @@ in {
 
   nixpkgs.overlays = [
     (self: super: {
-      queued-build-hook = (import sources.queued-build-hook {});
+      queued-build-hook = (import sources.queued-build-hook { pkgs = super; });
     })
   ];
 
