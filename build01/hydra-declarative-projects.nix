@@ -9,6 +9,13 @@
       description = "Bleeding edge emacs overlay";
       homepage = "https://github.com/nix-community/emacs-overlay";
     };
+    genodepkgs = {
+      displayName = "Genodepkgs";
+      inputValue = "https://git.sr.ht/~ehmry/genodepkgs";
+      specFile = "hydra.json";
+      description = "Packages for Genode";
+      homepage = "https://git.sr.ht/~ehmry/genodepkgs";
+    };
     nix-data = {
       displayName = "nix-data";
       inputValue = "https://github.com/nix-community/nix-data";
