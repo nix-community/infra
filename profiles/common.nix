@@ -36,9 +36,15 @@
 
         # avoid copying unecessary stuff over SSH
         builders-use-substitutes = true
+
+        # allow flakes
+        experimental-features = nix-command flakes
       '';
       # Hard-link duplicated files
       autoOptimiseStore = true;
+
+      # Add support for flakes
+      package = pkgs.nixUnstable;
     };
 
   services.openssh.enable = true;
