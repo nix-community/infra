@@ -11,5 +11,4 @@ jobs:
       with:
         name: nix-community
         extraPullNames: nixpkgs-update
-        skipPush: true
     - run: nix-build
