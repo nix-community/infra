@@ -53,10 +53,10 @@
         "homepage": null,
         "owner": "ryantm",
         "repo": "nixpkgs-update-pypi-releases",
-        "rev": "ea6f014a3f11929a6e99bc0e90aad29e85b07de1",
-        "sha256": "sha256-ohx8cfZkvu6itkYES2lCv6o7uwpsnLI451TYjm+ANsg=",
+        "rev": "cf72f9a94b0ccc306c025eba222a70456378433d",
+        "sha256": "05slhzn56gn2pipqi7a9d49q3avh2w7x9q4pibh1adc1wfs60r1w",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/ea6f014a3f11929a6e99bc0e90aad29e85b07de1.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/cf72f9a94b0ccc306c025eba222a70456378433d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "queued-build-hook": {
@@ -89,10 +89,10 @@
         "homepage": null,
         "owner": "vpsfreecz",
         "repo": "terraform-provider-vpsadmin",
-        "rev": "bf2d3ffa6abe5b6dfdb83dcf9b13a7cd54e4fa1c",
-        "sha256": "1vny6w9arbbra04bjjafisaswinm93ic1phy59l0g78sqf6x3a7v",
+        "rev": "55a9bbec968fcc1966b6362bd087d46e3e2b21b1",
+        "sha256": "182s23xcakbjbc3wy3kg4j5bx67ayw3lca9prk82rcj76lwdjwcb",
         "type": "tarball",
-        "url": "https://github.com/vpsfreecz/terraform-provider-vpsadmin/archive/bf2d3ffa6abe5b6dfdb83dcf9b13a7cd54e4fa1c.tar.gz",
+        "url": "https://github.com/vpsfreecz/terraform-provider-vpsadmin/archive/55a9bbec968fcc1966b6362bd087d46e3e2b21b1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
