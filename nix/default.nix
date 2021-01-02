@@ -4,8 +4,8 @@ let
 
   pkgs = import sources.nixpkgs {
     inherit system;
-    config = {};
+    config = { };
     overlays = import ./overlays.nix;
   };
 in
-  pkgs
+pkgs

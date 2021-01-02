@@ -1,7 +1,6 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-
 let
   cfg = config;
 
@@ -17,10 +16,11 @@ let
     postFixup = ''
       wrapProgram "$out/bin/create-declarative-project" \
         --prefix PATH ":" ${pkgs.stdenv.lib.makeBinPath [ pkgs.curl ]}
-      '';
+    '';
   };
 
-in {
+in
+{
   options.services.hydra = {
     adminPasswordFile = mkOption {
       type = types.str;
@@ -29,7 +29,7 @@ in {
 
     declarativeProjects = mkOption {
       description = "Declarative projects";
-      default = {};
+      default = { };
       type = with types; attrsOf (submodule {
         options = {
           inputValue = mkOption {
@@ -82,7 +82,7 @@ in {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://localhost:${toString(hydraPort)}";
+          proxyPass = "http://localhost:${toString (hydraPort)}";
           extraConfig = ''
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -119,12 +119,13 @@ in {
         allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
       '';
       buildMachines = [
-      {
-        hostName = "localhost";
-        systems = [ "x86_64-linux" "builtin" ];
-        maxJobs = 8;
-        supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
-      }];
+        {
+          hostName = "localhost";
+          systems = [ "x86_64-linux" "builtin" ];
+          maxJobs = 8;
+          supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
+        }
+      ];
     };
 
     # Create a admin user and configure a declarative project
@@ -134,7 +135,7 @@ in {
         TimeoutStartSec = "60";
       };
       wantedBy = [ "multi-user.target" ];
-      after = ["hydra-server.service" ];
+      after = [ "hydra-server.service" ];
       requires = [ "hydra-server.service" ];
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
@@ -151,17 +152,18 @@ in {
 
         export URL=http://localhost:${toString hydraPort} 
       '' +
-      (concatStringsSep "\n" (mapAttrsToList (n: v: ''
-        export DECL_PROJECT_NAME="${n}"
-        export DECL_DISPLAY_NAME="${v.displayName}"
-        export DECL_VALUE="${v.inputValue}"
-        export DECL_TYPE="${v.inputType}"
-        export DECL_FILE="${v.specFile}"
-        export DECL_DESCRIPTION="${v.description}"
-        export DECL_HOMEPAGE="${v.homepage}"
-        ${createDeclarativeProjectScript}/bin/create-declarative-project
-      '') cfg.services.hydra.declarativeProjects));
+      (concatStringsSep "\n" (mapAttrsToList
+        (n: v: ''
+          export DECL_PROJECT_NAME="${n}"
+          export DECL_DISPLAY_NAME="${v.displayName}"
+          export DECL_VALUE="${v.inputValue}"
+          export DECL_TYPE="${v.inputType}"
+          export DECL_FILE="${v.specFile}"
+          export DECL_DESCRIPTION="${v.description}"
+          export DECL_HOMEPAGE="${v.homepage}"
+          ${createDeclarativeProjectScript}/bin/create-declarative-project
+        '')
+        cfg.services.hydra.declarativeProjects));
     };
   };
 }
-    

@@ -1,5 +1,4 @@
 { pkgs, lib, config, ... }:
-
 let
   userLib = import ../users/lib.nix { inherit lib; };
 
@@ -20,7 +19,7 @@ let
 
 in
 {
-  users.groups.r-ryantm = {};
+  users.groups.r-ryantm = { };
   users.users.r-ryantm = {
     useDefaultShell = true;
     isNormalUser = true; # The hub cli seems to really want stuff to be set up like a normal user
@@ -42,7 +41,7 @@ in
     # Used by nixpkgs-update-pypi-releases
     environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/nixpkgs";
 
-    serviceConfig =  {
+    serviceConfig = {
       Type = "simple";
       User = "r-ryantm";
       Group = "r-ryantm";

@@ -8,7 +8,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
@@ -34,7 +34,7 @@
       fsType = "ext4";
     };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 16;
 }

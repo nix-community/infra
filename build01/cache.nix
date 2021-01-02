@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
-
 let
-
   postBuildHook = pkgs.writeScript "post-build-hook.sh" ''
     #!${pkgs.runtimeShell}
     export PATH=$PATH:${pkgs.nix}/bin
@@ -16,7 +14,8 @@ let
 
   sources = import ../nix/sources.nix;
 
-in {
+in
+{
 
   nixpkgs.overlays = [
     (self: super: {

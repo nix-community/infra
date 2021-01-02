@@ -3,7 +3,7 @@ let
   userLib = import ../users/lib.nix { inherit lib; };
   sources = import ../nix/sources.nix;
 
-  marvinNixpkgs = (import (sources.marvin-mk2.outPath + "/definitions.nix") {}).pkgs;
+  marvinNixpkgs = (import (sources.marvin-mk2.outPath + "/definitions.nix") { }).pkgs;
 
   marvin-mk2 = marvinNixpkgs.python3.pkgs.buildPythonApplication rec {
     pname = "marvin-mk2";

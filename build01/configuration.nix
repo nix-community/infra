@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-
 let
   userImports =
     let
@@ -7,7 +6,7 @@ let
       onlyUserFiles = x:
         lib.hasSuffix ".nix" x &&
         x != "lib.nix"
-        ;
+      ;
       userDirEntries = builtins.readDir ../users;
       userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
     in

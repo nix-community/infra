@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   gitlabModule = builtins.fetchTarball {
     url = "https://gitlab.com/arianvp/nixos-gitlab-runner/-/archive/9126927c701aa399bd1734e7e5230c3a0010c1b7/nixos-gitlab-runner-9126927c701aa399bd1734e7e5230c3a0010c1b7.tar.gz";

@@ -11,7 +11,7 @@ in
       n = builtins.map (c: lib.mod (ord c) 10) chars;
       s = builtins.concatStringsSep "" (builtins.map (i: builtins.toString i) n);
     in
-      assert builtins.stringLength id >= 4;
-      assert builtins.length chars == 4;
-      1000 + lib.toInt s;
+    assert builtins.stringLength id >= 4;
+    assert builtins.length chars == 4;
+    1000 + lib.toInt s;
 }

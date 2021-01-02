@@ -7,7 +7,7 @@ let
       ;
 
     terraform-provider-vpsadmin =
-      pkgs.callPackage ./terraform-provider-vpsadmin.nix {};
+      pkgs.callPackage ./terraform-provider-vpsadmin.nix { };
 
     terraform = pkgs.terraform.withPlugins (
       p: [
@@ -20,10 +20,9 @@ let
   };
 
 in
-  [
-    (self: super: { sources = import ./sources.nix; })
-    (self: super: {
-      nix-community-infra = nix-community-infra super;
-    })
-  ]
-
+[
+  (self: super: { sources = import ./sources.nix; })
+  (self: super: {
+    nix-community-infra = nix-community-infra super;
+  })
+]
