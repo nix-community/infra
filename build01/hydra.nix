@@ -107,10 +107,10 @@ in
 
     services.postgresql = {
       enable = true;
-      extraConfig = ''
-        shared_buffers = 4GB
-        effective_cache_size = 4GB
-      '';
+      settings = {
+        effective_cache_size = "4GB";
+        shared_buffers = "4GB";
+      };
     };
 
     nix = {

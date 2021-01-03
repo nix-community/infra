@@ -22,6 +22,5 @@ pkgs.mkShell {
 
   shellHooks = ''
     export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
-    export VPSADMIN_API_TOKEN=$(< ./secrets/vpsadmin-token)
   '';
 }

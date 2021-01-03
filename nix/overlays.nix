@@ -6,15 +6,11 @@ let
       nixops
       ;
 
-    terraform-provider-vpsadmin =
-      pkgs.callPackage ./terraform-provider-vpsadmin.nix { };
-
     terraform = pkgs.terraform.withPlugins (
       p: [
         p.cloudflare
         p.null
         p.external
-        terraform-provider-vpsadmin
       ]
     );
   };
