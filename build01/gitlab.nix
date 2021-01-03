@@ -11,5 +11,9 @@ in
   ];
 
   services.gitlab-runner2.enable = true;
+  # The module depends on gitlab-runner to have a "bin" output.
+  services.gitlab-runner2.package = pkgs.gitlab-runner // {
+    bin = pkgs.gitlab-runner;
+  };
   services.gitlab-runner2.registrationConfigFile = "/run/keys/gitlab-runner-registration";
 }
