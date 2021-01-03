@@ -8,6 +8,8 @@ let
 
     actions-runner = pkgs.callPackage ./actions-runner { };
 
+    actions-runner2 = pkgs.callPackage ./actions-runner2 { };
+
     terraform = pkgs.terraform.withPlugins (
       p: [
         p.cloudflare
