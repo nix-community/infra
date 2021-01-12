@@ -90,4 +90,13 @@ in
     };
   };
 
+  nix.buildMachines = [ {
+    hostName = "jonringer-builder";
+    system = "x86_64-linux";
+    maxJobs = 25;
+    speedFactor = 2;
+    supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
+    mandatoryFeatures = [ ];
+  }] ;
+
 }
