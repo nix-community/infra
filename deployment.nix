@@ -53,30 +53,6 @@ in
         permissions = "0600";
       };
 
-      deployment.keys."id_rsa" = {
-        text = secrets.github-r-ryantm-key;
-        destDir = "/home/r-ryantm/.ssh";
-        user = "r-ryantm";
-        group = "r-ryantm";
-        permissions = "0600";
-      };
-
-      deployment.keys."github_token.txt" = {
-        text = secrets.github-r-ryantm-token;
-        destDir = "/var/lib/nixpkgs-update";
-        user = "r-ryantm";
-        group = "r-ryantm";
-        permissions = "0600";
-      };
-
-      deployment.keys."github_token_with_username.txt" = {
-        text = "r-ryantm:${secrets.github-r-ryantm-token}";
-        destDir = "/var/lib/nixpkgs-update";
-        user = "r-ryantm";
-        group = "r-ryantm";
-        permissions = "0600";
-      };
-
       deployment.keys."marvin-mk2-key.pem" = {
         text = secrets."marvin-mk2-key.pem";
         destDir = "/var/lib/marvin-mk2";
@@ -133,6 +109,41 @@ in
         text = secrets.hydra-admin-password;
         user = "hydra";
         permissions = "0400";
+      };
+
+    };
+
+  build02 =
+    { resources, ... }:
+    {
+      imports = [
+        ./build02/configuration.nix
+      ];
+
+      deployment.targetHost = "95.217.109.189";
+
+      deployment.keys."id_rsa" = {
+        text = secrets.github-r-ryantm-key;
+        destDir = "/home/r-ryantm/.ssh";
+        user = "r-ryantm";
+        group = "r-ryantm";
+        permissions = "0600";
+      };
+
+      deployment.keys."github_token.txt" = {
+        text = secrets.github-r-ryantm-token;
+        destDir = "/var/lib/nixpkgs-update";
+        user = "r-ryantm";
+        group = "r-ryantm";
+        permissions = "0600";
+      };
+
+      deployment.keys."github_token_with_username.txt" = {
+        text = "r-ryantm:${secrets.github-r-ryantm-token}";
+        destDir = "/var/lib/nixpkgs-update";
+        user = "r-ryantm";
+        group = "r-ryantm";
+        permissions = "0600";
       };
 
     };

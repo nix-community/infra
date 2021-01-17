@@ -21,7 +21,6 @@ in
     ./hydra.nix
     ./hydra-declarative-projects.nix
     ./cache.nix
-    ./nixpkgs-update.nix
     ./marvin-mk2.nix
     ./matterbridge.nix
 
