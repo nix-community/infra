@@ -20,7 +20,6 @@ in
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
-    ../profiles/docker.nix
   ] ++ userImports;
 
   # /boot is a mirror raid
