@@ -12,4 +12,4 @@ jobs:
         extraPullNames: nixpkgs-update
         name: nix-community
         signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-    - run: nix-build
+    - run: ./ci.sh
