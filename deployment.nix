@@ -84,14 +84,6 @@ in
         permissions = "0400";
       };
 
-      deployment.keys."cachix.dhall" = {
-        text = secrets."cachix.dhall";
-        destDir = "/var/lib/nixpkgs-update/cachix";
-        user = "r-ryantm";
-        group = "r-ryantm";
-        permissions = "0600";
-      };
-
       deployment.keys."nix-community-cachix.dhall" = {
         text = secrets."nix-community-cachix.dhall";
         destDir = "/var/lib/post-build-hook";
@@ -144,6 +136,21 @@ in
         user = "r-ryantm";
         group = "r-ryantm";
         permissions = "0600";
+      };
+
+      deployment.keys."cachix.dhall" = {
+        text = secrets."cachix.dhall";
+        destDir = "/var/lib/nixpkgs-update/cachix";
+        user = "r-ryantm";
+        group = "r-ryantm";
+        permissions = "0600";
+      };
+
+      deployment.keys."nix-community-cachix.dhall" = {
+        text = secrets."nix-community-cachix.dhall";
+        destDir = "/var/lib/post-build-hook";
+        user = "root";
+        permissions = "0400";
       };
 
     };
