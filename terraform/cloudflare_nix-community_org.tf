@@ -19,14 +19,14 @@ resource "cloudflare_record" "nix-community-org-build01-AAAA" {
 resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "hydra"
-  value   = "build01.nix-community.com"
+  value   = "build01.nix-community.org"
   type    = "CNAME"
 }
 
 resource "cloudflare_record" "nix-community-org-search-CNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "search"
-  value   = "build01.nix-community.com"
+  value   = "build01.nix-community.org"
   type    = "CNAME"
 }
 
