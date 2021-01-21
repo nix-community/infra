@@ -2,7 +2,10 @@
 
 {
 
-  imports = [ ./security.nix ];
+  imports = [
+    ./security.nix
+    ./telegraf
+  ];
 
   environment.systemPackages = [
     # for quick activity overview
