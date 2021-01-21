@@ -26,7 +26,6 @@ in
 
     ../profiles/common.nix
     ../profiles/docker.nix
-    ../profiles/telegraf
     ../services/hound
   ] ++ userImports;
 
