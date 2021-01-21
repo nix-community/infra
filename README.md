@@ -46,7 +46,9 @@ This machine currently just runs r-ryantm/nixpkgs-update.
 * RAM: 64GB DDR4 ECC
 * Drives: 2 x 1 TB NVME in RAID 1
 
-All the builds on this machine are pushed to https://nix-community.cachix.org/
+## Cache
+
+All the builds on these machines are pushed to https://nix-community.cachix.org/
 
 Thanks to Cachix for sponsoring our binary cache!
 
