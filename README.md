@@ -35,6 +35,16 @@ This machine is perfect for running heavy builds.
 * Provider: Hetzner
 * CPU: AMD Ryzen 7 1700X Eight-Core Processor
 * RAM: 64GB
+* Drives: 2 x 512 GB SATA SSD
+
+### `build02`
+
+This machine currently just runs r-ryantm/nixpkgs-update.
+
+* Provider: Hetzner
+* CPU: AMD Ryzen 7 3700X Eight-Core Processor
+* RAM: 64GB DDR4 ECC
+* Drives: 2 x 1 TB NVME in RAID 1
 
 All the builds on this machine are pushed to https://nix-community.cachix.org/
 
