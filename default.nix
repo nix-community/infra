@@ -9,8 +9,6 @@ let
     };
 in
 pkgs.nix-community-infra // rec {
-  build01 = importNixOS ./build01/configuration.nix "x86_64-linux";
-  build01-system = build01.system;
-  build02 = importNixOS ./build02/configuration.nix "x86_64-linux";
-  build02-system = build02.system;
+  build01 = pkgs.nixos [ ./build01/configuration.nix ];
+  build02 = pkgs.nixos [ ./build02/configuration.nix ];
 }
