@@ -53,10 +53,10 @@
         "homepage": null,
         "owner": "ryantm",
         "repo": "nixpkgs-update-pypi-releases",
-        "rev": "cf72f9a94b0ccc306c025eba222a70456378433d",
-        "sha256": "05slhzn56gn2pipqi7a9d49q3avh2w7x9q4pibh1adc1wfs60r1w",
+        "rev": "ea6f014a3f11929a6e99bc0e90aad29e85b07de1",
+        "sha256": "sha256-ohx8cfZkvu6itkYES2lCv6o7uwpsnLI451TYjm+ANsg=",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/cf72f9a94b0ccc306c025eba222a70456378433d.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/ea6f014a3f11929a6e99bc0e90aad29e85b07de1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "queued-build-hook": {
