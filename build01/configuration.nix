@@ -40,6 +40,9 @@ in
   networking.usePredictableInterfaceNames = false;
   networking.dhcpcd.enable = false;
 
+  # Emulate armv7 until we have proper builders
+  boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
+
   networking.firewall = {
     # for Nginx
     allowedTCPPorts = [ 443 80 ];
