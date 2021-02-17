@@ -55,6 +55,10 @@
     22
   ];
 
+  # Without configuration this unit will fail...
+  # Just disable it since we are using telegraf to monitor raid health.
+  systemd.services.mdmonitor.enable = false;
+
   # enable "sar" system activity collection
   services.sysstat.enable = true;
 
