@@ -135,298 +135,151 @@
             }
         },
         "NixOS-nixos-planet": {
-            "url": "https://github.com/NixOS/nixos-planet.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/nixos-planet.git"
         },
         "NixOS-nixos-search": {
-            "url": "https://github.com/NixOS/nixos-search.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/nixos-search.git"
         },
         "NixOS-nixos-weekly": {
-            "url": "https://github.com/NixOS/nixos-weekly.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/nixos-weekly.git"
         },
         "NixOS-nixpart": {
-            "url": "https://github.com/NixOS/nixpart.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/nixpart.git"
         },
         "NixOS-nixpkgs": {
-            "url": "https://github.com/NixOS/nixpkgs.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/nixpkgs.git"
         },
         "NixOS-npm2nix": {
-            "url": "https://github.com/NixOS/npm2nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/npm2nix.git"
         },
         "NixOS-ofborg": {
-            "url": "https://github.com/NixOS/ofborg.git",
-            "vcs-config": {
-                "ref": "released"
-            }
+            "url": "https://github.com/NixOS/ofborg.git"
         },
         "NixOS-patchelf": {
-            "url": "https://github.com/NixOS/patchelf.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/patchelf.git"
         },
         "NixOS-release-wiki": {
-            "url": "https://github.com/NixOS/release-wiki.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/release-wiki.git"
         },
         "NixOS-rfc-steering-committee": {
-            "url": "https://github.com/NixOS/rfc-steering-committee.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/rfc-steering-committee.git"
         },
         "NixOS-rfc39": {
-            "url": "https://github.com/NixOS/rfc39.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/rfc39.git"
         },
         "NixOS-rfcs": {
-            "url": "https://github.com/NixOS/rfcs.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/rfcs.git"
         },
         "NixOS-security": {
-            "url": "https://github.com/NixOS/security.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/security.git"
         },
         "NixOS-snapd-nix-base": {
-            "url": "https://github.com/NixOS/snapd-nix-base.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/snapd-nix-base.git"
         },
         "NixOS-templates": {
-            "url": "https://github.com/NixOS/templates.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/NixOS/templates.git"
         },
         "nix-community-.github": {
-            "url": "https://github.com/nix-community/.github.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/.github.git"
         },
         "nix-community-NUR": {
-            "url": "https://github.com/nix-community/NUR.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/NUR.git"
         },
         "nix-community-aarch64-build-box": {
-            "url": "https://github.com/nix-community/aarch64-build-box.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/aarch64-build-box.git"
         },
         "nix-community-acpi_call": {
-            "url": "https://github.com/nix-community/acpi_call.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/acpi_call.git"
         },
         "nix-community-awesome-nix": {
-            "url": "https://github.com/nix-community/awesome-nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/awesome-nix.git"
         },
         "nix-community-builtwithnix.org": {
-            "url": "https://github.com/nix-community/builtwithnix.org.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/builtwithnix.org.git"
         },
         "nix-community-bundix": {
-            "url": "https://github.com/nix-community/bundix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/bundix.git"
         },
         "nix-community-carnix": {
-            "url": "https://github.com/nix-community/carnix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/carnix.git"
         },
         "nix-community-disko": {
-            "url": "https://github.com/nix-community/disko.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/disko.git"
         },
         "nix-community-docker-nix": {
-            "url": "https://github.com/nix-community/docker-nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/docker-nix.git"
         },
         "nix-community-docker-nixpkgs": {
-            "url": "https://github.com/nix-community/docker-nixpkgs.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/docker-nixpkgs.git"
         },
         "nix-community-emacs-overlay": {
-            "url": "https://github.com/nix-community/emacs-overlay.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/emacs-overlay.git"
         },
         "nix-community-flake-nimble": {
-            "url": "https://github.com/nix-community/flake-nimble.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/flake-nimble.git"
         },
         "nix-community-flake.nix": {
-            "url": "https://github.com/nix-community/flake.nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/flake.nix.git"
         },
         "nix-community-gnome-session-ctl": {
-            "url": "https://github.com/nix-community/gnome-session-ctl.git",
-            "vcs-config": {
-                "ref": "main"
-            }
+            "url": "https://github.com/nix-community/gnome-session-ctl.git"
         },
         "nix-community-google-summer-of-code": {
-            "url": "https://github.com/nix-community/google-summer-of-code.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/google-summer-of-code.git"
         },
         "nix-community-govendor": {
-            "url": "https://github.com/nix-community/govendor.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/govendor.git"
         },
         "nix-community-home-manager": {
-            "url": "https://github.com/nix-community/home-manager.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/home-manager.git"
         },
         "nix-community-hpe-ltfs": {
-            "url": "https://github.com/nix-community/hpe-ltfs.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/hpe-ltfs.git"
         },
         "nix-community-hydra-check": {
-            "url": "https://github.com/nix-community/hydra-check.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/hydra-check.git"
         },
         "nix-community-impermanence": {
-            "url": "https://github.com/nix-community/impermanence.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/impermanence.git"
         },
         "nix-community-infra": {
-            "url": "https://github.com/nix-community/infra.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/infra.git"
         },
         "nix-community-ld-getby": {
-            "url": "https://github.com/nix-community/ld-getby.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/ld-getby.git"
         },
         "nix-community-linuxkit-nix": {
-            "url": "https://github.com/nix-community/linuxkit-nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/linuxkit-nix.git"
         },
         "nix-community-luarocks-nix": {
-            "url": "https://github.com/nix-community/luarocks-nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/luarocks-nix.git"
         },
         "nix-community-mavenix": {
-            "url": "https://github.com/nix-community/mavenix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/mavenix.git"
         },
         "nix-community-meetup-london": {
-            "url": "https://github.com/nix-community/meetup-london.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/meetup-london.git"
         },
         "nix-community-nix": {
-            "url": "https://github.com/nix-community/nix.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix.git"
         },
         "nix-community-nix-community.org": {
-            "url": "https://github.com/nix-community/nix-community.org.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix-community.org.git"
         },
         "nix-community-nix-data": {
-            "url": "https://github.com/nix-community/nix-data.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix-data.git"
         },
         "nix-community-nix-direnv": {
-            "url": "https://github.com/nix-community/nix-direnv.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix-direnv.git"
         },
         "nix-community-nix-environments": {
-            "url": "https://github.com/nix-community/nix-environments.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix-environments.git"
         },
         "nix-community-nix-travis-ci": {
-            "url": "https://github.com/nix-community/nix-travis-ci.git",
-            "vcs-config": {
-                "ref": "main"
-            }
+            "url": "https://github.com/nix-community/nix-travis-ci.git"
         },
         "nix-community-nix-user-chroot": {
-            "url": "https://github.com/nix-community/nix-user-chroot.git",
-            "vcs-config": {
-                "ref": "master"
-            }
+            "url": "https://github.com/nix-community/nix-user-chroot.git"
         },
         "nix-community-nixbox": {
             "url": "https://github.com/nix-community/nixbox.git",

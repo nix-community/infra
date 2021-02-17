@@ -32,9 +32,6 @@ def all_for_org(org):
         resp.update({
             "{}-{}".format(org, repo['name']): {
                 'url': repo['clone_url'],
-                'vcs-config': {
-                    'ref': repo['default_branch']
-                }
             }
             for repo in repos
             if repo['clone_url'] not in blacklist
