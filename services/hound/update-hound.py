@@ -45,7 +45,10 @@ print(json.dumps(
     {
         "max-concurrent-indexers" : 1,
         "dbpath" : "/var/lib/hound/data",
-        "repos": repos
+        "repos": repos,
+        "vcs-config" : {
+            "git": { "detect-ref" : True }
+        },
     },
     indent=4,
     sort_keys=True
