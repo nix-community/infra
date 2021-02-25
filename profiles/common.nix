@@ -4,7 +4,8 @@
 
   imports = [
     ./security.nix
-    ./telegraf
+    ../services/telegraf
+    ./zfs.nix
   ];
 
   environment.systemPackages = [
