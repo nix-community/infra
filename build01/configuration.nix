@@ -25,7 +25,7 @@ in
     ./matterbridge.nix
 
     ../profiles/common.nix
-    ../profiles/docker.nix
+    ../services/docker.nix
     ../services/hound
   ] ++ userImports;
 
