@@ -53,9 +53,6 @@
     };
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    22
-  ];
 
   # Without configuration this unit will fail...
   # Just disable it since we are using telegraf to monitor raid health.
