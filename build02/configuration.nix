@@ -1,17 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  userImports =
-    let
-      toUserPath = f: ../users/. + "/${f}";
-      onlyUserFiles = x:
-        lib.hasSuffix ".nix" x &&
-        x != "lib.nix"
-      ;
-      userDirEntries = builtins.readDir ../users;
-      userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
-    in
-    builtins.map toUserPath userFiles;
-in
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -20,7 +8,7 @@ in
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
-  ] ++ userImports;
+  ];
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
@@ -37,7 +25,7 @@ in
   };
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.interfaces."enp35s0" = {
-    ipv4.addresses = [ { address = "95.217.109.189"; prefixLength = 26; } ];
+    ipv4.addresses = [{ address = "95.217.109.189"; prefixLength = 26; }];
     ipv6.addresses = [
       { address = "fe80::aaa1:59ff:fe0e:aa61"; prefixLength = 64; }
       { address = "2a01:4f9:4a:2b02::1"; prefixLength = 64; }
@@ -61,5 +49,4 @@ in
   nix.gc.options = "--delete-older-than 30d";
 
   system.stateVersion = "20.09";
-
 }
