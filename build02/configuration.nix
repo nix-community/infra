@@ -8,6 +8,7 @@
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
+    ../services/nginx.nix
   ];
 
   # /boot is a mirror raid
@@ -30,14 +31,6 @@
       { address = "fe80::aaa1:59ff:fe0e:aa61"; prefixLength = 64; }
       { address = "2a01:4f9:4a:2b02::1"; prefixLength = 64; }
     ];
-  };
-
-  # nginx is being used as the frontend HTTP server for all the services
-  # running on the box
-  services.nginx.enable = true;
-  networking.firewall = {
-    # for Nginx
-    allowedTCPPorts = [ 443 80 ];
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
