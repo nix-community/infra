@@ -42,9 +42,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  security.acme.email = "trash@nix-community.org";
-  security.acme.acceptTerms = true;
-
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 30d";
 

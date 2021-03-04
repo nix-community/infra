@@ -25,6 +25,9 @@
   # Entropy gathering daemon
   services.haveged.enable = true;
 
+  security.acme.email = "trash@nix-community.org";
+  security.acme.acceptTerms = true;
+
   nix =
     let asGB = size: toString (size * 1024 * 1024); in
     {
