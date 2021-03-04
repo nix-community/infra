@@ -6,6 +6,7 @@
     ./security.nix
     ../services/telegraf
     ./zfs.nix
+    ./users.nix
   ];
 
   environment.systemPackages = [
@@ -71,23 +72,4 @@
 
   # The nix-community is global :)
   time.timeZone = "UTC";
-
-  # No mutable users
-  users.mutableUsers = false;
-
-  # Assign keys from all users in wheel group
-  # This is only done because nixops cant be deployed from any other account
-  users.extraUsers.root.openssh.authorizedKeys.keys = lib.unique (
-    lib.flatten (
-      builtins.map (u: u.openssh.authorizedKeys.keys)
-        (
-          lib.attrValues (
-            lib.filterAttrs (_: u: lib.elem "wheel" u.extraGroups)
-              config.users.extraUsers
-          )
-        )
-    )
-  );
-
-
 }

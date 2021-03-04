@@ -1,17 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-  userImports =
-    let
-      toUserPath = f: ../users/. + "/${f}";
-      onlyUserFiles = x:
-        lib.hasSuffix ".nix" x &&
-        x != "lib.nix"
-      ;
-      userDirEntries = builtins.readDir ../users;
-      userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
-    in
-    builtins.map toUserPath userFiles;
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -27,7 +14,7 @@ in
     ../profiles/common.nix
     ../services/docker.nix
     ../services/hound
-  ] ++ userImports;
+  ];
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
@@ -81,5 +68,4 @@ in
   nix.gc.options = "--delete-older-than 30d";
 
   system.stateVersion = "20.03";
-
 }
