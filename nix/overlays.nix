@@ -3,7 +3,7 @@ let
     inherit (pkgs)
       git-crypt
       niv
-      nixops
+      nixopsUnstable
       ;
 
     terraform = pkgs.terraform.withPlugins (
