@@ -8,6 +8,7 @@
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
+    ../services/nginx.nix
   ];
 
   # /boot is a mirror raid
@@ -32,21 +33,7 @@
     ];
   };
 
-  # nginx is being used as the frontend HTTP server for all the services
-  # running on the box
-  services.nginx.enable = true;
-  networking.firewall = {
-    # for Nginx
-    allowedTCPPorts = [ 443 80 ];
-  };
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  security.acme.email = "trash@nix-community.org";
-  security.acme.acceptTerms = true;
-
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 30d";
 
   system.stateVersion = "20.09";
 }

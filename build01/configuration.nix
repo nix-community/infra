@@ -14,6 +14,7 @@
     ../profiles/common.nix
     ../services/docker.nix
     ../services/hound
+    ../services/nginx.nix
   ];
 
   # /boot is a mirror raid
@@ -30,11 +31,6 @@
   # Emulate armv7 until we have proper builders
   boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
-  networking.firewall = {
-    # for Nginx
-    allowedTCPPorts = [ 443 80 ];
-  };
-
   systemd.network = {
     enable = true;
     networks."eth0".extraConfig = ''
@@ -48,10 +44,6 @@
     '';
   };
 
-  # nginx is being used as the frontend HTTP server for all the services
-  # running on the box
-  services.nginx.enable = true;
-
   services.cron.enable = true;
   services.cron.systemCronJobs = [
     # record that this machine is alive
@@ -60,12 +52,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
-
-  security.acme.email = "trash@nix-community.org";
-  security.acme.acceptTerms = true;
-
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 30d";
 
   system.stateVersion = "20.03";
 }

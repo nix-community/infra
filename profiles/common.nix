@@ -4,6 +4,8 @@
 
   imports = [
     ./security.nix
+    ../services/nix-daemon.nix
+    ../services/sshd.nix
     ../services/telegraf
     ./zfs.nix
     ./users.nix
@@ -24,35 +26,8 @@
   # Entropy gathering daemon
   services.haveged.enable = true;
 
-  nix =
-    let asGB = size: toString (size * 1024 * 1024); in
-    {
-      binaryCachePublicKeys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      binaryCaches = [
-        "https://nix-community.cachix.org"
-      ];
-
-      extraOptions = ''
-        # auto-free the /nix/store
-        min-free = ${asGB 10}
-        max-free = ${asGB 200}
-
-        # avoid copying unecessary stuff over SSH
-        builders-use-substitutes = true
-
-        # allow flakes
-        experimental-features = nix-command flakes
-      '';
-      # Hard-link duplicated files
-      autoOptimiseStore = true;
-
-      # Add support for flakes
-      package = pkgs.nixUnstable;
-    };
-
-  services.openssh.enable = true;
+  security.acme.email = "trash@nix-community.org";
+  security.acme.acceptTerms = true;
 
   # Without configuration this unit will fail...
   # Just disable it since we are using telegraf to monitor raid health.
