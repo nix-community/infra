@@ -5,6 +5,7 @@
   imports = [
     ./security.nix
     ../services/telegraf
+    ../services/sshd.nix
     ./zfs.nix
     ./users.nix
   ];
@@ -51,8 +52,6 @@
       # Add support for flakes
       package = pkgs.nixUnstable;
     };
-
-  services.openssh.enable = true;
 
   # Without configuration this unit will fail...
   # Just disable it since we are using telegraf to monitor raid health.
