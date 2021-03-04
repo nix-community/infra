@@ -42,8 +42,5 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 30d";
-
   system.stateVersion = "20.09";
 }
