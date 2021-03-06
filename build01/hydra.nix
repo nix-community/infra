@@ -146,7 +146,7 @@ in
       path = with pkgs; [ hydra-unstable netcat ];
       script = ''
         set -e
-        while IFS=; read -r user role passwordhash email fullname; do
+        while IFS=';' read -r user role passwordhash email fullname; do
           opts=("$user" "--role" "$role" "--password-hash" "$passwordhash")
           if [[ -n "$email" ]]; then
             opts+=("--email-address" "$email")
@@ -154,7 +154,7 @@ in
           if [[ -n "$fullname" ]]; then
             opts+=("--full-name" "$fullname")
           fi
-          hydra-create-user "$opts{@}"
+          hydra-create-user "''${opts[@]}"
         done < ${cfg.services.hydra.usersFile}
 
         while ! nc -z localhost ${toString hydraPort}; do
