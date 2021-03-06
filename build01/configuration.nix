@@ -44,11 +44,10 @@
     '';
   };
 
-  services.cron.enable = true;
-  services.cron.systemCronJobs = [
-    # record that this machine is alive
-    "*/5 * * * * root ${pkgs.curl}/bin/curl -X POST -sfL https://hc-ping.com/fcf6c029-5b57-44aa-b392-923f3d894dd9"
-  ];
+  systemd.services.healthcheck-ping = {
+    startAt = "*:0/5"; # every 5 minutes
+    serviceConfig.ExecStart = "${pkgs.curl}/bin/curl -X POST -sfL https://hc-ping.com/fcf6c029-5b57-44aa-b392-923f3d894dd9";
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "zfs" ];
