@@ -7,6 +7,7 @@ let
   hydraPort = 3000;
   hydraAdmin = "admin";
   hydraAdminPasswordFile = "/run/keys/hydra-admin-password";
+  hydraUsersFile = "/run/keys/hydra-users";
 
   createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
     name = "create-declarative-project";
@@ -25,6 +26,15 @@ in
     adminPasswordFile = mkOption {
       type = types.str;
       description = "The initial password for the Hydra admin account";
+    };
+
+    usersFile = mkOption {
+      type = types.str;
+      description = ''
+        declarative user accounts for hydra.
+        format: user;role;password-hash;email-address;full-name
+        Password hash is computed by applying sha1 to the password.
+      '';
     };
 
     declarativeProjects = mkOption {
@@ -92,6 +102,7 @@ in
       port = hydraPort;
       useSubstitutes = true;
       adminPasswordFile = hydraAdminPasswordFile;
+      usersFile = hydraUsersFile;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
       '';
@@ -121,7 +132,7 @@ in
     };
 
     # Create a admin user and configure a declarative project
-    systemd.services.hydra-post-init = mkIf (cfg.services.hydra.adminPasswordFile != null) {
+    systemd.services.hydra-post-init = {
       serviceConfig = {
         Type = "oneshot";
         TimeoutStartSec = "60";
@@ -135,14 +146,23 @@ in
       path = with pkgs; [ hydra-unstable netcat ];
       script = ''
         set -e
-        export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
+        while IFS=; read -r user role passwordhash email fullname; do
+          opts=("$user" "--role" "$role" "--password-hash" "$passwordhash")
+          if [[ -n "$email" ]]; then
+            opts+=("--email-address" "$email")
+          fi
+          if [[ -n "$fullname" ]]; then
+            opts+=("--full-name" "$fullname")
+          fi
+          hydra-create-user "$opts{@}"
+        done < ${cfg.services.hydra.usersFile}
 
-        hydra-create-user ${hydraAdmin} --role admin --password $HYDRA_ADMIN_PASSWORD
         while ! nc -z localhost ${toString hydraPort}; do
           sleep 1
         done
 
-        export URL=http://localhost:${toString hydraPort} 
+        export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
+        export URL=http://localhost:${toString hydraPort}
       '' +
       (concatStringsSep "\n" (mapAttrsToList
         (n: v: ''
