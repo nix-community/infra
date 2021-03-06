@@ -13,6 +13,9 @@ in
       "https://nix-community.cachix.org"
     ];
 
+    # useful for ad-hoc nix-shell's for debugging
+    nixPath = [ "nixpkgs=${pkgs.path}" ];
+
     extraOptions = ''
       # auto-free the /nix/store
       min-free = ${asGB 10}
