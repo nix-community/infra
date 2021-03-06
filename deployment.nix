@@ -155,4 +155,13 @@ in
 
     };
 
+  build03 =
+    { resources, ... }:
+    {
+      imports = [
+        ./build03/configuration.nix
+      ];
+
+      deployment.targetHost = "build03.nix-community.org";
+    };
 }
