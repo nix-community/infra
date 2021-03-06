@@ -30,6 +30,20 @@ resource "cloudflare_record" "nix-community-org-build02-AAAA" {
   type    = "AAAA"
 }
 
+resource "cloudflare_record" "nix-community-org-build03-A" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "build03"
+  value   = "135.181.218.169"
+  type    = "A"
+}
+
+resource "cloudflare_record" "nix-community-org-build03-AAAA" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "build03"
+  value   = "2a01:4f9:3a:3b16::1"
+  type    = "AAAA"
+}
+
 resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "hydra"
