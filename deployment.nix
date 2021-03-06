@@ -103,6 +103,11 @@ in
         permissions = "0400";
       };
 
+      deployment.keys.hydra-users = {
+        text = secrets.hydra-users;
+        user = "hydra";
+        permissions = "0400";
+      };
     };
 
   build02 =
