@@ -81,21 +81,13 @@ in
       "hydra.nix-community.org" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = {
-          proxyPass = "http://localhost:${toString (hydraPort)}";
-          extraConfig = ''
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-          '';
-        };
+        locations."/".proxyPass = "http://localhost:${toString (hydraPort)}";
       };
     };
 
     services.hydra = {
       enable = true;
-      hydraURL = "hydra.nix-community.org";
+      hydraURL = "https://hydra.nix-community.org";
       notificationSender = "hydra@hydra.nix-community.org";
       port = hydraPort;
       useSubstitutes = true;
