@@ -21,10 +21,13 @@ admin list below) or create an issue here:
 
 ## Services
 
-* https://hydra.nix-community.org - on build01
 * BuildKite agent - on build01
 * GitLab agent - on build01
-* ryantm-updater bot - on build01
+* hound - on build01
+* https://hydra.nix-community.org - on build01
+* marvin-mk2 - on build01
+* matterbridge - on build01
+* ryantm-updater bot - on build02
 
 ## Hosts
 
@@ -46,14 +49,30 @@ This machine currently just runs r-ryantm/nixpkgs-update.
 * RAM: 64GB DDR4 ECC
 * Drives: 2 x 1 TB NVME in RAID 1
 
+### `build03`
+
+This machine is a replacement for build01.
+
+* Provider: Hetzner
+* CPU: AMD Ryzen 5 3600 6-Core Processor
+* RAM: 64GB DDR4 ECC
+* Drives: 2 x 512 TB NVME in RAID 1
+
 ## Cache
 
 All the builds on these machines are pushed to https://nix-community.cachix.org/
 
 Thanks to Cachix for sponsoring our binary cache!
 
-## Usage
+## File hierarchy
 
-* `./deploy` - NixOps deployment
+* ./build\d+ - build machines
+* ./ci.sh - What is executed by CI
+* ./deploy - NixOps deploy script
+* ./nix - pinned Nix dependencies and overlays
+* ./roles - shared NixOS configuration modules
+* ./secrets - git-crypt encrypted secrets
+* ./services - single instances of NixOS services
 * ./terraform - Setup DNS
+* ./users - NixOS configuration of our admins
 

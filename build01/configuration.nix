@@ -3,18 +3,16 @@
   imports = [
     ./hardware-configuration.nix
 
-    ./buildkite.nix
-    ./gitlab.nix
-    ./hydra.nix
-    ./hydra-declarative-projects.nix
-    ./cache.nix
-    ./marvin-mk2.nix
-    ./matterbridge.nix
-
-    ../profiles/common.nix
-    ../services/docker.nix
+    ../roles/buildkite.nix
+    ../roles/common.nix
+    ../roles/docker.nix
+    ../roles/gitlab-runner.nix
+    ../roles/nginx.nix
+    ../roles/nix-community-cache.nix
     ../services/hound
-    ../services/nginx.nix
+    ../services/hydra
+    ../services/marvin-mk2.nix
+    ../services/matterbridge.nix
   ];
 
   # /boot is a mirror raid

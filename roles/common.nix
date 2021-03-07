@@ -3,12 +3,12 @@
 {
 
   imports = [
+    ./nix-daemon.nix
     ./security.nix
-    ../services/nix-daemon.nix
-    ../services/sshd.nix
-    ../services/telegraf
-    ./zfs.nix
+    ./sshd.nix
+    ./telegraf
     ./users.nix
+    ./zfs.nix
   ];
 
   environment.systemPackages = [

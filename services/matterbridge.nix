@@ -1,3 +1,4 @@
+# A single instance of matterbridge
 { ... }: {
   services.matterbridge.enable = true;
   services.matterbridge.configPath = "/run/keys/matterbridge.toml";
