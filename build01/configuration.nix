@@ -6,13 +6,13 @@
     ./buildkite.nix
     ./gitlab.nix
     ./cache.nix
-    ./marvin-mk2.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix
     ../profiles/nginx.nix
     ../services/hound
     ../services/hydra
+    ../services/marvin-mk2.nix
     ../services/matterbridge.nix
   ];
 
