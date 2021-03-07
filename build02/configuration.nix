@@ -8,7 +8,7 @@
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
-    ../services/nginx.nix
+    ../profiles/nginx.nix
   ];
 
   # /boot is a mirror raid

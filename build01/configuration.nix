@@ -12,9 +12,9 @@
     ./matterbridge.nix
 
     ../profiles/common.nix
-    ../services/docker.nix
+    ../profiles/docker.nix
+    ../profiles/nginx.nix
     ../services/hound
-    ../services/nginx.nix
   ];
 
   # /boot is a mirror raid
