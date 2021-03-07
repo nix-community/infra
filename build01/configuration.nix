@@ -3,13 +3,12 @@
   imports = [
     ./hardware-configuration.nix
 
-    ./buildkite.nix
-    ./gitlab.nix
-    ./cache.nix
-
+    ../profiles/buildkite.nix
     ../profiles/common.nix
     ../profiles/docker.nix
+    ../profiles/gitlab-runner.nix
     ../profiles/nginx.nix
+    ../profiles/nix-community-cache.nix
     ../services/hound
     ../services/hydra
     ../services/marvin-mk2.nix
