@@ -10,8 +10,8 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../profiles/common.nix
-    ../profiles/hetzner-network.nix
+    ../roles/common.nix
+    ../roles/hetzner-network.nix
   ];
 
   # /boot is a mirror raid
