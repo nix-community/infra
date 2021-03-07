@@ -5,8 +5,6 @@
 
     ./buildkite.nix
     ./gitlab.nix
-    ./hydra.nix
-    ./hydra-declarative-projects.nix
     ./cache.nix
     ./marvin-mk2.nix
     ./matterbridge.nix
@@ -15,6 +13,7 @@
     ../profiles/docker.nix
     ../profiles/nginx.nix
     ../services/hound
+    ../services/hydra
   ];
 
   # /boot is a mirror raid

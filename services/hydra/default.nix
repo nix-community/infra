@@ -22,6 +22,8 @@ let
 
 in
 {
+  imports = [ ./declarative-projects.nix ];
+
   options.services.hydra = {
     adminPasswordFile = mkOption {
       type = types.str;
