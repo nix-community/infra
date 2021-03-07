@@ -7,13 +7,13 @@
     ./gitlab.nix
     ./cache.nix
     ./marvin-mk2.nix
-    ./matterbridge.nix
 
     ../profiles/common.nix
     ../profiles/docker.nix
     ../profiles/nginx.nix
     ../services/hound
     ../services/hydra
+    ../services/matterbridge.nix
   ];
 
   # /boot is a mirror raid
