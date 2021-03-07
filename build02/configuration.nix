@@ -4,11 +4,11 @@
   imports = [
     ./hardware-configuration.nix
 
-    ./cache.nix
     ./nixpkgs-update.nix
 
     ../profiles/common.nix
     ../profiles/nginx.nix
+    ../profiles/nix-community-cache.nix
   ];
 
   # /boot is a mirror raid
