@@ -9,7 +9,7 @@
     ../roles/gitlab-runner.nix
     ../roles/nginx.nix
     ../roles/nix-community-cache.nix
-    ../services/hound
+
     ../services/hydra
     ../services/marvin-mk2.nix
     ../services/matterbridge.nix

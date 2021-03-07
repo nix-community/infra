@@ -168,5 +168,12 @@ in
       ];
 
       deployment.targetHost = "build03.nix-community.org";
+
+      deployment.keys."nix-community-cachix.dhall" = {
+        text = secrets."nix-community-cachix.dhall";
+        destDir = "/var/lib/post-build-hook";
+        user = "root";
+        permissions = "0400";
+      };
     };
 }

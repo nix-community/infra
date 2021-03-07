@@ -12,6 +12,10 @@
 
     ../roles/common.nix
     ../roles/hetzner-network.nix
+    ../roles/nginx.nix
+    ../roles/nix-community-cache.nix
+
+    ../services/hound
   ];
 
   # /boot is a mirror raid

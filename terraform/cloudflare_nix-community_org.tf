@@ -54,7 +54,7 @@ resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
 resource "cloudflare_record" "nix-community-org-search-CNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "search"
-  value   = "build01.nix-community.org"
+  value   = "build03.nix-community.org"
   type    = "CNAME"
 }
 
