@@ -4,7 +4,7 @@
 {
   imports = [
     ./users.nix
-    ../sshd.nix
+    ./sshd.nix
   ];
 }
 
