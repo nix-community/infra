@@ -39,7 +39,6 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.supportedFilesystems = [ "zfs" ];
 
   system.stateVersion = "20.03";
 }
