@@ -37,7 +37,6 @@
   networking.hostId = "8daf74c0";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.supportedFilesystems = [ "zfs" ];
 
   system.stateVersion = "21.05";
 }

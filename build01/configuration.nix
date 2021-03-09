@@ -7,6 +7,7 @@
     ../roles/common.nix
     ../roles/docker.nix
     ../roles/gitlab-runner.nix
+    ../roles/hetzner-network.nix
     ../roles/nginx.nix
     ../roles/nix-community-cache.nix
 
@@ -23,23 +24,13 @@
   networking.hostName = "nix-community-build01";
   networking.hostId = "d2905767";
 
-  networking.usePredictableInterfaceNames = false;
-  networking.dhcpcd.enable = false;
-
   # Emulate armv7 until we have proper builders
   boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
-  systemd.network = {
-    enable = true;
-    networks."eth0".extraConfig = ''
-      [Match]
-      Name = eth0
-      [Network]
-      Address =  2a01:4f8:13b:2ceb::1/64
-      Gateway = fe80::1
-      Address =  94.130.143.84/26
-      Gateway = 94.130.143.65
-    '';
+  networking.nix-community = {
+    ipv4.address = "94.130.143.84";
+    ipv4.gateway = "94.130.143.65";
+    ipv6.address = "2a01:4f8:13b:2ceb::1";
   };
 
   systemd.services.healthcheck-ping = {
@@ -48,7 +39,6 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.supportedFilesystems = [ "zfs" ];
 
   system.stateVersion = "20.03";
 }
