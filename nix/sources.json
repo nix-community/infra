@@ -65,10 +65,10 @@
         "homepage": null,
         "owner": "nix-community",
         "repo": "queued-build-hook",
-        "rev": "b136e6172df496764bd2c7383b59abc5daed0e28",
-        "sha256": "0np4xfsxqz6mkh7h4dn4d4in487aa5s7ds9gsn7qq4kgcr37panl",
+        "rev": "8c21c1bcd62bf488d7e1267f09ebf147a948994a",
+        "sha256": "0n1hxh3s82wz8vi73vyzm3fmn50an1skx99hbmqg98jn84dgnkcj",
         "type": "tarball",
-        "url": "https://github.com/nix-community/queued-build-hook/archive/b136e6172df496764bd2c7383b59abc5daed0e28.tar.gz",
+        "url": "https://github.com/nix-community/queued-build-hook/archive/8c21c1bcd62bf488d7e1267f09ebf147a948994a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {
