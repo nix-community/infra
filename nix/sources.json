@@ -48,7 +48,7 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update-pypi-releases": {
-        "branch": "master",
+        "branch": "nixpkgs",
         "description": "Fetches releases from pypi for https://github.com/ryantm/nixpkgs-update",
         "homepage": null,
         "owner": "ryantm",
