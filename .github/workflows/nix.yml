@@ -1,6 +1,9 @@
 name: "Nix"
 on:
   push:
+    branches:
+      master
+  pull_request:
 jobs:
   tests:
     runs-on: ubuntu-20.04
