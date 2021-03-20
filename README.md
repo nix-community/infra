@@ -76,3 +76,15 @@ Thanks to Cachix for sponsoring our binary cache!
 * ./terraform - Setup DNS
 * ./users - NixOS configuration of our admins
 
+## Deployment commands:
+
+```console
+$ ./deploy
+```
+
+If you want to reboot a machine, use the following
+command to also deploy secrets afterwards:
+
+```console
+$ ./deploy --force-reboot --include build02
+```
