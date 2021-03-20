@@ -104,6 +104,16 @@ in
       port = hydraPort;
       useSubstitutes = true;
       adminPasswordFile = hydraAdminPasswordFile;
+      package = pkgs.hydra-unstable.overrideAttrs (old:{
+        # https://github.com/NixOS/hydra/pull/895
+        patches = [
+          (pkgs.fetchpatch {
+            url = "https://github.com/NixOS/hydra/commit/8dd90abe53e4b6a6c4408196e46fae7a52863fd7.patch";
+            sha256 = "sha256-izjebFlyxlNRUJI7bFOS1+qtzt9fX9uyBQ4+s+zqIKk=";
+          })
+        ];
+      });
+
       usersFile = hydraUsersFile;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
