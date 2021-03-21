@@ -1,8 +1,7 @@
 let
   nix-community-infra = pkgs: rec {
     inherit (pkgs)
-      git-crypt
-      niv;
+      git-crypt;
     nixopsUnstable = (pkgs.nixopsUnstable.withPlugins(ps: []));
 
     terraform = pkgs.terraform.withPlugins (
