@@ -11,6 +11,7 @@ pkgs.mkShell {
 
   buildInputs = with pkgs.nix-community-infra; [
     git-crypt
+    niv
     nixopsUnstable
     terraform
   ];
