@@ -29,6 +29,10 @@
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
+  boot.loader.grub.extraConfig = ''
+    # for mdraid 1.1
+    insmod mdraid1x
+  '';
 
   networking.hostName = "nix-community-build01";
   networking.hostId = "d2905767";
