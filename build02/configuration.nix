@@ -22,11 +22,7 @@
   networking.useDHCP = false;
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
 
-  networking.nix-community = {
-    ipv4.address = "95.217.109.189";
-    ipv4.gateway = "95.217.109.129";
-    ipv6.address = "2a01:4f9:4a:2b02::1";
-  };
+  networking.nix-community.ipv6.address = "2a01:4f9:4a:2b02::1";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

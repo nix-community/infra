@@ -29,11 +29,7 @@
     insmod mdraid1x
   '';
 
-  networking.nix-community = {
-    ipv4.address = "135.181.218.169";
-    ipv4.gateway = "135.181.218.129";
-    ipv6.address = "2a01:4f9:3a:3b16::1";
-  };
+  networking.nix-community.ipv6.address = "2a01:4f9:3a:3b16::1";
 
   networking.hostName = "nix-community-build03";
   networking.hostId = "8daf74c0";

@@ -36,11 +36,7 @@
   # Emulate armv7 until we have proper builders
   boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
-  networking.nix-community = {
-    ipv4.address = "94.130.143.84";
-    ipv4.gateway = "94.130.143.65";
-    ipv6.address = "2a01:4f8:13b:2ceb::1";
-  };
+  networking.nix-community.ipv6.address = "2a01:4f8:13b:2ceb::1";
 
   systemd.services.healthcheck-ping = {
     startAt = "*:0/5"; # every 5 minutes
