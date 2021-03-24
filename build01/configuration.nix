@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }:
 # Boot recovery:
 # Activate 64-bit Rescue system in https://robot.your-server.de/server
-# ssh root@build03.nix-community.org "mount /dev/md* /mnt && /mnt/kexec_bundle"
+# ssh root@build01.nix-community.org "mount /dev/md[0-9]* /mnt && /mnt/kexec_bundle"
+#
 #
 # In kexec image:
 # # stop autoreboot
 # $ systemctl stop autoreboot.timer
-# $ zpool import -f zroot && mount -t zfs zroot/root /mnt && mount -t zfs zroot/root/home /mnt/home && mount -t zfs zroot/root/nix /mnt/nix && mount /dev/md* /mnt/boot
+# $ zpool import -f zroot && mount -t zfs zroot/root /mnt && mount -t zfs zroot/root/home /mnt/home && mount -t zfs zroot/root/nix /mnt/nix && mount /dev/md[0-9]* /mnt/boot
 # nixos-enter
 {
   imports = [
