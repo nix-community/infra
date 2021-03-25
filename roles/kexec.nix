@@ -16,7 +16,9 @@
 #curl -L https://nixos.org/nix/install | bash
 #. /home/foo/.nix-profile/etc/profile.d/nix.sh
 #git clone https://github.com/nix-community/infra && cd infra
-#nix-shell -p nixos-generators --run 'nixos-generate -o ./result  -f kexec-bundle -c ./profiles/kexec.nix'
+#nix-shell
+#nix-shell -p nixos-generators --run 'nixos-generate -o ./result  -f kexec-bundle -c ./roles/kexec.nix'
+#exit
 #exit
 #/home/foo/infra/result
 #after reboot:

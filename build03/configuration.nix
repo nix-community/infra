@@ -2,12 +2,12 @@
 {
   # Boot recovery:
   # Activate 64-bit Rescue system in https://robot.your-server.de/server
-  # ssh root@build03.nix-community.org "mount /dev/md0 /mnt && /mnt/kexec_bundle"
+  # ssh root@build03.nix-community.org "mount /dev/md[0-9]* /mnt && /mnt/kexec_bundle"
   #
   # In kexec image:
   # stop autoreboot:
   # $ systemctl stop autoreboot.timer
-  # $ zpool import -f zroot && mount -t zfs zroot/root/nixos /mnt && mount -t zfs zroot/root/home /mnt/home && mount /dev/md0 /mnt/boot
+  # $ zpool import -f zroot && mount -t zfs zroot/root/nixos /mnt && mount -t zfs zroot/root/home /mnt/home && mount /dev/md[0-9]* /mnt/boot
   # $ nixos-enter
   imports = [
     ./hardware-configuration.nix
@@ -29,11 +29,7 @@
     insmod mdraid1x
   '';
 
-  networking.nix-community = {
-    ipv4.address = "135.181.218.169";
-    ipv4.gateway = "135.181.218.129";
-    ipv6.address = "2a01:4f9:3a:3b16::1";
-  };
+  networking.nix-community.ipv6.address = "2a01:4f9:3a:3b16::1";
 
   networking.hostName = "nix-community-build03";
   networking.hostId = "8daf74c0";

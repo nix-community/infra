@@ -88,3 +88,24 @@ command to also deploy secrets afterwards:
 ```console
 $ ./deploy --force-reboot --include build02
 ```
+
+## Install/Fix system from Hetzner recovery mode
+
+1. Mount all filesystems to /mnt
+2. Install kexec image from Hetzner recovery system as described in [kexec.nix](infra/roles/kexec.nix) and boot into it
+3. Download infra repo
+``` console
+$ nix-shell -p git --run "git clone https://github.com/nix-community/infra && cd infra && nix-shell"
+```
+
+4. Build new system closure:
+
+``` console
+nix-shell> nix-build -A buildXX-system
+```
+
+5. Install system closure
+
+```console
+$ nixos-install --system ./result
+```
