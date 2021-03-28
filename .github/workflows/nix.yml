@@ -2,7 +2,8 @@ name: "Nix"
 on:
   push:
     branches:
-      master
+      - master
+      - update/*
   pull_request:
 jobs:
   tests:
