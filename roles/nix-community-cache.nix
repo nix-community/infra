@@ -2,7 +2,7 @@
 let
   postBuildHook = pkgs.writeScript "post-build-hook.sh" ''
     #!${pkgs.runtimeShell}
-    export PATH=$PATH:${pkgs.nix}/bin
+    export PATH=$PATH:${pkgs.nixFlakes}/bin
     exec ${pkgs.cachix}/bin/cachix -c /var/lib/post-build-hook/nix-community-cachix.dhall push nix-community $OUT_PATHS
   '';
 
@@ -38,6 +38,9 @@ in
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" "queued-build-hook.socket" ];
     requires = [ "queued-build-hook.socket" ];
+    # either cachix or nix want that
+    environment.XDG_CACHE_HOME = "/var/cache/queued-build-hook";
+    serviceConfig.CacheDirectory = "queued-build-hook";
     serviceConfig.ExecStart = "${pkgs.queued-build-hook}/bin/queued-build-hook daemon --retry-interval 30 --hook ${postBuildHook}";
   };
 
