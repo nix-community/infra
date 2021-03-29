@@ -108,6 +108,10 @@ in
         # https://github.com/NixOS/hydra/pull/895
         patches = [
           (pkgs.fetchpatch {
+            url = "https://github.com/NixOS/hydra/commit/3c86083d211e5f5395d927c0a27c428fccb15181.patch";
+            sha256 = "sha256-pljbPu+hGQjx6ca8H9/rY8M0iWcS5Fn4H7uoKvUmQuw=";
+          })
+          (pkgs.fetchpatch {
             url = "https://github.com/NixOS/hydra/commit/6f662a606abe02c1c4918742c21eeec772e8fcfc.patch";
             sha256 = "sha256-m9+JL19yM6iITb4MiMdxnQuHH3rBfBOPx7IHr3y3xVI=";
           })
