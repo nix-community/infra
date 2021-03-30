@@ -11,7 +11,10 @@ in
     path = [ config.nix.package ];
     # either cachix or nix want that
     environment.XDG_CACHE_HOME = "/var/cache/cachix-watch-store";
-    serviceConfig.CacheDirectory = "cachix-watch-store";
-    serviceConfig.ExecStart = "${pkgs.cachix}/bin/cachix -c ${configFile} watch-store nix-community";
+    serviceConfig = {
+      Restart = "always";
+      CacheDirectory = "cachix-watch-store";
+      ExecStart = "${pkgs.cachix}/bin/cachix -c ${configFile} watch-store nix-community";
+    };
   };
 }
