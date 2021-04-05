@@ -104,27 +104,6 @@ in
       port = hydraPort;
       useSubstitutes = true;
       adminPasswordFile = hydraAdminPasswordFile;
-      package = pkgs.hydra-unstable.overrideAttrs (old:{
-        # https://github.com/NixOS/hydra/pull/895
-        patches = [
-          (pkgs.fetchpatch {
-            url = "https://github.com/NixOS/hydra/commit/3c86083d211e5f5395d927c0a27c428fccb15181.patch";
-            sha256 = "sha256-pljbPu+hGQjx6ca8H9/rY8M0iWcS5Fn4H7uoKvUmQuw=";
-          })
-          (pkgs.fetchpatch {
-            url = "https://github.com/NixOS/hydra/commit/6f662a606abe02c1c4918742c21eeec772e8fcfc.patch";
-            sha256 = "sha256-m9+JL19yM6iITb4MiMdxnQuHH3rBfBOPx7IHr3y3xVI=";
-          })
-          (pkgs.fetchpatch {
-            url = "https://github.com/NixOS/hydra/commit/6bb180a0f2c136375d6d2fe5ae441a7c0f949b90.patch";
-            sha256 = "sha256-Q6zqeFdrjmr9dd7ISekLXIyOhUHuPFJCWfekukA7bqQ=";
-          })
-          (pkgs.fetchpatch {
-            url = "https://github.com/NixOS/hydra/commit/425c7ff17f2f801894902184fb4b39f14c944d55.patch";
-            sha256 = "sha256-A8SZzcOh2v+J44ICh/+EFILqWVlvo+DpUYYLu1ZbIto=";
-          })
-        ];
-      });
 
       usersFile = hydraUsersFile;
       extraConfig = ''
