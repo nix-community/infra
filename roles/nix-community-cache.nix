@@ -17,4 +17,15 @@ in
       ExecStart = "${pkgs.cachix}/bin/cachix -c ${configFile} watch-store nix-community";
     };
   };
+  systemd.services.nix-gc.serviceConfig = lib.mkIf (config.services.hydra.enable) {
+    # This hopefully drains the upload queue to avoid nix-gc beeing faster than cachix uploading derivations
+    # Otherwise we might run into https://github.com/cachix/cachix/issues/370
+    ExecStartPre = [
+      "${pkgs.systemd}/bin/systemctl stop hydra-queue-runner.service"
+      "${pkgs.coreutils}/bin/sleep 20"
+      # does cachix try to upload derivations that are about to be garbage collected?
+      "${pkgs.systemd}/bin/systemctl stop cachix-watch-store.service"
+    ];
+    ExecStopPost = "${pkgs.systemd}/bin/systemctl start hydra-queue-runner.service cachix-watch-store.service";
+  };
 }
