@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: cachix/install-nix-action@v13
-    - uses: cachix/cachix-action@v9
+    - uses: cachix/cachix-action@v10
       with:
         extraPullNames: nixpkgs-update
         name: nix-community
