@@ -30,5 +30,12 @@
       description = "Packages for Redox";
       homepage = "https://github.com/nix-community/redoxpkgs";
     };
+    rust-for-linux = {
+      displayName = "Rust For Linux";
+      inputValue = "https://github.com/rust-for-linux/nix";
+      specFile = ".hydra/spec.json";
+      description = "Linux Kernel with Rust support";
+      homepage = "https://github.com/Rust-for-Linux/linux";
+    };
   };
 }
