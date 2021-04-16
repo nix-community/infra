@@ -20,6 +20,7 @@ in
   users.groups.marvin-mk2 = { };
   users.users.marvin-mk2 = {
     useDefaultShell = true;
+    isSystemUser = true;
     uid = userLib.mkUid "mmkt";
     extraGroups = [ "marvin-mk2" ];
   };
