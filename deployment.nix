@@ -77,13 +77,6 @@ in
         permissions = "0600";
       };
 
-      deployment.keys."matterbridge.toml" = {
-        text = secrets."matterbridge.toml";
-        user = "matterbridge";
-        group = "matterbridge";
-        permissions = "0400";
-      };
-
       deployment.keys."nix-community-cachix.dhall" = {
         text = secrets."nix-community-cachix.dhall";
         destDir = "/var/lib/post-build-hook";
@@ -173,6 +166,13 @@ in
         text = secrets."nix-community-cachix.dhall";
         destDir = "/var/lib/post-build-hook";
         user = "root";
+        permissions = "0400";
+      };
+
+      deployment.keys."matterbridge.toml" = {
+        text = secrets."matterbridge.toml";
+        user = "matterbridge";
+        group = "matterbridge";
         permissions = "0400";
       };
     };

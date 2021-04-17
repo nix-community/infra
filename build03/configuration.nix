@@ -18,6 +18,7 @@
     ../roles/nix-community-cache.nix
 
     ../services/hound
+    ../services/matterbridge.nix
   ];
 
   # /boot is a mirror raid
