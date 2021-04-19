@@ -29,24 +29,6 @@ in
 
       deployment.targetHost = "94.130.143.84";
 
-      deployment.keys.buildkite-token = {
-        text = removeSuffix "\n" secrets.buildkite-token;
-        user = "buildkite-agent-ci";
-        permissions = "0600";
-      };
-
-      deployment.keys.buildkite-agent-key = {
-        text = secrets.buildkite-agent-key;
-        user = "buildkite-agent-ci";
-        permissions = "0600";
-      };
-
-      deployment.keys."buildkite-agent-key.pub" = {
-        text = secrets."buildkite-agent-key.pub";
-        user = "buildkite-agent-ci";
-        permissions = "0600";
-      };
-
       deployment.keys."marvin-mk2-key.pem" = {
         text = secrets."marvin-mk2-key.pem";
         destDir = "/var/lib/marvin-mk2";
@@ -155,6 +137,24 @@ in
       ];
 
       deployment.targetHost = "build03.nix-community.org";
+
+      deployment.keys.buildkite-token = {
+        text = removeSuffix "\n" secrets.buildkite-token;
+        user = "buildkite-agent-ci";
+        permissions = "0600";
+      };
+
+      deployment.keys.buildkite-agent-key = {
+        text = secrets.buildkite-agent-key;
+        user = "buildkite-agent-ci";
+        permissions = "0600";
+      };
+
+      deployment.keys."buildkite-agent-key.pub" = {
+        text = secrets."buildkite-agent-key.pub";
+        user = "buildkite-agent-ci";
+        permissions = "0600";
+      };
 
       deployment.keys."nix-community-cachix.dhall" = {
         text = secrets."nix-community-cachix.dhall";
