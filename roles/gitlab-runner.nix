@@ -1,4 +1,10 @@
 { pkgs, ... }:
+## requires this secret in deployment.nix
+#deployment.keys.gitlab-runner-registration = {
+#  text = secrets.gitlab-runner-registration;
+#  user = "gitlab-runner";
+#  permissions = "0600";
+#};
 let
   gitlabModule = builtins.fetchTarball {
     url = "https://gitlab.com/arianvp/nixos-gitlab-runner/-/archive/9126927c701aa399bd1734e7e5230c3a0010c1b7/nixos-gitlab-runner-9126927c701aa399bd1734e7e5230c3a0010c1b7.tar.gz";
