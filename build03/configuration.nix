@@ -12,6 +12,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ../roles/buildkite.nix
     ../roles/common.nix
     ../roles/hetzner-network.nix
     ../roles/nginx.nix

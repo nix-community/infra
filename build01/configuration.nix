@@ -13,7 +13,6 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../roles/buildkite.nix
     ../roles/common.nix
     ../roles/docker.nix
     ../roles/gitlab-runner.nix
