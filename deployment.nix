@@ -53,12 +53,6 @@ in
         permissions = "0600";
       };
 
-      deployment.keys.gitlab-runner-registration = {
-        text = secrets.gitlab-runner-registration;
-        user = "gitlab-runner";
-        permissions = "0600";
-      };
-
       deployment.keys."nix-community-cachix.dhall" = {
         text = secrets."nix-community-cachix.dhall";
         destDir = "/var/lib/post-build-hook";
