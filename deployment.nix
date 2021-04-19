@@ -60,12 +60,6 @@ in
         permissions = "0400";
       };
 
-      deployment.keys.github-nixpkgs-swh-key = {
-        text = secrets.github-nixpkgs-swh-key;
-        user = "buildkite-agent-ci";
-        permissions = "0400";
-      };
-
       deployment.keys.hydra-admin-password = {
         text = secrets.hydra-admin-password;
         user = "hydra";
@@ -154,6 +148,12 @@ in
         text = secrets."buildkite-agent-key.pub";
         user = "buildkite-agent-ci";
         permissions = "0600";
+      };
+
+      deployment.keys.github-nixpkgs-swh-key = {
+        text = secrets.github-nixpkgs-swh-key;
+        user = "buildkite-agent-ci";
+        permissions = "0400";
       };
 
       deployment.keys."nix-community-cachix.dhall" = {
