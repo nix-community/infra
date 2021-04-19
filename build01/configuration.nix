@@ -16,7 +16,6 @@
     ../roles/buildkite.nix
     ../roles/common.nix
     ../roles/docker.nix
-    ../roles/gitlab-runner.nix
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
     ../roles/nix-community-cache.nix
