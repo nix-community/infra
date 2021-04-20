@@ -89,13 +89,13 @@ in
       ];
     };
 
-    services.nginx.virtualHosts = {
-      "hydra.nix-community.org" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".proxyPass = "http://localhost:${toString (hydraPort)}";
-      };
-    };
+    #services.nginx.virtualHosts = {
+    #  "hydra.nix-community.org" = {
+    #    forceSSL = true;
+    #    enableACME = true;
+    #    locations."/".proxyPass = "http://localhost:${toString (hydraPort)}";
+    #  };
+    #};
 
     services.hydra = {
       enable = true;
