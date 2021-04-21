@@ -52,25 +52,6 @@ in
         group = "marvin-mk2";
         permissions = "0600";
       };
-
-      deployment.keys."nix-community-cachix.dhall" = {
-        text = secrets."nix-community-cachix.dhall";
-        destDir = "/var/lib/post-build-hook";
-        user = "root";
-        permissions = "0400";
-      };
-
-      deployment.keys.hydra-admin-password = {
-        text = secrets.hydra-admin-password;
-        user = "hydra";
-        permissions = "0400";
-      };
-
-      deployment.keys.hydra-users = {
-        text = secrets.hydra-users;
-        user = "hydra";
-        permissions = "0400";
-      };
     };
 
   build02 =
