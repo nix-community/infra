@@ -134,6 +134,14 @@ in
       ];
     };
 
+    services.nginx.virtualHosts = {
+      "hydra.nix-community.org" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://localhost:${toString (config.services.hydra.port)}";
+      };
+    };
+
     # Create a admin user and configure a declarative project
     systemd.services.hydra-post-init = {
       serviceConfig = {

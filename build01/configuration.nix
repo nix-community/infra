@@ -14,12 +14,8 @@
     ./hardware-configuration.nix
 
     ../roles/common.nix
-    ../roles/docker.nix
     ../roles/hetzner-network.nix
-    ../roles/nginx.nix
-    ../roles/nix-community-cache.nix
 
-    ../services/hydra
     ../services/marvin-mk2.nix
   ];
 
@@ -39,14 +35,6 @@
   boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
   networking.nix-community.ipv6.address = "2a01:4f8:13b:2ceb::1";
-
-  services.nginx.virtualHosts = {
-    "hydra.nix-community.org" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/".proxyPass = "http://localhost:${toString (config.services.hydra.port)}";
-    };
-  };
 
   systemd.services.healthcheck-ping = {
     startAt = "*:0/5"; # every 5 minutes
