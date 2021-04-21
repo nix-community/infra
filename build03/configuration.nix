@@ -19,6 +19,7 @@
     ../roles/nix-community-cache.nix
 
     ../services/hound
+    ../services/hydra
     ../services/matterbridge.nix
   ];
 
@@ -31,6 +32,13 @@
     insmod mdraid1x
   '';
 
+  services.nginx.virtualHosts = {
+    "hydra2.nix-community.org" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/".proxyPass = "http://localhost:${toString (config.services.hydra.port)}";
+    };
+  };
   networking.nix-community.ipv6.address = "2a01:4f9:3a:3b16::1";
 
   networking.hostName = "nix-community-build03";
