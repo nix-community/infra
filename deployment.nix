@@ -169,5 +169,17 @@ in
         group = "matterbridge";
         permissions = "0400";
       };
+
+      deployment.keys.hydra-admin-password = {
+        text = secrets.hydra-admin-password;
+        user = "hydra";
+        permissions = "0400";
+      };
+
+      deployment.keys.hydra-users = {
+        text = secrets.hydra-users;
+        user = "hydra";
+        permissions = "0400";
+      };
     };
 }
