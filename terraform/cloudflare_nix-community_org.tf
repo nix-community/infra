@@ -55,7 +55,7 @@ resource "cloudflare_record" "nix-community-org-docker-CNAME" {
 resource "cloudflare_record" "nix-community-org-marvin-2kCNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "marvin-2k"
-  value   = "build01.nix-community.org"
+  value   = "build03.nix-community.org"
   type    = "CNAME"
 }
 

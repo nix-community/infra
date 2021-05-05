@@ -15,9 +15,6 @@
 
     ../roles/common.nix
     ../roles/hetzner-network.nix
-    ../roles/nginx.nix
-
-    ../services/marvin-mk2.nix
   ];
 
   # /boot is a mirror raid
