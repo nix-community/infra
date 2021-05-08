@@ -28,30 +28,6 @@ in
       ];
 
       deployment.targetHost = "94.130.143.84";
-
-      deployment.keys."marvin-mk2-key.pem" = {
-        text = secrets."marvin-mk2-key.pem";
-        destDir = "/var/lib/marvin-mk2";
-        user = "marvin-mk2";
-        group = "marvin-mk2";
-        permissions = "0600";
-      };
-
-      deployment.keys."marvin_mk2_id.txt" = {
-        text = secrets."marvin_mk2_id.txt";
-        destDir = "/var/lib/marvin-mk2";
-        user = "marvin-mk2";
-        group = "marvin-mk2";
-        permissions = "0600";
-      };
-
-      deployment.keys."marvin-mk2-webhook-secret.txt" = {
-        text = secrets."marvin-mk2-webhook-secret.txt";
-        destDir = "/var/lib/marvin-mk2";
-        user = "marvin-mk2";
-        group = "marvin-mk2";
-        permissions = "0600";
-      };
     };
 
   build02 =
@@ -161,6 +137,30 @@ in
         text = secrets.hydra-users;
         user = "hydra";
         permissions = "0400";
+      };
+
+      deployment.keys."marvin-mk2-key.pem" = {
+        text = secrets."marvin-mk2-key.pem";
+        destDir = "/var/lib/marvin-mk2";
+        user = "marvin-mk2";
+        group = "marvin-mk2";
+        permissions = "0600";
+      };
+
+      deployment.keys."marvin_mk2_id.txt" = {
+        text = secrets."marvin_mk2_id.txt";
+        destDir = "/var/lib/marvin-mk2";
+        user = "marvin-mk2";
+        group = "marvin-mk2";
+        permissions = "0600";
+      };
+
+      deployment.keys."marvin-mk2-webhook-secret.txt" = {
+        text = secrets."marvin-mk2-webhook-secret.txt";
+        destDir = "/var/lib/marvin-mk2";
+        user = "marvin-mk2";
+        group = "marvin-mk2";
+        permissions = "0600";
       };
     };
 }

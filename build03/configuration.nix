@@ -21,6 +21,7 @@
     ../services/hound
     ../services/hydra
     ../services/matterbridge.nix
+    ../services/marvin-mk2.nix
   ];
 
   # /boot is a mirror raid
