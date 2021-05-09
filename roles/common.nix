@@ -14,8 +14,6 @@
   environment.systemPackages = [
     # for quick activity overview
     pkgs.htop
-    # for users with TERM=xterm-termite
-    pkgs.termite.terminfo
   ];
 
   # Nicer interactive shell
