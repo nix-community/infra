@@ -34,11 +34,6 @@
 
   networking.nix-community.ipv6.address = "2a01:4f8:13b:2ceb::1";
 
-  systemd.services.healthcheck-ping = {
-    startAt = "*:0/5"; # every 5 minutes
-    serviceConfig.ExecStart = "${pkgs.curl}/bin/curl -X POST -sfL https://hc-ping.com/fcf6c029-5b57-44aa-b392-923f3d894dd9";
-  };
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   system.stateVersion = "20.03";
