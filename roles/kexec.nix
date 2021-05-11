@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 # build with:
-# nix-shell -p nixos-generators --run 'nixos-generate -o ./result  -f kexec-bundle -c ./profiles/kexec.nix'
+# nix-shell -p nixos-generators --run 'nixos-generate -o ./result  -f kexec-bundle -c ./roles/kexec.nix'
 {
   imports = [
     ./users.nix
