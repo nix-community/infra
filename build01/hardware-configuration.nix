@@ -8,33 +8,19 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "zroot/root";
-      fsType = "zfs";
-    };
+  fileSystems."/" = {
+    device = "zroot/root/nixos";
+    fsType = "zfs";
+  };
 
-  fileSystems."/nix" =
-    {
-      device = "zroot/root/nix";
-      fsType = "zfs";
-    };
+  fileSystems."/home" = {
+    device = "zroot/root/home";
+    fsType = "zfs";
+  };
 
-  fileSystems."/home" =
-    {
-      device = "zroot/root/home";
-      fsType = "zfs";
-    };
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/0d3778f7-b946-4c21-9399-7da382ecde03";
-      fsType = "ext4";
-    };
-
-  swapDevices = [ ];
-
-  nix.maxJobs = lib.mkDefault 16;
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/08e4cdbb-bb94-4870-bb04-368183bdbc9e";
+    fsType = "ext4";
+  };
 }
