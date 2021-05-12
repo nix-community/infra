@@ -10,8 +10,8 @@
   boot.kernelModules = [ "kvm-amd" ];
 
   fileSystems."/" = {
-    device = "zroot/root/nixos";
-    fsType = "zfs";
+     device = "zroot/root/nixos";
+     fsType = "zfs";
   };
 
   fileSystems."/home" = {
@@ -20,7 +20,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/08e4cdbb-bb94-4870-bb04-368183bdbc9e";
+    device = "/dev/disk/by-uuid/6b1b00a5-2d03-4a33-ac59-c8031e543c66";
     fsType = "ext4";
   };
 }
