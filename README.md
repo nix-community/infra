@@ -97,12 +97,15 @@ $ ./deploy --force-reboot --include build02
 # - partition 1 will be the boot partition, needed for legacy (BIOS) boot
 # - partition 2 is for boot partition
 # - partition 3 takes up the rest of the space and is for the system
-$ sgdisk -n 1:2048:4095 -n 2:4096:+512M -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme0n1
-$ sgdisk -n 1:2048:4095 -n 2:4096:+512M -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme1n1
+$ sgdisk -n 1:2048:4095 -n 2:4096:+2G -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme0n1
+$ sgdisk -n 1:2048:4095 -n 2:4096:+2G -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme1n1
 # create mdadm raid for /boot with ext4
-$ sudo mdadm --create --verbose /dev/md127 --level=0 --raid-devices=2 /dev/nvme{0,1}n1p2
-$ sudo mkfs.ext4 -F /dev/md127
+$ mdadm --create --verbose /dev/md127 --raid-devices=2 --level=1 /dev/nvme{0,1}n1p2
+$ mkfs.ext4 -F /dev/md127
 # format zpool
+# use partuuids as they are more stable than device names
+$ ls -la /dev/disk/by-partuuid/
+$ zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 mirror /dev/disk/by-partuuid/long-uuid1 /dev/disk/by-partuuid/long-uuid2
 $ zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 mirror /dev/nvme{0,1}n1p3
 $ zfs create -o mountpoint=none zroot/root
 $ zfs create -o mountpoint=legacy zroot/root/nixos
@@ -124,14 +127,16 @@ $ nixos-generate-config  --root /mnt
 $ diff -aur /mnt/etc/nixos/hardware-configuration.nix buildXX/hardware-configuration.nix
 ```
 
-4. Build new system closure:
-
-``` console
-nix-shell> nix-build -A buildXX-system
-```
-
-5. Install system closure
+4. Build and install system
 
 ```console
-$ nixos-install --system ./result
+$ nixos-install --system $(nix-build -A buildXX-system)
+```
+
+### Debug VM
+
+You can start a vm from the rescue system in order to debug the boot:
+
+```console
+$ nix-shell -p qemu_kvm --run 'qemu-kvm -m 10G -hda /dev/sda -hdb /dev/sdb -curses -cpu host -enable-kvm'
 ```
