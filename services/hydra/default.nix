@@ -16,7 +16,7 @@ let
     installPhase = "install -m755 -D ${./create-declarative-project.sh} $out/bin/create-declarative-project";
     postFixup = ''
       wrapProgram "$out/bin/create-declarative-project" \
-        --prefix PATH ":" ${pkgs.stdenv.lib.makeBinPath [ pkgs.curl ]}
+        --prefix PATH ":" ${lib.makeBinPath [ pkgs.curl ]}
     '';
   };
 
