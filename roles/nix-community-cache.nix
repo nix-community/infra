@@ -25,7 +25,7 @@ in
       "${pkgs.systemd}/bin/systemctl stop hydra-queue-runner.service"
       "${pkgs.systemd}/bin/systemctl stop cachix-watch-store.service"
     ];
-    TimeoutStartUSec = "5min";
+    TimeoutStartSec = "5min";
     ExecStopPost = "${pkgs.systemd}/bin/systemctl start hydra-queue-runner.service cachix-watch-store.service";
   };
 }
