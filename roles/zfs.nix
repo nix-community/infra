@@ -5,4 +5,6 @@
     autoSnapshot.monthly = 1;
     autoScrub.enable = true;
   };
+  # zfs is not available for latest lts kenrel
+  boot.zfs.enableUnstable = true;
 }

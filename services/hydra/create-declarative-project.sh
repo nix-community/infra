@@ -34,9 +34,11 @@ cat >data.json <<EOF
   "homepage":"$DECL_HOMEPAGE",
   "enabled":"1",
   "visible":"1",
-  "declfile": "$DECL_FILE",
-  "decltype":"$DECL_TYPE",
-  "declvalue":"$DECL_VALUE"
+  "declarative": {
+    "file": "$DECL_FILE",
+    "type":"$DECL_TYPE",
+    "value":"$DECL_VALUE"
+  }
 }
 EOF
 cat data.json

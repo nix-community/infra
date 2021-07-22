@@ -16,6 +16,7 @@ in
       CacheDirectory = "cachix-watch-store";
       ExecStart = "${pkgs.cachix}/bin/cachix -c ${configFile} watch-store nix-community";
       KillSignal = "SIGINT";
+      TimeoutStopSec = "10min";
     };
   };
   systemd.services.nix-gc.serviceConfig = lib.mkIf (config.services.hydra.enable) {
@@ -25,6 +26,7 @@ in
       "${pkgs.systemd}/bin/systemctl stop hydra-queue-runner.service"
       "${pkgs.systemd}/bin/systemctl stop cachix-watch-store.service"
     ];
+    TimeoutStartSec = "11min";
     ExecStopPost = "${pkgs.systemd}/bin/systemctl start hydra-queue-runner.service cachix-watch-store.service";
   };
 }
