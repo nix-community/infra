@@ -1,4 +1,16 @@
 {
+    "cachix": {
+        "branch": "master",
+        "description": "Command line client for Nix binary cache hosting:",
+        "homepage": "https://cachix.org",
+        "owner": "cachix",
+        "repo": "cachix",
+        "rev": "3fb1b93b834ecc36ca88f04350a3594ec20782f8",
+        "sha256": "1anhrarhj5r9lw12hjghhgwgs8zlxczy8whlwkyrl93skxzd7kxs",
+        "type": "tarball",
+        "url": "https://github.com/cachix/cachix/archive/3fb1b93b834ecc36ca88f04350a3594ec20782f8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "marvin-mk2": {
         "branch": "master",
         "description": "Helpful nixpkgs PR bot with an improved Genuine People Personality",
