@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   configFile = "/var/lib/post-build-hook/nix-community-cachix.dhall";
-
+  sources = import ../nix/sources.nix {};
 in
 {
   systemd.services.cachix-watch-store = {
@@ -14,9 +14,7 @@ in
     serviceConfig = {
       Restart = "always";
       CacheDirectory = "cachix-watch-store";
-      ExecStart = "${pkgs.cachix}/bin/cachix -c ${configFile} watch-store nix-community";
-      KillSignal = "SIGINT";
-      TimeoutStopSec = "10min";
+      ExecStart = "${import sources.cachix {}}/bin/cachix -c ${configFile} watch-store nix-community";
     };
   };
   systemd.services.nix-gc.serviceConfig = lib.mkIf (config.services.hydra.enable) {
