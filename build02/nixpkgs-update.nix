@@ -17,8 +17,41 @@ let
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
   nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
 
+  mkNixpkgsUpdateService = name: {
+    description = "nixpkgs-update ${name} service";
+    enable = true;
+    startAt = "daily";
+    restartIfChanged = false;
+    path = nixpkgsUpdateSystemDependencies;
+    environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update/${name}";
+    environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/${name}";
+    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update/${name}"; # for nix-update update scripts
+    # API_TOKEN is used by nixpkgs-update-github-releases
+    environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
+    # Used by nixpkgs-update-github-releases to install python dependencies
+    # Used by nixpkgs-update-pypi-releases
+    environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/${name}/nixpkgs";
+
+    serviceConfig = {
+      Type = "simple";
+      User = "r-ryantm";
+      Group = "r-ryantm";
+      WorkingDirectory = "/var/lib/nixpkgs-update/${name}";
+      StateDirectory = "nixpkgs-update/${name}";
+      StateDirectoryMode = "700";
+      CacheDirectory = "nixpkgs-update/${name}";
+      CacheDirectoryMode = "700";
+      LogsDirectory = "nixpkgs-update/${name}";
+      LogsDirectoryMode = "755";
+      RuntimeDirectory = "nixpkgs-update/${name}";
+      RuntimeDirectoryMode = "700";
+      StandardOutput = "journal";
+    };
+  };
+
 in
 {
+
   users.groups.r-ryantm = { };
   users.users.r-ryantm = {
     useDefaultShell = true;
@@ -27,55 +60,30 @@ in
     extraGroups = [ "r-ryantm" ];
   };
 
-  systemd.services.nixpkgs-update = {
-    description = "nixpkgs-update service";
-    enable = true;
-    restartIfChanged = false;
-    path = nixpkgsUpdateSystemDependencies;
-    environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update";
-    environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update";
-    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update"; # for nix-update update scripts
-    # API_TOKEN is used by nixpkgs-update-github-releases
-    environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
-    # Used by nixpkgs-update-github-releases to install python dependencies
-    # Used by nixpkgs-update-pypi-releases
-    environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/nixpkgs";
 
-    serviceConfig = {
-      Type = "simple";
-      User = "r-ryantm";
-      Group = "r-ryantm";
-      WorkingDirectory = "/var/lib/nixpkgs-update";
-      StateDirectory = "nixpkgs-update";
-      StateDirectoryMode = "700";
-      CacheDirectory = "nixpkgs-update";
-      CacheDirectoryMode = "700";
-      LogsDirectory = "nixpkgs-update";
-      LogsDirectoryMode = "755";
-      RuntimeDirectory = "nixpkgs-update";
-      RuntimeDirectoryMode = "700";
-      StandardOutput = "journal";
-    };
-
+  systemd.services.nixpkgs-update-repology = mkNixpkgsUpdateService "repology" // {
     script = ''
-      #${nixpkgs-update-bin} delete-done --delete
-      # grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
-      #   ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/nixpkgs > /var/lib/nixpkgs-update/packages-to-update.txt
-      # ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
       ${nixpkgs-update-bin} delete-done --delete
-      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
-      ${nixpkgs-update-bin} delete-done --delete
-      ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/packages-to-update.txt
+      ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/repology/packages-to-update.txt
       ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review
     '';
   };
 
-  systemd.timers.nixpkgs-update = {
-    description = "nixpkgs-update";
-    enable = true;
-    timerConfig = { OnCalendar = "daily"; };
-    wantedBy = [ "timers.target" ];
+  systemd.services.nixpkgs-update-github = mkNixpkgsUpdateService "github" // {
+    script = ''
+      ${nixpkgs-update-bin} delete-done --delete
+      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/github/packages-to-update.txt
+      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
+    '';
+  };
+
+  systemd.services.nixpkgs-update-pypi = mkNixpkgsUpdateService "pypi" // {
+    script = ''
+      ${nixpkgs-update-bin} delete-done --delete
+      grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
+        ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/pypi/nixpkgs > /var/lib/nixpkgs-update/pypi/packages-to-update.txt
+      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
+    '';
   };
 
   services.nginx.virtualHosts."r.ryantm.com" = {
