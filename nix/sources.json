@@ -60,15 +60,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update-pypi-releases": {
-        "branch": "nixpkgs",
+        "branch": "master",
         "description": "Fetches releases from pypi for https://github.com/ryantm/nixpkgs-update",
         "homepage": null,
         "owner": "ryantm",
         "repo": "nixpkgs-update-pypi-releases",
-        "rev": "ea6f014a3f11929a6e99bc0e90aad29e85b07de1",
-        "sha256": "sha256-ohx8cfZkvu6itkYES2lCv6o7uwpsnLI451TYjm+ANsg=",
+        "rev": "56afe60a7fd7ee7f5dac5feeea8a983aba759997",
+        "sha256": "00y2wbbdnlm5b05vnns6bf482zh3s0hsb9jd9k4d31w17f0qkh19",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/ea6f014a3f11929a6e99bc0e90aad29e85b07de1.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update-pypi-releases/archive/56afe60a7fd7ee7f5dac5feeea8a983aba759997.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "simple-hydra": {
