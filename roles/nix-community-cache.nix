@@ -12,6 +12,7 @@ in
     # either cachix or nix want that
     environment.XDG_CACHE_HOME = "/var/cache/cachix-watch-store";
     serviceConfig = {
+      Type = "notify";
       Restart = "always";
       CacheDirectory = "cachix-watch-store";
       ExecStart = "${import sources.cachix {}}/bin/cachix -c ${configFile} watch-store nix-community";
