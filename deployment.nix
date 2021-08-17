@@ -163,4 +163,13 @@ in
         permissions = "0600";
       };
     };
+
+  build04 =
+    { resources, ... }:
+    {
+      imports = [
+        ./build04/configuration.nix
+      ];
+      deployment.targetHost = "158.101.223.107";
+    };
 }

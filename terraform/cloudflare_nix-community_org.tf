@@ -44,6 +44,20 @@ resource "cloudflare_record" "nix-community-org-build03-AAAA" {
   type    = "AAAA"
 }
 
+resource "cloudflare_record" "nix-community-org-build04-A" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "build04"
+  value   = "158.101.223.107"
+  type    = "A"
+}
+
+resource "cloudflare_record" "nix-community-org-build04-AAAA" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "build04"
+  value   = "2603:c022:c001:b500:1::"
+  type    = "AAAA"
+}
+
 # Used by nix-community/nixpkgs-docker
 resource "cloudflare_record" "nix-community-org-docker-CNAME" {
   zone_id = local.nix_community_org_zone_id

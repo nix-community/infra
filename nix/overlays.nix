@@ -5,7 +5,7 @@ let
       niv;
     nixopsUnstable = (pkgs.nixopsUnstable.withPlugins(ps: []));
 
-    terraform = pkgs.terraform.withPlugins (
+    terraform = pkgs.terraform_0_12.withPlugins (
       p: [
         p.cloudflare
         p.null
