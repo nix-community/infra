@@ -59,6 +59,16 @@ This machine is a replacement for build01.
 * RAM: 64GB DDR4 ECC
 * Drives: 2 x 512 TB NVME in RAID 1
 
+### `build04`
+
+This machine is meant as an aarch64 builder for our hydra instance running on build03.
+
+* Provider: Oracle cloud
+* Instance type: [Ampere A1 Compute](https://www.oracle.com/cloud/compute/arm/)
+* CPU: 4 VCPUs on an Ampere Altra (arm64) 
+* RAM: 24GB
+* Drives: 200 GB Block
+
 ## Cache
 
 All the builds on these machines are pushed to https://nix-community.cachix.org/
