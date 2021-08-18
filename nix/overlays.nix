@@ -3,9 +3,9 @@ let
     inherit (pkgs)
       git-crypt
       niv;
-    nixopsUnstable = (pkgs.nixopsUnstable.withPlugins(ps: []));
+    nixopsUnstable = (pkgs.nixopsUnstable.withPlugins (ps: [ ]));
 
-    terraform = pkgs.terraform_0_12.withPlugins (
+    terraform = pkgs.terraform_1_0.withPlugins (
       p: [
         p.cloudflare
         p.null
