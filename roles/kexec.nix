@@ -6,6 +6,9 @@
     ./users.nix
     ./sshd.nix
   ];
+
+  # ttyAMA0 is consoles on aarch64
+  boot.kernelParams = [ "console=ttyS0,115200n8" "console=ttyAMA0,115200n8" "console=tty0" ];
 }
 
 # Hetzner bootstrap from rescue system
