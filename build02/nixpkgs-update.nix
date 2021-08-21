@@ -11,6 +11,7 @@ let
     nix # for nix-shell used by python packges to update fetchers
     git # used by update-scripts
     gnugrep
+    gnused
     curl
   ];
 
@@ -64,7 +65,9 @@ in
   systemd.services.nixpkgs-update-repology = mkNixpkgsUpdateService "repology" // {
     script = ''
       ${nixpkgs-update-bin} delete-done --delete
-      ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/repology/packages-to-update.txt
+      ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt
+      # reverse list
+      sed '1!G;h;$!d' /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt > /var/lib/nixpkgs-update/repology/packages-to-update.txt
       ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review
     '';
   };
