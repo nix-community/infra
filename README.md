@@ -57,7 +57,7 @@ This machine is a replacement for build01.
 * Provider: Hetzner
 * CPU: AMD Ryzen 5 3600 6-Core Processor
 * RAM: 64GB DDR4 ECC
-* Drives: 2 x 512 TB NVME in RAID 1
+* Drives: 2 x 512 GB NVME in RAID 1
 
 ### `build04`
 
