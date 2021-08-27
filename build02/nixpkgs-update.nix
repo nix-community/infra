@@ -50,6 +50,8 @@ let
     };
   };
 
+  nixpkgs-update-command = "${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review";
+
 in
 {
 
@@ -61,14 +63,13 @@ in
     extraGroups = [ "r-ryantm" ];
   };
 
-
   systemd.services.nixpkgs-update-repology = mkNixpkgsUpdateService "repology" // {
     script = ''
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt
       # reverse list
       sed '1!G;h;$!d' /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt > /var/lib/nixpkgs-update/repology/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review
+      ${nixpkgs-update-command}
     '';
   };
 
@@ -76,7 +77,7 @@ in
     script = ''
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/github/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
+      ${nixpkgs-update-command}
     '';
   };
 
@@ -85,7 +86,15 @@ in
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
         ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/pypi/nixpkgs > /var/lib/nixpkgs-update/pypi/packages-to-update.txt
-      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review || true
+      ${nixpkgs-update-command}
+    '';
+  };
+
+  systemd.services.nixpkgs-update-updatescript = mkNixpkgsUpdateService "updatescript" // {
+    script = ''
+      ${pkgs.nixUnstable}/bin/nix eval --raw -f ${./packages-with-update-script.nix} > /var/lib/nixpkgs-update/updatescript/packages-to-update.txt
+      ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review --attrpath
+      ${nixpkgs-update-bin} delete-done --delete
     '';
   };
 
