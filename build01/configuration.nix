@@ -13,6 +13,8 @@
   imports = [
     ./hardware-configuration.nix
 
+    ../roles/dev-packages.nix
+    ../roles/clone-nixpkgs.nix
     ../roles/common.nix
     ../roles/hetzner-network.nix
   ];
