@@ -23,6 +23,18 @@
         "url": "https://github.com/timokau/marvin-mk2/archive/b3dd8c02a5c01dcf0e9cc8789846a0ec980f534b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixops-nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f2f8e282",
+        "sha256": "1gflpsgagg487xj5p9911b7pvqh2vmw7vfg4hi6pnbrqkilm5kj6",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixpkgs/archive/f2f8e282.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "nixos-unstable-small",
         "description": "Nix Packages collection",
