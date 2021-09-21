@@ -33,7 +33,7 @@ in
     useDefaultShell = true;
     isSystemUser = true;
     uid = userLib.mkUid "mmkt";
-    extraGroups = [ "marvin-mk2" ];
+    group = "marvin-mk2";
   };
 
   systemd.services.marvin-mk2 = {
