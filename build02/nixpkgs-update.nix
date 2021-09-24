@@ -98,6 +98,13 @@ in
     '';
   };
 
+  systemd.tmpfiles.rules = [
+    "e /var/cache/nixpkgs-update/repology/nixpkgs-review - - - 1d -"
+    "e /var/cache/nixpkgs-update/github/nixpkgs-review - - - 1d -"
+    "e /var/cache/nixpkgs-update/pypi/nixpkgs-review - - - 1d -"
+    "e /var/cache/nixpkgs-update/updatescript/nixpkgs-review - - - 1d -"
+  ];
+
   services.nginx.virtualHosts."r.ryantm.com" = {
     forceSSL = true;
     enableACME = true;
