@@ -41,10 +41,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ed332b0bc7440cc25de85a09fdb0491d3ad3343d",
-        "sha256": "1n8wcgm0wcng1mcgk1q6yfi1y951j2fc3n2dxgcrns9v9h7c552c",
+        "rev": "e9540c5f121d77c68de0f2156cb6f9869d95a6f8",
+        "sha256": "0s0i6x78nxjyc0a885hzvwh5bylccixiam6c5h1q6pa64aqx50pc",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/ed332b0bc7440cc25de85a09fdb0491d3ad3343d.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e9540c5f121d77c68de0f2156cb6f9869d95a6f8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update": {
@@ -93,6 +93,18 @@
         "sha256": "0x5x047cb3i5pvic6gb3xid7dkx3sg535rfrrrgiapny3291pkma",
         "type": "tarball",
         "url": "https://github.com/ElvishJerricco/simple-hydra/archive/0d28b0b66136082d0cbfd90ede4436a580e3e8d0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "sops-nix": {
+        "branch": "master",
+        "description": "Atomic secret provisioning for NixOS based on sops",
+        "homepage": "",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "64235a958b9ceedf98a3212c13b0dea3a504598f",
+        "sha256": "0672hz2ap0ljani5vm1yq9h92596ad7smmkl5rixmi878m6x1agr",
+        "type": "tarball",
+        "url": "https://github.com/Mic92/sops-nix/archive/64235a958b9ceedf98a3212c13b0dea3a504598f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

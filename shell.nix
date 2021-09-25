@@ -14,6 +14,7 @@ pkgs.mkShell {
     niv
     nixopsUnstable
     terraform
+    sops
   ];
 
   # terraform cloud without the remote execution part

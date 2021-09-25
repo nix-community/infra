@@ -1,0 +1,37 @@
+keys:
+  - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
+  - &build01 age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
+  - &build02 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
+  - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
+  - &build04 age1vr4suv4lhtt8f59s25eukdfk67j7av72gvj7sk7ux6thusct3utqmn3pmf
+# scan new hosts like this:
+# $ nix-shell -p ssh-to-age --run 'ssh-keyscan buildXX.nix-community.org | ssh-to-age'
+creation_rules:
+  - path_regex: build01/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *build01
+  - path_regex: build02/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *build02
+  - path_regex: build03/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *build03
+  - path_regex: build04/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *build04
+  - path_regex: roles/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *build01
+      - *build02
+      - *build03
+      - *build04

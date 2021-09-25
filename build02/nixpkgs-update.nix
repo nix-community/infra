@@ -54,6 +54,29 @@ let
 
 in
 {
+  sops.secrets.github-r-ryantm-key = {
+    path = "/home/r-ryantm/.ssh/id_rsa";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.github-r-ryantm-token = {
+    path = "/var/lib/nixpkgs-update/github_token.txt";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.github-token-with-username = {
+    path = "/var/lib/nixpkgs-update/github_token_with_username.txt";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.cachix-dhall = {
+    path = "/var/lib/nixpkgs-update/cachix/cachix.dhall";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
 
   users.groups.r-ryantm = { };
   users.users.r-ryantm = {
