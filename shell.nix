@@ -1,13 +1,17 @@
 { system ? builtins.currentSystem }:
 let
+  sources = import ./nix/sources.nix;
   pkgs = import ./nix { inherit system; };
 in
 pkgs.mkShell {
-
   NIX_PATH = "nixpkgs=${toString pkgs.path}";
 
   NIXOPS_DEPLOYMENT = "nix-community-infra";
   NIXOPS_STATE = toString ./state/deployment-state.nixops;
+
+  sopsPGPKeyDirs = [
+    "./keys"
+  ];
 
   buildInputs = with pkgs.nix-community-infra; [
     git-crypt
@@ -15,6 +19,8 @@ pkgs.mkShell {
     nixopsUnstable
     terraform
     sops
+
+    (pkgs.callPackage sources.sops-nix {}).sops-import-keys-hook
   ];
 
   # terraform cloud without the remote execution part
