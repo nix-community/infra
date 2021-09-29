@@ -9,6 +9,7 @@
     ./telegraf
     ./users.nix
     ./zfs.nix
+    ./sops-nix.nix
   ];
 
   environment.systemPackages = [

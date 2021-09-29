@@ -4,6 +4,11 @@ let
   sources = import ../nix/sources.nix {};
 in
 {
+  sops.secrets.nix-community-cachix = {
+    path = "/var/lib/post-build-hook/nix-community-cachix.dhall";
+    sopsFile = ./nix-community-cache.yaml;
+  };
+
   systemd.services.cachix-watch-store = {
     description = "Cachix store watcher service";
     wantedBy = [ "multi-user.target" ];

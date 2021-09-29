@@ -3,6 +3,7 @@ let
     inherit (pkgs)
       git-crypt
       niv
+      sops
       sources;
     nixopsUnstable =
       let nixopsPkgs = import sources.nixops-nixpkgs {};

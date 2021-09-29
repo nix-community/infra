@@ -6,8 +6,8 @@ let
 
   hydraPort = 3000;
   hydraAdmin = "admin";
-  hydraAdminPasswordFile = "/run/keys/hydra-admin-password";
-  hydraUsersFile = "/run/keys/hydra-users";
+  hydraAdminPasswordFile = config.sops.secrets.hydra-admin-password.path;
+  hydraUsersFile = config.sops.secrets.hydra-users.path;
 
   createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
     name = "create-declarative-project";
@@ -78,6 +78,9 @@ in
     };
   };
   config = {
+    sops.secrets.hydra-admin-password.user = "hydra";
+    sops.secrets.hydra-users.user = "hydra";
+
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [
         unfreeRedistributable
