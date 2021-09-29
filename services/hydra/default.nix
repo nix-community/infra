@@ -78,8 +78,8 @@ in
     };
   };
   config = {
-    sops.secrets.hydra-admin-password.user = "hydra";
-    sops.secrets.hydra-users.user = "hydra";
+    sops.secrets.hydra-admin-password.owner = "hydra";
+    sops.secrets.hydra-users.owner = "hydra";
 
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [

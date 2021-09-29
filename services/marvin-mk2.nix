@@ -28,16 +28,16 @@ in
   # FIXME: use the above host instead
   networking.firewall.allowedTCPPorts = [ 3001 ];
 
-  sops.secrets.marvin-mk2-key.user = "marvin-mk2";
+  sops.secrets.marvin-mk2-key.owner = "marvin-mk2";
 
   sops.secrets.marvin_mk2_id = {
     path = "/var/lib/marvin-mk2/marvin_mk2_id.txt";
-    user = "marvin-mk2";
+    owner = "marvin-mk2";
   };
 
   sops.secrets.marvin-mk2-webhook-secret = {
     path = "/var/lib/marvin-mk2/marvin-mk2-webhook-secret.txt";
-    user = "marvin-mk2";
+    owner = "marvin-mk2";
   };
 
   users.groups.marvin-mk2 = { };
