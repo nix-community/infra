@@ -29,6 +29,7 @@ in
     ];
 
     deployment.targetHost = "94.130.143.84";
+    deployment.substituteOnDestination = true;
   };
 
   build02 = { ... }: {
@@ -37,6 +38,7 @@ in
     ];
 
     deployment.targetHost = "95.217.109.189";
+    deployment.substituteOnDestination = true;
   };
 
   build03 = { ... }: {
@@ -45,6 +47,7 @@ in
     ];
 
     deployment.targetHost = "build03.nix-community.org";
+    deployment.substituteOnDestination = true;
   };
 
   build04 = { ... }: {
@@ -52,5 +55,6 @@ in
       ./build04/configuration.nix
     ];
     deployment.targetHost = "158.101.223.107";
+    deployment.substituteOnDestination = true;
   };
 }
