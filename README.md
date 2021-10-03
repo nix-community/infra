@@ -79,7 +79,7 @@ Thanks to Cachix for sponsoring our binary cache!
 
 * ./build\d+ - build machines
 * ./ci.sh - What is executed by CI
-* ./deploy - NixOps deploy script
+* ./deploy - Deploy script
 * ./nix - pinned Nix dependencies and overlays
 * ./roles - shared NixOS configuration modules
 * ./secrets - git-crypt encrypted secrets

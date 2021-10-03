@@ -5,9 +5,8 @@ let
 in
 pkgs.mkShell {
   NIX_PATH = "nixpkgs=${toString pkgs.path}";
-
-  NIXOPS_DEPLOYMENT = "nix-community-infra";
-  NIXOPS_STATE = toString ./state/deployment-state.nixops;
+  # required for morph
+  SSH_USER = "root";
 
   sopsPGPKeyDirs = [
     "./keys"
@@ -16,9 +15,9 @@ pkgs.mkShell {
   buildInputs = with pkgs.nix-community-infra; [
     git-crypt
     niv
-    nixopsUnstable
     terraform
     sops
+    morph
 
     (pkgs.callPackage sources.sops-nix {}).sops-import-keys-hook
   ];
@@ -29,5 +28,6 @@ pkgs.mkShell {
 
   shellHooks = ''
     export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
+    export NIX_USER_CONF_FILES="$(pwd)/nix/nix.conf";
   '';
 }
