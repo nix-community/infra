@@ -2,4 +2,4 @@
 #! nix-shell ./shell.nix -i bash
 set -euo pipefail
 
-morph deploy ./deployment.nix "$@" switch
+inv deploy "$@"
