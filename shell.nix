@@ -18,6 +18,8 @@ pkgs.mkShell {
     terraform
     sops
     morph
+    invoke
+    rsync
 
     (pkgs.callPackage sources.sops-nix {}).sops-import-keys-hook
   ];
