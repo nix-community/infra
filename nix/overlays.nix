@@ -4,8 +4,9 @@ let
       git-crypt
       niv
       sops
-      morph
+      rsync
       sources;
+    inherit (pkgs.python3.pkgs) invoke;
 
     terraform = pkgs.terraform_1_0.withPlugins (
       p: [

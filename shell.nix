@@ -5,8 +5,6 @@ let
 in
 pkgs.mkShell {
   NIX_PATH = "nixpkgs=${toString pkgs.path}";
-  # required for morph
-  SSH_USER = "root";
 
   sopsPGPKeyDirs = [
     "./keys"
@@ -17,7 +15,8 @@ pkgs.mkShell {
     niv
     terraform
     sops
-    morph
+    invoke
+    rsync
 
     (pkgs.callPackage sources.sops-nix {}).sops-import-keys-hook
   ];
