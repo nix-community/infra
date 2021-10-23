@@ -3,7 +3,7 @@ keys:
   - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
   - &ryantm age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
   - &build01 age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
-  - &build02 age15wnv22clvrp4e744wpel7npta4namrru6gxmphq3kpm5zqxancxqtke630
+  - &build02 age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d
   - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
   - &build04 age1vr4suv4lhtt8f59s25eukdfk67j7av72gvj7sk7ux6thusct3utqmn3pmf
 # scan new hosts like this:
