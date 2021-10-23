@@ -1,3 +1,0 @@
-gitlab-runner-registration: |
-  CI_SERVER_URL=https://gitlab.com/
-  REGISTRATION_TOKEN=ynWzkuM4vNEZkxrUtJFs
