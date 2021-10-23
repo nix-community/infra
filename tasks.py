@@ -147,10 +147,8 @@ def reboot(c, hosts=""):
     """
     Reboot hosts. example usage: inv reboot --hosts build01,build02
     """
-    deploy_hosts = get_hosts(hosts)
-    for h in deploy_hosts:
-        g = DeployGroup([h])
-        g.run("reboot &")
+    for h in get_hosts(hosts):
+        h.run("reboot &")
 
         print(f"Wait for {h.host} to shutdown", end="")
         sys.stdout.flush()
