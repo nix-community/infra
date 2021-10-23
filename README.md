@@ -101,47 +101,31 @@ $ ./deploy --force-reboot --include build02
 ```
 
 ## Install/Fix system from Hetzner recovery mode
-1. Format and/or mount all filesystems to /mnt:
+1. Install kexec image from Hetzner recovery system as described in [kexec.nix](roles/kexec.nix) and boot into it
 
-``` console
-# format disk with as follow:
-# - partition 1 will be the boot partition, needed for legacy (BIOS) boot
-# - partition 2 is for boot partition
-# - partition 3 takes up the rest of the space and is for the system
-$ sgdisk -n 1:2048:4095 -n 2:4096:+2G -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme0n1
-$ sgdisk -n 1:2048:4095 -n 2:4096:+2G -N 3 -t 1:ef02 -t 2:8304 -t 3:8304 /dev/nvme1n1
-# create mdadm raid for /boot with ext4
-$ mdadm --create --verbose /dev/md127 --raid-devices=2 --level=1 /dev/nvme{0,1}n1p2
-$ mkfs.ext4 -F /dev/md127
-# format zpool
-# use partuuids as they are more stable than device names
-$ ls -la /dev/disk/by-partuuid/
-$ zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 mirror /dev/disk/by-partuuid/long-uuid1 /dev/disk/by-partuuid/long-uuid2
-$ zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 mirror /dev/nvme{0,1}n1p3
-$ zfs create -o mountpoint=none zroot/root
-$ zfs create -o mountpoint=legacy zroot/root/nixos
-$ zfs create -o mountpoint=legacy zroot/root/home
-
-# and finally mount
-$ mount -t zfs zroot/root/nixos /mnt
-$ mkdir /mnt/{home,boot}
-$ mount -t zfs zroot/root/home /mnt/home
-$ mount -t ext4 /dev/md127 /mnt/boot
-```
-
-2. Install kexec image from Hetzner recovery system as described in [kexec.nix](roles/kexec.nix) and boot into it
-3. Download infra repo
-``` console
-$ nix-shell -p git --run "git clone https://github.com/nix-community/infra && cd infra && nix-shell"
-# Just in case generate hardware-configuration.nix and compare it with what we have in the repos
-$ nixos-generate-config  --root /mnt
-$ diff -aur /mnt/etc/nixos/hardware-configuration.nix buildXX/hardware-configuration.nix
-```
-
-4. Build and install system
+2. Format and/or mount all filesystems to /mnt:
 
 ```console
-$ nixos-install --system $(nix-build -A buildXX-system)
+$ inv format-disks --hosts buildXX --disks /dev/nvme0n1,/dev/nvme1n1
+```
+
+3. Setup secrets
+
+```console
+$ inv setup-secret --hosts buildXX
+```
+
+4. Generate configuration and download to the repo
+
+```console
+$ nixos-generate-config  --root /tmp
+$ scp buildXX.nix-community.org:/tmp/etc/nixos/hardware-configuration.nix buildXX/hardware-configuration.nix
+```
+
+5. Build and install
+
+```console
+$ inv install-nixos --hosts buildXX
 ```
 
 ### Debug VM
