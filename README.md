@@ -97,7 +97,7 @@ If you want to reboot a machine, use the following
 command to also deploy secrets afterwards:
 
 ```console
-$ ./deploy --force-reboot --include build02
+$ inv deploy --hosts build02 reboot --hosts build02
 ```
 
 ## Install/Fix system from Hetzner recovery mode
