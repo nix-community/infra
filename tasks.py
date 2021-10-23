@@ -77,9 +77,10 @@ def _format_disks(host: DeployHost, devices: List[str]) -> None:
 @task
 def format_disks(c, hosts = "", disks = ""):
     """
-    Format disks with zfs
+    Format disks with zfs, i.e.: inv format-disks --hosts build02 --disks /dev/nvme0n1,/dev/nvme1n1
     """
-    _format_disks(get_hosts(hosts)[0], disks.split(","))
+    for h in get_hosts(hosts):
+        _format_disks(h, disks.split(","))
 
 
 @task
