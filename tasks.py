@@ -88,6 +88,7 @@ def setup_secret(c, hosts = ""):
     Setup SSH key and print age key for sops-nix
     """
     for h in get_hosts(hosts):
+        h.run("install -m600 -D /etc/ssh/ssh_host_rsa_key /mnt/etc/ssh/ssh_host_rsa_key")
         h.run("install -m600 -D /etc/ssh/ssh_host_ed25519_key /mnt/etc/ssh/ssh_host_ed25519_key")
         print(h.host)
         h.run("nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'")
