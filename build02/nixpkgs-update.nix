@@ -13,6 +13,7 @@ let
     gnugrep
     gnused
     curl
+    getent # used by hub
   ];
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
@@ -54,30 +55,6 @@ let
 
 in
 {
-  sops.secrets.github-r-ryantm-key = {
-    path = "/home/r-ryantm/.ssh/id_rsa";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
-  sops.secrets.github-r-ryantm-token = {
-    path = "/var/lib/nixpkgs-update/github_token.txt";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
-  sops.secrets.github-token-with-username = {
-    path = "/var/lib/nixpkgs-update/github_token_with_username.txt";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
-  sops.secrets.cachix-dhall = {
-    path = "/var/lib/nixpkgs-update/cachix/cachix.dhall";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
   users.groups.r-ryantm = { };
   users.users.r-ryantm = {
     useDefaultShell = true;
@@ -115,18 +92,55 @@ in
 
   systemd.services.nixpkgs-update-updatescript = mkNixpkgsUpdateService "updatescript" // {
     script = ''
+      ${nixpkgs-update-bin} delete-done --delete
       ${pkgs.nixUnstable}/bin/nix eval --raw -f ${./packages-with-update-script.nix} > /var/lib/nixpkgs-update/updatescript/packages-to-update.txt
       ${nixpkgs-update-bin} update-list --pr --outpaths --nixpkgs-review --attrpath
-      ${nixpkgs-update-bin} delete-done --delete
     '';
   };
 
+  programs.ssh.knownHosts.github-rsa = {
+    hostNames = [ "github.com" ];
+    publicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==";
+  };
+
+  programs.ssh.knownHosts.github-ed25519= {
+    hostNames = [ "github.com" ];
+    publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+  };
+
   systemd.tmpfiles.rules = [
+    "d /home/r-ryantm/.ssh 700 r-ryantm users - -"
     "e /var/cache/nixpkgs-update/repology/nixpkgs-review - - - 1d -"
     "e /var/cache/nixpkgs-update/github/nixpkgs-review - - - 1d -"
     "e /var/cache/nixpkgs-update/pypi/nixpkgs-review - - - 1d -"
     "e /var/cache/nixpkgs-update/updatescript/nixpkgs-review - - - 1d -"
-  ];
+    "L /var/lib/nixpkgs-update/repology/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L /var/lib/nixpkgs-update/github/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L /var/lib/nixpkgs-update/pypi/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L /var/lib/nixpkgs-update/updatescript/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"  ];
+  sops.secrets.github-r-ryantm-key = {
+    path = "/home/r-ryantm/.ssh/id_rsa";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.github-r-ryantm-token = {
+    path = "/var/lib/nixpkgs-update/github_token.txt";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.github-token-with-username = {
+    path = "/var/lib/nixpkgs-update/github_token_with_username.txt";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
+
+  sops.secrets.cachix-dhall = {
+    path = "/var/lib/nixpkgs-update/cachix/cachix.dhall";
+    owner = "r-ryantm";
+    group = "r-ryantm";
+  };
 
   services.nginx.virtualHosts."r.ryantm.com" = {
     forceSSL = true;
