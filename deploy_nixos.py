@@ -134,7 +134,7 @@ class DeployHost:
         print(f"[{self.command_prefix}] {cmd}")
         ssh_opts = ["-A"] if self.forward_agent else []
         cmd = (
-            ["ssh", "-4", f"{self.user}@{self.host}", "-p", str(self.port)]
+            ["ssh", f"{self.user}@{self.host}", "-p", str(self.port)]
             + ssh_opts
             + ["--", cmd]
         )
