@@ -109,7 +109,8 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /home/r-ryantm/.ssh 700 r-ryantm users - -"
+    "L /home/r-ryantm/.gitconfig - - - - ${./gitconfig.txt}"
+    "d /home/r-ryantm/.ssh 700 r-ryantm r-ryantm - -"
     "e /var/cache/nixpkgs-update/repology/nixpkgs-review - - - 1d -"
     "e /var/cache/nixpkgs-update/github/nixpkgs-review - - - 1d -"
     "e /var/cache/nixpkgs-update/pypi/nixpkgs-review - - - 1d -"
