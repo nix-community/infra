@@ -72,7 +72,8 @@ class DeployHost:
                     rlist.remove(print_fd)
                 print_buf += read.decode("utf-8")
                 if read == "" or "\n" in print_buf:
-                    for line in print_buf.split("\n"):
+                    lines = print_buf.rstrip("\n").split("\n")
+                    for line in lines:
                         print(f"[{self.command_prefix}] {line}")
                     print_buf = ""
 
