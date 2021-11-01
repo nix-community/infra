@@ -108,7 +108,7 @@ def nixos_install(c, hosts = ""):
 
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
-        return [DeployHost(f"build{n + 1}.nix-community.org") for n in range(4)]
+        return [DeployHost(f"build{n + 1:02d}.nix-community.org") for n in range(4)]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
 
