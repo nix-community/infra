@@ -92,13 +92,10 @@ in
       ];
     };
 
-    #services.nginx.virtualHosts = {
-    #  "hydra.nix-community.org" = {
-    #    forceSSL = true;
-    #    enableACME = true;
-    #    locations."/".proxyPass = "http://localhost:${toString (hydraPort)}";
-    #  };
-    #};
+    sops.secrets.nix-community-cachix = {
+      owner = "hydra-queue-runner";
+      sopsFile = ../../roles/nix-community-cache.yaml;
+    };
 
     services.hydra = {
       enable = true;
@@ -111,6 +108,14 @@ in
       usersFile = hydraUsersFile;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+
+        <runcommand>
+        command = ${pkgs.writeShellScript "cachix-upload" ''
+          export PATH=${config.nix.package}/bin
+          ${pkgs.jq}/bin/jq -r '.outputs | .[] | .path' < $HYDRA_JSON | \
+            ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community
+        ''}
+        </runcommand>
       '';
     };
 
