@@ -20,7 +20,8 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
         )
 
         config = f"/etc/nixos/{h.host.replace('.nix-community.org', '')}/configuration.nix"
-        h.run(f"nixos-rebuild switch -I nixos-config={config} -I nixpkgs=$(nix-instantiate --eval -E '(import /etc/nixos/nix {{}}).path')")
+        # FIXME: build03 has itself as a builder and deadlocks building packages.
+        h.run(f"nixos-rebuild switch --builders '' -I nixos-config={config} -I nixpkgs=$(nix-instantiate --eval -E '(import /etc/nixos/nix {{}}).path')")
     g.run_function(deploy)
 
 
