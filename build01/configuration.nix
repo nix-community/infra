@@ -36,7 +36,5 @@
 
   networking.nix-community.ipv6.address = "2a01:4f8:13b:2ceb::1";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   system.stateVersion = "20.03";
 }

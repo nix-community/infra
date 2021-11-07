@@ -37,7 +37,5 @@
   networking.hostName = "nix-community-build03";
   networking.hostId = "8daf74c0";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   system.stateVersion = "21.05";
 }
