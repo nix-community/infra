@@ -6,7 +6,7 @@ the NixOS and Terraform configuration for this organization.
 ## Support
 
 If you hit any issues, ping us on Matrix in the
-[nix-community](https://matrix.to/#/!PbtOpdWBSRFbEZRLIf:numtide.com?via=numtide.com&via=nixos.dev)
+[nix-community](https://matrix.to/#/#nix-community:nixos.org)
 room (see the admin list below) or create an issue here:
 [New Issue](https://github.com/nix-community/infra/issues/new).
 
