@@ -14,13 +14,14 @@
 
     ../roles/buildkite.nix
     ../roles/common.nix
+    ../roles/hercules-ci.nix
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
 
     ../services/hound
     ../services/hydra
-    ../services/matterbridge.nix
     ../services/marvin-mk2.nix
+    ../services/matterbridge.nix
   ];
 
   # /boot is a mirror raid
