@@ -13,6 +13,8 @@ pkgs.nix-community-infra // rec {
   build01-system = build01.system;
   build02 = importNixOS ./build02/configuration.nix "x86_64-linux";
   build02-system = build02.system;
-  build03 = importNixOS ./build02/configuration.nix "x86_64-linux";
+  build03 = importNixOS ./build03/configuration.nix "x86_64-linux";
   build03-system = build03.system;
+  build04 = importNixOS ./build04/configuration.nix "aarch64-linux";
+  build04-system = build04.system;
 }

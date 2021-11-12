@@ -2,4 +2,4 @@
 # Run this command to reproduce CI
 set -euo pipefail
 cd "$(dirname "$0")"
-nix-build --no-out-link
+nix-build --no-out-link ci.nix
