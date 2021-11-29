@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "acme",
+        "branch": "nixos-unstable-small",
         "description": "Nix Packages collection",
         "homepage": "https://github.com/NixOS/nixpkgs",
-        "owner": "Mic92",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "16eb003524804f7c6d6f522a238e8ab2557eedf9",
-        "sha256": "0ayhn5jxp7r00gncrnh1p60f9qjb6qynql0hyicmfblv66iqy2qy",
+        "rev": "089cfc889484931f8f124e449d9e15cc67ad1e33",
+        "sha256": "0p8ba43r1b8nwz2rnqc30gyswhcczp6grfdmjvasbhb7w2icwjc0",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/16eb003524804f7c6d6f522a238e8ab2557eedf9.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/089cfc889484931f8f124e449d9e15cc67ad1e33.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update": {
