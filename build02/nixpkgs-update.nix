@@ -138,6 +138,11 @@ in
     group = "r-ryantm";
   };
 
+  sops.secrets.nix-community-cachix = {
+    path = "/home/r-ryantm/cachix.dhall";
+    sopsFile = ../roles/nix-community-cache.yaml;
+  };
+
   services.nginx.virtualHosts."r.ryantm.com" = {
     forceSSL = true;
     enableACME = true;
