@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update": {
-        "branch": "master",
+        "branch": "main",
         "description": "Semi-automatically updating nixpkgs packages since 2018",
         "homepage": "",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "c78b63b4432444f33e62709382c9c89ae85e9305",
-        "sha256": "0l6va8szgxhx4ydpb2qji199f7vvvdip2zhsyky6vznhwy1i94v7",
+        "rev": "b5c749e7f96bc611daa7a6e91d59719d9d4fba14",
+        "sha256": "1iyb6z7bny9d5y4s1kpv0wjpfaq1gjyaf7gz8wh9wk2vz7p27wbp",
         "type": "tarball",
-        "url": "https://github.com/ryantm/nixpkgs-update/archive/c78b63b4432444f33e62709382c9c89ae85e9305.tar.gz",
+        "url": "https://github.com/ryantm/nixpkgs-update/archive/b5c749e7f96bc611daa7a6e91d59719d9d4fba14.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-update-github-releases": {
