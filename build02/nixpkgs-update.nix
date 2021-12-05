@@ -139,7 +139,7 @@ in
   };
 
   sops.secrets.nix-community-cachix = {
-    path = "/home/r-ryantm/cachix.dhall";
+    path = "/home/r-ryantm/.config/cachix/cachix.dhall";
     sopsFile = ../roles/nix-community-cache.yaml;
   };
 
