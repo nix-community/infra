@@ -138,12 +138,6 @@ in
     group = "r-ryantm";
   };
 
-  sops.secrets.cachix-dhall = {
-    path = "/var/lib/nixpkgs-update/cachix/cachix.dhall";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
   services.nginx.virtualHosts."r.ryantm.com" = {
     forceSSL = true;
     enableACME = true;
