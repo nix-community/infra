@@ -14,6 +14,7 @@ let
     gnused
     curl
     getent # used by hub
+    cachix
   ];
 
   nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
