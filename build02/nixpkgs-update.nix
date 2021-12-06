@@ -99,6 +99,15 @@ in
     '';
   };
 
+  systemd.services.nixpkgs-update-test-cachix = mkNixpkgsUpdateService "test-cachix" // {
+    script = ''
+      echo $HOME
+      ls -la $HOME/.config/cachix
+      cachix push nix-community /nix/store/24j9hfzwddscpzz3027hcd1rzm0ar1v9-xh-0.14.1
+    '';
+  };
+
+
   programs.ssh.knownHosts.github-rsa = {
     hostNames = [ "github.com" ];
     publicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==";
@@ -119,7 +128,13 @@ in
     "L /var/lib/nixpkgs-update/repology/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "L /var/lib/nixpkgs-update/github/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "L /var/lib/nixpkgs-update/pypi/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
-    "L /var/lib/nixpkgs-update/updatescript/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"  ];
+    "L /var/lib/nixpkgs-update/updatescript/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+
+    "L /var/lib/nixpkgs-update/repology/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
+    "L /var/lib/nixpkgs-update/github/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
+    "L /var/lib/nixpkgs-update/pypi/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
+    "L /var/lib/nixpkgs-update/updatescript/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}" ];
+
   sops.secrets.github-r-ryantm-key = {
     path = "/home/r-ryantm/.ssh/id_rsa";
     owner = "r-ryantm";
@@ -141,6 +156,8 @@ in
   sops.secrets.nix-community-cachix = {
     path = "/home/r-ryantm/.config/cachix/cachix.dhall";
     sopsFile = ../roles/nix-community-cache.yaml;
+    owner = "r-ryantm";
+    group = "r-ryantm";
   };
 
   services.nginx.virtualHosts."r.ryantm.com" = {
