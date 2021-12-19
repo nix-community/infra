@@ -8,7 +8,7 @@ let
       sources;
     inherit (pkgs.python3.pkgs) invoke;
 
-    terraform = pkgs.terraform_1_0.withPlugins (
+    terraform = pkgs.terraform.withPlugins (
       p: [
         p.cloudflare
         p.null
