@@ -41,7 +41,7 @@ creation_rules:
       - *build04
       pgp:
       - *zimbatm
-  - path_regex: roles/[^/]+\.yaml$
+  - path_regex: roles/.+\.yaml$
     key_groups:
     - age:
       - *mic92

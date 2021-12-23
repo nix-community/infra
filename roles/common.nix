@@ -3,6 +3,7 @@
 {
 
   imports = [
+    ./cachix-deploy
     ./nix-daemon.nix
     ./security.nix
     ./sshd.nix
