@@ -11,6 +11,18 @@
         "url": "https://github.com/cachix/cachix/archive/f5cd1b44c2b3dffd6cc31c56a35c55a8775acf75.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "hercules-ci-effects": {
+        "branch": "add-cachix-deploy",
+        "description": "Expressions to change the world",
+        "homepage": null,
+        "owner": "hercules-ci",
+        "repo": "hercules-ci-effects",
+        "rev": "bc2dcf227736b0538c9d9e438f907f9f73bfcd90",
+        "sha256": "03dj0vih121sc3b6744k0g1069dhfcramwp117rayknl9y88d7nj",
+        "type": "tarball",
+        "url": "https://github.com/hercules-ci/hercules-ci-effects/archive/bc2dcf227736b0538c9d9e438f907f9f73bfcd90.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "marvin-mk2": {
         "branch": "master",
         "description": "Helpful nixpkgs PR bot with an improved Genuine People Personality",
