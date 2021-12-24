@@ -3,7 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../roles/common.nix
-    ../roles/hercules-ci.nix
+    ../roles/hercules-ci
   ];
 
   nixpkgs.system = "aarch64-linux";

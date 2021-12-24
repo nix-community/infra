@@ -14,7 +14,7 @@
 
     ../roles/buildkite.nix
     ../roles/common.nix
-    ../roles/hercules-ci.nix
+    ../roles/hercules-ci
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
 

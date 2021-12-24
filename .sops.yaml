@@ -41,6 +41,15 @@ creation_rules:
       - *build04
       pgp:
       - *zimbatm
+  - path_regex: roles/hercules-ci/.+\.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *ryantm
+      - *build03
+      - *build04
+      pgp:
+      - *zimbatm
   - path_regex: roles/.+\.yaml$
     key_groups:
     - age:
