@@ -1,13 +1,11 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   sops.secrets.cachix-agent-token.sopsFile = ./secrets.yaml;
 
-  systemd.services.cachix-deploy-agent = let
-    sources = import ../../nix/sources.nix {};
-  in {
+  systemd.services.cachix-deploy-agent = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       EnvironmentFile = config.sops.secrets.cachix-agent-token.path;
-      ExecStart = "${import sources.cachix {}}/bin/cachix deploy agent ${config.networking.hostName}";
+      ExecStart = "${pkgs.cachix}/bin/cachix deploy agent ${config.networking.hostName}";
     };
   };
 }
