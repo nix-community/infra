@@ -17,6 +17,7 @@
     ../roles/hercules-ci
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
+    ../roles/raid.nix
 
     ../services/hound
     ../services/hydra
@@ -28,10 +29,6 @@
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.extraConfig = ''
-    # for mdraid 1.1
-    insmod mdraid1x
-  '';
 
   networking.nix-community.ipv6.address = "2a01:4f9:3a:3b16::1";
 

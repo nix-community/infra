@@ -42,7 +42,6 @@ in
             exec /run/wrappers/bin/sudo ${pkgs.smartmontools}/bin/smartctl "$@"
           '';
         };
-        mdstat = {};
         system = { };
         mem = { };
         file = [ {

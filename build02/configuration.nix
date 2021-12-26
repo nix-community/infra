@@ -9,16 +9,13 @@
     ../roles/common.nix
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
+    ../roles/raid.nix
   ];
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.extraConfig = ''
-    # for mdraid 1.1
-    insmod mdraid1x
-  '';
 
   networking.hostName = "nix-community-build02";
   networking.hostId = "af9ccc71";
