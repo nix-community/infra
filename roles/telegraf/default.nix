@@ -3,6 +3,7 @@ let
   isVM = lib.any (mod: mod == "xen-blkfront" || mod == "virtio_console") config.boot.initrd.kernelModules;
 in
 {
+  networking.firewall.allowedTCPPorts = [ 9273 ];
   systemd.services.telegraf.path = [ pkgs.nvme-cli ];
 
   services.telegraf = {
