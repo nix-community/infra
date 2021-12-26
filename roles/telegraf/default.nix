@@ -1,5 +1,5 @@
 # inputs == flake inputs in configurations.nix
-{ pkgs, lib, config, inputs ? null, ... }:
+{ pkgs, lib, config, ... } @ args:
 let
   isVM = lib.any (mod: mod == "xen-blkfront" || mod == "virtio_console") config.boot.initrd.kernelModules;
 in
@@ -7,12 +7,12 @@ in
   systemd.services.telegraf.path = [ pkgs.nvme-cli ];
 
   environment.etc = let
-    inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) inputs;
+    inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) args.inputs;
     flakeAttrs = input: (lib.mapAttrsToList (n: v: ''${n}="${v}"'')
       (lib.filterAttrs (n: v: (builtins.typeOf v) == "string") input));
     lastModified = name: input: ''
       flake_input_last_modified{input="${name}",${lib.concatStringsSep "," (flakeAttrs input)}} ${toString input.lastModified}'';
-  in lib.optionalAttrs (inputs != null) {
+  in lib.optionalAttrs (args ? inputs) {
     "flake-inputs.prom" = {
       mode = "0555";
       text = ''
