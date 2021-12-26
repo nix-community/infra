@@ -8,6 +8,7 @@
 
     ../roles/common.nix
     ../roles/hetzner-network.nix
+    ../roles/hercules-ci
     ../roles/nginx.nix
     ../roles/raid.nix
   ];
