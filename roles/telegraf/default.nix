@@ -27,16 +27,10 @@ in {
             files = [ "/sys/fs/ext4/*/errors_count" ];
             data_format = "value";
           };
+          mdstat = {};
           exec =  {
             ## Commands array
-            commands = [
-              (pkgs.runCommandNoCC "mdraid-health" {
-                buildInputs = [ pkgs.bash ];
-              } ''
-                install -m755 ${./mdraid-health.sh} $out
-                patchShebangs $out
-              '')
-            ] ++ lib.optional (lib.any (fs: fs == "zfs") config.boot.supportedFilesystems) (pkgs.writeScript "zpool-health" ''
+            commands = lib.optional (lib.any (fs: fs == "zfs") config.boot.supportedFilesystems) (pkgs.writeScript "zpool-health" ''
               #!${pkgs.gawk}/bin/awk -f
               BEGIN {
                   while ("${pkgs.zfs}/bin/zpool status" | getline) {
