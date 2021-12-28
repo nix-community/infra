@@ -15,12 +15,12 @@
         "branch": "master",
         "description": "https://hercules-ci.com build and deployment agent",
         "homepage": "",
-        "owner": "Mic92",
+        "owner": "hercules-ci",
         "repo": "hercules-ci-agent",
-        "rev": "4259e36c205b2d5c8c96ef76ed50c6f346587ef3",
-        "sha256": "0m1hig6ahk4csf4nbnjfjhnr43xmfd65cldfnyp45as57bn2s168",
+        "rev": "b64596e17047774c9a5b081d733e319ecb4a6f02",
+        "sha256": "1mq5szn8v3253kc9b1vdl42jiihlywncm75hvpwzzp772p5d1b82",
         "type": "tarball",
-        "url": "https://github.com/Mic92/hercules-ci-agent/archive/4259e36c205b2d5c8c96ef76ed50c6f346587ef3.tar.gz",
+        "url": "https://github.com/hercules-ci/hercules-ci-agent/archive/b64596e17047774c9a5b081d733e319ecb4a6f02.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "hercules-ci-effects": {
