@@ -8,6 +8,7 @@
     path = [ config.nix.package ];
     restartIfChanged = false;
     serviceConfig = {
+      Restart = "on-failure";
       EnvironmentFile = config.sops.secrets.cachix-agent-token.path;
       ExecStart = "${import sources.cachix {}}/bin/cachix deploy agent ${config.networking.hostName}";
     };
