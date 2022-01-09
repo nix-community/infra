@@ -1,5 +1,5 @@
+{ pkgs, ... }:
 let
-  pkgs = import <nixpkgs> {};
   inherit (pkgs) lib;
 
   users = {
