@@ -44,4 +44,7 @@
 
   # The nix-community is global :)
   time.timeZone = "UTC";
+
+  # speed-up evaluation & save disk space by disabling manpages
+  documentation.enable = false;
 }
