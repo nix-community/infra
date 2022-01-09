@@ -26,7 +26,7 @@
   # Entropy gathering daemon
   services.haveged.enable = true;
 
-  security.acme.email = "trash@nix-community.org";
+  security.acme.defaults.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
 
   # Without configuration this unit will fail...
