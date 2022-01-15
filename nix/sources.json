@@ -5,10 +5,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "f5cd1b44c2b3dffd6cc31c56a35c55a8775acf75",
-        "sha256": "0ngjc40a6a17z1lhka78w4nqaqsnm2mgimz0s3666ykd072qcbif",
+        "rev": "ec5904b25b74dd1b1cf7db0874f85a9169b388aa",
+        "sha256": "0s51i7mpz8sk63xs31lkzscca0j81rhzikrk61cnrlqa7dhy8nmw",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/f5cd1b44c2b3dffd6cc31c56a35c55a8775acf75.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/ec5904b25b74dd1b1cf7db0874f85a9169b388aa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "hercules-ci-agent": {
