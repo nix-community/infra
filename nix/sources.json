@@ -29,10 +29,10 @@
         "homepage": null,
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "d0a6dfdd20e3e11ae6bf94447cc24c2703b35dcc",
-        "sha256": "15cbf2fbrz9h70577hqikici4gksfwsqlq64y2zjzg4ydcs10rgk",
+        "rev": "2e165352d92782e7ae149f4f1a9b3174f718a3af",
+        "sha256": "1asnbjvx90q3xpak2dcblaf1nm369saf0fw1kdmc3bp46fs7m8ny",
         "type": "tarball",
-        "url": "https://github.com/hercules-ci/hercules-ci-effects/archive/d0a6dfdd20e3e11ae6bf94447cc24c2703b35dcc.tar.gz",
+        "url": "https://github.com/hercules-ci/hercules-ci-effects/archive/2e165352d92782e7ae149f4f1a9b3174f718a3af.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "marvin-mk2": {
