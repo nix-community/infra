@@ -11,11 +11,10 @@
 # nixos-enter
 {
   imports = [
-    ./hardware-configuration.nix
-
     ../roles/dev-packages.nix
     ../roles/clone-nixpkgs.nix
     ../roles/common.nix
+    ../roles/hardware/hetzner-amd.nix
     ../roles/hetzner-network.nix
     ../roles/raid.nix
     ../roles/builder

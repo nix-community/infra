@@ -119,6 +119,7 @@ $ inv setup-secret --hosts buildXX
 
 ```console
 $ nixos-generate-config  --root /tmp
+# optional, in most cases one can roles/hardware/hetzner-amd.nix
 $ scp buildXX.nix-community.org:/tmp/etc/nixos/hardware-configuration.nix buildXX/hardware-configuration.nix
 ```
 

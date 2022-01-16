@@ -2,11 +2,9 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-
     ./nixpkgs-update.nix
-
     ../roles/common.nix
+    ../roles/hardware/hetzner-amd.nix
     ../roles/hetzner-network.nix
     ../roles/hercules-ci
     ../roles/nginx.nix
