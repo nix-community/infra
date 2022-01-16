@@ -8,11 +8,8 @@ let
     #
     # 2. Copy / paste this in order, alphabetically:
     #
-    #    youruser = {
-    #      trusted = true;
-    #      keys = ./keys/youruser;
-    #    };
-
+    #    youruser.keys = ./keys/youruser;
+    #
     "0x4A6F" = {
       trusted = true;
       keys = ./keys/0x4A6F;
@@ -22,6 +19,8 @@ let
       trusted = true;
       keys = ./keys/jtojnar;
     };
+
+    winter.keys = ./keys/winter;
   };
 
   ifAttr = key: default: result: opts:
