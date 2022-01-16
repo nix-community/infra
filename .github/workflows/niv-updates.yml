@@ -13,6 +13,6 @@ jobs:
       # notice there is no checkout step
       - name: niv-updater-action
         # no verbose github changelogs: https://github.com/Mic92/niv-updater-action/commit/4b8173ac494e17446890e8b86d14e823b423e878
-        uses: knl/niv-updater-action
+        uses: knl/niv-updater-action@v10
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
