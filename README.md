@@ -3,6 +3,14 @@
 Welcome to the Nix Community infrastructure project. This project holds all
 the NixOS and Terraform configuration for this organization.
 
+## Community builder
+
+We also provide one x86 hetzner build machine as a public remote builder for the
+nix community. If you want access read the security guide lines on
+[aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than
+add your username to `roles/builder/users.nix`. Don't keep any important data
+in your home! We will regularly delete `/home` without further notice.
+
 ## Support
 
 If you hit any issues, ping us on Matrix in the
