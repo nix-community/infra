@@ -13,7 +13,7 @@
     "/etc/ssh/authorized_keys.d/%u"
   ];
 
-  services.openssh.challengeResponseAuthentication = false;
+  services.openssh.kbdInteractiveAuthentication = false;
   services.openssh.passwordAuthentication = false;
 
   # Ban brute force SSH
