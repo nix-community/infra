@@ -11,18 +11,6 @@
         "url": "https://github.com/cachix/cachix/archive/ec5904b25b74dd1b1cf7db0874f85a9169b388aa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "hercules-ci-agent": {
-        "branch": "master",
-        "description": "https://hercules-ci.com build and deployment agent",
-        "homepage": "",
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-agent",
-        "rev": "0aa916f487be7da03bc2a6dec2ac7149b05499c5",
-        "sha256": "0hkfz6pwyajy61phxbiqfy9b81xdsbxd8md406gpar0aazxwhyqi",
-        "type": "tarball",
-        "url": "https://github.com/hercules-ci/hercules-ci-agent/archive/0aa916f487be7da03bc2a6dec2ac7149b05499c5.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "hercules-ci-effects": {
         "branch": "master",
         "description": "Expressions to change the world",

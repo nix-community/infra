@@ -6,7 +6,6 @@ let
     sopsFile = ./secrets.yaml;
   };
   secrets = config.sops.secrets;
-  hercules = import (import ../../nix/sources.nix {}).hercules-ci-agent;
 in
 {
   sops.secrets."binary-caches.json" = herculesSecret;
@@ -15,7 +14,6 @@ in
 
   services.hercules-ci-agent = {
     enable = true;
-    package = hercules.packages.${pkgs.system}.hercules-ci-agent-nix_2_4;
     settings = {
       binaryCachesPath = secrets."binary-caches.json".path;
       secretsJsonPath = secrets."hercules-secrets".path;
