@@ -13,11 +13,8 @@ in
     useDefaultShell = true;
     isNormalUser = true;
     extraGroups = [
-      "wheel"
+      "wheel" "trusted"
     ];
     uid = userLib.mkUid "zimb";
   };
-
-  nix.trustedUsers = [ "zimbatm" ];
-
 }

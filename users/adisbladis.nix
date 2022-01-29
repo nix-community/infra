@@ -12,11 +12,8 @@ in
     useDefaultShell = true;
     isNormalUser = true;
     extraGroups = [
-      "wheel"
+      "wheel" "trusted"
     ];
     uid = userLib.mkUid "adis";
   };
-
-  nix.trustedUsers = [ "adisbladis" ];
-
 }

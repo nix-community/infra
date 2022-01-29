@@ -48,8 +48,6 @@ let
     };
 in {
   users = {
-    groups.trusted = {};
-
     mutableUsers = false;
     users = lib.mapAttrs descToUser users;
   };

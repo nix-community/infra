@@ -5,35 +5,36 @@ let
 in
 {
   nix = {
-    binaryCachePublicKeys = [
+    settings.trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
 
-    binaryCaches = [
+    settings.substituters = [
       "https://nix-community.cachix.org"
     ];
+
+    # Hard-link duplicated files
+    settings.auto-optimise-store = true;
+
+    # auto-free the /nix/store
+    settings.min-free = asGB 10;
+    settings.max-free = asGB 200;
+
+    # avoid copying unecessary stuff over SSH
+    settings.builders-use-substitutes = true;
+
+    # allow flakes
+    settings.experimental-features = "nix-command flakes";
+
+    # users in trusted group are trusted by the nix-daemon
+    settings.trusted-users = [ "@trusted" ];
 
     # useful for ad-hoc nix-shell's for debugging
     nixPath = [ "nixpkgs=${pkgs.path}" ];
 
-    extraOptions = ''
-      # auto-free the /nix/store
-      min-free = ${asGB 10}
-      max-free = ${asGB 200}
-
-      # avoid copying unecessary stuff over SSH
-      builders-use-substitutes = true
-
-      # allow flakes
-      experimental-features = nix-command flakes
-    '';
-    # Hard-link duplicated files
-    autoOptimiseStore = true;
-
-    # Add support for flakes
-    package = pkgs.nixUnstable;
-
     gc.automatic = true;
     gc.options = "--delete-older-than 30d";
   };
+
+  users.groups.trusted = {};
 }

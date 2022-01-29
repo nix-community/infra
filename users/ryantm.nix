@@ -12,13 +12,8 @@ in
     useDefaultShell = true;
     isNormalUser = true;
     extraGroups = [
-      "wheel"
+      "wheel" "trusted"
     ];
     uid = userLib.mkUid "rytm";
   };
-
-  nix.trustedUsers = [
-    "ryantm"
-  ];
-
 }
