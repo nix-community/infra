@@ -11,7 +11,9 @@
       Restart = "on-failure";
       Environment = "USER=root";
       EnvironmentFile = config.sops.secrets.cachix-agent-token.path;
-      ExecStart = "${import sources.cachix {}}/bin/cachix deploy agent ${config.networking.hostName}";
+      ExecStart = "${import sources.cachix {
+        inherit (pkgs) system;
+      }}/bin/cachix deploy agent ${config.networking.hostName}";
     };
   };
 }
