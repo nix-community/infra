@@ -1,9 +1,7 @@
 { config, pkgs, ... }: {
   sops.secrets.cachix-agent-token.sopsFile = ./secrets.yaml;
 
-  systemd.services.cachix-deploy-agent = let
-    sources = import ../../nix/sources.nix {};
-  in {
+  systemd.services.cachix-deploy-agent = {
     wantedBy = [ "multi-user.target" ];
     path = [ config.nix.package ];
     restartIfChanged = false;
@@ -11,9 +9,7 @@
       Restart = "on-failure";
       Environment = "USER=root";
       EnvironmentFile = config.sops.secrets.cachix-agent-token.path;
-      ExecStart = "${import sources.cachix {
-        inherit (pkgs) system;
-      }}/bin/cachix deploy agent ${config.networking.hostName}";
+      ExecStart = "${pkgs.cachix}/bin/cachix deploy agent ${config.networking.hostName}";
     };
   };
 }

@@ -1,16 +1,4 @@
 {
-    "cachix": {
-        "branch": "master",
-        "description": "Command line client for Nix binary cache hosting:",
-        "homepage": "https://cachix.org",
-        "owner": "cachix",
-        "repo": "cachix",
-        "rev": "ec5904b25b74dd1b1cf7db0874f85a9169b388aa",
-        "sha256": "0s51i7mpz8sk63xs31lkzscca0j81rhzikrk61cnrlqa7dhy8nmw",
-        "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/ec5904b25b74dd1b1cf7db0874f85a9169b388aa.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "hercules-ci-effects": {
         "branch": "master",
         "description": "Expressions to change the world",
