@@ -36,5 +36,11 @@ in
     gc.options = "--delete-older-than 30d";
   };
 
+  # Sometimes it fails if a store path is still in use.
+  # This should fix intermediate issues.
+  systemd.services.nix-gc.serviceConfig = {
+    Restart = "on-failure";
+  };
+
   users.groups.trusted = {};
 }
