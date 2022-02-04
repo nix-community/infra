@@ -8,6 +8,8 @@ from deploy_nixos import DeployHost, DeployGroup
 import subprocess
 import json
 
+RSYNC_EXCLUDES = [".terraform", ".direnv", ".mypy-cache", ".git"]
+
 
 def deploy_nixos(hosts: List[DeployHost]) -> None:
     """
@@ -17,7 +19,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
 
     def deploy(h: DeployHost) -> None:
         h.run_local(
-            f"rsync --exclude='.git/' -vaF --delete -e ssh . {h.user}@{h.host}:/etc/nixos",
+            f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {h.user}@{h.host}:/etc/nixos"
         )
 
         config = (
