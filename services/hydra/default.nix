@@ -129,6 +129,8 @@ in
 
     nix = {
       distributedBuilds = true;
+      # needed to fix https://github.com/NixOS/nix/issues/5980
+      package = pkgs.nixUnstable;
       extraOptions = ''
         allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
       '';
