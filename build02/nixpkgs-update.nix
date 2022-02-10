@@ -69,7 +69,9 @@ in
       ${nixpkgs-update-bin} delete-done --delete
       ${nixpkgs-update-bin} fetch-repology > /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt
       # reverse list
-      sed '1!G;h;$!d' /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt > /var/lib/nixpkgs-update/repology/packages-to-update.txt
+      # sed '1!G;h;$!d' /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt > /var/lib/nixpkgs-update/repology/packages-to-update.txt
+      # skip reversing for now
+      cp /var/lib/nixpkgs-update/repology/packages-to-update-regular.txt /var/lib/nixpkgs-update/repology/packages-to-update.txt
       ${nixpkgs-update-command}
     '';
   };
