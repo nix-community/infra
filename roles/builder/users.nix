@@ -15,6 +15,8 @@ let
       keys = ./keys/0x4A6F;
     };
 
+    ckie.keys = ./keys/ckie;
+
     jtojnar = {
       trusted = true;
       keys = ./keys/jtojnar;
