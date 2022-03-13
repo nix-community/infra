@@ -89,10 +89,10 @@
         "homepage": "",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "afb0d686dced029ea720c466f693c12ebfd4107b",
-        "sha256": "0gs4khjgnazsl5m7jmly3jdl5safzlh4yszsidbgml37nvvxmv9y",
+        "rev": "4e21493d34f7485a568e05b9cbefa11fe047ecd3",
+        "sha256": "0ddqnlv3i7kcnrl6ysz2zi6djbzfpai351dldmwggn8l7a09dvkb",
         "type": "tarball",
-        "url": "https://github.com/Mic92/sops-nix/archive/afb0d686dced029ea720c466f693c12ebfd4107b.tar.gz",
+        "url": "https://github.com/Mic92/sops-nix/archive/4e21493d34f7485a568e05b9cbefa11fe047ecd3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
