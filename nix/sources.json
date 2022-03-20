@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "a77a7ea5515fc0e4deefb3e6b77a8a142761c204",
-        "sha256": "00zsgszksn6d98agykfnpk80dsw0dra24lrhnrkh1xrxzfq5vnqz",
+        "rev": "d17e41cfb454d07f5d8d3b667bf45b079d868541",
+        "sha256": "0dwqlmgrgy3pa0kws1jd92bknlwyk7hfrhiwg5c870zw06h7z1b6",
         "type": "tarball",
-        "url": "https://github.com/hercules-ci/hercules-ci-effects/archive/a77a7ea5515fc0e4deefb3e6b77a8a142761c204.tar.gz",
+        "url": "https://github.com/hercules-ci/hercules-ci-effects/archive/d17e41cfb454d07f5d8d3b667bf45b079d868541.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "marvin-mk2": {
