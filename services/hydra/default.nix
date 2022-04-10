@@ -1,3 +1,4 @@
+{ hydra }:
 { lib, pkgs, config, ... }:
 
 with lib;
@@ -92,14 +93,7 @@ in
       ];
     };
 
-    services.hydra.package = pkgs.hydra-unstable.overrideAttrs (old: {
-      patches = old.patches ++ [
-        (pkgs.fetchpatch {
-          url = "https://github.com/NixOS/hydra/commit/089da272c76a8e562239b64cb71fb5b43716efa5.patch";
-          sha256 = "sha256-yRa/Qvyr6Ed7qdaly+DCanWbBYN8JoJhUd5JJkKwpas=";
-        })
-      ];
-    });
+    services.hydra.package = hydra.defaultPackage.${pkgs.system};
 
     sops.secrets.nix-community-cachix = {
       owner = "hydra-queue-runner";

@@ -13,6 +13,7 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     marvin-mk2.url = "github:timokau/marvin-mk2";
     marvin-mk2.flake = false;
+    hydra.url = "github:NixOS/hydra";
   };
 
   outputs = { self
@@ -23,6 +24,7 @@
             , sops-nix
             , hercules-ci-effects
             , marvin-mk2
+            , hydra
             }: {
     devShell.x86_64-linux = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -58,6 +60,9 @@
         modules = common ++ [
           (import ./services/marvin-mk2.nix {
             inherit marvin-mk2;
+          })
+          (import ./services/hydra {
+            inherit hydra;
           })
 
           ./build03/configuration.nix

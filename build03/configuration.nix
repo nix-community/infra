@@ -19,7 +19,6 @@
     ../roles/raid.nix
 
     ../services/hound
-    ../services/hydra
     ../services/matterbridge.nix
   ];
 
