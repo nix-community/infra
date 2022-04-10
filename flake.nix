@@ -2,7 +2,9 @@
   description = "NixOS configuration of our builders";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # https://github.com/NixOS/nixpkgs/pull/168186
+    nixpkgs.url = "github:Mic92/nixpkgs/gidgethub";
     #nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update.url = "github:Mic92/nixpkgs-update/build-fixes";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
