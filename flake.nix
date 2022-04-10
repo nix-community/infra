@@ -39,14 +39,14 @@
         sops-nix.nixosModules.sops
       ];
     in {
-      build01 = nixpkgs.lib.nixosSystem {
+      nix-community-build01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           ./build01/configuration.nix
         ];
       };
 
-      build02 = nixpkgs.lib.nixosSystem {
+      nix-community-build02 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           (import ./build02/nixpkgs-update.nix {
@@ -58,7 +58,7 @@
         ];
       };
 
-      build03 = nixpkgs.lib.nixosSystem {
+      nix-community-build03 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           (import ./services/marvin-mk2.nix {
@@ -72,7 +72,7 @@
         ];
       };
 
-      build04 = nixpkgs.lib.nixosSystem {
+      nix-community-build04 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = common ++ [
           ./build04/configuration.nix
