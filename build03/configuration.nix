@@ -20,7 +20,6 @@
 
     ../services/hound
     ../services/hydra
-    ../services/marvin-mk2.nix
     ../services/matterbridge.nix
   ];
 

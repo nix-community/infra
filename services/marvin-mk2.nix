@@ -1,16 +1,14 @@
+{ marvin-mk2 }:
 { pkgs, lib, config, ... }:
 let
   userLib = import ../users/lib.nix { inherit lib; };
-  sources = import ../nix/sources.nix;
 
-  marvinNixpkgs = (import (sources.marvin-mk2.outPath + "/definitions.nix") { }).pkgs;
-
-  marvin-mk2 = marvinNixpkgs.python3.pkgs.buildPythonApplication rec {
+  marvin-mk2' = pkgs.python3.pkgs.buildPythonApplication rec {
     pname = "marvin-mk2";
     version = "rolling";
-    src = sources.marvin-mk2;
+    src = marvin-mk2;
 
-    propagatedBuildInputs = with marvinNixpkgs.python3.pkgs; [
+    propagatedBuildInputs = with pkgs.python3.pkgs; [
       aiohttp
       gidgethub
     ];
@@ -52,7 +50,7 @@ in
     description = "marvin-mk2 service";
     enable = true;
     path = [
-      marvin-mk2
+      marvin-mk2'
     ];
     environment.BOT_NAME = "marvin-mk2";
     environment.PORT = "3001";

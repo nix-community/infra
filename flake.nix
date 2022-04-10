@@ -29,31 +29,44 @@
     in pkgs.callPackage ./shell.nix {
       inherit (sops-nix.packages.x86_64-linux) sops-import-keys-hook;
     };
-    nixosConfigurations = {
+    nixosConfigurations = let
+      common = [
+        sops-nix.nixosModules.sops
+      ];
+    in {
       build01 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = common ++ [
           ./build01/configuration.nix
         ];
       };
 
       build02 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = common ++ [
+          (import ./build02/nixpkgs-update.nix {
+            inherit nixpkgs-update
+              nixpkgs-update-github-releases
+              nixpkgs-update-pypi-releases;
+          })
           ./build02/configuration.nix
         ];
       };
 
       build03 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = common ++ [
+          (import ./services/marvin-mk2.nix {
+            inherit marvin-mk2;
+          })
+
           ./build03/configuration.nix
         ];
       };
 
       build04 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
-        modules = [
+        modules = common ++ [
           ./build04/configuration.nix
         ];
       };
