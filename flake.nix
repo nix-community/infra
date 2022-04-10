@@ -16,6 +16,7 @@
     marvin-mk2.url = "github:timokau/marvin-mk2";
     marvin-mk2.flake = false;
     hydra.url = "github:NixOS/hydra";
+    hydra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self

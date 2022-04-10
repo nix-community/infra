@@ -39,8 +39,6 @@
         "newNixpkgs": "newNixpkgs",
         "nix": "nix",
         "nixpkgs": [
-          "hydra",
-          "nix",
           "nixpkgs"
         ]
       },
