@@ -1,3 +1,4 @@
+{ hydra }:
 { lib, pkgs, config, ... }:
 
 with lib;
@@ -92,6 +93,8 @@ in
       ];
     };
 
+    services.hydra.package = hydra.defaultPackage.${pkgs.system};
+
     sops.secrets.nix-community-cachix = {
       owner = "hydra-queue-runner";
       sopsFile = ../../roles/nix-community-cache.yaml;
@@ -164,7 +167,7 @@ in
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [ hydra-unstable netcat ];
+      path = with pkgs; [ config.services.hydra.package netcat ];
       script = ''
         set -e
         while IFS=';' read -r user role passwordhash email fullname; do

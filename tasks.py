@@ -22,12 +22,9 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
             f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {h.user}@{h.host}:/etc/nixos"
         )
 
-        config = (
-            f"/etc/nixos/{h.host.replace('.nix-community.org', '')}/configuration.nix"
-        )
         # FIXME: build03 has itself as a builder and deadlocks building packages.
         h.run(
-            f"nixos-rebuild switch --builders '' -I nixos-config={config} -I nixpkgs=$(nix-instantiate --eval -E '(import /etc/nixos/nix {{}}).path')"
+            f"nixos-rebuild switch --builders ''"
         )
 
     g.run_function(deploy)

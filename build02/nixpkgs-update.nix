@@ -1,11 +1,12 @@
+{ nixpkgs-update
+, nixpkgs-update-github-releases
+, nixpkgs-update-pypi-releases
+}:
 { pkgs, lib, config, ... }:
 let
   userLib = import ../users/lib.nix { inherit lib; };
 
-  sources = import ../nix/sources.nix;
-  nixpkgs-update = import sources.nixpkgs-update { };
-
-  nixpkgs-update-bin = "${nixpkgs-update}/bin/nixpkgs-update";
+  nixpkgs-update-bin = "${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update";
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix # for nix-shell used by python packges to update fetchers
@@ -17,8 +18,8 @@ let
     cachix
   ];
 
-  nixpkgs-update-github-releases = "${sources.nixpkgs-update-github-releases}/main.py";
-  nixpkgs-update-pypi-releases = "${sources.nixpkgs-update-pypi-releases}/main.py";
+  nixpkgs-update-github-releases' = "${nixpkgs-update-github-releases}/main.py";
+  nixpkgs-update-pypi-releases' = "${nixpkgs-update-pypi-releases}/main.py";
 
   mkNixpkgsUpdateService = name: {
     description = "nixpkgs-update ${name} service";
@@ -79,7 +80,7 @@ in
   systemd.services.nixpkgs-update-github = mkNixpkgsUpdateService "github" // {
     script = ''
       ${nixpkgs-update-bin} delete-done --delete
-      ${nixpkgs-update-github-releases} > /var/lib/nixpkgs-update/github/packages-to-update.txt
+      ${nixpkgs-update-github-releases'} > /var/lib/nixpkgs-update/github/packages-to-update.txt
       ${nixpkgs-update-command}
     '';
   };
@@ -88,7 +89,7 @@ in
     script = ''
       ${nixpkgs-update-bin} delete-done --delete
       grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | \
-        ${nixpkgs-update-pypi-releases} --nixpkgs=/var/cache/nixpkgs-update/pypi/nixpkgs > /var/lib/nixpkgs-update/pypi/packages-to-update.txt
+        ${nixpkgs-update-pypi-releases'} --nixpkgs=/var/cache/nixpkgs-update/pypi/nixpkgs > /var/lib/nixpkgs-update/pypi/packages-to-update.txt
       ${nixpkgs-update-command}
     '';
   };

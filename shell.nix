@@ -1,24 +1,28 @@
-{ system ? builtins.currentSystem }:
-let
-  sources = import ./nix/sources.nix;
-  pkgs = import ./nix { inherit system; };
-in
-pkgs.mkShell {
-  NIX_PATH = "nixpkgs=${toString pkgs.path}";
+{ pkgs ? import <nixpkgs> {}
+, sops-import-keys-hook
+}:
 
+with pkgs;
+mkShell {
   sopsPGPKeyDirs = [
     "./keys"
   ];
 
-  buildInputs = with pkgs.nix-community-infra; [
+  buildInputs = with pkgs; [
     git-crypt
-    niv
     terraform
+    (terraform.withPlugins (
+      p: [
+        p.cloudflare
+        p.null
+        p.external
+      ]
+    ))
     sops
-    invoke
+    python3.pkgs.invoke
     rsync
 
-    (pkgs.callPackage sources.sops-nix {}).sops-import-keys-hook
+    sops-import-keys-hook
   ];
 
   # terraform cloud without the remote execution part
