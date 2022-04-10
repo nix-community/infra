@@ -167,7 +167,7 @@ in
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [ hydra-unstable netcat ];
+      path = with pkgs; [ config.services.hydra.package netcat ];
       script = ''
         set -e
         while IFS=';' read -r user role passwordhash email fullname; do
