@@ -51,7 +51,6 @@ room (see the admin list below) or create an issue here:
 * GitLab agent - on build01
 * hound - on build01
 * https://hydra.nix-community.org - on build01
-* marvin-mk2 - on build01
 * matterbridge - on build01
 * ryantm-updater bot - on build02
 

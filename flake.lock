@@ -72,22 +72,6 @@
         "type": "github"
       }
     },
-    "marvin-mk2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1613145327,
-        "narHash": "sha256-pP4QuZ/aTOBOJv04AVDXU00l1mgl2I832/InM/3z0js=",
-        "owner": "timokau",
-        "repo": "marvin-mk2",
-        "rev": "b3dd8c02a5c01dcf0e9cc8789846a0ec980f534b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "timokau",
-        "repo": "marvin-mk2",
-        "type": "github"
-      }
-    },
     "mmdoc": {
       "inputs": {
         "nixpkgs": [
@@ -310,7 +294,6 @@
       "inputs": {
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
-        "marvin-mk2": "marvin-mk2",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
