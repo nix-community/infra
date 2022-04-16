@@ -13,8 +13,6 @@
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    marvin-mk2.url = "github:timokau/marvin-mk2";
-    marvin-mk2.flake = false;
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -26,7 +24,6 @@
             , nixpkgs-update-pypi-releases
             , sops-nix
             , hercules-ci-effects
-            , marvin-mk2
             , hydra
             }: {
     devShell.x86_64-linux = let
@@ -61,9 +58,6 @@
       nix-community-build03 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
-          (import ./services/marvin-mk2.nix {
-            inherit marvin-mk2;
-          })
           (import ./services/hydra {
             inherit hydra;
           })
