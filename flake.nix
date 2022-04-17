@@ -5,8 +5,7 @@
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # https://github.com/NixOS/nixpkgs/pull/168186
     nixpkgs.url = "github:Mic92/nixpkgs/gidgethub";
-    #nixpkgs-update.url = "github:ryantm/nixpkgs-update";
-    nixpkgs-update.url = "github:Mic92/nixpkgs-update/build-fixes";
+    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
