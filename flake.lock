@@ -199,16 +199,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1649619611,
+        "lastModified": 1649646064,
         "narHash": "sha256-WNMY7ey/B3ZVRpEK0K9cUOxgYSbhPCrZ5jbPwlkT/Y8=",
-        "owner": "Mic92",
+        "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "982fddd51a19251b57ec98c8c5018d3f220b426f",
+        "rev": "80c6338309d0c18e8f101bcbd14846dabde85931",
         "type": "github"
       },
       "original": {
-        "owner": "Mic92",
-        "ref": "build-fixes",
+        "owner": "ryantm",
         "repo": "nixpkgs-update",
         "type": "github"
       }
