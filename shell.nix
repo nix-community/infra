@@ -31,6 +31,5 @@ mkShell {
 
   shellHook = ''
     export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
-    export NIX_USER_CONF_FILES="$(pwd)/nix/nix.conf";
   '';
 }
