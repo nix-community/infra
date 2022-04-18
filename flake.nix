@@ -1,10 +1,17 @@
 {
   description = "NixOS configuration of our builders";
 
+  nixConfig.extra-substituters = [
+    "https://nix-community.cachix.org"
+    "https://nixpkgs-update.cachix.org"
+  ];
+  nixConfig.extra-trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    "nixpkgs-update.cachix.org-1:6y6Z2JdoL3APdu6/+Iy8eZX2ajf09e4EE9SnxSML1W8="
+  ];
+
   inputs = {
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # https://github.com/NixOS/nixpkgs/pull/168186
-    nixpkgs.url = "github:Mic92/nixpkgs/gidgethub";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
@@ -12,8 +19,6 @@
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    marvin-mk2.url = "github:timokau/marvin-mk2";
-    marvin-mk2.flake = false;
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -25,7 +30,6 @@
             , nixpkgs-update-pypi-releases
             , sops-nix
             , hercules-ci-effects
-            , marvin-mk2
             , hydra
             }: {
     devShell.x86_64-linux = let
@@ -60,9 +64,6 @@
       nix-community-build03 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
-          (import ./services/marvin-mk2.nix {
-            inherit marvin-mk2;
-          })
           (import ./services/hydra {
             inherit hydra;
           })
