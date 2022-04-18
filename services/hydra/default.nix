@@ -140,12 +140,14 @@ in
       buildMachines = [
         {
           hostName = "localhost";
-          systems = [ "x86_64-linux" "builtin" ];
+          systems = [ "x86_64-linux" "aarch64-linux" "builtin" ];
           maxJobs = 8;
           supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
         }
       ];
     };
+
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
     services.nginx.virtualHosts = {
       "hydra.nix-community.org" = {
