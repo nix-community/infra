@@ -9,3 +9,6 @@ result-*
 # Terraform
 .terraform
 .terraform.*
+
+# direnv
+.direnv
