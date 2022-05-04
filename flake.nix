@@ -21,6 +21,8 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
+    nc-review-bot.url = "github:nix-community/review-bot";
+    nc-review-bot.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self
@@ -31,6 +33,7 @@
             , sops-nix
             , hercules-ci-effects
             , hydra
+            , nc-review-bot
             }: {
     devShell.x86_64-linux = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -46,6 +49,7 @@
         system = "x86_64-linux";
         modules = common ++ [
           ./build01/configuration.nix
+          nc-review-bot.nixosModules.review-bot
         ];
       };
 

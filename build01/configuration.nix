@@ -17,6 +17,7 @@
     ../roles/hetzner-network.nix
     ../roles/raid.nix
     ../roles/builder
+    ../roles/review-bot.nix
   ];
 
   # /boot is a mirror raid
