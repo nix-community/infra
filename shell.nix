@@ -16,6 +16,7 @@ mkShell {
         p.cloudflare
         p.null
         p.external
+        p.hydra
       ]
     ))
     sops
@@ -31,5 +32,6 @@ mkShell {
 
   shellHook = ''
     export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
+    export HYDRA_PASSWORD=$(< ./secrets/hydra-password)
   '';
 }
