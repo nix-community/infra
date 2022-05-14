@@ -1,3 +1,3 @@
 # Terraform
 
-Only used for DNS management right now.
+Used for DNS management and creating hydra projects.
