@@ -6,25 +6,8 @@ let
   cfg = config;
 
   hydraPort = 3000;
-  hydraAdmin = "admin";
-  hydraAdminPasswordFile = config.sops.secrets.hydra-admin-password.path;
-  hydraUsersFile = config.sops.secrets.hydra-users.path;
-
-  createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
-    name = "create-declarative-project";
-    unpackPhase = ":";
-    buildInputs = [ pkgs.makeWrapper ];
-    installPhase = "install -m755 -D ${./create-declarative-project.sh} $out/bin/create-declarative-project";
-    postFixup = ''
-      wrapProgram "$out/bin/create-declarative-project" \
-        --prefix PATH ":" ${lib.makeBinPath [ pkgs.curl ]}
-    '';
-  };
-
 in
 {
-  imports = [ ./declarative-projects.nix ];
-
   options.services.hydra = {
     adminPasswordFile = mkOption {
       type = types.str;
@@ -38,44 +21,6 @@ in
         format: user;role;password-hash;email-address;full-name
         Password hash is computed by applying sha1 to the password.
       '';
-    };
-
-    declarativeProjects = mkOption {
-      description = "Declarative projects";
-      default = { };
-      type = with types; attrsOf (submodule {
-        options = {
-          inputValue = mkOption {
-            type = types.str;
-            description = "The input value";
-            example = "https://github.com/shlevy/declarative-hydra-example";
-          };
-          inputType = mkOption {
-            type = types.str;
-            default = "git";
-            description = "The type of the input value";
-          };
-          specFile = mkOption {
-            type = types.str;
-            default = "spec.json";
-            description = "The declarative spec file name";
-          };
-          displayName = mkOption {
-            type = types.str;
-            description = "The diplay name of the declarative project";
-          };
-          description = mkOption {
-            type = types.str;
-            default = "";
-            description = "The description of the declarative project";
-          };
-          homepage = mkOption {
-            type = types.str;
-            default = "";
-            description = "The homepage of the declarative project";
-          };
-        };
-      });
     };
   };
   config = {
@@ -106,9 +51,9 @@ in
       notificationSender = "hydra@hydra.nix-community.org";
       port = hydraPort;
       useSubstitutes = true;
-      adminPasswordFile = hydraAdminPasswordFile;
+      adminPasswordFile = config.sops.secrets.hydra-admin-password.path;
 
-      usersFile = hydraUsersFile;
+      usersFile = config.sops.secrets.hydra-users.path;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
 
@@ -187,19 +132,7 @@ in
 
         export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
         export URL=http://localhost:${toString hydraPort}
-      '' +
-      (concatStringsSep "\n" (mapAttrsToList
-        (n: v: ''
-          export DECL_PROJECT_NAME="${n}"
-          export DECL_DISPLAY_NAME="${v.displayName}"
-          export DECL_VALUE="${v.inputValue}"
-          export DECL_TYPE="${v.inputType}"
-          export DECL_FILE="${v.specFile}"
-          export DECL_DESCRIPTION="${v.description}"
-          export DECL_HOMEPAGE="${v.homepage}"
-          ${createDeclarativeProjectScript}/bin/create-declarative-project
-        '')
-        cfg.services.hydra.declarativeProjects));
+      '';
     };
   };
 }

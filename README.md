@@ -28,6 +28,11 @@ $ $path
 
 *(My [implementation](https://github.com/ckiee/nixfiles/blob/aac57f56e417e31f00fd495d8a30fb399ecbc19b/deploy/hm-only.nix#L10) of [this](https://github.com/ckiee/nixfiles/blob/aac57f56e417e31f00fd495d8a30fb399ecbc19b/bin/c#L92-L95) ~ckie)*
 
+## Hydra
+
+If you want to build your project in our hydra, add a new project in this
+[file](terraform/hydra-projects.tf).
+
 ## Support
 
 If you hit any issues, ping us on Matrix in the
@@ -47,11 +52,10 @@ room (see the admin list below) or create an issue here:
 
 ## Services
 
-* BuildKite agent - on build01
-* GitLab agent - on build01
-* hound - on build01
-* https://hydra.nix-community.org - on build01
-* matterbridge - on build01
+* GitLab agent - on build03
+* hound - on build03
+* https://hydra.nix-community.org - on build03
+* matterbridge - on build03
 * ryantm-updater bot - on build02
 
 ## Hosts
