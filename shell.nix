@@ -9,7 +9,6 @@ mkShell {
   ];
 
   buildInputs = with pkgs; [
-    git-crypt
     terraform
     (terraform.withPlugins (
       p: [
@@ -25,13 +24,4 @@ mkShell {
 
     sops-import-keys-hook
   ];
-
-  # terraform cloud without the remote execution part
-  TF_FORCE_LOCAL_BACKEND = "1";
-  TF_CLI_CONFIG_FILE = toString ./secrets/terraformrc;
-
-  shellHook = ''
-    export CLOUDFLARE_API_TOKEN=$(< ./secrets/cloudflare-api-token)
-    export HYDRA_PASSWORD=$(< ./secrets/hydra-password)
-  '';
 }
