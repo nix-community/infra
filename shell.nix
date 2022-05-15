@@ -9,7 +9,6 @@ mkShell {
   ];
 
   buildInputs = with pkgs; [
-    git-crypt
     terraform
     (terraform.withPlugins (
       p: [

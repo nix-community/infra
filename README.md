@@ -110,7 +110,6 @@ Thanks to Cachix for sponsoring our binary cache!
 * ./deploy - Deploy script
 * ./nix - pinned Nix dependencies and overlays
 * ./roles - shared NixOS configuration modules
-* ./secrets - git-crypt encrypted secrets
 * ./services - single instances of NixOS services
 * ./terraform - Setup DNS
 * ./users - NixOS configuration of our admins
