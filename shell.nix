@@ -9,7 +9,6 @@ mkShell {
   ];
 
   buildInputs = with pkgs; [
-    terraform
     (terraform.withPlugins (
       p: [
         p.cloudflare
