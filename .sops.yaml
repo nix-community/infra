@@ -9,6 +9,13 @@ keys:
 # scan new hosts like this:
 # $ nix-shell -p ssh-to-age --run 'ssh-keyscan buildXX.nix-community.org | ssh-to-age'
 creation_rules:
+  - path_regex: terraform/secrets.yaml$
+    key_groups:
+    - age:
+      - *mic92
+      - *ryantm
+      pgp:
+      - *zimbatm
   - path_regex: build01/[^/]+\.yaml$
     key_groups:
     - age:
