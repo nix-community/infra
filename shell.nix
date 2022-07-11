@@ -17,6 +17,7 @@ mkShell {
         p.hydra
       ]
     ))
+    jq
     sops
     python3.pkgs.invoke
     rsync
