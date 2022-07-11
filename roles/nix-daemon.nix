@@ -33,7 +33,7 @@ in
     nixPath = [ "nixpkgs=${pkgs.path}" ];
 
     gc.automatic = true;
-    gc.options = "--delete-older-than 30d";
+    gc.options = "--delete-older-than 14d";
   };
 
   # Sometimes it fails if a store path is still in use.
