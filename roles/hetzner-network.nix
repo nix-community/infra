@@ -22,6 +22,11 @@ in {
   config = {
     networking.usePredictableInterfaceNames = false;
     networking.dhcpcd.enable = false;
+    # Don't take down the network for too long, this will use `systemctl
+    # restart` rather than stopping it with `systemctl stop` followed by a
+    # delayed `systemctl start`
+    systemd.services.systemd-networkd.stopIfChanged = true;
+
     systemd.network = {
       enable = true;
       networks."ethernet".extraConfig = ''
