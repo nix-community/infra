@@ -6,7 +6,7 @@
 let
   userLib = import ../users/lib.nix { inherit lib; };
 
-  nixpkgs-update-bin = "${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update";
+  nixpkgs-update-bin = "/var/lib/nixpkgs-update/bin/nixpkgs-update";
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
     nix # for nix-shell used by python packges to update fetchers
@@ -24,7 +24,6 @@ let
   mkWorker = name: {
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
-    restartTriggers = [ nixpkgs-update-bin ];
     description = "nixpkgs-update ${name} service";
     enable = true;
     restartIfChanged = true;
@@ -73,7 +72,6 @@ let
   mkFetcher = cmd: {
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
-    restartTriggers = [ nixpkgs-update-bin ];
     path = nixpkgsUpdateSystemDependencies;
     # API_TOKEN is used by nixpkgs-update-github-releases
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
@@ -117,7 +115,6 @@ in
     startAt = "daily";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
-    restartTriggers = [ nixpkgs-update-bin ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
     path = nixpkgsUpdateSystemDependencies;
@@ -163,7 +160,9 @@ in
 
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
 
-    "L /var/lib/nixpkgs-update/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"    "L /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
+    "L /var/lib/nixpkgs-update/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "L /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
   ];
 
