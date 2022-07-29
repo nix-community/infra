@@ -201,11 +201,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1658978650,
-        "narHash": "sha256-8kPAnKLTG4HAwVrT64B0zE3DTwKVhVlA4AxG8G7ajxg=",
+        "lastModified": 1659065629,
+        "narHash": "sha256-vJyWt0ejbMqY1v8Faa98vxjf7DGTnYr14SEYEsHEONI=",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "6a32dda818b3929aa7277efb51f7171f007cf47a",
+        "rev": "a376578dcf7b904734d9512d9e425179cca939c2",
         "type": "github"
       },
       "original": {
