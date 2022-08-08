@@ -43,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1657748824,
-        "narHash": "sha256-uB62iO50twRcswqhode7HIUwtYqlYU3fG6y6LtZo2VM=",
+        "lastModified": 1659690920,
+        "narHash": "sha256-W0IHBfdyMZW/4b16+Ftm3WcEQqqvrZE2ktLiPJdWaxI=",
         "owner": "NixOS",
         "repo": "hydra",
-        "rev": "e2756042b8e4397af642ee50eff50cf581df7f7b",
+        "rev": "c511315b6b399948d363ef390a555103ef8e2dad",
         "type": "github"
       },
       "original": {
@@ -263,11 +263,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1659633244,
-        "narHash": "sha256-N+AXQHIyRO5D9T8xrTM+igkqJ90MKsftQJnfW5YNxac=",
+        "lastModified": 1659852868,
+        "narHash": "sha256-VLJCpAf27oCMz8pnMGzj3v6xBW9lmT+O7rrgj025on8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0b04c001b3c2e5009b688a15ae5903aa2293bc7c",
+        "rev": "d2a4e79a6d07ab10156b88f5fd1827d6af1f215c",
         "type": "github"
       },
       "original": {
