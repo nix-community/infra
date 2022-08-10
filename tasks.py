@@ -192,9 +192,3 @@ def cleanup_gcroots(c, hosts=""):
     g = DeployGroup(get_hosts(hosts))
     g.run("find /nix/var/nix/gcroots/auto -type s -delete")
     g.run("systemctl restart nix-gc")
-
-
-@task
-def restart_cachix_deploy(c, hosts=""):
-    g = DeployGroup(get_hosts(hosts))
-    g.run("systemctl restart cachix-deploy-agent")
