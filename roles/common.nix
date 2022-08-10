@@ -3,7 +3,6 @@
 {
 
   imports = [
-    ./cachix-deploy
     ./nix-daemon.nix
     ./security.nix
     ./sshd.nix
@@ -11,6 +10,7 @@
     ./users.nix
     ./zfs.nix
     ./sops-nix.nix
+    ./auto-upgrade.nix
   ];
 
   environment.systemPackages = [
