@@ -108,7 +108,6 @@ Thanks to Cachix for sponsoring our binary cache!
 * ./build\d+ - build machines
 * ./ci.sh - What is executed by CI
 * ./deploy - Deploy script
-* ./nix - pinned Nix dependencies and overlays
 * ./roles - shared NixOS configuration modules
 * ./services - single instances of NixOS services
 * ./terraform - Setup DNS
