@@ -5,6 +5,7 @@
 let
   self = builtins.getFlake (toString ./.);
   nixpkgs = self.inputs.nixpkgs;
+  pkgs = nixpkgs.legacyPackages.x86_64-linux;
   effects = self.inputs.hercules-ci-effects.lib.withPkgs nixpkgs.legacyPackages.x86_64-linux;
 
   deployNixOS = args@{
@@ -19,7 +20,8 @@ let
     effectScript = ''
       umask 077 # so ssh does not complain about key permissions
       readSecretString deploy .sshKey > deploy-key
-      ssh -i deploy-key root@"$hostname" "$(nix-store -r $drv)/bin/switch-to-configuration $action"
+
+      ${pkgs.openssh}/bin/ssh -i deploy-key root@"$hostname" "\$(nix-store -r $drv)/bin/switch-to-configuration switch"
     '';
   });
 in
