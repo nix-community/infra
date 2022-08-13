@@ -18,7 +18,7 @@ let
     inherit hostname drv;
     effectScript = ''
       umask 077 # so ssh does not complain about key permissions
-      readSecretString seploy .ssh-key > deploy-key
+      readSecretString deploy .ssh-key > deploy-key
       ssh -i deploy-key root@"$hostname" "$(nix-store -r $drv)/bin/switch-to-configuration $action"
     '';
   });
@@ -27,6 +27,6 @@ in
  build01 = deployNixOS {
     hostname = "build01.nix-community.org";
     # using the drv path here avoids downloading the closure on the deploying machine
-    drv = self.outputs.nixosConfigurations.nix-community-build01.config.system.build.toplevel.drvPath;
+    drv = builtins.unsafeDiscardStringContext self.outputs.nixosConfigurations.nix-community-build01.config.system.build.toplevel.drvPath;
   };
 }
