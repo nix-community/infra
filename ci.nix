@@ -25,11 +25,12 @@ let
       ssh root@"$hostname" "\$(nix-store -r $drv)/bin/switch-to-configuration switch"
     '';
   });
-  deployNixOS' = name: config: nixpkgs.lib.nameValuePair "deploy-${name}" (deployNixOS {
+  stripDomain = name: nixpkgs.lib.head (builtins.match "(.*).nix-community.org" name);
+  deployNixOS' = name: config: nixpkgs.lib.nameValuePair "deploy-${stripDomain name}" (deployNixOS {
     hostname = config.config.networking.fqdn;
     knownHosts = config.config.environment.etc."ssh/ssh_known_hosts".text;
     drv = builtins.unsafeDiscardStringContext config.config.system.build.toplevel.drvPath;
   });
 in
-(nixpkgs.lib.mapAttrs' (name: config: nixpkgs.lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
+(nixpkgs.lib.mapAttrs' (name: config: nixpkgs.lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
 (nixpkgs.lib.mapAttrs' deployNixOS' self.outputs.nixosConfigurations)
