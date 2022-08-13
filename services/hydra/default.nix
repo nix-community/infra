@@ -44,6 +44,8 @@ in
       owner = "hydra-queue-runner";
       sopsFile = ../../roles/nix-community-cache.yaml;
     };
+    sops.secrets.id_buildfarm = {};
+
 
     services.hydra = {
       enable = true;
@@ -52,6 +54,12 @@ in
       port = hydraPort;
       useSubstitutes = true;
       adminPasswordFile = config.sops.secrets.hydra-admin-password.path;
+      buildMachinesFiles = [
+        (pkgs.writeText "builders" ''
+          localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm  -
+          ssh-ng://nix@build04.nix-community.org aarch64-linux ${config.sops.secrets.id_buildfarm.path} 4 1 nixos-test,big-parallel,kvm  -
+        '')
+      ];
 
       usersFile = config.sops.secrets.hydra-users.path;
       extraConfig = ''
@@ -75,22 +83,7 @@ in
       };
     };
 
-    nix = {
-      distributedBuilds = true;
-      # needed to fix https://github.com/NixOS/nix/issues/5980
-      package = pkgs.nixUnstable;
-      extraOptions = ''
-        allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
-      '';
-      buildMachines = [
-        {
-          hostName = "localhost";
-          systems = [ "x86_64-linux" "builtin" ];
-          maxJobs = 8;
-          supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
-        }
-      ];
-    };
+    nix.extraOptions = "allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/";
 
     services.nginx.virtualHosts = {
       "hydra.nix-community.org" = {

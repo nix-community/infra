@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../roles/common.nix
     ../roles/hercules-ci
+    ../roles/builder.nix
   ];
 
   nixpkgs.system = "aarch64-linux";
