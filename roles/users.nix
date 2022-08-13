@@ -21,7 +21,7 @@ in
 
   # Assign keys from all users in wheel group
   # This is only done because nixops cant be deployed from any other account
-  users.extraUsers.root.openssh.authorizedKeys.keys = lib.unique (
+  users.extraUsers.root.openssh.authorizedKeys.keys = (lib.unique (
     lib.flatten (
       builtins.map (u: u.openssh.authorizedKeys.keys)
         (
@@ -31,5 +31,8 @@ in
           )
         )
     )
-  );
+  )) ++ [
+    # used by hercules
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjsihPp4fAXUknBtDCBt5tpP7nIjWLdmNiDT34NJYzq deploy-key"
+  ];
 }

@@ -18,6 +18,7 @@
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -28,6 +29,7 @@
             , nixpkgs-update-github-releases
             , nixpkgs-update-pypi-releases
             , sops-nix
+            , hercules-ci-effects
             , hydra
             }: {
     devShell.x86_64-linux = let
