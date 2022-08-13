@@ -42,14 +42,14 @@
         sops-nix.nixosModules.sops
       ];
     in {
-      nix-community-build01 = nixpkgs.lib.nixosSystem {
+      "build01.nix-community.org" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           ./build01/configuration.nix
         ];
       };
 
-      nix-community-build02 = nixpkgs.lib.nixosSystem {
+      "build02.nix-community.org" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           (import ./build02/nixpkgs-update.nix {
@@ -61,7 +61,7 @@
         ];
       };
 
-      nix-community-build03 = nixpkgs.lib.nixosSystem {
+      "build03.nix-community.org" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = common ++ [
           (import ./services/hydra {
@@ -72,7 +72,7 @@
         ];
       };
 
-      nix-community-build04 = nixpkgs.lib.nixosSystem {
+      "build04.nix-community.org" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = common ++ [
           ./build04/configuration.nix
