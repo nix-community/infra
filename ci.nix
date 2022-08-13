@@ -22,7 +22,7 @@ let
       export PATH=$PATH:${pkgs.openssh}/bin
       writeSSHKey ssh ~/.ssh/id_ed25519
       echo "$knownHosts" >>~/.ssh/known_hosts
-      ssh -i deploy-key root@"$hostname" "\$(nix-store -r $drv)/bin/switch-to-configuration switch"
+      ssh root@"$hostname" "\$(nix-store -r $drv)/bin/switch-to-configuration switch"
     '';
   });
   deployNixOS' = name: config: nixpkgs.lib.nameValuePair "deploy-${name}" (deployNixOS {
