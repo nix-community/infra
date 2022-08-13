@@ -12,13 +12,13 @@ let
     drv,
       ...
   }: effects.mkEffect (args // {
-    secretsMap.deploy = "deploy";
+    secretsMap.deploy = "default-deploy";
     # This style of variable passing allows overrideAttrs and modification in
     # hooks like the userSetupScript.
     inherit hostname drv;
     effectScript = ''
       umask 077 # so ssh does not complain about key permissions
-      readSecretString deploy .ssh-key > deploy-key
+      readSecretString deploy .sshKey > deploy-key
       ssh -i deploy-key root@"$hostname" "$(nix-store -r $drv)/bin/switch-to-configuration $action"
     '';
   });
