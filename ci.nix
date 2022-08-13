@@ -12,7 +12,7 @@ let
     drv,
       ...
   }: effects.mkEffect (args // {
-
+    secretsMap.deploy = "deploy";
     # This style of variable passing allows overrideAttrs and modification in
     # hooks like the userSetupScript.
     inherit hostname drv;
