@@ -20,7 +20,7 @@
     terminal_output --append serial
   '';
 
-  networking.hostName = "nix-community-build04";
+  networking.hostName = "build04";
   networking.hostId = "8daf74c0";
 
   networking.usePredictableInterfaceNames = false;

@@ -29,7 +29,7 @@
 
   networking.nix-community.ipv6.address = "2a01:4f9:3a:3b16::1";
 
-  networking.hostName = "nix-community-build03";
+  networking.hostName = "build03";
   networking.hostId = "8daf74c0";
 
   system.stateVersion = "21.05";

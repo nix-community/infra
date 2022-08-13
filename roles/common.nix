@@ -47,4 +47,13 @@
 
   # speed-up evaluation & save disk space by disabling manpages
   documentation.enable = false;
+
+  networking.domain = "nix-community.org";
+
+  # HACK: NixOS does not let us using a hostname that has the domain part included include domain part in hostname
+  boot.kernel.sysctl."kernel.hostname" = config.networking.fqdn;
+
+  # don't override host set by sysctl
+  system.activationScripts.hostname = lib.mkForce "";
+  system.activationScripts.domain = lib.mkForce "";
 }

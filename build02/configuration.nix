@@ -15,7 +15,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
 
-  networking.hostName = "nix-community-build02";
+  networking.hostName = "build02";
   networking.hostId = "af9ccc71";
   networking.useDHCP = false;
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];

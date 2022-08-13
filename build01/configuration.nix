@@ -24,7 +24,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
 
-  networking.hostName = "nix-community-build01";
+  networking.hostName = "build01";
   networking.hostId = "d2905767";
 
   # Emulate armv7 until we have proper builders
