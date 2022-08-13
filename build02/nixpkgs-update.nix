@@ -155,17 +155,17 @@ in
   systemd.services.nixpkgs-update-worker4 = mkWorker "worker4";
 
   systemd.tmpfiles.rules = [
-    "L /home/r-ryantm/.gitconfig - - - - ${./gitconfig.txt}"
+    "L+ /home/r-ryantm/.gitconfig - - - - ${./gitconfig.txt}"
     "d /home/r-ryantm/.ssh 700 r-ryantm r-ryantm - -"
 
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
 
     "d /run/nixpkgs-update/worker - r-ryantm r-ryantm - -"
 
-    "L /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
-    "L /var/lib/nixpkgs-update/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
-    "L /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
-    "L /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
+    "L+ /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
+    "L+ /var/lib/nixpkgs-update/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "L+ /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
   ];
 
   sops.secrets.github-r-ryantm-key = {
