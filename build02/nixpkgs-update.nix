@@ -163,7 +163,6 @@ in
     "d /run/nixpkgs-update/worker - r-ryantm r-ryantm - -"
 
     "L+ /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
-    "L+ /var/lib/nixpkgs-update/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "L+ /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
   ];
