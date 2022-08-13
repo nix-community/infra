@@ -8,6 +8,7 @@
     ../roles/hercules-ci
     ../roles/nginx.nix
     ../roles/raid.nix
+    ../roles/aarch64-builder.nix
   ];
 
   # /boot is a mirror raid
