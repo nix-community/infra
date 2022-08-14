@@ -3,10 +3,10 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "aarch64.nixos.community";
+      hostName = "build04.nixos-community.org";
       maxJobs = 4;
       sshKey = config.sops.secrets.id_buildfarm.path;
-      sshUser = "ssh-ng://nix";
+      sshUser = "nix";
       system = "aarch64-linux";
       supportedFeatures = [
         "big-parallel"
@@ -15,5 +15,5 @@
       ];
     }
   ];
-  sops.secrets.id_buildfarm = {};
+  sops.secrets.id_buildfarm = { };
 }

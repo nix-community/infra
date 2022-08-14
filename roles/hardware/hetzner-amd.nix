@@ -18,8 +18,8 @@
   ];
 
   fileSystems."/" = {
-     device = "zroot/root/nixos";
-     fsType = "zfs";
+    device = "zroot/root/nixos";
+    fsType = "zfs";
   };
 
   fileSystems."/home" = {

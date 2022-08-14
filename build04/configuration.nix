@@ -34,14 +34,14 @@
 # after loading kexec, be patient. The kexec image can take up to 5 minutes to boot
 # partition guide
 /*
-sgdisk -n 1:0:+800M -N 2 -t 1:ef00 -t 2:8304 /dev/sda
-mkfs.vfat -b32 /dev/sda1
-zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 /dev/sda2
-zfs create -o mountpoint=none zroot/root
-zfs create -o mountpoint=legacy zroot/root/nixos
-zfs create -o mountpoint=legacy zroot/root/home
-mount -t zfs zroot/root/nixos /mnt
-mkdir /mnt/{home,boot}
-mount -t zfs zroot/root/home /mnt/home
-mount /dev/sda1 /mnt/boot
+  sgdisk -n 1:0:+800M -N 2 -t 1:ef00 -t 2:8304 /dev/sda
+  mkfs.vfat -b32 /dev/sda1
+  zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 /dev/sda2
+  zfs create -o mountpoint=none zroot/root
+  zfs create -o mountpoint=legacy zroot/root/nixos
+  zfs create -o mountpoint=legacy zroot/root/home
+  mount -t zfs zroot/root/nixos /mnt
+  mkdir /mnt/{home,boot}
+  mount -t zfs zroot/root/home /mnt/home
+  mount /dev/sda1 /mnt/boot
 */

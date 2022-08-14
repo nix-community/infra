@@ -11,7 +11,8 @@ in
     useDefaultShell = true;
     isNormalUser = true;
     extraGroups = [
-      "wheel" "trusted"
+      "wheel"
+      "trusted"
     ];
     uid = userLib.mkUid "flok";
   };

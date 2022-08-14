@@ -25,7 +25,7 @@ in
             exec /run/wrappers/bin/sudo ${pkgs.smartmontools}/bin/smartctl "$@"
           '';
         };
-        mdstat = {};
+        mdstat = { };
         system = { };
         mem = { };
         file = [{
@@ -37,7 +37,7 @@ in
           files = [ "/sys/fs/ext4/*/errors_count" ];
           data_format = "value";
         };
-        exec =  [{
+        exec = [{
           ## Commands array
           commands = (lib.optional (lib.any (fs: fs == "zfs") config.boot.supportedFilesystems)
             (pkgs.writeScript "zpool-health" ''
@@ -52,40 +52,47 @@ in
                 }
               }
             '')
-            ) ++ (let
+          ) ++ (
+            let
               collectHosts = shares: fs:
-                if builtins.elem fs.fsType ["nfs" "nfs3" "nfs4"] then
-                  shares // (let
-                    # also match ipv6 addresses
-                    group = builtins.match "\\[?([^\]]+)]?:([^:]+)$" fs.device;
-                    host = builtins.head group;
-                    path = builtins.elemAt group 1;
-                  in {
-                    ${host} = (shares.${host} or []) ++ [ path ];
-                  })
+                if builtins.elem fs.fsType [ "nfs" "nfs3" "nfs4" ] then
+                  shares // (
+                    let
+                      # also match ipv6 addresses
+                      group = builtins.match "\\[?([^\]]+)]?:([^:]+)$" fs.device;
+                      host = builtins.head group;
+                      path = builtins.elemAt group 1;
+                    in
+                    {
+                      ${host} = (shares.${host} or [ ]) ++ [ path ];
+                    }
+                  )
                 else
                   shares;
-              nfsHosts = lib.foldl collectHosts {} (builtins.attrValues config.fileSystems);
-            in lib.mapAttrsToList (host: args:
-              (pkgs.writeScript "zpool-health" ''
-                #!${pkgs.gawk}/bin/awk -f
-                BEGIN {
-                  for (i = 2; i < ARGC; i++) {
-                      mounts[ARGV[i]] = 1
-                  }
-                  while ("${pkgs.nfs-utils}/bin/showmount -e " ARGV[1] | getline) {
-                    if (NR == 1) { continue }
-                    if (mounts[$1] == 1) {
-                        printf "nfs_export,host=%s,path=%s present=1\n", ARGV[1], $1
+              nfsHosts = lib.foldl collectHosts { } (builtins.attrValues config.fileSystems);
+            in
+            lib.mapAttrsToList
+              (host: args:
+                (pkgs.writeScript "zpool-health" ''
+                  #!${pkgs.gawk}/bin/awk -f
+                  BEGIN {
+                    for (i = 2; i < ARGC; i++) {
+                        mounts[ARGV[i]] = 1
                     }
-                    delete mounts[$1]
+                    while ("${pkgs.nfs-utils}/bin/showmount -e " ARGV[1] | getline) {
+                      if (NR == 1) { continue }
+                      if (mounts[$1] == 1) {
+                          printf "nfs_export,host=%s,path=%s present=1\n", ARGV[1], $1
+                      }
+                      delete mounts[$1]
+                    }
+                    for (mount in mounts) {
+                        printf "nfs_export,host=%s,path=%s present=0\n", ARGV[1], $1
+                    }
                   }
-                  for (mount in mounts) {
-                      printf "nfs_export,host=%s,path=%s present=0\n", ARGV[1], $1
-                  }
-                }
-               '') + " ${host} ${builtins.concatStringsSep " " args}"
-            ) nfsHosts
+                '') + " ${host} ${builtins.concatStringsSep " " args}"
+              )
+              nfsHosts
           );
           data_format = "influx";
         }];

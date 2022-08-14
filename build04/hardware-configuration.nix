@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "virtio_pci" ];
@@ -14,17 +15,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/root/nixos";
+    {
+      device = "zroot/root/nixos";
       fsType = "zfs";
     };
 
   fileSystems."/home" =
-    { device = "zroot/root/home";
+    {
+      device = "zroot/root/home";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E6D6-572B";
+    {
+      device = "/dev/disk/by-uuid/E6D6-572B";
       fsType = "vfat";
     };
 

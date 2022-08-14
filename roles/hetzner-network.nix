@@ -2,7 +2,8 @@
 with lib;
 let
   cfg = config.networking.nix-community;
-in {
+in
+{
   options = {
     networking.nix-community.ipv6.address = mkOption {
       type = types.str;

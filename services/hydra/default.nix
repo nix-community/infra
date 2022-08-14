@@ -1,8 +1,9 @@
-{ hydra }:
-{ lib, pkgs, config, ... }:
-
-with lib;
-let
+{ hydra }: { lib
+           , pkgs
+           , config
+           , ...
+           }:
+with lib; let
   cfg = config;
 
   hydraPort = 3000;
@@ -53,16 +54,17 @@ in
         unfreeRedistributable
         issl
       ];
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "cudnn_cudatoolkit"
-        "cudatoolkit"
-      ];
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "cudnn_cudatoolkit"
+          "cudatoolkit"
+        ];
     };
 
     services.hydra.package = hydra.defaultPackage.${pkgs.system};
 
     sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache.yaml;
-    sops.secrets.id_buildfarm = {};
+    sops.secrets.id_buildfarm = { };
 
     services.hydra = {
       enable = true;
@@ -71,17 +73,22 @@ in
       port = hydraPort;
       useSubstitutes = true;
       adminPasswordFile = config.sops.secrets.hydra-admin-password.path;
-      buildMachinesFiles = [
-        (pkgs.writeText "builders" ''
-          localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm  -
-          ssh://nix@build04.nix-community.org aarch64-linux ${config.sops.secrets.id_buildfarm.path} 4 1 nixos-test,big-parallel,kvm  -
-        '')
-      ];
-
       usersFile = config.sops.secrets.hydra-users.path;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
       '';
+    };
+
+    nix = {
+      distributedBuilds = true;
+      buildMachines = [
+        {
+          hostName = "localhost";
+          systems = [ "x86_64-linux" "builtin" ];
+          maxJobs = 8;
+          supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
+        }
+      ];
     };
 
     services.postgresql = {

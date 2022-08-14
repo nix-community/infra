@@ -5,7 +5,8 @@ let
     sopsFile = ./secrets.yaml;
   };
   secrets = config.sops.secrets;
-in {
+in
+{
   sops.secrets."binary-caches.json" = herculesSecret;
   sops.secrets."cluster-join-token.key" = herculesSecret;
   sops.secrets."hercules-secrets" = herculesSecret;

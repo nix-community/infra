@@ -42,5 +42,5 @@ in
     Restart = "on-failure";
   };
 
-  users.groups.trusted = {};
+  users.groups.trusted = { };
 }

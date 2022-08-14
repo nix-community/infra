@@ -26,19 +26,19 @@
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
     };
     build01 = {
-      hostNames = ["build01.nix-community.org"];
+      hostNames = [ "build01.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
     };
     build02 = {
-      hostNames = ["build02.nix-community.org"];
+      hostNames = [ "build02.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMm3/o1HguyRL1z/nZxLBY9j/YUNXeNuDoiBLZAyt88Z";
     };
     build03 = {
-      hostNames = ["build03.nix-community.org"];
+      hostNames = [ "build03.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiozp1A1+SUfJQPa5DZUQcVc6CZK2ZxL6FJtNdh+2TP";
     };
     build04 = {
-      hostNames = ["build04.nix-community.org"];
+      hostNames = [ "build04.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU/gbREwVuI1p3ag1iG72jxl2/92yGl38c+TPOfFMH8";
     };
   };

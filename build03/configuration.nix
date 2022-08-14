@@ -17,6 +17,7 @@
     ../roles/hetzner-network.nix
     ../roles/nginx.nix
     ../roles/raid.nix
+    ../roles/aarch64-builder.nix
 
     ../services/hound
     ../services/matterbridge.nix

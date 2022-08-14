@@ -32,11 +32,11 @@ let
 
   ifAttr = key: default: result: opts:
     if (opts ? "${key}") && opts."${key}"
-      then result
-      else default;
+    then result
+    else default;
 
-  maybeTrusted = ifAttr "trusted" [] [ "trusted" ];
-  maybeWheel = ifAttr "sudo" [] [ "wheel" ];
+  maybeTrusted = ifAttr "trusted" [ ] [ "trusted" ];
+  maybeWheel = ifAttr "sudo" [ ] [ "wheel" ];
 
   userGroups = opts:
     (maybeTrusted opts) ++
@@ -53,7 +53,8 @@ let
         opts.keys
       ];
     };
-in {
+in
+{
   users = {
     mutableUsers = false;
     users = lib.mapAttrs descToUser users;
