@@ -3,7 +3,7 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "build04.nixos-community.org";
+      hostName = "build04.nix-community.org";
       maxJobs = 4;
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
