@@ -74,7 +74,7 @@ in
       buildMachinesFiles = [
         (pkgs.writeText "builders" ''
           localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm  -
-          ssh-ng://nix@build04.nix-community.org aarch64-linux ${config.sops.secrets.id_buildfarm.path} 4 1 nixos-test,big-parallel,kvm  -
+          ssh://nix@build04.nix-community.org aarch64-linux ${config.sops.secrets.id_buildfarm.path} 4 1 nixos-test,big-parallel,kvm  -
         '')
       ];
 
