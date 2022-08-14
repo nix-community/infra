@@ -6,6 +6,21 @@ let
   cfg = config;
 
   hydraPort = 3000;
+
+  upload-to-cachix = pkgs.writeScriptBin "upload-to-cachix" ''
+    #!/bin/sh
+    set -eu
+    set -f # disable globbing
+
+    # skip push if the declarative job spec
+    OUT_END=$(echo ''${OUT_PATHS: -10})
+    if [ "$OUT_END" == "-spec.json" ]; then
+      exit 0
+    fi
+
+    export HOME=/root
+    exec ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
+  '';
 in
 {
   options.services.hydra = {
@@ -27,6 +42,12 @@ in
     sops.secrets.hydra-admin-password.owner = "hydra";
     sops.secrets.hydra-users.owner = "hydra";
 
+    nix.extraOptions = ''
+      builders-use-substitutes = true
+      allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
+      post-build-hook = ${upload-to-cachix}/bin/upload-to-cachix
+    '';
+
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [
         unfreeRedistributable
@@ -40,12 +61,8 @@ in
 
     services.hydra.package = hydra.defaultPackage.${pkgs.system};
 
-    sops.secrets.nix-community-cachix = {
-      owner = "hydra-queue-runner";
-      sopsFile = ../../roles/nix-community-cache.yaml;
-    };
+    sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache.yaml;
     sops.secrets.id_buildfarm = {};
-
 
     services.hydra = {
       enable = true;
@@ -64,14 +81,6 @@ in
       usersFile = config.sops.secrets.hydra-users.path;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
-
-        <runcommand>
-        command = ${pkgs.writeShellScript "cachix-upload" ''
-          export PATH=${config.nix.package}/bin
-          ${pkgs.jq}/bin/jq -r '.outputs | .[] | .path' < $HYDRA_JSON | \
-            ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community
-        ''}
-        </runcommand>
       '';
     };
 
@@ -82,8 +91,6 @@ in
         shared_buffers = "4GB";
       };
     };
-
-    nix.extraOptions = "allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/";
 
     services.nginx.virtualHosts = {
       "hydra.nix-community.org" = {
