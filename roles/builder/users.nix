@@ -17,6 +17,11 @@ let
 
     ckie.keys = ./keys/ckie;
 
+    fgaz = {
+      trusted = true;
+      keys = ./keys/fgaz;
+    };
+
     jtojnar = {
       trusted = true;
       keys = ./keys/jtojnar;
