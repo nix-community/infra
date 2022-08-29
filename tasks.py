@@ -4,7 +4,7 @@ from invoke import task
 
 import sys
 from typing import List, Any
-from deploy_nixos import DeployHost, DeployGroup
+from deploykit import DeployHost, DeployGroup
 import subprocess
 import json
 

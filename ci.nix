@@ -13,7 +13,7 @@ let
     drv,
     knownHosts,
       ...
-  }: effects.mkEffect (args // {
+  }: effects.runIf (src.ref == "refs/heads/master") (effects.mkEffect (args // {
     secretsMap.ssh = "default-ssh";
     # This style of variable passing allows overrideAttrs and modification in
     # hooks like the userSetupScript.
@@ -24,7 +24,7 @@ let
       echo "$knownHosts" >>~/.ssh/known_hosts
       ssh root@"$hostname" "\$(nix-store -r $drv)/bin/switch-to-configuration switch"
     '';
-  });
+  }));
   stripDomain = name: nixpkgs.lib.head (builtins.match "(.*).nix-community.org" name);
   deployNixOS' = name: config: nixpkgs.lib.nameValuePair "deploy-${stripDomain name}" (deployNixOS {
     hostname = config.config.networking.fqdn;

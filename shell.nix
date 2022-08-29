@@ -1,9 +1,10 @@
 { pkgs ? import <nixpkgs> {}
 , sops-import-keys-hook
+, deploykit
 }:
 
 with pkgs;
-mkShell {
+mkShellNoCC {
   sopsPGPKeyDirs = [
     "./keys"
   ];
@@ -23,5 +24,6 @@ mkShell {
     rsync
 
     sops-import-keys-hook
+    deploykit
   ];
 }
