@@ -21,63 +21,90 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs.follows = "nixpkgs";
+
+    deploykit.url = "github:numtide/deploykit";
+    deploykit.inputs.nixpkgs.follows = "nixpkgs";
+    deploykit.inputs.flake-parts.follows = "flake-parts";
   };
 
-  outputs = { self
-            , nixpkgs
-            , nixpkgs-update
-            , nixpkgs-update-github-releases
-            , nixpkgs-update-pypi-releases
-            , sops-nix
-            , hercules-ci-effects
-            , hydra
-            }: {
-    devShell.x86_64-linux = let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in pkgs.callPackage ./shell.nix {
-      inherit (sops-nix.packages.x86_64-linux) sops-import-keys-hook;
-    };
-    nixosConfigurations = let
-      common = [
-        sops-nix.nixosModules.sops
-      ];
-    in {
-      "build01.nix-community.org" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = common ++ [
-          ./build01/configuration.nix
-        ];
-      };
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  }:
+    (flake-parts.lib.evalFlakeModule
+      {inherit self;}
+      {
+        systems = ["x86_64-linux" "aarch64-linux" "x86_64-linux" "aarch64-darwin"];
 
-      "build02.nix-community.org" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = common ++ [
-          (import ./build02/nixpkgs-update.nix {
-            inherit nixpkgs-update
-              nixpkgs-update-github-releases
-              nixpkgs-update-pypi-releases;
-          })
-          ./build02/configuration.nix
-        ];
-      };
+        perSystem = {
+          inputs',
+          pkgs,
+          ...
+        }: {
+          devShells.default = pkgs.callPackage ./shell.nix {
+            inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
+            inherit (inputs'.deploykit.packages) deploykit;
+          };
+        };
+        flake.nixosConfigurations = let
+          inherit (self.inputs.nixpkgs.lib) nixosSystem;
+          common = [
+            self.inputs.sops-nix.nixosModules.sops
+          ];
+        in {
+          "build01.nix-community.org" = nixosSystem {
+            system = "x86_64-linux";
+            modules =
+              common
+              ++ [
+                ./build01/configuration.nix
+              ];
+          };
 
-      "build03.nix-community.org" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = common ++ [
-          (import ./services/hydra {
-            inherit hydra;
-          })
+          "build02.nix-community.org" = nixosSystem {
+            system = "x86_64-linux";
+            modules =
+              common
+              ++ [
+                (import ./build02/nixpkgs-update.nix {
+                  inherit
+                    (self.inputs)
+                    nixpkgs-update
+                    nixpkgs-update-github-releases
+                    nixpkgs-update-pypi-releases
+                    ;
+                })
+                ./build02/configuration.nix
+              ];
+          };
 
-          ./build03/configuration.nix
-        ];
-      };
+          "build03.nix-community.org" = nixosSystem {
+            system = "x86_64-linux";
+            modules =
+              common
+              ++ [
+                (import ./services/hydra {
+                  inherit (self.inputs) hydra;
+                })
 
-      "build04.nix-community.org" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = common ++ [
-          ./build04/configuration.nix
-        ];
-      };
-    };
-  };
+                ./build03/configuration.nix
+              ];
+          };
+
+          "build04.nix-community.org" = nixosSystem {
+            system = "aarch64-linux";
+            modules =
+              common
+              ++ [
+                ./build04/configuration.nix
+              ];
+          };
+        };
+      })
+    .config
+    .flake;
 }
