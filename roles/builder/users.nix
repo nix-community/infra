@@ -27,6 +27,8 @@ let
       keys = ./keys/jtojnar;
     };
 
+    raitobezarius.keys = ./keys/raitobezarius;
+
     winter.keys = ./keys/winter;
 
     zowoq = {
