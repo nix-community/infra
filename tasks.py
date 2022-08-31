@@ -18,8 +18,9 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
     g = DeployGroup(hosts)
 
     def deploy(h: DeployHost) -> None:
+        target = f"{h.user or 'root'}@{h.host}"
         h.run_local(
-            f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {h.user}@{h.host}:/etc/nixos"
+            f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {target}:/etc/nixos"
         )
 
         # FIXME: build03 has itself as a builder and deadlocks building packages.
@@ -134,7 +135,7 @@ def nixos_install(c, hosts=""):
 
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
-        return [DeployHost(f"build{n + 1:02d}.nix-community.org") for n in range(4)]
+        return [DeployHost(f"build{n + 1:02d}.nix-community.org", user="root") for n in range(4)]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
 
