@@ -27,7 +27,10 @@ let
       keys = ./keys/jtojnar;
     };
 
-    raitobezarius.keys = ./keys/raitobezarius;
+    raitobezarius = {
+      trusted = true;
+      keys = ./keys/raitobezarius;
+    };
 
     winter.keys = ./keys/winter;
 
