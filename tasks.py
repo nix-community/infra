@@ -137,7 +137,7 @@ def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
         return [DeployHost(f"build{n + 1:02d}.nix-community.org", user="root") for n in range(4)]
 
-    return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
+    return [DeployHost(f"{h}.nix-community.org", user="root") for h in hosts.split(",")]
 
 
 @task
