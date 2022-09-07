@@ -19,6 +19,7 @@
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-agent.url = "hercules-ci-agent/master";
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -33,6 +34,7 @@
   outputs = {
     self,
     flake-parts,
+    hercules-ci-agent,
     ...
   }:
     (flake-parts.lib.evalFlakeModule
@@ -54,6 +56,7 @@
           inherit (self.inputs.nixpkgs.lib) nixosSystem;
           common = [
             self.inputs.sops-nix.nixosModules.sops
+            hercules-ci-agent.nixosModules.agent-service
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
