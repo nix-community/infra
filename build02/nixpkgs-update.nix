@@ -22,7 +22,7 @@ let
   nixpkgs-update-pypi-releases' = "${nixpkgs-update-pypi-releases}/main.py";
 
   mkWorker = name: {
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update ${name} service";
     enable = true;
@@ -30,7 +30,7 @@ let
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update/worker";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/worker";
-    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update/worker"; # for nix-update update scripts
+    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update-worker"; # for nix-update update scripts
 
     serviceConfig = {
       Type = "simple";
@@ -45,7 +45,7 @@ let
       CacheDirectoryMode = "700";
       LogsDirectory = "nixpkgs-update/";
       LogsDirectoryMode = "755";
-      RuntimeDirectory = "nixpkgs-update/worker";
+      RuntimeDirectory = "nixpkgs-update-worker";
       RuntimeDirectoryMode = "700";
       StandardOutput = "journal";
     };
@@ -70,7 +70,7 @@ let
   };
 
   mkFetcher = cmd: {
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     path = nixpkgsUpdateSystemDependencies;
     # API_TOKEN is used by nixpkgs-update-github-releases
@@ -89,6 +89,8 @@ let
       WorkingDirectory = "/var/lib/nixpkgs-update/";
       StateDirectory = "nixpkgs-update";
       StateDirectoryMode = "700";
+      CacheDirectory = "nixpkgs-update/worker";
+      CacheDirectoryMode = "700";
     };
     script = ''
       pipe=/var/lib/nixpkgs-update/fifo
@@ -113,14 +115,13 @@ in
 
   systemd.services.nixpkgs-update-delete-done = {
     startAt = "daily";
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
     path = nixpkgsUpdateSystemDependencies;
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update/worker";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/worker";
-    environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update/worker"; # for nix-update update scripts
 
     serviceConfig = {
       Type = "simple";
@@ -131,12 +132,9 @@ in
       WorkingDirectory = "/var/lib/nixpkgs-update/worker";
       StateDirectory = "nixpkgs-update/worker";
       StateDirectoryMode = "700";
-      CacheDirectory = "nixpkgs-update/worker";
       CacheDirectoryMode = "700";
       LogsDirectory = "nixpkgs-update/";
       LogsDirectoryMode = "755";
-      RuntimeDirectory = "nixpkgs-update/worker";
-      RuntimeDirectoryMode = "700";
       StandardOutput = "journal";
     };
 
@@ -148,7 +146,6 @@ in
   systemd.services.nixpkgs-update-fetch-pypi = mkFetcher "grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | ${nixpkgs-update-pypi-releases'} --nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher nixpkgs-update-github-releases';
 
-
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
   systemd.services.nixpkgs-update-worker2 = mkWorker "worker2";
   systemd.services.nixpkgs-update-worker3 = mkWorker "worker3";
@@ -159,8 +156,6 @@ in
     "d /home/r-ryantm/.ssh 700 r-ryantm r-ryantm - -"
 
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
-
-    "d /run/nixpkgs-update/worker - r-ryantm r-ryantm - -"
 
     "L+ /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
     "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
