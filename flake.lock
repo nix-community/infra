@@ -322,11 +322,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1662585274,
-        "narHash": "sha256-o60PKQAVa/FwDjw+fxDo2cfArmuBhsvrsEIXfcxv7dU=",
+        "lastModified": 1662635422,
+        "narHash": "sha256-/rvyHvM3eTrnUFzRy+/naCMoy62tjUxwrnvpSwLX4lM=",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "33366746fa259883add415234e5cafa5f181ae39",
+        "rev": "5689e31975b2f67c0085e2aa3d573d4a97c44ff6",
         "type": "github"
       },
       "original": {
