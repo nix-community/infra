@@ -64,7 +64,7 @@ in
         ];
     };
 
-    services.hydra.package = hydra.defaultPackage.${pkgs.system};
+    services.hydra.package = hydra.packages.${pkgs.system}.default;
 
     sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache.yaml;
     sops.secrets.id_buildfarm = { };
