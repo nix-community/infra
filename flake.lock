@@ -306,11 +306,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1662635422,
-        "narHash": "sha256-/rvyHvM3eTrnUFzRy+/naCMoy62tjUxwrnvpSwLX4lM=",
+        "lastModified": 1663445991,
+        "narHash": "sha256-vu3NOZcPXIGD2nvNGEQcTq7RQG4Lh5sXZbJ+TprWquI=",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "5689e31975b2f67c0085e2aa3d573d4a97c44ff6",
+        "rev": "473d33d4aed086185d32c2cd65db9b6a895bcd85",
         "type": "github"
       },
       "original": {
