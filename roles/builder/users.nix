@@ -31,6 +31,11 @@ let
       trusted = true;
       keys = ./keys/raitobezarius;
     };
+    
+    schmittlauch = {
+      trusted = true;
+      keys = ./keys/schmittlauch;
+    };
 
     winter.keys = ./keys/winter;
 
