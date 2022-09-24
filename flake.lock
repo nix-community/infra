@@ -111,9 +111,10 @@
         "type": "github"
       },
       "original": {
-        "id": "hercules-ci-agent",
+        "owner": "hercules-ci",
         "ref": "master",
-        "type": "indirect"
+        "repo": "hercules-ci-agent",
+        "type": "github"
       }
     },
     "hercules-ci-effects": {
@@ -414,22 +415,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1664028844,
-        "narHash": "sha256-wwGqnvROHW54ma0h4q6GL5toKxTVVKvAypv0CcJkraU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "72bdd03f0d5696412b25a93218acaad530570d30",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -469,7 +454,9 @@
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nixpkgs-22_05": "nixpkgs-22_05"
       },
       "locked": {

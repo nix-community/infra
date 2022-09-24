@@ -18,8 +18,9 @@
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    hercules-ci-agent.url = "hercules-ci-agent/master";
+    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
     hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
 
