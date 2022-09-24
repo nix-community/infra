@@ -1,0 +1,5 @@
+status = [
+  "ci/hercules/derivations",
+  "ci/hercules/effects",
+  "ci/hercules/evaluation",
+]
