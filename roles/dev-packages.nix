@@ -10,5 +10,6 @@
     pkgs.nixpkgs-review
     pkgs.ripgrep
     pkgs.fd
+    pkgs.nix-tree
   ];
 }
