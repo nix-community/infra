@@ -33,4 +33,10 @@ let
   });
 in
 (nixpkgs.lib.mapAttrs' (name: config: nixpkgs.lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
-(nixpkgs.lib.mapAttrs' deployNixOS' self.outputs.nixosConfigurations)
+# FIXME: broken just now in hercules
+#(nixpkgs.lib.mapAttrs' deployNixOS' self.outputs.nixosConfigurations) //
+{
+  # FIXME: maybe find a more generic solution here?
+  devShell-x86_64 = self.outputs.devShells.x86_64-linux.default;
+  devShell-aarch64 = self.outputs.devShells.aarch64-linux.default;
+}
