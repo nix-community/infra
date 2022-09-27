@@ -13,7 +13,7 @@ in your home! We will regularly delete `/home` without further notice.
 
 ### Using your NixOS home-manager configuration on the hosts
 
-If you happen to have your NixOS & home-manager configurations intertwined but 
+If you happen to have your NixOS & home-manager configurations intertwined but
 you'd like your familiar environment on our infrastructure you can evaluate
 `pkgs.writeShellScript "hm-activate" config.systemd.services.home-manager-<yourusername>.serviceConfig.ExecStart`
 from your NixOS configuration, and send this derivation to be realized remotely:
@@ -39,6 +39,13 @@ If you hit any issues, ping us on Matrix in the
 [nix-community](https://matrix.to/#/#nix-community:nixos.org)
 room (see the admin list below) or create an issue here:
 [New Issue](https://github.com/nix-community/infra/issues/new).
+
+### Pull requests from forks
+As PRs from forks don't have automatic CI checks, admins can test PRs by posting a comment on the PR instead.
+
+* `bors try` - check if the PR builds.
+* `bors merge` - same as `bors try` but will also merge the PR if it builds successfully.
+* https://bors.tech/documentation/
 
 ### Administrators
 
@@ -93,7 +100,7 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 
 * Provider: Oracle cloud
 * Instance type: [Ampere A1 Compute](https://www.oracle.com/cloud/compute/arm/)
-* CPU: 4 VCPUs on an Ampere Altra (arm64) 
+* CPU: 4 VCPUs on an Ampere Altra (arm64)
 * RAM: 24GB
 * Drives: 200 GB Block
 
