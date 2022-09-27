@@ -15,6 +15,11 @@ let
       keys = ./keys/0x4A6F;
     };
 
+    a-kenji = {
+      trusted = true;
+      keys = ./keys/a-kenji;
+    };
+
     ckie.keys = ./keys/ckie;
 
     fgaz = {
