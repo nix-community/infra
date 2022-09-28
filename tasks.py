@@ -24,9 +24,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
         )
 
         # FIXME: build03 has itself as a builder and deadlocks building packages.
-        h.run(
-            f"nixos-rebuild switch --builders '' --option accept-flake-config true"
-        )
+        h.run(f"nixos-rebuild switch --builders '' --option accept-flake-config true")
 
     g.run_function(deploy)
 
@@ -135,7 +133,10 @@ def nixos_install(c, hosts=""):
 
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
-        return [DeployHost(f"build{n + 1:02d}.nix-community.org", user="root") for n in range(4)]
+        return [
+            DeployHost(f"build{n + 1:02d}.nix-community.org", user="root")
+            for n in range(4)
+        ]
 
     return [DeployHost(f"{h}.nix-community.org", user="root") for h in hosts.split(",")]
 
