@@ -7,7 +7,6 @@
       maxJobs = 4;
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
-      protocol = "ssh-ng";
       system = "aarch64-linux";
       supportedFeatures = [
         "big-parallel"
