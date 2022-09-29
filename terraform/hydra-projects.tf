@@ -20,7 +20,7 @@ resource "hydra_jobset" "kittybox" {
 
   flake_uri = "git+https://git.sr.ht/~vikanezrimaya/kittybox?ref=main"
 
-  check_interval    = 300
+  check_interval    = 1800
   scheduling_shares = 3000
   keep_evaluations  = 3
 
