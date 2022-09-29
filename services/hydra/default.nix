@@ -39,10 +39,14 @@ in
       '';
     };
   };
+
+  imports = [
+    ../../roles/builder.nix
+  ];
+
   config = {
     sops.secrets.hydra-admin-password.owner = "hydra";
     sops.secrets.hydra-users.owner = "hydra";
-    services.postgresql.ensureDatabases = ["hydra"];
 
     # hydra-queue-runner needs to read this key for remote building
     sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
@@ -87,9 +91,11 @@ in
       distributedBuilds = true;
       buildMachines = [
         {
-          hostName = "localhost";
+          hostName = "build03.nix-community.org";
           systems = [ "x86_64-linux" "builtin" ];
           maxJobs = 8;
+          sshKey = config.sops.secrets.id_buildfarm.path;
+          sshUser = "nix";
           supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
         }
       ];
@@ -97,7 +103,9 @@ in
 
     services.postgresql = {
       enable = true;
+      ensureDatabases = ["hydra"];
       settings = {
+        max_connections = "300";
         effective_cache_size = "4GB";
         shared_buffers = "4GB";
       };
