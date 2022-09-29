@@ -42,6 +42,7 @@ in
   config = {
     sops.secrets.hydra-admin-password.owner = "hydra";
     sops.secrets.hydra-users.owner = "hydra";
+    services.postgresql.ensureDatabases = ["hydra"];
 
     # hydra-queue-runner needs to read this key for remote building
     sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
