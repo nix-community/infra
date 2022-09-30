@@ -143,16 +143,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1664477173,
-        "narHash": "sha256-Nh1bGv4qMQeNIuidL/UTMVQzb3xKX0/C9ihDCUZWRc0=",
-        "owner": "Mic92",
+        "lastModified": 1664546346,
+        "narHash": "sha256-BEXvLgBRK38Z2f4v5OXvTgywkvU+n0PHyjvOepa+GXk=",
+        "owner": "NixOS",
         "repo": "hydra",
-        "rev": "94d19e19725905c3d10acd28cce78268a53d5ff6",
+        "rev": "8f05b797e96197b9ddaec63331b58b6a98aa5c0a",
         "type": "github"
       },
       "original": {
-        "owner": "Mic92",
-        "ref": "fix-ssh-prefix",
+        "owner": "NixOS",
         "repo": "hydra",
         "type": "github"
       }
