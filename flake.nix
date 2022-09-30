@@ -21,7 +21,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
-    hydra.url = "github:Mic92/hydra/fix-ssh-prefix";
+    hydra.url = "github:NixOS/hydra";
     hydra.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
