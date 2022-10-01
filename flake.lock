@@ -139,7 +139,7 @@
       "inputs": {
         "nix": "nix",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ]
       },
       "locked": {
@@ -300,6 +300,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1664491521,
+        "narHash": "sha256-1Zj7Vi7zswETSHXueX8Oh1OA2f68DS7TOHoelLukA1U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c9389643ae662834fd584ffa1898dc52956e1fba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-22.05-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-update": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -446,6 +462,7 @@
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nixpkgs-update-pypi-releases": "nixpkgs-update-pypi-releases",
