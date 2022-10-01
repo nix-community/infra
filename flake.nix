@@ -12,6 +12,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05-small";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
@@ -22,7 +23,9 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
     hydra.url = "github:NixOS/hydra";
-    hydra.inputs.nixpkgs.follows = "nixpkgs";
+    # switch back to unstable when NixOS/nix moves to 22.11
+    #hydra.inputs.nixpkgs.follows = "nixpkgs";
+    hydra.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs.follows = "nixpkgs";
