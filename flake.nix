@@ -20,7 +20,6 @@
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
     hydra.url = "github:NixOS/hydra";
     # switch back to unstable when NixOS/nix moves to 22.11
