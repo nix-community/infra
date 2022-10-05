@@ -117,24 +117,6 @@
         "type": "github"
       }
     },
-    "hercules-ci-effects": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1664386111,
-        "narHash": "sha256-VCQzAMEjgXNTbAB8v5eQav/KpOC44E/RapXz1KPhroE=",
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-effects",
-        "rev": "ac59fc51b1f25b6436ed55d7cdb5fdd051cd4dbf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-effects",
-        "type": "github"
-      }
-    },
     "hydra": {
       "inputs": {
         "nix": "nix",
@@ -197,7 +179,7 @@
     "nix": {
       "inputs": {
         "lowdown-src": "lowdown-src",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
@@ -320,7 +302,7 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "mmdoc": "mmdoc",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1663535874,
@@ -370,21 +352,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1664384182,
-        "narHash": "sha256-RM7C+6c9oSeZuoCCXOCRZUI1o4wpLo6pmOz1PxMN1ig=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "52392d42c156db5b889db7f3cc3e9909e4259b2a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1657693803,
         "narHash": "sha256-G++2CJ9u0E7NNTAi9n5G8TdDmGJXcIjkJ3NF8cetQB8=",
         "owner": "NixOS",
@@ -399,7 +366,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1664729105,
         "narHash": "sha256-jriM5XldII1rs3v4EWPqHYZdmyRxqE6pRUlINxNwVE8=",
@@ -415,7 +382,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1629859457,
         "narHash": "sha256-JlAU1EboVCOJeMXNLJusf+0vnx++xK1Y4DW5y80zMfY=",
@@ -458,9 +425,8 @@
         "deploykit": "deploykit",
         "flake-parts": "flake-parts",
         "hercules-ci-agent": "hercules-ci-agent",
-        "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
