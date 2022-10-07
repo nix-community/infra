@@ -59,15 +59,16 @@ As PRs from forks don't have automatic CI checks, admins can test PRs by posting
 
 ## Services
 
+* Buildkite agent - on build03
 * GitLab agent - on build03
-* hound - on build03
+* https://search.nix-community.org (hound) - on build03
 * https://hydra.nix-community.org - on build03
 * matterbridge - on build03
 * ryantm-updater bot - on build02
 
 ## Hosts
 
-### `build01` ![build01](https://healthchecks.io/badge/c9e58e14-c706-4084-959b-17b06fbd124f/QFBOLbO1/build01.svg)
+### `build01`
 
 This machine is perfect for running heavy builds.
 
