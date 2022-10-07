@@ -43,21 +43,22 @@ resource "hydra_project" "emacs_overlay" {
   }
 }
 
-resource "hydra_project" "nix_data" {
-  name         = "nix-data"
-  display_name = "nix-data"
-  description  = "Standard set of packages and overlays for data-scientists"
-  homepage     = "https://github.com/nix-community/nix-data"
-  owner        = "admin"
-  enabled      = true
-  visible      = true
-
-  declarative {
-    file = "spec.json"
-    type = "git"
-    value = "https://github.com/nix-community/nix-data"
-  }
-}
+# Currently unmaintained:
+#resource "hydra_project" "nix_data" {
+#  name         = "nix-data"
+#  display_name = "nix-data"
+#  description  = "Standard set of packages and overlays for data-scientists"
+#  homepage     = "https://github.com/nix-community/nix-data"
+#  owner        = "admin"
+#  enabled      = true
+#  visible      = true
+#
+#  declarative {
+#    file = "spec.json"
+#    type = "git"
+#    value = "https://github.com/nix-community/nix-data"
+#  }
+#}
 
 resource "hydra_project" "simple_nixos_mailserver" {
   name         = "simple-nixos-mailserver"
@@ -75,21 +76,22 @@ resource "hydra_project" "simple_nixos_mailserver" {
   }
 }
 
-resource "hydra_project" "redoxpkgs" {
-  name         = "redoxpkgs"
-  display_name = "Redoxpkgs"
-  description  = "Packages for Redox"
-  homepage     = "https://github.com/nix-community/redoxpkgs"
-  owner        = "admin"
-  enabled      = true
-  visible      = true
-
-  declarative {
-    file = ".hydra/spec.json"
-    type = "git"
-    value = "https://github.com/nix-community/redoxpkgs"
-  }
-}
+# Currently unmaintained:
+#resource "hydra_project" "redoxpkgs" {
+#  name         = "redoxpkgs"
+#  display_name = "Redoxpkgs"
+#  description  = "Packages for Redox"
+#  homepage     = "https://github.com/nix-community/redoxpkgs"
+#  owner        = "admin"
+#  enabled      = true
+#  visible      = true
+#
+#  declarative {
+#    file = ".hydra/spec.json"
+#    type = "git"
+#    value = "https://github.com/nix-community/redoxpkgs"
+#  }
+#}
 
 # Currently unmaintained:
 #resource "hydra_project" "rust_for_linux" {
