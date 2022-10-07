@@ -91,18 +91,19 @@ resource "hydra_project" "redoxpkgs" {
   }
 }
 
-resource "hydra_project" "rust_for_linux" {
-  name         = "rust-for-linux"
-  display_name = "Rust For Linux"
-  description  = "Linux Kernel with Rust support"
-  homepage     = "https://github.com/Rust-for-Linux/linux"
-  owner        = "admin"
-  enabled      = true
-  visible      = true
-
-  declarative {
-    file = ".hydra/spec.json"
-    type = "git"
-    value = "https://github.com/rust-for-linux/nix"
-  }
-}
+# Currently unmaintained:
+#resource "hydra_project" "rust_for_linux" {
+#  name         = "rust-for-linux"
+#  display_name = "Rust For Linux"
+#  description  = "Linux Kernel with Rust support"
+#  homepage     = "https://github.com/Rust-for-Linux/linux"
+#  owner        = "admin"
+#  enabled      = true
+#  visible      = true
+#
+#  declarative {
+#    file = ".hydra/spec.json"
+#    type = "git"
+#    value = "https://github.com/rust-for-linux/nix"
+#  }
+#}
