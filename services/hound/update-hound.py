@@ -5,13 +5,15 @@ import requests
 import json
 from pprint import pprint
 
-blacklist = [
-    'https://github.com/NixOS/nixos.git',
-    'https://github.com/NixOS/systemd.git',
-    'https://github.com/NixOS/docker.git',
-    'https://github.com/NixOS/nixpkgs-channels.git',
-    'https://github.com/NixOS/nixops-dashboard.git',
-    'https://github.com/NixOS/nixos-foundation.git',
+allowed_forks = [
+    'nix-community/acpi_call',
+    'nix-community/bundix',
+    'nix-community/luarocks-nix',
+    'nix-community/nix-doom-emacs',
+    'nix-community/nix-straight.el',
+    'nix-community/travis-build',
+    'nix-community/vagrant-nixos-plugin',
+    'NixOS/calamares-nixos-extensions',
 ];
 
 def all_for_org(org):
@@ -34,7 +36,8 @@ def all_for_org(org):
                 'url': repo['clone_url'],
             }
             for repo in repos
-            if repo['clone_url'] not in blacklist
+            if repo['archived'] == False
+            if repo['fork'] == False or repo['full_name'] in allowed_forks
         })
 
     return resp
