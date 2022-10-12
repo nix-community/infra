@@ -83,9 +83,6 @@
         "NixOS-nixops-aws": {
             "url": "https://github.com/NixOS/nixops-aws.git"
         },
-        "NixOS-nixops-dashboard": {
-            "url": "https://github.com/NixOS/nixops-dashboard.git"
-        },
         "NixOS-nixops-hetzner": {
             "url": "https://github.com/NixOS/nixops-hetzner.git"
         },
