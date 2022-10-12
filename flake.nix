@@ -27,7 +27,7 @@
     hydra.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     deploykit.url = "github:numtide/deploykit";
     deploykit.inputs.nixpkgs.follows = "nixpkgs";
