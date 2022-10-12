@@ -5,6 +5,10 @@ import requests
 import json
 from pprint import pprint
 
+disallowed_repos = [
+  'NixOS/nixops-dashboard', # empty repo causes an error
+];
+
 allowed_forks = [
     'nix-community/acpi_call',
     'nix-community/bundix',
@@ -36,6 +40,7 @@ def all_for_org(org):
                 'url': repo['clone_url'],
             }
             for repo in repos
+            if repo['full_name'] not in disallowed_repos
             if repo['archived'] == False
             if repo['fork'] == False or repo['full_name'] in allowed_forks
         })
