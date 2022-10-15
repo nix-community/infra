@@ -59,7 +59,6 @@ As PRs from forks don't have automatic CI checks, admins can test PRs by posting
 
 ## Services
 
-* Buildkite agent - on build03
 * https://search.nix-community.org (hound) - on build03
 * https://hydra.nix-community.org - on build03
 * matterbridge - on build03

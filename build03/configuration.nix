@@ -10,7 +10,6 @@
   # $ zpool import -f zroot && mount -t zfs zroot/root/nixos /mnt && mount -t zfs zroot/root/home /mnt/home && mount /dev/md[0-9]* /mnt/boot
   # $ nixos-enter
   imports = [
-    ../roles/buildkite.nix
     ../roles/common.nix
     ../roles/hardware/hetzner-amd.nix
     ../roles/hercules-ci
