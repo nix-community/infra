@@ -17,7 +17,7 @@
     ../roles/hetzner-network.nix
     ../roles/raid.nix
     ../roles/builder
-    ../roles/remote-builder/aarch64-build04.nix
+    ../roles/remote-builder/aarch64-nixos-community.nix
   ];
 
   # /boot is a mirror raid
