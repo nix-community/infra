@@ -1,0 +1,45 @@
+name: "terraform"
+
+# for security should only run on push to bors branches (staging/trying)
+on:
+  push:
+    branches:
+      - staging
+      - trying
+
+jobs:
+  terraform-deploy:
+    if: github.repository == 'nix-community/infra'
+    runs-on: ubuntu-latest
+    env:
+      SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+      TF_IN_AUTOMATION: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            terraform:
+              - 'terraform/**'
+      - uses: cachix/install-nix-action@v18
+        if: steps.changes.outputs.terraform == 'true'
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: init
+        if: steps.changes.outputs.terraform == 'true'
+        run: nix develop -c ./terraform/deploy terraform init -input=false
+      - name: validate
+        if: steps.changes.outputs.terraform == 'true'
+        run: nix develop -c ./terraform/deploy terraform validate
+      - name: fmt
+        if: steps.changes.outputs.terraform == 'true'
+        run: nix develop -c ./terraform/deploy terraform fmt -check
+      - name: plan
+        if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/trying'
+        run: nix develop -c ./terraform/deploy terraform plan -input=false
+      - name: apply
+        if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/staging'
+        run: nix develop -c ./terraform/deploy terraform apply -auto-approve -input=false
