@@ -43,11 +43,6 @@ let
     };
 
     winter.keys = ./keys/winter;
-
-    zowoq = {
-      trusted = true;
-      keys = ./keys/zowoq;
-    };
   };
 
   ifAttr = key: default: result: opts:

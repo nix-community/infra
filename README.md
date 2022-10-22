@@ -56,6 +56,7 @@ As PRs from forks don't have automatic CI checks, admins can test PRs by posting
 * @nlewo
 * @ryantm
 * @zimbatm
+* @zowoq
 
 ## Services
 
