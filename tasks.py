@@ -90,6 +90,26 @@ def _format_disks(host: DeployHost, devices: List[str]) -> None:
 
 
 @task
+def update_sops_files(c):
+    """
+    Update all sops yaml and json files according to .sops.yaml rules
+    """
+
+    c.run(
+        """
+find . \
+        -not -path "./.github/*" \
+        -not -path "./.mergify.yml" \
+        -not -path "./_config.yml" \
+        -type f \
+        \( -iname '*.enc.json' -o -iname '*.yaml' \) \
+        -print0 | \
+        xargs -0 -n1 sops updatekeys --yes
+"""
+    )
+
+
+@task
 def format_disks(c, hosts="", disks=""):
     """
     Format disks with zfs, i.e.: inv format-disks --hosts build02 --disks /dev/nvme0n1,/dev/nvme1n1
