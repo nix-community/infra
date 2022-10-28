@@ -70,6 +70,14 @@ in {
 
     services.hydra = {
       enable = true;
+      # remote builders set in /etc/nix/machines + localhost
+      buildMachinesFiles = [
+        "/etc/nix/machines"
+
+        (pkgs.writeText "local" ''
+          localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm - -
+        '')
+      ];
       hydraURL = "https://hydra.nix-community.org";
       notificationSender = "hydra@hydra.nix-community.org";
       port = hydraPort;
@@ -79,18 +87,6 @@ in {
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
       '';
-    };
-
-    nix = {
-      distributedBuilds = true;
-      buildMachines = [
-        {
-          hostName = "localhost";
-          systems = ["x86_64-linux" "builtin"];
-          maxJobs = 8;
-          supportedFeatures = ["nixos-test" "big-parallel" "kvm"];
-        }
-      ];
     };
 
     services.postgresql = {
