@@ -41,6 +41,10 @@
       hostNames = [ "build04.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU/gbREwVuI1p3ag1iG72jxl2/92yGl38c+TPOfFMH8";
     };
+    aarch64-nixos-community = {
+      hostNames = [ "aarch64.nixos.community" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMUTz5i9u5H2FHNAmZJyoJfIGyUm/HfGhfwnc142L3ds";
+    };
   };
 
   # Ban brute force SSH
