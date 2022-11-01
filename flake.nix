@@ -12,7 +12,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05-small";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
@@ -21,10 +20,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
-    hydra.url = "github:NixOS/hydra";
-    # switch back to unstable when NixOS/nix moves to 22.11
-    #hydra.inputs.nixpkgs.follows = "nixpkgs";
-    hydra.inputs.nixpkgs.follows = "nixpkgs-stable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -93,10 +88,6 @@
             modules =
               common
               ++ [
-                (import ./services/hydra {
-                  inherit (self.inputs) hydra;
-                })
-
                 ./build03/configuration.nix
               ];
           };
