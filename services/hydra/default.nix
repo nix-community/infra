@@ -1,4 +1,4 @@
-{ hydra }: { lib, pkgs, config, ... }:
+{ lib, pkgs, config, ... }:
 with lib; let
   cfg = config;
 
@@ -59,11 +59,6 @@ in {
           "cudatoolkit"
         ];
     };
-
-    services.hydra.package = hydra.packages.${pkgs.system}.default.overrideAttrs (old: {
-      # FIXME: somehow tests are only broken when we build on our builder...
-      doCheck = false;
-    });
 
     sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache.yaml;
     sops.secrets.id_buildfarm = {};
