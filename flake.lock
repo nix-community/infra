@@ -1,28 +1,5 @@
 {
   "nodes": {
-    "deploykit": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1666677873,
-        "narHash": "sha256-eKyqsGgnJmF2wUYa7HjC1Jwsh03qVTJEP1MtL7JL4Ts=",
-        "owner": "numtide",
-        "repo": "deploykit",
-        "rev": "bcc1cfc6be8bed354ac776404da8da044ca0a252",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "deploykit",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -316,7 +293,6 @@
     },
     "root": {
       "inputs": {
-        "deploykit": "deploykit",
         "flake-parts": "flake-parts",
         "hercules-ci-agent": "hercules-ci-agent",
         "nixpkgs": "nixpkgs_2",

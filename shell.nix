@@ -1,6 +1,5 @@
 { pkgs ? import <nixpkgs> {}
 , sops-import-keys-hook
-, deploykit
 }:
 
 with pkgs;
@@ -20,10 +19,14 @@ mkShellNoCC {
     ))
     jq
     sops
-    python3.pkgs.invoke
+    (python3.withPackages (
+      p: [
+        p.deploykit
+        p.invoke
+      ]
+    ))
     rsync
 
     sops-import-keys-hook
-    deploykit
   ];
 }
