@@ -1,0 +1,14 @@
+name: "labels"
+
+on:
+  pull_request_target:
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    if: github.repository == 'nix-community/infra'
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: true
