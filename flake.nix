@@ -23,10 +23,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-
-    deploykit.url = "github:numtide/deploykit";
-    deploykit.inputs.nixpkgs.follows = "nixpkgs";
-    deploykit.inputs.flake-parts.follows = "flake-parts";
   };
 
   outputs = {
@@ -47,7 +43,6 @@
         }: {
           devShells.default = pkgs.callPackage ./shell.nix {
             inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
-            inherit (inputs'.deploykit.packages) deploykit;
           };
         };
         flake.nixosConfigurations = let
