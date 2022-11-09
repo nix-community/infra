@@ -3,6 +3,7 @@
 {
   imports = [
     ../roles/common.nix
+    ../roles/swap.nix
     ../roles/hardware/hetzner-amd.nix
     ../roles/hetzner-network.nix
     ../roles/hercules-ci
