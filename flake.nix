@@ -19,7 +19,6 @@
     nixpkgs-update-pypi-releases.flake = false;
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent/master";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -28,7 +27,6 @@
   outputs = {
     self,
     flake-parts,
-    hercules-ci-agent,
     ...
   }:
     flake-parts.lib.mkFlake
@@ -49,7 +47,6 @@
           inherit (self.inputs.nixpkgs.lib) nixosSystem;
           common = [
             self.inputs.sops-nix.nixosModules.sops
-            hercules-ci-agent.nixosModules.agent-service
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
