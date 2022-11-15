@@ -118,7 +118,7 @@ locals {
 }
 
 resource "cloudflare_record" "nix-community-org-github-pages" {
-  for_each = {for page in local.github_pages: page => page}
+  for_each = { for page in local.github_pages : page => page }
 
   zone_id = local.nix_community_org_zone_id
   name    = each.value

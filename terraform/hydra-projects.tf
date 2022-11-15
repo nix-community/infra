@@ -37,8 +37,8 @@ resource "hydra_project" "emacs_overlay" {
   visible      = true
 
   declarative {
-    file = "hydra/spec.json"
-    type = "git"
+    file  = "hydra/spec.json"
+    type  = "git"
     value = "https://github.com/nix-community/emacs-overlay"
   }
 }
@@ -53,8 +53,8 @@ resource "hydra_project" "simple_nixos_mailserver" {
   visible      = true
 
   declarative {
-    file = ".hydra/spec.json"
-    type = "git"
+    file  = ".hydra/spec.json"
+    type  = "git"
     value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
   }
 }
