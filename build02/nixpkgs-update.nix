@@ -183,7 +183,7 @@ in
 
   sops.secrets.nix-community-cachix = {
     path = "/home/r-ryantm/.config/cachix/cachix.dhall";
-    sopsFile = ../roles/nix-community-cache.yaml;
+    sopsFile = ../roles/nix-community-cache/secrets.yaml;
     owner = "r-ryantm";
     group = "r-ryantm";
   };
