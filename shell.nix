@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}
+{ pkgs
 , sops-import-keys-hook
 }:
 
@@ -8,7 +8,7 @@ mkShellNoCC {
     "./keys"
   ];
 
-  buildInputs = with pkgs; [
+  buildInputs = [
     (terraform.withPlugins (
       p: [
         p.cloudflare
