@@ -6,10 +6,10 @@ terraform {
 
   required_providers {
     cloudflare = {
-      source  = "cloudflare/cloudflare"
+      source = "cloudflare/cloudflare"
     }
     hydra = {
-      source  = "DeterminateSystems/hydra"
+      source = "DeterminateSystems/hydra"
     }
   }
 }
@@ -19,6 +19,6 @@ provider "cloudflare" {
 }
 
 provider "hydra" {
-  host = "https://hydra.nix-community.org"
+  host     = "https://hydra.nix-community.org"
   username = "admin"
 }
