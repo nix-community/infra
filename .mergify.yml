@@ -6,5 +6,5 @@ pull_request_rules:
       - author=github-actions[bot]
     actions:
       merge:
-        method: merge
+        method: rebase
       delete_head_branch: {}
