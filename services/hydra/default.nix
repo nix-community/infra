@@ -60,7 +60,7 @@ in {
         ];
     };
 
-    sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache.yaml;
+    sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache/secrets.yaml;
     sops.secrets.id_buildfarm = {};
 
     services.hydra = {

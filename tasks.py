@@ -97,13 +97,9 @@ def update_sops_files(c):
     c.run(
         """
 find . \
-        -not -path "./.github/*" \
-        -not -path "./.mergify.yml" \
-        -not -path "./_config.yml" \
         -type f \
-        \( -iname '*.enc.json' -o -iname '*.yaml' \) \
-        -print0 | \
-        xargs -0 -n1 sops updatekeys --yes
+        \( -iname '*.enc.json' -o -iname 'secrets.yaml' \) \
+        -exec sops updatekeys --yes {} \;
 """
     )
 
