@@ -47,6 +47,7 @@
           inherit (self.inputs.nixpkgs.lib) nixosSystem;
           common = [
             self.inputs.sops-nix.nixosModules.sops
+            { _module.args.inputs = self.inputs; }
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
