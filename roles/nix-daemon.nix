@@ -61,5 +61,12 @@ in
     };
   };
 
+  services.telegraf.extraConfig.inputs.file = [
+    {
+      data_format = "prometheus";
+      files = [ "/etc/flake-inputs.prom" ];
+    }
+  ];
+
   users.groups.trusted = { };
 }
