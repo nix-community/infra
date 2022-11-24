@@ -7,6 +7,7 @@ keys:
   - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
   - &build04 age1vr4suv4lhtt8f59s25eukdfk67j7av72gvj7sk7ux6thusct3utqmn3pmf
   - &zowoq age1m7xhem3qll35d539f364pm6txexvnp6k0tk34d8jxu4ry3pptv7smm0k5n
+  - &github_actions age1hdmmmv423xajuv4pjumnj35j34e4rhta3wgatjafy3dxf38yycysqzl4mn
 # scan new hosts like this:
 # $ nix-shell -p ssh-to-age --run 'ssh-keyscan buildXX.nix-community.org | ssh-to-age'
 creation_rules:
@@ -24,6 +25,7 @@ creation_rules:
       - *mic92
       - *ryantm
       - *zowoq
+      - *github_actions
       pgp:
       - *zimbatm
   - path_regex: build01/[^/]+\.yaml$

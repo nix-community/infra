@@ -1,0 +1,5 @@
+"merge with bors":
+  - terraform/**/*
+
+"terraform":
+  - terraform/**/*
