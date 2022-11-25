@@ -212,9 +212,6 @@
         "nix-community-dream2nix": {
             "url": "https://github.com/nix-community/dream2nix.git"
         },
-        "nix-community-dream2nix-nodejs-auto": {
-            "url": "https://github.com/nix-community/dream2nix-nodejs-auto.git"
-        },
         "nix-community-dreampkgs": {
             "url": "https://github.com/nix-community/dreampkgs.git"
         },
@@ -290,6 +287,9 @@
         "nix-community-meetup-london": {
             "url": "https://github.com/nix-community/meetup-london.git"
         },
+        "nix-community-mineflake": {
+            "url": "https://github.com/nix-community/mineflake.git"
+        },
         "nix-community-naersk": {
             "url": "https://github.com/nix-community/naersk.git"
         },
@@ -323,14 +323,14 @@
         "nix-community-nix-review-tools": {
             "url": "https://github.com/nix-community/nix-review-tools.git"
         },
-        "nix-community-nix-snippets": {
-            "url": "https://github.com/nix-community/nix-snippets.git"
-        },
         "nix-community-nix-straight.el": {
             "url": "https://github.com/nix-community/nix-straight.el.git"
         },
         "nix-community-nix-travis-ci": {
             "url": "https://github.com/nix-community/nix-travis-ci.git"
+        },
+        "nix-community-nix-unstable-installer": {
+            "url": "https://github.com/nix-community/nix-unstable-installer.git"
         },
         "nix-community-nix-user-chroot": {
             "url": "https://github.com/nix-community/nix-user-chroot.git"
@@ -448,9 +448,6 @@
         },
         "nix-community-rfc55": {
             "url": "https://github.com/nix-community/rfc55.git"
-        },
-        "nix-community-rnix-hashes": {
-            "url": "https://github.com/nix-community/rnix-hashes.git"
         },
         "nix-community-rnix-lsp": {
             "url": "https://github.com/nix-community/rnix-lsp.git"
