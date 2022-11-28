@@ -5,7 +5,6 @@
     ../roles/common.nix
     ../roles/hardware/hetzner-amd.nix
     ../roles/hetzner-network.nix
-    ../roles/hercules-ci
     ../roles/nginx.nix
     ../roles/raid.nix
     ../roles/remote-builder/aarch64-build04.nix
