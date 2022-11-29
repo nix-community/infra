@@ -30,9 +30,6 @@
   # Just disable it since we are using telegraf to monitor raid health.
   systemd.services.mdmonitor.enable = false;
 
-  # enable "sar" system activity collection
-  services.sysstat.enable = true;
-
   # Make debugging failed units easier
   systemd.extraConfig = ''
     DefaultStandardOutput=journal
