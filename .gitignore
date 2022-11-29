@@ -2,10 +2,6 @@
 result
 result-*
 
-# NixOps
-*.nixops
-/state/*
-
 # Terraform
 .terraform
 .terraform.*
