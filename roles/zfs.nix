@@ -5,8 +5,6 @@
     autoSnapshot.monthly = 1;
     autoScrub.enable = true;
   };
-  # zfs is not available for latest lts kenrel
-  boot.zfs.enableUnstable = true;
 
   # ZFS already has its own scheduler. Without this my(@Artturin) computer froze for a second when i nix build something.
   services.udev.extraRules = ''

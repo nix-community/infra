@@ -142,7 +142,7 @@ in
   };
 
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "${nixpkgs-update-bin} fetch-repology";
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "${pkgs.nixUnstable}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
   systemd.services.nixpkgs-update-fetch-pypi = mkFetcher "grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | ${nixpkgs-update-pypi-releases'} --nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher nixpkgs-update-github-releases';
 
