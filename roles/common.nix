@@ -3,14 +3,14 @@
 {
 
   imports = [
+    ./auto-upgrade.nix
     ./nix-daemon.nix
     ./security.nix
+    ./sops-nix.nix
     ./sshd.nix
     ./telegraf.nix
     ./users.nix
     ./zfs.nix
-    ./sops-nix.nix
-    ./auto-upgrade.nix
   ];
 
   environment.systemPackages = [
