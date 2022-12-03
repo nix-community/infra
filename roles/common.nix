@@ -6,7 +6,7 @@
     ./nix-daemon.nix
     ./security.nix
     ./sshd.nix
-    ./telegraf
+    ./telegraf.nix
     ./users.nix
     ./zfs.nix
     ./sops-nix.nix
