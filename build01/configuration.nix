@@ -11,7 +11,6 @@
 # nixos-enter
 {
   imports = [
-    ../roles/dev-packages.nix
     ../roles/common.nix
     ../roles/hardware/hetzner-amd.nix
     ../roles/hetzner-network.nix
