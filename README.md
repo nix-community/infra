@@ -1,23 +1,14 @@
 # nix-community infrastructure
 
-Welcome to the Nix Community infrastructure project. This project holds all
-the NixOS and Terraform configuration for this organization.
+Welcome to the Nix Community infrastructure project. This project holds all the NixOS and Terraform configuration for this organization.
 
 ## Community builder
 
-We also provide one x86 hetzner build machine as a public remote builder for the
-nix community. If you want access read the security guide lines on
-[aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than
-add your username to `roles/builder/users.nix`. Don't keep any important data
-in your home! We will regularly delete `/home` without further notice.
+We also provide one x86 hetzner build machine as a public remote builder for the nix community. If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to `roles/builder/users.nix`. Don't keep any important data in your home! We will regularly delete `/home` without further notice.
 
 ### Using your NixOS home-manager configuration on the hosts
 
-If you happen to have your NixOS & home-manager configurations intertwined but
-you'd like your familiar environment on our infrastructure you can evaluate
-`pkgs.writeShellScript "hm-activate" config.systemd.services.home-manager-<yourusername>.serviceConfig.ExecStart`
-from your NixOS configuration, and send this derivation to be realized remotely:
-(in case you aren't a Nix trusted user)
+If you happen to have your NixOS & home-manager configurations intertwined but you'd like your familiar environment on our infrastructure you can evaluate `pkgs.writeShellScript "hm-activate" config.systemd.services.home-manager-<yourusername>.serviceConfig.ExecStart` from your NixOS configuration, and send this derivation to be realized remotely: (in case you aren't a Nix trusted user)
 ``` console
 # somehow get the .drv of the above expression into $path
 $ nix copy --to ssh://build01.nix-community.org --derivation $path
@@ -30,14 +21,11 @@ $ $path
 
 ## Hydra
 
-If you want to build your project in our hydra, add a new project in this
-[file](terraform/hydra-projects.tf).
+If you want to build your project in our hydra, add a new project in this [file](terraform/hydra-projects.tf).
 
 ## Support
 
-If you hit any issues, ping us on Matrix in the
-[nix-community](https://matrix.to/#/#nix-community:nixos.org)
-room (see the admin list below) or create an issue here:
+If you hit any issues, ping us on Matrix in the [nix-community](https://matrix.to/#/#nix-community:nixos.org) room (see the admin list below) or create an issue here:
 [New Issue](https://github.com/nix-community/infra/issues/new).
 
 ### Pull requests from forks
@@ -126,8 +114,7 @@ Thanks to Cachix for sponsoring our binary cache!
 $ ./deploy
 ```
 
-If you want to reboot a machine, use the following
-command to also deploy secrets afterwards:
+If you want to reboot a machine, use the following command to also deploy secrets afterwards:
 
 ```console
 $ inv deploy --hosts build02 reboot --hosts build02
