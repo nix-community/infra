@@ -11,9 +11,9 @@
   # $ nixos-enter
   imports = [
     ../roles/common.nix
-    ../roles/hardware/hetzner-amd.nix
+    ../roles/hetzner/amd.nix
+    ../roles/hetzner/network.nix
     ../roles/hercules-ci
-    ../roles/hetzner-network.nix
     ../roles/nginx.nix
     ../roles/raid.nix
     ../roles/remote-builder/aarch64-build04.nix
