@@ -73,6 +73,13 @@ resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
   type    = "CNAME"
 }
 
+resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "nur-update"
+  value   = "build03.nix-community.org"
+  type    = "CNAME"
+}
+
 resource "cloudflare_record" "nix-community-org-search-CNAME" {
   zone_id = local.nix_community_org_zone_id
   name    = "search"
