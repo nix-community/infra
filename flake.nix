@@ -11,23 +11,20 @@
   ];
 
   inputs = {
-    # FIXME: hercules ci is currently broken in latest nixpkgs
-    #  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs.url = "github:NixOS/nixpkgs/34274e6c8604be2d103606b11dae0ac2e3a0d584";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    srvos.url = "github:numtide/srvos";
+    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
+    srvos.inputs.nixpkgs.follows = "nixpkgs";
+
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
     nixpkgs-update-pypi-releases.flake = false;
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    srvos.url = "github:numtide/srvos";
-    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
-    srvos.inputs.nixpkgs.follows = "nixpkgs";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
   };
 
   outputs = inputs @ {flake-parts, ...}:
