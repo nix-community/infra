@@ -25,6 +25,9 @@
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
     nixpkgs-update-pypi-releases.flake = false;
+
+    nur-update.url = "github:nix-community/nur-update";
+    nur-update.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -84,6 +87,9 @@
             modules =
               common
               ++ [
+                (import ./services/nur-update {
+                  inherit (inputs) nur-update;
+                })
                 ./build03/configuration.nix
               ];
           };
