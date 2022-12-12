@@ -5,7 +5,7 @@
 with pkgs;
 mkShellNoCC {
   sopsPGPKeyDirs = [
-    "./keys"
+    "${toString ./.}/keys"
   ];
 
   buildInputs = [
