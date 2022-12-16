@@ -99,7 +99,7 @@ let
         mkfifo $pipe || true
       fi
 
-      ${cmd} > $pipe
+      ${cmd} | sort -R > $pipe
     '';
   };
 
