@@ -24,13 +24,9 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    flake-parts,
-    ...
-  }:
+  outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake
-      {inherit self;}
+      {inherit inputs;}
       {
         systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
@@ -44,10 +40,10 @@
           };
         };
         flake.nixosConfigurations = let
-          inherit (self.inputs.nixpkgs.lib) nixosSystem;
+          inherit (inputs.nixpkgs.lib) nixosSystem;
           common = [
-            self.inputs.sops-nix.nixosModules.sops
-            { _module.args.inputs = self.inputs; }
+            inputs.sops-nix.nixosModules.sops
+            { _module.args.inputs = inputs; }
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
@@ -66,7 +62,7 @@
               ++ [
                 (import ./build02/nixpkgs-update.nix {
                   inherit
-                    (self.inputs)
+                    (inputs)
                     nixpkgs-update
                     nixpkgs-update-github-releases
                     nixpkgs-update-pypi-releases
