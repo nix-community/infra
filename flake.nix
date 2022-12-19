@@ -48,9 +48,12 @@
         flake.nixosConfigurations = let
           inherit (inputs.nixpkgs.lib) nixosSystem;
           common = [
+            { _module.args.inputs = inputs; }
             inputs.sops-nix.nixosModules.sops
             inputs.srvos.nixosModules.common
-            { _module.args.inputs = inputs; }
+
+            inputs.srvos.nixosModules.telegraf
+            { networking.firewall.allowedTCPPorts = [ 9273 ]; }
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
