@@ -121,21 +121,33 @@ $ inv deploy --hosts build02 reboot --hosts build02
 ```
 
 ## Install/Fix system from Hetzner recovery mode
-1. Install kexec image from Hetzner recovery system as described in [kexec.nix](roles/kexec.nix) and boot into it
 
-2. Format and/or mount all filesystems to /mnt:
+1. Copy your ssh key to the recovery system so that the kexec image can re-use it.
+
+``` console
+yourmachine> ssh-copy-id build0X.nix-community.org
+```
+
+2. Download and boot into kexec-image:
+
+``` console
+$ curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-x86_64-linux.tar.gz | tar -xzf- -C /root
+$ /root/kexec/run
+```
+
+3. Format and/or mount all filesystems to /mnt:
 
 ```console
 $ inv format-disks --hosts buildXX --disks /dev/nvme0n1,/dev/nvme1n1
 ```
 
-3. Setup secrets
+4. Setup secrets
 
 ```console
 $ inv setup-secret --hosts buildXX
 ```
 
-4. Generate configuration and download to the repo
+5. Generate configuration and download to the repo
 
 ```console
 $ nixos-generate-config  --root /tmp
@@ -143,7 +155,7 @@ $ nixos-generate-config  --root /tmp
 $ scp buildXX.nix-community.org:/tmp/etc/nixos/hardware-configuration.nix buildXX/hardware-configuration.nix
 ```
 
-5. Build and install
+6. Build and install
 
 ```console
 $ inv install-nixos --hosts buildXX
