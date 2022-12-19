@@ -1,21 +1,13 @@
 { pkgs, lib, config, ... }:
 
 {
-
   imports = [
     ./auto-upgrade.nix
     ./nix-daemon.nix
     ./security.nix
     ./sops-nix.nix
-    ./sshd.nix
     ./telegraf.nix
     ./users.nix
-    ./zfs.nix
-  ];
-
-  environment.systemPackages = [
-    # for quick activity overview
-    pkgs.htop
   ];
 
   # Nicer interactive shell
@@ -29,15 +21,6 @@
   # Without configuration this unit will fail...
   # Just disable it since we are using telegraf to monitor raid health.
   systemd.services.mdmonitor.enable = false;
-
-  # Make debugging failed units easier
-  systemd.extraConfig = ''
-    DefaultStandardOutput=journal
-    DefaultStandardError=journal
-  '';
-
-  # The nix-community is global :)
-  time.timeZone = "UTC";
 
   # speed-up evaluation & save disk space by disabling manpages
   documentation.enable = false;

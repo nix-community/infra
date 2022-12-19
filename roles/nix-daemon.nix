@@ -20,12 +20,6 @@ in
     settings.min-free = asGB 10;
     settings.max-free = asGB 200;
 
-    # avoid copying unecessary stuff over SSH
-    settings.builders-use-substitutes = true;
-
-    # allow flakes
-    settings.experimental-features = "nix-command flakes";
-
     # users in trusted group are trusted by the nix-daemon
     settings.trusted-users = [ "@trusted" ];
 

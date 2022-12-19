@@ -180,7 +180,8 @@
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nixpkgs-update-pypi-releases": "nixpkgs-update-pypi-releases",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "srvos": "srvos"
       }
     },
     "sops-nix": {
@@ -201,6 +202,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1671462804,
+        "narHash": "sha256-WPwJpBn9XYwkZp/RsSKM0hKi/pmDl7EPQS7/XS5IgKA=",
+        "owner": "numtide",
+        "repo": "srvos",
+        "rev": "754b897b4c0a925f9bd3130110d5e2d6bb36182f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "srvos",
         "type": "github"
       }
     }

@@ -22,6 +22,10 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    srvos.url = "github:numtide/srvos";
+    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
+    srvos.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
   };
@@ -45,6 +49,7 @@
           inherit (inputs.nixpkgs.lib) nixosSystem;
           common = [
             inputs.sops-nix.nixosModules.sops
+            inputs.srvos.nixosModules.common
             { _module.args.inputs = inputs; }
           ];
         in {
