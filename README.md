@@ -125,7 +125,7 @@ $ inv deploy --hosts build02 reboot --hosts build02
 1. Copy your ssh key to the recovery system so that the kexec image can re-use it.
 
 ``` console
-yourmachine> ssh-copy-id build0X.nix-community.org
+yourmachine> ssh-copy-id root@build0X.nix-community.org
 ```
 
 2. Download and boot into kexec-image:
