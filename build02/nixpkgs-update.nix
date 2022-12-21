@@ -158,8 +158,10 @@ in
 
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
 
-    "L+ /var/lib/nixpkgs-update/bin/nixpkgs-update - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
+    "d /var/lib/nixpkgs-update/bin/ 700 r-ryantm r-ryantm - -"
+    "L+ ${nixpkgs-update-bin} - - - - ${nixpkgs-update.defaultPackage.${pkgs.system}}/bin/nixpkgs-update"
     "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
+    "d /var/lib/nixpkgs-update/worker/cachix/ 700 r-ryantm r-ryantm - -"
     "L+ /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
   ];
 
