@@ -50,7 +50,7 @@
           common = [
             { _module.args.inputs = inputs; }
             inputs.sops-nix.nixosModules.sops
-            inputs.srvos.nixosModules.common
+            inputs.srvos.nixosModules.server
 
             inputs.srvos.nixosModules.telegraf
             { networking.firewall.allowedTCPPorts = [ 9273 ]; }
