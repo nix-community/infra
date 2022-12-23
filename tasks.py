@@ -164,6 +164,29 @@ def deploy(c, hosts=""):
     deploy_nixos(get_hosts(hosts))
 
 
+@task
+def build_local(c, hosts=""):
+    """
+    Build all servers. Use inv build-local --host build01 to build a single server
+    """
+    g = DeployGroup(get_hosts(hosts))
+
+    def build_local(h: DeployHost) -> None:
+        h.run_local(
+            [
+                "nixos-rebuild",
+                "build",
+                "--option",
+                "accept-flake-config",
+                "true",
+                "--flake",
+                f".#{h.host}",
+            ]
+        )
+
+    g.run_function(build_local)
+
+
 def wait_for_port(host: str, port: int, shutdown: bool = False) -> None:
     import socket, time
 

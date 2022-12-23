@@ -11,7 +11,9 @@
   ];
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # FIXME: hercules ci is currently broken in latest nixpkgs
+    #  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/34274e6c8604be2d103606b11dae0ac2e3a0d584";
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
@@ -20,17 +22,17 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    srvos.url = "github:numtide/srvos";
+    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
+    srvos.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    flake-parts,
-    ...
-  }:
+  outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake
-      {inherit self;}
+      {inherit inputs;}
       {
         systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
@@ -44,10 +46,14 @@
           };
         };
         flake.nixosConfigurations = let
-          inherit (self.inputs.nixpkgs.lib) nixosSystem;
+          inherit (inputs.nixpkgs.lib) nixosSystem;
           common = [
-            self.inputs.sops-nix.nixosModules.sops
-            { _module.args.inputs = self.inputs; }
+            { _module.args.inputs = inputs; }
+            inputs.sops-nix.nixosModules.sops
+            inputs.srvos.nixosModules.common
+
+            inputs.srvos.nixosModules.telegraf
+            { networking.firewall.allowedTCPPorts = [ 9273 ]; }
           ];
         in {
           "build01.nix-community.org" = nixosSystem {
@@ -66,7 +72,7 @@
               ++ [
                 (import ./build02/nixpkgs-update.nix {
                   inherit
-                    (self.inputs)
+                    (inputs)
                     nixpkgs-update
                     nixpkgs-update-github-releases
                     nixpkgs-update-pypi-releases
