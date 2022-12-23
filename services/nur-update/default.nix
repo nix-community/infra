@@ -9,14 +9,19 @@
 
   sops.secrets.nur-update-github-token = { };
 
-  systemd.services.nur-update = {
-    description = "nur-update service";
+  systemd.services.nur-update = let
+    python = pkgs.python3.withPackages
+      (ps: with ps; [
+        (ps.toPythonModule nur-update.packages.${pkgs.system}.default)
+        gunicorn
+      ]);
+  in {
+    description = "nur-update";
     script = ''
       GITHUB_TOKEN="$(<$CREDENTIALS_DIRECTORY/github-token)" \
-        ${lib.getExe pkgs.python3.pkgs.gunicorn} nur_update:app \
+        ${python}/bin/gunicorn nur_update:app \
         --bind unix:/run/nur-update/gunicorn.sock \
         --log-level info \
-        --python-path ${nur-update.packages.${pkgs.system}.default} \
         --timeout 30 \
         --workers 3
     '';
