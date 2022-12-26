@@ -9,6 +9,9 @@
 
   nixpkgs.system = "aarch64-linux";
 
+  # disable default features
+  nix.settings.system-features = [ ];
+
   # we use grub because systemd-boot sometimes fail on aarch64/EFI
   boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.enable = true;
