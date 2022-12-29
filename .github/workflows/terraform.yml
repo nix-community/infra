@@ -28,6 +28,7 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            accept-flake-config = true
       - name: init
         if: steps.changes.outputs.terraform == 'true'
         run: nix develop -c ./terraform/deploy terraform init -input=false
