@@ -28,6 +28,9 @@
 
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -100,8 +103,10 @@
               common
               ++ [
                 ./build04/configuration.nix
+                inputs.disko.nixosModules.disko
               ];
           };
+          build04 = inputs.self.nixosConfigurations."build04.nix-community.org";
         };
       };
 }
