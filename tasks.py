@@ -103,6 +103,16 @@ find . \
 """
     )
 
+@task
+def scan_age_keys(c, host):
+    """
+    Scans for the host key via ssh an converts it to age
+    """
+    import subprocess
+    proc = subprocess.run(["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True)
+    print("###### Age keys ######")
+    subprocess.run(["nix", "run", "--inputs-from", ".#", "nixpkgs#ssh-to-age"], input=proc.stdout, check=True, text=True)
+
 
 @task
 def format_disks(c, hosts="", disks=""):
