@@ -92,6 +92,7 @@
                       ;
                   })
                   ./build02/configuration.nix
+                  inputs.srvos.nixosModules.nginx
                 ];
             };
 
@@ -104,6 +105,7 @@
                     inherit (inputs) nur-update;
                   })
                   ./build03/configuration.nix
+                  inputs.srvos.nixosModules.nginx
                 ];
             };
 
