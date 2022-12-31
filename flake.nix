@@ -106,7 +106,6 @@
                 inputs.disko.nixosModules.disko
               ];
           };
-          build04 = inputs.self.nixosConfigurations."build04.nix-community.org";
         };
       };
 }
