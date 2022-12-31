@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 # Boot recovery:
 # Activate 64-bit Rescue system in https://robot.your-server.de/server
 # ssh root@build01.nix-community.org "mount /dev/md[0-9]* /mnt && /mnt/kexec_bundle"

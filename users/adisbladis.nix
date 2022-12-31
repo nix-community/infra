@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ lib, ... }:
 let
   userLib = import ./lib.nix { inherit lib; };
   keys = [

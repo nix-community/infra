@@ -13,7 +13,7 @@
     enable = true;
     listen = "127.0.0.1:6080";
     config = builtins.readFile ./hound.json;
-    package = pkgs.hound.overrideAttrs (x: {
+    package = pkgs.hound.overrideAttrs (_x: {
       patches = [
         ./0001-Fail-to-start-if-any-repos-fail-to-index.patch
       ];

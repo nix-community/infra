@@ -18,7 +18,8 @@ with lib; let
     export HOME=/root
     exec ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
   '';
-in {
+in
+{
   options.services.hydra = {
     adminPasswordFile = mkOption {
       type = types.str;
@@ -61,7 +62,7 @@ in {
     };
 
     sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache/secrets.yaml;
-    sops.secrets.id_buildfarm = {};
+    sops.secrets.id_buildfarm = { };
 
     services.hydra = {
       enable = true;
@@ -86,7 +87,7 @@ in {
 
     services.postgresql = {
       enable = true;
-      ensureDatabases = ["hydra"];
+      ensureDatabases = [ "hydra" ];
       settings = {
         max_connections = "300";
         effective_cache_size = "4GB";
@@ -108,13 +109,13 @@ in {
         Type = "oneshot";
         TimeoutStartSec = "60";
       };
-      wantedBy = ["multi-user.target"];
-      after = ["hydra-server.service"];
-      requires = ["hydra-server.service"];
+      wantedBy = [ "multi-user.target" ];
+      after = [ "hydra-server.service" ];
+      requires = [ "hydra-server.service" ];
       environment = {
         inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [config.services.hydra.package netcat];
+      path = with pkgs; [ config.services.hydra.package netcat ];
       script = ''
         set -e
         while IFS=';' read -r user role passwordhash email fullname; do

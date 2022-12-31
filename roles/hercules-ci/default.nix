@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   herculesSecret = {
     owner = "hercules-ci-agent";

@@ -64,7 +64,7 @@ in
 
 let
 
-  allPackagesWithUpdateScript = packagesWithUpdateScriptMatchingPredicate (path: package: true) pkgs;
+  allPackagesWithUpdateScript = packagesWithUpdateScriptMatchingPredicate (_path: _package: true) pkgs;
 
 in
 

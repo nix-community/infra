@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let
   defaultSopsPath = ../. + "/${config.networking.hostName}/secrets.yaml";
 in
