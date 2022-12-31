@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-from invoke import task
-
-import sys
-from typing import List, Any
-from deploykit import DeployHost, DeployGroup
-import subprocess
 import json
+import subprocess
+import sys
+from typing import Any, List
+
+from deploykit import DeployGroup, DeployHost
+from invoke import task
 
 RSYNC_EXCLUDES = [".terraform", ".direnv", ".mypy-cache", ".git"]
 
@@ -23,7 +23,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
             f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {target}:/etc/nixos"
         )
 
-        h.run(f"nixos-rebuild switch --option accept-flake-config true")
+        h.run("nixos-rebuild switch --option accept-flake-config true")
 
     g.run_function(deploy)
 
@@ -73,19 +73,19 @@ def _format_disks(host: DeployHost, devices: List[str]) -> None:
             f"zpool create zroot -O acltype=posixacl -O xattr=sa -O compression=lz4 -O atime=off {root_part}"
         )
 
-    host.run(f"partprobe")
+    host.run("partprobe")
     host.run(f"mkfs.ext4 -F {boot}")
 
     # setup zfs dataset
-    host.run(f"zfs create -o mountpoint=none zroot/root")
-    host.run(f"zfs create -o mountpoint=legacy zroot/root/nixos")
-    host.run(f"zfs create -o mountpoint=legacy zroot/root/home")
+    host.run("zfs create -o mountpoint=none zroot/root")
+    host.run("zfs create -o mountpoint=legacy zroot/root/nixos")
+    host.run("zfs create -o mountpoint=legacy zroot/root/home")
 
     ## and finally mount
-    host.run(f"mount -t zfs zroot/root/nixos /mnt")
-    host.run(f"mkdir /mnt/home /mnt/boot")
-    host.run(f"mount -t zfs zroot/root/home /mnt/home")
-    host.run(f"mount -t ext4 /dev/md127 /mnt/boot")
+    host.run("mount -t zfs zroot/root/nixos /mnt")
+    host.run("mkdir /mnt/home /mnt/boot")
+    host.run("mount -t zfs zroot/root/home /mnt/home")
+    host.run("mount -t ext4 /dev/md127 /mnt/boot")
 
 
 @task
@@ -103,15 +103,24 @@ find . \
 """
     )
 
+
 @task
 def scan_age_keys(c, host):
     """
     Scans for the host key via ssh an converts it to age
     """
     import subprocess
-    proc = subprocess.run(["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True)
+
+    proc = subprocess.run(
+        ["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True
+    )
     print("###### Age keys ######")
-    subprocess.run(["nix", "run", "--inputs-from", ".#", "nixpkgs#ssh-to-age"], input=proc.stdout, check=True, text=True)
+    subprocess.run(
+        ["nix", "run", "--inputs-from", ".#", "nixpkgs#ssh-to-age"],
+        input=proc.stdout,
+        check=True,
+        text=True,
+    )
 
 
 @task
@@ -198,7 +207,8 @@ def build_local(c, hosts=""):
 
 
 def wait_for_port(host: str, port: int, shutdown: bool = False) -> None:
-    import socket, time
+    import socket
+    import time
 
     while True:
         try:
@@ -209,7 +219,7 @@ def wait_for_port(host: str, port: int, shutdown: bool = False) -> None:
                     sys.stdout.flush()
                 else:
                     break
-        except OSError as ex:
+        except OSError:
             if shutdown:
                 break
             else:

@@ -35,85 +35,87 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ { flake-parts, ... }:
     flake-parts.lib.mkFlake
-      {inherit inputs;}
+      { inherit inputs; }
       {
-        systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+        systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
         imports = [
           ./treefmt.nix
         ];
 
-        perSystem = {
-          inputs',
-          pkgs,
-          self',
-          ...
-        }: {
-          devShells.default = pkgs.callPackage ./shell.nix {
-            inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
-            inherit (self'.packages) treefmt;
+        perSystem =
+          { inputs'
+          , pkgs
+          , self'
+          , ...
+          }: {
+            devShells.default = pkgs.callPackage ./shell.nix {
+              inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
+              inherit (self'.packages) treefmt;
+            };
           };
-        };
-        flake.nixosConfigurations = let
-          inherit (inputs.nixpkgs.lib) nixosSystem;
-          common = [
-            { _module.args.inputs = inputs; }
-            inputs.sops-nix.nixosModules.sops
-            inputs.srvos.nixosModules.server
+        flake.nixosConfigurations =
+          let
+            inherit (inputs.nixpkgs.lib) nixosSystem;
+            common = [
+              { _module.args.inputs = inputs; }
+              inputs.sops-nix.nixosModules.sops
+              inputs.srvos.nixosModules.server
 
-            inputs.srvos.nixosModules.telegraf
-            { networking.firewall.allowedTCPPorts = [ 9273 ]; }
-          ];
-        in {
-          "build01.nix-community.org" = nixosSystem {
-            system = "x86_64-linux";
-            modules =
-              common
-              ++ [
-                ./build01/configuration.nix
-              ];
-          };
+              inputs.srvos.nixosModules.telegraf
+              { networking.firewall.allowedTCPPorts = [ 9273 ]; }
+            ];
+          in
+          {
+            "build01.nix-community.org" = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  ./build01/configuration.nix
+                ];
+            };
 
-          "build02.nix-community.org" = nixosSystem {
-            system = "x86_64-linux";
-            modules =
-              common
-              ++ [
-                (import ./build02/nixpkgs-update.nix {
-                  inherit
-                    (inputs)
-                    nixpkgs-update
-                    nixpkgs-update-github-releases
-                    nixpkgs-update-pypi-releases
-                    ;
-                })
-                ./build02/configuration.nix
-              ];
-          };
+            "build02.nix-community.org" = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  (import ./build02/nixpkgs-update.nix {
+                    inherit
+                      (inputs)
+                      nixpkgs-update
+                      nixpkgs-update-github-releases
+                      nixpkgs-update-pypi-releases
+                      ;
+                  })
+                  ./build02/configuration.nix
+                ];
+            };
 
-          "build03.nix-community.org" = nixosSystem {
-            system = "x86_64-linux";
-            modules =
-              common
-              ++ [
-                (import ./services/nur-update {
-                  inherit (inputs) nur-update;
-                })
-                ./build03/configuration.nix
-              ];
-          };
+            "build03.nix-community.org" = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  (import ./services/nur-update {
+                    inherit (inputs) nur-update;
+                  })
+                  ./build03/configuration.nix
+                ];
+            };
 
-          "build04.nix-community.org" = nixosSystem {
-            system = "aarch64-linux";
-            modules =
-              common
-              ++ [
-                ./build04/configuration.nix
-                inputs.disko.nixosModules.disko
-              ];
+            "build04.nix-community.org" = nixosSystem {
+              system = "aarch64-linux";
+              modules =
+                common
+                ++ [
+                  ./build04/configuration.nix
+                  inputs.disko.nixosModules.disko
+                ];
+            };
           };
-        };
       };
 }

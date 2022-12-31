@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   # Boot recovery:
   # Activate 64-bit Rescue system in https://robot.your-server.de/server

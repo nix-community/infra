@@ -36,7 +36,7 @@ let
       trusted = true;
       keys = ./keys/raitobezarius;
     };
-    
+
     schmittlauch = {
       trusted = true;
       keys = ./keys/schmittlauch;

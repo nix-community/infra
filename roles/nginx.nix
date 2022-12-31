@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   networking.firewall.allowedTCPPorts = [ 443 80 ];
