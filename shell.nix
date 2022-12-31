@@ -1,5 +1,6 @@
 { pkgs
 , sops-import-keys-hook
+, treefmt
 }:
 
 with pkgs;
@@ -26,6 +27,7 @@ mkShellNoCC {
       ]
     ))
     rsync
+    treefmt
 
     sops-import-keys-hook
   ];

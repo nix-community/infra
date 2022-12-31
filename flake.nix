@@ -31,6 +31,8 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -39,13 +41,19 @@
       {
         systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
+        imports = [
+          ./treefmt.nix
+        ];
+
         perSystem = {
           inputs',
           pkgs,
+          self',
           ...
         }: {
           devShells.default = pkgs.callPackage ./shell.nix {
             inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
+            inherit (self'.packages) treefmt;
           };
         };
         flake.nixosConfigurations = let
