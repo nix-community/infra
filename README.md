@@ -101,7 +101,6 @@ Thanks to Cachix for sponsoring our binary cache!
 ## File hierarchy
 
 * ./build\d+ - build machines
-* ./ci.sh - What is executed by CI
 * ./deploy - Deploy script
 * ./roles - shared NixOS configuration modules
 * ./services - single instances of NixOS services
