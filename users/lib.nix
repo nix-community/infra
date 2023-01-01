@@ -9,7 +9,7 @@ in
     let
       chars = lib.stringToCharacters (builtins.substring 0 4 id);
       n = builtins.map (c: lib.mod (ord c) 10) chars;
-      s = builtins.concatStringsSep "" (builtins.map (i: builtins.toString i) n);
+      s = builtins.concatStringsSep "" (builtins.map builtins.toString n);
     in
     assert builtins.stringLength id >= 4;
     assert builtins.length chars == 4;
