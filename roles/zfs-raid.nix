@@ -1,21 +1,7 @@
-{ modulesPath, ... }:
-
 {
-  imports = [
-    "${modulesPath}/installer/scan/not-detected.nix"
-  ];
-
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    # SATA ssd (only build01)
-    "sd_mod"
-    # NVME
-    "nvme"
-  ];
-  boot.kernelModules = [
-    "kvm-amd"
-  ];
+  # for mdraid 1.1
+  boot.loader.grub.extraConfig = "insmod mdraid1x";
+  services.telegraf.extraConfig.inputs.mdstat = { };
 
   fileSystems."/" = {
     device = "zroot/root/nixos";

@@ -12,9 +12,7 @@
 {
   imports = [
     ../roles/common.nix
-    ../roles/hetzner/amd.nix
-    ../roles/hetzner/network.nix
-    ../roles/raid.nix
+    ../roles/zfs-raid.nix
     ../roles/builder
     ../roles/remote-builder/aarch64-nixos-community.nix
   ];
@@ -30,7 +28,7 @@
   # Emulate armv7 until we have proper builders
   boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
 
-  networking.nix-community.ipv6.address = "2a01:4f8:13b:2ceb::1";
+  systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:13b:2ceb::1/64";
 
   system.stateVersion = "20.03";
 }
