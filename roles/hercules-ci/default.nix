@@ -4,7 +4,7 @@ let
     owner = "hercules-ci-agent";
     sopsFile = ./secrets.yaml;
   };
-  secrets = config.sops.secrets;
+  inherit (config.sops) secrets;
 in
 {
   sops.secrets."binary-caches.json" = herculesSecret;

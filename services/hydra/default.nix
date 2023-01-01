@@ -99,7 +99,7 @@ in
       "hydra.nix-community.org" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://localhost:${toString (config.services.hydra.port)}";
+        locations."/".proxyPass = "http://localhost:${toString config.services.hydra.port}";
       };
     };
 

@@ -4,7 +4,7 @@
 }:
 let
   self = builtins.getFlake (toString ./.);
-  nixpkgs = self.inputs.nixpkgs;
+  inherit (self.inputs) nixpkgs;
   stripDomain = name: nixpkgs.lib.head (builtins.match "(.*).nix-community.org" name);
 in
 (nixpkgs.lib.mapAttrs' (name: config: nixpkgs.lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
