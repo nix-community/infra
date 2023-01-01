@@ -9,14 +9,14 @@ let
   /* Remove duplicate elements from the list based on some extracted value. O(n^2) complexity.
    */
   nubOn = f: list:
-    if list == [ ] then
-      [ ]
+    if list == [] then
+      []
     else
       let
         x = lib.head list;
         xs = lib.filter (p: f x != f p) (lib.drop 1 list);
       in
-      [ x ] ++ nubOn f xs;
+        [x] ++ nubOn f xs;
 
   /* Recursively find all packages (derivations) in `pkgs` matching `cond` predicate.
 
@@ -33,27 +33,37 @@ let
         let
           result = builtins.tryEval pathContent;
 
-          dedupResults = lst: nubOn ({ package, attrPath }: package.updateScript) (lib.concatLists lst);
+          somewhatUniqueRepresentant =
+            { package, attrPath }: {
+              inherit (package) updateScript;
+              # Some updaters use the same `updateScript` value for all packages.
+              # Also compare `meta.description`.
+              position = package.meta.position or null;
+              # We cannot always use `meta.position` since it might not be available
+              # or it might be shared among multiple packages.
+            };
+
+          dedupResults = lst: nubOn somewhatUniqueRepresentant (lib.concatLists lst);
         in
-        if result.success then
-          let
-            evaluatedPathContent = result.value;
-          in
-          if lib.isDerivation evaluatedPathContent then
-            lib.optional (cond path evaluatedPathContent) { attrPath = lib.concatStringsSep "." path; package = evaluatedPathContent; }
-          else if lib.isAttrs evaluatedPathContent then
-          # If user explicitly points to an attrSet or it is marked for recursion, we recur.
-            if path == rootPath || evaluatedPathContent.recurseForDerivations or false || evaluatedPathContent.recurseForRelease or false then
-              dedupResults (lib.mapAttrsToList (name: elem: packagesWithPathInner (path ++ [ name ]) elem) evaluatedPathContent)
-            else [ ]
-          else [ ]
-        else [ ];
+          if result.success then
+            let
+              evaluatedPathContent = result.value;
+            in
+              if lib.isDerivation evaluatedPathContent then
+                lib.optional (cond path evaluatedPathContent) { attrPath = lib.concatStringsSep "." path; package = evaluatedPathContent; }
+              else if lib.isAttrs evaluatedPathContent then
+                # If user explicitly points to an attrSet or it is marked for recursion, we recur.
+                if path == rootPath || evaluatedPathContent.recurseForDerivations or false || evaluatedPathContent.recurseForRelease or false then
+                  dedupResults (lib.mapAttrsToList (name: elem: packagesWithPathInner (path ++ [name]) elem) evaluatedPathContent)
+                else []
+              else []
+          else [];
     in
-    packagesWithPathInner rootPath pkgs;
+      packagesWithPathInner rootPath pkgs;
 
   /* Recursively find all packages (derivations) in `pkgs` matching `cond` predicate.
    */
-  packagesWith = packagesWithPath [ ];
+  packagesWith = packagesWithPath [];
 
   /* Recursively find all packages in `pkgs` with updateScript matching given predicate.
    */
