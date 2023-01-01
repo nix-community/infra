@@ -25,20 +25,6 @@
           includes = [ "*.nix" ];
           excludes = [ "nix/sources.nix" ];
         };
-        shell = {
-          command = "sh";
-          options = [
-            "-eucx"
-            ''
-              # First shellcheck
-              ${pkgs.lib.getExe pkgs.shellcheck} --external-sources --source-path=SCRIPTDIR "$@"
-              # Then format
-              ${pkgs.lib.getExe pkgs.shfmt} -i 2 -s -w "$@"
-            ''
-            "--"
-          ];
-          includes = [ "*.sh" ];
-        };
 
         python = {
           command = "sh";
