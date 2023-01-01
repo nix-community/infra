@@ -17,13 +17,22 @@
             ''
               # First deadnix
               ${pkgs.lib.getExe pkgs.deadnix} --edit "$@"
+
+              for i in "$@"; do
+                ${pkgs.lib.getExe pkgs.statix} fix "$i"
+              done
+
               # Then nixpkgs-fmt
               ${pkgs.lib.getExe pkgs.nixpkgs-fmt} "$@"
             ''
             "--"
           ];
           includes = [ "*.nix" ];
-          excludes = [ "nix/sources.nix" ];
+          excludes = [
+            "nix/sources.nix"
+            # vendored from external source
+            "build02/packages-with-update-script.nix"
+          ];
         };
 
         python = {

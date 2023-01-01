@@ -64,7 +64,7 @@
               inputs.sops-nix.nixosModules.sops
               inputs.srvos.nixosModules.server
 
-              inputs.srvos.nixosModules.telegraf
+              inputs.srvos.nixosModules.mixins-telegraf
               { networking.firewall.allowedTCPPorts = [ 9273 ]; }
             ];
           in
@@ -75,6 +75,7 @@
                 common
                 ++ [
                   ./build01/configuration.nix
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
                 ];
             };
 
@@ -92,7 +93,8 @@
                       ;
                   })
                   ./build02/configuration.nix
-                  inputs.srvos.nixosModules.nginx
+                  inputs.srvos.nixosModules.mixins-nginx
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
                 ];
             };
 
@@ -105,7 +107,8 @@
                     inherit (inputs) nur-update;
                   })
                   ./build03/configuration.nix
-                  inputs.srvos.nixosModules.nginx
+                  inputs.srvos.nixosModules.mixins-nginx
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
                 ];
             };
 
