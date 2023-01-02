@@ -85,15 +85,6 @@ All the builds on these machines are pushed to https://nix-community.cachix.org/
 
 Thanks to Cachix for sponsoring our binary cache!
 
-## File hierarchy
-
-* ./build\d+ - build machines
-* ./deploy - Deploy script
-* ./roles - shared NixOS configuration modules
-* ./services - single instances of NixOS services
-* ./terraform - Setup DNS
-* ./users - NixOS configuration of our admins
-
 ## Deployment commands:
 
 ```console
