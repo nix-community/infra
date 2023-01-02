@@ -25,8 +25,6 @@ DNS is managed by terraform in this [file](terraform/cloudflare_nix-community_or
 * Docs: https://ryantm.github.io/nixpkgs-update
 * Logs: https://r.ryantm.com/log/
 
-### matterbridge
-
 ## Support
 
 If you hit any issues, ping us on Matrix in the [nix-community](https://matrix.to/#/#nix-community:nixos.org) room (see the admin list below) or create an issue here:
