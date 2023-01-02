@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 let
   asGB = size: toString (size * 1024 * 1024);
@@ -35,34 +35,6 @@ in
   systemd.services.nix-gc.serviceConfig = {
     Restart = "on-failure";
   };
-
-  # inputs == flake inputs in configurations.nix
-  environment.etc =
-    let
-      inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) inputs;
-      flakeAttrs = input: (lib.mapAttrsToList (n: v: ''${n}="${v}"'')
-        (lib.filterAttrs (_n: v: (builtins.typeOf v) == "string") input));
-      lastModified = name: input: ''
-        flake_input_last_modified{input="${name}",${lib.concatStringsSep "," (flakeAttrs input)}} ${toString input.lastModified}
-      '';
-    in
-    {
-      "flake-inputs.prom" = {
-        mode = "0555";
-        text = ''
-          # HELP flake_registry_last_modified Last modification date of flake input in unixtime
-          # TYPE flake_input_last_modified gauge
-          ${lib.concatStringsSep "\n" (lib.mapAttrsToList lastModified inputsWithDate)}
-        '';
-      };
-    };
-
-  services.telegraf.extraConfig.inputs.file = [
-    {
-      data_format = "prometheus";
-      files = [ "/etc/flake-inputs.prom" ];
-    }
-  ];
 
   users.groups.trusted = { };
 }

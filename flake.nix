@@ -61,6 +61,7 @@
             inherit (inputs.nixpkgs.lib) nixosSystem;
             common = [
               { _module.args.inputs = inputs; }
+              { srvos.flake = inputs.self; }
               inputs.sops-nix.nixosModules.sops
               inputs.srvos.nixosModules.server
 
