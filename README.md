@@ -6,7 +6,7 @@ Welcome to the Nix Community infrastructure project. This project holds all the 
 
 ### Community builder - build01.nix-community.org
 
-We also provide one x86 hetzner build machine as a public remote builder for the nix community, see [here](roles/builder/README.MD) for more information.
+We also provide one x86 hetzner build machine as a public remote builder for the nix community, see [here](roles/builder/README.md) for more information.
 
 ### Hydra - https://hydra.nix-community.org
 
