@@ -4,23 +4,23 @@ Welcome to the Nix Community infrastructure project. This project holds all the 
 
 ## Services
 
-### Community builder - build01.nix-community.org
+### `Community builder` - build01.nix-community.org
 
 We also provide one x86 hetzner build machine as a public remote builder for the nix community, see [here](roles/builder/README.md) for more information.
 
-### Hydra - https://hydra.nix-community.org
+### `Hydra` - https://hydra.nix-community.org
 
 If you want to build your project in our hydra, add a new project in this [file](terraform/hydra-projects.tf).
 
-### Search - https://search.nix-community.org
+### `Search` - https://search.nix-community.org
 
 Hound code search for NixOS and nix-community GitHub organisations.
 
-### nix-community.org DNS
+### `nix-community.org DNS`
 
 DNS is managed by terraform in this [file](terraform/cloudflare_nix-community_org.tf).
 
-### ryantm-updater bot
+### `ryantm-updater bot`
 
 * Docs: https://ryantm.github.io/nixpkgs-update
 * Logs: https://r.ryantm.com/log/
