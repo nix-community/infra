@@ -17,7 +17,6 @@
 
     ../services/hound
     ../services/hydra
-    ../services/matterbridge
   ];
 
   # /boot is a mirror raid
