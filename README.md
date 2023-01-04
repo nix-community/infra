@@ -15,6 +15,7 @@ See [here](roles/builder/README.md) for more information.
 We provide x86 and aarch64 linux CI via these systems:
 
 - `Hercules` - https://hercules-ci.com/github/nix-community
+  - To enable hercules builds go to `https://hercules-ci.com/github/nix-community/$REPO` and click "Build this repository".
 
 - `Hydra` - https://hydra.nix-community.org
   - To enable hydra builds add a new project in this [file](terraform/hydra-projects.tf).
