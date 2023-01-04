@@ -14,6 +14,8 @@
   # And for the zsh peeps
   programs.zsh.enable = true;
 
+  zramSwap.enable = true;
+
   security.acme.defaults.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
 

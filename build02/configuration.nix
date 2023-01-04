@@ -3,12 +3,10 @@
 {
   imports = [
     ../roles/common.nix
+    ../roles/hercules-ci
     ../roles/zfs-raid.nix
     ../roles/remote-builder/aarch64-build04.nix
   ];
-
-  # We often see evals going out-of-memory. So let's try zram swap
-  zramSwap.enable = true;
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
