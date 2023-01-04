@@ -5,6 +5,7 @@
     {
       hostName = "aarch64.nixos.community";
       maxJobs = 64;
+      protocol = "ssh-ng";
       sshKey = config.sops.secrets.aarch64_nixos_community.path;
       sshUser = "nixcommunity";
       system = "aarch64-linux";
