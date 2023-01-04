@@ -116,11 +116,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1672804407,
-        "narHash": "sha256-9Jou04A1WQWSOxW2h6rxdevIxGeK4L0wgUg3jgIvBNA=",
+        "lastModified": 1672807489,
+        "narHash": "sha256-l+OUhpgjNscGSsuDK4bZhLaetgcCTy33CAvKFX3TvfY=",
         "owner": "ryantm",
         "repo": "nixpkgs-update",
-        "rev": "9f8166a7f959d1b29e40f49be8a7c7d342cc5ded",
+        "rev": "6f327491899b48977c78b2042869692e508e5af0",
         "type": "github"
       },
       "original": {
