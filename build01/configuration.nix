@@ -25,9 +25,6 @@
   networking.hostName = "build01";
   networking.hostId = "d2905767";
 
-  # Emulate armv7 until we have proper builders
-  boot.binfmt.emulatedSystems = [ "armv7l-linux" ];
-
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:13b:2ceb::1/64";
 
   system.stateVersion = "20.03";
