@@ -4,26 +4,42 @@ Welcome to the Nix Community infrastructure project. This project holds all the 
 
 ## Services
 
-### Community builder - build01.nix-community.org
+### `Community builder` - build01.nix-community.org
 
-We also provide one x86 hetzner build machine as a public remote builder for the nix community, see [here](roles/builder/README.md) for more information.
+We provide an x86 build machine as a public remote builder for the nix community, this machine also has an aarch64 machine configured as its own remote builder.
 
-### Hydra - https://hydra.nix-community.org
+See [here](roles/builder/README.md) for more information.
 
-If you want to build your project in our hydra, add a new project in this [file](terraform/hydra-projects.tf).
+### `Continuous integration`
 
-### Search - https://search.nix-community.org
+We provide x86 and aarch64 linux CI via these systems:
+
+- `Hercules` - https://hercules-ci.com/github/nix-community
+  - To enable hercules builds go to `https://hercules-ci.com/github/nix-community/$REPO` and click "Build this repository".
+
+- `Hydra` - https://hydra.nix-community.org
+  - To enable hydra builds add a new project in this [file](terraform/hydra-projects.tf).
+
+### `Cache` - https://nix-community.cachix.org/
+
+All of the above CI builds are pushed to the cache.
+
+Thanks to Cachix for sponsoring our binary cache!
+
+### `Search` - https://search.nix-community.org
 
 Hound code search for NixOS and nix-community GitHub organisations.
 
-### nix-community.org DNS
+### `nix-community.org DNS`
 
 DNS is managed by terraform in this [file](terraform/cloudflare_nix-community_org.tf).
 
-### ryantm-updater bot
+### `ryantm-updater bot`
 
 * Docs: https://ryantm.github.io/nixpkgs-update
 * Logs: https://r.ryantm.com/log/
+
+### `nur-update`
 
 ## Support
 
@@ -51,9 +67,3 @@ As PRs from forks don't have automatic CI checks, admins can test PRs by posting
 ## Hosts
 
 See [HOSTS.md](HOSTS.md), this file also contains deployment details.
-
-## Cache
-
-All the builds on these machines are pushed to https://nix-community.cachix.org/
-
-Thanks to Cachix for sponsoring our binary cache!
