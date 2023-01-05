@@ -17,6 +17,9 @@
     ../roles/remote-builder/aarch64-nixos-community.nix
   ];
 
+  # Emulate riscv64 until we have proper builders
+  boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
+
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
   boot.loader.grub.enable = true;
