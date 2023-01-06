@@ -9,8 +9,8 @@
 
   nixpkgs.system = "aarch64-linux";
 
-  # disable default features
-  nix.settings.system-features = [ ];
+  # disable kvm/nixos-tests
+  nix.settings.system-features = [ "big-parallel" ]; # sync with roles/remote-builder/aarch64-build04.nix
 
   # we use grub because systemd-boot sometimes fail on aarch64/EFI
   # XXX check if this is still an issue?
