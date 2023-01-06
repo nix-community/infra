@@ -178,7 +178,7 @@ def get_hosts(hosts: str) -> List[DeployHost]:
 @task
 def deploy(c, hosts=""):
     """
-    Deploy to all servers. Use inv deploy --host build01 to deploy to a single server
+    Deploy to all servers. Use inv deploy --hosts build01 to deploy to a single server
     """
     deploy_nixos(get_hosts(hosts))
 
@@ -186,7 +186,7 @@ def deploy(c, hosts=""):
 @task
 def build_local(c, hosts=""):
     """
-    Build all servers. Use inv build-local --host build01 to build a single server
+    Build all servers. Use inv build-local --hosts build01 to build a single server
     """
     g = DeployGroup(get_hosts(hosts))
 
