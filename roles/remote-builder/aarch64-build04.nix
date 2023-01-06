@@ -9,6 +9,7 @@
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
       system = "aarch64-linux";
+      supportedFeatures = [ "big-parallel" ]; # sync with build04/configuration.nix
     }
   ];
   sops.secrets.id_buildfarm = { };
