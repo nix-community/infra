@@ -143,7 +143,8 @@ in
 
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "${nixpkgs-update-bin} fetch-repology";
   systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
-  systemd.services.nixpkgs-update-fetch-pypi = mkFetcher "grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | ${nixpkgs-update-pypi-releases'} --nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
+  # turning off this fetcher, because I think it is covered by the updateScript one
+  #systemd.services.nixpkgs-update-fetch-pypi = mkFetcher "grep -rl $XDG_CACHE_HOME/nixpkgs -e buildPython | grep default | ${nixpkgs-update-pypi-releases'} --nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher nixpkgs-update-github-releases';
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
