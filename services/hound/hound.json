@@ -305,9 +305,6 @@
         "nix-community-neovim-nightly-overlay": {
             "url": "https://github.com/nix-community/neovim-nightly-overlay.git"
         },
-        "nix-community-nix-community.org": {
-            "url": "https://github.com/nix-community/nix-community.org.git"
-        },
         "nix-community-nix-data-science": {
             "url": "https://github.com/nix-community/nix-data-science.git"
         },
