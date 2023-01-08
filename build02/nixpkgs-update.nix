@@ -20,7 +20,6 @@ let
   ];
 
   nixpkgs-update-github-releases' = "${nixpkgs-update-github-releases}/main.py";
-  nixpkgs-update-pypi-releases' = "${nixpkgs-update-pypi-releases}/main.py";
 
   mkWorker = name: {
     after = [ "network-online.target" ];
