@@ -53,7 +53,7 @@ As PRs from forks don't have automatic CI checks, admins can test PRs by posting
 * `bors merge` - same as `bors try` but will also merge the PR if it builds successfully.
 * https://bors.tech/documentation/
 
-### Administrators
+### nix-community administrators
 
 * @adisbladis
 * @flokli
