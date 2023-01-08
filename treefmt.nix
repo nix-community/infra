@@ -15,14 +15,10 @@
           options = [
             "-eucx"
             ''
-              # First deadnix
-              ${pkgs.lib.getExe pkgs.deadnix} --edit "$@"
-
               for i in "$@"; do
                 ${pkgs.lib.getExe pkgs.statix} fix "$i"
               done
 
-              # Then nixpkgs-fmt
               ${pkgs.lib.getExe pkgs.nixpkgs-fmt} "$@"
             ''
             "--"
