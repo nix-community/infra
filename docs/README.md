@@ -37,7 +37,7 @@ If you see a project that is under-maintained, submit PRs to fix it as if it was
 
 ## nix-community administrators
 
-If you need to contact the nix-community admins, they are listed [here](https://github.com/nix-community/infra#nix-community-administrators).
+See the [rulebook](rulebook.md)
 
 Come chat with us in [#nix-community](https://matrix.to/#/#nix-community:nixos.org) using the matrix protocol!
 
