@@ -97,4 +97,4 @@ participation in the project.
 
 > FIXME: changing the rulebook should only be possible from a community vote.
 
-Changing this rulebook requires a quorum majoriy from the administrators.
+Changing this rulebook requires a quorum majority from the administrators.
