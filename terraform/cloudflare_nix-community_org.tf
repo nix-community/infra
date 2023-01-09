@@ -103,6 +103,13 @@ resource "cloudflare_record" "nix-community-org-apex-TXT" {
   type    = "TXT"
 }
 
+resource "cloudflare_record" "nix-community-org-github-pages-challenge-TXT" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "_github-pages-challenge-nix-community.nix-community.org."
+  value   = "6d236784300b9b1e80fdc496b7bfce"
+  type    = "TXT"
+}
+
 # ehmry's mumble server at vps-free
 resource "cloudflare_record" "mumble-A" {
   zone_id = local.nix_community_org_zone_id
