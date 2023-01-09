@@ -8,7 +8,14 @@ from typing import Any, List
 from deploykit import DeployGroup, DeployHost
 from invoke import task
 
-RSYNC_EXCLUDES = [".terraform", ".direnv", ".mypy-cache", ".git"]
+RSYNC_EXCLUDES = [
+    ".direnv",
+    ".git",
+    ".mypy-cache",
+    ".ruff_cache",
+    ".terraform",
+    "result*",
+]
 
 
 def deploy_nixos(hosts: List[DeployHost]) -> None:
