@@ -40,7 +40,7 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 ## Deployment commands:
 
 ```console
-$ ./deploy
+$ ./inv deploy
 ```
 
 If you want to reboot a machine, use the following command to also deploy secrets afterwards:
