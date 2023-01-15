@@ -338,6 +338,9 @@
         "nix-community-nix-user-chroot": {
             "url": "https://github.com/nix-community/nix-user-chroot.git"
         },
+        "nix-community-nix-vscode-extensions": {
+            "url": "https://github.com/nix-community/nix-vscode-extensions.git"
+        },
         "nix-community-nixago": {
             "url": "https://github.com/nix-community/nixago.git"
         },
