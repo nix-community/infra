@@ -21,6 +21,7 @@
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
+    nixpkgs-update.inputs.mmdoc.follows = "";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";

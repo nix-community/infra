@@ -40,28 +40,6 @@
         "type": "github"
       }
     },
-    "mmdoc": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-update",
-          "nixpkgs"
-        ],
-        "nixpkgs-for-manual": "nixpkgs-for-manual"
-      },
-      "locked": {
-        "lastModified": 1669050835,
-        "narHash": "sha256-4ppYRBBY6lIqwMNYp0XA2mku1lSPyX4JaoTf+gt5NDg=",
-        "owner": "ryantm",
-        "repo": "mmdoc",
-        "rev": "cec02bafac9456bd1ed9b261b8d163a893885e5b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryantm",
-        "repo": "mmdoc",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1673855649,
@@ -74,22 +52,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-for-manual": {
-      "locked": {
-        "lastModified": 1663819393,
-        "narHash": "sha256-SMWfyAOKRPBC95M8dhZJTlb0kHyilr2lKEAfQSHlM7I=",
-        "owner": "ryantm",
-        "repo": "nixpkgs",
-        "rev": "6a6caacfdd079a0fa249046514480a1c4597d861",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryantm",
-        "ref": "minman",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -112,7 +74,7 @@
     },
     "nixpkgs-update": {
       "inputs": {
-        "mmdoc": "mmdoc",
+        "mmdoc": [],
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
