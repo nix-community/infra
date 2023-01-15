@@ -9,18 +9,13 @@ import requests
 github_token = os.environ.get("GITHUB_TOKEN")
 
 disallowed_repos = [
+    "nix-community/dream2nix-auto-test",
+    "nix-community/image-spec",
+    "nix-community/nix",
+    "nix-community/nixpkgs",
+    "nix-community/nsncd",
+    "nix-community/rkwifibt",
     "NixOS/nixops-dashboard",  # empty repo causes an error
-]
-
-allowed_forks = [
-    "nix-community/acpi_call",
-    "nix-community/bundix",
-    "nix-community/luarocks-nix",
-    "nix-community/nix-doom-emacs",
-    "nix-community/nix-straight.el",
-    "nix-community/travis-build",
-    "nix-community/vagrant-nixos-plugin",
-    "NixOS/calamares-nixos-extensions",
 ]
 
 
@@ -52,7 +47,6 @@ def all_for_org(org):
                 for repo in repos
                 if repo["full_name"] not in disallowed_repos
                 if repo["archived"] is False
-                if repo["fork"] is False or repo["full_name"] in allowed_forks
             }
         )
 
