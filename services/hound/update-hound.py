@@ -2,8 +2,11 @@
 #!nix-shell -i python3 -p python3Packages.python -p python3Packages.requests
 
 import json
+import os
 
 import requests
+
+github_token = os.environ.get("GITHUB_TOKEN")
 
 disallowed_repos = [
     "NixOS/nixops-dashboard",  # empty repo causes an error
@@ -27,7 +30,12 @@ def all_for_org(org):
 
     next_url = "https://api.github.com/orgs/{}/repos".format(org)
     while next_url is not None:
-        repo_resp = requests.get(next_url)
+
+        if github_token is not None:
+            headers = {"Authorization": f"token {github_token}"}
+            repo_resp = requests.get(next_url, headers=headers)
+        else:
+            repo_resp = requests.get(next_url)
 
         if "next" in repo_resp.links:
             next_url = repo_resp.links["next"]["url"]
