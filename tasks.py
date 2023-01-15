@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import subprocess
 import sys
 from typing import Any, List
@@ -93,6 +94,15 @@ def _format_disks(host: DeployHost, devices: List[str]) -> None:
     host.run("mkdir /mnt/home /mnt/boot")
     host.run("mount -t zfs zroot/root/home /mnt/home")
     host.run("mount -t ext4 /dev/md127 /mnt/boot")
+
+
+@task
+def update_hound_repos(c):
+    """
+    Update list of repos for hound search
+    """
+    os.chdir("services/hound")
+    c.run("./update-hound.py > hound.json")
 
 
 @task
