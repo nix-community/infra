@@ -18,8 +18,9 @@ There are currently two classes of members in the project:
 
 ### Team
 
-Anybody who contributes code to one of our project is considered a community
-member.
+Anybody that fills these criteria automatically becomes a members:
+* Has at least 10 contributions to projects that are in the org
+* The last contribution is younger than 2 years old
 
 ### Responsibilities
 
