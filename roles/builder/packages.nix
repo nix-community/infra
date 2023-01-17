@@ -5,6 +5,7 @@
     pkgs.fd
     pkgs.git
     pkgs.nano
+    pkgs.nix-output-monitor
     pkgs.nix-tree
     pkgs.nixpkgs-review
     pkgs.ripgrep
