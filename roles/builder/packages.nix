@@ -2,14 +2,14 @@
 {
   # useful for people that want to test stuff
   environment.systemPackages = [
-    pkgs.vim
-    pkgs.nano # ?
-    pkgs.tmux
+    pkgs.fd
     pkgs.git
-    pkgs.tig
+    pkgs.nano
+    pkgs.nix-tree
     pkgs.nixpkgs-review
     pkgs.ripgrep
-    pkgs.fd
-    pkgs.nix-tree
+    pkgs.tig
+    pkgs.tmux
+    pkgs.vim
   ];
 }
