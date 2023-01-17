@@ -11,7 +11,7 @@ repository:
   homepage: "https://nix-community.org"
 
   # A comma-separated list of topics to set on the repository
-  topics: [terraform, nixos]
+  topics: "terraform, nixos"
 
   # Either `true` to make the repository private, or `false` to make it public.
   private: false
