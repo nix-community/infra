@@ -124,7 +124,7 @@ branches:
       # Required. Require status checks to pass before merging. Set to null to disable
       required_status_checks:
         # Required. Require branches to be up to date before merging.
-        strict: true
+        strict: false
         # Required. The list of status checks to require in order to merge into this branch
         contexts:
           - ci/hercules/derivations
