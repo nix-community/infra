@@ -101,8 +101,6 @@ teams:
     # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
     # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
     permission: admin
-  - name: moderator
-    permission: maintain
 
 branches:
   - name: master
