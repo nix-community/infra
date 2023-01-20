@@ -117,6 +117,13 @@ resource "cloudflare_record" "nix-community-org-apex-TXT" {
   type    = "TXT"
 }
 
+resource "cloudflare_record" "nix-community-org-github-challenge-TXT" {
+  zone_id = local.nix_community_org_zone_id
+  name    = "_github-challenge-nix-community-org"
+  value   = "2eee7c1945"
+  type    = "TXT"
+}
+
 resource "cloudflare_record" "nix-community-org-github-pages-challenge-TXT" {
   zone_id = local.nix_community_org_zone_id
   name    = "_github-pages-challenge-nix-community.nix-community.org."
