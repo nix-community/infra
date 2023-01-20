@@ -15,7 +15,7 @@
 
     # terminfo packages
     pkgs.foot.terminfo
-    #pkgs.kitty.terminfo
+    pkgs.kitty.terminfo
     pkgs.termite.terminfo
     pkgs.wezterm.terminfo
   ];
