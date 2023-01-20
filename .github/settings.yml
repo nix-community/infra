@@ -134,6 +134,6 @@ branches:
       required_linear_history: false
       # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
       restrictions:
-        apps: [ "bors" ]
+        apps: [ "bors", "mergify" ]
         users: []
         teams: []
