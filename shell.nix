@@ -8,9 +8,10 @@ mkShellNoCC {
     (terraform.withPlugins (
       p: [
         p.cloudflare
-        p.null
         p.external
         p.hydra
+        p.null
+        p.tfe
       ]
     ))
     jq
