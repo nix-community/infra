@@ -1,14 +1,9 @@
 { pkgs
-, sops-import-keys-hook
 , treefmt
 }:
 
 with pkgs;
 mkShellNoCC {
-  sopsPGPKeyDirs = [
-    "${toString ./.}/keys"
-  ];
-
   buildInputs = [
     (terraform.withPlugins (
       p: [
@@ -28,7 +23,5 @@ mkShellNoCC {
     ))
     rsync
     treefmt
-
-    sops-import-keys-hook
   ];
 }
