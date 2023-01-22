@@ -9,15 +9,16 @@ locals {
     zimbatm = "zimbatm@zimbatm.com"
   }
 
-  tfe_org = tfe_organization.nix-community.name
+  tfe_org = "nix-community" #tfe_organization.nix-community.name
 }
 
 # Org setup
-resource "tfe_organization" "nix-community" {
-  name = "nix-community"
-  # FIXME: host our own email
-  email = "nix-community@numtide.com"
-}
+# FIXME: import is broken
+# resource "tfe_organization" "nix-community" {
+#   name = "nix-community"
+#   # FIXME: host our own email. See https://github.com/nix-community/infra/issues/393
+#   email = "nix-community@numtide.com"
+# }
 
 # Members setup
 
@@ -26,17 +27,18 @@ resource "tfe_team" "owners" {
   organization = "nix-community"
 }
 
-resource "tfe_organization_membership" "owners" {
-  for_each     = local.tfe_owners
-  organization = local.tfe_org
-  email        = each.value
-}
+# FIXME: I need to find the user ID for my account before this can be used
+# resource "tfe_organization_membership" "owners" {
+#   for_each     = local.tfe_owners
+#   organization = local.tfe_org
+#   email        = each.value
+# }
 
-resource "tfe_team_organization_member" "owners" {
-  for_each                   = local.tfe_owners
-  team_id                    = tfe_team.owners.id
-  organization_membership_id = tfe_organization_membership.owners[each.key].id
-}
+# resource "tfe_team_organization_member" "owners" {
+#   for_each                   = local.tfe_owners
+#   team_id                    = tfe_team.owners.id
+#   organization_membership_id = tfe_organization_membership.owners[each.key].id
+# }
 
 # Workspaces setup
 
