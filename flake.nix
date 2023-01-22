@@ -53,7 +53,6 @@
           , ...
           }: {
             devShells.default = pkgs.callPackage ./shell.nix {
-              inherit (inputs'.sops-nix.packages) sops-import-keys-hook;
               inherit (self'.packages) treefmt;
             };
           };
