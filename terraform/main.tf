@@ -11,6 +11,9 @@ terraform {
     hydra = {
       source = "DeterminateSystems/hydra"
     }
+    tfe = {
+      source = "hashicorp/tfe"
+    }
   }
 }
 
