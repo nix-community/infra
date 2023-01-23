@@ -9,6 +9,7 @@ locals {
     mic92 = "joerg@thalheim.io"
     # FIXME: I need to find the user ID for my account before this can be used
     # zimbatm = "zimbatm@zimbatm.com"
+    zowoq = "zowoq.gh@gmail.com"
   }
 
   tfe_org = "nix-community" #tfe_organization.nix-community.name
