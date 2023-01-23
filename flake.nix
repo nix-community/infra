@@ -47,13 +47,14 @@
         ];
 
         perSystem =
-          { inputs'
+          { config
+          , inputs'
           , pkgs
           , self'
           , ...
           }: {
             devShells.default = pkgs.callPackage ./shell.nix {
-              inherit (self'.packages) treefmt;
+              inherit config;
             };
           };
         flake.nixosConfigurations =
