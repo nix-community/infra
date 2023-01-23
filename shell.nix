@@ -1,5 +1,5 @@
-{ pkgs
-, treefmt
+{ config
+, pkgs
 }:
 
 with pkgs;
@@ -23,6 +23,6 @@ mkShellNoCC {
       ]
     ))
     rsync
-    treefmt
+    config.treefmt.build.wrapper
   ];
 }
