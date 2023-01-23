@@ -31,16 +31,16 @@ jobs:
             accept-flake-config = true
       - name: init
         if: steps.changes.outputs.terraform == 'true'
-        run: nix develop -c ./terraform/deploy terraform init -input=false
+        run: nix develop -c ./terraform/terraform init -input=false
       - name: validate
         if: steps.changes.outputs.terraform == 'true'
-        run: nix develop -c ./terraform/deploy terraform validate
+        run: nix develop -c ./terraform/terraform validate
       - name: fmt
         if: steps.changes.outputs.terraform == 'true'
-        run: nix develop -c ./terraform/deploy terraform fmt -check
+        run: nix develop -c ./terraform/terraform fmt -check
       - name: plan
         if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/trying'
-        run: nix develop -c ./terraform/deploy terraform plan -input=false
+        run: nix develop -c ./terraform/terraform plan -input=false
       - name: apply
         if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/staging'
-        run: nix develop -c ./terraform/deploy terraform apply -auto-approve -input=false
+        run: nix develop -c ./terraform/terraform apply -auto-approve -input=false
