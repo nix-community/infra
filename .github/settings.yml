@@ -82,14 +82,14 @@ milestones:
 # See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
 collaborators:
   # - username: numtide-bot
-    # Note: `permission` is only valid on organization-owned repositories.
-    # The permission to grant the collaborator. Can be one of:
-    # * `pull` - can pull, but not push to or administer this repository.
-    # * `push` - can pull and push, but not administer this repository.
-    # * `admin` - can pull, push and administer this repository.
-    # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
-    # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
-    # permission: push
+  # Note: `permission` is only valid on organization-owned repositories.
+  # The permission to grant the collaborator. Can be one of:
+  # * `pull` - can pull, but not push to or administer this repository.
+  # * `push` - can pull and push, but not administer this repository.
+  # * `admin` - can pull, push and administer this repository.
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
+  # permission: push
 
 # See https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions for available options
 teams:
@@ -108,17 +108,20 @@ branches:
     # Branch Protection settings. Set to null to disable
     protection:
       # Required. Require at least one approving review on a pull request, before merging. Set to null to disable.
+
+      # these settings are the same as manually enabling "Require a pull request before merging" but not setting any other restrictions
       required_pull_request_reviews:
         # # The number of approvals required. (1-6)
-        # required_approving_review_count: 1
+        required_approving_review_count: 0
         # # Dismiss approved reviews automatically when a new commit is pushed.
-        # dismiss_stale_reviews: true
+        dismiss_stale_reviews: false
         # # Blocks merge until code owners have reviewed.
-        # require_code_owner_reviews: true
+        require_code_owner_reviews: false
         # # Specify which users and teams can dismiss pull request reviews. Pass an empty dismissal_restrictions object to disable. User and team dismissal_restrictions are only available for organization-owned repositories. Omit this parameter for personal repositories.
         # dismissal_restrictions:
         #   users: []
         #   teams: []
+        require_last_push_approval: false
       # Required. Require status checks to pass before merging. Set to null to disable
       required_status_checks:
         # Required. Require branches to be up to date before merging.
@@ -129,11 +132,11 @@ branches:
           - ci/hercules/effects
           - ci/hercules/evaluation
       # Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable.
-      enforce_admins: false
+      enforce_admins: true
       # Disabled for bors to work
       required_linear_history: false
       # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
       restrictions:
-        apps: [ "bors", "mergify" ]
+        apps: ["bors", "mergify"]
         users: []
         teams: []
