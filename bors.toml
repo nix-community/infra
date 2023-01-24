@@ -3,6 +3,5 @@ status = [
   "ci/hercules/derivations",
   "ci/hercules/effects",
   "ci/hercules/evaluation",
-  # not a required status check
   "terraform-deploy",
 ]
