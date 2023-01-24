@@ -11,6 +11,7 @@ mkShellNoCC {
         p.external
         p.hydra
         p.null
+        p.sops
         p.tfe
       ]
     ))
