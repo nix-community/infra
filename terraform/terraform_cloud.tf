@@ -3,15 +3,8 @@
 # Terraform Cloud is used only for one thing: to store the terraform state.
 #
 locals {
-  # FIXME: add all the admins of the org
   # NOTE: there is a limit of 5 members in the free plan
-  tfe_owners = {
-    adisbladis = "adisbladis@gmail.com"
-    mic92      = "joerg@thalheim.io"
-    ryantm     = "ryan@ryantm.com"
-    zimbatm    = "zimbatm@zimbatm.com"
-    zowoq      = "zowoq.gh@gmail.com"
-  }
+  tfe_owners = local.admins
 
   tfe_org = "nix-community" #tfe_organization.nix-community.name
 }
