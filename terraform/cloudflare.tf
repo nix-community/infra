@@ -13,6 +13,7 @@ data "cloudflare_account_roles" "account_roles" {
 
 resource "cloudflare_account_member" "member" {
   for_each      = local.cf_admins
+  account_id    = local.cf_account_id
   email_address = each.value
   role_ids = [
     local.cf_roles_by_name["Administrator"].id
