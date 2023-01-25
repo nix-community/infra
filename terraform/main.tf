@@ -17,9 +17,7 @@ terraform {
   }
 }
 
-provider "cloudflare" {
-  account_id = "e4a2db52c495db230973c839a0699ae1"
-}
+provider "cloudflare" {}
 
 provider "hydra" {
   host     = "https://hydra.nix-community.org"
