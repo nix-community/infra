@@ -53,6 +53,12 @@ If you need to contact the nix-community admins, they are listed [here](https://
 
 ## Sponsors
 
-<img src="https://raw.githubusercontent.com/cachix/docs.cachix.org/master/source/logo.png" width="200" alt="Cachix">
+Thanks to all our sponsors.
 
-[Cachix](https://www.cachix.org/) provides us with a free 1TB binary cache!
+|[<img src="https://raw.githubusercontent.com/cachix/docs.cachix.org/master/source/logo.png" width="200" alt="Cachix">](https://cachix.org)|
+|:-:|
+|Cachix provides us with 1TB of free cache|
+
+|[<img src="https://github.com/Gandi/baobab/raw/7d4671bda7c9eb3dff4702c784e9fc0f5fb59b63/baobab.front/images/logo_gandi.png" width="200" alt="Gandi">](https://www.gandi.net/)|
+|:-:|
+|Gandi provides us with a free domain.|
