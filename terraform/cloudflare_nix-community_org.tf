@@ -136,20 +136,6 @@ resource "cloudflare_record" "nix-community-org-github-pages-challenge-TXT" {
   type    = "TXT"
 }
 
-# ehmry's mumble server at vps-free
-resource "cloudflare_record" "mumble-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "mumble"
-  value   = "37.205.14.171"
-  type    = "A"
-}
-resource "cloudflare_record" "mumble-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "mumble"
-  value   = "2a03:3b40:fe:ab::1"
-  type    = "AAAA"
-}
-
 resource "cloudflare_record" "nix-community-org-github-pages" {
   for_each = { for page in local.nix_community_github_pages : page => page }
 
