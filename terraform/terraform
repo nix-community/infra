@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-pushd "$(dirname "$0")" >/dev/null
-
-# terraform cloud without the remote execution part
-TF_FORCE_LOCAL_BACKEND="1" sops exec-env secrets.yaml "terraform ${*@Q}"
-
-popd >/dev/null
