@@ -18,6 +18,7 @@ jobs:
       SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
       TF_IN_AUTOMATION: true
+      TF_INPUT: 0
     steps:
       - uses: actions/checkout@v3
       - uses: dorny/paths-filter@v2
@@ -35,7 +36,7 @@ jobs:
             accept-flake-config = true
       - name: init
         if: steps.changes.outputs.terraform == 'true'
-        run: nix develop -c terraform init -input=false
+        run: nix develop -c terraform init
       - name: validate
         if: steps.changes.outputs.terraform == 'true'
         run: nix develop -c terraform validate
@@ -44,7 +45,7 @@ jobs:
         run: nix develop -c terraform fmt -check
       - name: plan
         if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/trying'
-        run: nix develop -c terraform plan -input=false
+        run: nix develop -c terraform plan
       - name: apply
         if: steps.changes.outputs.terraform == 'true' && github.ref == 'refs/heads/staging'
-        run: nix develop -c terraform apply -auto-approve -input=false
+        run: nix develop -c terraform apply -auto-approve
