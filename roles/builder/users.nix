@@ -27,9 +27,19 @@ let
       keys = ./keys/fgaz;
     };
 
+    flokli = {
+      trusted = true;
+      keys = ./keys/flokli;
+    };
+
     jtojnar = {
       trusted = true;
       keys = ./keys/jtojnar;
+    };
+
+    lewo = {
+      trusted = true;
+      keys = ./keys/lewo;
     };
 
     raitobezarius = {
