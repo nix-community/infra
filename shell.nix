@@ -5,17 +5,6 @@
 with pkgs;
 mkShellNoCC {
   buildInputs = [
-    (terraform.withPlugins (
-      p: [
-        p.cloudflare
-        p.external
-        p.gandi
-        p.hydra
-        p.null
-        p.sops
-        p.tfe
-      ]
-    ))
     jq
     sops
     ssh-to-age
