@@ -27,12 +27,11 @@ jobs:
           filters: |
             terraform:
               - 'terraform/**'
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v19
         if: steps.changes.outputs.terraform == 'true'
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             accept-flake-config = true
       - name: init
         if: steps.changes.outputs.terraform == 'true'
