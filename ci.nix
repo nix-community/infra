@@ -5,7 +5,6 @@
 let
   self = builtins.getFlake (toString ./.);
   inherit (self.inputs.nixpkgs) lib;
-  stripDomain = name: lib.head (builtins.match "(.*).nix-community.org" name);
 
   effects = self.inputs.hercules-ci-effects.lib.withPkgs self.inputs.nixpkgs.legacyPackages.x86_64-linux;
   terraform-deploy =
@@ -32,7 +31,7 @@ let
         '';
       });
 in
-(lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
+(lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
 {
   # FIXME: maybe find a more generic solution here?
   devShell-x86_64 = self.outputs.devShells.x86_64-linux.default;
