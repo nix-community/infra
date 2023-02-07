@@ -124,7 +124,7 @@ find . \
 @task
 def scan_age_keys(c, host):
     """
-    Scans for the host key via ssh an converts it to age
+    Scans for the host key via ssh an converts it to age. Use inv scan-age-keys build**.nix-community.org
     """
     import subprocess
 
@@ -133,7 +133,7 @@ def scan_age_keys(c, host):
     )
     print("###### Age keys ######")
     subprocess.run(
-        ["nix", "run", "--inputs-from", ".#", "nixpkgs#ssh-to-age"],
+        ["ssh-to-age"],
         input=proc.stdout,
         check=True,
         text=True,
