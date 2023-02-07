@@ -17,6 +17,7 @@ mkShellNoCC {
     ))
     jq
     sops
+    ssh-to-age
     (python3.withPackages (
       p: [
         p.deploykit
