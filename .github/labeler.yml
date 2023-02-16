@@ -1,2 +1,5 @@
+"sops secrets":
+  - "**/*/secrets.yaml"
+
 "terraform":
   - terraform/**/*
