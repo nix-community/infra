@@ -114,12 +114,23 @@ resource "cloudflare_record" "nix-community-org-apex-A" {
   proxied = false
 }
 
-# Any email coming from that domain are SPAM
 resource "cloudflare_record" "nix-community-org-apex-TXT" {
   zone_id = local.nix_community_zone_id
   name    = "@"
-  value   = "v=spf1 -all"
+  value   = "v=spf1 include:_mailcust.gandi.net -all"
   type    = "TXT"
+}
+
+resource "cloudflare_record" "nix-community-org-apex-MX" {
+  for_each = {
+    "spool.mail.gandi.net." = 10
+    "fb.mail.gandi.net."    = 50
+  }
+  zone_id  = local.nix_community_zone_id
+  name     = "@"
+  value    = each.key
+  type     = "MX"
+  priority = each.value
 }
 
 resource "cloudflare_record" "nix-community-org-github-challenge-TXT" {
