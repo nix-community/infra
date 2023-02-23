@@ -59,6 +59,6 @@ Thanks to all our sponsors.
 |:-:|
 |Cachix provides us with 1TB of free cache|
 
-|[<img src="https://github.com/Gandi/baobab/raw/7d4671bda7c9eb3dff4702c784e9fc0f5fb59b63/baobab.front/images/logo_gandi.png" width="200" alt="Gandi">](https://www.gandi.net/)|
+|[<img src="https://raw.githubusercontent.com/Gandi/.github/b1f21a402d9223c672476b41148429f538be5303/logos/black.svg" width="200" alt="Gandi">](https://www.gandi.net/)|
 |:-:|
 |Gandi provides us with a free domain.|
