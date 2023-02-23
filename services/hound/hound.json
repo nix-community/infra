@@ -251,6 +251,9 @@
         "nix-community-hardware-mnt-reform": {
             "url": "https://github.com/nix-community/hardware-mnt-reform.git"
         },
+        "nix-community-harmonia": {
+            "url": "https://github.com/nix-community/harmonia.git"
+        },
         "nix-community-home-manager": {
             "url": "https://github.com/nix-community/home-manager.git"
         },
@@ -320,6 +323,9 @@
         "nix-community-nix-eval-jobs": {
             "url": "https://github.com/nix-community/nix-eval-jobs.git"
         },
+        "nix-community-nix-init": {
+            "url": "https://github.com/nix-community/nix-init.git"
+        },
         "nix-community-nix-installers": {
             "url": "https://github.com/nix-community/nix-installers.git"
         },
@@ -340,6 +346,9 @@
         },
         "nix-community-nix-vscode-extensions": {
             "url": "https://github.com/nix-community/nix-vscode-extensions.git"
+        },
+        "nix-community-nix-zsh-completions": {
+            "url": "https://github.com/nix-community/nix-zsh-completions.git"
         },
         "nix-community-nixago": {
             "url": "https://github.com/nix-community/nixago.git"
@@ -410,6 +419,9 @@
         "nix-community-nixt": {
             "url": "https://github.com/nix-community/nixt.git"
         },
+        "nix-community-noogle": {
+            "url": "https://github.com/nix-community/noogle.git"
+        },
         "nix-community-npmlock2nix": {
             "url": "https://github.com/nix-community/npmlock2nix.git"
         },
@@ -472,6 +484,9 @@
         },
         "nix-community-templates": {
             "url": "https://github.com/nix-community/templates.git"
+        },
+        "nix-community-terraform-nixos": {
+            "url": "https://github.com/nix-community/terraform-nixos.git"
         },
         "nix-community-todomvc-nix": {
             "url": "https://github.com/nix-community/todomvc-nix.git"
