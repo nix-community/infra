@@ -58,3 +58,55 @@ resource "hydra_project" "simple_nixos_mailserver" {
     value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
   }
 }
+
+resource "hydra_project" "nixpkgs_testing" {
+  name         = "nixpkgs-testing"
+  display_name = "nixpkgs testing"
+  description  = "test jobsets"
+  homepage     = "https://github.com/NixOS/nixpkgs"
+  owner        = "admin"
+  enabled      = true
+  visible      = true
+}
+
+resource "hydra_jobset" "go120" {
+  project     = hydra_project.nixpkgs_testing.name
+  state       = "enabled"
+  visible     = true
+  name        = "go120"
+  type        = "legacy"
+  description = "testing go 1.20"
+
+  nix_expression {
+    file  = "nixos/release.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/qowoz/nixpkgs.git go119120"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"x86_64-linux\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 604800
+  scheduling_shares = 2000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
