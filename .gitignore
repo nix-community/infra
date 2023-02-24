@@ -5,3 +5,4 @@ result-*
 # Terraform
 .terraform
 .terraform.*
+/terraform/.direnv
