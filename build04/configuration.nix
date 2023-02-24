@@ -42,5 +42,5 @@
 # nix run github:numtide/nixos-anywhere#nixos-anywhere -- \
 #   --debug \
 #   --kexec "$(nix build --print-out-paths github:nix-community/nixos-images#packages.aarch64-linux.kexec-installer-nixos-unstable)/nixos-kexec-installer-aarch64-linux.tar.gz" \
-#   --flake '.#nixosConfigurations."build04.nix-community.org"' \
+#   --flake '.#build04.nix-community.org' \
 #   opc@141.148.235.248
