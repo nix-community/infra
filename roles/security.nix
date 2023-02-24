@@ -17,7 +17,7 @@
     };
     build04 = {
       hostNames = [ "build04.nix-community.org" ];
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPU/gbREwVuI1p3ag1iG72jxl2/92yGl38c+TPOfFMH8";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINvzMJfCiVKGfEjCfBZqDD7Kib5y+2zz04YI8XrCZ68O";
     };
     aarch64-nixos-community = {
       hostNames = [ "aarch64.nixos.community" ];
