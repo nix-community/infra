@@ -52,14 +52,14 @@ resource "cloudflare_record" "nix-community-org-build03-AAAA" {
 resource "cloudflare_record" "nix-community-org-build04-A" {
   zone_id = local.nix_community_zone_id
   name    = "build04"
-  value   = "141.148.235.248"
+  value   = "141.144.201.31"
   type    = "A"
 }
 
 resource "cloudflare_record" "nix-community-org-build04-AAAA" {
   zone_id = local.nix_community_zone_id
   name    = "build04"
-  value   = "2603:c022:c001:b500:66b1:bcc4:3fde:5265"
+  value   = "2603:c022:c001:b500:f1d4:5343:e8ce:d6ba"
   type    = "AAAA"
 }
 
