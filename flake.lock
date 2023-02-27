@@ -20,22 +20,6 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1673956053,
-        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -210,20 +194,16 @@
     },
     "srvos": {
       "inputs": {
-        "flake-compat": "flake-compat",
-        "flake-parts": [
-          "flake-parts"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1677456313,
-        "narHash": "sha256-FcaMJOrJyuHLpEtmmLnnUqZTlvfRmg7fxc7hglI/zOM=",
+        "lastModified": 1677503148,
+        "narHash": "sha256-vbWEa+/DabBlroSA1exd/2yV32PX4MoauPwWzTS37G4=",
         "owner": "numtide",
         "repo": "srvos",
-        "rev": "c2556e271e7e8aa61c16f12db0cab6dbf7908bc0",
+        "rev": "d3394d6d9027257222f5005ba246b38840e0aa5c",
         "type": "github"
       },
       "original": {
