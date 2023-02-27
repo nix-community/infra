@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   herculesSecret = {
     owner = "hercules-ci-agent";
@@ -15,6 +15,9 @@ in
     settings = {
       binaryCachesPath = secrets."binary-caches.json".path;
       clusterJoinTokenPath = secrets."cluster-join-token.key".path;
+      # workaround for "could not retrieve derivation"
+      # https://github.com/hercules-ci/hercules-ci-agent/issues/314
+      nixUserIsTrusted = lib.mkForce false;
     };
   };
 }
