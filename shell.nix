@@ -14,7 +14,7 @@ mkShellNoCC {
         p.invoke
       ]
     ))
-    rsync
+    nixos-rebuild
     config.treefmt.build.wrapper
   ];
 }
