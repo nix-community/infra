@@ -9,15 +9,6 @@ from typing import Any, List
 from deploykit import DeployGroup, DeployHost
 from invoke import task
 
-RSYNC_EXCLUDES = [
-    ".direnv",
-    ".git",
-    ".mypy-cache",
-    ".ruff_cache",
-    ".terraform",
-    "result*",
-]
-
 
 def deploy_nixos(hosts: List[DeployHost]) -> None:
     """
@@ -25,11 +16,18 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
     """
     g = DeployGroup(hosts)
 
+    res = subprocess.run(
+        ["nix", "flake", "metadata", "--json"],
+        check=True,
+        text=True,
+        stdout=subprocess.PIPE,
+    )
+    data = json.loads(res.stdout)
+    path = data["path"]
+
     def deploy(h: DeployHost) -> None:
         target = f"{h.user or 'root'}@{h.host}"
-        h.run_local(
-            f"rsync {' --exclude '.join([''] + RSYNC_EXCLUDES)} -vaF --delete -e ssh . {target}:/etc/nixos"
-        )
+        h.run_local(f"rsync -vaF --delete -e ssh {path}/ {target}:/etc/nixos")
 
         h.run("nixos-rebuild switch --option accept-flake-config true")
 
