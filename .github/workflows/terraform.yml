@@ -27,7 +27,7 @@ jobs:
           filters: |
             terraform:
               - 'terraform/**'
-      - uses: cachix/install-nix-action@v19
+      - uses: cachix/install-nix-action@v20
         if: steps.changes.outputs.terraform == 'true'
         with:
           extra_nix_config: |
