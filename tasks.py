@@ -28,12 +28,23 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
     path = data["path"]
 
     def deploy(h: DeployHost) -> None:
-        target = f"{h.user or 'root'}@{h.host}"
         h.run_local(
-            f"rsync --checksum -vaF --delete -e ssh {path}/ {target}:/etc/nixos"
+            f"rsync --rsync-path='sudo rsync' --checksum -vaF --delete -e ssh {path}/ {h.host}:/etc/nixos"
         )
 
-        h.run("nixos-rebuild switch --option accept-flake-config true")
+        hostname = h.host.replace(".nix-community.org", "")
+        h.run(
+            [
+                "sudo",
+                "nixos-rebuild",
+                "switch",
+                "--option",
+                "accept-flake-config",
+                "true",
+                "--flake",
+                f".#{hostname}",
+            ]
+        )
 
     g.run_function(deploy)
 
@@ -160,12 +171,9 @@ git commit --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
 
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
-        return [
-            DeployHost(f"build{n + 1:02d}.nix-community.org", user="root")
-            for n in range(4)
-        ]
+        return [DeployHost(f"build{n + 1:02d}.nix-community.org") for n in range(4)]
 
-    return [DeployHost(f"{h}.nix-community.org", user="root") for h in hosts.split(",")]
+    return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
 
 
 @task
@@ -184,6 +192,7 @@ def build_local(c, hosts=""):
     g = DeployGroup(get_hosts(hosts))
 
     def build_local(h: DeployHost) -> None:
+        hostname = h.host.replace(".nix-community.org", "")
         h.run_local(
             [
                 "nixos-rebuild",
@@ -192,7 +201,7 @@ def build_local(c, hosts=""):
                 "accept-flake-config",
                 "true",
                 "--flake",
-                f".#{h.host}",
+                f".#{hostname}",
             ]
         )
 
@@ -227,7 +236,7 @@ def reboot(c, hosts=""):
     Reboot hosts. example usage: inv reboot --hosts build01,build02
     """
     for h in get_hosts(hosts):
-        h.run("reboot &")
+        h.run("sudo reboot &")
 
         print(f"Wait for {h.host} to shutdown", end="")
         sys.stdout.flush()
@@ -243,5 +252,5 @@ def reboot(c, hosts=""):
 @task
 def cleanup_gcroots(c, hosts=""):
     g = DeployGroup(get_hosts(hosts))
-    g.run("find /nix/var/nix/gcroots/auto -type s -delete")
-    g.run("systemctl restart nix-gc")
+    g.run("sudo find /nix/var/nix/gcroots/auto -type s -delete")
+    g.run("sudo systemctl restart nix-gc")
