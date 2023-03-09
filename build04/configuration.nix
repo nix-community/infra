@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,13 +11,8 @@
   # disable kvm/nixos-tests
   nix.settings.system-features = [ "big-parallel" ]; # sync with roles/remote-builder/aarch64-build04.nix
 
-  # we use grub because systemd-boot sometimes fail on aarch64/EFI
-  # XXX check if this is still an issue?
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.version = 2;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = false;
 
   # Make it easier to recover via serial console in case something goes wrong.
   services.getty.autologinUser = "root";
