@@ -63,7 +63,7 @@ print(
             "repos": repos,
             "vcs-config": {"git": {"detect-ref": True}},
         },
-        indent=4,
+        indent=2,
         sort_keys=True,
     )
 )
