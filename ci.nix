@@ -5,10 +5,10 @@
 let
   self = builtins.getFlake (toString ./.);
   terraform = builtins.getFlake (toString ./terraform/.);
-  inherit (self.inputs) nixpkgs;
-  stripDomain = name: nixpkgs.lib.head (builtins.match "(.*).nix-community.org" name);
+  inherit (self.inputs.nixpkgs) lib;
+  stripDomain = name: lib.head (builtins.match "(.*).nix-community.org" name);
 in
-(nixpkgs.lib.mapAttrs' (name: config: nixpkgs.lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
+(lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${stripDomain name}" config.config.system.build.toplevel) self.outputs.nixosConfigurations) //
 {
   # FIXME: maybe find a more generic solution here?
   devShell-x86_64 = self.outputs.devShells.x86_64-linux.default;
