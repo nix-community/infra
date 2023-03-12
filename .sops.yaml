@@ -4,6 +4,7 @@ keys:
   - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
   - &build04 age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
   - &github_actions age1hdmmmv423xajuv4pjumnj35j34e4rhta3wgatjafy3dxf38yycysqzl4mn
+  - &hercules_tf age1lk9prt0l75xyj4r9lvel5cdac4ll8jnywrm0fp8nackeqzmwkfqq974lst
   - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
   - &ryantm age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
   - &zimbatm age1jrh8yyq3swjru09s75s4mspu0mphh7h6z54z946raa9wx3pcdegq0x8t4h
@@ -21,6 +22,7 @@ creation_rules:
     key_groups:
     - age:
       - *github_actions
+      - *hercules_tf
       - *mic92
       - *ryantm
       - *zimbatm
