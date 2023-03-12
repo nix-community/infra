@@ -4,16 +4,18 @@ import json
 import os
 import subprocess
 import sys
+from pathlib import Path
 from typing import Any, List
 
 from deploykit import DeployGroup, DeployHost
 from invoke import task
 
+ROOT = Path(__file__).parent.resolve()
+os.chdir(ROOT)
 
+# Deploy to all hosts in parallel
 def deploy_nixos(hosts: List[DeployHost]) -> None:
-    """
-    Deploy to all hosts in parallel
-    """
+
     g = DeployGroup(hosts)
 
     res = subprocess.run(
@@ -108,7 +110,6 @@ def update_sops_files(c):
     """
     Update all sops yaml and json files according to .sops.yaml rules
     """
-
     c.run(
         """
 find . \
@@ -124,8 +125,6 @@ def scan_age_keys(c, host):
     """
     Scans for the host key via ssh an converts it to age. Use inv scan-age-keys build**.nix-community.org
     """
-    import subprocess
-
     proc = subprocess.run(
         ["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True
     )
