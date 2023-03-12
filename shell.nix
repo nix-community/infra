@@ -12,6 +12,7 @@ mkShellNoCC {
       p: [
         p.deploykit
         p.invoke
+        p.requests
       ]
     ))
     rsync
