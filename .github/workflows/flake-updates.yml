@@ -3,7 +3,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-    - cron:  '51 2 * * 1,5'
+    - cron: "51 2 * * 1,5"
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
