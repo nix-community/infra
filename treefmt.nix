@@ -7,7 +7,7 @@
       # Used to find the project root
       projectRootFile = "flake.lock";
 
-      programs.terraform.enable = true;
+      programs.hclfmt.enable = true;
 
       settings.formatter = {
         nix = {
