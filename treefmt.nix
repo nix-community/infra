@@ -7,7 +7,9 @@
       # Used to find the project root
       projectRootFile = "flake.lock";
 
-      programs.terraform.enable = true;
+      programs.hclfmt.enable = true;
+
+      programs.prettier.enable = true;
 
       settings.formatter = {
         nix = {
@@ -28,6 +30,13 @@
             "nix/sources.nix"
             # vendored from external source
             "build02/packages-with-update-script.nix"
+          ];
+        };
+
+        prettier = {
+          excludes = [
+            "*.md"
+            "secrets.yaml"
           ];
         };
 

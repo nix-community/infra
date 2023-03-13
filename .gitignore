@@ -6,3 +6,6 @@ result-*
 .terraform
 .terraform.*
 /terraform/.direnv
+
+# needed for treefmt
+!.github
