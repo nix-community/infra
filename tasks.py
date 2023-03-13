@@ -4,16 +4,18 @@ import json
 import os
 import subprocess
 import sys
+from pathlib import Path
 from typing import Any, List
 
 from deploykit import DeployGroup, DeployHost
 from invoke import task
 
+ROOT = Path(__file__).parent.resolve()
+os.chdir(ROOT)
 
+# Deploy to all hosts in parallel
 def deploy_nixos(hosts: List[DeployHost]) -> None:
-    """
-    Deploy to all hosts in parallel
-    """
+
     g = DeployGroup(hosts)
 
     res = subprocess.run(
@@ -99,8 +101,69 @@ def update_hound_repos(c):
     """
     Update list of repos for hound search
     """
-    os.chdir("services/hound")
-    c.run("./update-hound.py > hound.json")
+
+    def all_for_org(org):
+        import requests
+
+        github_token = os.environ.get("GITHUB_TOKEN")
+
+        disallowed_repos = [
+            "nix-community/dream2nix-auto-test",
+            "nix-community/image-spec",
+            "nix-community/nix",
+            "nix-community/nixpkgs",
+            "nix-community/nsncd",
+            "nix-community/rkwifibt",
+            "NixOS/nixops-dashboard",  # empty repo causes an error
+        ]
+
+        resp = {}
+
+        next_url = "https://api.github.com/orgs/{}/repos".format(org)
+        while next_url is not None:
+
+            if github_token is not None:
+                headers = {"Authorization": f"token {github_token}"}
+                repo_resp = requests.get(next_url, headers=headers)
+            else:
+                repo_resp = requests.get(next_url)
+
+            if "next" in repo_resp.links:
+                next_url = repo_resp.links["next"]["url"]
+            else:
+                next_url = None
+
+            repos = repo_resp.json()
+
+            resp.update(
+                {
+                    "{}-{}".format(org, repo["name"]): {
+                        "url": repo["clone_url"],
+                    }
+                    for repo in repos
+                    if repo["full_name"] not in disallowed_repos
+                    if repo["archived"] is False
+                }
+            )
+
+        return resp
+
+    repos = {**all_for_org("NixOS"), **all_for_org("nix-community")}
+
+    with open("services/hound/hound.json", "w") as f:
+        f.write(
+            json.dumps(
+                {
+                    "max-concurrent-indexers": 1,
+                    "dbpath": "/var/lib/hound/data",
+                    "repos": repos,
+                    "vcs-config": {"git": {"detect-ref": True}},
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        f.write("\n")
 
 
 @task
@@ -108,7 +171,6 @@ def update_sops_files(c):
     """
     Update all sops yaml and json files according to .sops.yaml rules
     """
-
     c.run(
         """
 find . \
@@ -124,8 +186,6 @@ def scan_age_keys(c, host):
     """
     Scans for the host key via ssh an converts it to age. Use inv scan-age-keys build**.nix-community.org
     """
-    import subprocess
-
     proc = subprocess.run(
         ["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True
     )
