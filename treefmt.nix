@@ -9,6 +9,8 @@
 
       programs.hclfmt.enable = true;
 
+      programs.prettier.enable = true;
+
       settings.formatter = {
         nix = {
           command = "sh";
@@ -28,6 +30,13 @@
             "nix/sources.nix"
             # vendored from external source
             "build02/packages-with-update-script.nix"
+          ];
+        };
+
+        prettier = {
+          excludes = [
+            "*.md"
+            "secrets.yaml"
           ];
         };
 
