@@ -27,7 +27,8 @@ jobs:
           # avoid the repo update script being rate limited
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./inv update-hound-repos
+          nix develop --option accept-flake-config true -c inv update-hound-repos
+          git commit -m "${{ steps.setup.outputs.title }}" services/hound/hound.json
       - uses: peter-evans/create-pull-request@v4
         with:
           body: |
