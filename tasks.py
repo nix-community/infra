@@ -199,6 +199,25 @@ def scan_age_keys(c, host):
 
 
 @task
+def update_terraform(c):
+    """
+    Update terraform devshell flake
+    """
+    with c.cd("terraform"):
+        c.run(
+            """
+system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
+old="$(nix build --no-link --print-out-paths ".#devShells.${system}.default")"
+nix flake update --commit-lock-file
+new="$(nix build --no-link --print-out-paths ".#devShells.${system}.default")"
+commit="$(git log --pretty=format:%B -1)"
+diff="$(nix store diff-closures "${old}" "${new}" | awk -F ',' '/terraform/ && /→/ {print $1}')"
+git commit --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
+"""
+        )
+
+
+@task
 def format_disks(c, hosts="", disks=""):
     """
     Format disks with zfs, i.e.: inv format-disks --hosts build02 --disks /dev/nvme0n1,/dev/nvme1n1
