@@ -26,6 +26,9 @@
     "NixOS-flake-registry": {
       "url": "https://github.com/NixOS/flake-registry.git"
     },
+    "NixOS-foundation": {
+      "url": "https://github.com/NixOS/foundation.git"
+    },
     "NixOS-hackage-db": {
       "url": "https://github.com/NixOS/hackage-db.git"
     },
@@ -95,9 +98,6 @@
     "NixOS-nixos-common-styles": {
       "url": "https://github.com/NixOS/nixos-common-styles.git"
     },
-    "NixOS-nixos-foundation": {
-      "url": "https://github.com/NixOS/nixos-foundation.git"
-    },
     "NixOS-nixos-hardware": {
       "url": "https://github.com/NixOS/nixos-hardware.git"
     },
@@ -166,6 +166,9 @@
     },
     "NixOS-templates": {
       "url": "https://github.com/NixOS/templates.git"
+    },
+    "NixOS-whats-new-in-nix": {
+      "url": "https://github.com/NixOS/whats-new-in-nix.git"
     },
     "nix-community-.github": {
       "url": "https://github.com/nix-community/.github.git"
@@ -494,11 +497,17 @@
     "nix-community-travis-build": {
       "url": "https://github.com/nix-community/travis-build.git"
     },
+    "nix-community-tree-sitter-nix": {
+      "url": "https://github.com/nix-community/tree-sitter-nix.git"
+    },
     "nix-community-trustix": {
       "url": "https://github.com/nix-community/trustix.git"
     },
     "nix-community-vagrant-nixos-plugin": {
       "url": "https://github.com/nix-community/vagrant-nixos-plugin.git"
+    },
+    "nix-community-vs-overlay": {
+      "url": "https://github.com/nix-community/vs-overlay.git"
     },
     "nix-community-vscode-nix-ide": {
       "url": "https://github.com/nix-community/vscode-nix-ide.git"
