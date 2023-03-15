@@ -43,15 +43,11 @@ DNS is managed by terraform in this [file](terraform/cloudflare_nix-community_or
 
 ## Support
 
+For urgent matters, create an issue here: [New Issue](https://github.com/nix-community/infra/issues/new).
+
+For repo additions, service requests and general conversation about governance and direction of the project, use the [Discussion forum](https://github.com/orgs/nix-community/discussions).
+
 For casual chat, come join us in the [nix-community](https://matrix.to/#/#nix-community:nixos.org) room.
-
-For urgent issues, ping us in the Matrix room (see the admin list below).
-
-For repo additions or service requests, create an issue here:
-[New Issue](https://github.com/nix-community/infra/issues/new).
-
-For general conversation about governance and direction of the project, use
-the [Discussion forum](https://github.com/orgs/nix-community/discussions).
 
 ### Pull requests from forks
 As PRs from forks don't have automatic CI checks, admins can test PRs by posting a comment on the PR instead.
