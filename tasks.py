@@ -13,9 +13,9 @@ from invoke import task
 ROOT = Path(__file__).parent.resolve()
 os.chdir(ROOT)
 
+
 # Deploy to all hosts in parallel
 def deploy_nixos(hosts: List[DeployHost]) -> None:
-
     g = DeployGroup(hosts)
 
     res = subprocess.run(
@@ -121,7 +121,6 @@ def update_hound_repos(c):
 
         next_url = "https://api.github.com/orgs/{}/repos".format(org)
         while next_url is not None:
-
             if github_token is not None:
                 headers = {"Authorization": f"token {github_token}"}
                 repo_resp = requests.get(next_url, headers=headers)
