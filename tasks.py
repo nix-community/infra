@@ -114,7 +114,6 @@ def update_hound_repos(c):
             "nix-community/nixpkgs",
             "nix-community/nsncd",
             "nix-community/rkwifibt",
-            "NixOS/nixops-dashboard",  # empty repo causes an error
         ]
 
         resp = {}
@@ -140,6 +139,7 @@ def update_hound_repos(c):
                         "url": repo["clone_url"],
                     }
                     for repo in repos
+                    if repo["size"] != 0  # skip empty repos
                     if repo["full_name"] not in disallowed_repos
                     if repo["archived"] is False
                 }
