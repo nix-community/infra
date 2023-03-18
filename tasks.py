@@ -29,7 +29,9 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
 
     def deploy(h: DeployHost) -> None:
         target = f"{h.user or 'root'}@{h.host}"
-        h.run_local(f"rsync -vaF --delete -e ssh {path}/ {target}:/etc/nixos")
+        h.run_local(
+            f"rsync --checksum -vaF --delete -e ssh {path}/ {target}:/etc/nixos"
+        )
 
         h.run("nixos-rebuild switch --option accept-flake-config true")
 
