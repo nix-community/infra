@@ -64,6 +64,12 @@ in
     sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache/secrets.yaml;
     sops.secrets.id_buildfarm = { };
 
+    # delete build logs older than 30 days
+    systemd.services.hydra-delete-old-logs = {
+      startAt = "Sun 05:45";
+      serviceConfig.ExecStart = "${pkgs.findutils}/bin/find /var/lib/hydra/build-logs -type f -mtime +30 -delete";
+    };
+
     services.hydra = {
       enable = true;
       # remote builders set in /etc/nix/machines + localhost
