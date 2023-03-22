@@ -5,6 +5,9 @@
     "NixOS-.github": {
       "url": "https://github.com/NixOS/.github.git"
     },
+    "NixOS-20th-nix": {
+      "url": "https://github.com/NixOS/20th-nix.git"
+    },
     "NixOS-bundlers": {
       "url": "https://github.com/NixOS/bundlers.git"
     },
