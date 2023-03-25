@@ -42,7 +42,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
                 "accept-flake-config",
                 "true",
                 "--flake",
-                f".#{hostname}",
+                f"/etc/nixos#{hostname}",
             ]
         )
 
