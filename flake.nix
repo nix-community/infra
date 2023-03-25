@@ -78,7 +78,7 @@
             ];
           in
           {
-            "build01.nix-community.org" = nixosSystem {
+            build01 = nixosSystem {
               system = "x86_64-linux";
               modules =
                 common
@@ -88,7 +88,7 @@
                 ];
             };
 
-            "build02.nix-community.org" = nixosSystem {
+            build02 = nixosSystem {
               system = "x86_64-linux";
               modules =
                 common
@@ -107,7 +107,7 @@
                 ];
             };
 
-            "build03.nix-community.org" = nixosSystem {
+            build03 = nixosSystem {
               system = "x86_64-linux";
               modules =
                 common
@@ -121,7 +121,7 @@
                 ];
             };
 
-            "build04.nix-community.org" = nixosSystem {
+            build04 = nixosSystem {
               system = "aarch64-linux";
               modules =
                 common
