@@ -15,9 +15,11 @@ See [here](roles/builder/README.md) for more information.
 We provide x86 and aarch64 linux CI via these systems:
 
 - `Hercules` - https://hercules-ci.com/github/nix-community
+
   - To enable hercules builds go to `https://hercules-ci.com/github/nix-community/$REPO` and click "Build this repository".
 
 - `Hydra` - https://hydra.nix-community.org
+
   - To enable hydra builds add a new project in this [file](terraform/hydra-projects.tf).
 
 ### `Cache` - https://nix-community.cachix.org/
@@ -36,8 +38,8 @@ DNS is managed by terraform in this [file](terraform/cloudflare_nix-community_or
 
 ### `ryantm-updater bot`
 
-* Docs: https://ryantm.github.io/nixpkgs-update
-* Logs: https://r.ryantm.com/log/
+- Docs: https://ryantm.github.io/nixpkgs-update
+- Logs: https://r.ryantm.com/log/
 
 ### `nur-update`
 
@@ -50,19 +52,20 @@ For repo additions, service requests and general conversation about governance a
 For casual chat, come join us in the [nix-community](https://matrix.to/#/#nix-community:nixos.org) room.
 
 ### Pull requests from forks
+
 As PRs from forks don't have automatic CI checks, admins can test PRs by posting a comment on the PR instead.
 
-* `bors try` - check if the PR builds.
-* `bors merge` - same as `bors try` but will also merge the PR if it builds successfully.
-* https://bors.tech/documentation/
+- `bors try` - check if the PR builds.
+- `bors merge` - same as `bors try` but will also merge the PR if it builds successfully.
+- https://bors.tech/documentation/
 
 ### nix-community administrators
 
-* @Mic92
-* @adisbladis
-* @ryantm
-* @zimbatm
-* @zowoq
+- @Mic92
+- @adisbladis
+- @ryantm
+- @zimbatm
+- @zowoq
 
 #### Role
 
@@ -73,11 +76,12 @@ The role of the administrators is to support the members of the org, and the Nix
 The administrators are responsible for serving the community to the best of their ability and availability.
 
 They provide services such as:
-* keep the systems updated and patched
-* reply to user requests
-* host new services that could help the project
-* on-board new projects
-* resolve conflict
+
+- keep the systems updated and patched
+- reply to user requests
+- host new services that could help the project
+- on-board new projects
+- resolve conflict
 
 The administrators are the only "owners" of the github organization.
 
