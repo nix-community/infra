@@ -37,6 +37,15 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 - RAM: 24GB
 - Drives: 200 GB Block
 
+## SSH config:
+
+You will need to set your admin username if it doesn't match your local username.
+
+```
+Host *.nix-community.org
+  User <youradminusername>
+```
+
 ## Deployment commands:
 
 ```console
