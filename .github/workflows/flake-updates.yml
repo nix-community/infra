@@ -18,9 +18,3 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v17
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-          pr-body: |
-            Automated changes by the update-flake-lock
-            ```
-            {{ env.GIT_COMMIT_MESSAGE }}
-            ```
-            bors merge
