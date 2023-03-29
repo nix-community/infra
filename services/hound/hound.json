@@ -149,6 +149,9 @@
     "NixOS-release-wiki": {
       "url": "https://github.com/NixOS/release-wiki.git"
     },
+    "NixOS-reproducible.nixos.org": {
+      "url": "https://github.com/NixOS/reproducible.nixos.org.git"
+    },
     "NixOS-rfc-steering-committee": {
       "url": "https://github.com/NixOS/rfc-steering-committee.git"
     },
@@ -283,9 +286,6 @@
     },
     "nix-community-lib-aggregate": {
       "url": "https://github.com/nix-community/lib-aggregate.git"
-    },
-    "nix-community-linuxkit-nix": {
-      "url": "https://github.com/nix-community/linuxkit-nix.git"
     },
     "nix-community-lorri": {
       "url": "https://github.com/nix-community/lorri.git"
