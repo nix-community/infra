@@ -115,22 +115,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-update-pypi-releases": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1628829542,
-        "narHash": "sha256-KcCJgTuBh9HITE2mpSHQA36BiFtGW7sLWKVS29biwgM=",
-        "owner": "ryantm",
-        "repo": "nixpkgs-update-pypi-releases",
-        "rev": "56afe60a7fd7ee7f5dac5feeea8a983aba759997",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryantm",
-        "repo": "nixpkgs-update-pypi-releases",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1672428209,
@@ -173,7 +157,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
-        "nixpkgs-update-pypi-releases": "nixpkgs-update-pypi-releases",
         "nur-update": "nur-update",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
