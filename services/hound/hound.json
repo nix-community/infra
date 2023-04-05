@@ -239,6 +239,9 @@
     "nix-community-fenix": {
       "url": "https://github.com/nix-community/fenix.git"
     },
+    "nix-community-flake-compat": {
+      "url": "https://github.com/nix-community/flake-compat.git"
+    },
     "nix-community-flake-gemini": {
       "url": "https://github.com/nix-community/flake-gemini.git"
     },
@@ -262,6 +265,9 @@
     },
     "nix-community-harmonia": {
       "url": "https://github.com/nix-community/harmonia.git"
+    },
+    "nix-community-haumea": {
+      "url": "https://github.com/nix-community/haumea.git"
     },
     "nix-community-home-manager": {
       "url": "https://github.com/nix-community/home-manager.git"
