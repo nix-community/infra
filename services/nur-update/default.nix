@@ -1,4 +1,4 @@
-{ nur-update }: { config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   services.nginx.virtualHosts."nur-update.nix-community.org" = {
@@ -13,7 +13,7 @@
     let
       python = pkgs.python3.withPackages
         (ps: with ps; [
-          (ps.toPythonModule nur-update.packages.${pkgs.system}.default)
+          (ps.toPythonModule inputs.nur-update.packages.${pkgs.system}.default)
           gunicorn
         ]);
     in

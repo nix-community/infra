@@ -91,13 +91,6 @@
               modules =
                 common
                 ++ [
-                  (import ./build02/nixpkgs-update.nix {
-                    inherit
-                      (inputs)
-                      nixpkgs-update
-                      nixpkgs-update-github-releases
-                      ;
-                  })
                   ./build02/configuration.nix
                   inputs.srvos.nixosModules.mixins-nginx
                   inputs.srvos.nixosModules.hardware-hetzner-online-amd
@@ -109,9 +102,6 @@
               modules =
                 common
                 ++ [
-                  (import ./services/nur-update {
-                    inherit (inputs) nur-update;
-                  })
                   ./build03/configuration.nix
                   inputs.srvos.nixosModules.mixins-nginx
                   inputs.srvos.nixosModules.hardware-hetzner-online-amd
