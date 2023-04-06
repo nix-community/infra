@@ -48,20 +48,11 @@
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
         imports = [
+          inputs.treefmt-nix.flakeModule
+          ./shell.nix
           ./treefmt.nix
         ];
 
-        perSystem =
-          { config
-          , inputs'
-          , pkgs
-          , self'
-          , ...
-          }: {
-            devShells.default = pkgs.callPackage ./shell.nix {
-              inherit config;
-            };
-          };
         flake.nixosConfigurations =
           let
             inherit (inputs.nixpkgs.lib) nixosSystem;
