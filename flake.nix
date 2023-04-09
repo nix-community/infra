@@ -25,8 +25,6 @@
     nixpkgs-update.inputs.mmdoc.follows = "";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
-    nixpkgs-update-pypi-releases.url = "github:ryantm/nixpkgs-update-pypi-releases";
-    nixpkgs-update-pypi-releases.flake = false;
 
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
@@ -98,7 +96,6 @@
                       (inputs)
                       nixpkgs-update
                       nixpkgs-update-github-releases
-                      nixpkgs-update-pypi-releases
                       ;
                   })
                   ./build02/configuration.nix
