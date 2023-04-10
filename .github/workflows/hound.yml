@@ -29,7 +29,7 @@ jobs:
         run: |
           nix develop --option accept-flake-config true -c inv update-hound-repos
           git commit -m "${{ steps.setup.outputs.title }}" services/hound/hound.json
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           body: |
             Automated update of hound repos
