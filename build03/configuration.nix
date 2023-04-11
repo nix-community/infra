@@ -16,7 +16,7 @@
     ../roles/remote-builder/aarch64-build04.nix
 
     ../services/hound
-    ../services/hydra
+    #../services/hydra
   ];
 
   # /boot is a mirror raid
