@@ -16,7 +16,7 @@ with lib; let
     fi
 
     export HOME=/root
-    exec ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
+    exec ${pkgs.haskellPackages.cachix_1_3_3}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
   '';
 in
 {
