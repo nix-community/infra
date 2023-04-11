@@ -12,6 +12,7 @@
   imports = [
     ../roles/common.nix
     ../roles/hercules-ci
+    ../roles/watch-store.nix
     ../roles/zfs-raid.nix
     ../roles/remote-builder/aarch64-build04.nix
 
