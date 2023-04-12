@@ -1,7 +1,4 @@
-{ nixpkgs-update
-, nixpkgs-update-github-releases
-}:
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, inputs, config, ... }:
 let
   userLib = import ../users/lib.nix { inherit lib; };
 
@@ -18,7 +15,7 @@ let
     cachix
   ];
 
-  nixpkgs-update-github-releases' = "${nixpkgs-update-github-releases}/main.py";
+  nixpkgs-update-github-releases' = "${inputs.nixpkgs-update-github-releases}/main.py";
 
   mkWorker = name: {
     after = [ "network-online.target" ];
@@ -156,7 +153,7 @@ in
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
 
     "d /var/lib/nixpkgs-update/bin/ 700 r-ryantm r-ryantm - -"
-    "L+ ${nixpkgs-update-bin} - - - - ${nixpkgs-update.packages.${pkgs.system}.default}/bin/nixpkgs-update"
+    "L+ ${nixpkgs-update-bin} - - - - ${inputs.nixpkgs-update.packages.${pkgs.system}.default}/bin/nixpkgs-update"
     "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
     "d /var/lib/nixpkgs-update/worker/cachix/ 700 r-ryantm r-ryantm - -"
     "L+ /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"

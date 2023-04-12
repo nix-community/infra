@@ -41,27 +41,28 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { flake-parts, ... }:
+  outputs = inputs @ { flake-parts, self, ... }:
     flake-parts.lib.mkFlake
       { inherit inputs; }
       {
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
+        herculesCI = { lib, ... }: {
+          ciSystems = [ "x86_64-linux" "aarch64-linux" ];
+
+          onPush.default.outputs = {
+            checks = lib.mkForce self.outputs.checks.x86_64-linux;
+          };
+        };
+
         imports = [
+          inputs.hercules-ci-effects.flakeModule
+          inputs.treefmt-nix.flakeModule
+          ./effect.nix
+          ./shell.nix
           ./treefmt.nix
         ];
 
-        perSystem =
-          { config
-          , inputs'
-          , pkgs
-          , self'
-          , ...
-          }: {
-            devShells.default = pkgs.callPackage ./shell.nix {
-              inherit config;
-            };
-          };
         flake.nixosConfigurations =
           let
             inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -91,13 +92,6 @@
               modules =
                 common
                 ++ [
-                  (import ./build02/nixpkgs-update.nix {
-                    inherit
-                      (inputs)
-                      nixpkgs-update
-                      nixpkgs-update-github-releases
-                      ;
-                  })
                   ./build02/configuration.nix
                   inputs.srvos.nixosModules.mixins-nginx
                   inputs.srvos.nixosModules.hardware-hetzner-online-amd
@@ -109,9 +103,6 @@
               modules =
                 common
                 ++ [
-                  (import ./services/nur-update {
-                    inherit (inputs) nur-update;
-                  })
                   ./build03/configuration.nix
                   inputs.srvos.nixosModules.mixins-nginx
                   inputs.srvos.nixosModules.hardware-hetzner-online-amd

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nixpkgs-update.nix
     ../roles/common.nix
     ../roles/hercules-ci
     ../roles/zfs-raid.nix

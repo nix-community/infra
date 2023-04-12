@@ -17,6 +17,7 @@
 
     ../services/hound
     ../services/hydra
+    ../services/nur-update
   ];
 
   # /boot is a mirror raid
