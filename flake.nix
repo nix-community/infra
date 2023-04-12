@@ -39,6 +39,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-compat.url = "github:nix-community/flake-compat";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
