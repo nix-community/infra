@@ -60,8 +60,9 @@
           inputs.treefmt-nix.flakeModule
           ./effect.nix
           ./shell.nix
-          ./treefmt.nix
         ];
+
+        perSystem.treefmt.imports = [ ./treefmt.nix ];
 
         flake.nixosConfigurations =
           let
