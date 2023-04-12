@@ -3,21 +3,6 @@ with lib; let
   cfg = config;
 
   hydraPort = 3000;
-
-  upload-to-cachix = pkgs.writeScriptBin "upload-to-cachix" ''
-    #!/bin/sh
-    set -eu
-    set -f # disable globbing
-
-    # skip push if the declarative job spec
-    OUT_END=$(echo ''${OUT_PATHS: -10})
-    if [ "$OUT_END" == "-spec.json" ]; then
-      exit 0
-    fi
-
-    export HOME=/root
-    exec ${pkgs.haskellPackages.cachix_1_3_3}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
-  '';
 in
 {
   options.services.hydra = {
@@ -43,11 +28,10 @@ in
     # hydra-queue-runner needs to read this key for remote building
     sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
-    nix.extraOptions = ''
-      builders-use-substitutes = true
-      allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
-      post-build-hook = ${upload-to-cachix}/bin/upload-to-cachix
-    '';
+    nix.settings.allowed-uris = [
+      "https://github.com/nix-community/"
+      "https://github.com/NixOS/"
+    ];
 
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [
@@ -61,7 +45,6 @@ in
         ];
     };
 
-    sops.secrets.nix-community-cachix.sopsFile = ../../roles/nix-community-cache/secrets.yaml;
     sops.secrets.id_buildfarm = { };
 
     # delete build logs older than 30 days
