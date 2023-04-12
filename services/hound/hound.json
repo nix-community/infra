@@ -314,6 +314,9 @@
     "nix-community-naersk": {
       "url": "https://github.com/nix-community/naersk.git"
     },
+    "nix-community-namaka": {
+      "url": "https://github.com/nix-community/namaka.git"
+    },
     "nix-community-napalm": {
       "url": "https://github.com/nix-community/napalm.git"
     },
