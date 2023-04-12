@@ -28,10 +28,10 @@ in
     # hydra-queue-runner needs to read this key for remote building
     sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
-    nix.extraOptions = ''
-      builders-use-substitutes = true
-      allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
-    '';
+    nix.settings.allowed-uris = [
+      "https://github.com/nix-community/"
+      "https://github.com/NixOS/"
+    ];
 
     nixpkgs.config = {
       whitelistedLicenses = with lib.licenses; [
