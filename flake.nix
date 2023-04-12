@@ -23,6 +23,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
+    flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
