@@ -1,18 +1,13 @@
 { lib, pkgs, config, ... }:
-with lib; let
-  cfg = config;
-
-  hydraPort = 3000;
-in
 {
   options.services.hydra = {
-    adminPasswordFile = mkOption {
-      type = types.str;
+    adminPasswordFile = lib.mkOption {
+      type = lib.types.str;
       description = "The initial password for the Hydra admin account";
     };
 
-    usersFile = mkOption {
-      type = types.str;
+    usersFile = lib.mkOption {
+      type = lib.types.str;
       description = ''
         declarative user accounts for hydra.
         format: user;role;password-hash;email-address;full-name
@@ -32,18 +27,6 @@ in
       "https://github.com/nix-community/"
       "https://github.com/NixOS/"
     ];
-
-    nixpkgs.config = {
-      whitelistedLicenses = with lib.licenses; [
-        unfreeRedistributable
-        issl
-      ];
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "cudnn_cudatoolkit"
-          "cudatoolkit"
-        ];
-    };
 
     sops.secrets.id_buildfarm = { };
 
@@ -65,7 +48,7 @@ in
       ];
       hydraURL = "https://hydra.nix-community.org";
       notificationSender = "hydra@hydra.nix-community.org";
-      port = hydraPort;
+      port = 3000;
       useSubstitutes = true;
       adminPasswordFile = config.sops.secrets.hydra-admin-password.path;
       usersFile = config.sops.secrets.hydra-users.path;
@@ -102,9 +85,9 @@ in
       after = [ "hydra-server.service" ];
       requires = [ "hydra-server.service" ];
       environment = {
-        inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
+        inherit (config.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = with pkgs; [ config.services.hydra.package netcat ];
+      path = [ config.services.hydra.package pkgs.netcat ];
       script = ''
         set -e
         while IFS=';' read -r user role passwordhash email fullname; do
@@ -116,14 +99,14 @@ in
             opts+=("--full-name" "$fullname")
           fi
           hydra-create-user "''${opts[@]}"
-        done < ${cfg.services.hydra.usersFile}
+        done < ${config.services.hydra.usersFile}
 
-        while ! nc -z localhost ${toString hydraPort}; do
+        while ! nc -z localhost ${toString config.services.hydra.port}; do
           sleep 1
         done
 
-        export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
-        export URL=http://localhost:${toString hydraPort}
+        export HYDRA_ADMIN_PASSWORD=$(cat ${config.services.hydra.adminPasswordFile})
+        export URL=http://localhost:${toString config.services.hydra.port}
       '';
     };
   };
