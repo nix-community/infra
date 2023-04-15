@@ -1,0 +1,2 @@
+# Got to https://gitlab.com/-/profile/personal_access_tokens
+export GITLAB_TOKEN=<your_token>

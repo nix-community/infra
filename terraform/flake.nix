@@ -16,6 +16,9 @@
               p.null
               p.sops
               p.tfe
+              p.github
+              p.gitlab
+              p.null
             ]))
           ];
         };
