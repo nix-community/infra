@@ -23,7 +23,6 @@
           format = "gpt";
           partitions = [
             {
-              type = "partition";
               name = "ESP";
               start = "0";
               end = "1GiB";
@@ -36,7 +35,6 @@
               };
             }
             {
-              type = "partition";
               name = "zfs";
               start = "1GiB";
               end = "100%";
@@ -59,15 +57,15 @@
 
         datasets = {
           "root" = {
-            zfs_type = "filesystem";
+            type = "zfs_fs";
             mountpoint = null;
           };
           "root/nixos" = {
-            zfs_type = "filesystem";
+            type = "zfs_fs";
             mountpoint = "/";
           };
           "root/home" = {
-            zfs_type = "filesystem";
+            type = "zfs_fs";
             mountpoint = "/home";
           };
         };
