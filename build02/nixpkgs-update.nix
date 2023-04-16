@@ -12,7 +12,7 @@ let
     gnused
     curl
     getent # used by hub
-    cachix
+    haskellPackages.cachix_1_3_3
   ];
 
   nixpkgs-update-github-releases' = "${inputs.nixpkgs-update-github-releases}/main.py";
