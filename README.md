@@ -51,13 +51,15 @@ For repo additions, service requests and general conversation about governance a
 
 For casual chat, come join us in the [nix-community](https://matrix.to/#/#nix-community:nixos.org) room.
 
+The admins can also be contacted via [admin@nix-community.org](mailto:admin@nix-community.org), email sent to this address will be forwarded to all of the admins.
+
 ### nix-community administrators
 
-- @Mic92
-- @adisbladis
-- @ryantm
-- @zimbatm
-- @zowoq
+- [@Mic92](https://github.com/Mic92)
+- [@adisbladis](https://github.com/adisbladis)
+- [@ryantm](https://github.com/ryantm)
+- [@zimbatm](https://github.com/zimbatm)
+- [@zowoq](https://github.com/zowoq)
 
 #### Role
 
