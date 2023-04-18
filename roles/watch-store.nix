@@ -9,8 +9,4 @@
     cachixTokenFile = config.sops.secrets.watch-store-token.path;
     package = pkgs.haskellPackages.cachix_1_3_3;
   };
-
-  systemd.services.cachix-watch-store-agent = {
-    serviceConfig.Restart = pkgs.lib.mkForce "always";
-  };
 }
