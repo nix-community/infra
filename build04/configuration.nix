@@ -12,6 +12,7 @@
   nix.settings.system-features = [ "big-parallel" ]; # sync with roles/remote-builder/aarch64-build04.nix
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 3;
   boot.loader.efi.canTouchEfiVariables = false;
 
   # Make it easier to recover via serial console in case something goes wrong.
