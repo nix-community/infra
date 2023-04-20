@@ -212,6 +212,9 @@
     "nix-community-crystal2nix": {
       "url": "https://github.com/nix-community/crystal2nix.git"
     },
+    "nix-community-developer-workshop": {
+      "url": "https://github.com/nix-community/developer-workshop.git"
+    },
     "nix-community-disko": {
       "url": "https://github.com/nix-community/disko.git"
     },
