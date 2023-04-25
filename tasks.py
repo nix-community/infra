@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import List
 
@@ -65,20 +66,33 @@ find . \
 
 
 @task
-def scan_age_keys(c, host):
+def print_keys(c, hosts=""):
     """
-    Scans for the host key via ssh an converts it to age. Use inv scan-age-keys build**.nix-community.org
+    Decrypt host private key, print ssh and age public keys. Use inv print-keys --hosts build01
     """
-    proc = subprocess.run(
-        ["ssh-keyscan", host], stdout=subprocess.PIPE, text=True, check=True
-    )
-    print("###### Age keys ######")
-    subprocess.run(
-        ["ssh-to-age"],
-        input=proc.stdout,
-        check=True,
-        text=True,
-    )
+    g = DeployGroup(get_hosts(hosts))
+
+    def key(h: DeployHost) -> None:
+        hostname = h.host.replace(".nix-community.org", "")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            decrypt_host_key(c, hostname, tmpdir)
+            pubkey = subprocess.run(
+                ["ssh-keygen", "-y", "-f", f"{tmpdir}/etc/ssh/ssh_host_ed25519_key"],
+                stdout=subprocess.PIPE,
+                text=True,
+                check=True,
+            )
+            print("###### Public keys ######")
+            print(pubkey.stdout)
+            print("###### Age keys ######")
+            subprocess.run(
+                ["ssh-to-age"],
+                input=pubkey.stdout,
+                check=True,
+                text=True,
+            )
+
+    g.run_function(key)
 
 
 @task
@@ -121,6 +135,33 @@ def deploy(c, hosts=""):
     Deploy to all servers. Use inv deploy --hosts build01 to deploy to a single server
     """
     deploy_nixos(get_hosts(hosts))
+
+
+def decrypt_host_key(c, hostname, tmpdir):
+    os.mkdir(f"{tmpdir}/etc")
+    os.mkdir(f"{tmpdir}/etc/ssh")
+    os.umask(0o177)
+    c.run(
+        f"sops --extract '[\"ssh_host_ed25519_key\"]' --decrypt {ROOT}/{hostname}/secrets.yaml > {tmpdir}/etc/ssh/ssh_host_ed25519_key"
+    )
+
+
+@task
+def install(c, hosts=""):
+    """
+    Decrypt host private key, install with nixos-anywhere. Use inv install --hosts build01
+    """
+    g = DeployGroup(get_hosts(hosts))
+
+    def anywhere(h: DeployHost) -> None:
+        hostname = h.host.replace(".nix-community.org", "")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            decrypt_host_key(c, hostname, tmpdir)
+            c.run(
+                f"nix run github:numtide/nixos-anywhere#nixos-anywhere -- --extra-files {tmpdir} --flake .#{hostname} {h.host}"
+            )
+
+    g.run_function(anywhere)
 
 
 @task
