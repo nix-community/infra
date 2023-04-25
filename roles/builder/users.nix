@@ -52,6 +52,8 @@ let
       keys = ./keys/schmittlauch;
     };
 
+    stephank.keys = ./keys/stephank;
+
     winter.keys = ./keys/winter;
   };
 
