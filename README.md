@@ -91,4 +91,4 @@ To reduce the attack surface on the project, the administrative team size is lim
 
 ## Hosts
 
-See [HOSTS.md](HOSTS.md), this file also contains deployment details.
+See [devdoc](./devdoc) for details about deployment, hardware and onboarding admins.
