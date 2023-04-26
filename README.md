@@ -4,4 +4,4 @@ Welcome to the Nix Community infrastructure project. This project holds all the 
 
 You're probably looking for our website [https://nix-community.org](https://nix-community.org).
 
-See [HOSTS.md](HOSTS.md), this file also contains deployment details.
+See [devdoc](./devdoc) for details about deployment, hardware and onboarding admins.
