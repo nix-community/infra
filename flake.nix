@@ -62,7 +62,21 @@
           ./shell.nix
         ];
 
-        perSystem.treefmt.imports = [ ./treefmt.nix ];
+        hercules-ci.github-pages.branch = "master";
+
+        perSystem = { config, pkgs, ... }: {
+          treefmt.imports = [ ./treefmt.nix ];
+
+          packages.pages = pkgs.runCommand "pages"
+            {
+              buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
+            } ''
+            cp -r ${pkgs.lib.cleanSource ./.}/* .
+            mkdocs build --strict --site-dir $out
+          '';
+
+          hercules-ci.github-pages.settings.contents = config.packages.pages;
+        };
 
         flake.nixosConfigurations =
           let

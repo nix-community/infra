@@ -14,6 +14,7 @@
             ]
           ))
           rsync
+          config.packages.pages.buildInputs
           config.treefmt.build.wrapper
         ];
       };
