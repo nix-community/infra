@@ -347,6 +347,9 @@
     "nix-community-nix-installers": {
       "url": "https://github.com/nix-community/nix-installers.git"
     },
+    "nix-community-nix-melt": {
+      "url": "https://github.com/nix-community/nix-melt.git"
+    },
     "nix-community-nix-review-tools": {
       "url": "https://github.com/nix-community/nix-review-tools.git"
     },
