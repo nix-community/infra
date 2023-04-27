@@ -12,6 +12,7 @@
               p.cloudflare
               p.external
               p.gandi
+              p.github
               p.hydra
               p.null
               p.sops

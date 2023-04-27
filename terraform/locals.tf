@@ -7,4 +7,8 @@ locals {
     zimbatm    = "zimbatm@zimbatm.com"
     zowoq      = "zowoq.gh@gmail.com"
   }
+
+  bot = {
+    nix-infra-bot = "admin@nix-community.org"
+  }
 }

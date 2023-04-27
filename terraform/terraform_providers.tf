@@ -6,6 +6,9 @@ terraform {
     gandi = {
       source = "go-gandi/gandi"
     }
+    github = {
+      source = "integrations/github"
+    }
     hydra = {
       source = "DeterminateSystems/hydra"
     }
@@ -29,6 +32,11 @@ provider "cloudflare" {
 provider "gandi" {
   key        = data.sops_file.nix-community.data["GANDI_KEY"]
   sharing_id = data.sops_file.nix-community.data["GANDI_SHARING_ID"]
+}
+
+provider "github" {
+  owner = "nix-community"
+  token = data.sops_file.secrets.data["GITHUB_TOKEN"]
 }
 
 provider "hydra" {
