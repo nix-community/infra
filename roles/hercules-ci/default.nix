@@ -19,4 +19,10 @@ in
       secretsJsonPath = secrets."hercules-secrets".path;
     };
   };
+
+  # Fix OOM events: https://github.com/hercules-ci/hercules-ci-agent/commit/b670e0601cd6bb1264f55f7b61bf4fbdcdc34bf1
+  systemd.services.hercules-ci-agent.serviceConfig = {
+    LimitSTACK = 256 * 1024 * 1024;
+    OOMPolicy = "continue";
+  };
 }
