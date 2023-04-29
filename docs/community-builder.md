@@ -1,6 +1,6 @@
-## Community builder
+### Access
 
-If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`roles/builder/users.nix`](users.nix). Don't keep any important data in your home! We will regularly delete `/home` without further notice.
+If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`roles/builder/users.nix`](https://github.com/nix-community/infra/blob/master/roles/builder/users.nix). Don't keep any important data in your home! We will regularly delete `/home` without further notice.
 
 ### Using your NixOS home-manager configuration on the hosts
 

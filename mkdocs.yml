@@ -1,0 +1,35 @@
+nav:
+  - Nix Community: index.md
+  - Services:
+      - services.md
+      - community-builder.md
+  - About:
+      - FAQ: faq.md
+      - administrators.md
+  - contact.md
+
+theme:
+  name: material
+  features:
+    - content.action.edit
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.expand
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tracking
+  favicon: nix-community-logo.png
+  logo: nix-community-logo.png
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nix-community
+
+site_name: Nix Community
+site_url: https://nix-community.org
+copyright: Copyright &copy; 2023 Nix community projects
+repo_name: "nix-community/infra"
+repo_url: https://github.com/nix-community/infra
