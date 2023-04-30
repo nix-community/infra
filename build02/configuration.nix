@@ -3,6 +3,7 @@
 {
   imports = [
     ./nixpkgs-update.nix
+    ./nixpkgs-update-backup.nix
     ../roles/common.nix
     ../roles/hercules-ci
     ../roles/zfs-raid.nix
