@@ -1,5 +1,6 @@
 nav:
-  - Nix Community: index.md
+  - index.md
+  - sponsors.md
   - Services:
       - services.md
       - community-builder.md
