@@ -6,8 +6,8 @@ nav:
   - About:
       - FAQ: faq.md
       - administrators.md
-  - contact.md
-  - security.md
+      - contact.md
+      - security.md
 
 theme:
   name: material
@@ -17,12 +17,16 @@ theme:
     - content.tabs.link
     - navigation.expand
     - navigation.instant
-    - navigation.tabs
     - navigation.tracking
+    - toc.integrate
   favicon: nix-community-logo.png
   logo: nix-community-logo.png
   icon:
     repo: fontawesome/brands/github
+
+markdown_extensions:
+  - toc:
+      toc_depth: 0
 
 extra:
   social:
