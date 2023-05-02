@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, pkgs, ... }:
 let
   herculesSecret = {
     owner = "hercules-ci-agent";
@@ -18,5 +18,7 @@ in
       clusterJoinTokenPath = secrets."cluster-join-token.key".path;
       secretsJsonPath = secrets."hercules-secrets".path;
     };
+    # https://github.com/hercules-ci/hercules-ci-agent/issues/514#issuecomment-1530341970
+    package = inputs.hercules-pin.legacyPackages.${pkgs.system}.hercules-ci-agent;
   };
 }

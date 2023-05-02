@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "hercules-pin": {
+      "locked": {
+        "lastModified": 1682626080,
+        "narHash": "sha256-FVDKtq7Fv/Qdd0sQrgxB7UpaXCTYYJP7vPXnMOKw0j8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3d409345416cda845407e3075f5eaf7a590d9db5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3d409345416cda845407e3075f5eaf7a590d9db5",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1682886420,
@@ -154,6 +170,7 @@
         "disko": "disko",
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
+        "hercules-pin": "hercules-pin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",

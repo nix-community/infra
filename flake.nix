@@ -39,6 +39,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    hercules-pin.url = "github:NixOS/nixpkgs/3d409345416cda845407e3075f5eaf7a590d9db5";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
