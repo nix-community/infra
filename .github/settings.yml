@@ -34,11 +34,11 @@ repository:
 
   # Either `true` to allow squash-merging pull requests, or `false` to prevent
   # squash-merging.
-  allow_squash_merge: true
+  allow_squash_merge: false
 
   # Either `true` to allow merging pull requests with a merge commit, or `false`
   # to prevent merging pull requests with merge commits.
-  allow_merge_commit: true
+  allow_merge_commit: false
 
   # Either `true` to allow rebase-merging pull requests, or `false` to prevent
   # rebase-merging.
@@ -54,6 +54,8 @@ repository:
   # Either `true` to enable vulnerability alerts, or `false` to disable
   # vulnerability alerts.
   enable_vulnerability_alerts: true
+
+  allow_auto_merge: true
 
 # Labels: define labels for Issues and Pull Requests
 #
@@ -103,6 +105,20 @@ teams:
     permission: admin
 
 branches:
+  # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/nix-community/infra/branches/master/protection
+
+  # not available in the api yet
+  # `Require merge queue`: true
+  # `Merge method`: Rebase and merge
+  # `Maximum pull requests to build`: 1
+  # `Maximum pull requests to merge`: 1
+  # defaults:
+  # `Maximum pull requests to build`: 5
+  # `Minimum pull requests to merge`: 1 or 5 minutes
+  # `Maximum pull requests to merge`: 5
+  # `Only merge non-failing pull requests`: true
+  # `Consider check failed after`: 60 minutes
+
   - name: master
     # https://docs.github.com/en/rest/reference/repos#update-branch-protection
     # Branch Protection settings. Set to null to disable
@@ -127,13 +143,15 @@ branches:
         # Required. Require branches to be up to date before merging.
         strict: false
         # Required. The list of status checks to require in order to merge into this branch
-        contexts: ["bors"]
+        contexts:
+          - ci/hercules/evaluation
+          - ci/hercules/onPush/default
       # Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable.
       enforce_admins: true
       # Disabled for bors to work
       required_linear_history: false
       # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
       restrictions:
-        apps: ["bors"]
-        users: []
+        apps: ["hercules-ci"]
+        users: ["nix-infra-bot"]
         teams: []
