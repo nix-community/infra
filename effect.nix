@@ -8,7 +8,7 @@
       onPush.default.outputs.effects = withSystem "x86_64-linux" ({ hci-effects, pkgs, ... }:
         {
           terraform-deploy =
-            hci-effects.runIf (ref == "refs/heads/trying" || ref == "refs/heads/staging")
+            hci-effects.runIf (pkgs.lib.hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
               (hci-effects.mkEffect {
                 name = "terraform-deploy";
                 inputs = [ (builtins.getFlake (toString ./terraform/.)).outputs.devShells.x86_64-linux.default.nativeBuildInputs ];
@@ -23,11 +23,7 @@
                   pushd terraform
                   terraform init
                   terraform validate
-                  if [[ ${ref} == "refs/heads/staging" ]]; then
-                    terraform apply -auto-approve
-                  else
-                    terraform plan
-                  fi
+                  terraform apply -auto-approve
                 '';
               });
         });
