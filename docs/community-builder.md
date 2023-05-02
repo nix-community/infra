@@ -1,8 +1,12 @@
-### Access
+`build01.nix-community.org`
+
+We provide an `x86_64-linux` build machine as a public remote builder for the nix community, this machine also has an `aarch64-linux` machine configured as its own remote builder.
+
+#### Access
 
 If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`roles/builder/users.nix`](https://github.com/nix-community/infra/blob/master/roles/builder/users.nix). Don't keep any important data in your home! We will regularly delete `/home` without further notice.
 
-### Using your NixOS home-manager configuration on the hosts
+#### Using your NixOS home-manager configuration on the hosts
 
 If you happen to have your NixOS & home-manager configurations intertwined but you'd like your familiar environment on our infrastructure you can evaluate `pkgs.writeShellScript "hm-activate" config.systemd.services.home-manager-<yourusername>.serviceConfig.ExecStart` from your NixOS configuration, and send this derivation to be realized remotely: (in case you aren't a Nix trusted user)
 

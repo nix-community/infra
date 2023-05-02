@@ -1,0 +1,2 @@
+- Docs: [https://ryantm.github.io/nixpkgs-update](https://ryantm.github.io/nixpkgs-update)
+- Logs: [https://r.ryantm.com/log/](https://r.ryantm.com/log/)
