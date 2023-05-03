@@ -416,6 +416,9 @@
     "nix-community-nixos-modules-contrib": {
       "url": "https://github.com/nix-community/nixos-modules-contrib.git"
     },
+    "nix-community-nixos-vscode-server": {
+      "url": "https://github.com/nix-community/nixos-vscode-server.git"
+    },
     "nix-community-nixpkgs-fmt": {
       "url": "https://github.com/nix-community/nixpkgs-fmt.git"
     },
