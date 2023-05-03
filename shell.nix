@@ -1,21 +1,15 @@
 {
-  perSystem = { config, pkgs, ... }: {
+  perSystem = { pkgs, ... }: {
     devShells = {
       default = with pkgs; mkShellNoCC {
-        buildInputs = [
+        packages = [
           jq
+          python3.pkgs.deploykit
+          python3.pkgs.invoke
+          python3.pkgs.requests
+          rsync
           sops
           ssh-to-age
-          (python3.withPackages (
-            p: [
-              p.deploykit
-              p.invoke
-              p.requests
-            ]
-          ))
-          rsync
-          config.packages.pages.buildInputs
-          config.treefmt.build.wrapper
         ];
       };
     };
