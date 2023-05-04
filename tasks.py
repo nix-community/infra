@@ -169,6 +169,14 @@ git commit --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
         )
 
 
+@task
+def mkdocs(c):
+    """
+    Serve docs (mkdoc serve)
+    """
+    c.run("nix develop .#pages -c mkdocs serve")
+
+
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
         return [DeployHost(f"build{n + 1:02d}.nix-community.org") for n in range(4)]
