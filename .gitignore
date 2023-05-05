@@ -10,3 +10,5 @@ result-*
 # needed for treefmt
 !.github
 !.sops.yaml
+
+.direnv
