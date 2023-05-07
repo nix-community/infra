@@ -1,15 +1,8 @@
 { config, ... }:
 {
-  # 100GB storagebox is under the build03 hetzner account
+  # 100GB storagebox is under the nix-community hetzner account
 
-  sops.secrets.hetzner-build03-borgbackup-ssh = { };
-
-  programs.ssh.knownHosts = {
-    "hetzner-storage-box" = {
-      hostNames = [ "[u348918.your-storagebox.de]:23" ];
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
-    };
-  };
+  sops.secrets.hetzner-borgbackup-ssh = { };
 
   systemd.services.borgbackup-job-nixpkgs-update.serviceConfig.ReadWritePaths = [
     "/var/log/telegraf"
@@ -23,7 +16,7 @@
     encryption.mode = "none";
     compression = "auto,zstd";
     startAt = "daily";
-    environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-build03-borgbackup-ssh.path}";
+    environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-borgbackup-ssh.path}";
     preHook = ''
       set -x
     '';

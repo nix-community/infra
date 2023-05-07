@@ -27,6 +27,10 @@
       hostNames = [ "aarch64.nixos.community" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMUTz5i9u5H2FHNAmZJyoJfIGyUm/HfGhfwnc142L3ds";
     };
+    hetzner-storage-box = {
+      hostNames = [ "[u348918.your-storagebox.de]:23" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
+    };
   };
 
   services.openssh = {
