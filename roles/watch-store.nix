@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   sops.secrets.watch-store-token.sopsFile = ./nix-community-cache/secrets.yaml;
@@ -7,6 +7,5 @@
     enable = true;
     cacheName = "nix-community";
     cachixTokenFile = config.sops.secrets.watch-store-token.path;
-    package = pkgs.haskellPackages.cachix_1_3_3;
   };
 }
