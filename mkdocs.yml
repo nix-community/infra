@@ -1,5 +1,6 @@
 nav:
   - index.md
+  - Open Collective: open-collective.md
   - sponsors.md
   - Services:
       - continuous-integration.md
