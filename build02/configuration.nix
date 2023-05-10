@@ -6,7 +6,8 @@
     ./nixpkgs-update-backup.nix
     ../roles/common.nix
     ../roles/hercules-ci
-    ../roles/zfs-raid.nix
+    ../roles/raid.nix
+    ../roles/zfs.nix
     ../roles/remote-builder/aarch64-build04.nix
   ];
 

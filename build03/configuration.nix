@@ -13,7 +13,8 @@
     ../roles/common.nix
     ../roles/hercules-ci
     ../roles/watch-store.nix
-    ../roles/zfs-raid.nix
+    ../roles/raid.nix
+    ../roles/zfs.nix
     ../roles/remote-builder/aarch64-build04.nix
 
     ../services/hydra

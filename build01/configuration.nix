@@ -12,7 +12,8 @@
 {
   imports = [
     ../roles/common.nix
-    ../roles/zfs-raid.nix
+    ../roles/raid.nix
+    ../roles/zfs.nix
     ../roles/builder
     ../roles/remote-builder/aarch64-nixos-community.nix
   ];
