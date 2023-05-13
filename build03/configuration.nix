@@ -24,7 +24,6 @@
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3a:3b16::1/64";
 

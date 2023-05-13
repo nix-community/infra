@@ -24,7 +24,6 @@
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
 
   networking.hostName = "build01";
   networking.hostId = "d2905767";
