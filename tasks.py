@@ -4,8 +4,8 @@ import json
 import os
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from typing import List
 
 from deploykit import DeployGroup, DeployHost
@@ -66,33 +66,28 @@ find . \
 
 
 @task
-def print_keys(c, hosts=""):
+def print_keys(c, flake_attr: str) -> None:
     """
-    Decrypt host private key, print ssh and age public keys. Use inv print-keys --hosts build01
+    Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01
     """
-    g = DeployGroup(get_hosts(hosts))
-
-    def key(h: DeployHost) -> None:
-        hostname = h.host.replace(".nix-community.org", "")
-        with tempfile.TemporaryDirectory() as tmpdir:
-            decrypt_host_key(c, hostname, tmpdir)
-            pubkey = subprocess.run(
-                ["ssh-keygen", "-y", "-f", f"{tmpdir}/etc/ssh/ssh_host_ed25519_key"],
-                stdout=subprocess.PIPE,
-                text=True,
-                check=True,
-            )
-            print("###### Public keys ######")
-            print(pubkey.stdout)
-            print("###### Age keys ######")
-            subprocess.run(
-                ["ssh-to-age"],
-                input=pubkey.stdout,
-                check=True,
-                text=True,
-            )
-
-    g.run_function(key)
+    with TemporaryDirectory() as tmpdir:
+        decrypt_host_key(flake_attr, tmpdir)
+        key = f"{tmpdir}/etc/ssh/ssh_host_ed25519_key"
+        pubkey = subprocess.run(
+            ["ssh-keygen", "-y", "-f", f"{key}"],
+            stdout=subprocess.PIPE,
+            text=True,
+            check=True,
+        )
+        print("###### Public keys ######")
+        print(pubkey.stdout)
+        print("###### Age keys ######")
+        subprocess.run(
+            ["ssh-to-age"],
+            input=pubkey.stdout,
+            check=True,
+            text=True,
+        )
 
 
 @task
@@ -137,31 +132,44 @@ def deploy(c, hosts=""):
     deploy_nixos(get_hosts(hosts))
 
 
-def decrypt_host_key(c, hostname, tmpdir):
-    os.mkdir(f"{tmpdir}/etc")
-    os.mkdir(f"{tmpdir}/etc/ssh")
-    os.umask(0o177)
-    c.run(
-        f"sops --extract '[\"ssh_host_ed25519_key\"]' --decrypt {ROOT}/{hostname}/secrets.yaml > {tmpdir}/etc/ssh/ssh_host_ed25519_key"
-    )
+def decrypt_host_key(flake_attr, tmpdir):
+    def opener(path, flags):
+        return os.open(path, flags, 0o400)
+
+    t = Path(tmpdir)
+    t.mkdir(parents=True, exist_ok=True)
+    t.chmod(0o755)
+    host_key = t / "etc/ssh/ssh_host_ed25519_key"
+    host_key.parent.mkdir(parents=True, exist_ok=True)
+    with open(host_key, "w", opener=opener) as fh:
+        subprocess.run(
+            [
+                "sops",
+                "--extract",
+                '["ssh_host_ed25519_key"]',
+                "--decrypt",
+                f"{ROOT}/{flake_attr}/secrets.yaml",
+            ],
+            check=True,
+            stdout=fh,
+        )
 
 
 @task
-def install(c, hosts=""):
+def install(c, flake_attr: str, hostname: str) -> None:
     """
-    Decrypt host private key, install with nixos-anywhere. Use inv install --hosts build01
+    Decrypt host private key, install with nixos-anywhere. Use inv install --flake-attr build01 --hostname build01.nix-community.org
     """
-    g = DeployGroup(get_hosts(hosts))
-
-    def anywhere(h: DeployHost) -> None:
-        hostname = h.host.replace(".nix-community.org", "")
-        with tempfile.TemporaryDirectory() as tmpdir:
-            decrypt_host_key(c, hostname, tmpdir)
-            c.run(
-                f"nix run github:numtide/nixos-anywhere#nixos-anywhere -- --extra-files {tmpdir} --flake .#{hostname} {h.host}"
-            )
-
-    g.run_function(anywhere)
+    ask = input(f"Install {hostname} with {flake_attr}? [y/N] ")
+    if ask != "y":
+        return
+    with TemporaryDirectory() as tmpdir:
+        decrypt_host_key(flake_attr, tmpdir)
+        flags = "--debug --no-reboot --option accept-flake-config true"
+        c.run(
+            f"nix run github:numtide/nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
+            echo=True,
+        )
 
 
 @task
