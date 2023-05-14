@@ -61,7 +61,7 @@
           autoMergeMethod = "rebase";
           when = {
             hour = [ 2 ];
-            dayOfWeek = [ "Mon" "Fri" ];
+            dayOfWeek = [ "Mon" "Thu" ];
           };
         };
 
