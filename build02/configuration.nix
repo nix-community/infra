@@ -1,7 +1,9 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   imports = [
+    inputs.srvos.nixosModules.mixins-nginx
+    inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ./nixpkgs-update.nix
     ./nixpkgs-update-backup.nix
     ../roles/common.nix
