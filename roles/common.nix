@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   imports = [
     ./auto-upgrade.nix
@@ -9,9 +8,6 @@
   ];
 
   zramSwap.enable = true;
-
-  # https://github.com/hercules-ci/hercules-ci-agent/issues/514
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
 
   security.acme.defaults.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
