@@ -42,64 +42,107 @@
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
+    flake-parts.lib.mkFlake
+      { inherit inputs; }
+      {
+        systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-      herculesCI = { lib, ... }: {
-        ciSystems = [ "x86_64-linux" "aarch64-linux" ];
+        herculesCI = { lib, ... }: {
+          ciSystems = [ "x86_64-linux" "aarch64-linux" ];
 
-        onPush.default.outputs = {
-          checks = lib.mkForce self.outputs.checks.x86_64-linux;
+          onPush.default.outputs = {
+            checks = lib.mkForce self.outputs.checks.x86_64-linux;
+          };
         };
-      };
 
-      hercules-ci.flake-update = {
-        enable = true;
-        createPullRequest = true;
-        autoMergeMethod = "rebase";
-        when = {
-          hour = [ 2 ];
-          dayOfWeek = [ "Mon" "Thu" ];
+        hercules-ci.flake-update = {
+          enable = true;
+          createPullRequest = true;
+          autoMergeMethod = "rebase";
+          when = {
+            hour = [ 2 ];
+            dayOfWeek = [ "Mon" "Thu" ];
+          };
         };
-      };
 
-      hercules-ci.github-pages.branch = "master";
+        imports = [
+          inputs.hercules-ci-effects.flakeModule
+          inputs.treefmt-nix.flakeModule
+          ./effect.nix
+          ./shell.nix
+        ];
 
-      imports = [
-        inputs.hercules-ci-effects.flakeModule
-        inputs.treefmt-nix.flakeModule
-        ./effect.nix
-        ./shell.nix
-        ./build01
-        ./build02
-        ./build03
-        ./build04
-      ];
+        hercules-ci.github-pages.branch = "master";
 
-      perSystem = { config, pkgs, ... }: {
-        treefmt.imports = [ ./treefmt.nix ];
+        perSystem = { config, pkgs, ... }: {
+          treefmt.imports = [ ./treefmt.nix ];
 
-        packages.pages = pkgs.runCommand "pages"
+          packages.pages = pkgs.runCommand "pages"
+            {
+              buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
+            } ''
+            cp -r ${pkgs.lib.cleanSource ./.}/* .
+            mkdocs build --strict --site-dir $out
+          '';
+
+          hercules-ci.github-pages.settings.contents = config.packages.pages;
+        };
+
+        flake.nixosConfigurations =
+          let
+            inherit (inputs.nixpkgs.lib) nixosSystem;
+            common = [
+              { _module.args.inputs = inputs; }
+              { srvos.flake = inputs.self; }
+              inputs.sops-nix.nixosModules.sops
+              inputs.srvos.nixosModules.server
+
+              inputs.srvos.nixosModules.mixins-telegraf
+              { networking.firewall.allowedTCPPorts = [ 9273 ]; }
+            ];
+          in
           {
-            buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
-          } ''
-          cp -r ${pkgs.lib.cleanSource ./.}/* .
-          mkdocs build --strict --site-dir $out
-        '';
+            build01 = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  ./build01/configuration.nix
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
+                ];
+            };
 
-        hercules-ci.github-pages.settings.contents = config.packages.pages;
+            build02 = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  ./build02/configuration.nix
+                  inputs.srvos.nixosModules.mixins-nginx
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
+                ];
+            };
+
+            build03 = nixosSystem {
+              system = "x86_64-linux";
+              modules =
+                common
+                ++ [
+                  ./build03/configuration.nix
+                  inputs.srvos.nixosModules.mixins-nginx
+                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
+                ];
+            };
+
+            build04 = nixosSystem {
+              system = "aarch64-linux";
+              modules =
+                common
+                ++ [
+                  ./build04/configuration.nix
+                  inputs.disko.nixosModules.disko
+                ];
+            };
+          };
       };
-
-      flake.lib.nixosSystem = args:
-        inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
-
-      flake.nixosModules = {
-        common = ./roles/common.nix;
-      };
-    };
 }

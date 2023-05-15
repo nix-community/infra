@@ -1,7 +1,5 @@
-{ inputs, ... }:
 {
   imports = [
-    inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ../roles/common.nix
     ../roles/hercules-ci
