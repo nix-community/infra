@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   imports = [
     ./auto-upgrade.nix
@@ -5,7 +6,14 @@
     ./security.nix
     ./sops-nix.nix
     ./users.nix
+    inputs.sops-nix.nixosModules.sops
+    inputs.srvos.nixosModules.mixins-telegraf
+    inputs.srvos.nixosModules.server
   ];
+
+  networking.firewall.allowedTCPPorts = [ 9273 ];
+
+  srvos.flake = inputs.self;
 
   zramSwap.enable = true;
 
