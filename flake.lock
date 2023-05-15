@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684148371,
+        "narHash": "sha256-CEVaArsziqantqU418XXruNDjPZN/HC3x1rqr2D4g+o=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "0dbf1c2fb1a5a0372a324eff1ba44f9da66febd2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -61,6 +81,26 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684157850,
+        "narHash": "sha256-xGHTCgvAxO5CgAL6IAgE/VGRX2wob2Y+DPyqpXJ32oQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "c0deab0effd576e70343cb5df0c64428e0e0d010",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
         "type": "github"
       }
     },
@@ -151,9 +191,11 @@
     },
     "root": {
       "inputs": {
+        "darwin": "darwin",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
+        "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",

@@ -6,7 +6,7 @@
     ./security.nix
     ./sops-nix.nix
     ./users.nix
-    inputs.sops-nix.nixosModules.sops
+    inputs.self.modules.shared.common
     inputs.srvos.nixosModules.mixins-telegraf
     inputs.srvos.nixosModules.server
   ];

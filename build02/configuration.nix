@@ -6,11 +6,12 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ./nixpkgs-update.nix
     ./nixpkgs-update-backup.nix
-    ../roles/common.nix
-    ../roles/hercules-ci
-    ../roles/raid.nix
-    ../roles/zfs.nix
-    ../roles/remote-builder/aarch64-build04.nix
+
+    inputs.self.modules.nixos.common
+    inputs.self.modules.nixos.hercules-ci
+    inputs.self.modules.nixos.raid
+    inputs.self.modules.nixos.zfs
+    inputs.self.modules.nixos.remote-builder-aarch64-build04
   ];
 
   # /boot is a mirror raid

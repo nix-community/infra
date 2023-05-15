@@ -3,9 +3,10 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
-    ../roles/common.nix
-    ../roles/hercules-ci
-    ../roles/remote-builder/user.nix
+
+    inputs.self.modules.nixos.common
+    inputs.self.modules.nixos.hercules-ci
+    inputs.self.modules.nixos.remote-builder-user
   ];
 
   nixpkgs.system = "aarch64-linux";

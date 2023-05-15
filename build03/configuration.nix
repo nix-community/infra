@@ -12,12 +12,13 @@
   imports = [
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    ../roles/common.nix
-    ../roles/hercules-ci
-    ../roles/watch-store.nix
-    ../roles/raid.nix
-    ../roles/zfs.nix
-    ../roles/remote-builder/aarch64-build04.nix
+
+    inputs.self.modules.nixos.common
+    inputs.self.modules.nixos.hercules-ci
+    inputs.self.modules.nixos.raid
+    inputs.self.modules.nixos.watch-store
+    inputs.self.modules.nixos.zfs
+    inputs.self.modules.nixos.remote-builder-aarch64-build04
 
     ../services/hydra
     ../services/nur-update

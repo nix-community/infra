@@ -39,6 +39,12 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
@@ -75,10 +81,13 @@
         inputs.treefmt-nix.flakeModule
         ./effect.nix
         ./shell.nix
+        ./modules
+        # Hosts
         ./build01
         ./build02
         ./build03
         ./build04
+        ./mac01
       ];
 
       perSystem = { config, pkgs, ... }: {
@@ -97,9 +106,5 @@
 
       flake.lib.nixosSystem = args:
         inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
-
-      flake.nixosModules = {
-        common = ./roles/common.nix;
-      };
     };
 }
