@@ -91,59 +91,28 @@
 
         flake.nixosConfigurations =
           let
-            inherit (inputs.nixpkgs.lib) nixosSystem;
-            common = [
-              { _module.args.inputs = inputs; }
-              { srvos.flake = inputs.self; }
-              inputs.sops-nix.nixosModules.sops
-              inputs.srvos.nixosModules.server
-
-              inputs.srvos.nixosModules.mixins-telegraf
-              { networking.firewall.allowedTCPPorts = [ 9273 ]; }
-            ];
+            inherit (self.lib) nixosSystem;
           in
           {
             build01 = nixosSystem {
               system = "x86_64-linux";
-              modules =
-                common
-                ++ [
-                  ./build01/configuration.nix
-                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
-                ];
+              modules = [ ./build01/configuration.nix ];
             };
-
             build02 = nixosSystem {
               system = "x86_64-linux";
-              modules =
-                common
-                ++ [
-                  ./build02/configuration.nix
-                  inputs.srvos.nixosModules.mixins-nginx
-                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
-                ];
+              modules = [ ./build02/configuration.nix ];
             };
-
             build03 = nixosSystem {
               system = "x86_64-linux";
-              modules =
-                common
-                ++ [
-                  ./build03/configuration.nix
-                  inputs.srvos.nixosModules.mixins-nginx
-                  inputs.srvos.nixosModules.hardware-hetzner-online-amd
-                ];
+              modules = [ ./build03/configuration.nix ];
             };
-
             build04 = nixosSystem {
               system = "aarch64-linux";
-              modules =
-                common
-                ++ [
-                  ./build04/configuration.nix
-                  inputs.disko.nixosModules.disko
-                ];
+              modules = [ ./build04/configuration.nix ];
             };
           };
+
+        flake.lib.nixosSystem = args:
+          inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
       };
 }
