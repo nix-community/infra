@@ -11,20 +11,24 @@
   ];
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    srvos.url = "github:numtide/srvos";
+
+    # use the version tested against srvos
+    nixpkgs.follows = "srvos/nixpkgs";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs-stable.follows = "";
-    srvos.url = "github:numtide/srvos";
-    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
-    srvos.inputs.nixpkgs.follows = "nixpkgs";
 
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update.inputs.mmdoc.follows = "";
-    nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
+    nixpkgs-update.inputs.nixpkgs.follows = "nixpkgs";
+
     nixpkgs-update-github-releases.flake = false;
+    nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
 
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
