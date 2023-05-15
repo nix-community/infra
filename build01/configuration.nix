@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 # Boot recovery:
 # Activate 64-bit Rescue system in https://robot.your-server.de/server
 # ssh root@build01.nix-community.org "mount /dev/md[0-9]* /mnt && /mnt/kexec_bundle"
@@ -11,6 +11,7 @@
 # nixos-enter
 {
   imports = [
+    inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ../roles/common.nix
     ../roles/raid.nix
     ../roles/zfs.nix
