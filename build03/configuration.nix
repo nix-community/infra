@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   # Boot recovery:
   # Activate 64-bit Rescue system in https://robot.your-server.de/server
@@ -10,8 +10,6 @@
   # $ zpool import -f zroot && mount -t zfs zroot/root/nixos /mnt && mount -t zfs zroot/root/home /mnt/home && mount /dev/md[0-9]* /mnt/boot
   # $ nixos-enter
   imports = [
-    inputs.srvos.nixosModules.mixins-nginx
-    inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ../roles/common.nix
     ../roles/hercules-ci
     ../roles/watch-store.nix
