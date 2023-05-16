@@ -179,7 +179,7 @@ in
 
   sops.secrets.nix-community-cachix = {
     path = "/home/r-ryantm/.config/cachix/cachix.dhall";
-    sopsFile = "${toString inputs.self}/roles/nix-community-cache/secrets.yaml";
+    sopsFile = "${toString inputs.self}/modules/nixos/nix-community-cache/secrets.yaml";
     owner = "r-ryantm";
     group = "r-ryantm";
   };

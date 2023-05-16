@@ -12,14 +12,14 @@
   imports = [
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    ../roles/common.nix
-    ../roles/hercules-ci
-    ../roles/raid.nix
-    ../roles/zfs.nix
-    ../roles/remote-builder/aarch64-build04.nix
+    inputs.self.nixosModules.common
+    inputs.self.nixosModules.hercules-ci
+    inputs.self.nixosModules.raid
+    inputs.self.nixosModules.zfs
+    inputs.self.nixosModules.remote-builder-aarch64-build04
 
-    ../services/hydra
-    ../services/nur-update
+    inputs.self.nixosModules.hydra
+    inputs.self.nixosModules.nur-update
   ];
 
   # /boot is a mirror raid
