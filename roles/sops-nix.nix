@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ config, inputs, lib, ... }:
 let
-  defaultSopsPath = ../. + "/${config.networking.hostName}/secrets.yaml";
+  defaultSopsPath = "${toString inputs.self}/${config.networking.hostName}/secrets.yaml";
 in
 {
   sops.defaultSopsFile = lib.mkIf (builtins.pathExists defaultSopsPath) defaultSopsPath;
