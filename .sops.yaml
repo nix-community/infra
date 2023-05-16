@@ -57,7 +57,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
-  - path_regex: roles/hercules-ci/.+\.yaml$
+  - path_regex: modules/nixos/hercules-ci/.+\.yaml$
     key_groups:
       - age:
           - *build02
@@ -67,7 +67,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
-  - path_regex: roles/.+\.yaml$
+  - path_regex: modules/.+\.yaml$
     key_groups:
       - age:
           - *build01

@@ -114,6 +114,21 @@
             };
           };
 
+        flake.nixosModules = {
+          common = ./modules/nixos/common.nix;
+
+          builder = ./modules/nixos/builder;
+          hercules-ci = ./modules/nixos/hercules-ci;
+          hydra = ./modules/nixos/hydra;
+          nur-update = ./modules/nixos/nur-update;
+          raid = ./modules/nixos/raid.nix;
+          remote-builder-aarch64-build04 = ./modules/nixos/remote-builder/aarch64-build04.nix;
+          remote-builder-aarch64-nixos-community = ./modules/nixos/remote-builder/aarch64-nixos-community.nix;
+          remote-builder-user = ./modules/nixos/remote-builder/user.nix;
+          watch-store = ./modules/nixos/watch-store.nix;
+          zfs = ./modules/nixos/zfs.nix;
+        };
+
         flake.lib.nixosSystem = args:
           inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
       };

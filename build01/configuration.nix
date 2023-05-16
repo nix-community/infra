@@ -12,11 +12,11 @@
 {
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    ../roles/common.nix
-    ../roles/raid.nix
-    ../roles/zfs.nix
-    ../roles/builder
-    ../roles/remote-builder/aarch64-nixos-community.nix
+    inputs.self.nixosModules.common
+    inputs.self.nixosModules.raid
+    inputs.self.nixosModules.zfs
+    inputs.self.nixosModules.builder
+    inputs.self.nixosModules.remote-builder-aarch64-nixos-community
   ];
 
   # Emulate riscv64 until we have proper builders

@@ -3,15 +3,15 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
-    ../roles/common.nix
-    ../roles/hercules-ci
-    ../roles/remote-builder/user.nix
+    inputs.self.nixosModules.common
+    inputs.self.nixosModules.hercules-ci
+    inputs.self.nixosModules.remote-builder-user
   ];
 
   nixpkgs.system = "aarch64-linux";
 
   # disable kvm/nixos-tests
-  nix.settings.system-features = [ "big-parallel" ]; # sync with roles/remote-builder/aarch64-build04.nix
+  nix.settings.system-features = [ "big-parallel" ]; # sync with modules/nixos/remote-builder/aarch64-build04.nix
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 3;

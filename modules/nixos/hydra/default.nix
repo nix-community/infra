@@ -45,7 +45,7 @@ in
     ];
     nix.settings.post-build-hook = "${upload-to-cachix}/bin/upload-to-cachix";
 
-    sops.secrets.nix-community-cachix.sopsFile = "${toString inputs.self}/roles/nix-community-cache/secrets.yaml";
+    sops.secrets.nix-community-cachix.sopsFile = "${toString inputs.self}/modules/nixos/nix-community-cache/secrets.yaml";
     sops.secrets.id_buildfarm = { };
 
     # delete build logs older than 30 days
