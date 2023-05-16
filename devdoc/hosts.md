@@ -37,6 +37,16 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 - RAM: 24GB
 - Drives: 200 GB Block
 
+### `darwin02`
+
+This machine is meant as an aarch64 and x86_64 builder for our CI.
+
+- Provider: Scaleway
+- Instance type: [Apple Mac mini M1](https://www.scaleway.com/en/hello-m1/)
+- CPU: Apple M1
+- RAM: 8GB
+- Drives: 256GB SSD
+
 ## SSH config:
 
 You will need to set your admin username if it doesn't match your local username.
