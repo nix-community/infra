@@ -1,14 +1,15 @@
-{ lib, ... }:
+{ inputs, lib, ... }:
 
 let
+  usersDir = "${toString inputs.self.outPath}/users";
   userImports =
     let
-      toUserPath = f: ../users/. + "/${f}";
+      toUserPath = f: usersDir + "/${f}";
       onlyUserFiles = x:
         lib.hasSuffix ".nix" x &&
         x != "lib.nix"
       ;
-      userDirEntries = builtins.readDir ../users;
+      userDirEntries = builtins.readDir usersDir;
       userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
     in
     builtins.map toUserPath userFiles;
