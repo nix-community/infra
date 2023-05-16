@@ -77,6 +77,20 @@ resource "cloudflare_record" "nix-community-org-darwin01-AAAA" {
   type    = "AAAA"
 }
 
+resource "cloudflare_record" "nix-community-org-darwin02-A" {
+  zone_id = local.nix_community_zone_id
+  name    = "darwin02"
+  value   = "51.159.120.155"
+  type    = "A"
+}
+
+resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
+  zone_id = local.nix_community_zone_id
+  name    = "darwin02"
+  value   = "0:0:0:0:0:ffff:339f:789b"
+  type    = "AAAA"
+}
+
 # Used by nix-community/nixpkgs-docker
 resource "cloudflare_record" "nix-community-org-docker-CNAME" {
   zone_id = local.nix_community_zone_id
