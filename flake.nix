@@ -70,13 +70,13 @@
           inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
           ./effect.nix
-          ./shell.nix
+          ./dev/shell.nix
         ];
 
         hercules-ci.github-pages.branch = "master";
 
         perSystem = { config, pkgs, ... }: {
-          treefmt.imports = [ ./treefmt.nix ];
+          treefmt.imports = [ ./dev/treefmt.nix ];
 
           packages.pages = pkgs.runCommand "pages"
             {
