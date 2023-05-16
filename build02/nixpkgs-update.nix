@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, config, ... }:
 let
-  userLib = import ../users/lib.nix { inherit lib; };
+  userLib = import "${toString inputs.self}/users/lib.nix" { inherit lib; };
 
   nixpkgs-update-bin = "/var/lib/nixpkgs-update/bin/nixpkgs-update";
 
@@ -179,7 +179,7 @@ in
 
   sops.secrets.nix-community-cachix = {
     path = "/home/r-ryantm/.config/cachix/cachix.dhall";
-    sopsFile = ../roles/nix-community-cache/secrets.yaml;
+    sopsFile = "${toString inputs.self}/roles/nix-community-cache/secrets.yaml";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
