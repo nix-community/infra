@@ -158,7 +158,7 @@ def decrypt_host_key(flake_attr, tmpdir):
                 "--extract",
                 '["ssh_host_ed25519_key"]',
                 "--decrypt",
-                f"{ROOT}/{flake_attr}/secrets.yaml",
+                f"{ROOT}/hosts/{flake_attr}/secrets.yaml",
             ],
             check=True,
             stdout=fh,

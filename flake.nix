@@ -98,19 +98,19 @@
           {
             build01 = nixosSystem {
               system = "x86_64-linux";
-              modules = [ ./build01/configuration.nix ];
+              modules = [ ./hosts/build01/configuration.nix ];
             };
             build02 = nixosSystem {
               system = "x86_64-linux";
-              modules = [ ./build02/configuration.nix ];
+              modules = [ ./hosts/build02/configuration.nix ];
             };
             build03 = nixosSystem {
               system = "x86_64-linux";
-              modules = [ ./build03/configuration.nix ];
+              modules = [ ./hosts/build03/configuration.nix ];
             };
             build04 = nixosSystem {
               system = "aarch64-linux";
-              modules = [ ./build04/configuration.nix ];
+              modules = [ ./hosts/build04/configuration.nix ];
             };
           };
 

@@ -26,7 +26,7 @@
       excludes = [
         "nix/sources.nix"
         # vendored from external source
-        "build02/packages-with-update-script.nix"
+        "hosts/build02/packages-with-update-script.nix"
       ];
     };
 
