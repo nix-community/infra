@@ -5,13 +5,13 @@
       inherit (config.repo) ref;
     in
     {
-      onPush.default.outputs.effects = withSystem "x86_64-linux" ({ hci-effects, pkgs, ... }:
+      onPush.default.outputs.effects = withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
         {
           terraform-deploy =
             hci-effects.runIf (pkgs.lib.hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
               (hci-effects.mkEffect {
                 name = "terraform-deploy";
-                inputs = [ (builtins.getFlake (toString ./terraform/.)).outputs.devShells.x86_64-linux.default.nativeBuildInputs ];
+                inputs = [ self'.devShells.terraform.nativeBuildInputs ];
                 src = pkgs.lib.cleanSource ./.;
                 secretsMap.tf-secrets = "tf-secrets";
                 effectScript = ''

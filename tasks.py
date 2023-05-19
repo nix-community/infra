@@ -95,18 +95,20 @@ def update_terraform(c):
     """
     Update terraform devshell flake
     """
-    with c.cd("terraform"):
-        c.run(
-            """
+    c.run(
+        """
 system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
-old="$(nix build --no-link --print-out-paths ".#devShells.${system}.default")"
-nix flake update --commit-lock-file
-new="$(nix build --no-link --print-out-paths ".#devShells.${system}.default")"
+oldShell="$(nix build --no-link --print-out-paths ".#devShells.${system}.terraform")"
+oldRev="$(nix flake metadata --json | jq -r '.locks.nodes."tf-pkgs".locked.rev')"
+newRev="$(nix flake metadata --json | jq -r '.locks.nodes.nixpkgs.locked.rev')"
+sed -i "s|${oldRev}|${newRev}|" flake.nix
+nix flake lock --update-input tf-pkgs --commit-lock-file
+newShell="$(nix build --no-link --print-out-paths ".#devShells.${system}.terraform")"
 commit="$(git log --pretty=format:%B -1)"
-diff="$(nix store diff-closures "${old}" "${new}" | awk -F ',' '/terraform/ && /→/ {print $1}')"
-git commit --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
+diff="$(nix store diff-closures "${oldShell}" "${newShell}" | awk -F ',' '/terraform/ && /→/ {print $1}')"
+git commit --all --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
 """
-        )
+    )
 
 
 @task

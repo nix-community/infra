@@ -160,6 +160,7 @@
         "nur-update": "nur-update",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
+        "tf-pkgs": "tf-pkgs",
         "treefmt-nix": "treefmt-nix"
       }
     },
@@ -201,6 +202,22 @@
       "original": {
         "owner": "numtide",
         "repo": "srvos",
+        "type": "github"
+      }
+    },
+    "tf-pkgs": {
+      "locked": {
+        "lastModified": 1683212983,
+        "narHash": "sha256-4GwtXD3tBUtBAL20ygoOggZWgLdxU34VZ1vanbV64KI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5751551558d7896ffb30ff3d709b4943bb3eafa8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5751551558d7896ffb30ff3d709b4943bb3eafa8",
         "type": "github"
       }
     },
