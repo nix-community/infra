@@ -119,7 +119,15 @@ def mkdocs(c):
 
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
-        return [DeployHost(f"build{n + 1:02d}.nix-community.org") for n in range(4)]
+        res = subprocess.run(
+            ["nix", "flake", "show", "--json", "--all-systems"],
+            check=True,
+            text=True,
+            stdout=subprocess.PIPE,
+        )
+        data = json.loads(res.stdout)
+        systems = data["nixosConfigurations"]
+        return [DeployHost(f"{n}.nix-community.org") for n in systems]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
 
