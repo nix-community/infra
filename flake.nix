@@ -39,6 +39,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    tf-pkgs.url = "github:NixOS/nixpkgs/5751551558d7896ffb30ff3d709b4943bb3eafa8";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
@@ -75,7 +77,7 @@
         hercules-ci.github-pages.branch = "master";
 
         perSystem = { config, pkgs, ... }: {
-          imports = [ ./dev/shell.nix ];
+          imports = [ ./dev/shell.nix ./terraform/shell.nix ];
           treefmt.imports = [ ./dev/treefmt.nix ];
 
           packages.pages = pkgs.runCommand "pages"
