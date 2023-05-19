@@ -19,7 +19,8 @@ terraform {
 }
 
 data "sops_file" "nix-community" {
-  source_file = "secrets.yaml"
+  # relative to the symlink
+  source_file = "../secrets.yaml"
 }
 
 provider "cloudflare" {

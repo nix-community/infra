@@ -17,7 +17,7 @@ To enable hercules builds go to `https://hercules-ci.com/github/nix-community/$R
 
 [https://hydra.nix-community.org](https://hydra.nix-community.org)
 
-To enable hydra builds add a new project in this [file](https://github.com/nix-community/infra/blob/master/terraform/hydra-projects.tf).
+To enable hydra builds add a new project in this [file](https://github.com/nix-community/infra/blob/master/terraform/nix-community/hydra-projects.tf).
 
 #### Faster GitHub Actions
 
