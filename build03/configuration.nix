@@ -14,7 +14,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ../roles/common.nix
     ../roles/hercules-ci
-    ../roles/watch-store.nix
     ../roles/raid.nix
     ../roles/zfs.nix
     ../roles/remote-builder/aarch64-build04.nix
