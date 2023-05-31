@@ -35,12 +35,23 @@ resource "hydra_project" "emacs_overlay" {
   owner        = "admin"
   enabled      = true
   visible      = true
+}
 
-  declarative {
-    file  = "hydra/spec.json"
-    type  = "git"
-    value = "https://github.com/nix-community/emacs-overlay"
-  }
+resource "hydra_jobset" "emacs_overlay" {
+  project     = hydra_project.emacs_overlay.name
+  state       = "enabled"
+  visible     = true
+  name        = "master"
+  type        = "flake"
+  description = "master branch"
+
+  flake_uri = "github:nix-community/emacs-overlay"
+
+  check_interval    = 1800
+  scheduling_shares = 3000
+  keep_evaluations  = 3
+
+  email_notifications = false
 }
 
 resource "hydra_project" "simple_nixos_mailserver" {
