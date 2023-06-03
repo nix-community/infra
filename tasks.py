@@ -29,22 +29,23 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
     path = data["path"]
 
     def deploy(h: DeployHost) -> None:
+        if "darwin02" in h.host:
+            # don't use sudo for darwin-rebuild
+            command = "darwin-rebuild"
+            target = f"m1@{h.host}"
+            flakedir = "/etc/nix-darwin"
+        else:
+            command = "sudo nixos-rebuild"
+            target = f"{h.host}"
+            flakedir = "/etc/nixos"
+
         h.run_local(
-            f"rsync --rsync-path='sudo rsync' --checksum -vaF --delete -e ssh {path}/ {h.host}:/etc/nixos"
+            f"rsync --rsync-path='sudo rsync' --checksum -vaF --delete -e ssh {path}/ {target}:{flakedir}"
         )
 
         hostname = h.host.replace(".nix-community.org", "")
         h.run(
-            [
-                "sudo",
-                "nixos-rebuild",
-                "switch",
-                "--option",
-                "accept-flake-config",
-                "true",
-                "--flake",
-                f"/etc/nixos#{hostname}",
-            ]
+            f"{command} switch --option accept-flake-config true --flake {flakedir}#{hostname}"
         )
 
     g.run_function(deploy)
@@ -130,6 +131,11 @@ def get_hosts(hosts: str) -> List[DeployHost]:
         data = json.loads(res.stdout)
         systems = data["nixosConfigurations"]
         return [DeployHost(f"{n}.nix-community.org") for n in systems]
+
+    if hosts == "darwin02":
+        return [
+            DeployHost(f"{h}.nix-community.org", user="m1") for h in hosts.split(",")
+        ]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
 
