@@ -4,6 +4,18 @@
     withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
       {
         onPush.default.outputs.effects = {
+          darwin-deploy = hci-effects.runIf (pkgs.lib.hasPrefix "refs/heads/gh-readonly-queue/master/" config.repo.ref)
+            (hci-effects.runNixDarwin {
+              config = self.darwinConfigurations.darwin02;
+              secretsMap.hercules-ssh = "hercules-ssh";
+              ssh.destination = "m1@darwin02.nix-community.org";
+              userSetupScript = ''
+                writeSSHKey hercules-ssh
+                cat >>~/.ssh/known_hosts <<EOF
+                darwin02.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt6uTauhRbs5A6jwAT3p3i3P1keNC6RpaA1Na859BCa
+                EOF
+              '';
+            });
           terraform-deploy = hci-effects.runIf (pkgs.lib.hasPrefix "refs/heads/gh-readonly-queue/master/" config.repo.ref)
             (hci-effects.mkEffect {
               name = "terraform-deploy";
