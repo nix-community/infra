@@ -17,6 +17,7 @@
     inputs.self.nixosModules.raid
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.remote-builder-aarch64-build04
+    inputs.self.nixosModules.remote-builder-darwin02
 
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nur-update
