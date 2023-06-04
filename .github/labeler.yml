@@ -1,5 +1,6 @@
 "sops secrets":
   - ".sops.yaml"
+  - "secrets.yaml"
   - "**/*/*.enc.json"
   - "**/*/secrets.yaml"
 
