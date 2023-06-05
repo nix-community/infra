@@ -43,6 +43,8 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     tf-pkgs.url = "github:NixOS/nixpkgs/3f697e808b31a955462bc0b20b229d4072c99aa7";
+
+    hcia.url = "github:/qowoz/nixpkgs/hcia";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
