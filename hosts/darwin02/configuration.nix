@@ -1,11 +1,15 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   asGB = size: toString (size * 1024 * 1024);
 in
 {
   # hercules secrets are installed manually from ./secrets.yaml
   # https://docs.hercules-ci.com/hercules-ci/getting-started/deploy/nix-darwin
-  services.hercules-ci-agent.enable = true;
+  services.hercules-ci-agent = {
+    enable = true;
+    # https://github.com/hercules-ci/hercules-ci-agent/pull/507
+    package = inputs.hcia.legacyPackages.${pkgs.system}.hercules-ci-agent;
+  };
 
   imports = [ ./builder.nix ];
 

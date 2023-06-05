@@ -60,6 +60,22 @@
         "type": "github"
       }
     },
+    "hcia": {
+      "locked": {
+        "lastModified": 1685942767,
+        "narHash": "sha256-atm1LEDnKvCS0AboUmZpFIrGSoIZzhVEYHMlbhAModY=",
+        "owner": "qowoz",
+        "repo": "nixpkgs",
+        "rev": "9cefcdce192f5f9f7cff4474c5b57e7ff493bb02",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "hcia",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -174,6 +190,7 @@
         "darwin": "darwin",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "hcia": "hcia",
         "hercules-ci-effects": "hercules-ci-effects",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
