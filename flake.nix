@@ -93,7 +93,7 @@
 
         flake.darwinConfigurations =
           let
-            inherit (inputs.darwin.lib) darwinSystem;
+            inherit (self.lib) darwinSystem;
           in
           {
             darwin02 = darwinSystem {
@@ -141,6 +141,8 @@
           zfs = ./modules/nixos/zfs.nix;
         };
 
+        flake.lib.darwinSystem = args:
+          inputs.darwin.lib.darwinSystem ({ specialArgs = { inherit inputs; }; } // args);
         flake.lib.nixosSystem = args:
           inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
       };
