@@ -62,4 +62,13 @@ in
 
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 14d";
+
+  environment.systemPackages = with pkgs; [
+    htop
+  ];
+
+  # works but displays error message during activation
+  # https://github.com/LnL7/nix-darwin/issues/359
+  # sudo systemsetup -settimezone 'GMT'
+  #time.timeZone = "GMT";
 }
