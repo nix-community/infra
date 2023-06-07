@@ -11,7 +11,7 @@ in
     package = inputs.hcia.legacyPackages.${pkgs.system}.hercules-ci-agent;
   };
 
-  imports = [ ./builder.nix ];
+  imports = [ ./builder.nix ./telegraf.nix ];
 
   services.nix-daemon.enable = true;
 
