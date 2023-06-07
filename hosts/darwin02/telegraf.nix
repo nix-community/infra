@@ -1,0 +1,22 @@
+{
+  services.telegraf = {
+    enable = true;
+    extraConfig = {
+      agent.interval = "60s";
+      inputs = {
+        prometheus.metric_version = 2;
+        system = { };
+        mem = { };
+        disk.tagdrop = {
+          fstype = [ "tmpfs" "ramfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" ];
+          device = [ "rpc_pipefs" "lxcfs" "nsfs" "borgfs" ];
+        };
+        diskio = { };
+      };
+      outputs.prometheus_client = {
+        listen = ":9273";
+        metric_version = 2;
+      };
+    };
+  };
+}

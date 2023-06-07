@@ -7,7 +7,7 @@ in
   # https://docs.hercules-ci.com/hercules-ci/getting-started/deploy/nix-darwin
   services.hercules-ci-agent.enable = true;
 
-  imports = [ ./builder.nix ];
+  imports = [ ./builder.nix ./telegraf.nix ];
 
   services.nix-daemon.enable = true;
 
