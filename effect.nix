@@ -1,4 +1,4 @@
-{ withSystem, ... }:
+{ self, withSystem, ... }:
 {
   herculesCI = { config, ... }:
     withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
@@ -8,7 +8,7 @@
             (hci-effects.mkEffect {
               name = "terraform-deploy";
               inputs = [ self'.devShells.terraform.nativeBuildInputs ];
-              src = pkgs.lib.cleanSource ./.;
+              src = toString self;
               secretsMap.tf-secrets = "tf-secrets";
               effectScript = ''
                 export TF_IN_AUTOMATION=1
