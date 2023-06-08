@@ -73,7 +73,7 @@
         imports = [
           inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
-          ./effect.nix
+          ./dev/effect.nix
         ];
 
         hercules-ci.github-pages.branch = "master";
