@@ -11,7 +11,7 @@
   nixpkgs.system = "aarch64-linux";
 
   # disable kvm/nixos-tests
-  nix.settings.system-features = [ "big-parallel" ]; # sync with modules/nixos/remote-builder/aarch64-build04.nix
+  nix.settings.system-features = [ "big-parallel" ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 3;
