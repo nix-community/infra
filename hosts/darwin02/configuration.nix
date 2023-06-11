@@ -14,6 +14,9 @@ in
   nix.settings.sandbox = "relaxed";
   nix.settings.extra-platforms = [ "x86_64-darwin" ];
 
+  # disable nixos-tests
+  nix.settings.system-features = [ "big-parallel" ];
+
   programs.zsh.enable = true;
 
   networking.hostName = "darwin02";
