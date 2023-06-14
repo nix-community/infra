@@ -26,6 +26,7 @@
                   newProfile=$(nix-store --realise ${drv})
                   sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile
                   $newProfile/sw/bin/darwin-rebuild activate
+                  set +x
                 ''}
               '';
             });
@@ -46,6 +47,7 @@
                 terraform init
                 terraform validate
                 terraform apply -auto-approve
+                set +x
               '';
             });
         };
