@@ -180,7 +180,6 @@
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
         "sops-nix": "sops-nix",
-        "srvos": "srvos",
         "tf-pkgs": "tf-pkgs",
         "treefmt-nix": "treefmt-nix"
       }
@@ -203,26 +202,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "srvos": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1687133105,
-        "narHash": "sha256-h1P6h1eOhllYTYgp6y13nVrTsn8wxWW07On2Cgyq3ns=",
-        "owner": "numtide",
-        "repo": "srvos",
-        "rev": "bd0aabcae396b826a4a8dd5ba078b06ee099430c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "srvos",
         "type": "github"
       }
     },
