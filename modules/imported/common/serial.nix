@@ -34,8 +34,8 @@ in
     srvos.boot.consoles = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ "tty0" ] ++
-        (lib.optional (pkgs.stdenv.hostPlatform.isAarch) "ttyAMA0,115200") ++
-        (lib.optional (pkgs.stdenv.hostPlatform.isRiscV64) "ttySIF0,115200") ++
+        (lib.optional pkgs.stdenv.hostPlatform.isAarch "ttyAMA0,115200") ++
+        (lib.optional pkgs.stdenv.hostPlatform.isRiscV64 "ttySIF0,115200") ++
         [ "ttyS0,115200" ];
       example = [ "ttyS2,115200" ];
       description = lib.mdDoc ''
