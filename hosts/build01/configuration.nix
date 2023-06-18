@@ -11,7 +11,7 @@
 # nixos-enter
 {
   imports = [
-    inputs.srvos.nixosModules.hardware-hetzner-online-amd
+    ../../modules/imported/hetzner-online/amd.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.raid
     inputs.self.nixosModules.zfs

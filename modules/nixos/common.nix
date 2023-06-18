@@ -7,8 +7,8 @@
     ./sops-nix.nix
     ./users.nix
     inputs.sops-nix.nixosModules.sops
-    inputs.srvos.nixosModules.mixins-telegraf
-    inputs.srvos.nixosModules.server
+    ../imported/telegraf.nix
+    ../imported/server.nix
   ];
 
   networking.firewall.allowedTCPPorts = [ 9273 ];

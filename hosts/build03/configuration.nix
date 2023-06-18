@@ -10,8 +10,8 @@
   # $ zpool import -f zroot && mount -t zfs zroot/root/nixos /mnt && mount -t zfs zroot/root/home /mnt/home && mount /dev/md[0-9]* /mnt/boot
   # $ nixos-enter
   imports = [
-    inputs.srvos.nixosModules.mixins-nginx
-    inputs.srvos.nixosModules.hardware-hetzner-online-amd
+    ../../modules/imported/nginx.nix
+    ../../modules/imported/hetzner-online/amd.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.raid
