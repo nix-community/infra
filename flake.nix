@@ -122,18 +122,22 @@
             };
           };
 
+        flake.darwinModules = {
+          nix-remote-builder = ./modules/darwin/nix-remote-builder.nix;
+        };
+
         flake.nixosModules = {
           common = ./modules/nixos/common.nix;
 
           builder = ./modules/nixos/builder;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra;
+          nix-remote-builder = ./modules/nixos/nix-remote-builder.nix;
           nur-update = ./modules/nixos/nur-update;
           raid = ./modules/nixos/raid.nix;
           remote-builder-aarch64-nixos-community = ./modules/nixos/remote-builder/aarch64-nixos-community.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
-          remote-builder-user = ./modules/nixos/remote-builder/user.nix;
           watch-store = ./modules/nixos/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
         };

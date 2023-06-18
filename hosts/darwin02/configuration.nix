@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   asGB = size: toString (size * 1024 * 1024);
 in
@@ -7,7 +7,10 @@ in
   # https://docs.hercules-ci.com/hercules-ci/getting-started/deploy/nix-darwin
   services.hercules-ci-agent.enable = true;
 
-  imports = [ ./builder.nix ./telegraf.nix ];
+  imports = [
+    inputs.self.darwinModules.nix-remote-builder
+    ./telegraf.nix
+  ];
 
   services.nix-daemon.enable = true;
 
