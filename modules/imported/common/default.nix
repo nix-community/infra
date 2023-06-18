@@ -11,7 +11,6 @@
     ./openssh.nix
     ./serial.nix
     ./upgrade-diff.nix
-    ./well-known-hosts.nix
     ./zfs.nix
   ];
 

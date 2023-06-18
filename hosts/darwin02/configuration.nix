@@ -8,8 +8,8 @@ in
   services.hercules-ci-agent.enable = true;
 
   imports = [
+    inputs.self.darwinModules.common
     inputs.self.darwinModules.nix-remote-builder
-    ./telegraf.nix
   ];
 
   services.nix-daemon.enable = true;

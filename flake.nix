@@ -123,6 +123,8 @@
           };
 
         flake.darwinModules = {
+          common = ./modules/darwin/common.nix;
+
           nix-remote-builder = ./modules/darwin/nix-remote-builder.nix;
         };
 

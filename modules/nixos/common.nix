@@ -5,9 +5,10 @@
     ./nix-daemon.nix
     ./security.nix
     ./sops-nix.nix
+    ./telegraf.nix
     ./users.nix
     inputs.sops-nix.nixosModules.sops
-    ../imported/telegraf.nix
+    ../shared/known-hosts.nix
     ../imported/server.nix
   ];
 

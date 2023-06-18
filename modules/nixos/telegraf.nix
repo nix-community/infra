@@ -9,27 +9,25 @@ let
   hasNvme = lib.any (m: m == "nvme") config.boot.initrd.availableKernelModules;
 in
 {
+  imports = [
+    ../shared/telegraf.nix
+  ];
 
   systemd.services.telegraf.path = lib.optional (!isVM && hasNvme) pkgs.nvme-cli;
 
   services.telegraf = {
-    enable = true;
     extraConfig = {
-      agent.interval = "60s";
       inputs = {
         prometheus.urls = lib.mkIf config.services.promtail.enable [
           # default promtail port
           "http://localhost:9080/metrics"
         ];
-        prometheus.metric_version = 2;
         kernel_vmstat = { };
         smart = lib.mkIf (!isVM) {
           path = pkgs.writeShellScript "smartctl" ''
             exec /run/wrappers/bin/sudo ${pkgs.smartmontools}/bin/smartctl "$@"
           '';
         };
-        system = { };
-        mem = { };
         file =
           [
             {
@@ -118,17 +116,8 @@ in
         ];
         systemd_units = { };
         swap = { };
-        disk.tagdrop = {
-          fstype = [ "tmpfs" "ramfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" ];
-          device = [ "rpc_pipefs" "lxcfs" "nsfs" "borgfs" ];
-        };
-        diskio = { };
       } // lib.optionalAttrs config.boot.initrd.services.swraid.enable {
         mdstat = { };
-      };
-      outputs.prometheus_client = {
-        listen = ":9273";
-        metric_version = 2;
       };
     };
   };
