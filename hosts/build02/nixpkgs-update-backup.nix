@@ -23,11 +23,9 @@
     encryption.mode = "none";
     compression = "auto,zstd";
     startAt = "daily";
-    environment.BORG_RSH = "ssh -oPort=23";
+    environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-build03-borgbackup-ssh.path}";
     preHook = ''
       set -x
-      eval $(ssh-agent)
-      ssh-add ${config.sops.secrets.hetzner-build03-borgbackup-ssh.path}
     '';
 
     postHook = ''
