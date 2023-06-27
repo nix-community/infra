@@ -113,27 +113,6 @@ resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
   type    = "CNAME"
 }
 
-resource "cloudflare_record" "nix-community-org-search-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "search"
-  value   = "nix-community.org"
-  type    = "CNAME"
-  proxied = true
-}
-
-# created manually
-#
-#resource "cloudflare_page_rule" "nix-community-org-search-forward" {
-#  zone_id = local.nix_community_zone_id
-#  target  = "search.nix-community.org/*"
-#  actions {
-#    forwarding_url {
-#      url         = "https://github.com/search?q=org%3ANixOS+OR+org%3Anix-community+NOT+is%3Aarchived&type=code"
-#      status_code = 301
-#    }
-#  }
-#}
-
 resource "cloudflare_record" "nix-community-org-apex-A" {
   zone_id = local.nix_community_zone_id
   name    = "@"
