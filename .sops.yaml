@@ -9,6 +9,7 @@ keys:
   - &ryantm age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
   - &zimbatm age1jrh8yyq3swjru09s75s4mspu0mphh7h6z54z946raa9wx3pcdegq0x8t4h
   - &zowoq age1m7xhem3qll35d539f364pm6txexvnp6k0tk34d8jxu4ry3pptv7smm0k5n
+  - &adisbladis age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
 # scan new hosts with `scan-age-keys` task
 creation_rules:
   - path_regex: ^secrets.yaml$
@@ -18,6 +19,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: terraform/secrets.yaml$
     key_groups:
       - age:
@@ -26,6 +28,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: hosts/build01/[^/]+\.yaml$
     key_groups:
       - age:
@@ -34,6 +37,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: hosts/build02/[^/]+\.yaml$
     key_groups:
       - age:
@@ -42,6 +46,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: hosts/build03/[^/]+\.yaml$
     key_groups:
       - age:
@@ -50,6 +55,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: hosts/build04/[^/]+\.yaml$
     key_groups:
       - age:
@@ -58,6 +64,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: hosts/darwin02/[^/]+\.yaml$
     key_groups:
       - age:
@@ -66,6 +73,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: modules/nixos/hercules-ci/.+\.yaml$
     key_groups:
       - age:
@@ -76,6 +84,7 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
   - path_regex: modules/.+\.yaml$
     key_groups:
       - age:
@@ -87,3 +96,4 @@ creation_rules:
           - *ryantm
           - *zimbatm
           - *zowoq
+          - *adisbladis
