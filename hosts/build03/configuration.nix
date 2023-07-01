@@ -15,6 +15,7 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.raid
+    inputs.self.nixosModules.watch-store
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.remote-builder-build04
     inputs.self.nixosModules.remote-builder-darwin02
