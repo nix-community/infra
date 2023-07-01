@@ -1,4 +1,11 @@
-We provide `x86_64-linux` and `aarch64-linux` CI via these systems:
+We provide CI for these platforms:
+
+- `aarch64-darwin`
+- `aarch64-linux`
+- `x86_64-darwin`
+- `x86_64-linux`
+
+We only have limited build capacity for `*-darwin` and `aarch64-linux` so please don't use it excessively.
 
 #### Hercules
 
