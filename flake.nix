@@ -128,7 +128,7 @@
         flake.nixosModules = {
           common = ./modules/nixos/common.nix;
 
-          builder = ./modules/nixos/builder;
+          community-builder = ./modules/nixos/community-builder;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra;
           nur-update = ./modules/nixos/nur-update;
