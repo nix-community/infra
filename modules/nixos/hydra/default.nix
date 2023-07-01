@@ -1,20 +1,4 @@
-{ lib, inputs, pkgs, config, ... }:
-let
-  upload-to-cachix = pkgs.writeScriptBin "upload-to-cachix" ''
-    #!/bin/sh
-    set -eu
-    set -f # disable globbing
-
-    # skip push if the declarative job spec
-    OUT_END=$(echo ''${OUT_PATHS: -10})
-    if [ "$OUT_END" == "-spec.json" ]; then
-      exit 0
-    fi
-
-    export HOME=/root
-    exec ${pkgs.cachix}/bin/cachix -c ${config.sops.secrets.nix-community-cachix.path} push nix-community $OUT_PATHS > /tmp/hydra_cachix 2>&1
-  '';
-in
+{ lib, pkgs, config, ... }:
 {
   options.services.hydra = {
     adminPasswordFile = lib.mkOption {
@@ -43,9 +27,7 @@ in
       "https://github.com/nix-community/"
       "https://github.com/NixOS/"
     ];
-    nix.settings.post-build-hook = "${upload-to-cachix}/bin/upload-to-cachix";
 
-    sops.secrets.nix-community-cachix.sopsFile = "${toString inputs.self}/modules/nixos/nix-community-cache/secrets.yaml";
     sops.secrets.id_buildfarm = { };
 
     # delete build logs older than 30 days
