@@ -137,7 +137,7 @@
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
           remote-builder-user = ./modules/nixos/remote-builder/user.nix;
-          watch-store = ./modules/nixos/watch-store.nix;
+          watch-store = ./modules/nixos/cachix/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
         };
 
