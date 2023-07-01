@@ -15,7 +15,7 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.raid
     inputs.self.nixosModules.zfs
-    inputs.self.nixosModules.builder
+    inputs.self.nixosModules.community-builder
     inputs.self.nixosModules.remote-builder-aarch64-nixos-community
   ];
 
