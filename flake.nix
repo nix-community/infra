@@ -130,8 +130,8 @@
 
           community-builder = ./modules/nixos/community-builder;
           hercules-ci = ./modules/nixos/hercules-ci;
-          hydra = ./modules/nixos/hydra;
-          nur-update = ./modules/nixos/nur-update;
+          hydra = ./modules/nixos/hydra.nix;
+          nur-update = ./modules/nixos/nur-update.nix;
           raid = ./modules/nixos/raid.nix;
           remote-builder-aarch64-nixos-community = ./modules/nixos/remote-builder/aarch64-nixos-community.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
