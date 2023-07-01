@@ -136,7 +136,7 @@
           };
 
         flake.nixosModules = {
-          common = ./modules/nixos/common.nix;
+          common = ./modules/nixos/common;
 
           community-builder = ./modules/nixos/community-builder;
           hercules-ci = ./modules/nixos/hercules-ci;
