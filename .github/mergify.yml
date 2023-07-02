@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: automatic merge on CI success
+    conditions:
+      - base=master
+      - check-success=ci/hercules/evaluation
+      - check-success=ci/hercules/onPush/default
+      - or:
+          - and:
+              - author=github-actions[bot]
+              - label=automerge
+          - and:
+              - author=hercules-ci[bot]
+    actions:
+      merge:
+        method: rebase
+        allow_merging_configuration_change: true
+      delete_head_branch: {}
