@@ -61,7 +61,6 @@
         hercules-ci.flake-update = {
           enable = true;
           createPullRequest = true;
-          autoMergeMethod = "rebase";
           when = {
             hour = [ 2 ];
             dayOfWeek = [ "Mon" "Thu" ];
