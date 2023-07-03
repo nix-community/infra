@@ -13,8 +13,12 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
       - name: Update flake.lock
+        id: update
         uses: DeterminateSystems/update-flake-lock@v19
         with:
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           inputs: nixpkgs-update
-          pr-labels: |
-            automerge
+      - name: Enable Automerge
+        run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
