@@ -47,6 +47,16 @@ This machine is meant as an aarch64 and x86_64 builder for our CI.
 - RAM: 8GB
 - Drives: 256GB SSD
 
+### `web01`
+
+This machine hosts web services such as Lemmy.
+
+- Provider: Hetzner
+- Instance type: CX31
+- CPU: 2 vCPUs on Intel Xeon
+- RAM: 8GB
+- Drives: 80GB SSD
+
 ## SSH config:
 
 You will need to set your admin username if it doesn't match your local username.

@@ -123,6 +123,10 @@
               system = "aarch64-linux";
               modules = [ ./hosts/build04/configuration.nix ];
             };
+            web01 = nixosSystem {
+              system = "x86_64-linux";
+              modules = [ ./hosts/web01/configuration.nix ];
+            };
           };
 
         flake.nixosModules = {

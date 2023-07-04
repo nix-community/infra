@@ -31,6 +31,10 @@
       hostNames = [ "[u348918.your-storagebox.de]:23" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
     };
+    web01 = {
+      hostNames = [ "web01.nix-community.org" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBlk4GXei97txlkLtRQDblje0YXZxQnu5w7rVSBPzYRl";
+    };
   };
 
   services.openssh = {
