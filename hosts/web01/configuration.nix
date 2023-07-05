@@ -8,6 +8,7 @@
     inputs.self.nixosModules.common
     ./samba.nix
     ./postgresql.nix
+    ./pgbackrest.nix
   ];
 
   networking.hostName = "web01";

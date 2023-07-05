@@ -29,7 +29,7 @@
 
       # Replication
       wal_level = "replica"; # consider using at least "replica"
-      max_wal_senders = 0;
+      # max_wal_senders = 0;
       synchronous_commit = "on";
 
       # Checkpointing:
