@@ -9,6 +9,7 @@
     ./samba.nix
     ./postgresql.nix
     ./pgbackrest.nix
+    ./lemmy.nix
   ];
 
   networking.hostName = "web01";
