@@ -7,6 +7,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-cloud
     inputs.self.nixosModules.common
     ./samba.nix
+    ./postgresql.nix
   ];
 
   networking.hostName = "web01";
