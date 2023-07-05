@@ -21,11 +21,11 @@ in
       ];
     in
     {
-
       "/mnt/lemmy-pict-rs" = {
         device = "//${hostname}/u348918-sub1";
         fsType = "cifs";
         options = [
+          "noperm"
           (concatStringsSep "," (cifsOpts ++ [
             "credentials=${config.sops.secrets.hetzner-cifs-lemmy-pict-rs-creds.path}"
           ]))
