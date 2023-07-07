@@ -59,7 +59,7 @@ resource "cloudflare_record" "nix-community-org-build04-A" {
 resource "cloudflare_record" "nix-community-org-build04-AAAA" {
   zone_id = local.nix_community_zone_id
   name    = "build04"
-  value   = "2603:c022:c001:b500:f1d4:5343:e8ce:d6ba"
+  value   = "0000:0000:0000:0000:0000:ffff:8d90:c91f"
   type    = "AAAA"
 }
 
