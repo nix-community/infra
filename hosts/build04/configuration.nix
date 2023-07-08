@@ -30,7 +30,12 @@
       [Match]
       Type = ether
       [Network]
-      DHCP = both
+      DHCP = yes
+      IPv6AcceptRA = true
+      # Usually dhcpv6 should give us a public address, but it doesn't seem to work for oracle with both networkd/dhcpcd
+      # so we set it manually here. One can get the address by clicking on the primary vnic in the oracle console and
+      # under Resources -> IPv6 Addresses
+      Address = 2603:c022:c001:b500:f1d4:5343:e8ce:d6ba
     '';
   };
 }
