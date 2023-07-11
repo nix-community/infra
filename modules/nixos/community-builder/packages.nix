@@ -10,8 +10,6 @@
     pkgs.nixpkgs-review
     pkgs.ripgrep
     pkgs.tig
-    pkgs.tmux
-    pkgs.vim
 
     # terminfo packages
     pkgs.foot.terminfo
