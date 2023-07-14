@@ -80,6 +80,12 @@
           imports = [ ./dev/shell.nix ./terraform/shell.nix ];
           treefmt.imports = [ ./dev/treefmt.nix ];
 
+          checks = {
+            nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
+            nixosTests-lemmy = pkgs.nixosTests.lemmy;
+            nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
+          };
+
           packages.pages = pkgs.runCommand "pages"
             {
               buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
