@@ -14,8 +14,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    darwin.url = "github:LnL7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs-stable.follows = "";
@@ -152,7 +152,7 @@
         };
 
         flake.lib.darwinSystem = args:
-          inputs.darwin.lib.darwinSystem ({ specialArgs = { inherit inputs; }; } // args);
+          inputs.nix-darwin.lib.darwinSystem ({ specialArgs = { inherit inputs; }; } // args);
         flake.lib.nixosSystem = args:
           inputs.nixpkgs.lib.nixosSystem ({ specialArgs = { inherit inputs; }; } // args);
       };
