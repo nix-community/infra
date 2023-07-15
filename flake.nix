@@ -42,13 +42,6 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Pict-rs is the image hosting server for Lemmy.
-    # 0.4 comes with a separation of database and file storage which we require but isn't
-    # in a stable release yet.
-    # After pict-rs 0.4 is in nixpkgs we can remove this input.
-    pict-rs.url = "git+https://git.asonix.dog/asonix/pict-rs.git?ref=refs/tags/v0.4.0";
-    pict-rs.inputs.nixpkgs.follows = "nixpkgs";
-
     tf-pkgs.url = "github:NixOS/nixpkgs/3f697e808b31a955462bc0b20b229d4072c99aa7";
   };
 
