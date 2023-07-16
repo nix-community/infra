@@ -47,6 +47,16 @@ This machine is meant as an aarch64 and x86_64 builder for our CI.
 - RAM: 8GB
 - Drives: 256GB SSD
 
+### `darwin03`
+
+This machine is meant as an aarch64 and x86_64 builder for our CI.
+
+- Provider: Hetzner
+- Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
+- CPU: Apple M1
+- RAM: 16GB
+- Drives: 256GB SSD
+
 ### `web01`
 
 This machine hosts web services such as Lemmy.

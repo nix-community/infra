@@ -106,6 +106,10 @@
               system = "aarch64-darwin";
               modules = [ ./hosts/darwin02/configuration.nix ];
             };
+            darwin03 = darwinSystem {
+              system = "aarch64-darwin";
+              modules = [ ./hosts/darwin03/configuration.nix ];
+            };
           };
 
         flake.nixosConfigurations =
@@ -153,6 +157,7 @@
           remote-builder-aarch64-nixos-community = ./modules/nixos/remote-builder/aarch64-nixos-community.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
+          remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;
           remote-builder-user = ./modules/nixos/remote-builder/user.nix;
           watch-store = ./modules/nixos/cachix/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;

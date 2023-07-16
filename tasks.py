@@ -29,10 +29,10 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
     path = data["path"]
 
     def deploy(h: DeployHost) -> None:
-        if "darwin02" in h.host:
+        if "darwin" in h.host:
             # don't use sudo for darwin-rebuild
             command = "darwin-rebuild"
-            target = f"m1@{h.host}"
+            target = f"hetzner@{h.host}"
             flakedir = "/etc/nix-darwin"
         else:
             command = "sudo nixos-rebuild"
@@ -132,9 +132,10 @@ def get_hosts(hosts: str) -> List[DeployHost]:
         systems = data["nixosConfigurations"]
         return [DeployHost(f"{n}.nix-community.org") for n in systems]
 
-    if hosts == "darwin02":
+    if "darwin" in hosts:
         return [
-            DeployHost(f"{h}.nix-community.org", user="m1") for h in hosts.split(",")
+            DeployHost(f"{h}.nix-community.org", user="hetzner")
+            for h in hosts.split(",")
         ]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
