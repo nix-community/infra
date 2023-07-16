@@ -12,6 +12,7 @@
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.remote-builder-build04
     inputs.self.nixosModules.remote-builder-darwin02
+    inputs.self.nixosModules.remote-builder-darwin03
   ];
 
   # /boot is a mirror raid

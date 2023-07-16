@@ -4,7 +4,8 @@
     withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
       let
         # using the drv path here avoids downloading the closure on the deploying machine
-        drv = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin02.config.system.build.toplevel.drvPath;
+        darwin02 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin02.config.system.build.toplevel.drvPath;
+        darwin03 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin03.config.system.build.toplevel.drvPath;
 
         inherit (config.repo) ref;
         inherit (hci-effects) mkEffect runIf;
@@ -20,10 +21,18 @@
                 writeSSHKey hercules-ssh
                 cat >>~/.ssh/known_hosts <<EOF
                 darwin02.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt6uTauhRbs5A6jwAT3p3i3P1keNC6RpaA1Na859BCa
+                darwin03.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztzAtVXT+NBMITU+JLXcIE5HTEOd7Q3fQNu80S
                 EOF
                 ${hci-effects.ssh { destination = "m1@darwin02.nix-community.org"; } ''
                   set -eux
-                  newProfile=$(nix-store --realise ${drv})
+                  newProfile=$(nix-store --realise ${darwin02})
+                  sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile
+                  $newProfile/sw/bin/darwin-rebuild activate
+                  set +x
+                ''}
+                ${hci-effects.ssh { destination = "hetzner@darwin03.nix-community.org"; } ''
+                  set -eux
+                  newProfile=$(nix-store --realise ${darwin03})
                   sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile
                   $newProfile/sw/bin/darwin-rebuild activate
                   set +x
