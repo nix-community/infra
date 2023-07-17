@@ -52,6 +52,7 @@
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
         herculesCI = { lib, ... }: {
+          ciSystems = [ "x86_64-linux" "aarch64-linux" ];
           onPush.default.outputs = {
             checks = lib.mkForce self.outputs.checks.x86_64-linux;
             packages = lib.mkForce self.outputs.packages.x86_64-linux;
