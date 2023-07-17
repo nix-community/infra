@@ -20,10 +20,10 @@
               effectScript = ''
                 writeSSHKey hercules-ssh
                 cat >>~/.ssh/known_hosts <<EOF
-                darwin02.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt6uTauhRbs5A6jwAT3p3i3P1keNC6RpaA1Na859BCa
+                darwin02.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJqwpMUEl1/iwrBakeDb1rlheXlE5mfDLICVz8w6yi6
                 darwin03.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztzAtVXT+NBMITU+JLXcIE5HTEOd7Q3fQNu80S
                 EOF
-                ${hci-effects.ssh { destination = "m1@darwin02.nix-community.org"; } ''
+                ${hci-effects.ssh { destination = "hetzner@darwin02.nix-community.org"; } ''
                   set -eux
                   newProfile=$(nix-store --realise ${darwin02})
                   sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile

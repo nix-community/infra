@@ -21,7 +21,7 @@
     };
     darwin02 = {
       hostNames = [ "darwin02.nix-community.org" ];
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt6uTauhRbs5A6jwAT3p3i3P1keNC6RpaA1Na859BCa";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJqwpMUEl1/iwrBakeDb1rlheXlE5mfDLICVz8w6yi6";
     };
     darwin03 = {
       hostNames = [ "darwin03.nix-community.org" ];

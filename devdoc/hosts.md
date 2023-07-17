@@ -41,10 +41,10 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 
 This machine is meant as an aarch64 and x86_64 builder for our CI.
 
-- Provider: Scaleway
-- Instance type: [Apple Mac mini M1](https://www.scaleway.com/en/hello-m1/)
+- Provider: Hetzner
+- Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
 - CPU: Apple M1
-- RAM: 8GB
+- RAM: 16GB
 - Drives: 256GB SSD
 
 ### `darwin03`
