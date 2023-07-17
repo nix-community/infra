@@ -80,16 +80,16 @@ resource "cloudflare_record" "nix-community-org-darwin01-AAAA" {
 resource "cloudflare_record" "nix-community-org-darwin02-A" {
   zone_id = local.nix_community_zone_id
   name    = "darwin02"
-  value   = "51.159.120.155"
+  value   = "167.235.38.49"
   type    = "A"
 }
 
-resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin02"
-  value   = "2001:bc8:a01:3:1698:77ff:fe3a:d38f"
-  type    = "AAAA"
-}
+#resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
+#  zone_id = local.nix_community_zone_id
+#  name    = "darwin02"
+#  value   = "2001:bc8:a01:3:1698:77ff:fe3a:d38f"
+#  type    = "AAAA"
+#}
 
 resource "cloudflare_record" "nix-community-org-darwin03-A" {
   zone_id = local.nix_community_zone_id
