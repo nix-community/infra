@@ -36,7 +36,8 @@ in
   nix.settings.min-free = asGB 10;
   nix.settings.max-free = asGB 200;
 
-  nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
+  # avoid search path warnings
+  nix.nixPath = pkgs.lib.mkForce [ "nixpkgs=${pkgs.path}" ];
 
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 14d";
