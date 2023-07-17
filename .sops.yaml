@@ -3,7 +3,6 @@ keys:
   - &build02 age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d
   - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
   - &build04 age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
-  - &darwin02 age12w8we2htlf3sxd9xjlt65353tgl58034l93w8vwphhm98zv69dzsvzt8fh
   - &web01 age1dg06e2l664lek3het63vrdrvzyrzt2tcf4peellhxc33aj2wf3ysgja8gl
   - &hercules_tf age1lk9prt0l75xyj4r9lvel5cdac4ll8jnywrm0fp8nackeqzmwkfqq974lst
   - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -66,19 +65,18 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: hosts/darwin02/[^/]+\.yaml$
+  - path_regex: hosts/web01/[^/]+\.yaml$
     key_groups:
       - age:
-          - *darwin02
+          - *web01
           - *mic92
           - *ryantm
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: hosts/web01/[^/]+\.yaml$
+  - path_regex: modules/darwin/hercules-ci/.+\.yaml$
     key_groups:
       - age:
-          - *web01
           - *mic92
           - *ryantm
           - *zimbatm

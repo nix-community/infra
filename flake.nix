@@ -135,6 +135,13 @@
             };
           };
 
+        flake.darwinModules = {
+          common = ./modules/darwin/common;
+
+          builder = ./modules/darwin/builder.nix;
+          hercules-ci = ./modules/darwin/hercules-ci;
+        };
+
         flake.nixosModules = {
           common = ./modules/nixos/common;
 
