@@ -3,42 +3,12 @@
   herculesCI = { config, ... }:
     withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
       let
-        # using the drv path here avoids downloading the closure on the deploying machine
-        darwin02 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin02.config.system.build.toplevel.drvPath;
-        darwin03 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin03.config.system.build.toplevel.drvPath;
-
         inherit (config.repo) ref;
         inherit (hci-effects) mkEffect runIf;
         inherit (pkgs.lib) hasPrefix;
       in
       {
         onPush.default.outputs.effects = {
-          darwin-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
-            (mkEffect {
-              name = "darwin-deploy";
-              secretsMap.hercules-ssh = "hercules-ssh";
-              effectScript = ''
-                writeSSHKey hercules-ssh
-                cat >>~/.ssh/known_hosts <<EOF
-                darwin02.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJqwpMUEl1/iwrBakeDb1rlheXlE5mfDLICVz8w6yi6
-                darwin03.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztzAtVXT+NBMITU+JLXcIE5HTEOd7Q3fQNu80S
-                EOF
-                ${hci-effects.ssh { destination = "hetzner@darwin02.nix-community.org"; } ''
-                  set -eux
-                  newProfile=$(nix-store --realise ${darwin02})
-                  sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile
-                  $newProfile/sw/bin/darwin-rebuild activate
-                  set +x
-                ''}
-                ${hci-effects.ssh { destination = "hetzner@darwin03.nix-community.org"; } ''
-                  set -eux
-                  newProfile=$(nix-store --realise ${darwin03})
-                  sudo -H nix-env --profile /nix/var/nix/profiles/system --set $newProfile
-                  $newProfile/sw/bin/darwin-rebuild activate
-                  set +x
-                ''}
-              '';
-            });
           terraform-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
             (mkEffect {
               name = "terraform-deploy";
