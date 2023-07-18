@@ -1,6 +1,6 @@
 `build01.nix-community.org`
 
-We provide an `x86_64-linux` build machine as a public remote builder for the nix community, this machine also has an `aarch64-linux` machine configured as its own remote builder.
+We provide an `x86_64-linux` build machine as a public remote builder for the nix community.
 
 #### Access
 
