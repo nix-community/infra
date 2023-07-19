@@ -3,6 +3,7 @@
   imports = [
     ./auto-upgrade.nix
     ./nix-daemon.nix
+    ./reboot.nix
     ./security.nix
     ./sops-nix.nix
     ./users.nix
