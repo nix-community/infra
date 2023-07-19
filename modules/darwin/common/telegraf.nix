@@ -7,6 +7,7 @@
         prometheus.metric_version = 2;
         system = { };
         mem = { };
+        swap = { };
         disk.tagdrop = {
           fstype = [ "tmpfs" "ramfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" ];
           device = [ "rpc_pipefs" "lxcfs" "nsfs" "borgfs" ];
