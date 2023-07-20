@@ -5,13 +5,13 @@
       let
         inherit (config.repo) ref;
         inherit (hci-effects) mkEffect runCachixDeploy runIf;
-        inherit (pkgs.lib) hasPrefix;
+        inherit (pkgs.lib) hasPrefix mapAttrs;
       in
       {
         onPush.default.outputs.effects = {
           cachix-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
             (runCachixDeploy {
-              deploy.agents = {
+              deploy.agents = mapAttrs (_: darwin: builtins.unsafeDiscardStringContext darwin.config.system.build.toplevel) self.darwinConfigurations // {
                 web01 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web01.config.system.build.toplevel;
                 web02 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web02.config.system.build.toplevel;
               };
