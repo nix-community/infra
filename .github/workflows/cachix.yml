@@ -1,0 +1,31 @@
+name: "cachix"
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: "cachix"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' # ensure workflow_dispatch only runs on master
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v23
+        with:
+          extra_nix_config: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+      - name: Build Spec
+        run: |
+          nix build .#cachix-deploy-spec
+      - name: Deploy
+        env:
+          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
+        run: |
+          nix run --inputs-from .# nixpkgs#cachix -- deploy activate ./result
