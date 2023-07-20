@@ -92,11 +92,11 @@
           in
           {
             darwin02 = darwinSystem {
-              system = "aarch64-darwin";
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin02/configuration.nix ];
             };
             darwin03 = darwinSystem {
-              system = "aarch64-darwin";
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin03/configuration.nix ];
             };
           };
@@ -107,27 +107,27 @@
           in
           {
             build01 = nixosSystem {
-              system = "x86_64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/build01/configuration.nix ];
             };
             build02 = nixosSystem {
-              system = "x86_64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/build02/configuration.nix ];
             };
             build03 = nixosSystem {
-              system = "x86_64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/build03/configuration.nix ];
             };
             build04 = nixosSystem {
-              system = "aarch64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
               modules = [ ./hosts/build04/configuration.nix ];
             };
             web01 = nixosSystem {
-              system = "x86_64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/web01/configuration.nix ];
             };
             web02 = nixosSystem {
-              system = "x86_64-linux";
+              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/web02/configuration.nix ];
             };
           };
