@@ -74,7 +74,7 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: modules/darwin/hercules-ci/.+\.yaml$
+  - path_regex: modules/darwin/.+\.yaml$
     key_groups:
       - age:
           - *mic92
@@ -93,7 +93,7 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: modules/.+\.yaml$
+  - path_regex: modules/nixos/.+\.yaml$
     key_groups:
       - age:
           - *build01
