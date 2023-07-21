@@ -17,6 +17,7 @@
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.community-builder
     inputs.self.nixosModules.remote-builder-aarch64-nixos-community
+    inputs.self.nixosModules.cachix-deploy
   ];
 
   # Emulate riscv64 until we have proper builders
