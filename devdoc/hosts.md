@@ -67,6 +67,16 @@ This machine hosts web services such as Lemmy.
 - RAM: 8GB
 - Drives: 80GB SSD
 
+### `web02`
+
+This machine hosts monitoring of our machines and services.
+
+- Provider: Gandi
+- Instance type: [V-R4](https://www.gandi.net/en-GB/cloud/vps)
+- CPU: 2 CPU
+- RAM: 4GB
+- Drives: 25GB
+
 ## SSH config:
 
 You will need to set your admin username if it doesn't match your local username.
