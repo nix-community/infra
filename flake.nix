@@ -150,6 +150,7 @@
         flake.nixosModules = {
           common = ./modules/nixos/common;
 
+          cachix-deploy = ./modules/nixos/cachix-deploy;
           community-builder = ./modules/nixos/community-builder;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra.nix;
