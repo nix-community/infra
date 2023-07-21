@@ -91,7 +91,7 @@
             {
               buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
             } ''
-            cp -r ${pkgs.lib.cleanSource ./.}/* .
+            cd ${self}
             mkdocs build --strict --site-dir $out
           '';
 
