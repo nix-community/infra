@@ -2,6 +2,7 @@
 {
   imports = [
     ./flake-inputs.nix
+    ./reboot.nix
     ./telegraf.nix
     ../../shared/nix-daemon.nix
   ];
