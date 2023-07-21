@@ -13,6 +13,7 @@ in
     ./network.nix
     ./optimise.nix
     ./reboot.nix
+    ./software-update.nix
     ./telegraf.nix
     ./upgrade-diff.nix
     ../../shared/known-hosts.nix
