@@ -159,6 +159,7 @@
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra.nix;
+          monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
           raid = ./modules/nixos/raid.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
