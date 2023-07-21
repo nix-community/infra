@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./flake-inputs.nix
+    ./reboot.nix
     ./telegraf.nix
   ];
 
