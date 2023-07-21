@@ -138,6 +138,10 @@
               system = "x86_64-linux";
               modules = [ ./hosts/web01/configuration.nix ];
             };
+            web02 = nixosSystem {
+              system = "x86_64-linux";
+              modules = [ ./hosts/web02/configuration.nix ];
+            };
           };
 
         flake.darwinModules = {

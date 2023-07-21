@@ -122,14 +122,14 @@ resource "cloudflare_record" "nix-community-org-web01-A" {
 resource "cloudflare_record" "nix-community-org-web02-A" {
   zone_id = local.nix_community_zone_id
   name    = "web02"
-  value   = "46.226.106.114"
+  value   = "46.226.105.188"
   type    = "A"
 }
 
 resource "cloudflare_record" "nix-community-org-web02-AAAA" {
   zone_id = local.nix_community_zone_id
   name    = "web02"
-  value   = "2001:4b98:dc0:43:f816:3eff:fe0c:b15b"
+  value   = "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
   type    = "AAAA"
 }
 
