@@ -19,7 +19,7 @@
 - Make them an `admin` in these Matrix rooms:
 
   - https://matrix.to/#/#nix-community:nixos.org
-  - https://matrix.to/#/#community-monitoring:nixos.dev
+  - https://matrix.to/#/#nix-community-monitoring:matrix.org
 
 - They will also need to be added manually to these services:
 
