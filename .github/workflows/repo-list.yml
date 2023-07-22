@@ -1,0 +1,32 @@
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "51 2 * * *"
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup
+        id: setup
+        run: |
+          echo "title=devdoc: update repo list $(date -u +"%Y-%m-%d")" >> $GITHUB_OUTPUT
+      - name: Update repo list
+        env:
+          # avoid rate limit
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort > devdoc/repo_list.md
+          git commit -m "${{ steps.setup.outputs.title }}" devdoc/repo_list.md
+      - uses: peter-evans/create-pull-request@v5
+        id: update
+        with:
+          branch: update-repo-list
+          title: ${{ steps.setup.outputs.title }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable Automerge
+        run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
