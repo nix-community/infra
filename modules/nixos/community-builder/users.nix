@@ -32,6 +32,11 @@ let
       keys = ./keys/flokli;
     };
 
+    janik = {
+      trusted = true;
+      keys = ./keys/janik;
+    };
+
     jtojnar = {
       trusted = true;
       keys = ./keys/jtojnar;
