@@ -119,6 +119,20 @@ resource "cloudflare_record" "nix-community-org-web01-A" {
   type    = "A"
 }
 
+resource "cloudflare_record" "nix-community-org-web02-A" {
+  zone_id = local.nix_community_zone_id
+  name    = "web02"
+  value   = "46.226.106.114"
+  type    = "A"
+}
+
+resource "cloudflare_record" "nix-community-org-web02-AAAA" {
+  zone_id = local.nix_community_zone_id
+  name    = "web02"
+  value   = "2001:4b98:dc0:43:f816:3eff:fe0c:b15b"
+  type    = "AAAA"
+}
+
 resource "cloudflare_record" "nix-community-org-lemmy-CNAME" {
   zone_id = local.nix_community_zone_id
   name    = "lemmy"
