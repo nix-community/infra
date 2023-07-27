@@ -47,6 +47,11 @@ let
       keys = ./keys/lewo;
     };
 
+    lily = {
+      trusted = true;
+      keys = ./keys/lily;
+    };
+
     raitobezarius = {
       trusted = true;
       keys = ./keys/raitobezarius;
