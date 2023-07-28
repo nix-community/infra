@@ -29,6 +29,7 @@ jobs:
           title: ${{ steps.setup.outputs.title }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Enable Automerge
+        if: steps.update.outputs.pull-request-operation == 'created'
         run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
