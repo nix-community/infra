@@ -21,11 +21,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort > devdoc/repo_list.md
-          git commit -m "${{ steps.setup.outputs.title }}" devdoc/repo_list.md
       - uses: peter-evans/create-pull-request@v5
         id: update
         with:
           branch: update-repo-list
+          commit-message: ${{ steps.setup.outputs.title }}
           title: ${{ steps.setup.outputs.title }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Enable Automerge
