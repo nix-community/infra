@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./flake-inputs.nix
     ./telegraf.nix
   ];
 
