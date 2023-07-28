@@ -7,6 +7,10 @@ in
     ./telegraf.nix
   ];
 
+  # use the same version as srvos
+  # https://github.com/numtide/srvos/blob/main/nixos/common/nix.nix#L4
+  nix.package = pkgs.nixVersions.nix_2_16;
+
   services.nix-daemon.enable = true;
 
   programs.zsh.enable = true;
