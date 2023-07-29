@@ -46,6 +46,15 @@ in
     htop
   ];
 
+  # srvos
+  services.openssh.authorizedKeysFiles = pkgs.lib.mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
+
+  # srvos
+  environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
+    KbdInteractiveAuthentication no
+    PasswordAuthentication no
+  '';
+
   # works but displays error message during activation
   # https://github.com/LnL7/nix-darwin/issues/359
   # sudo systemsetup -settimezone 'GMT'
