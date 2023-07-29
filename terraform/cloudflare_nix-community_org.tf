@@ -162,6 +162,13 @@ resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
   type    = "CNAME"
 }
 
+resource "cloudflare_record" "nix-community-org-prometheus-CNAME" {
+  zone_id = local.nix_community_zone_id
+  name    = "prometheus"
+  value   = "web02.nix-community.org"
+  type    = "CNAME"
+}
+
 resource "cloudflare_record" "nix-community-org-apex-A" {
   zone_id = local.nix_community_zone_id
   name    = "@"
