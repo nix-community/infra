@@ -5,13 +5,13 @@ let
 in
 {
   sops.secrets.pictrs-env = { };
-  sops.secrets.lemmy-secretfile = { };
+  sops.secrets.lemmy-pictrsapikeyfile = { };
 
   services.lemmy = {
     enable = true;
     nginx.enable = true;
     database.createLocally = true;
-    secretFile = config.sops.secrets.lemmy-secretfile.path;
+    pictrsApiKeyFile = config.sops.secrets.lemmy-pictrsapikeyfile.path;
 
     settings = {
       hostname = domain;
