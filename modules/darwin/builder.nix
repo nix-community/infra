@@ -15,7 +15,7 @@
     createHome = true;
     shell = "/bin/zsh";
     description = "User for remote build clients";
-    # keys are copied, not symlinked
+    # if user is removed the keys need to be removed manually from /etc/ssh/authorized_keys.d
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder"
     ];
