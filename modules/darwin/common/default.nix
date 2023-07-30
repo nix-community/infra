@@ -45,8 +45,10 @@
     PasswordAuthentication no
   '';
 
-  # works but displays error message during activation
+  # `time.timeZone` works but displays error message during activation
   # https://github.com/LnL7/nix-darwin/issues/359
-  # sudo systemsetup -settimezone 'GMT'
-  #time.timeZone = "GMT";
+  # https://github.com/LnL7/nix-darwin/blob/16c07487ac9bc59f58b121d13160c67befa3342e/modules/time/default.nix#L14
+  system.activationScripts.postActivation.text = ''
+    systemsetup -settimezone "GMT" >/dev/null 2>&1
+  '';
 }
