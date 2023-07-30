@@ -18,7 +18,7 @@
   system.stateVersion = 4;
 
   # TODO: refactor this to share /users with nixos
-  # keys are copied, not symlinked
+  # if user is removed the keys need to be removed manually from /etc/ssh/authorized_keys.d
   users.users.hetzner.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOG/9rsFqC2tg+W5YZxthW5xhUJEfZ8ShqkRtVe+A6+u" # hercules-ssh-deploy
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKbBp2dH2X3dcU1zh+xW3ZsdYROKpJd3n13ssOP092qE" # mic92
