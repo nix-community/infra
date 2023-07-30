@@ -4,17 +4,11 @@
     withSystem "x86_64-linux" ({ hci-effects, pkgs, self', ... }:
       let
         inherit (config.repo) ref;
-        inherit (hci-effects) mkEffect runCachixDeploy runIf;
+        inherit (hci-effects) mkEffect runIf;
         inherit (pkgs.lib) hasPrefix;
       in
       {
         onPush.default.outputs.effects = {
-          cachix-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
-            (runCachixDeploy {
-              deploy.agents = {
-                build01 = builtins.unsafeDiscardStringContext self.nixosConfigurations.build01.config.system.build.toplevel;
-              };
-            });
           terraform-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
             (mkEffect {
               name = "terraform-deploy";
