@@ -47,6 +47,9 @@
     htop
   ];
 
+  # disable application layer firewall, telegraf needs an incoming connection
+  system.defaults.alf.globalstate = 0;
+
   # srvos
   services.openssh.authorizedKeysFiles = pkgs.lib.mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
 
