@@ -18,6 +18,7 @@
     inputs.self.nixosModules.watch-store
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.remote-builder-build04
+    inputs.self.nixosModules.remote-builder-build05
     inputs.self.nixosModules.remote-builder-darwin02
     inputs.self.nixosModules.remote-builder-darwin03
 

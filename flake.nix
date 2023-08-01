@@ -134,6 +134,10 @@
               system = "aarch64-linux";
               modules = [ ./hosts/build04/configuration.nix ];
             };
+            build05 = nixosSystem {
+              system = "aarch64-linux";
+              modules = [ ./hosts/build05/configuration.nix ];
+            };
             web01 = nixosSystem {
               system = "x86_64-linux";
               modules = [ ./hosts/web01/configuration.nix ];
@@ -162,6 +166,7 @@
           nur-update = ./modules/nixos/nur-update.nix;
           raid = ./modules/nixos/raid.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
+          remote-builder-build05 = ./modules/nixos/remote-builder/build05.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
           remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;
           remote-builder-user = ./modules/nixos/remote-builder/user.nix;

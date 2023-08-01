@@ -37,6 +37,16 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 - RAM: 24GB
 - Drives: 200 GB Block
 
+### `build05`
+
+This machine is meant as an aarch64 builder for our CI.
+
+- Provider: Hetzner
+- Instance type: [CAX41](https://www.hetzner.com/cloud)
+- CPU: 16 VCPUs Ampere Altra
+- RAM: 32GB
+- Drives: 320GB
+
 ### `darwin02`
 
 This machine is meant as an aarch64 and x86_64 builder for our CI.
