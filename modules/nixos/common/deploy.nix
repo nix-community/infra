@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   sops.secrets.cachix-agent-token.sopsFile = ./secrets.yaml;
 
@@ -6,6 +6,4 @@
     enable = true;
     credentialsFile = config.sops.secrets.cachix-agent-token.path;
   };
-
-  system.autoUpgrade.enable = lib.mkForce false;
 }

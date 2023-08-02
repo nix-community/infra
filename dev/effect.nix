@@ -9,12 +9,12 @@
       in
       {
         onPush.default.outputs.effects = {
-          cachix-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
+          cachix-deploy = runIf (ref == "refs/heads/master")
             (runCachixDeploy {
-              deploy.agents = mapAttrs (_: darwin: builtins.unsafeDiscardStringContext darwin.config.system.build.toplevel) self.darwinConfigurations // {
-                web01 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web01.config.system.build.toplevel;
-                web02 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web02.config.system.build.toplevel;
-              };
+              deploy.agents =
+                mapAttrs (_: darwin: builtins.unsafeDiscardStringContext darwin.config.system.build.toplevel) self.darwinConfigurations //
+                mapAttrs (_: nixos: builtins.unsafeDiscardStringContext nixos.config.system.build.toplevel) self.nixosConfigurations;
+              async = true;
             });
           terraform-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
             (mkEffect {
