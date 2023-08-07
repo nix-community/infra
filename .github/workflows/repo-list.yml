@@ -20,7 +20,7 @@ jobs:
           # avoid rate limit
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort > devdoc/repo_list.md
+          gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort > devdoc/repo_list
       - uses: peter-evans/create-pull-request@v5
         id: update
         with:
