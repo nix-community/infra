@@ -2,34 +2,29 @@
 
 ### `build01`
 
-This machine is perfect for running heavy builds.
-
 - Provider: Hetzner
+- Instance type: AX60
 - CPU: AMD Ryzen 7 1700X Eight-Core Processor
 - RAM: 64GB
 - Drives: 2 x 512 GB SATA SSD
 
 ### `build02`
 
-This machine currently just runs r-ryantm/nixpkgs-update.
-
 - Provider: Hetzner
+- Instance type:
 - CPU: AMD Ryzen 7 3700X Eight-Core Processor
 - RAM: 64GB DDR4 ECC
 - Drives: 2 x 1 TB NVME in RAID 1
 
 ### `build03`
 
-This machine is a replacement for build01.
-
 - Provider: Hetzner
+- Instance type: [AX41](https://www.hetzner.com/dedicated-rootserver/ax41-nvme)
 - CPU: AMD Ryzen 5 3600 6-Core Processor
 - RAM: 64GB DDR4 ECC
 - Drives: 2 x 512 GB NVME in RAID 1
 
 ### `build04`
-
-This machine is meant as an aarch64 builder for our hydra instance running on build03.
 
 - Provider: Oracle cloud
 - Instance type: [Ampere A1 Compute](https://www.oracle.com/cloud/compute/arm/)
@@ -39,8 +34,6 @@ This machine is meant as an aarch64 builder for our hydra instance running on bu
 
 ### `darwin02`
 
-This machine is meant as an aarch64 and x86_64 builder for our CI.
-
 - Provider: Hetzner
 - Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
 - CPU: Apple M1
@@ -48,8 +41,6 @@ This machine is meant as an aarch64 and x86_64 builder for our CI.
 - Drives: 256GB SSD
 
 ### `darwin03`
-
-This machine is meant as an aarch64 and x86_64 builder for our CI.
 
 - Provider: Hetzner
 - Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
@@ -59,17 +50,13 @@ This machine is meant as an aarch64 and x86_64 builder for our CI.
 
 ### `web01`
 
-This machine hosts web services such as Lemmy.
-
 - Provider: Hetzner
-- Instance type: CX31
+- Instance type: [CX31](https://www.hetzner.com/cloud)
 - CPU: 2 vCPUs on Intel Xeon
 - RAM: 8GB
 - Drives: 80GB SSD
 
 ### `web02`
-
-This machine hosts monitoring of our machines and services.
 
 - Provider: Gandi
 - Instance type: [V-R4](https://www.gandi.net/en-GB/cloud/vps)
