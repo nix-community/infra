@@ -95,6 +95,7 @@ creation_rules:
   - path_regex: modules/nixos/(cachix|hercules-ci)/.+\.yaml$
     key_groups:
       - age:
+          - *build01
           - *build02
           - *build03
           - *build04

@@ -16,6 +16,8 @@
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.community-builder
+    inputs.self.nixosModules.hercules-ci
+    inputs.self.nixosModules.remote-builder
   ];
 
   # Emulate riscv64 until we have proper builders

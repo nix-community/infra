@@ -161,6 +161,7 @@
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
           remote-builder = ./modules/nixos/remote-builder/default.nix;
+          remote-builder-build01 = modules/nixos/remote-builder/build01.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
           remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;
