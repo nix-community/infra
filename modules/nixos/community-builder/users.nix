@@ -10,59 +10,29 @@ let
     #
     #    youruser.keys = ./keys/youruser;
     #
-    "0x4A6F" = {
-      trusted = true;
-      keys = ./keys/0x4A6F;
-    };
+    "0x4A6F".keys = ./keys/0x4A6F;
 
-    a-kenji = {
-      trusted = true;
-      keys = ./keys/a-kenji;
-    };
+    a-kenji.keys = ./keys/a-kenji;
 
     bobby285271.keys = ./keys/bobby285271;
 
     ckie.keys = ./keys/ckie;
 
-    fgaz = {
-      trusted = true;
-      keys = ./keys/fgaz;
-    };
+    fgaz.keys = ./keys/fgaz;
 
-    flokli = {
-      trusted = true;
-      keys = ./keys/flokli;
-    };
+    flokli.keys = ./keys/flokli;
 
-    janik = {
-      trusted = true;
-      keys = ./keys/janik;
-    };
+    janik.keys = ./keys/janik;
 
-    jtojnar = {
-      trusted = true;
-      keys = ./keys/jtojnar;
-    };
+    jtojnar.keys = ./keys/jtojnar;
 
-    lewo = {
-      trusted = true;
-      keys = ./keys/lewo;
-    };
+    lewo.keys = ./keys/lewo;
 
-    lily = {
-      trusted = true;
-      keys = ./keys/lily;
-    };
+    lily.keys = ./keys/lily;
 
-    raitobezarius = {
-      trusted = true;
-      keys = ./keys/raitobezarius;
-    };
+    raitobezarius.keys = ./keys/raitobezarius;
 
-    schmittlauch = {
-      trusted = true;
-      keys = ./keys/schmittlauch;
-    };
+    schmittlauch.keys = ./keys/schmittlauch;
 
     matthiasbeyer = {
       trusted = false;
