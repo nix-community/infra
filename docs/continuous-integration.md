@@ -21,8 +21,7 @@ To enable hydra builds add a new project in this [file](https://github.com/nix-c
 
 #### Faster GitHub Actions
 
-[namespace](https://cloud.namespace.so) is providing us with Faster GitHub
-Actions, including ARM64 builders.
+[namespace](https://cloud.namespace.so) is providing us with Faster GitHub Actions, including ARM64 builders.
 
 Doc: <https://cloud.namespace.so/docs/features/faster-github-actions>.
 
