@@ -160,6 +160,7 @@
 
           cachix-deploy = ./modules/nixos/cachix-deploy;
           community-builder = ./modules/nixos/community-builder;
+          disko-single-disk-zfs = ./modules/nixos/disko/single-disk-zfs.nix;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra.nix;
