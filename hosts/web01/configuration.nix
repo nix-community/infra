@@ -6,6 +6,7 @@
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-cloud
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.cachix-deploy
     ./samba.nix
     ./postgresql.nix
     ./pgbackrest.nix
