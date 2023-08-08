@@ -110,6 +110,8 @@ creation_rules:
           - *build02
           - *build03
           - *build04
+          - *web01
+          - *web02
           - *mic92
           - *ryantm
           - *zimbatm
