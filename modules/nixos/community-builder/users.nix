@@ -20,6 +20,8 @@ let
       keys = ./keys/a-kenji;
     };
 
+    bobby285271.keys = ./keys/bobby285271;
+
     ckie.keys = ./keys/ckie;
 
     fgaz = {
