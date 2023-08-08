@@ -4,6 +4,7 @@
     ./flake-inputs.nix
     ./reboot.nix
     ./telegraf.nix
+    ./upgrade-diff.nix
     ../../shared/nix-daemon.nix
   ];
 
