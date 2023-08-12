@@ -3,7 +3,7 @@
 {
   services.telegraf.extraConfig.inputs.file =
     let
-      inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) inputs.self;
+      inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) inputs;
       flakeAttrs = input: (lib.mapAttrsToList (n: v: ''${n}="${v}"'')
         (lib.filterAttrs (_: v: (builtins.typeOf v) == "string") input));
       lastModified = name: input: ''
