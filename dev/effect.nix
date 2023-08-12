@@ -13,6 +13,7 @@
             (runCachixDeploy {
               deploy.agents = {
                 web01 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web01.config.system.build.toplevel;
+                web02 = builtins.unsafeDiscardStringContext self.nixosConfigurations.web02.config.system.build.toplevel;
               };
             });
           terraform-deploy = runIf (hasPrefix "refs/heads/gh-readonly-queue/master/" ref)
