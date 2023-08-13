@@ -44,7 +44,7 @@
     '';
 
     postHook = ''
-      cat > /var/log/telegraf/borgbackup-github-org <<EOF
+      cat > /var/log/telegraf/borgbackup-job-github-org.service <<EOF
       task,frequency=daily last_run=$(date +%s)i,state="$([[ $exitStatus == 0 ]] && echo ok || echo fail)"
       EOF
     '';

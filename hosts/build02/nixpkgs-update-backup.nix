@@ -22,7 +22,7 @@
     '';
 
     postHook = ''
-      cat > /var/log/telegraf/borgbackup-nixpkgs-update <<EOF
+      cat > /var/log/telegraf/borgbackup-job-nixpkgs-update.service <<EOF
       task,frequency=daily last_run=$(date +%s)i,state="$([[ $exitStatus == 0 ]] && echo ok || echo fail)"
       EOF
     '';
