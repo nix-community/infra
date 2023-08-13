@@ -19,6 +19,10 @@ let
       serviceConfig.ExecStart = "${lib.getExe pkgs.pgbackrest} --type=${type} --stanza=${stanza} backup";
       serviceConfig.User = "postgres";
       unitConfig.RequiresMountsFor = [ "/mnt/pgbackrest" ];
+    } // lib.optionalAttrs (type == "diff") {
+      after = [ "pgbackrest-incr.service" ];
+    } // lib.optionalAttrs (type == "full") {
+      after = [ "pgbackrest-diff.service" ];
     };
   };
 
