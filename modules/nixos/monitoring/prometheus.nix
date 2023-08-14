@@ -64,7 +64,6 @@
         routes = [
           {
             group_by = [ "host" ];
-            match_re.org = "nix-community";
             group_wait = "5m";
             group_interval = "5m";
             repeat_interval = "4h";
