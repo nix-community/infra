@@ -41,6 +41,11 @@
     ];
   };
 
+  services.telegraf.extraConfig.inputs.prometheus.urls = [
+    "http://localhost:9090/metrics" # prometheus
+    "http://localhost:9093/metrics" # alertmanager
+  ];
+
   services.nginx.virtualHosts."prometheus.nix-community.org" = {
     enableACME = true;
     forceSSL = true;
