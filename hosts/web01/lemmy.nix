@@ -7,8 +7,11 @@ in
   sops.secrets.pictrs-env = { };
   sops.secrets.lemmy-pictrsapikeyfile = { };
 
+  services.telegraf.extraConfig.inputs.prometheus.urls = [ "http://localhost:10002/metrics" ];
+
   services.lemmy = {
     enable = true;
+    server.package = pkgs.lemmy-server.overrideAttrs (_: { cargoBuildFeatures = [ "prometheus-metrics" ]; });
     nginx.enable = true;
     database.createLocally = true;
     pictrsApiKeyFile = config.sops.secrets.lemmy-pictrsapikeyfile.path;
