@@ -89,8 +89,8 @@ lib.mapAttrsToList
       description = "{{$labels.host}} failed to (re)start service {{$labels.name}}";
     };
 
-    matrix_alertmanager_receiver_not_running = {
-      condition = ''systemd_units_active_code{name="matrix-alertmanager-receiver.service", sub!="running"}'';
+    matrix_hook_not_running = {
+      condition = ''systemd_units_active_code{name="matrix-hook.service", sub!="running"}'';
       description = "{{$labels.host}} should have a running {{$labels.name}}";
     };
 
