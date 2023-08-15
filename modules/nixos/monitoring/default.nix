@@ -1,6 +1,6 @@
 {
   imports = [
-    ./matrix-alertmanager.nix
+    ./matrix-hook.nix
     ./prometheus.nix
     ./telegraf.nix
   ];
