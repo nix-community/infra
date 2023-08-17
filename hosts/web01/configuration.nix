@@ -16,4 +16,7 @@
   networking.hostId = "1cfd5aa3";
 
   system.stateVersion = "23.05";
+
+  # enabled by default for stateVersion < 23.11
+  boot.swraid.enable = false;
 }
