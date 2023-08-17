@@ -8,13 +8,14 @@
     ./nixpkgs-update-backup.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.hercules-ci
-    inputs.self.nixosModules.raid
     inputs.self.nixosModules.zfs
   ];
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
   boot.loader.grub.enable = true;
+  boot.swraid.enable = true;
+  boot.loader.grub.extraConfig = "insmod mdraid1x";
 
   networking.hostName = "build02";
   networking.hostId = "af9ccc71";
