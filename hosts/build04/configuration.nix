@@ -23,6 +23,9 @@
   networking.hostName = "build04";
   networking.hostId = "8daf74c0";
 
+  # enabled by default for stateVersion < 23.11
+  boot.swraid.enable = false;
+
   system.stateVersion = "21.11";
   systemd.network = {
     enable = true;
