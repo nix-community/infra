@@ -13,7 +13,6 @@
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
-    inputs.self.nixosModules.raid
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.community-builder
   ];
@@ -24,6 +23,8 @@
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
   boot.loader.grub.enable = true;
+  boot.swraid.enable = true;
+  boot.loader.grub.extraConfig = "insmod mdraid1x";
 
   networking.hostName = "build01";
   networking.hostId = "d2905767";

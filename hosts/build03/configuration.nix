@@ -14,7 +14,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
     inputs.self.nixosModules.hercules-ci
-    inputs.self.nixosModules.raid
     inputs.self.nixosModules.watch-store
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.remote-builder-build04
@@ -29,6 +28,8 @@
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
   boot.loader.grub.enable = true;
+  boot.swraid.enable = true;
+  boot.loader.grub.extraConfig = "insmod mdraid1x";
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3a:3b16::1/64";
 
