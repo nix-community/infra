@@ -54,6 +54,11 @@ let
       keys = ./keys/lily;
     };
 
+    networkexception = {
+      trusted = true;
+      keys = ./keys/networkexception;
+    };
+
     raitobezarius = {
       trusted = true;
       keys = ./keys/raitobezarius;
