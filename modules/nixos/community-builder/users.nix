@@ -32,6 +32,8 @@ let
 
     raitobezarius.keys = ./keys/raitobezarius;
 
+    networkexception.keys = ./keys/networkexception;
+
     schmittlauch.keys = ./keys/schmittlauch;
 
     matthiasbeyer = {
