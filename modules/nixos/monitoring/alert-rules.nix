@@ -52,13 +52,13 @@ lib.mapAttrsToList
     filesystem_full_80percent = {
       condition = ''disk_used_percent{mode!="ro"} >= 80'';
       time = "10m";
-      description = "{{$labels.instance}} device {{$labels.device}} on {{$labels.path}} got less than 20% space left on its filesystem";
+      description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 20% space left on its filesystem";
     };
 
     filesystem_inodes_full = {
       condition = ''disk_inodes_free / disk_inodes_total < 0.10'';
       time = "10m";
-      description = "{{$labels.instance}} device {{$labels.device}} on {{$labels.path}} got less than 10% inodes left on its filesystem";
+      description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 10% inodes left on its filesystem";
     };
 
     daily_task_not_run = {
@@ -101,7 +101,7 @@ lib.mapAttrsToList
     };
 
     load15 = {
-      condition = ''system_load15 / system_n_cpus{instance!~"build.*.nix-community.org:9273"} >= 2.0'';
+      condition = ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
       time = "10m";
       description = "{{$labels.host}} is running with load15 > 1 for at least 5 minutes: {{$value}}";
     };
@@ -122,14 +122,14 @@ lib.mapAttrsToList
     };
 
     telegraf_down = {
-      condition = ''min(up{job=~"telegraf"}) by (source, job, instance, org) == 0'';
+      condition = ''min(up{job=~"telegraf"}) by (job, instance, org) == 0'';
       time = "3m";
-      description = "{{$labels.instance}}: {{$labels.job}} telegraf exporter from {{$labels.source}} is down";
+      description = "{{$labels.host}}: telegraf exporter is down";
     };
 
     http = {
       condition = "http_response_result_code != 0";
-      description = "{{$labels.server}} : http request failed from {{$labels.instance}}: {{$labels.result}}";
+      description = "{{$labels.server}} : http request failed from {{$labels.host}}: {{$labels.result}}";
     };
 
     http_match_failed = {
@@ -139,44 +139,44 @@ lib.mapAttrsToList
 
     connection_failed = {
       condition = "net_response_result_code != 0";
-      description = "{{$labels.server}}: connection to {{$labels.port}}({{$labels.protocol}}) failed from {{$labels.instance}}";
+      description = "{{$labels.server}}: connection to {{$labels.port}}({{$labels.protocol}}) failed from {{$labels.host}}";
     };
 
     zfs_errors = {
       condition = "zfs_arcstats_l2_io_error + zfs_dmu_tx_error + zfs_arcstats_l2_writes_error > 0";
-      description = "{{$labels.instance}} reports: {{$value}} ZFS IO errors";
+      description = "{{$labels.host}} reports: {{$value}} ZFS IO errors";
     };
 
     zpool_status = {
       condition = "zpool_status_errors > 0";
-      description = "{{$labels.instance}} reports: zpool {{$labels.name}} has {{$value}} errors";
+      description = "{{$labels.host}} reports: zpool {{$labels.name}} has {{$value}} errors";
     };
 
     mdraid_degraded_disks = {
       condition = "mdstat_degraded_disks > 0";
-      description = "{{$labels.instance}}: raid {{$labels.dev}} has failed disks";
+      description = "{{$labels.host}}: raid {{$labels.dev}} has failed disks";
     };
 
     # ignore devices that disabled S.M.A.R.T (example if attached via USB)
     # Also ignore build02, build03
     smart_errors = {
-      condition = ''smart_device_health_ok{enabled!="Disabled", instance!~"(build02|build03).nix-community.org:9273"} != 1'';
-      description = "{{$labels.instance}}: S.M.A.R.T reports: {{$labels.device}} ({{$labels.model}}) has errors";
+      condition = ''smart_device_health_ok{enabled!="Disabled", host!~"(build02|build03)"} != 1'';
+      description = "{{$labels.host}}: S.M.A.R.T reports: {{$labels.device}} ({{$labels.model}}) has errors";
     };
 
     oom_kills = {
       condition = "increase(kernel_vmstat_oom_kill[5m]) > 0";
-      description = "{{$labels.instance}}: OOM kill detected";
+      description = "{{$labels.host}}: OOM kill detected";
     };
 
     unusual_disk_read_latency = {
       condition = "rate(diskio_read_time[1m]) / rate(diskio_reads[1m]) > 0.1 and rate(diskio_reads[1m]) > 0";
-      description = "{{$labels.instance}}: Disk latency is growing (read operations > 100ms)";
+      description = "{{$labels.host}}: Disk latency is growing (read operations > 100ms)";
     };
 
     unusual_disk_write_latency = {
       condition = "rate(diskio_write_time[1m]) / rate(diskio_write[1m]) > 0.1 and rate(diskio_write[1m]) > 0";
-      description = "{{$labels.instance}}: Disk latency is growing (write operations > 100ms)";
+      description = "{{$labels.host}}: Disk latency is growing (write operations > 100ms)";
     };
 
     ipv6_dad_check = {
@@ -186,12 +186,12 @@ lib.mapAttrsToList
 
     host_memory_under_memory_pressure = {
       condition = "rate(node_vmstat_pgmajfault[1m]) > 1000";
-      description = "{{$labels.instance}}: The node is under heavy memory pressure. High rate of major page faults: {{$value}}";
+      description = "{{$labels.host}}: The node is under heavy memory pressure. High rate of major page faults: {{$value}}";
     };
 
     ext4_errors = {
       condition = "ext4_errors_value > 0";
-      description = "{{$labels.instance}}: ext4 has reported {{$value}} I/O errors: check /sys/fs/ext4/*/errors_count";
+      description = "{{$labels.host}}: ext4 has reported {{$value}} I/O errors: check /sys/fs/ext4/*/errors_count";
     };
 
     alerts_silences_changed = {
