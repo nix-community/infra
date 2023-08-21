@@ -43,6 +43,5 @@
 ## `opc` is the username from the oracle image. Replace with root if we are booted into nixos.
 # nix run github:numtide/nixos-anywhere#nixos-anywhere -- \
 #   --debug \
-#   --kexec "$(nix build --print-out-paths github:nix-community/nixos-images#packages.aarch64-linux.kexec-installer-nixos-unstable)/nixos-kexec-installer-aarch64-linux.tar.gz" \
 #   --flake '.#build04' \
 #   opc@141.148.235.248
