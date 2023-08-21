@@ -81,7 +81,7 @@
           imports = [ ./dev/shell.nix ./terraform/shell.nix ];
           treefmt.imports = [ ./dev/treefmt.nix ];
 
-          checks = {
+          checks = pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
             nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
             nixosTests-lemmy = pkgs.nixosTests.lemmy;
             nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
