@@ -4,6 +4,7 @@
   environment.systemPackages = [
     pkgs.fd
     pkgs.git
+    pkgs.mosh
     pkgs.nano
     pkgs.nix-output-monitor
     pkgs.nix-tree
