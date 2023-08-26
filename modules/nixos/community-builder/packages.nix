@@ -18,4 +18,12 @@
     pkgs.termite.terminfo
     pkgs.wezterm.terminfo
   ];
+
+  networking.firewall.allowedUDPPortRanges = [
+    # Reserved for mosh
+    {
+      from = 60000;
+      to = 61000;
+    }
+  ];
 }
