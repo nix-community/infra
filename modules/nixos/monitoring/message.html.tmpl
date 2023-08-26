@@ -1,11 +1,11 @@
 <p>
 {{ if eq .Status "firing" }}
 🔥 <strong><font color="#ff0000">FIRING</font></strong>
-{{ else if eq .Status "resolved" }}
-✅ <strong><font color="#33cc33">RESOLVED</font></strong>
-{{ else }}
-<strong><font>{{.Status}}</font></strong>
-{{ end }} <b><code>[{{.Labels.host}}]</code> >> <code>{{.Labels.alertname}}</code></b>
+{{ else if eq .Status "resolved"}} 
+✅ <strong><font color="#00ff00">RESOLVED</font></strong>
+{{ else	}}
+<strong><font>{{.Status}}</font></strong> "
+{{ end }} <code>[{{.Labels.instance}}]</code> >> <b>{{.Labels.alertname}}</b>
 </br>
 {{.Annotations.description}}
-</p>
+</p>  
