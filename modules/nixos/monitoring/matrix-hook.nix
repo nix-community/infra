@@ -34,7 +34,7 @@ in
       MX_HOMESERVER = "https://matrix-client.matrix.org";
       MX_ID = "@nix-community-matrix-bot:matrix.org";
       MX_ROOMID = "!cBybDCkeRlSWfuaFvn:numtide.com";
-      MX_MSG_TEMPLATE = "${./message.html.tmpl}";
+      MX_MSG_TEMPLATE = "${matrixHook}/message.html.tmpl";
     };
     serviceConfig = {
       Type = "simple";
