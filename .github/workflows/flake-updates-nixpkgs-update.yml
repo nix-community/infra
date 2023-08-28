@@ -14,7 +14,7 @@ jobs:
             experimental-features = nix-command flakes
       - name: Update flake.lock
         id: update
-        uses: DeterminateSystems/update-flake-lock@v19
+        uses: DeterminateSystems/update-flake-lock@v20
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           inputs: nixpkgs-update
