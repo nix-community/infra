@@ -55,7 +55,6 @@
           ciSystems = [ "x86_64-linux" "aarch64-linux" ];
           onPush.default.outputs = {
             checks = lib.mkForce self.outputs.checks.x86_64-linux;
-            packages = lib.mkForce self.outputs.packages.x86_64-linux;
           };
         };
 
@@ -87,15 +86,13 @@
             nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
           };
 
-          packages.pages = pkgs.runCommand "pages"
+          hercules-ci.github-pages.settings.contents = pkgs.runCommand "pages"
             {
-              buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
+              buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
             } ''
             cd ${self}
             mkdocs build --strict --site-dir $out
           '';
-
-          hercules-ci.github-pages.settings.contents = config.packages.pages;
         };
 
         flake.darwinConfigurations =

@@ -117,7 +117,7 @@ def mkdocs(c):
     """
     Serve docs (mkdoc serve)
     """
-    c.run("nix develop .#pages -c mkdocs serve")
+    c.run("nix develop .#mkdocs -c mkdocs serve")
 
 
 def get_hosts(hosts: str) -> List[DeployHost]:
