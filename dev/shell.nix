@@ -11,5 +11,10 @@
         ssh-to-age
       ];
     };
+    mkdocs = with pkgs; mkShellNoCC {
+      packages = [
+        python3.pkgs.mkdocs-material
+      ];
+    };
   };
 }
