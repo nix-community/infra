@@ -15,6 +15,7 @@ in
       cifsOpts = [
         "x-systemd.automount"
         "noauto"
+        "_netdev"
         "x-systemd.idle-timeout=60"
         "x-systemd.device-timeout=10s"
         "x-systemd.mount-timeout=10s"
