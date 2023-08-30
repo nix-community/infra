@@ -13,6 +13,7 @@ let
     curl
     getent # used by hub
     cachix
+    apacheHttpd # for rotatelogs, used by worker script
   ];
 
   nixpkgs-update-github-releases' = "${inputs.nixpkgs-update-github-releases}/main.py";
@@ -47,6 +48,9 @@ let
     };
 
     script = ''
+      exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stdout.log' 86400)
+      exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stderr.log' 86400 >&2)
+
       pipe=/var/lib/nixpkgs-update/fifo
 
       if [[ ! -p $pipe ]]; then
