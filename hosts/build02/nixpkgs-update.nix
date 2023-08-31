@@ -49,6 +49,7 @@ let
 
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~workers/"
+      # This is for public logs at https://r.ryantm.com/log/~workers
       exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stdout.log' 86400)
       exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stderr.log' 86400 >&2)
 
