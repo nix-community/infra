@@ -59,6 +59,7 @@
     enable = true;
     webExternalUrl = "https://alertmanager.nix-community.org";
     listenAddress = "[::1]";
+    extraFlags = [ "--cluster.listen-address=''" ];
     configuration = {
       route = {
         receiver = "default";
