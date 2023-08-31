@@ -55,7 +55,6 @@
           ciSystems = [ "x86_64-linux" "aarch64-linux" ];
           onPush.default.outputs = {
             checks = lib.mkForce self.outputs.checks.x86_64-linux;
-            packages = lib.mkForce self.outputs.packages.x86_64-linux;
           };
         };
 
@@ -81,21 +80,19 @@
           imports = [ ./dev/shell.nix ./terraform/shell.nix ];
           treefmt.imports = [ ./dev/treefmt.nix ];
 
-          checks = {
+          checks = pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
             nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
             nixosTests-lemmy = pkgs.nixosTests.lemmy;
             nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
           };
 
-          packages.pages = pkgs.runCommand "pages"
+          hercules-ci.github-pages.settings.contents = pkgs.runCommand "pages"
             {
-              buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
+              buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
             } ''
             cd ${self}
             mkdocs build --strict --site-dir $out
           '';
-
-          hercules-ci.github-pages.settings.contents = config.packages.pages;
         };
 
         flake.darwinConfigurations =
@@ -161,7 +158,6 @@
           hydra = ./modules/nixos/hydra.nix;
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
-          raid = ./modules/nixos/raid.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
           remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;

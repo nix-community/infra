@@ -4,6 +4,7 @@
   environment.systemPackages = [
     pkgs.fd
     pkgs.git
+    pkgs.mosh
     pkgs.nano
     pkgs.nix-output-monitor
     pkgs.nix-tree
@@ -16,5 +17,13 @@
     pkgs.kitty.terminfo
     pkgs.termite.terminfo
     pkgs.wezterm.terminfo
+  ];
+
+  networking.firewall.allowedUDPPortRanges = [
+    # Reserved for mosh
+    {
+      from = 60000;
+      to = 61000;
+    }
   ];
 }

@@ -23,6 +23,9 @@
   networking.hostName = "build04";
   networking.hostId = "8daf74c0";
 
+  # enabled by default for stateVersion < 23.11
+  boot.swraid.enable = false;
+
   system.stateVersion = "21.11";
   systemd.network = {
     enable = true;
@@ -43,6 +46,5 @@
 ## `opc` is the username from the oracle image. Replace with root if we are booted into nixos.
 # nix run github:numtide/nixos-anywhere#nixos-anywhere -- \
 #   --debug \
-#   --kexec "$(nix build --print-out-paths github:nix-community/nixos-images#packages.aarch64-linux.kexec-installer-nixos-unstable)/nixos-kexec-installer-aarch64-linux.tar.gz" \
 #   --flake '.#build04' \
 #   opc@141.148.235.248
