@@ -23,7 +23,7 @@
     # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-update.url = "github:ryantm/nixpkgs-update/074e47e7a813312c758f8f121d82041d312b9413";
+    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update.inputs.mmdoc.follows = "";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
