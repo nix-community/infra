@@ -21,6 +21,8 @@ in
     };
   };
 
+  systemd.services.lemmy.unitConfig.Upholds = [ "pict-rs.service" ];
+
   services.nginx.virtualHosts.${domain} = {
     enableACME = true;
     forceSSL = true;
