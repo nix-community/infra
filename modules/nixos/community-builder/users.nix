@@ -36,6 +36,11 @@ let
 
     schmittlauch.keys = ./keys/schmittlauch;
 
+    matthiasbeyer = {
+      trusted = false;
+      keys = ./keys/matthiasbeyer;
+    };
+
     stephank.keys = ./keys/stephank;
 
     winter.keys = ./keys/winter;
