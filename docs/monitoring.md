@@ -1,2 +1,2 @@
-- [monitoring.nix-community.org/alertmanager](https://monitoring.nix-community.org/alertmanager)
-- [monitoring.nix-community.org/prometheus](https://monitoring.nix-community.org/prometheus)
+- [alertmanager.nix-community.org](https://alertmanager.nix-community.org)
+- [prometheus.nix-community.org](https://prometheus.nix-community.org)
