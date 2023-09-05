@@ -162,9 +162,23 @@ resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
   type    = "CNAME"
 }
 
-resource "cloudflare_record" "nix-community-org-monitoring-CNAME" {
+resource "cloudflare_record" "nix-community-org-alertmanager-CNAME" {
   zone_id = local.nix_community_zone_id
-  name    = "monitoring"
+  name    = "alertmanager"
+  value   = "web02.nix-community.org"
+  type    = "CNAME"
+}
+
+resource "cloudflare_record" "nix-community-org-grafana-CNAME" {
+  zone_id = local.nix_community_zone_id
+  name    = "grafana"
+  value   = "web02.nix-community.org"
+  type    = "CNAME"
+}
+
+resource "cloudflare_record" "nix-community-org-prometheus-CNAME" {
+  zone_id = local.nix_community_zone_id
+  name    = "prometheus"
   value   = "web02.nix-community.org"
   type    = "CNAME"
 }
