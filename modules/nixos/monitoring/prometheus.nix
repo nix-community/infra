@@ -15,7 +15,8 @@
         ];
       }))
     ];
-    webExternalUrl = "https://prometheus.nix-community.org";
+    webExternalUrl = "https://monitoring.nix-community.org/prometheus/";
+    extraFlags = [ "--web.route-prefix=/" ];
     scrapeConfigs = [
       {
         job_name = "telegraf";
@@ -49,17 +50,11 @@
     "http://localhost:9093/metrics" # alertmanager
   ];
 
-  services.nginx.virtualHosts."prometheus.nix-community.org" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/".proxyPass = "http://localhost:9090";
-  };
-
   services.prometheus.alertmanager = {
     enable = true;
-    webExternalUrl = "https://alertmanager.nix-community.org";
+    webExternalUrl = "https://monitoring.nix-community.org/alertmanager/";
     listenAddress = "[::1]";
-    extraFlags = [ "--cluster.listen-address=''" ];
+    extraFlags = [ "--cluster.listen-address=''" "--web.route-prefix=/" ];
     configuration = {
       route = {
         receiver = "default";
@@ -88,11 +83,5 @@
         }
       ];
     };
-  };
-
-  services.nginx.virtualHosts."alertmanager.nix-community.org" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/".proxyPass = "http://localhost:9093";
   };
 }
