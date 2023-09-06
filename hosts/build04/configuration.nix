@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.hercules-ci
-    inputs.self.nixosModules.remote-builder-user
+    inputs.self.nixosModules.remote-builder
   ];
 
   nixpkgs.system = "aarch64-linux";

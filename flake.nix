@@ -144,8 +144,8 @@
         flake.darwinModules = {
           common = ./modules/darwin/common;
 
-          builder = ./modules/darwin/builder.nix;
           hercules-ci = ./modules/darwin/hercules-ci;
+          remote-builder = ./modules/darwin/remote-builder.nix;
         };
 
         flake.nixosModules = {
@@ -158,10 +158,10 @@
           hydra = ./modules/nixos/hydra.nix;
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
+          remote-builder = ./modules/nixos/remote-builder/default.nix;
           remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
           remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
           remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;
-          remote-builder-user = ./modules/nixos/remote-builder/user.nix;
           watch-store = ./modules/nixos/cachix/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
         };
