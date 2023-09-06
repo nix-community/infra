@@ -4,6 +4,21 @@
 
   programs.hclfmt.enable = true;
 
+  programs.mypy = {
+    enable = true;
+    directories = {
+      "tasks" = {
+        directory = ".";
+        files = [ "**/tasks.py" ];
+        modules = [ ];
+        extraPythonPackages = [
+          pkgs.python3.pkgs.deploykit
+          pkgs.python3.pkgs.invoke
+        ];
+      };
+    };
+  };
+
   programs.prettier.enable = true;
 
   settings.formatter = {
