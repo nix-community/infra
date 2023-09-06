@@ -6,7 +6,7 @@ import subprocess
 import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import List
+from typing import Any, List, Union
 
 from deploykit import DeployGroup, DeployHost
 from invoke import task
@@ -42,7 +42,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
 
 
 @task
-def update_sops_files(c):
+def update_sops_files(c: Any) -> None:
     """
     Update all sops yaml and json files according to .sops.yaml rules
     """
@@ -57,7 +57,7 @@ find . \
 
 
 @task
-def print_keys(c, flake_attr: str) -> None:
+def print_keys(c: Any, flake_attr: str) -> None:
     """
     Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01
     """
@@ -82,7 +82,7 @@ def print_keys(c, flake_attr: str) -> None:
 
 
 @task
-def update_terraform(c):
+def update_terraform(c: Any) -> None:
     """
     Update terraform devshell flake
     """
@@ -103,7 +103,7 @@ git commit --all --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
 
 
 @task
-def mkdocs(c):
+def mkdocs(c: Any) -> None:
     """
     Serve docs (mkdoc serve)
     """
@@ -132,15 +132,15 @@ def get_hosts(hosts: str) -> List[DeployHost]:
 
 
 @task
-def deploy(c, hosts=""):
+def deploy(c: Any, hosts: str = "") -> None:
     """
     Deploy to all servers. Use inv deploy --hosts build01 to deploy to a single server
     """
     deploy_nixos(get_hosts(hosts))
 
 
-def decrypt_host_key(flake_attr, tmpdir):
-    def opener(path, flags):
+def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
+    def opener(path: str, flags: int) -> Union[str, int]:
         return os.open(path, flags, 0o400)
 
     t = Path(tmpdir)
@@ -163,7 +163,7 @@ def decrypt_host_key(flake_attr, tmpdir):
 
 
 @task
-def install(c, flake_attr: str, hostname: str) -> None:
+def install(c: Any, flake_attr: str, hostname: str) -> None:
     """
     Decrypt host private key, install with nixos-anywhere. Use inv install --flake-attr build01 --hostname build01.nix-community.org
     """
@@ -180,7 +180,7 @@ def install(c, flake_attr: str, hostname: str) -> None:
 
 
 @task
-def build_local(c, hosts=""):
+def build_local(c: Any, hosts: str = "") -> None:
     """
     Build all servers. Use inv build-local --hosts build01 to build a single server
     """
@@ -226,7 +226,7 @@ def wait_for_port(host: str, port: int, shutdown: bool = False) -> None:
 
 
 @task
-def reboot(c, hosts=""):
+def reboot(c: Any, hosts: str = "") -> None:
     """
     Reboot hosts. example usage: inv reboot --hosts build01,build02
     """
@@ -235,17 +235,18 @@ def reboot(c, hosts=""):
 
         print(f"Wait for {h.host} to shutdown", end="")
         sys.stdout.flush()
-        wait_for_port(h.host, h.port, shutdown=True)
+        port = h.port or 22
+        wait_for_port(h.host, port, shutdown=True)
         print("")
 
         print(f"Wait for {h.host} to start", end="")
         sys.stdout.flush()
-        wait_for_port(h.host, h.port)
+        wait_for_port(h.host, port)
         print("")
 
 
 @task
-def cleanup_gcroots(c, hosts=""):
+def cleanup_gcroots(c: Any, hosts: str = "") -> None:
     g = DeployGroup(get_hosts(hosts))
     g.run("sudo find /nix/var/nix/gcroots/auto -type s -delete")
     g.run("sudo systemctl restart nix-gc")
