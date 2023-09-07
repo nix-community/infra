@@ -4,6 +4,7 @@
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.remote-builder
   ];

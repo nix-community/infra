@@ -13,6 +13,7 @@
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.builder
     inputs.self.nixosModules.zfs
     inputs.self.nixosModules.community-builder
   ];

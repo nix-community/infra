@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.self.darwinModules.common
+    inputs.self.darwinModules.builder
     inputs.self.darwinModules.hercules-ci
     inputs.self.darwinModules.remote-builder
   ];
