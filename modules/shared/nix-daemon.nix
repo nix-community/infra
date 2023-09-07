@@ -25,6 +25,6 @@ in
     nixPath = pkgs.lib.mkForce [ "nixpkgs=${pkgs.path}" ];
 
     gc.automatic = true;
-    gc.options = "--delete-older-than 14d";
+    gc.options = pkgs.lib.mkDefault "--delete-older-than 14d";
   };
 }

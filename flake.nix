@@ -144,6 +144,7 @@
         flake.darwinModules = {
           common = ./modules/darwin/common;
 
+          builder = ./modules/darwin/builder.nix;
           hercules-ci = ./modules/darwin/hercules-ci;
           remote-builder = ./modules/darwin/remote-builder.nix;
         };
@@ -151,6 +152,7 @@
         flake.nixosModules = {
           common = ./modules/nixos/common;
 
+          builder = ./modules/nixos/builder.nix;
           cachix-deploy = ./modules/nixos/cachix-deploy;
           community-builder = ./modules/nixos/community-builder;
           github-org-backup = ./modules/nixos/github-org-backup.nix;

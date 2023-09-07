@@ -13,6 +13,7 @@
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.watch-store
     inputs.self.nixosModules.zfs

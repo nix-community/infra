@@ -7,6 +7,7 @@
     ./nixpkgs-update.nix
     ./nixpkgs-update-backup.nix
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.zfs
   ];
