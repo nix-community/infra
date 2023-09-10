@@ -17,7 +17,7 @@ in
     settings.auto-optimise-store = true;
 
     # auto-free the /nix/store
-    settings.min-free = asGB 30;
+    settings.min-free = asGB 10;
     settings.max-free = asGB 50;
 
     # useful for ad-hoc nix-shell's for debugging
