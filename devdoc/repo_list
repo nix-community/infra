@@ -11,6 +11,7 @@ https://github.com/nix-community/bundix
 https://github.com/nix-community/cache-nix-action
 https://github.com/nix-community/carnix
 https://github.com/nix-community/comma
+https://github.com/nix-community/composer-local-repo-plugin
 https://github.com/nix-community/crate2nix
 https://github.com/nix-community/cross-toolchains.nix
 https://github.com/nix-community/crystal2nix
@@ -136,6 +137,7 @@ https://github.com/nix-community/rkwifibt
 https://github.com/nix-community/rnix-hashes
 https://github.com/nix-community/rnix-lsp
 https://github.com/nix-community/rnix-parser
+https://github.com/nix-community/robotnix
 https://github.com/nix-community/setup.nix
 https://github.com/nix-community/steam-fetcher
 https://github.com/nix-community/talon-nix
