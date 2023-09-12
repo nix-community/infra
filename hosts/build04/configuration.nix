@@ -9,8 +9,6 @@
     inputs.self.nixosModules.remote-builder
   ];
 
-  nixpkgs.system = "aarch64-linux";
-
   # disable kvm/nixos-tests
   nix.settings.system-features = [ "big-parallel" ];
 
