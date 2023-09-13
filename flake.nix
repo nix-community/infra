@@ -153,7 +153,6 @@
           common = ./modules/nixos/common;
 
           builder = ./modules/nixos/builder.nix;
-          cachix-deploy = ./modules/nixos/cachix-deploy;
           community-builder = ./modules/nixos/community-builder;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci;
