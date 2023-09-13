@@ -6,6 +6,4 @@
     enable = true;
     credentialsFile = config.sops.secrets.cachix-agent-token.path;
   };
-
-  system.autoUpgrade.enable = false;
 }
