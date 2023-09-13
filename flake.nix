@@ -51,12 +51,7 @@
       {
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-        herculesCI = { lib, ... }: {
-          ciSystems = [ "x86_64-linux" "aarch64-linux" ];
-          onPush.default.outputs = {
-            checks = lib.mkForce self.outputs.checks.x86_64-linux;
-          };
-        };
+        herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
 
         hercules-ci.flake-update = {
           enable = true;
@@ -76,24 +71,34 @@
 
         hercules-ci.github-pages.branch = "master";
 
-        perSystem = { config, pkgs, ... }: {
-          imports = [ ./dev/shell.nix ./terraform/shell.nix ];
-          treefmt.imports = [ ./dev/treefmt.nix ];
+        perSystem = { config, pkgs, ... }:
+          let
+            defaultPlatform = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+          in
+          {
+            imports = [
+              ./dev/shell.nix
+              ./terraform/shell.nix
+            ];
+            treefmt = {
+              flakeCheck = defaultPlatform;
+              imports = [ ./dev/treefmt.nix ];
+            };
 
-          checks = pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
-            nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
-            nixosTests-lemmy = pkgs.nixosTests.lemmy;
-            nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
+            checks = pkgs.lib.optionalAttrs defaultPlatform {
+              nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
+              nixosTests-lemmy = pkgs.nixosTests.lemmy;
+              nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
+            };
+
+            hercules-ci.github-pages.settings.contents = pkgs.runCommand "pages"
+              {
+                buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
+              } ''
+              cd ${self}
+              mkdocs build --strict --site-dir $out
+            '';
           };
-
-          hercules-ci.github-pages.settings.contents = pkgs.runCommand "pages"
-            {
-              buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
-            } ''
-            cd ${self}
-            mkdocs build --strict --site-dir $out
-          '';
-        };
 
         flake.darwinConfigurations =
           let
