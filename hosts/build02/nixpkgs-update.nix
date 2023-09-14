@@ -14,12 +14,13 @@ let
     getent # used by hub
     cachix
     apacheHttpd # for rotatelogs, used by worker script
+    socat # used by worker script
   ];
 
   nixpkgs-update-github-releases' = "${inputs.nixpkgs-update-github-releases}/main.py";
 
   mkWorker = name: {
-    after = [ "network-online.target" ];
+    after = [ "network-online.target" "nixpkgs-update-supervisor.service" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update ${name} service";
     enable = true;
@@ -53,25 +54,53 @@ let
       exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stdout.log' 86400)
       exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stderr.log' 86400 >&2)
 
-      pipe=/var/lib/nixpkgs-update/fifo
+      socket=/run/nixpkgs-update-supervisor/work.sock
 
-      if [[ ! -p $pipe ]]; then
-        mkfifo $pipe || true
-      fi
+      function run-nixpkgs-update {
+        exit_code=0
+        set -x
+        ${nixpkgs-update-bin} update-batch --pr --outpaths --nixpkgs-review "$attr_path $payload" || exit_code=$?
+        set +x
+        msg="DONE $attr_path $exit_code"
+      }
 
-      exec 8<$pipe
-      while true
-      do
-        if read -u 8 line; then
-          set -x
-          ${nixpkgs-update-bin} update-batch --pr --outpaths --nixpkgs-review "$line" || true
-          set +x
-        fi
+      msg=READY
+      while true; do
+        response=$(echo "$msg" | socat UNIX-CONNECT:"$socket" - || true)
+        case "$response" in
+          "") # connection error; retry
+            sleep 5
+            ;;
+          NOJOBS)
+            msg=READY
+            sleep 60
+            ;;
+          JOB\ *)
+            read -r attr_path payload <<< "''${response#JOB }"
+            # If one worker is initializing the nixpkgs clone, the other will
+            # try to use the incomplete clone, consuming a bunch of jobs and
+            # throwing them away. So we use a crude locking mechanism to
+            # run only one worker when there isn't a nixpkgs directory yet.
+            # Once the directory exists and this initial lock is released,
+            # multiple workers can run concurrently.
+            lockdir="$XDG_CACHE_HOME/.nixpkgs.lock"
+            if [ ! -e "$XDG_CACHE_HOME/nixpkgs" ] && mkdir "$lockdir"; then
+              trap 'rmdir "$lockdir"' EXIT
+              run-nixpkgs-update
+              rmdir "$lockdir"
+              trap - EXIT
+              continue
+            fi
+            while [ -e "$lockdir" ]; do
+              sleep 10
+            done
+            run-nixpkgs-update
+        esac
       done
     '';
   };
 
-  mkFetcher = cmd: {
+  mkFetcher = name: cmd: {
     after = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     path = nixpkgsUpdateSystemDependencies;
@@ -86,21 +115,26 @@ let
       User = "r-ryantm";
       Group = "r-ryantm";
       Restart = "on-failure";
-      RestartSec = "5s";
-      WorkingDirectory = "/var/lib/nixpkgs-update/";
+      RestartSec = "30m";
+      LogsDirectory = "nixpkgs-update/";
+      LogsDirectoryMode = "755";
       StateDirectory = "nixpkgs-update";
       StateDirectoryMode = "700";
       CacheDirectory = "nixpkgs-update/worker";
       CacheDirectoryMode = "700";
     };
+
     script = ''
-      pipe=/var/lib/nixpkgs-update/fifo
-
-      if [[ ! -p $pipe ]]; then
-        mkfifo $pipe || true
-      fi
-
-      ${cmd} | sort -R > $pipe
+      mkdir -p "$LOGS_DIRECTORY/~fetchers"
+      cd "$LOGS_DIRECTORY/~fetchers"
+      while true; do
+        run_name="${name}.$(date +%s).txt"
+        rm -f ${name}.*.txt.part
+        ${cmd} > "$run_name.part"
+        rm -f ${name}.*.txt
+        mv "$run_name.part" "$run_name"
+        sleep 24h
+      done
     '';
   };
 
@@ -142,15 +176,48 @@ in
     script = "${nixpkgs-update-bin} delete-done --delete";
   };
 
-  systemd.services.nixpkgs-update-fetch-repology = mkFetcher "${nixpkgs-update-bin} fetch-repology";
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
-  systemd.services.nixpkgs-update-fetch-github = mkFetcher nixpkgs-update-github-releases';
+  systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" "${nixpkgs-update-bin} fetch-repology";
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
+  systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" nixpkgs-update-github-releases';
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
   systemd.services.nixpkgs-update-worker2 = mkWorker "worker2";
   # Too many workers cause out-of-memory.
   #systemd.services.nixpkgs-update-worker3 = mkWorker "worker3";
   #systemd.services.nixpkgs-update-worker4 = mkWorker "worker4";
+
+  systemd.services.nixpkgs-update-supervisor = {
+    wantedBy = [ "multi-user.target" ];
+    description = "nixpkgs-update supervisor service";
+    enable = true;
+    restartIfChanged = true;
+    path = with pkgs; [
+      apacheHttpd
+      (python311.withPackages (ps: [ ps.asyncinotify ]))
+    ];
+
+    serviceConfig = {
+      Type = "simple";
+      User = "r-ryantm";
+      Group = "r-ryantm";
+      Restart = "on-failure";
+      RestartSec = "5s";
+      LogsDirectory = "nixpkgs-update/";
+      LogsDirectoryMode = "755";
+      RuntimeDirectory = "nixpkgs-update-supervisor/";
+      RuntimeDirectoryMode = "755";
+      StandardOutput = "journal";
+    };
+
+    script = ''
+      mkdir -p "$LOGS_DIRECTORY/~supervisor"
+      # This is for public logs at https://r.ryantm.com/log/~supervisor
+      exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stdout.log' 86400)
+      exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stderr.log' 86400 >&2)
+      # Fetcher output is hosted at https://r.ryantm.com/log/~fetchers
+      python3.11 ${./supervisor.py} "$LOGS_DIRECTORY/~supervisor/state.db" "$LOGS_DIRECTORY/~fetchers" "$RUNTIME_DIRECTORY/work.sock"
+    '';
+  };
 
   systemd.tmpfiles.rules = [
     "L+ /home/r-ryantm/.gitconfig - - - - ${./gitconfig.txt}"
