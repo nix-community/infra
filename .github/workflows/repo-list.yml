@@ -1,3 +1,5 @@
+name: "repo list"
+
 on:
   repository_dispatch:
   workflow_dispatch:
