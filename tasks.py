@@ -19,33 +19,23 @@ os.chdir(ROOT)
 def deploy_nixos(hosts: List[DeployHost]) -> None:
     g = DeployGroup(hosts)
 
-    res = subprocess.run(
-        ["nix", "flake", "metadata", "--json"],
-        check=True,
-        text=True,
-        stdout=subprocess.PIPE,
-    )
-    data = json.loads(res.stdout)
-    path = data["path"]
-
     def deploy(h: DeployHost) -> None:
         if "darwin" in h.host:
             # don't use sudo for darwin-rebuild
             command = "darwin-rebuild"
-            target = f"hetzner@{h.host}"
-            flakedir = "/etc/nix-darwin"
         else:
             command = "sudo nixos-rebuild"
-            target = f"{h.host}"
-            flakedir = "/etc/nixos"
 
-        h.run_local(
-            f"rsync --rsync-path='sudo rsync' --checksum -vaF --delete -e ssh {path}/ {target}:{flakedir}"
+        res = h.run_local(
+            ["nix", "flake", "archive", "--to", f"ssh://{h.host}", "--json"],
+            stdout=subprocess.PIPE,
         )
+        data = json.loads(res.stdout)
+        path = data["path"]
 
         hostname = h.host.replace(".nix-community.org", "")
         h.run(
-            f"{command} switch --option accept-flake-config true --flake {flakedir}#{hostname}"
+            f"{command} switch --option accept-flake-config true --flake {path}#{hostname}"
         )
 
     g.run_function(deploy)
