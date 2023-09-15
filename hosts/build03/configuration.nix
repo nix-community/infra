@@ -23,7 +23,6 @@
 
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hydra
-    inputs.self.nixosModules.nur-update
   ];
 
   # /boot is a mirror raid
