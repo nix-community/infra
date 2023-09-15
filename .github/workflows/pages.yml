@@ -29,7 +29,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build Pages
         run: |
-          nix build .#pages
+          nix build --option accept-flake-config true .#pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
