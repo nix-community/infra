@@ -7,6 +7,11 @@
   programs.prettier.enable = true;
 
   settings.formatter = {
+    actionlint = {
+      command = pkgs.actionlint;
+      includes = [ ".github/workflows/*.yml" ];
+    };
+
     nix = {
       command = "sh";
       options = [
