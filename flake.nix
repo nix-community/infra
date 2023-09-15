@@ -89,7 +89,13 @@
               nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
             };
 
-            packages = pkgs.lib.optionalAttrs defaultPlatform {
+            packages = {
+              cachix-deploy-spec = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
+                agents =
+                  pkgs.lib.mapAttrs (_: darwin: builtins.unsafeDiscardStringContext darwin.config.system.build.toplevel) self.darwinConfigurations //
+                    pkgs.lib.mapAttrs (_: nixos: builtins.unsafeDiscardStringContext nixos.config.system.build.toplevel) self.nixosConfigurations;
+              });
+            } // pkgs.lib.optionalAttrs defaultPlatform {
               pages = pkgs.runCommand "pages"
                 {
                   buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
