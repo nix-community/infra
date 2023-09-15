@@ -34,11 +34,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
-    hercules-ci-effects.inputs.hercules-ci-agent.follows = "";
-    hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -51,10 +46,9 @@
       {
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
-        herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
+        flake.herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
 
         imports = [
-          inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
         ];
 
