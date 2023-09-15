@@ -53,16 +53,6 @@
 
         herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
 
-        hercules-ci.flake-update = {
-          enable = true;
-          createPullRequest = true;
-          autoMergeMethod = "rebase";
-          when = {
-            hour = [ 2 ];
-            dayOfWeek = [ "Mon" "Thu" ];
-          };
-        };
-
         imports = [
           inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
