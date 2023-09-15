@@ -69,8 +69,6 @@
           ./dev/effect.nix
         ];
 
-        hercules-ci.github-pages.branch = "master";
-
         perSystem = { config, pkgs, ... }:
           let
             defaultPlatform = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
@@ -91,13 +89,15 @@
               nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
             };
 
-            hercules-ci.github-pages.settings.contents = pkgs.runCommand "pages"
-              {
-                buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
-              } ''
-              cd ${self}
-              mkdocs build --strict --site-dir $out
-            '';
+            packages = pkgs.lib.optionalAttrs defaultPlatform {
+              pages = pkgs.runCommand "pages"
+                {
+                  buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
+                } ''
+                cd ${self}
+                mkdocs build --strict --site-dir $out
+              '';
+            };
           };
 
         flake.darwinConfigurations =
