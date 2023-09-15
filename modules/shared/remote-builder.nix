@@ -6,7 +6,7 @@ in
 {
   users.users.nix.openssh.authorizedKeys.keys = [
     # use nix-store for hydra which doesn't support ssh-ng
-    ''command="${config.nix.package}/bin/nix-store --serve --write",no-agent-forwarding,no-port-forwarding,no-pty,no-user-rc,no-X11-forwarding ${key}''
+    ''restrict,command="${config.nix.package}/bin/nix-store --serve --write" ${key}''
   ];
 
   nix.settings.trusted-users = [ "nix" ];
