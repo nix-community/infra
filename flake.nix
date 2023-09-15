@@ -66,7 +66,6 @@
         imports = [
           inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
-          ./dev/effect.nix
         ];
 
         hercules-ci.github-pages.branch = "master";
