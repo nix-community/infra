@@ -56,7 +56,6 @@
         imports = [
           inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
-          ./dev/effect.nix
         ];
 
         perSystem = { config, pkgs, ... }:
