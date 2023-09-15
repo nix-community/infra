@@ -14,7 +14,7 @@ jobs:
       - name: setup
         id: setup
         run: |
-          echo "title=devdoc: update repo list $(date -u +"%Y-%m-%d")" >> $GITHUB_OUTPUT
+          echo "title=devdoc: update repo list $(date -u +"%Y-%m-%d")" >> "$GITHUB_OUTPUT"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
       - name: Update repo list
