@@ -31,6 +31,9 @@
     "@admin"
   ];
 
+  # shouldn't need to set this for a nix multi-user install
+  nix.gc.user = "root";
+
   # srvos
   nix.settings.builders-use-substitutes = true;
 
