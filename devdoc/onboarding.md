@@ -10,7 +10,7 @@
 
   - `owner` will give them admin access to [Hercules CI](https://hercules-ci.com/github/nix-community).
 
-- Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
+- Add their email in [terraform/locals.tf](../terraform/admin/locals.tf), this will give them access to:
 
   - email forwarded from the `admin@nix-community.org` address
   - [Cloudflare](https://dash.cloudflare.com/login)
