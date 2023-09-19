@@ -49,10 +49,10 @@ lib.mapAttrsToList
       description = "Prometheus encountered {{ $value }} template text expansion failures\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}";
     };
 
-    filesystem_full_80percent = {
-      condition = ''disk_used_percent{mode!="ro"} >= 80'';
+    filesystem_full_85percent = {
+      condition = ''disk_used_percent{mode!="ro"} >= 85'';
       time = "10m";
-      description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 20% space left on its filesystem";
+      description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 15% space left on its filesystem";
     };
 
     filesystem_inodes_full = {
