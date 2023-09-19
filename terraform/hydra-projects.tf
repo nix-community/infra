@@ -49,7 +49,7 @@ resource "hydra_jobset" "emacs_overlay" {
 
   check_interval    = 1800
   scheduling_shares = 3000
-  keep_evaluations  = 3
+  keep_evaluations  = 1
 
   email_notifications = false
 }
