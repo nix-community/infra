@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../shared/remote-builder.nix
+    ../shared/remote-builder.nix
   ];
 
   users.users.nix = {
