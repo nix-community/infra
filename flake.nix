@@ -148,10 +148,8 @@
           hydra = ./modules/nixos/hydra.nix;
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
-          remote-builder = ./modules/nixos/remote-builder/default.nix;
-          remote-builder-build04 = ./modules/nixos/remote-builder/build04.nix;
-          remote-builder-darwin02 = ./modules/nixos/remote-builder/darwin02.nix;
-          remote-builder-darwin03 = ./modules/nixos/remote-builder/darwin03.nix;
+          remote-builder = ./modules/nixos/remote-builder.nix;
+          remote-workers = ./modules/nixos/remote-workers.nix;
           watch-store = ./modules/nixos/cachix/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
         };
