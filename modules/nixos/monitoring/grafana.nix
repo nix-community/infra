@@ -1,9 +1,4 @@
-{
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
+{ config, inputs, ... }:
 {
   systemd.services.grafana.after = [ "prometheus.service" ];
 
@@ -68,8 +63,6 @@
   ];
 
   services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_17;
     ensureDatabases = [ "grafana" ];
     ensureUsers = [
       {

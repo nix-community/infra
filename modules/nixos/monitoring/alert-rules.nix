@@ -5,6 +5,7 @@
       (lib.genAttrs
         [
           "borgbackup-job-github-org.service"
+          "borgbackup-job-postgresql.service"
         ]
         (name: {
           expr = ''absent_over_time(task_last_run{name="${name}"}[1d])'';
