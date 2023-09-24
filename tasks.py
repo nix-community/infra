@@ -174,7 +174,7 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
         decrypt_host_key(flake_attr, tmpdir)
         flags = "--debug --no-reboot --option accept-flake-config true"
         c.run(
-            f"nix run github:numtide/nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
+            f"nix run --inputs-from . nixpkgs#nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
             echo=True,
         )
 
