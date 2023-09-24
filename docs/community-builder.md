@@ -1,6 +1,8 @@
-`build01.nix-community.org`
+We provide an `x86_64-linux` machine as a public remote builder for the nix community.
 
-We provide an `x86_64-linux` build machine as a public remote builder for the nix community.
+```
+build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
+```
 
 #### Access
 
@@ -12,8 +14,8 @@ If you happen to have your NixOS & home-manager configurations intertwined but y
 
 ```console
 # somehow get the .drv of the above expression into $path
-$ nix copy --to ssh://build01.nix-community.org --derivation $path
-$ ssh build01.nix-community.org
+$ nix copy --to ssh://build-box.nix-community.org --derivation $path
+$ ssh build-box.nix-community.org
 $ nix-store -r $path
 $ $path
 ```
