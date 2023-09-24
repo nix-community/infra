@@ -43,7 +43,7 @@
 }
 
 ## `opc` is the username from the oracle image. Replace with root if we are booted into nixos.
-# nix run github:numtide/nixos-anywhere#nixos-anywhere -- \
+# nix run --inputs-from . nixpkgs#nixos-anywhere -- \
 #   --debug \
 #   --flake '.#build04' \
 #   opc@141.148.235.248
