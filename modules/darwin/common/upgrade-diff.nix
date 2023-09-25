@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   # set $HOME to avoid 'warning: $HOME is not owned by you'
   # https://github.com/NixOS/nix/issues/6834
@@ -6,7 +6,7 @@
   system.activationScripts.preActivation.text = ''
     if [[ -e /run/current-system ]]; then
       echo "--- diff to current-system"
-      HOME=/var/root ${config.nix.package}/bin/nix --extra-experimental-features nix-command store diff-closures /run/current-system "$systemConfig"
+      HOME=/var/root ${pkgs.nvd}/bin/nvd --nix-bin-dir=${config.nix.package}/bin diff /run/current-system "$systemConfig"
       echo "---"
     fi
   '';
