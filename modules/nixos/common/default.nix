@@ -4,6 +4,7 @@
     ./auto-upgrade.nix
     ./deploy.nix
     ../../shared/nix-daemon.nix
+    ./promtail.nix
     ./reboot.nix
     ./security.nix
     ./sops-nix.nix
