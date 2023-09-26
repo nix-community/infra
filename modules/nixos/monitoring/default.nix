@@ -2,6 +2,7 @@
 {
   imports = [
     ./grafana.nix
+    ./loki.nix
     ./matrix-hook.nix
     ./prometheus.nix
     ./telegraf.nix
@@ -19,6 +20,11 @@
     };
     locations."/grafana/" = {
       proxyPass = "http://localhost:3000/";
+      proxyWebsockets = true;
+    };
+    locations."/loki/" = {
+      basicAuthFile = config.sops.secrets.nginx-basic-auth-file.path;
+      proxyPass = "http://localhost:3100/";
       proxyWebsockets = true;
     };
     locations."/prometheus/".proxyPass = "http://localhost:9090/";

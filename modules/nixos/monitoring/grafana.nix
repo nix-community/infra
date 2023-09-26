@@ -50,6 +50,11 @@
         isDefault = true;
         url = "http://localhost:9090";
       }
+      {
+        name = "loki";
+        type = "loki";
+        url = "http://localhost:3100";
+      }
     ];
   };
 
