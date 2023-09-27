@@ -13,6 +13,7 @@
           device = [ "rpc_pipefs" "lxcfs" "nsfs" "borgfs" ];
         };
         diskio = { };
+        internal = { };
       };
       outputs.prometheus_client = {
         listen = ":9273";
