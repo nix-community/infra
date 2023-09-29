@@ -19,7 +19,8 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v20
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-      - name: Enable Automerge
-        run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+      # disable temporarily, can be reenabled when hercules fork action is removed
+      #- name: Enable Automerge
+      #  run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
+      #  env:
+      #    GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
