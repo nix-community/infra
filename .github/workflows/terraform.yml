@@ -1,0 +1,40 @@
+name: "terraform"
+
+on: status
+
+concurrency:
+  group: "terraform"
+  cancel-in-progress: false
+
+jobs:
+  terraform-deploy:
+    runs-on: ubuntu-latest
+    if: github.event.context == 'buildbot/nix-eval' && github.event.state == 'success' && startsWith(github.ref, 'refs/heads/gh-readonly-queue/master/')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            terraform:
+              - 'terraform/**'
+      - name: Install Nix
+        if: steps.changes.outputs.terraform == 'true'
+        uses: cachix/install-nix-action@v23
+        with:
+          extra_nix_config: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+            max-jobs = 0
+      - name: Deploy Terraform
+        if: steps.changes.outputs.terraform == 'true'
+        env:
+          SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
+          TF_IN_AUTOMATION: 1
+          TF_INPUT: 0
+        working-directory: terraform
+        run: |
+          nix develop .#terraform -c terraform init
+          nix develop .#terraform -c terraform validate
+          nix develop .#terraform -c terraform apply -auto-approve
