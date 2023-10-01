@@ -42,6 +42,14 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
 
 
 @task
+def sotp(c: Any, acct: str) -> None:
+    """
+    Get TOTP token from sops
+    """
+    c.run(f"nix develop .#sotp -c sotp {acct}")
+
+
+@task
 def update_sops_files(c: Any) -> None:
     """
     Update all sops yaml and json files according to .sops.yaml rules
