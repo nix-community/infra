@@ -33,7 +33,7 @@ let
       Type = "simple";
       User = "r-ryantm";
       Group = "r-ryantm";
-      Restart = "on-abort";
+      Restart = "on-failure";
       RestartSec = "5s";
       WorkingDirectory = "/var/lib/nixpkgs-update/worker";
       StateDirectory = "nixpkgs-update/worker";
@@ -85,7 +85,7 @@ let
       Type = "simple";
       User = "r-ryantm";
       Group = "r-ryantm";
-      Restart = "on-abort";
+      Restart = "on-failure";
       RestartSec = "5s";
       WorkingDirectory = "/var/lib/nixpkgs-update/";
       StateDirectory = "nixpkgs-update";
