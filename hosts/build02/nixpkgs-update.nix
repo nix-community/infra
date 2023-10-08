@@ -138,6 +138,11 @@ let
     '';
   };
 
+  fetch-updatescript-cmd = pkgs.writeScriptBin "fetch-updatescript-cmd" ''
+    ${pkgs.git}/bin/git -C /var/cache/nixpkgs-update/updatescript/nixpkgs pull upstream
+    ${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}
+  '';
+
 in
 {
   users.groups.r-ryantm = { };
@@ -177,7 +182,8 @@ in
   };
 
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" "${nixpkgs-update-bin} fetch-repology";
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
+
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${fetch-updatescript-cmd}/bin/fetch-updatescript-cmd";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" nixpkgs-update-github-releases';
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
