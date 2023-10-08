@@ -5,8 +5,10 @@ result-*
 # Terraform
 .terraform
 .terraform.*
-/terraform/.direnv
 
 # needed for treefmt
 !.github
 !.sops.yaml
+
+# direnv
+.direnv/
