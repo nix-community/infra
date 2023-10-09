@@ -139,7 +139,7 @@ let
   };
 
   fetch-updatescript-cmd = pkgs.writeScriptBin "fetch-updatescript-cmd" ''
-    ${pkgs.git}/bin/git -C /var/cache/nixpkgs-update/updatescript/nixpkgs pull upstream
+    ${pkgs.git}/bin/git -C /var/cache/nixpkgs-update/updatescript/nixpkgs pull --quiet upstream
     ${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}
   '';
 
