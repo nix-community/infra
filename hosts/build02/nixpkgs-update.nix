@@ -66,7 +66,7 @@ let
 
       msg=READY
       while true; do
-        response=$(echo "$msg" | socat UNIX-CONNECT:"$socket" - || true)
+        response=$(echo "$msg" | socat -t5 UNIX-CONNECT:"$socket" - || true)
         case "$response" in
           "") # connection error; retry
             sleep 5
