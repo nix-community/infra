@@ -67,8 +67,7 @@
             };
 
             checks = pkgs.lib.optionalAttrs defaultPlatform {
-              # FIXME: this doesn't evaluate with pure evaluation yet.
-              #nixosTests-buildbot = release.tests.buildbot;
+              nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
               nixosTests-lemmy = pkgs.nixosTests.lemmy;
               nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
