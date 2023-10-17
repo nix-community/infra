@@ -19,12 +19,12 @@
         tags.host = "web01.nix-community.org";
         tags.org = "nix-community";
       }
-      {
-        urls = [ "https://r.ryantm.com/log/" ];
-        response_string_match = "Index of /log/";
-        tags.host = "build02.nix-community.org";
-        tags.org = "nix-community";
-      }
+      #{
+      #  urls = [ "https://r.ryantm.com/log/" ];
+      #  response_string_match = "Index of /log/";
+      #  tags.host = "build02.nix-community.org";
+      #  tags.org = "nix-community";
+      #}
     ];
     net_response =
       let
