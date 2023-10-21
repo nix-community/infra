@@ -7,6 +7,18 @@ locals {
   ]
 }
 
+# blocks other CAs from issuing certificates for the domain
+resource "cloudflare_record" "nix-community-org-caa" {
+  zone_id = local.nix_community_zone_id
+  name    = "@"
+  type    = "CAA"
+  data {
+    flags = "0"
+    tag   = "issue"
+    value = "letsencrypt.org"
+  }
+}
+
 resource "cloudflare_record" "nix-community-org-build01-A" {
   zone_id = local.nix_community_zone_id
   name    = "build01"
