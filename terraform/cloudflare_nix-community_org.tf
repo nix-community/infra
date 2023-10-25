@@ -159,6 +159,13 @@ resource "cloudflare_record" "nix-community-org-build-box-CNAME" {
   type    = "CNAME"
 }
 
+resource "cloudflare_record" "nix-community-org-buildbot-CNAME" {
+  zone_id = local.nix_community_zone_id
+  name    = "buildbot"
+  value   = "build03.nix-community.org"
+  type    = "CNAME"
+}
+
 # Used by nix-community/nixpkgs-docker
 resource "cloudflare_record" "nix-community-org-docker-CNAME" {
   zone_id = local.nix_community_zone_id
