@@ -2,6 +2,12 @@
   services.telegraf.extraConfig.inputs = {
     http_response = [
       {
+        urls = [ "https://buildbot.nix-community.org/" ];
+        response_string_match = "Buildbot Web UI";
+        tags.host = "build03.nix-community.org";
+        tags.org = "nix-community";
+      }
+      {
         urls = [ "https://hydra.nix-community.org/" ];
         response_string_match = "hosted on this server";
         tags.host = "build03.nix-community.org";

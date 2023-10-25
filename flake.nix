@@ -28,6 +28,11 @@
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
 
+    buildbot-nix.url = "github:Mic92/buildbot-nix/8df1b9a293973d2e34862d4870fb546af1cae8e4";
+    buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
+    buildbot-nix.inputs.flake-parts.follows = "flake-parts";
+    buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
+
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -149,6 +154,8 @@
         flake.nixosModules = {
           common = ./modules/nixos/common;
 
+          buildbot-master = ./modules/nixos/buildbot-master;
+          buildbot-worker = ./modules/nixos/buildbot-worker;
           builder = ./modules/nixos/builder.nix;
           community-builder = ./modules/nixos/community-builder;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
