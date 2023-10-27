@@ -1,12 +1,20 @@
-We provide an `x86_64-linux` machine as a public remote builder for the nix community.
+We provide machines as public builders for the nix community.
+
+`x86_64-linux`
 
 ```
 build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
 ```
 
+`aarch64-darwin`, `x86_64-darwin`
+
+```
+darwin-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztzAtVXT+NBMITU+JLXcIE5HTEOd7Q3fQNu80S
+```
+
 #### Access
 
-If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix). Don't keep any important data in your home! We will regularly delete `/home` without further notice.
+If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`nixos/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix) or [`darwin/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/darwin/community-builder/users.nix) Don't keep any important data in your home! We will regularly delete `/home` without further notice.
 
 #### Using your NixOS home-manager configuration on the hosts
 
