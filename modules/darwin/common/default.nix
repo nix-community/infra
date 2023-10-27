@@ -57,6 +57,7 @@
   environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
     KbdInteractiveAuthentication no
     PasswordAuthentication no
+    StrictModes no
   '';
 
   time.timeZone = "GMT";
