@@ -136,6 +136,7 @@
           common = ./modules/darwin/common;
 
           builder = ./modules/darwin/builder.nix;
+          community-builder = ./modules/darwin/community-builder;
           hercules-ci = ./modules/darwin/hercules-ci;
           remote-builder = ./modules/darwin/remote-builder.nix;
         };
