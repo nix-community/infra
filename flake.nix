@@ -38,6 +38,9 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     tf-pkgs.url = "github:NixOS/nixpkgs/982b24c40e743793c966b47b3bb3699881489ae0";
+
+    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
+    hercules-ci-agent.inputs.flake-parts.follows = "flake-parts";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
