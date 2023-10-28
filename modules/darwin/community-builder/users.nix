@@ -115,7 +115,8 @@ in
 
   users.knownUsers = builtins.map (u: u.name) users;
 
-  users.forceRecreate = true;
+  # breaks cachix deploy
+  #users.forceRecreate = true;
 
   environment.etc = builtins.listToAttrs (builtins.map
     (u: {
