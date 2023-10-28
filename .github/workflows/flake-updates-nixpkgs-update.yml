@@ -16,7 +16,6 @@ jobs:
         id: update
         uses: DeterminateSystems/update-flake-lock@v20
         with:
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           inputs: nixpkgs-update
       - name: Enable Automerge
         run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
