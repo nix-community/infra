@@ -68,7 +68,7 @@
             };
 
             checks = pkgs.lib.optionalAttrs defaultPlatform {
-              #nixosTests-buildbot = pkgs.nixosTests.buildbot;
+              nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
               #nixosTests-lemmy = pkgs.nixosTests.lemmy;
               nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
