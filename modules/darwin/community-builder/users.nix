@@ -98,6 +98,11 @@ let
       trusted = true;
       uid = 542;
     }
+    {
+      name = "glepage";
+      trusted = true;
+      uid = 543;
+    }
   ];
 in
 {
