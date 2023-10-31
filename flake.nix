@@ -58,7 +58,7 @@
           inputs.treefmt-nix.flakeModule
         ];
 
-        perSystem = { config, pkgs, ... }:
+        perSystem = { config, lib, pkgs, self', system, ... }:
           let
             defaultPlatform = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
           in
@@ -72,12 +72,20 @@
               imports = [ ./dev/treefmt.nix ];
             };
 
-            checks = pkgs.lib.optionalAttrs defaultPlatform {
-              nixosTests-buildbot = pkgs.nixosTests.buildbot;
-              nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
-              #nixosTests-lemmy = pkgs.nixosTests.lemmy;
-              nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
-            };
+            checks =
+              let
+                darwinConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair name config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
+                devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
+                nixosConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
+                packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") self'.packages;
+              in
+              darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations // packages
+              // pkgs.lib.optionalAttrs defaultPlatform {
+                nixosTests-buildbot = pkgs.nixosTests.buildbot;
+                nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
+                #nixosTests-lemmy = pkgs.nixosTests.lemmy;
+                nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
+              };
 
             packages = pkgs.lib.optionalAttrs defaultPlatform {
               cachix-deploy-spec = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
