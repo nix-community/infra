@@ -103,6 +103,11 @@ let
       trusted = true;
       uid = 543;
     }
+    {
+      name = "anthonyroussel";
+      trusted = true;
+      uid = 544;
+    }
   ];
 in
 {
