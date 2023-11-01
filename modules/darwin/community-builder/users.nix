@@ -108,6 +108,11 @@ let
       trusted = true;
       uid = 544;
     }
+    {
+      name = "sgo";
+      trusted = true;
+      uid = 545;
+    }
   ];
 in
 {
