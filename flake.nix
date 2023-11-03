@@ -19,7 +19,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs-stable.follows = "";
-    srvos.url = "github:numtide/srvos";
+    srvos.url = "github:nix-community/srvos";
     # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
