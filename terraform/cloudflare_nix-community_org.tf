@@ -96,12 +96,12 @@ resource "cloudflare_record" "nix-community-org-darwin02-A" {
   type    = "A"
 }
 
-#resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
-#  zone_id = local.nix_community_zone_id
-#  name    = "darwin02"
-#  value   = "2001:bc8:a01:3:1698:77ff:fe3a:d38f"
-#  type    = "AAAA"
-#}
+resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
+  zone_id = local.nix_community_zone_id
+  name    = "darwin02"
+  value   = "2a01:4f8:262:24af::1"
+  type    = "AAAA"
+}
 
 resource "cloudflare_record" "nix-community-org-darwin03-A" {
   zone_id = local.nix_community_zone_id
@@ -110,12 +110,12 @@ resource "cloudflare_record" "nix-community-org-darwin03-A" {
   type    = "A"
 }
 
-#resource "cloudflare_record" "nix-community-org-darwin03-AAAA" {
-#  zone_id = local.nix_community_zone_id
-#  name    = "darwin03"
-#  value   = "?"
-#  type    = "AAAA"
-#}
+resource "cloudflare_record" "nix-community-org-darwin03-AAAA" {
+  zone_id = local.nix_community_zone_id
+  name    = "darwin03"
+  value   = "2a01:4f8:261:135a::1"
+  type    = "AAAA"
+}
 
 resource "cloudflare_record" "nix-community-org-web01-AAAA" {
   zone_id = local.nix_community_zone_id
