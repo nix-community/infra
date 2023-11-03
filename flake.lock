@@ -246,13 +246,13 @@
       "locked": {
         "lastModified": 1698936270,
         "narHash": "sha256-c6s5BZo3RB9t9/rczA4+uFykjYET3DnOklsIu9cv0kg=",
-        "owner": "numtide",
+        "owner": "nix-community",
         "repo": "srvos",
         "rev": "ab7746b135559501e59ad6900ea1e48799903005",
         "type": "github"
       },
       "original": {
-        "owner": "numtide",
+        "owner": "nix-community",
         "repo": "srvos",
         "type": "github"
       }
