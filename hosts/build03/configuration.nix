@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   # Boot recovery:
   # Activate 64-bit Rescue system in https://robot.your-server.de/server
@@ -22,6 +22,8 @@
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hydra
   ];
+
+  services.postgresql.package = pkgs.postgresql_12;
 
   # /boot is a mirror raid
   boot.loader.grub.devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
