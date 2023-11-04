@@ -1,4 +1,4 @@
-{ config, inputs, lib, ... }:
+{ config, inputs, ... }:
 let
   buildbotSecrets.sopsFile = ./secrets.yaml;
 in
@@ -40,10 +40,4 @@ in
     "cachix-auth-token:${config.sops.secrets.cachix-auth-token.path}"
     "cachix-name:${config.sops.secrets.cachix-name.path}"
   ];
-
-  services.buildbot-master.home = "/var/lib/buildbot";
-  users.users.buildbot = {
-    isNormalUser = lib.mkForce false;
-    isSystemUser = true;
-  };
 }
