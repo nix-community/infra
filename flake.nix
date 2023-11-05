@@ -58,7 +58,7 @@
           inputs.treefmt-nix.flakeModule
         ];
 
-        perSystem = { config, lib, pkgs, self', system, ... }:
+        perSystem = { config, inputs', lib, pkgs, self', system, ... }:
           let
             defaultPlatform = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
           in
@@ -82,6 +82,8 @@
               darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations // packages
               // pkgs.lib.optionalAttrs defaultPlatform {
                 nixosTests-buildbot = pkgs.nixosTests.buildbot;
+                nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
+                nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
                 nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
                 #nixosTests-lemmy = pkgs.nixosTests.lemmy;
                 nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
