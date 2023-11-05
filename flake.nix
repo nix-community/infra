@@ -92,11 +92,13 @@
               };
 
             packages = pkgs.lib.optionalAttrs defaultPlatform {
-              cachix-deploy-spec = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
-                agents = {
-                  # hercules-ci-agent IFD breaks darwin02
-                  darwin03 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin03.config.system.build.toplevel;
-                };
+              cachix-deploy-spec-darwin = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
+                agents =
+                  pkgs.lib.mapAttrs (_: darwin: builtins.unsafeDiscardStringContext darwin.config.system.build.toplevel) self.darwinConfigurations;
+              });
+              cachix-deploy-spec-nixos = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
+                agents =
+                  pkgs.lib.mapAttrs (_: nixos: builtins.unsafeDiscardStringContext nixos.config.system.build.toplevel) self.nixosConfigurations;
               });
               pages = pkgs.runCommand "pages"
                 {
