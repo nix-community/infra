@@ -19,14 +19,6 @@ To enable hercules builds go to `https://hercules-ci.com/github/nix-community/$R
 
 To enable hydra builds add a new project in this [file](https://github.com/nix-community/infra/blob/master/terraform/hydra-projects.tf).
 
-#### Faster GitHub Actions
-
-[namespace](https://cloud.namespace.so) is providing us with Faster GitHub Actions, including ARM64 builders.
-
-Doc: <https://cloud.namespace.so/docs/features/faster-github-actions>.
-
-Limits: see the "Team plan" on <https://cloud.namespace.so/pricing>
-
 #### Cache
 
 [https://nix-community.cachix.org/](https://nix-community.cachix.org/)
