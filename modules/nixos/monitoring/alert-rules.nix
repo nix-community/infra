@@ -106,13 +106,8 @@ lib.mapAttrsToList
       description = "{{$labels.host}} is running with load15 > 1 for at least 5 minutes: {{$value}}";
     };
 
-    localhost_reboot = {
-      condition = ''system_uptime{instance="localhost:9273"} < 900'';
-      description = "{{$labels.host}} just rebooted";
-    };
-
     reboot = {
-      condition = ''system_uptime{instance!="localhost:9273"} < 300'';
+      condition = ''system_uptime < 300'';
       description = "{{$labels.host}} just rebooted";
     };
 
