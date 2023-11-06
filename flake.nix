@@ -22,6 +22,7 @@
     srvos.url = "github:nix-community/srvos";
     # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
     srvos.inputs.nixpkgs.follows = "nixpkgs";
+    srvos.inputs.nixos-23_05.follows = "";
 
     nixpkgs-update.url = "github:qowoz/nixpkgs-update/wait60";
     nixpkgs-update.inputs.mmdoc.follows = "";
