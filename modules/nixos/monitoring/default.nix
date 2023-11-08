@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
   imports = [
+    inputs.srvos.nixosModules.roles-prometheus
+    ./alert-rules.nix
     ./grafana.nix
     ./matrix-hook.nix
     ./prometheus.nix
