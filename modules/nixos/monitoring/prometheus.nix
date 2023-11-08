@@ -5,16 +5,7 @@
 
   services.prometheus = {
     enable = true;
-    ruleFiles = [
-      (pkgs.writeText "prometheus-rules.yml" (builtins.toJSON {
-        groups = [
-          {
-            name = "alerting-rules";
-            rules = import ./alert-rules.nix { inherit (pkgs) lib; };
-          }
-        ];
-      }))
-    ];
+    checkConfig = true;
     webExternalUrl = "https://monitoring.nix-community.org/prometheus/";
     extraFlags = [ "--web.route-prefix=/" ];
     scrapeConfigs = [
