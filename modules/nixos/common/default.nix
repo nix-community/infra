@@ -2,7 +2,6 @@
 {
   imports = [
     ./auto-upgrade.nix
-    ./deploy.nix
     ../../shared/nix-daemon.nix
     ./reboot.nix
     ./security.nix

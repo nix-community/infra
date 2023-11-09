@@ -92,12 +92,6 @@
               };
 
             packages = pkgs.lib.optionalAttrs defaultPlatform {
-              cachix-deploy-spec = pkgs.writeText "cachix-deploy.json" (builtins.toJSON {
-                agents = {
-                  # hercules-ci-agent IFD breaks darwin02
-                  darwin03 = builtins.unsafeDiscardStringContext self.darwinConfigurations.darwin03.config.system.build.toplevel;
-                };
-              });
               pages = pkgs.runCommand "pages"
                 {
                   buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
