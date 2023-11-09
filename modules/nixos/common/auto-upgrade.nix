@@ -2,7 +2,7 @@
 {
   system.autoUpgrade.enable = lib.mkDefault true;
   system.autoUpgrade.flake = "github:nix-community/infra";
-  system.autoUpgrade.dates = "hourly";
+  system.autoUpgrade.dates = "0/2:00";
   system.autoUpgrade.flags = [ "--option" "accept-flake-config" "true" "--option" "tarball-ttl" "0" ];
 
   # Restart the upgrade service if it fails twice in 5 seconds.
