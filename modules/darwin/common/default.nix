@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./deploy.nix
     ./flake-inputs.nix
     ./reboot.nix
     ./telegraf.nix
