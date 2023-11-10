@@ -12,6 +12,10 @@ in
     forceSSL = true;
   };
 
+  services.telegraf.extraConfig.inputs.prometheus.urls = [
+    "http://localhost:8011/metrics"
+  ];
+
   sops.secrets.github-oauth-secret = buildbotSecrets;
   sops.secrets.github-token = buildbotSecrets;
   sops.secrets.github-webhook-secret = buildbotSecrets;
@@ -21,6 +25,7 @@ in
     enable = true;
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     domain = "buildbot.nix-community.org";
+    prometheusExporterPort = 8011;
     workersFile = config.sops.secrets.nix-workers.path;
     github = {
       tokenFile = config.sops.secrets.github-token.path;
