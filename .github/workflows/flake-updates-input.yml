@@ -1,7 +1,12 @@
-name: "Update flakes - nixpkgs-update"
+name: "Update flakes - input"
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      flakeInput:
+        description: "flake input to update"
+        required: true
+        type: string
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
@@ -17,7 +22,7 @@ jobs:
         id: update
         uses: DeterminateSystems/update-flake-lock@v20
         with:
-          inputs: nixpkgs-update
+          inputs: ${{ inputs.flakeInput }}
       - name: Enable Automerge
         run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
         env:
