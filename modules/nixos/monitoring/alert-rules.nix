@@ -11,6 +11,11 @@
           annotations.description = "status of ${name} is unknown: no data for a day";
         })) //
       {
+        BuildbotNoWorkers = {
+          expr = ''count(buildbot_workers_running{worker_name!="__Janitor"} == 1) by (instance) == 0'';
+          annotations.description = "{{$labels.instance}}: buildbot has no workers";
+        };
+
         Filesystem80percentFull.enable = false;
 
         Filesystem85percentFull = {
@@ -27,6 +32,11 @@
         };
 
         SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!~"(build02|build03)"} != 1'';
+
+        TelegrafPluginFailing = {
+          expr = ''internal_gather_errors != 0'';
+          annotations.description = "{{$labels.instance}}: telegraf plugin {{$labels.input}} is failing";
+        };
       };
   };
 }
