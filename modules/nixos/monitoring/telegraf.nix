@@ -22,7 +22,7 @@
       {
         urls = [ "https://nur-update.nix-community.org/" ];
         response_string_match = "NUR update endpoint";
-        tags.host = "web01.nix-community.org";
+        tags.host = "build03.nix-community.org";
         tags.org = "nix-community";
       }
       #{

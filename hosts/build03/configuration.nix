@@ -23,6 +23,7 @@
 
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hydra
+    inputs.self.nixosModules.nur-update
   ];
 
   services.postgresql.package = pkgs.postgresql_12;

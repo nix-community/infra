@@ -191,7 +191,7 @@ resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
 resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
   zone_id = local.nix_community_zone_id
   name    = "nur-update"
-  value   = "web01.nix-community.org"
+  value   = "build03.nix-community.org"
   type    = "CNAME"
 }
 
