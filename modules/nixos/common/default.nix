@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     ./auto-upgrade.nix
@@ -11,6 +11,9 @@
     inputs.srvos.nixosModules.mixins-telegraf
     inputs.srvos.nixosModules.server
   ];
+
+  # breaks smartctl in the srvos telegraf mixin
+  security.sudo.execWheelOnly = lib.mkForce false;
 
   # users in trusted group are trusted by the nix-daemon
   nix.settings.trusted-users = [ "@trusted" ];
