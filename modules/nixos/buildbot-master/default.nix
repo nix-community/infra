@@ -26,6 +26,8 @@ in
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     domain = "buildbot.nix-community.org";
     prometheusExporterPort = 8011;
+    evalMaxMemorySize = "4096";
+    evalWorkerCount = 8;
     workersFile = config.sops.secrets.nix-workers.path;
     github = {
       tokenFile = config.sops.secrets.github-token.path;
