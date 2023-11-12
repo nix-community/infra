@@ -48,3 +48,8 @@ jobs:
       - name: Deploy
         run: |
           ./inv deploy --hosts ${{ matrix.host }}
+      - name: Alert on failure
+        if: ${{ failure() }}
+        run: |
+          curl -XPOST -d '{"msgtype":"m.text", "body":"${{ matrix.host }}: deployment failed"}' \
+            "https://matrix.org/_matrix/client/r0/rooms/!cBybDCkeRlSWfuaFvn:numtide.com/send/m.room.message?access_token=${{ secrets.TOKEN_MATRIX_BOT }}"
