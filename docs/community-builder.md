@@ -14,7 +14,7 @@ darwin-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztz
 
 #### Access
 
-If you want access read the security guide lines on [aarch64-build-box](https://github.com/nix-community/aarch64-build-box). Than add your username to [`nixos/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix) or [`darwin/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/darwin/community-builder/users.nix) Don't keep any important data in your home! We will regularly delete `/home` without further notice.
+If you want access read the security guide lines on [aarch64-build-box](https://github.com/NixOS/aarch64-build-box). Than add your username to [`nixos/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix) or [`darwin/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/darwin/community-builder/users.nix) Don't keep any important data in your home! We will regularly delete `/home` without further notice.
 
 #### Using your NixOS home-manager configuration on the hosts
 
