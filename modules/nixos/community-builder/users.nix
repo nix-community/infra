@@ -10,44 +10,95 @@ let
     #
     #    youruser.keys = ./keys/youruser;
     #
-    "0x4A6F".keys = ./keys/0x4A6F;
+    "0x4A6F" = {
+      trusted = true;
+      keys = ./keys/0x4A6F;
+    };
 
-    a-kenji.keys = ./keys/a-kenji;
+    a-kenji = {
+      trusted = true;
+      keys = ./keys/a-kenji;
+    };
 
-    bobby285271.keys = ./keys/bobby285271;
+    bobby285271 = {
+      trusted = true;
+      keys = ./keys/bobby285271;
+    };
 
-    ckie.keys = ./keys/ckie;
+    ckie = {
+      trusted = true;
+      keys = ./keys/ckie;
+    };
 
-    fgaz.keys = ./keys/fgaz;
+    fgaz = {
+      trusted = true;
+      keys = ./keys/fgaz;
+    };
 
-    flokli.keys = ./keys/flokli;
+    flokli = {
+      trusted = true;
+      keys = ./keys/flokli;
+    };
 
-    glepage.keys = ./keys/glepage;
+    glepage = {
+      trusted = true;
+      keys = ./keys/glepage;
+    };
 
-    hexchen.keys = ./keys/hexchen;
+    hexchen = {
+      trusted = true;
+      keys = ./keys/hexchen;
+    };
 
-    janik.keys = ./keys/janik;
+    janik = {
+      trusted = true;
+      keys = ./keys/janik;
+    };
 
-    jtojnar.keys = ./keys/jtojnar;
+    jtojnar = {
+      trusted = true;
+      keys = ./keys/jtojnar;
+    };
 
-    lewo.keys = ./keys/lewo;
+    lewo = {
+      trusted = true;
+      keys = ./keys/lewo;
+    };
 
-    lily.keys = ./keys/lily;
+    lily = {
+      trusted = true;
+      keys = ./keys/lily;
+    };
 
-    raitobezarius.keys = ./keys/raitobezarius;
+    raitobezarius = {
+      trusted = true;
+      keys = ./keys/raitobezarius;
+    };
 
-    networkexception.keys = ./keys/networkexception;
+    networkexception = {
+      trusted = true;
+      keys = ./keys/networkexception;
+    };
 
-    schmittlauch.keys = ./keys/schmittlauch;
+    schmittlauch = {
+      trusted = true;
+      keys = ./keys/schmittlauch;
+    };
 
     matthiasbeyer = {
-      trusted = false;
+      trusted = true;
       keys = ./keys/matthiasbeyer;
     };
 
-    stephank.keys = ./keys/stephank;
+    stephank = {
+      trusted = true;
+      keys = ./keys/stephank;
+    };
 
-    winter.keys = ./keys/winter;
+    winter = {
+      trusted = true;
+      keys = ./keys/winter;
+    };
   };
 
   ifAttr = key: default: result: opts:
