@@ -22,6 +22,8 @@ let
 
     flokli.keys = ./keys/flokli;
 
+    glepage.keys = ./keys/glepage;
+
     hexchen.keys = ./keys/hexchen;
 
     janik.keys = ./keys/janik;
