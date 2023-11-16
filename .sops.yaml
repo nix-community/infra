@@ -93,7 +93,7 @@ creation_rules:
   - path_regex: modules/nixos/buildbot-master/.+\.yaml$
     key_groups:
       - age:
-          - *build03
+          - *web01
           - *mic92
           - *ryantm
           - *zimbatm

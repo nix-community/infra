@@ -40,6 +40,8 @@ in
     };
   };
 
+  networking.firewall.allowedTCPPorts = [ 9989 ];
+
   sops.secrets.cachix-auth-token = buildbotSecrets;
   sops.secrets.cachix-name = buildbotSecrets;
 
