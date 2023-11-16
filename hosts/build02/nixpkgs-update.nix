@@ -261,7 +261,6 @@ in
 
   sops.secrets.nix-community-cachix = {
     path = "/home/r-ryantm/.config/cachix/cachix.dhall";
-    sopsFile = "${toString inputs.self}/modules/nixos/cachix/secrets.yaml";
     owner = "r-ryantm";
     group = "r-ryantm";
   };

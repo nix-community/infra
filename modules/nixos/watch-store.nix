@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  sops.secrets.watch-store-token.sopsFile = ./secrets.yaml;
+  sops.secrets.watch-store-token = { };
 
   services.cachix-watch-store = {
     enable = true;

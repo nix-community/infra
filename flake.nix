@@ -171,7 +171,7 @@
           nur-update = ./modules/nixos/nur-update.nix;
           remote-builder = ./modules/nixos/remote-builder.nix;
           remote-workers = ./modules/nixos/remote-workers.nix;
-          watch-store = ./modules/nixos/cachix/watch-store.nix;
+          watch-store = ./modules/nixos/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
         };
 
