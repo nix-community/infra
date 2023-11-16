@@ -108,7 +108,7 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: modules/nixos/(cachix|hercules-ci)/.+\.yaml$
+  - path_regex: modules/nixos/hercules-ci/.+\.yaml$
     key_groups:
       - age:
           - *build02
