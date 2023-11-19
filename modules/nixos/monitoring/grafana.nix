@@ -63,11 +63,9 @@
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "grafana" ];
-    ensureUsers = [
-      {
-        name = "grafana";
-        ensurePermissions = { "DATABASE grafana" = "ALL PRIVILEGES"; };
-      }
-    ];
+    ensureUsers = [{
+      name = "grafana";
+      ensureDBOwnership = true;
+    }];
   };
 }
