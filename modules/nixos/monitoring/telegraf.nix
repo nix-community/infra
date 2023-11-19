@@ -14,12 +14,6 @@
         tags.org = "nix-community";
       }
       {
-        urls = [ "https://lemmy.nix-community.org/" ];
-        response_string_match = "Lemmy for Nix";
-        tags.host = "web01.nix-community.org";
-        tags.org = "nix-community";
-      }
-      {
         urls = [ "https://nur-update.nix-community.org/" ];
         response_string_match = "NUR update endpoint";
         tags.host = "build03.nix-community.org";

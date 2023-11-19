@@ -48,14 +48,6 @@
 - RAM: 16GB
 - Drives: 256GB SSD
 
-### `web01`
-
-- Provider: Hetzner
-- Instance type: [CX31](https://www.hetzner.com/cloud)
-- CPU: 2 vCPUs on Intel Xeon
-- RAM: 8GB
-- Drives: 80GB SSD
-
 ### `web02`
 
 - Provider: Gandi

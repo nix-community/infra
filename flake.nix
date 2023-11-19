@@ -87,8 +87,6 @@
                 nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
                 nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
                 nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
-                #nixosTests-lemmy = pkgs.nixosTests.lemmy;
-                nixosTests-pict-rs = pkgs.nixosTests.pict-rs;
               };
 
             packages = pkgs.lib.optionalAttrs defaultPlatform {
@@ -137,10 +135,6 @@
             build04 = nixosSystem {
               pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
               modules = [ ./hosts/build04/configuration.nix ];
-            };
-            web01 = nixosSystem {
-              pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-              modules = [ ./hosts/web01/configuration.nix ];
             };
             web02 = nixosSystem {
               pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;

@@ -3,7 +3,6 @@ keys:
   - &build02 age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d
   - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
   - &build04 age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
-  - &web01 age1dg06e2l664lek3het63vrdrvzyrzt2tcf4peellhxc33aj2wf3ysgja8gl
   - &web02 age158v8dpppnw3yt2kqgqekwamaxpst5alfrnvvt7z36wfdk4veydrsqxc2tl
   - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
   - &ryantm age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
@@ -64,15 +63,6 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: hosts/web01/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *web01
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis
   - path_regex: hosts/web02/[^/]+\.yaml$
     key_groups:
       - age:
@@ -126,7 +116,6 @@ creation_rules:
           - *build02
           - *build03
           - *build04
-          - *web01
           - *web02
           - *mic92
           - *ryantm
