@@ -1,1 +1,0 @@
-- [lemmy.nix-community.org](https://lemmy.nix-community.org/)

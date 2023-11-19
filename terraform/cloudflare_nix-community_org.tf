@@ -117,20 +117,6 @@ resource "cloudflare_record" "nix-community-org-darwin03-AAAA" {
   type    = "AAAA"
 }
 
-resource "cloudflare_record" "nix-community-org-web01-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "web01"
-  value   = "2a01:4f9:c011:932f::1"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-web01-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "web01"
-  value   = "95.216.139.211"
-  type    = "A"
-}
-
 resource "cloudflare_record" "nix-community-org-web02-A" {
   zone_id = local.nix_community_zone_id
   name    = "web02"
@@ -143,13 +129,6 @@ resource "cloudflare_record" "nix-community-org-web02-AAAA" {
   name    = "web02"
   value   = "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
   type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-lemmy-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "lemmy"
-  value   = "web01.nix-community.org"
-  type    = "CNAME"
 }
 
 resource "cloudflare_record" "nix-community-org-build-box-CNAME" {
