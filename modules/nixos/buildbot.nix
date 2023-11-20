@@ -1,10 +1,8 @@
 { config, inputs, ... }:
-let
-  buildbotSecrets.sopsFile = ./secrets.yaml;
-in
 {
   imports = [
     inputs.buildbot-nix.nixosModules.buildbot-master
+    inputs.buildbot-nix.nixosModules.buildbot-worker
   ];
 
   services.nginx.virtualHosts."buildbot.nix-community.org" = {
@@ -16,10 +14,10 @@ in
     "http://localhost:8011/metrics"
   ];
 
-  sops.secrets.github-oauth-secret = buildbotSecrets;
-  sops.secrets.github-token = buildbotSecrets;
-  sops.secrets.github-webhook-secret = buildbotSecrets;
-  sops.secrets.nix-workers = buildbotSecrets;
+  sops.secrets.buildbot-github-oauth-secret = { };
+  sops.secrets.buildbot-github-token = { };
+  sops.secrets.buildbot-github-webhook-secret = { };
+  sops.secrets.buildbot-nix-workers = { };
 
   services.buildbot-nix.master = {
     enable = true;
@@ -28,11 +26,11 @@ in
     prometheusExporterPort = 8011;
     evalMaxMemorySize = "4096";
     evalWorkerCount = 8;
-    workersFile = config.sops.secrets.nix-workers.path;
+    workersFile = config.sops.secrets.buildbot-nix-workers.path;
     github = {
-      tokenFile = config.sops.secrets.github-token.path;
-      webhookSecretFile = config.sops.secrets.github-webhook-secret.path;
-      oauthSecretFile = config.sops.secrets.github-oauth-secret.path;
+      tokenFile = config.sops.secrets.buildbot-github-token.path;
+      webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
+      oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "9bbd3e8bbfebb197d2ca";
       user = "nix-community-buildbot";
       admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
@@ -40,11 +38,18 @@ in
     };
   };
 
-  sops.secrets.cachix-auth-token = buildbotSecrets;
-  sops.secrets.cachix-name = buildbotSecrets;
+  sops.secrets.cachix-auth-token = { };
+  sops.secrets.cachix-name = { };
 
   systemd.services.buildbot-master.serviceConfig.LoadCredential = [
     "cachix-auth-token:${config.sops.secrets.cachix-auth-token.path}"
     "cachix-name:${config.sops.secrets.cachix-name.path}"
   ];
+
+  sops.secrets.buildbot-nix-worker-password = { };
+
+  services.buildbot-nix.worker = {
+    enable = true;
+    workerPasswordFile = config.sops.secrets.buildbot-nix-worker-password.path;
+  };
 }
