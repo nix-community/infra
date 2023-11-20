@@ -1,11 +1,11 @@
 { config, ... }:
 
 {
-  sops.secrets.watch-store-token = { };
+  sops.secrets.cachix-auth-token = { };
 
   services.cachix-watch-store = {
     enable = true;
     cacheName = "nix-community";
-    cachixTokenFile = config.sops.secrets.watch-store-token.path;
+    cachixTokenFile = config.sops.secrets.cachix-auth-token.path;
   };
 }

@@ -154,8 +154,7 @@
         flake.nixosModules = {
           common = ./modules/nixos/common;
 
-          buildbot-master = ./modules/nixos/buildbot-master;
-          buildbot-worker = ./modules/nixos/buildbot-worker;
+          buildbot = ./modules/nixos/buildbot.nix;
           builder = ./modules/nixos/builder.nix;
           community-builder = ./modules/nixos/community-builder;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
