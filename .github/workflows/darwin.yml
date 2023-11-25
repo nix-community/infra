@@ -1,8 +1,7 @@
 name: "darwin"
 
 on:
-  push:
-    branches: [master]
+  status:
   workflow_dispatch:
 
 concurrency:
@@ -18,6 +17,7 @@ jobs:
       matrix:
         host: [darwin02, darwin03]
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'status' && github.event.context == 'buildbot/nix-eval' && github.event.state == 'success' && github.ref == 'refs/heads/master')
     steps:
       - uses: actions/checkout@v4
       - name: Install Nix
