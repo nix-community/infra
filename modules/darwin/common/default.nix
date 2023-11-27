@@ -48,6 +48,8 @@
     htop
   ];
 
+  system.includeUninstaller = false;
+
   # disable application layer firewall, telegraf needs an incoming connection
   system.defaults.alf.globalstate = 0;
 
