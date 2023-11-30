@@ -83,7 +83,6 @@ creation_rules:
   - path_regex: modules/nixos/hercules-ci/.+\.yaml$
     key_groups:
       - age:
-          - *build02
           - *build03
           - *build04
           - *mic92
