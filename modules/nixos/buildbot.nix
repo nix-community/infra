@@ -38,6 +38,11 @@
     };
   };
 
+  systemd.targets.multi-user.unitConfig.Upholds = [
+    "buildbot-master.service"
+    "buildbot-worker.service"
+  ];
+
   sops.secrets.cachix-auth-token = { };
   sops.secrets.cachix-name = { };
 
