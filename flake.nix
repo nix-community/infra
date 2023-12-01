@@ -29,7 +29,7 @@
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
 
-    buildbot-nix.url = "github:Mic92/buildbot-nix";
+    buildbot-nix.url = "github:qowoz/buildbot-nix/updates";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
