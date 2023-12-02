@@ -25,7 +25,7 @@
     domain = "buildbot.nix-community.org";
     prometheusExporterPort = 8011;
     evalMaxMemorySize = "4096";
-    evalWorkerCount = 8;
+    evalWorkerCount = 16;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
     github = {
       tokenFile = config.sops.secrets.buildbot-github-token.path;
