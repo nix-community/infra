@@ -15,6 +15,7 @@
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nur-update
     ./disko.nix
+    ./postgresql.nix
   ];
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";

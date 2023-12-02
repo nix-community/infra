@@ -52,16 +52,6 @@
       '';
     };
 
-    services.postgresql = {
-      enable = true;
-      ensureDatabases = [ "hydra" ];
-      settings = {
-        max_connections = "300";
-        effective_cache_size = "4GB";
-        shared_buffers = "4GB";
-      };
-    };
-
     services.nginx.virtualHosts = {
       "hydra.nix-community.org" = {
         forceSSL = true;
