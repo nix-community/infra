@@ -5,13 +5,13 @@
   systemd.services.github-org-backup = {
     environment.HOME = "/var/lib/github-org-backup";
     path = [ pkgs.git pkgs.ghorg ];
-    # exclude nix, nixpkgs and repos > 200MB
+    # exclude nix, nixpkgs
     script = ''
       ghorg clone nix-community \
         --backup \
         --clone-wiki \
         --concurrency 2 \
-        --exclude-match-regex '^(all-cabal-json|dream2nix-nodejs-auto|nix|nixpkgs|nur-search)$' \
+        --exclude-match-regex '^(nix|nixpkgs)$' \
         --no-token \
         --path /var/lib/github-org-backup \
         --prune \
