@@ -118,6 +118,12 @@ let
       trusted = true;
       uid = 546;
     }
+    {
+      # https://github.com/lf-
+      name = "jade";
+      trusted = true;
+      uid = 547;
+    }
   ];
 in
 {
