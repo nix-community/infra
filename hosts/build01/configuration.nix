@@ -12,12 +12,6 @@
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
-  # /boot is a mirror raid
-  boot.loader.grub.devices = [ "/dev/sda" "/dev/sdb" ];
-  boot.loader.grub.enable = true;
-  boot.swraid.enable = true;
-  boot.loader.grub.extraConfig = "insmod mdraid1x";
-
   networking.hostName = "build01";
   networking.hostId = "d2905767";
 
