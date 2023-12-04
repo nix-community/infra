@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'nix-community/infra'
     steps:
-      - uses: actions/labeler@v4
+      - uses: actions/labeler@v5
         with:
           sync-labels: true
