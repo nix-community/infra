@@ -181,9 +181,8 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
         flags = "--debug --no-reboot --option accept-flake-config true"
-        # we want 1.1.0 here: https://github.com/NixOS/nixpkgs/pull/271446
         c.run(
-            f"nix run --inputs-from . github:nix-community/nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
+            f"nix run --inputs-from . nixpkgs#nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
             echo=True,
         )
 
