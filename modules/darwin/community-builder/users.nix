@@ -124,6 +124,11 @@ let
       trusted = true;
       uid = 547;
     }
+    {
+      name = "kranzes";
+      trusted = true;
+      uid = 548;
+    }
   ];
 in
 {
