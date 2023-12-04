@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.disko.nixosModules.disko
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.disko-raid
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
@@ -14,7 +14,6 @@
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nur-update
-    ./disko.nix
     ./postgresql.nix
   ];
 

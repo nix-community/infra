@@ -165,6 +165,10 @@
           remote-workers = ./modules/nixos/remote-workers.nix;
           watch-store = ./modules/nixos/watch-store.nix;
           zfs = ./modules/nixos/zfs.nix;
+          disko-raid.imports = [
+            inputs.disko.nixosModules.disko
+            ./modules/nixos/disko-raid.nix
+          ];
         };
 
         flake.lib.darwinSystem = args:
