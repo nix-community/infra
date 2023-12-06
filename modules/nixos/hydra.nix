@@ -1,21 +1,5 @@
-{ lib, pkgs, config, ... }:
+{ pkgs, config, ... }:
 {
-  options.services.hydra = {
-    adminPasswordFile = lib.mkOption {
-      type = lib.types.str;
-      description = "The initial password for the Hydra admin account";
-    };
-
-    usersFile = lib.mkOption {
-      type = lib.types.str;
-      description = ''
-        declarative user accounts for hydra.
-        format: user;role;password-hash;email-address;full-name
-        Password hash is computed by applying sha1 to the password.
-      '';
-    };
-  };
-
   config = {
     sops.secrets.hydra-admin-password.owner = "hydra";
     sops.secrets.hydra-users.owner = "hydra";
@@ -58,8 +42,6 @@
       notificationSender = "hydra@hydra.nix-community.org";
       port = 3000;
       useSubstitutes = true;
-      adminPasswordFile = config.sops.secrets.hydra-admin-password.path;
-      usersFile = config.sops.secrets.hydra-users.path;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
       '';
@@ -73,7 +55,9 @@
       };
     };
 
-    # Create a admin user and configure a declarative project
+    # Create user accounts
+    # format: user;role;password-hash;email-address;full-name
+    # Password hash is computed by applying sha1 to the password.
     systemd.services.hydra-post-init = {
       serviceConfig = {
         Type = "oneshot";
@@ -97,13 +81,13 @@
             opts+=("--full-name" "$fullname")
           fi
           hydra-create-user "''${opts[@]}"
-        done < ${config.services.hydra.usersFile}
+        done < ${config.sops.secrets.hydra-users.path}
 
         while ! nc -z localhost ${toString config.services.hydra.port}; do
           sleep 1
         done
 
-        export HYDRA_ADMIN_PASSWORD=$(cat ${config.services.hydra.adminPasswordFile})
+        export HYDRA_ADMIN_PASSWORD=$(cat ${config.sops.secrets.hydra-admin-password.path})
         export URL=http://localhost:${toString config.services.hydra.port}
       '';
     };
