@@ -156,6 +156,7 @@
           buildbot = ./modules/nixos/buildbot.nix;
           builder = ./modules/nixos/builder.nix;
           community-builder = ./modules/nixos/community-builder;
+          disko-raid = ./modules/nixos/disko-raid.nix;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra.nix;
@@ -164,10 +165,6 @@
           remote-builder = ./modules/nixos/remote-builder.nix;
           remote-workers = ./modules/nixos/remote-workers.nix;
           watch-store = ./modules/nixos/watch-store.nix;
-          disko-raid.imports = [
-            inputs.disko.nixosModules.disko
-            ./modules/nixos/disko-raid.nix
-          ];
         };
 
         flake.lib.darwinSystem = args:
