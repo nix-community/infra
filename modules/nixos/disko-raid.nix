@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ inputs, lib, config, ... }:
 let
   mirrorBoot = idx: {
     type = "disk";
@@ -32,6 +32,9 @@ let
   };
 in
 {
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
   options = {
     nixCommunity.disko.raidLevel = lib.mkOption {
       type = lib.types.int;
