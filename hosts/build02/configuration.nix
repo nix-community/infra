@@ -8,7 +8,7 @@
     ./nixpkgs-update-backup.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.builder
-    inputs.self.nixosModules.zfs
+    ./zfs.nix
   ];
 
   # /boot is a mirror raid
