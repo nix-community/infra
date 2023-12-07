@@ -137,7 +137,7 @@ class Storage:
     @overload
     @staticmethod
     def _cursor_method(
-        fun: CurMethod[StorageSelf, P, T]
+        fun: CurMethod[StorageSelf, P, T],
     ) -> WrappedCurMethod[StorageSelf, P, T]:
         ...
 
@@ -160,7 +160,7 @@ class Storage:
         | Callable[[CurMethod[StorageSelf, P, T]], WrappedCurMethod[StorageSelf, P, T]]
     ):
         def decorator(
-            fun: CurMethod[StorageSelf, P, T]
+            fun: CurMethod[StorageSelf, P, T],
         ) -> WrappedCurMethod[StorageSelf, P, T]:
             if transaction:
 
