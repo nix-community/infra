@@ -9,6 +9,8 @@
     inputs.self.nixosModules.remote-builder
   ];
 
+  nixCommunity.gc.gbFree = 25;
+
   # disable kvm/nixos-tests
   nix.settings.system-features = [ "big-parallel" ];
 
