@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   imports = [
     inputs.buildbot-nix.nixosModules.buildbot-master
@@ -23,7 +23,6 @@
     enable = true;
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     domain = "buildbot.nix-community.org";
-    prometheusExporterPort = 8011;
     evalMaxMemorySize = "4096";
     evalWorkerCount = 16;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
@@ -36,6 +35,26 @@
       admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
       topic = "nix-community-buildbot";
     };
+  };
+
+  services.buildbot-master = {
+    extraConfig = ''
+      c['services'].append(reporters.Prometheus(port=8011))
+    '';
+    pythonPackages = ps: [
+      (ps.buildPythonPackage rec {
+        pname = "buildbot-prometheus";
+        version = "0c81a89bbe34628362652fbea416610e215b5d1e";
+        src = pkgs.fetchFromGitHub {
+          owner = "claws";
+          repo = "buildbot-prometheus";
+          rev = version;
+          hash = "sha256-bz2Nv2RZ44i1VoPvQ/XjGMfTT6TmW6jhEVwItPk23SM=";
+        };
+        propagatedBuildInputs = [ ps.prometheus-client ];
+        doCheck = false;
+      })
+    ];
   };
 
   systemd.targets.multi-user.unitConfig.Upholds = [
