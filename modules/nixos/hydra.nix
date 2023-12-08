@@ -33,6 +33,19 @@
 
     services.hydra = {
       enable = true;
+
+      package = (pkgs.hydra_unstable.override {
+        nix = pkgs.nixVersions.nix_2_18;
+      }).overrideAttrs (_: {
+        version = "2023-12-01";
+        src = pkgs.fetchFromGitHub {
+          owner = "NixOS";
+          repo = "hydra";
+          rev = "4d1c8505120961f10897b8fe9a070d4e193c9a13";
+          hash = "sha256-vXTuE83GL15mgZHegbllVAsVdDFcWWSayPfZxTJN5ys=";
+        };
+      });
+
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
         "/etc/nix/machines"
