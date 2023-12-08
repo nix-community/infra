@@ -81,8 +81,7 @@
               in
               darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations // packages
               // pkgs.lib.optionalAttrs defaultPlatform {
-                # https://github.com/NixOS/nixpkgs/pull/271942
-                #nixosTests-buildbot = pkgs.nixosTests.buildbot;
+                nixosTests-buildbot = pkgs.nixosTests.buildbot;
                 nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
                 nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
                 nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
