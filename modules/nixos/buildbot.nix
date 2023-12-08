@@ -38,6 +38,7 @@
   };
 
   services.buildbot-master = {
+    package = pkgs.buildbot;
     extraConfig = ''
       c['services'].append(reporters.Prometheus(port=8011))
     '';
