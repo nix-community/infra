@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./apfs-cleanup.nix
     ./flake-inputs.nix
     ./reboot.nix
     ./telegraf.nix
