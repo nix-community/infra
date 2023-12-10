@@ -22,7 +22,7 @@
     srvos.inputs.nixpkgs.follows = "nixpkgs";
     srvos.inputs.nixos-23_05.follows = "";
 
-    nixpkgs-update.url = "github:qowoz/nixpkgs-update/wait60";
+    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
     nixpkgs-update.inputs.mmdoc.follows = "";
     nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
