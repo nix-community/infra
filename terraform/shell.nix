@@ -1,11 +1,10 @@
-{ inputs', ... }:
+{ pkgs, ... }:
 let
-  tf-pkgs = inputs'.tf-pkgs.legacyPackages;
-  terraform' = tf-pkgs.terraform.overrideAttrs (_: { meta = { }; });
+  terraform' = pkgs.terraform.overrideAttrs (_: { meta = { }; });
 in
 {
   devShells = {
-    terraform = with tf-pkgs; mkShellNoCC {
+    terraform = with pkgs; mkShellNoCC {
       packages = [
         (terraform'.withPlugins (p: [
           p.cloudflare

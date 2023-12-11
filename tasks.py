@@ -90,27 +90,6 @@ def print_keys(c: Any, flake_attr: str) -> None:
 
 
 @task
-def update_terraform(c: Any) -> None:
-    """
-    Update terraform devshell flake
-    """
-    c.run(
-        """
-system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
-oldShell="$(nix build --no-link --print-out-paths ".#devShells.${system}.terraform")"
-oldRev="$(nix flake metadata --json | jq -r '.locks.nodes."tf-pkgs".locked.rev')"
-newRev="$(nix flake metadata --json | jq -r '.locks.nodes.nixpkgs.locked.rev')"
-sed -i "s|${oldRev}|${newRev}|" flake.nix
-nix flake lock --update-input tf-pkgs --commit-lock-file
-newShell="$(nix build --no-link --print-out-paths ".#devShells.${system}.terraform")"
-commit="$(git log --pretty=format:%B -1)"
-diff="$(nix store diff-closures "${oldShell}" "${newShell}" | awk -F ',' '/terraform/ && /→/ {print $1}')"
-git commit --all --amend -m "${commit}" -m "Terraform updates:" -m "${diff}"
-"""
-    )
-
-
-@task
 def mkdocs(c: Any) -> None:
     """
     Serve docs (mkdoc serve)
