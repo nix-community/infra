@@ -1,9 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    ./auto-upgrade.nix
     ../../shared/nix-daemon.nix
-    ./reboot.nix
     ./security.nix
     ./sops-nix.nix
     ./users.nix
