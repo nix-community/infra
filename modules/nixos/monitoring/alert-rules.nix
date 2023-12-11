@@ -26,7 +26,7 @@
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
         };
 
-        SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!~"(build02|build01)"} != 1'';
+        SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build01"} != 1'';
       };
   };
 }
