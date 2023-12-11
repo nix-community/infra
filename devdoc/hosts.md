@@ -11,10 +11,9 @@
 ### `build02`
 
 - Provider: Hetzner
-- Instance type:
-- CPU: AMD Ryzen 7 3700X Eight-Core Processor
-- RAM: 64GB DDR4 ECC
-- Drives: 2 x 1 TB NVME in RAID 1
+- CPU: AMD Ryzen 9 3900 12-Core Processor
+- RAM: 128GB DDR4 ECC
+- Drives: 2 x 1.92 TB NVME in RAID 0
 
 ### `build03`
 
