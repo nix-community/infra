@@ -265,17 +265,17 @@
     },
     "srvos": {
       "inputs": {
-        "nixos-23_05": [],
+        "nixos-stable": [],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1702259614,
-        "narHash": "sha256-FUNaVqnQw2JRzB8bobhuHBkGZjo+l4D0fulgC5W121c=",
+        "lastModified": 1702337325,
+        "narHash": "sha256-5o9TWvp76VedbpO3mB/AkdAZm+mIplXXkat57B5aDuM=",
         "owner": "nix-community",
         "repo": "srvos",
-        "rev": "b47b946903a5cf03069f0c707adf0118716da90b",
+        "rev": "7afef00cd6bf9f18607dd297b39469e0faa48c8f",
         "type": "github"
       },
       "original": {
