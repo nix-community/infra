@@ -132,6 +132,11 @@ let
       trusted = true;
       uid = 548;
     }
+    {
+      name = "sternenseemann";
+      trusted = true;
+      uid = 549;
+    }
   ];
 in
 {
