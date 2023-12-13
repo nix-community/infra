@@ -41,6 +41,7 @@
     package = pkgs.buildbot;
     extraConfig = ''
       c['services'].append(reporters.Prometheus(port=8011))
+      c["buildbotNetUsageData"] = None
     '';
     pythonPackages = ps: [
       (ps.buildPythonPackage rec {
