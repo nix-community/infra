@@ -24,11 +24,11 @@
 
 ### `build04`
 
-- Provider: Oracle cloud
-- Instance type: [Ampere A1 Compute](https://www.oracle.com/cloud/compute/arm/)
-- CPU: 4 VCPUs on an Ampere Altra (arm64)
-- RAM: 24GB
-- Drives: 200 GB Block
+- Provider: Hetzner
+- Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
+- CPU: Ampere Altra Q80-30 80-Core Processor
+- RAM: 128GB DDR4 ECC
+- Drives: 2 x 960 GB NVME in RAID 0
 
 ### `darwin02`
 

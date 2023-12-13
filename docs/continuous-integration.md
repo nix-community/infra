@@ -5,7 +5,7 @@ We provide CI for these platforms:
 - `x86_64-darwin`
 - `x86_64-linux`
 
-We only have limited build capacity for `*-darwin` and `aarch64-linux` so please don't use it excessively.
+We only have limited build capacity for `*-darwin` so please don't use it excessively.
 
 #### Buildbot
 
