@@ -53,3 +53,10 @@ jobs:
         run: |
           curl -XPOST -d '{"msgtype":"m.text", "body":"${{ matrix.host }}: deployment failed"}' \
             "https://matrix.org/_matrix/client/r0/rooms/!cBybDCkeRlSWfuaFvn:numtide.com/send/m.room.message?access_token=${{ secrets.TOKEN_MATRIX_BOT }}"
+  collect:
+    environment:
+      name: darwin
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo
