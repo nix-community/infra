@@ -6,7 +6,7 @@ nav:
       - continuous-integration.md
       - Faster GitHub Actions: namespace-actions.md
       - community-builder.md
-      - R. RyanTM update bot: update-bot.md
+      - R. RyanTM nixpkgs-update bot: update-bot.md
       - NUR update: nur-update.md
       - nix-community.org DNS: dns.md
       - monitoring.md
