@@ -26,6 +26,13 @@
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
         };
 
+        NixpkgsOutOfDate.enable = false;
+
+        NixpkgsOutOfDate2Weeks = {
+          expr = ''(time() - flake_input_last_modified{input="nixpkgs"}) / (60*60*24) > 14'';
+          annotations.description = "{{$labels.host}}: nixpkgs flake is older than two weeks";
+        };
+
         SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build01"} != 1'';
       };
   };
