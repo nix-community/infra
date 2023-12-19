@@ -20,7 +20,6 @@
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";
 
   networking.hostName = "build03";
-  networking.hostId = "8daf74c0";
 
   system.stateVersion = "23.11";
 }

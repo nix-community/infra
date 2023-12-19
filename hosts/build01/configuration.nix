@@ -13,7 +13,6 @@
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
   networking.hostName = "build01";
-  networking.hostId = "d2905767";
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3a:3b16::1/64";
 
