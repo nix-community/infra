@@ -18,6 +18,7 @@
   sops.secrets.buildbot-github-token = { };
   sops.secrets.buildbot-github-webhook-secret = { };
   sops.secrets.buildbot-nix-workers = { };
+  sops.secrets.cachix-auth-token = { };
 
   services.buildbot-nix.master = {
     enable = true;
@@ -26,6 +27,10 @@
     evalMaxMemorySize = "4096";
     evalWorkerCount = 16;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
+    cachix = {
+      name = "nix-community";
+      authTokenFile = config.sops.secrets.cachix-auth-token.path;
+    };
     github = {
       tokenFile = config.sops.secrets.buildbot-github-token.path;
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
@@ -61,14 +66,6 @@
   systemd.targets.multi-user.unitConfig.Upholds = [
     "buildbot-master.service"
     "buildbot-worker.service"
-  ];
-
-  sops.secrets.cachix-auth-token = { };
-  sops.secrets.cachix-name = { };
-
-  systemd.services.buildbot-master.serviceConfig.LoadCredential = [
-    "cachix-auth-token:${config.sops.secrets.cachix-auth-token.path}"
-    "cachix-name:${config.sops.secrets.cachix-name.path}"
   ];
 
   sops.secrets.buildbot-nix-worker-password = { };
