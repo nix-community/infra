@@ -81,6 +81,7 @@
         ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/effect-pages.nix
         ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
