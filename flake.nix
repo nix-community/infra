@@ -54,7 +54,9 @@
       systems = import inputs.systems;
 
       imports = [
+        ./dev/effect-deploy.nix
         ./modules
+        inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
