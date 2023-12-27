@@ -20,6 +20,9 @@ let
   web02 = knownHosts.web02.publicKey;
 
   secrets = {
+    buildbot-effects-nix-community-infra = [
+      build03
+    ];
     # fine-grained, no permissions github token, expires 2025-10-29
     # from `nix-community-buildbot` (user account, not the github app)
     community-builder-nix-access-tokens = [
