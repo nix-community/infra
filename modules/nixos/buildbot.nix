@@ -67,6 +67,12 @@ in
     };
   };
 
+  sops.secrets.buildbot-effects-nix-community-infra = { };
+
+  services.buildbot-nix.master.effects.perRepoSecretFiles = {
+    "github:nix-community/infra" = config.sops.secrets.buildbot-effects-nix-community-infra.path;
+  };
+
   services.buildbot-master = {
     title = "Nix Community";
     titleUrl = "https://nix-community.org/";
