@@ -4,8 +4,6 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
-- Add their ssh key to the `hetzner` user in [modules/darwin/common/default.nix](../modules/darwin/common/default.nix).
-
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
 
 - Add their age key to [.sops.yaml](../.sops.yaml), update the `creation_rules` and run `inv update-sops-files`.
