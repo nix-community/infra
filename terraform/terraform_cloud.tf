@@ -40,8 +40,12 @@ resource "tfe_team_organization_member" "owners" {
 
 # For new we only have one workspace that contains everything
 resource "tfe_workspace" "nix-community" {
-  name           = "nix-community"
-  organization   = local.tfe_org
-  description    = ""
+  name         = "nix-community"
+  organization = local.tfe_org
+  description  = ""
+}
+
+resource "tfe_workspace_settings" "nix-community-settings" {
+  workspace_id   = tfe_workspace.nix-community.id
   execution_mode = "local" # only use it to hold state
 }
