@@ -54,6 +54,14 @@
 - RAM: 16GB
 - Drives: 256GB SSD
 
+### `web01`
+
+- Provider: Oracle cloud
+- Instance type: [Ampere A1 Compute](https://www.oracle.com/cloud/compute/arm/)
+- CPU: 4 VCPUs on an Ampere Altra (arm64)
+- RAM: 24GB
+- Drives: 200 GB Block
+
 ### `web02`
 
 - Provider: Gandi

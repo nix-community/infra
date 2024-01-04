@@ -140,6 +140,10 @@
               pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
               modules = [ ./hosts/build04/configuration.nix ];
             };
+            web01 = nixosSystem {
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
+              modules = [ ./hosts/web01/configuration.nix ];
+            };
             web02 = nixosSystem {
               pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
               modules = [ ./hosts/web02/configuration.nix ];
