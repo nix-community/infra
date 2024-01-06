@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./auto-upgrade.nix
@@ -26,6 +26,8 @@
   networking.firewall.allowedTCPPorts = [ 9273 ];
 
   srvos.flake = inputs.self;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
 
