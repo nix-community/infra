@@ -32,7 +32,13 @@
 
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
-        "/etc/nix/machines"
+        (pkgs.runCommand "etc-nix-machines"
+          {
+            machines = config.environment.etc."nix/machines".text;
+          } ''
+          printf "$machines" > $out
+          substituteInPlace $out --replace 'ssh-ng://' 'ssh://'
+        '')
 
         (pkgs.writeText "local" ''
           localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm - -
