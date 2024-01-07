@@ -12,6 +12,12 @@
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
       system = "aarch64-linux";
+      supportedFeatures = [
+        "big-parallel"
+        "kvm"
+        "nixos-test"
+        "gccarch-armv8-a"
+      ];
     }
     {
       hostName = "darwin02.nix-community.org";
