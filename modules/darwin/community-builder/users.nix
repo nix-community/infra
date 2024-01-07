@@ -137,6 +137,11 @@ let
       trusted = true;
       uid = 549;
     }
+    {
+      name = "jtojnar";
+      trusted = true;
+      uid = 550;
+    }
   ];
 in
 {
