@@ -3,9 +3,6 @@ terraform {
     cloudflare = {
       source = "cloudflare/cloudflare"
     }
-    gandi = {
-      source = "go-gandi/gandi"
-    }
     hydra = {
       source = "DeterminateSystems/hydra"
     }
@@ -24,11 +21,6 @@ data "sops_file" "nix-community" {
 
 provider "cloudflare" {
   api_token = data.sops_file.nix-community.data["CLOUDFLARE_API_TOKEN"]
-}
-
-provider "gandi" {
-  key        = data.sops_file.nix-community.data["GANDI_KEY"]
-  sharing_id = data.sops_file.nix-community.data["GANDI_SHARING_ID"]
 }
 
 provider "hydra" {
