@@ -142,6 +142,11 @@ let
       trusted = true;
       uid = 550;
     }
+    {
+      name = "corngood";
+      trusted = true;
+      uid = 551;
+    }
   ];
 in
 {
