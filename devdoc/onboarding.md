@@ -14,7 +14,6 @@
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
 
-  - email forwarded from the `admin@nix-community.org` address
   - [Cloudflare](https://dash.cloudflare.com/login)
   - [Terraform Cloud](https://app.terraform.io)
 
@@ -23,9 +22,13 @@
   - https://matrix.to/#/#nix-community:nixos.org
   - https://matrix.to/#/#nix-community-monitoring:matrix.org
 
+- Make them an `owner` on [Gandi](https://admin.gandi.net/) and add them to the email forwarding for the `admin@nix-community.org` address.
+
+  - Organisations -> Nix Community -> Teams -> Owner
+  - Domain -> nix-community.org -> Email -> Forwarding address -> Forwards to
+
 - They will also need to be added manually to these services:
 
   - [Cachix](https://app.cachix.org/organization/nix-community/settings)
-  - [Gandi](https://admin.gandi.net/) (Organisations -> Nix Community -> Teams -> Owner)
   - [GitLab](https://gitlab.com/groups/nix-community/-/group_members)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)
