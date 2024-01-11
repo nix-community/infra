@@ -37,7 +37,7 @@
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "9bbd3e8bbfebb197d2ca";
       user = "nix-community-buildbot";
-      admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
+      admins = config.users.groups.wheel.members;
       topic = "nix-community-buildbot";
     };
   };

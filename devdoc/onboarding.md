@@ -4,8 +4,6 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
-- Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
-
 - Add their age key to [.sops.yaml](../.sops.yaml), update the `creation_rules` and run `inv update-sops-files`.
 
 - Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community) and a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members).
