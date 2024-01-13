@@ -28,4 +28,5 @@
   - [Cachix](https://app.cachix.org/organization/nix-community/settings)
   - [Gandi](https://admin.gandi.net/) (Organisations -> Nix Community -> Teams -> Owner)
   - [GitLab](https://gitlab.com/groups/nix-community/-/group_members)
+  - [Hetzner Robot](https://robot.hetzner.com/key/index)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)
