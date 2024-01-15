@@ -5,13 +5,13 @@ repository:
   name: infra
 
   # A short description of the repository that will show up on GitHub
-  description: nix-community infrastructure [maintainer=@Mic92]
+  description: nix-community infrastructure [maintainer=@zowoq]
 
   # A URL with more information about the repository
   homepage: "https://nix-community.org"
 
   # A comma-separated list of topics to set on the repository
-  topics: "terraform, nixos, nix-community-buildbot"
+  topics: "terraform, nixos, nix-darwin, nix-community-buildbot"
 
   # Either `true` to make the repository private, or `false` to make it public.
   private: false
