@@ -32,6 +32,10 @@
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
 
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
+    hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
+
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -53,8 +57,11 @@
         systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
         imports = [
+          inputs.hercules-ci-effects.flakeModule
           inputs.treefmt-nix.flakeModule
         ];
+
+        hercules-ci.github-pages.branch = "master";
 
         perSystem = { config, inputs', lib, pkgs, self', system, ... }:
           let
@@ -85,8 +92,9 @@
                 nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
               };
 
-            packages = pkgs.lib.optionalAttrs defaultPlatform {
-              pages = pkgs.runCommand "pages"
+            hercules-ci.github-pages.settings = {
+              secretsMap.token = "token-for-pages";
+              contents = pkgs.runCommand "pages"
                 {
                   buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
                 } ''
