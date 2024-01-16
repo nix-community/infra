@@ -20,7 +20,7 @@
     };
   };
 
-  nixCommunity.gc.gbFree = 25;
+  nixCommunity.gc.gbFree = 30;
 
   services.nix-daemon.enable = true;
 
