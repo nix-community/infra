@@ -11,6 +11,12 @@
     inputs.self.nixosModules.disko-raid
   ];
 
+  # workaround for excessive inode usage on this host, `auto-optimise-store` isn't working?
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
+
   nixCommunity.disko.raidLevel = 0; # more disk space, we don't have much state to restore anyway
 
   networking.hostName = "build02";
