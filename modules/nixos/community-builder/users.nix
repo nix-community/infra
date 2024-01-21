@@ -95,6 +95,11 @@ let
       keys = ./keys/stephank;
     };
 
+    teto = {
+      trusted = true;
+      keys = ./keys/teto;
+    };
+
     winter = {
       trusted = true;
       keys = ./keys/winter;
