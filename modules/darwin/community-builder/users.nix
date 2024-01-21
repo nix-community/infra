@@ -147,6 +147,11 @@ let
       trusted = true;
       uid = 551;
     }
+    {
+      name = "teto";
+      trusted = true;
+      uid = 552;
+    }
   ];
 in
 {
