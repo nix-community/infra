@@ -21,6 +21,7 @@ let
 
   mkWorker = name: {
     after = [ "network-online.target" "nixpkgs-update-supervisor.service" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update ${name} service";
     enable = true;
@@ -105,6 +106,7 @@ let
 
   mkFetcher = name: cmd: {
     after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     path = nixpkgsUpdateSystemDependencies;
     # API_TOKEN is used by nixpkgs-update-github-releases
@@ -159,6 +161,7 @@ in
   systemd.services.nixpkgs-update-delete-done = {
     startAt = "daily";
     after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
