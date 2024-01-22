@@ -14,6 +14,7 @@ in
   systemd.services.matrix-hook = {
     description = "Matrix Hook";
     after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     environment = {
       HTTP_ADDRESS = "localhost";

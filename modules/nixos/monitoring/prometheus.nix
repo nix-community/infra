@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   systemd.services.prometheus.after = pkgs.lib.mkForce [ "network-online.target" ];
+  systemd.services.prometheus.wants = [ "network-online.target" ];
   systemd.services.alertmanager.after = [ "prometheus.service" ];
 
   services.prometheus = {
