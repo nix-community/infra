@@ -8,7 +8,7 @@
     enable = true;
     checkConfig = true;
     webExternalUrl = "https://monitoring.nix-community.org/prometheus/";
-    extraFlags = [ "--web.route-prefix=/" ];
+    extraFlags = [ "--storage.tsdb.retention.time=30d" "--web.route-prefix=/" ];
     scrapeConfigs = [
       {
         job_name = "telegraf";
