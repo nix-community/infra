@@ -12,9 +12,9 @@
         ${config.systemd.package}/bin/shutdown -r now
       fi
     '';
-    startAt = "0/6:00";
+    startAt = "0/3:00";
   };
   systemd.timers.reboot-after-update = {
-    timerConfig.RandomizedDelaySec = "6h";
+    timerConfig.RandomizedDelaySec = "3h";
   };
 }
