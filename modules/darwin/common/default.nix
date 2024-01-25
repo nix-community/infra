@@ -60,6 +60,7 @@
 
   # srvos
   environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
+    HostKey /etc/ssh/ssh_host_ed25519_key
     KbdInteractiveAuthentication no
     PasswordAuthentication no
     StrictModes no
