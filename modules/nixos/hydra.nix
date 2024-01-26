@@ -41,7 +41,7 @@
         '')
 
         (pkgs.writeText "local" ''
-          localhost x86_64-linux,builtin - 8 1 nixos-test,big-parallel,kvm - -
+          localhost x86_64-linux,builtin - 8 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
         '')
       ];
       hydraURL = "https://hydra.nix-community.org";
