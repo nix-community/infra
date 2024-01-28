@@ -26,6 +26,12 @@
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
         };
 
+        OfBorgEvalQueue = {
+          expr = ''ofborg_queue_evaluator_waiting > (2 * ofborg_queue_evaluator_consumers)'';
+          for = "1h";
+          annotations.description = "ofborg evaluator queue is more than 2x the number of evaluators";
+        };
+
         SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build01"} != 1'';
       };
   };
