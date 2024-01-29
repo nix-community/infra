@@ -231,6 +231,15 @@ in
     '';
   };
 
+  systemd.services.nixpkgs-update-delete-old-logs = {
+    startAt = "weekly";
+    # delete logs older than 18 months, delete empty directories
+    serviceConfig.script = ''
+      ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type f -mtime +548 -delete
+      ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type d -empty -delete
+    '';
+  };
+
   systemd.tmpfiles.rules = [
     "L+ /home/r-ryantm/.gitconfig - - - - ${./gitconfig.txt}"
     "d /home/r-ryantm/.ssh 700 r-ryantm r-ryantm - -"
