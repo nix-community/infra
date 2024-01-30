@@ -60,7 +60,7 @@ let
       function run-nixpkgs-update {
         exit_code=0
         set -x
-        timeout 12h ${nixpkgs-update-bin} update-batch --pr --outpaths --nixpkgs-review "$attr_path $payload" || exit_code=$?
+        timeout 6h ${nixpkgs-update-bin} update-batch --pr --outpaths --nixpkgs-review "$attr_path $payload" || exit_code=$?
         set +x
         if [ $exit_code -eq 124 ]; then
           echo "Update was interrupted because it was taking too long."
