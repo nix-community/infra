@@ -36,6 +36,11 @@ in
     inputs.disko.nixosModules.disko
   ];
   options = {
+    nixCommunity.disko.fsType = lib.mkOption {
+      type = lib.types.enum [ "btrfs" "ext4" ];
+      default = "ext4";
+      description = "Type of filesystem to use";
+    };
     nixCommunity.disko.raidLevel = lib.mkOption {
       type = lib.types.int;
       default = 1;
@@ -65,7 +70,7 @@ in
         level = config.nixCommunity.disko.raidLevel;
         content = {
           type = "filesystem";
-          format = "ext4";
+          format = config.nixCommunity.disko.fsType;
           mountpoint = "/";
         };
       };
