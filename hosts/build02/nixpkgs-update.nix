@@ -235,7 +235,7 @@ in
   systemd.services.nixpkgs-update-delete-old-logs = {
     startAt = "weekly";
     # delete logs older than 18 months, delete empty directories
-    serviceConfig.script = ''
+    script = ''
       ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type f -mtime +548 -delete
       ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type d -empty -delete
     '';
