@@ -132,13 +132,14 @@ let
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~fetchers"
       cd "$LOGS_DIRECTORY/~fetchers"
+      sleep 60 # wait for network
       while true; do
         run_name="${name}.$(date +%s).txt"
         rm -f ${name}.*.txt.part
         ${cmd} > "$run_name.part"
         rm -f ${name}.*.txt
         mv "$run_name.part" "$run_name"
-        sleep 24h
+        sleep 12h
       done
     '';
   };
