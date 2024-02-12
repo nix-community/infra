@@ -24,7 +24,7 @@
 
     nixpkgs-update.url = "github:rhendric/nixpkgs-update/rhendric/fix-388";
     nixpkgs-update.inputs.mmdoc.follows = "";
-    nixpkgs-update-github-releases.url = "github:ryantm/nixpkgs-update-github-releases";
+    nixpkgs-update-github-releases.url = "github:rhendric/nixpkgs-update-github-releases/rhendric/misc-patches";
     nixpkgs-update-github-releases.flake = false;
 
     buildbot-nix.url = "github:Mic92/buildbot-nix";
