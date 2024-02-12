@@ -40,10 +40,6 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    hercules-ci-agent.url = "github:hercules-ci/hercules-ci-agent";
-    hercules-ci-agent.inputs.flake-parts.follows = "flake-parts";
-    #hercules-ci-agent.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
