@@ -146,15 +146,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1703122623,
-        "narHash": "sha256-VHjfwnTNEeVNMaZ9o2XtF/rQt2KenjgzdbWh96aoH20=",
-        "owner": "ryantm",
+        "lastModified": 1707292413,
+        "narHash": "sha256-gRS9y1Ewl5oWmAWCFFQIUU2E8l+q1QtRDRL55cNs2rU=",
+        "owner": "rhendric",
         "repo": "nixpkgs-update",
-        "rev": "06c801641238b1b57320987337b048c98fa0793d",
+        "rev": "afa489f640e1f2fa888c024572b5d21eaea193d5",
         "type": "github"
       },
       "original": {
-        "owner": "ryantm",
+        "owner": "rhendric",
+        "ref": "rhendric/fix-388",
         "repo": "nixpkgs-update",
         "type": "github"
       }
