@@ -107,7 +107,6 @@ let
   mkFetcher = name: cmd: {
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
     path = nixpkgsUpdateSystemDependencies;
     # API_TOKEN is used by nixpkgs-update-github-releases
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
@@ -132,16 +131,13 @@ let
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~fetchers"
       cd "$LOGS_DIRECTORY/~fetchers"
-      sleep 60 # wait for network
-      while true; do
-        run_name="${name}.$(date +%s).txt"
-        rm -f ${name}.*.txt.part
-        ${cmd} > "$run_name.part"
-        rm -f ${name}.*.txt
-        mv "$run_name.part" "$run_name"
-        sleep 12h
-      done
+      run_name="${name}.$(date +%s).txt"
+      rm -f ${name}.*.txt.part
+      ${cmd} > "$run_name.part"
+      rm -f ${name}.*.txt
+      mv "$run_name.part" "$run_name"
     '';
+    startAt = "0/12:10"; # every 12 hours
   };
 
   fetch-updatescript-cmd = pkgs.writeScriptBin "fetch-updatescript-cmd" ''
@@ -160,10 +156,9 @@ in
   };
 
   systemd.services.nixpkgs-update-delete-done = {
-    startAt = "daily";
+    startAt = "0/12:10"; # every 12 hours
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
     path = nixpkgsUpdateSystemDependencies;
