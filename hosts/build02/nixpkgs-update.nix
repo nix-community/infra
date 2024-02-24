@@ -110,6 +110,7 @@ let
     wantedBy = [ "multi-user.target" ];
     path = nixpkgsUpdateSystemDependencies;
     # API_TOKEN is used by nixpkgs-update-github-releases
+    # using a token from another account so the rate limit doesn't block opening PRs
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
     # Used by nixpkgs-update-github-releases to install python dependencies
     environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
