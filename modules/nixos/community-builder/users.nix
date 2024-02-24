@@ -104,6 +104,11 @@ let
       trusted = true;
       keys = ./keys/winter;
     };
+
+    matthewcroughan = {
+      trusted = true;
+      keys = ./keys/matthewcroughan;
+    };
   };
 
   ifAttr = key: default: result: opts:

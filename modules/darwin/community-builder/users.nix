@@ -152,6 +152,11 @@ let
       trusted = true;
       uid = 552;
     }
+    {
+      name = "matthewcroughan";
+      trusted = true;
+      uid = 553;
+    }
   ];
 in
 {
