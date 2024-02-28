@@ -143,19 +143,22 @@
     "nixpkgs-update": {
       "inputs": {
         "mmdoc": [],
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "runtimeDeps": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1707292413,
-        "narHash": "sha256-gRS9y1Ewl5oWmAWCFFQIUU2E8l+q1QtRDRL55cNs2rU=",
-        "owner": "rhendric",
+        "lastModified": 1709113512,
+        "narHash": "sha256-K+C1vMJWQg44I3UTpiEVR6qBvLp2P4zutxPVsxGjeRg=",
+        "owner": "qowoz",
         "repo": "nixpkgs-update",
-        "rev": "afa489f640e1f2fa888c024572b5d21eaea193d5",
+        "rev": "0c757ffe059367b110154b9b938a4cea946fd947",
         "type": "github"
       },
       "original": {
-        "owner": "rhendric",
-        "ref": "rhendric/fix-388",
+        "owner": "qowoz",
+        "ref": "patches",
         "repo": "nixpkgs-update",
         "type": "github"
       }
