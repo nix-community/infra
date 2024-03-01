@@ -157,6 +157,11 @@ let
       trusted = true;
       uid = 553;
     }
+    {
+      name = "pennae";
+      trusted = true;
+      uid = 554;
+    }
   ];
 in
 {
