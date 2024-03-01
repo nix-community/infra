@@ -66,5 +66,12 @@
     StrictModes no
   '';
 
+  # Make sure to disable netbios on activation
+  system.activationScripts.postActivation.text = ''
+    echo disabling netbios... >&2
+    launchctl disable system/netbiosd
+    launchctl unload -w /System/Library/LaunchDaemons/com.apple.netbiosd.plist 2>/dev/null || true
+  '';
+
   time.timeZone = "GMT";
 }
