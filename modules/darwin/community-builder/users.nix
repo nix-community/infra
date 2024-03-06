@@ -172,6 +172,11 @@ let
       trusted = true;
       uid = 556;
     }
+    {
+      name = "kenji";
+      trusted = true;
+      uid = 557;
+    }
   ];
 in
 {
