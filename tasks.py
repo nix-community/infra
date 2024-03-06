@@ -27,7 +27,7 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
             command = "sudo nixos-rebuild"
 
         res = h.run_local(
-            ["nix", "flake", "archive", "--to", f"ssh://{h.host}", "--json"],
+            ["nix", "flake", "archive", "--to", f"ssh://{h.user}@{h.host}", "--json"],
             stdout=subprocess.PIPE,
         )
         data = json.loads(res.stdout)
