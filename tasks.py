@@ -23,11 +23,13 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
         if "darwin" in h.host:
             # don't use sudo for darwin-rebuild
             command = "darwin-rebuild"
+            target = f"{h.user}@{h.host}"
         else:
             command = "sudo nixos-rebuild"
+            target = f"{h.host}"
 
         res = h.run_local(
-            ["nix", "flake", "archive", "--to", f"ssh://{h.user}@{h.host}", "--json"],
+            ["nix", "flake", "archive", "--to", f"ssh://{target}", "--json"],
             stdout=subprocess.PIPE,
         )
         data = json.loads(res.stdout)
