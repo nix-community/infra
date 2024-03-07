@@ -93,12 +93,10 @@ class Wrapped(Protocol[A_co, B_co]):
     """Protocol for result of `functools.wraps`"""
 
     @property
-    def __wrapped__(self) -> A_co:
-        ...
+    def __wrapped__(self) -> A_co: ...
 
     @property
-    def __call__(self) -> B_co:
-        ...
+    def __call__(self) -> B_co: ...
 
 
 CurMethod = Callable[Concatenate[S, sqlite3.Cursor, P], T]
@@ -151,16 +149,16 @@ class Storage:
     @staticmethod
     def _cursor_method(
         fun: CurMethod[StorageSelf, P, T],
-    ) -> WrappedCurMethod[StorageSelf, P, T]:
-        ...
+    ) -> WrappedCurMethod[StorageSelf, P, T]: ...
 
     @overload
     @staticmethod
     def _cursor_method(
         *,
         transaction: bool = False,
-    ) -> Callable[[CurMethod[StorageSelf, P, T]], WrappedCurMethod[StorageSelf, P, T]]:
-        ...
+    ) -> Callable[
+        [CurMethod[StorageSelf, P, T]], WrappedCurMethod[StorageSelf, P, T]
+    ]: ...
 
     # NOTE: mypy <1.6 claims this implementation doesn't match the first
     # overload; it's wrong.
