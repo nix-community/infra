@@ -167,6 +167,11 @@ let
       trusted = true;
       uid = 555;
     }
+    {
+      name = "puckipedia";
+      trusted = true;
+      uid = 556;
+    }
   ];
 in
 {
