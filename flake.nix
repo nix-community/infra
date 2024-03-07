@@ -101,6 +101,10 @@
             inherit (self.lib) darwinSystem;
           in
           {
+            darwin01 = darwinSystem {
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+              modules = [ ./hosts/darwin01/configuration.nix ];
+            };
             darwin02 = darwinSystem {
               pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin02/configuration.nix ];
