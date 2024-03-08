@@ -40,6 +40,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixpkgs-darwin-pinned.url = "github:NixOS/nixpkgs/2dbc8f62d8af7a1ab962e4b20d12b25ddcb86ced";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
@@ -98,7 +100,8 @@
           in
           {
             darwin01 = darwinSystem {
-              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+              # https://github.com/nix-community/infra/issues/1155
+              pkgs = inputs.nixpkgs-darwin-pinned.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin01/configuration.nix ];
             };
             darwin02 = darwinSystem {
@@ -106,7 +109,8 @@
               modules = [ ./hosts/darwin02/configuration.nix ];
             };
             darwin03 = darwinSystem {
-              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
+              # use the same nixpkgs as darwin01
+              pkgs = inputs.nixpkgs-darwin-pinned.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin03/configuration.nix ];
             };
           };

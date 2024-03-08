@@ -102,6 +102,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-darwin-pinned": {
+      "locked": {
+        "lastModified": 1710339354,
+        "narHash": "sha256-+P5ccUPiLouHexb8aJrUOVOIja9qm+fG57pgAu7uIRs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2dbc8f62d8af7a1ab962e4b20d12b25ddcb86ced",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2dbc8f62d8af7a1ab962e4b20d12b25ddcb86ced",
+        "type": "github"
+      }
+    },
     "nixpkgs-update": {
       "inputs": {
         "mmdoc": [],
@@ -183,6 +199,7 @@
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-darwin-pinned": "nixpkgs-darwin-pinned",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
