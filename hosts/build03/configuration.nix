@@ -9,7 +9,7 @@
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.watch-store
-    inputs.self.nixosModules.remote-workers
+    ./builders.nix
 
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hydra
