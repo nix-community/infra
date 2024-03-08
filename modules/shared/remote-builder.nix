@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  # on nix-darwin if user is removed the keys need to be removed manually from /etc/ssh/authorized_keys.d
-  key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
-
   # https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834
   nix-ssh-wrapper = pkgs.writeShellScript "nix-ssh-wrapper" ''
     case $SSH_ORIGINAL_COMMAND in
@@ -19,10 +16,16 @@ let
   '';
 in
 {
-  users.users.nix.openssh.authorizedKeys.keys = [
+  options.nixCommunity.remote-builder.key = lib.mkOption {
+    type = lib.types.singleLineStr;
+    default = null;
+    description = "ssh public key for the remote build user";
+  };
+
+  config.users.users.nix.openssh.authorizedKeys.keys = [
     # use nix-store for hydra which doesn't support ssh-ng
-    ''restrict,command="${nix-ssh-wrapper}" ${key}''
+    ''restrict,command="${nix-ssh-wrapper}" ${config.nixCommunity.remote-builder.key}''
   ];
 
-  nix.settings.trusted-users = [ "nix" ];
+  config.nix.settings.trusted-users = [ "nix" ];
 }

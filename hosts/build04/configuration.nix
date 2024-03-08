@@ -9,6 +9,8 @@
     inputs.self.nixosModules.remote-builder
   ];
 
+  nixCommunity.remote-builder.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
+
   nixCommunity.disko.raidLevel = 0; # more disk space, we don't have much state to restore anyway
 
   networking.hostName = "build04";
