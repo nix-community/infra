@@ -20,8 +20,6 @@
     };
   };
 
-  nixCommunity.gc.gbFree = 30;
-
   services.nix-daemon.enable = true;
 
   programs.zsh.enable = true;
