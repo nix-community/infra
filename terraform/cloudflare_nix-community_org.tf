@@ -141,7 +141,7 @@ resource "cloudflare_record" "nix-community-org-build-box-CNAME" {
 resource "cloudflare_record" "nix-community-org-darwin-build-box-CNAME" {
   zone_id = local.nix_community_zone_id
   name    = "darwin-build-box"
-  value   = "darwin03.nix-community.org"
+  value   = "darwin01.nix-community.org"
   type    = "CNAME"
 }
 

@@ -9,7 +9,7 @@ build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63r
 `aarch64-darwin`, `x86_64-darwin`
 
 ```
-darwin-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKX7W1ztzAtVXT+NBMITU+JLXcIE5HTEOd7Q3fQNu80S
+darwin-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDDnaVD9TZDJKSpiJQg0qYs0WUHFq3Ur5ijm/kHOY91N
 ```
 
 [_Note: currently the darwin build box doesn't support FIDO keys._](https://github.com/nix-community/infra/issues/1007)
