@@ -5,6 +5,7 @@
     inputs.self.darwinModules.common
     inputs.self.darwinModules.builder
     inputs.self.darwinModules.community-builder
+    ./builders.nix
   ];
 
   nix.settings.sandbox = "relaxed";

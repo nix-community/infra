@@ -72,6 +72,14 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
+  - path_regex: hosts/darwin.+\.yaml$
+    key_groups:
+      - age:
+          - *mic92
+          - *ryantm
+          - *zimbatm
+          - *zowoq
+          - *adisbladis
   - path_regex: modules/darwin/.+\.yaml$
     key_groups:
       - age:
