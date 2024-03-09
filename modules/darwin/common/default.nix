@@ -6,6 +6,7 @@
     ./reboot.nix
     ./telegraf.nix
     ./upgrade-diff.nix
+    ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
   ];
 
