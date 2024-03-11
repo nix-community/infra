@@ -20,6 +20,11 @@ let
       keys = ./keys/a-kenji;
     };
 
+    binarycat = {
+      trusted = true;
+      keys = ./keys/binarycat;
+    };
+
     bobby285271 = {
       trusted = true;
       keys = ./keys/bobby285271;
