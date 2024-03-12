@@ -18,6 +18,7 @@ jobs:
       matrix:
         host: [darwin01, darwin02, darwin03]
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Install Nix
