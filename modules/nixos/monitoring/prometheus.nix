@@ -25,6 +25,17 @@
             }
           ];
       }
+      {
+        job_name = "ofborg";
+        scrape_interval = "60s";
+        metrics_path = "/prometheus.php";
+        scheme = "https";
+        static_configs = [
+          {
+            targets = [ "events.ofborg.org" ];
+          }
+        ];
+      }
     ];
     alertmanagers = [
       {
