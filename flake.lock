@@ -26,6 +26,26 @@
         "type": "github"
       }
     },
+    "comin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710799524,
+        "narHash": "sha256-5ZMHWRYsj3ybp2J+tsSpiMIcotI7CHngAx6NdLfSPl8=",
+        "owner": "nlewo",
+        "repo": "comin",
+        "rev": "b4f7dcc7c0f1a6ad6470c762f1ddccfb7ee887e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nlewo",
+        "repo": "comin",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -195,6 +215,7 @@
     "root": {
       "inputs": {
         "buildbot-nix": "buildbot-nix",
+        "comin": "comin",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
