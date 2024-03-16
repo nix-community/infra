@@ -177,6 +177,11 @@ let
       trusted = true;
       uid = 557;
     }
+    {
+      name = "annalee";
+      trusted = true;
+      uid = 558;
+    }
   ];
 in
 {
