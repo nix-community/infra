@@ -9,6 +9,9 @@
   ];
   nixCommunity.disko.raidLevel = 0; # more disk space, we don't have state to restore anyway
 
+  services.comin.enable = true;
+  system.autoUpgrade.enable = false;
+
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
