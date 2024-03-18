@@ -1,5 +1,5 @@
 let
-  pkgs = import /var/cache/nixpkgs-update/updatescript/nixpkgs { };
+  pkgs = import /var/cache/nixpkgs-update/worker/nixpkgs { };
 in
 # code in the following let block was copied from nixos/nixpkgs under
   # the MIT License
