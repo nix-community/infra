@@ -144,16 +144,16 @@
     "nixpkgs-update-github-releases": {
       "flake": false,
       "locked": {
-        "lastModified": 1697923309,
-        "narHash": "sha256-XCIw5XsV3q2BEE5q+NIokBIKz1TzfsAbSESffB0eGHA=",
-        "owner": "rhendric",
+        "lastModified": 1710739204,
+        "narHash": "sha256-PKZNV6ITH6n7LrFtqg7bJNLZxn31IlqCVkEm5tjdjFE=",
+        "owner": "qowoz",
         "repo": "nixpkgs-update-github-releases",
-        "rev": "cbdc6775eab07c44d94d50e7b714c3ca83c02219",
+        "rev": "490849230ae8044bb024de2f31d2bc724157e7e1",
         "type": "github"
       },
       "original": {
-        "owner": "rhendric",
-        "ref": "rhendric/misc-patches",
+        "owner": "qowoz",
+        "ref": "patches",
         "repo": "nixpkgs-update-github-releases",
         "type": "github"
       }
