@@ -107,12 +107,15 @@ let
   mkFetcher = name: cmd: {
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
-    path = nixpkgsUpdateSystemDependencies;
+    path = nixpkgsUpdateSystemDependencies ++ [
+      # nixpkgs-update-github-releases
+      (pkgs.python3.withPackages (p: with p;
+      [ requests dateutil libversion cachecontrol lockfile filelock ]
+      ))
+    ];
     # API_TOKEN is used by nixpkgs-update-github-releases
     # using a token from another account so the rate limit doesn't block opening PRs
     environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
-    # Used by nixpkgs-update-github-releases to install python dependencies
-    environment.NIX_PATH = "nixpkgs=/var/cache/nixpkgs-update/fetcher/nixpkgs";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/fetcher/";
 
     serviceConfig = {
