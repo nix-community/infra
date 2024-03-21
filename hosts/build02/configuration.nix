@@ -11,7 +11,6 @@
     inputs.self.nixosModules.disko-raid
   ];
 
-  nixCommunity.disko.fsType = "btrfs";
   nixCommunity.disko.raidLevel = 0; # more disk space, we don't have much state to restore anyway
 
   networking.hostName = "build02";
