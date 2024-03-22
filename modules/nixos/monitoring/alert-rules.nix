@@ -11,6 +11,12 @@
           annotations.description = "status of ${name} is unknown: no data for a day";
         })) //
       {
+        CominDeploymentFailing = {
+          expr = ''comin_deployment_status != 2'';
+          for = "30m";
+          annotations.description = "{{$labels.host}} deployment failing";
+        };
+
         Filesystem80percentFull.enable = false;
 
         Filesystem90percentFull = {
