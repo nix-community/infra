@@ -3,7 +3,6 @@
   imports = [
     inputs.srvos.nixosModules.roles-prometheus
     ./alert-rules.nix
-    ./grafana.nix
     ./matrix-hook.nix
     ./prometheus.nix
     ./telegraf.nix
@@ -18,10 +17,6 @@
     locations."/alertmanager/" = {
       basicAuthFile = config.sops.secrets.nginx-basic-auth-file.path;
       proxyPass = "http://localhost:9093/";
-    };
-    locations."/grafana/" = {
-      proxyPass = "http://localhost:3000/";
-      proxyWebsockets = true;
     };
     locations."/prometheus/".proxyPass = "http://localhost:9090/";
   };

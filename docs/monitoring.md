@@ -1,3 +1,2 @@
 - [monitoring.nix-community.org/alertmanager](https://monitoring.nix-community.org/alertmanager)
-- [monitoring.nix-community.org/grafana](https://monitoring.nix-community.org/grafana)
 - [monitoring.nix-community.org/prometheus](https://monitoring.nix-community.org/prometheus)
