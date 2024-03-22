@@ -4,6 +4,12 @@
     inputs.comin.nixosModules.comin
   ];
 
+  services.telegraf.extraConfig.inputs.http = {
+    urls = [ "http://localhost:4242/status" ];
+    data_format = "json";
+    name_override = "comin";
+  };
+
   services.comin = {
     enable = lib.mkDefault false;
     remotes = [
