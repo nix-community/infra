@@ -187,6 +187,12 @@ let
       trusted = true;
       uid = 559;
     }
+    {
+      # https://github.com/n0emis
+      name = "ember";
+      trusted = true;
+      uid = 560;
+    }
   ];
 in
 {
