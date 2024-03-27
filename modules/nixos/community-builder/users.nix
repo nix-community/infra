@@ -85,6 +85,11 @@ let
       keys = ./keys/networkexception;
     };
 
+    pinpox = {
+      trusted = true;
+      keys = ./keys/pinpox;
+    };
+
     schmittlauch = {
       trusted = true;
       keys = ./keys/schmittlauch;
