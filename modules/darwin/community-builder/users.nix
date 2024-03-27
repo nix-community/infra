@@ -182,6 +182,11 @@ let
       trusted = true;
       uid = 558;
     }
+    {
+      name = "pinpox";
+      trusted = true;
+      uid = 559;
+    }
   ];
 in
 {
