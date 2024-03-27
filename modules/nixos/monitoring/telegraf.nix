@@ -41,5 +41,8 @@
           timeout = "10s";
         })
         hosts;
+    prometheus.urls = [
+      "https://events.ofborg.org/prometheus.php"
+    ];
   };
 }
