@@ -25,6 +25,11 @@ let
       keys = ./keys/binarycat;
     };
 
+    binarycat-untrusted = {
+      trusted = false;
+      keys = ./keys/binarycat;
+    };
+
     bobby285271 = {
       trusted = true;
       keys = ./keys/bobby285271;
