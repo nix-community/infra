@@ -9,6 +9,9 @@
     inputs.self.nixosModules.remote-builder
   ];
 
+  services.comin.enable = true;
+  system.autoUpgrade.enable = false;
+
   nixCommunity.remote-builder.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
 
   networking.hostName = "build04";
