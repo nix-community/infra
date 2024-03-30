@@ -17,8 +17,6 @@ let
     socat # used by worker script
   ];
 
-  #nixpkgs-update-github-releases' = "${inputs.nixpkgs-update-github-releases}/main.py";
-
   mkWorker = name: {
     after = [ "network-online.target" "nixpkgs-update-supervisor.service" ];
     wants = [ "network-online.target" ];
@@ -185,7 +183,7 @@ in
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" "${nixpkgs-update-bin} fetch-repology";
 
   #systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
-  #systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" nixpkgs-update-github-releases';
+  systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" "${inputs.nixpkgs-update-github-releases}/main.py";
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
   systemd.services.nixpkgs-update-worker2 = mkWorker "worker2";
