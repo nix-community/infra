@@ -35,7 +35,7 @@
     nur-update.url = "github:nix-community/nur-update";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
 
-    comin.url = "github:nlewo/comin";
+    comin.url = "github:nlewo/comin/857c9157b085b53338b4d7b28e77b49490ff8b51";
     comin.inputs.nixpkgs.follows = "nixpkgs";
 
     disko.url = "github:nix-community/disko";
