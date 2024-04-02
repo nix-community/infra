@@ -24,7 +24,7 @@
     nixpkgs-update.url = "github:qowoz/nixpkgs-update/patches";
     nixpkgs-update.inputs.runtimeDeps.follows = "nixpkgs";
     nixpkgs-update.inputs.mmdoc.follows = "";
-    nixpkgs-update-github-releases.url = "github:qowoz/nixpkgs-update-github-releases/patches";
+    nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
 
     buildbot-nix.url = "github:Mic92/buildbot-nix";
