@@ -12,7 +12,7 @@
         })) //
       {
         CominDeploymentFailing = {
-          expr = ''comin_deployment_status != 2'';
+          expr = ''comin_deployment_info{status!="done"}'';
           for = "30m";
           annotations.description = "{{$labels.host}} deployment failing";
         };
