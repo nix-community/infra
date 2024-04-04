@@ -108,8 +108,7 @@
               modules = [ ./hosts/darwin01/configuration.nix ];
             };
             darwin02 = darwinSystem {
-              # hercules-ci-agent: security: createProcess: posix_spawnp: does not exist
-              pkgs = inputs.nixpkgs-darwin-pinned.legacyPackages.aarch64-darwin;
+              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin02/configuration.nix ];
             };
             darwin03 = darwinSystem {
