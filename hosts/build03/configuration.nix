@@ -17,6 +17,10 @@
     ./postgresql.nix
   ];
 
+  # agent is disabled on darwin02
+  # hercules-ci-agent: security: createProcess: posix_spawnp: does not exist
+  services.hercules-ci-agent.settings.remotePlatformsWithSameFeatures = [ "aarch64-darwin" "x86_64-darwin" ];
+
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";
 
   networking.hostName = "build03";
