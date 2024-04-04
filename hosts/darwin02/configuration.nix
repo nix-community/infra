@@ -4,7 +4,9 @@
   imports = [
     inputs.self.darwinModules.common
     inputs.self.darwinModules.builder
-    inputs.self.darwinModules.hercules-ci
+    # remotePlatformsWithSameFeatures is enabled on build03
+    # hercules-ci-agent: security: createProcess: posix_spawnp: does not exist
+    #inputs.self.darwinModules.hercules-ci
     inputs.self.darwinModules.remote-builder
   ];
 
