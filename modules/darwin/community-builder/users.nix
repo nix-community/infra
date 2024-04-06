@@ -178,11 +178,6 @@ let
       uid = 557;
     }
     {
-      name = "annalee";
-      trusted = true;
-      uid = 558;
-    }
-    {
       name = "pinpox";
       trusted = true;
       uid = 559;
