@@ -3,11 +3,10 @@
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
-    inputs.self.nixosModules.disko-raid
+    inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.community-builder
   ];
-  nixCommunity.disko.raidLevel = 0; # more disk space, we don't have state to restore anyway
 
   services.comin.enable = true;
   system.autoUpgrade.enable = false;
