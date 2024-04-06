@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   imports = [
     ./auto-upgrade.nix
@@ -29,7 +29,7 @@
 
   srvos.flake = inputs.self;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.lib.mkIf (!config.boot.supportedFilesystems.zfs or false) pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
 
