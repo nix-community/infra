@@ -2,4 +2,5 @@
 - Docs: [https://ryantm.github.io/nixpkgs-update](https://ryantm.github.io/nixpkgs-update)
 - Logs: [https://r.ryantm.com/log/](https://r.ryantm.com/log/)
 - Nixpkgs Pull Requests: [https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+author%3Ar-ryantm](https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+author%3Ar-ryantm)
+- Matrix: [https://matrix.to/#/room/#nixpkgs-update:nixos.org](https://matrix.to/#/room/#nixpkgs-update:nixos.org)
 - Source: [https://github.com/ryantm/nixpkgs-update](https://github.com/ryantm/nixpkgs-update)
