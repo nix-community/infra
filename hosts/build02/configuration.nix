@@ -8,10 +8,8 @@
     ./nixpkgs-update-backup.nix
     inputs.self.nixosModules.common
     inputs.self.nixosModules.builder
-    inputs.self.nixosModules.disko-raid
+    inputs.self.nixosModules.disko-zfs
   ];
-
-  nixCommunity.disko.raidLevel = 0; # more disk space, we don't have much state to restore anyway
 
   networking.hostName = "build02";
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
