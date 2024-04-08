@@ -4,9 +4,12 @@
 
   sops.secrets.hetzner-borgbackup-ssh = { };
 
-  systemd.services.borgbackup-job-nixpkgs-update.serviceConfig.ReadWritePaths = [
-    "/var/log/telegraf"
-  ];
+  systemd.services.borgbackup-job-nixpkgs-update = {
+    after = [ "nixpkgs-update-delete-old-logs.service" ];
+    serviceConfig.ReadWritePaths = [
+      "/var/log/telegraf"
+    ];
+  };
 
   services.borgbackup.jobs.nixpkgs-update = {
     paths = [
