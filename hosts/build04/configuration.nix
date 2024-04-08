@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
-    inputs.self.nixosModules.disko-raid
+    inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.common
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
@@ -10,8 +10,6 @@
   ];
 
   nixCommunity.remote-builder.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
-
-  nixCommunity.disko.raidLevel = 0; # more disk space, we don't have much state to restore anyway
 
   networking.hostName = "build04";
 
