@@ -4,7 +4,7 @@
     inputs.srvos.nixosModules.mixins-nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
-    inputs.self.nixosModules.disko-raid
+    inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
