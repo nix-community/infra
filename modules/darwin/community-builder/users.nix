@@ -204,6 +204,11 @@ let
       trusted = true;
       uid = 540;
     }
+    {
+      name = "tnias";
+      trusted = true;
+      uid = 541;
+    }
   ];
 in
 {
