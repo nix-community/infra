@@ -1,7 +1,6 @@
 { config, inputs, pkgs, ... }:
 {
   imports = [
-    ./auto-upgrade.nix
     ./comin.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
