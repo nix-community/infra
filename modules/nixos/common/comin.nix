@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.comin.nixosModules.comin
@@ -9,7 +9,7 @@
   ];
 
   services.comin = {
-    enable = lib.mkDefault false;
+    enable = true;
     remotes = [
       {
         url = "https://github.com/nix-community/infra.git";

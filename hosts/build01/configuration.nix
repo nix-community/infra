@@ -8,9 +8,6 @@
     inputs.self.nixosModules.community-builder
   ];
 
-  services.comin.enable = true;
-  system.autoUpgrade.enable = false;
-
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
