@@ -27,8 +27,7 @@
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
 
-    # "do merges locally" breaks inital clone https://github.com/Mic92/buildbot-nix/commit/956e8e0a6708bceefe01bd32c11f2b36aa361c1a
-    buildbot-nix.url = "github:Mic92/buildbot-nix/54b8dbbdb4a257657031ac8a7059788ab7883d32";
+    buildbot-nix.url = "github:Mic92/buildbot-nix";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
