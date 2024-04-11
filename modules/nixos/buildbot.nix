@@ -63,11 +63,6 @@
     ];
   };
 
-  systemd.targets.multi-user.unitConfig.Upholds = [
-    "buildbot-master.service"
-    "buildbot-worker.service"
-  ];
-
   sops.secrets.buildbot-nix-worker-password = { };
 
   services.buildbot-nix.worker = {
