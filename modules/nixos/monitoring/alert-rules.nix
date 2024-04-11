@@ -11,6 +11,12 @@
           annotations.description = "status of ${name} is unknown: no data for a day";
         })) //
       {
+        CominDeploymentDifferentCommits = {
+          expr = ''count(count by (commit_id) (comin_deployment_info)) > 1'';
+          for = "30m";
+          annotations.description = "One or more comin deployments are on different commits";
+        };
+
         CominDeploymentFailing = {
           expr = ''comin_deployment_info{status!="done"}'';
           for = "30m";
