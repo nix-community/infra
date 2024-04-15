@@ -26,6 +26,7 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 9273 ];
+  services.telegraf.extraConfig.inputs.prometheus.metric_version = 2;
 
   srvos.flake = inputs.self;
 
