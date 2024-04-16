@@ -232,6 +232,7 @@ in
       ${pkgs.findutils}/bin/find /var/log/nixpkgs-update/~workers -type f -mtime +90 -delete
       ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type d -empty -delete
     '';
+    serviceConfig.Type = "oneshot";
   };
 
   systemd.tmpfiles.rules = [
