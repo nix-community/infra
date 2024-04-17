@@ -113,7 +113,7 @@ let
     ];
     # API_TOKEN is used by nixpkgs-update-github-releases
     # using a token from another account so the rate limit doesn't block opening PRs
-    environment.API_TOKEN_FILE = "/var/lib/nixpkgs-update/github_token_with_username.txt";
+    environment.API_TOKEN_FILE = "${config.sops.secrets.github-token-with-username.path}";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/fetcher/";
 
     serviceConfig = {
@@ -261,7 +261,6 @@ in
   };
 
   sops.secrets.github-token-with-username = {
-    path = "/var/lib/nixpkgs-update/github_token_with_username.txt";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
