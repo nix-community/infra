@@ -244,8 +244,6 @@ in
     "d /var/lib/nixpkgs-update/bin/ 700 r-ryantm r-ryantm - -"
     "L+ ${nixpkgs-update-bin} - - - - ${inputs.nixpkgs-update.packages.${pkgs.system}.default}/bin/nixpkgs-update"
     "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
-    "d /var/lib/nixpkgs-update/worker/cachix/ 700 r-ryantm r-ryantm - -"
-    "L+ /var/lib/nixpkgs-update/worker/cachix/cachix.dhall - - - - ${config.sops.secrets.nix-community-cachix.path}"
   ];
 
   sops.secrets.github-r-ryantm-key = {
@@ -266,7 +264,7 @@ in
   };
 
   sops.secrets.nix-community-cachix = {
-    path = "/home/r-ryantm/.config/cachix/cachix.dhall";
+    path = "/var/lib/nixpkgs-update/worker/cachix/cachix.dhall";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
