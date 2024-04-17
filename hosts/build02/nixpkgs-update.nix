@@ -243,7 +243,6 @@ in
 
     "d /var/lib/nixpkgs-update/bin/ 700 r-ryantm r-ryantm - -"
     "L+ ${nixpkgs-update-bin} - - - - ${inputs.nixpkgs-update.packages.${pkgs.system}.default}/bin/nixpkgs-update"
-    "L+ /var/lib/nixpkgs-update/worker/github_token.txt - - - - ${config.sops.secrets.github-r-ryantm-token.path}"
   ];
 
   sops.secrets.github-r-ryantm-key = {
@@ -253,7 +252,7 @@ in
   };
 
   sops.secrets.github-r-ryantm-token = {
-    path = "/var/lib/nixpkgs-update/github_token.txt";
+    path = "/var/lib/nixpkgs-update/worker/github_token.txt";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
