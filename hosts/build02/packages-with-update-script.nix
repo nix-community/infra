@@ -1,5 +1,5 @@
 let
-  pkgs = import /var/cache/nixpkgs-update/worker/nixpkgs { };
+  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz") { };
 in
 # code in the following let block was copied from nixos/nixpkgs under
   # the MIT License

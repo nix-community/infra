@@ -126,7 +126,7 @@ let
       LogsDirectoryMode = "755";
       StateDirectory = "nixpkgs-update";
       StateDirectoryMode = "700";
-      CacheDirectory = "nixpkgs-update/worker";
+      CacheDirectory = "nixpkgs-update/fetcher";
       CacheDirectoryMode = "700";
     };
 
