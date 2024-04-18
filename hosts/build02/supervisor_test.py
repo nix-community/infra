@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#! nix-shell -i python3.11 -p python311 python311Packages.asyncinotify
+#!/usr/bin/env python3
 
 """
 In-process unit and integration tests for supervisor.py. Uses temporary

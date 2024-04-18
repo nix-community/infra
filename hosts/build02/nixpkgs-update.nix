@@ -198,7 +198,7 @@ in
     restartIfChanged = true;
     path = with pkgs; [
       apacheHttpd
-      (python311.withPackages (ps: [ ps.asyncinotify ]))
+      (python3.withPackages (ps: [ ps.asyncinotify ]))
     ];
 
     serviceConfig = {
@@ -220,7 +220,7 @@ in
       exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stdout.log' 86400)
       exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stderr.log' 86400 >&2)
       # Fetcher output is hosted at https://r.ryantm.com/log/~fetchers
-      python3.11 ${./supervisor.py} "$LOGS_DIRECTORY/~supervisor/state.db" "$LOGS_DIRECTORY/~fetchers" "$RUNTIME_DIRECTORY/work.sock"
+      python3 ${./supervisor.py} "$LOGS_DIRECTORY/~supervisor/state.db" "$LOGS_DIRECTORY/~fetchers" "$RUNTIME_DIRECTORY/work.sock"
     '';
   };
 
