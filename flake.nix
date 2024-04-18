@@ -87,6 +87,7 @@
               };
 
             packages = pkgs.lib.optionalAttrs defaultPlatform {
+              nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
               pages = pkgs.runCommand "pages"
                 {
                   buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
