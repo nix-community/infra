@@ -70,6 +70,9 @@
     echo disabling netbios... >&2
     launchctl disable system/netbiosd
     launchctl unload -w /System/Library/LaunchDaemons/com.apple.netbiosd.plist 2>/dev/null || true
+    echo disabling spotlight indexing... >&2
+    mdutil -a -i off -d &> /dev/null
+    mdutil -a -E &> /dev/null
   '';
 
   time.timeZone = "GMT";
