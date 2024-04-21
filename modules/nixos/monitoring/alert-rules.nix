@@ -13,7 +13,7 @@
       {
         CominDeploymentDifferentCommits = {
           expr = ''count(count by (commit_id) (comin_deployment_info)) > 1'';
-          for = "30m";
+          for = "90m";
           annotations.description = "One or more comin deployments are on different commits";
         };
 
