@@ -1,6 +1,6 @@
 - Config: [https://github.com/nix-community/infra/tree/master/hosts/build02](https://github.com/nix-community/infra/tree/master/hosts/build02)
 - Docs: [https://nix-community.github.io/nixpkgs-update](https://nix-community.github.io/nixpkgs-update)
-- Logs: [https://r.ryantm.com/log/](https://r.ryantm.com/log/)
+- Logs: [https://nixpkgs-update-logs.nix-community.org](https://nixpkgs-update-logs.nix-community.org)
 - Nixpkgs Pull Requests: [https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+author%3Ar-ryantm](https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+author%3Ar-ryantm)
 - Matrix: [https://matrix.to/#/#nixpkgs-update:nixos.org](https://matrix.to/#/#nixpkgs-update:nixos.org)
 - Source: [https://github.com/nix-community/nixpkgs-update](https://github.com/nix-community/nixpkgs-update)
