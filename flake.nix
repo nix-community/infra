@@ -21,9 +21,9 @@
     # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-update.url = "github:qowoz/nixpkgs-update/patches";
-    nixpkgs-update.inputs.runtimeDeps.follows = "nixpkgs";
+    nixpkgs-update.url = "github:nix-community/nixpkgs-update";
     nixpkgs-update.inputs.mmdoc.follows = "";
+    nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update-github-releases.flake = false;
 
