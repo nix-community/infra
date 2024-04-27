@@ -49,7 +49,7 @@ let
 
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~workers/"
-      # This is for public logs at https://r.ryantm.com/log/~workers
+      # This is for public logs at nixpkgs-update-logs.nix-community.org/~workers
       exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stdout.log' 86400)
       exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stderr.log' 86400 >&2)
 
@@ -216,10 +216,10 @@ in
 
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~supervisor"
-      # This is for public logs at https://r.ryantm.com/log/~supervisor
+      # This is for public logs at nixpkgs-update-logs.nix-community.org/~supervisor
       exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stdout.log' 86400)
       exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stderr.log' 86400 >&2)
-      # Fetcher output is hosted at https://r.ryantm.com/log/~fetchers
+      # Fetcher output is hosted at nixpkgs-update-logs.nix-community.org/~fetchers
       python3 ${./supervisor.py} "$LOGS_DIRECTORY/~supervisor/state.db" "$LOGS_DIRECTORY/~fetchers" "$RUNTIME_DIRECTORY/work.sock"
     '';
   };
@@ -269,6 +269,19 @@ in
     group = "r-ryantm";
   };
 
+  services.nginx.virtualHosts."nixpkgs-update-logs.nix-community.org" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      alias = "/var/log/nixpkgs-update/";
+      extraConfig = ''
+        charset utf-8;
+        autoindex on;
+      '';
+    };
+  };
+
+  # TODO: permanent redirect r.ryantm.com/log/ -> nixpkgs-update-logs.nix-community.org
   services.nginx.virtualHosts."r.ryantm.com" = {
     forceSSL = true;
     enableACME = true;

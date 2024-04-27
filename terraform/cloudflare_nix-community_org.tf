@@ -145,6 +145,13 @@ resource "cloudflare_record" "nix-community-org-darwin-build-box-CNAME" {
   type    = "CNAME"
 }
 
+resource "cloudflare_record" "nix-community-org-nixpkgs-update-logs-CNAME" {
+  zone_id = local.nix_community_zone_id
+  name    = "nixpkgs-update-logs"
+  value   = "build02.nix-community.org"
+  type    = "CNAME"
+}
+
 resource "cloudflare_record" "nix-community-org-buildbot-CNAME" {
   zone_id = local.nix_community_zone_id
   name    = "buildbot"
