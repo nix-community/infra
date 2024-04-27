@@ -142,21 +142,21 @@
       "inputs": {
         "mmdoc": [],
         "nixpkgs": "nixpkgs_2",
-        "runtimeDeps": [
-          "nixpkgs"
+        "runtimeDeps": "runtimeDeps",
+        "treefmt-nix": [
+          "treefmt-nix"
         ]
       },
       "locked": {
-        "lastModified": 1713663182,
-        "narHash": "sha256-HmO5ghj2eNnN9NnYUPE26x/KJ6F21ALMWp6pEE/cVRE=",
-        "owner": "qowoz",
+        "lastModified": 1714270547,
+        "narHash": "sha256-s77XshW+9EoghBWmOf0tFVQZ+8rX4+bOCz0StL+TkvQ=",
+        "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "dbab69bed4129965501948d1c0193fb4bea2d707",
+        "rev": "df23e62c3322a6471671ec8cb4ad0da36ab7f8a7",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "patches",
+        "owner": "nix-community",
         "repo": "nixpkgs-update",
         "type": "github"
       }
@@ -226,6 +226,22 @@
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "runtimeDeps": {
+      "locked": {
+        "lastModified": 1714247354,
+        "narHash": "sha256-6dFKqP/aCKIdpOgqgIQUrRT0NOfVc14ftNcdELa4Pu4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c8d7c8a78fb516c0842cc65346506a565c88014d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "sops-nix": {
