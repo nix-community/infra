@@ -14,15 +14,6 @@
     "http://localhost:8011/metrics"
   ];
 
-  systemd.services.buildbot-master.serviceConfig = {
-    Restart = "on-failure";
-    RestartSec = "30s";
-  };
-  systemd.services.buildbot-worker.serviceConfig = {
-    Restart = "on-failure";
-    RestartSec = "30s";
-  };
-
   sops.secrets.buildbot-github-oauth-secret = { };
   sops.secrets.buildbot-github-token = { };
   sops.secrets.buildbot-github-webhook-secret = { };
