@@ -5,11 +5,12 @@
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
     serviceConfig.Type = "oneshot";
+    path = [ config.systemd.package pkgs.coreutils ];
     script = ''
-      booted="$(${pkgs.coreutils}/bin/readlink /run/booted-system/{initrd,kernel,kernel-modules})"
-      built="$(${pkgs.coreutils}/bin/readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules})"
+      booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules} && cat /run/booted-system/kernel-params)"
+      built="$(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules} && cat /nix/var/nix/profiles/system/kernel-params)"
       if [ "''${booted}" != "''${built}" ]; then
-        ${config.systemd.package}/bin/shutdown -r now
+        systemctl reboot
       fi
     '';
     startAt = "0/3:00";
