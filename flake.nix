@@ -159,6 +159,7 @@
           community-builder = ./modules/nixos/community-builder;
           disko-raid = ./modules/nixos/disko-raid.nix;
           disko-zfs = ./modules/nixos/disko-zfs.nix;
+          disko-zfs-swap = ./modules/nixos/disko-zfs-swap.nix;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci;
           hydra = ./modules/nixos/hydra.nix;
