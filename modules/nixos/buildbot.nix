@@ -22,6 +22,7 @@
 
   services.buildbot-nix.master = {
     enable = true;
+    admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     domain = "buildbot.nix-community.org";
     evalMaxMemorySize = "4096";
@@ -37,7 +38,6 @@
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "9bbd3e8bbfebb197d2ca";
       user = "nix-community-buildbot";
-      admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
       topic = "nix-community-buildbot";
     };
   };
