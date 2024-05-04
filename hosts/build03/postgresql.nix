@@ -1,6 +1,18 @@
 { pkgs, ... }:
 
 {
+  services.postgresql.ensureUsers = [{
+    name = "telegraf";
+  }];
+
+  systemd.services.postgresql.postStart = ''
+    $PSQL -tAc 'GRANT pg_read_all_stats TO telegraf' -d postgres
+  '';
+
+  services.telegraf.extraConfig.inputs.postgresql = {
+    address = "host=/run/postgresql user=telegraf database=postgres";
+  };
+
   services.postgresql = {
     enable = true;
     # enableJIT seems to be broken, can't set a version without also needing to add withJIT
