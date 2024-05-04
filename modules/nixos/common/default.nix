@@ -24,8 +24,6 @@
     Restart = "on-failure";
   };
 
-  srvos.flake = inputs.self;
-
   boot.kernelPackages = pkgs.lib.mkIf (!config.boot.supportedFilesystems.zfs or false) pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;

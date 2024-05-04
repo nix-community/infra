@@ -2,7 +2,6 @@
 {
   imports = [
     ./apfs-cleanup.nix
-    ./flake-inputs.nix
     ./reboot.nix
     ./telegraf.nix
     ./upgrade-diff.nix
