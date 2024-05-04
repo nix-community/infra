@@ -7,9 +7,9 @@
     ./reboot.nix
     ./security.nix
     ./sops-nix.nix
+    ./telegraf.nix
     ./users.nix
     inputs.sops-nix.nixosModules.sops
-    inputs.srvos.nixosModules.mixins-telegraf
     inputs.srvos.nixosModules.server
   ];
 
@@ -23,9 +23,6 @@
   systemd.services.nix-gc.serviceConfig = {
     Restart = "on-failure";
   };
-
-  networking.firewall.allowedTCPPorts = [ 9273 ];
-  services.telegraf.extraConfig.inputs.prometheus.metric_version = 2;
 
   srvos.flake = inputs.self;
 
