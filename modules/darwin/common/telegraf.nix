@@ -1,11 +1,14 @@
 { pkgs, ... }:
 {
+  imports = [
+    ../../shared/telegraf.nix
+  ];
+
   services.telegraf = {
     enable = true;
     extraConfig = {
       agent.interval = "60s";
       inputs = {
-        prometheus.metric_version = 2;
         smart.path_smartctl = "${pkgs.smartmontools}/bin/smartctl";
         system = { };
         mem = { };
