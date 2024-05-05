@@ -296,7 +296,7 @@ class Storage:
 
                 CREATE TRIGGER `log_insert_started`
                 AFTER INSERT
-                ON `log` 
+                ON `log`
                 BEGIN
                     UPDATE `queue` SET
                         `last_started` = NEW.`started`
@@ -305,7 +305,7 @@ class Storage:
 
                 CREATE TRIGGER `log_update_started`
                 AFTER UPDATE OF `started`
-                ON `log` 
+                ON `log`
                 BEGIN
                     UPDATE `queue` SET
                         `last_started` = NEW.`started`
