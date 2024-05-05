@@ -27,6 +27,11 @@
       includes = [ ".github/workflows/*.yml" ];
     };
 
+    editorconfig-checker = {
+      command = pkgs.editorconfig-checker;
+      includes = [ "*" ];
+    };
+
     nix = {
       command = "sh";
       options = [
