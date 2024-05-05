@@ -66,7 +66,7 @@
       options = [
         "-eucx"
         ''
-          ${pkgs.lib.getExe pkgs.ruff} --fix "$@"
+          ${pkgs.lib.getExe pkgs.ruff} check --fix "$@"
           ${pkgs.lib.getExe pkgs.ruff} format "$@"
         ''
         "--" # this argument is ignored by bash
