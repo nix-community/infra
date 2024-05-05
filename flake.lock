@@ -1,5 +1,31 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "darwin": [
+          "nix-darwin"
+        ],
+        "home-manager": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1714879853,
+        "narHash": "sha256-URv/JEimxdhCEgokhY9xdMF09iGX8UE96GXFs3RXiJg=",
+        "owner": "qowoz",
+        "repo": "agenix",
+        "rev": "0248db39f453e47c04f39922d170e11b78fa026a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "darwin",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "buildbot-nix": {
       "inputs": {
         "flake-parts": [
@@ -197,6 +223,7 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
         "buildbot-nix": "buildbot-nix",
         "comin": "comin",
         "disko": "disko",
@@ -265,6 +292,21 @@
       "original": {
         "owner": "nix-community",
         "repo": "srvos",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },

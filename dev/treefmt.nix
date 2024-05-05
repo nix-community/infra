@@ -30,6 +30,7 @@
     editorconfig-checker = {
       command = pkgs.editorconfig-checker;
       includes = [ "*" ];
+      excludes = [ "*.age" ];
     };
 
     nix = {
