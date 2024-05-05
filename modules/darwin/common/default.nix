@@ -15,6 +15,7 @@ in
     ./upgrade-diff.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
+    inputs.agenix.darwinModules.age
   ];
 
   # TODO: refactor this to share /users with nixos
