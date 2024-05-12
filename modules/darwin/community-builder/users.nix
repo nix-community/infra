@@ -188,6 +188,12 @@ let
       trusted = true;
       uid = 560;
     }
+    {
+      # lib.maintainers.nicoo, @nbraud on github.com
+      name = "nicoo";
+      trusted = true;
+      uid = 561;
+    }
   ];
 in
 {
