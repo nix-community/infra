@@ -80,6 +80,12 @@ let
       keys = ./keys/lily;
     };
 
+    nicoo = {
+      # lib.maintainers.nicoo, @nbraud on github.com
+      trusted = true;
+      keys = ./keys/nicoo;
+    };
+
     raitobezarius = {
       trusted = true;
       keys = ./keys/raitobezarius;
