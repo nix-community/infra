@@ -2,14 +2,24 @@
   # Used to find the project root
   projectRootFile = ".git/config";
 
-  programs.hclfmt.enable = true;
+  package = pkgs.treefmt2;
+
+  programs = {
+    deadnix.enable = true;
+    hclfmt.enable = true;
+    nixpkgs-fmt.enable = true;
+    prettier.enable = true;
+    ruff.check = true;
+    ruff.format = true;
+    statix.enable = true;
+  };
 
   programs.mypy = {
     enable = true;
     directories = {
       "tasks" = {
         directory = ".";
-        files = [ "**/tasks.py" ];
+        files = [ "*tasks.py" ];
         modules = [ ];
         extraPythonPackages = [
           pkgs.python3.pkgs.deploykit
@@ -19,41 +29,47 @@
     };
   };
 
-  programs.prettier.enable = true;
+  settings.global.excludes = [
+    # vendored from external source
+    "hosts/build02/packages-with-update-script.nix"
+  ];
 
   settings.formatter = {
     actionlint = {
       command = pkgs.actionlint;
       includes = [ ".github/workflows/*.yml" ];
+      pipeline = "yaml";
+      priority = 1;
     };
 
-    editorconfig-checker = {
-      command = pkgs.editorconfig-checker;
-      includes = [ "*" ];
-      excludes = [ "*.age" ];
+    deadnix = {
+      pipeline = "nix";
+      priority = 1;
     };
 
-    nix = {
-      command = "sh";
-      options = [
-        "-eucx"
-        ''
-          ${pkgs.lib.getExe pkgs.deadnix} --edit "$@"
+    statix = {
+      pipeline = "nix";
+      priority = 2;
+    };
 
-          for i in "$@"; do
-            ${pkgs.lib.getExe pkgs.statix} fix "$i"
-          done
+    nixpkgs-fmt = {
+      pipeline = "nix";
+      priority = 3;
+    };
 
-          ${pkgs.lib.getExe pkgs.nixpkgs-fmt} "$@"
-        ''
-        "--"
-      ];
-      includes = [ "*.nix" ];
-      excludes = [
-        "nix/sources.nix"
-        # vendored from external source
-        "hosts/build02/packages-with-update-script.nix"
-      ];
+    ruff-check = {
+      pipeline = "python";
+      priority = 1;
+    };
+
+    ruff-format = {
+      pipeline = "python";
+      priority = 2;
+    };
+
+    mypy-tasks = {
+      pipeline = "python";
+      priority = 3;
     };
 
     prettier = {
@@ -63,21 +79,10 @@
         "never"
       ];
       excludes = [
-        "secrets.yaml"
+        "*secrets.yaml"
       ];
-    };
-
-    python = {
-      command = "sh";
-      options = [
-        "-eucx"
-        ''
-          ${pkgs.lib.getExe pkgs.ruff} check --fix "$@"
-          ${pkgs.lib.getExe pkgs.ruff} format "$@"
-        ''
-        "--" # this argument is ignored by bash
-      ];
-      includes = [ "*.py" ];
+      pipeline = "yaml";
+      priority = 2;
     };
   };
 }

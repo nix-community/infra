@@ -6,9 +6,5 @@ result-*
 .terraform
 .terraform.*
 
-# needed for treefmt
-!.github
-!.sops.yaml
-
 # direnv
 .direnv/
