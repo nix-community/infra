@@ -18,9 +18,9 @@
         systemctl reboot
       fi
     '';
-    startAt = "0/3:00";
+    startAt = "hourly";
   };
   systemd.timers.reboot-after-update = {
-    timerConfig.RandomizedDelaySec = "3h";
+    timerConfig.RandomizedDelaySec = "2h";
   };
 }
