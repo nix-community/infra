@@ -34,7 +34,7 @@
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
-  zramSwap.enable = true;
+  zramSwap.enable = pkgs.lib.mkIf (config.swapDevices == [ ]) true;
 
   security.acme.defaults.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
