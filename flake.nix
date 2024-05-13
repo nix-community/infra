@@ -44,7 +44,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-darwin-pinned.url = "github:NixOS/nixpkgs/0a0027cb7c11e9cf5521266f88b5e72a0e7ed331";
+    nixpkgs-darwin-pinned.url = "github:NixOS/nixpkgs/3281bec7174f679eabf584591e75979a258d8c40";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
