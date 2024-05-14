@@ -22,8 +22,7 @@
   programs.prettier.enable = true;
 
   settings.formatter = {
-    # https://hydra.nixos.org/build/258938640
-    actionlint = pkgs.lib.mkIf (!pkgs.stdenv.isDarwin) {
+    actionlint = {
       command = pkgs.actionlint;
       includes = [ ".github/workflows/*.yml" ];
     };
