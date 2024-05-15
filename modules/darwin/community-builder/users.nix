@@ -44,155 +44,155 @@ let
     {
       name = "k900";
       trusted = true;
-      uid = 510;
+      uid = 509;
     }
     {
       name = "julienmalka";
       trusted = true;
-      uid = 511;
+      uid = 510;
     }
     {
       name = "dotlambda";
       trusted = true;
-      uid = 512;
+      uid = 511;
     }
     {
       name = "lily";
       trusted = true;
-      uid = 513;
+      uid = 512;
     }
     {
       name = "ma27";
       trusted = true;
-      uid = 514;
+      uid = 513;
     }
     {
       name = "fab";
       trusted = true;
-      uid = 515;
+      uid = 514;
     }
     {
       name = "phaer";
       trusted = true;
-      uid = 516;
+      uid = 515;
     }
     {
       name = "emilylange";
       trusted = true;
-      uid = 517;
+      uid = 516;
     }
     {
       name = "emilytrau";
       trusted = true;
-      uid = 518;
+      uid = 517;
     }
     {
       name = "janik";
       trusted = true;
-      uid = 519;
+      uid = 518;
     }
     {
       name = "delroth";
       trusted = true;
-      uid = 520;
+      uid = 519;
     }
     {
       name = "toonn";
       trusted = true;
-      uid = 542;
+      uid = 520;
     }
     {
       name = "glepage";
       trusted = true;
-      uid = 543;
+      uid = 521;
     }
     {
       name = "anthonyroussel";
       trusted = true;
-      uid = 544;
+      uid = 522;
     }
     {
       name = "sgo";
       trusted = true;
-      uid = 545;
+      uid = 523;
     }
     {
       name = "chayleaf";
       trusted = true;
-      uid = 546;
+      uid = 524;
     }
     {
       # https://github.com/lf-
       name = "jade";
       trusted = true;
-      uid = 547;
+      uid = 525;
     }
     {
       name = "kranzes";
       trusted = true;
-      uid = 548;
+      uid = 526;
     }
     {
       name = "sternenseemann";
       trusted = true;
-      uid = 549;
+      uid = 527;
     }
     {
       name = "jtojnar";
       trusted = true;
-      uid = 550;
+      uid = 528;
     }
     {
       name = "corngood";
       trusted = true;
-      uid = 551;
+      uid = 529;
     }
     {
       name = "teto";
       trusted = true;
-      uid = 552;
+      uid = 530;
     }
     {
       name = "matthewcroughan";
       trusted = true;
-      uid = 553;
+      uid = 531;
     }
     {
       name = "pennae";
       trusted = true;
-      uid = 554;
+      uid = 532;
     }
     {
       name = "jopejoe1";
       trusted = true;
-      uid = 555;
+      uid = 533;
     }
     {
       name = "puckipedia";
       trusted = true;
-      uid = 556;
+      uid = 534;
     }
     {
       name = "kenji";
       trusted = true;
-      uid = 557;
+      uid = 535;
     }
     {
       name = "pinpox";
       trusted = true;
-      uid = 559;
+      uid = 536;
     }
     {
       # https://github.com/n0emis
       name = "ember";
       trusted = true;
-      uid = 560;
+      uid = 537;
     }
     {
       # lib.maintainers.nicoo, @nbraud on github.com
       name = "nicoo";
       trusted = true;
-      uid = 561;
+      uid = 538;
     }
   ];
 in
