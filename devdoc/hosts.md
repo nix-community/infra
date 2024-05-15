@@ -32,11 +32,11 @@
 
 ### `darwin01`
 
-- Provider: Hetzner
-- Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
-- CPU: Apple M1
-- RAM: 16GB
-- Drives: 256GB SSD, 2 x 1 TB NVME in RAID 0
+- Provider: OakHost
+- Instance type: [Apple Mac mini M2](https://www.oakhost.net/product/mac-mini-hosting-m2-24gb)
+- CPU: Apple M2
+- RAM: 24GB
+- Drives: 1 TB SSD
 
 ### `darwin02`
 

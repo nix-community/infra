@@ -111,7 +111,13 @@ def get_hosts(hosts: str) -> List[DeployHost]:
         systems = data["nixosConfigurations"]
         return [DeployHost(f"{n}.nix-community.org") for n in systems]
 
-    if "darwin" in hosts:
+    if "darwin01" in hosts:
+        return [
+            DeployHost(f"{h}.nix-community.org", user="customer")
+            for h in hosts.split(",")
+        ]
+
+    if "darwin02" or "darwin03" in hosts:
         return [
             DeployHost(f"{h}.nix-community.org", user="hetzner")
             for h in hosts.split(",")
