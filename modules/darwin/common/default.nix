@@ -1,4 +1,12 @@
 { inputs, pkgs, ... }:
+let
+  authorizedKeys = {
+    keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPVjRBomWFJNNkZb0g5ymLmc3pdRddIScitmJ9yC+ap" # deployment
+    ];
+    keyFiles = pkgs.lib.filesystem.listFilesRecursive "${toString inputs.self}/users/keys";
+  };
+in
 {
   imports = [
     ./apfs-cleanup.nix
@@ -12,12 +20,8 @@
   # TODO: refactor this to share /users with nixos
   # if user is removed the keys need to be removed manually from /etc/ssh/authorized_keys.d
   users.users = {
-    hetzner.openssh.authorizedKeys = {
-      keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPVjRBomWFJNNkZb0g5ymLmc3pdRddIScitmJ9yC+ap" # deployment
-      ];
-      keyFiles = pkgs.lib.filesystem.listFilesRecursive "${toString inputs.self}/users/keys";
-    };
+    customer.openssh = { inherit authorizedKeys; };
+    hetzner.openssh = { inherit authorizedKeys; };
   };
 
   services.nix-daemon.enable = true;
