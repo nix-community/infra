@@ -1,10 +1,11 @@
-"sops secrets":
+"secrets":
   - changed-files:
       - any-glob-to-any-file:
           - ".sops.yaml"
           - "secrets.yaml"
           - "**/*/*.enc.json"
           - "**/*/secrets.yaml"
+          - "secrets/**/*"
 
 "terraform":
   - changed-files:
