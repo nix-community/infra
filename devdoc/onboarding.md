@@ -4,6 +4,8 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
+- Add their user to [secrets/secrets.nix](../secrets/secrets.nix) and run `inv update-agenix-files`.
+
 - Add their age key to [.sops.yaml](../.sops.yaml), update the `creation_rules` and run `inv update-sops-files`.
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
