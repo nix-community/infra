@@ -52,6 +52,15 @@ def sotp(c: Any, acct: str) -> None:
 
 
 @task
+def update_agenix_files(c: Any) -> None:
+    """
+    Update all agenix secrets
+    """
+    os.chdir("secrets")
+    c.run("agenix --rekey", pty=True)
+
+
+@task
 def update_sops_files(c: Any) -> None:
     """
     Update all sops yaml and json files according to .sops.yaml rules
