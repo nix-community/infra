@@ -51,7 +51,7 @@ in
     networking.hostId = "deadbeef";
 
     # Only enable during install
-    #boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
     disko.devices = {
       disk = {
