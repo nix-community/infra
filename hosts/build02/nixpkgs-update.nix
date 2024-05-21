@@ -270,6 +270,9 @@ in
     group = "r-ryantm";
   };
 
+  # autoindex is truncated on some browsers
+  services.nginx.recommendedZstdSettings = false;
+
   services.nginx.virtualHosts."nixpkgs-update-logs.nix-community.org" = {
     forceSSL = true;
     enableACME = true;
