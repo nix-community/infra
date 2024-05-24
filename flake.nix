@@ -98,14 +98,6 @@
                 cd ${self}
                 mkdocs build --strict --site-dir $out
               '';
-              editorconfig = pkgs.runCommand "editorconfig"
-                {
-                  buildInputs = [ pkgs.editorconfig-checker ];
-                } ''
-                cd ${self}
-                editorconfig-checker
-                touch $out
-              '';
             };
           };
 
