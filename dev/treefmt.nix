@@ -38,39 +38,24 @@
     actionlint = {
       command = pkgs.actionlint;
       includes = [ ".github/workflows/*.yml" ];
-      pipeline = "yaml";
-      priority = 1;
     };
 
-    deadnix = {
-      pipeline = "nix";
-      priority = 1;
+    editorconfig-checker = {
+      command = pkgs.editorconfig-checker;
+      includes = [ "*" ];
+      excludes = [ "*.age" ];
+      priority = 9; # last
     };
 
-    statix = {
-      pipeline = "nix";
-      priority = 2;
-    };
+    # nix
+    deadnix.priority = 1;
+    statix.priority = 2;
+    nixpkgs-fmt.priority = 3;
 
-    nixpkgs-fmt = {
-      pipeline = "nix";
-      priority = 3;
-    };
-
-    ruff-check = {
-      pipeline = "python";
-      priority = 1;
-    };
-
-    ruff-format = {
-      pipeline = "python";
-      priority = 2;
-    };
-
-    mypy-tasks = {
-      pipeline = "python";
-      priority = 3;
-    };
+    # python
+    ruff-check.priority = 1;
+    ruff-format.priority = 2;
+    mypy-tasks.priority = 3;
 
     prettier = {
       options = [
@@ -81,8 +66,6 @@
       excludes = [
         "*secrets.yaml"
       ];
-      pipeline = "yaml";
-      priority = 2;
     };
   };
 }
