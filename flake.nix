@@ -21,8 +21,7 @@
     # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 
-    # rebased patch from https://github.com/ryantm/agenix/pull/241
-    agenix.url = "github:qowoz/agenix/darwin";
+    agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.home-manager.follows = "";
     agenix.inputs.darwin.follows = "nix-darwin";

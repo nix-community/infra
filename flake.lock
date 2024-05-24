@@ -12,16 +12,15 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1714879853,
-        "narHash": "sha256-URv/JEimxdhCEgokhY9xdMF09iGX8UE96GXFs3RXiJg=",
-        "owner": "qowoz",
+        "lastModified": 1716561646,
+        "narHash": "sha256-UIGtLO89RxKt7RF2iEgPikSdU53r6v/6WYB0RW3k89I=",
+        "owner": "ryantm",
         "repo": "agenix",
-        "rev": "0248db39f453e47c04f39922d170e11b78fa026a",
+        "rev": "c2fc0762bbe8feb06a2e59a364fa81b3a57671c9",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "darwin",
+        "owner": "ryantm",
         "repo": "agenix",
         "type": "github"
       }
