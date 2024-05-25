@@ -194,6 +194,11 @@ let
       trusted = true;
       uid = 538;
     }
+    {
+      name = "imincik";
+      trusted = true;
+      uid = 539;
+    }
   ];
 in
 {
