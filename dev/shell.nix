@@ -11,11 +11,6 @@
         ssh-to-age
       ];
     };
-    mkdocs = with pkgs; mkShellNoCC {
-      packages = [
-        python3.pkgs.mkdocs-material
-      ];
-    };
     sotp = with pkgs; mkShellNoCC {
       packages = [
         (buildGoModule rec {
