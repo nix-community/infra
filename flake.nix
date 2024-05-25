@@ -55,9 +55,10 @@
           inputs.treefmt-nix.flakeModule
         ];
 
-        perSystem = { config, inputs', lib, pkgs, self', system, ... }:
+        perSystem = { inputs', lib, pkgs, self', system, ... }:
           {
             imports = [
+              ./dev/docs.nix
               ./dev/shell.nix
               ./terraform/shell.nix
             ];
@@ -82,23 +83,13 @@
               darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations
               // pkgs.lib.optionalAttrs (system == "x86_64-linux")
                 {
-                  inherit (self'.packages) pages;
+                  inherit (self'.packages) docs;
                   nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
                   nixosTests-buildbot = pkgs.nixosTests.buildbot;
                   nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
                   nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
                   nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
                 };
-
-            packages = {
-              pages = pkgs.runCommand "pages"
-                {
-                  buildInputs = [ config.devShells.mkdocs.nativeBuildInputs ];
-                } ''
-                cd ${self}
-                mkdocs build --strict --site-dir $out
-              '';
-            };
           };
 
         flake.darwinConfigurations =
