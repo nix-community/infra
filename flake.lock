@@ -11,7 +11,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1716561646,
@@ -254,6 +256,7 @@
         "nur-update": "nur-update",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
+        "systems": "systems",
         "treefmt-nix": "treefmt-nix"
       }
     },

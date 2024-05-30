@@ -12,6 +12,7 @@
     agenix.inputs.darwin.follows = "nix-darwin";
     agenix.inputs.home-manager.follows = "empty";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.systems.follows = "systems";
     agenix.url = "github:ryantm/agenix";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +40,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
     srvos.url = "github:nix-community/srvos";
+    systems.url = "github:nix-systems/default";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
@@ -47,7 +49,7 @@
     flake-parts.lib.mkFlake
       { inherit inputs; }
       {
-        systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+        systems = import inputs.systems;
 
         imports = [
           inputs.treefmt-nix.flakeModule
