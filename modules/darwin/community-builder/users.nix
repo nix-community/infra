@@ -199,6 +199,11 @@ let
       trusted = true;
       uid = 539;
     }
+    {
+      name = "wolfgangwalther";
+      trusted = true;
+      uid = 540;
+    }
   ];
 in
 {
