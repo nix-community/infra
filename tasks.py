@@ -108,6 +108,14 @@ def mkdocs(c: Any) -> None:
     c.run("nix develop .#mkdocs -c mkdocs serve")
 
 
+@task
+def docs_linkcheck(c: Any) -> None:
+    """
+    Run docs online linkchecker
+    """
+    c.run("nix run .#docs-linkcheck.online")
+
+
 def get_hosts(hosts: str) -> List[DeployHost]:
     if hosts == "":
         res = subprocess.run(

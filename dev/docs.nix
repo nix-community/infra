@@ -23,5 +23,19 @@
         cd $files
         mkdocs build --strict --site-dir $out
       '';
+    docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
+      extraConfig = {
+        exclude = [
+          "https://fonts.gstatic.com"
+          "https://monitoring.nix-community.org/alertmanager" # 401 behind auth
+        ];
+        include_mail = true;
+        include_verbatim = true;
+      };
+      remap = {
+        "https://nix-community.org" = site;
+      };
+      site = config.packages.docs;
+    };
   };
 }
