@@ -71,6 +71,13 @@
               imports = [ ./dev/treefmt.nix ];
             };
 
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+                "terraform"
+              ];
+            };
+
             checks =
               let
                 darwinConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair name config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);

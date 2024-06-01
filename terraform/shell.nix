@@ -1,12 +1,9 @@
 { pkgs, ... }:
-let
-  terraform' = pkgs.terraform.overrideAttrs (_: { meta = { }; });
-in
 {
   devShells = {
     terraform = with pkgs; mkShellNoCC {
       packages = [
-        (terraform'.withPlugins (p: [
+        (terraform.withPlugins (p: [
           p.cloudflare
           p.external
           p.hydra

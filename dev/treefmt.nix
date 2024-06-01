@@ -6,12 +6,12 @@
 
   programs = {
     deadnix.enable = true;
-    hclfmt.enable = true;
     nixpkgs-fmt.enable = true;
     prettier.enable = true;
     ruff.check = true;
     ruff.format = true;
     statix.enable = true;
+    terraform.enable = true;
   };
 
   programs.mypy = {
