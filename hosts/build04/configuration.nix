@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
@@ -14,6 +14,11 @@
   networking.hostName = "build04";
 
   system.stateVersion = "23.11";
+
+  networking.domains.baseDomains."${config.networking.domain}" = {
+    a.data = "65.109.107.32";
+    aaaa.data = "2a01:4f9:3051:3962::2";
+  };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3051:3962::2";
 }

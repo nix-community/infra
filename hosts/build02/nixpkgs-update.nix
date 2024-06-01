@@ -2,6 +2,8 @@
 let
   userLib = import "${toString inputs.self}/users/lib.nix" { inherit lib; };
 
+  domain = "nixpkgs-update-logs.${config.networking.domain}";
+
   nixpkgs-update-bin = "/var/lib/nixpkgs-update/bin/nixpkgs-update";
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
@@ -272,7 +274,9 @@ in
   # autoindex is truncated on some browsers
   services.nginx.recommendedZstdSettings = false;
 
-  services.nginx.virtualHosts."nixpkgs-update-logs.nix-community.org" = {
+  networking.domains.subDomains."${domain}" = { };
+
+  services.nginx.virtualHosts."${domain}" = {
     forceSSL = true;
     enableACME = true;
     locations."/" = {

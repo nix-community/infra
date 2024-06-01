@@ -27,6 +27,11 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
+    nixos-dns.inputs.flake-compat.follows = "empty";
+    nixos-dns.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-dns.inputs.systems.follows = "systems";
+    nixos-dns.inputs.treefmt-nix.follows = "treefmt-nix";
+    nixos-dns.url = "github:Janik-Haag/nixos-dns";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
@@ -52,6 +57,7 @@
         systems = import inputs.systems;
 
         imports = [
+          ./dev/octodns.nix
           inputs.treefmt-nix.flakeModule
         ];
 
@@ -79,7 +85,11 @@
                 devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
                 nixosConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
               in
-              darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations
+              darwinConfigurations // devShells // nixosConfigurations //
+              {
+                inherit (self') formatter;
+                inherit (self'.packages) octodns-config;
+              }
               // pkgs.lib.optionalAttrs (system == "x86_64-linux")
                 {
                   inherit (self'.packages) pages;

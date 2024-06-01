@@ -150,6 +150,35 @@
         "type": "github"
       }
     },
+    "nixos-dns": {
+      "inputs": {
+        "flake-compat": [
+          "empty"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715321534,
+        "narHash": "sha256-cDTRRrLj08k867/lajKXkCg9HTNWuoYGfgr8wyAVaTY=",
+        "owner": "Janik-Haag",
+        "repo": "nixos-dns",
+        "rev": "c4f734d771038db15700a61a8703d0da5f993b3a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Janik-Haag",
+        "repo": "nixos-dns",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1717011309,
@@ -250,6 +279,7 @@
         "empty": "empty",
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
+        "nixos-dns": "nixos-dns",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",

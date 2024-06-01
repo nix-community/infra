@@ -1,7 +1,11 @@
 { config, inputs, pkgs, ... }:
-
+let
+  domain = "nur-update.${config.networking.domain}";
+in
 {
-  services.nginx.virtualHosts."nur-update.nix-community.org" = {
+  networking.domains.subDomains."${domain}" = { };
+
+  services.nginx.virtualHosts."${domain}" = {
     enableACME = true;
     forceSSL = true;
     locations."/".proxyPass = "http://unix:/run/nur-update/gunicorn.sock";
