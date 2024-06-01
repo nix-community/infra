@@ -5,7 +5,9 @@
         "darwin": [
           "nix-darwin"
         ],
-        "home-manager": [],
+        "home-manager": [
+          "empty"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -91,6 +93,21 @@
         "type": "github"
       }
     },
+    "empty": {
+      "locked": {
+        "lastModified": 1708697125,
+        "narHash": "sha256-JeMK8G1oabQTSpqXhYaYtPRak4m6z1xxyRKf8CvHy14=",
+        "owner": "nix-systems",
+        "repo": "empty",
+        "rev": "23d743284b73ae69caf0cb7874edf05c0c631a1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "empty",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -149,7 +166,9 @@
     },
     "nixpkgs-update": {
       "inputs": {
-        "mmdoc": [],
+        "mmdoc": [
+          "empty"
+        ],
         "nixpkgs": "nixpkgs_2",
         "runtimeDeps": "runtimeDeps",
         "treefmt-nix": [
@@ -226,6 +245,7 @@
         "buildbot-nix": "buildbot-nix",
         "comin": "comin",
         "disko": "disko",
+        "empty": "empty",
         "flake-parts": "flake-parts",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
@@ -258,7 +278,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": []
+        "nixpkgs-stable": [
+          "empty"
+        ]
       },
       "locked": {
         "lastModified": 1716692524,
