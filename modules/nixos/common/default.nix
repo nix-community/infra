@@ -17,6 +17,7 @@
     inputs.sops-nix.nixosModules.sops
     inputs.agenix.nixosModules.age
     inputs.srvos.nixosModules.server
+    inputs.nix-topology.nixosModules.default
   ];
 
   # users in trusted group are trusted by the nix-daemon
