@@ -32,6 +32,11 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-topology.inputs.devshell.follows = "empty";
+    nix-topology.inputs.flake-utils.follows = "flake-utils";
+    nix-topology.inputs.nixpkgs.follows = "nixpkgs";
+    nix-topology.inputs.pre-commit-hooks.follows = "empty";
+    nix-topology.url = "github:oddlama/nix-topology";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
@@ -58,9 +63,11 @@
       imports = [
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/topology.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
+        inputs.nix-topology.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
 

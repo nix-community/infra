@@ -23,6 +23,7 @@
             ''
               cp --no-preserve=mode -r $files/* .
               cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
+              cp --no-preserve=mode -r ${config.packages.docs-topology}/*.svg docs
               mkdocs build --strict --site-dir $out
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {

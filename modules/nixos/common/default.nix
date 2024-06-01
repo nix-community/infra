@@ -16,6 +16,7 @@
     ./update.nix
     ./users.nix
     inputs.srvos.nixosModules.server
+    inputs.nix-topology.nixosModules.default
   ];
 
   # Hard-link duplicated files
