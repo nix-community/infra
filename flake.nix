@@ -10,7 +10,7 @@
 
   inputs = {
     agenix.inputs.darwin.follows = "nix-darwin";
-    agenix.inputs.home-manager.follows = "";
+    agenix.inputs.home-manager.follows = "empty";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
@@ -21,19 +21,20 @@
     comin.url = "github:nlewo/comin";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
+    empty.url = "github:nix-systems/empty";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
-    nixpkgs-update.inputs.mmdoc.follows = "";
+    nixpkgs-update.inputs.mmdoc.follows = "empty";
     nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
     nixpkgs-update.url = "github:nix-community/nixpkgs-update";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
-    sops-nix.inputs.nixpkgs-stable.follows = "";
+    sops-nix.inputs.nixpkgs-stable.follows = "empty";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
