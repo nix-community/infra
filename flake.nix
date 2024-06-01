@@ -9,45 +9,37 @@
   ];
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.inputs.nixpkgs-stable.follows = "";
-    srvos.url = "github:nix-community/srvos";
-    # actually not used when using the modules but than nothing ever will try to fetch this nixpkgs variant
-    srvos.inputs.nixpkgs.follows = "nixpkgs";
-
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.home-manager.follows = "";
     agenix.inputs.darwin.follows = "nix-darwin";
-
-    nixpkgs-update.url = "github:nix-community/nixpkgs-update";
+    agenix.inputs.home-manager.follows = "";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
+    buildbot-nix.inputs.flake-parts.follows = "flake-parts";
+    buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
+    buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
+    buildbot-nix.url = "github:Mic92/buildbot-nix";
+    comin.inputs.nixpkgs.follows = "nixpkgs";
+    comin.url = "github:nlewo/comin";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nixpkgs-update-github-releases.flake = false;
+    nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "";
     nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
-    nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
-    nixpkgs-update-github-releases.flake = false;
-
-    buildbot-nix.url = "github:Mic92/buildbot-nix";
-    buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
-    buildbot-nix.inputs.flake-parts.follows = "flake-parts";
-    buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
-
-    nur-update.url = "github:nix-community/nur-update";
+    nixpkgs-update.url = "github:nix-community/nixpkgs-update";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
-
-    comin.url = "github:nlewo/comin";
-    comin.inputs.nixpkgs.follows = "nixpkgs";
-
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    nur-update.url = "github:nix-community/nur-update";
+    sops-nix.inputs.nixpkgs-stable.follows = "";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    srvos.inputs.nixpkgs.follows = "nixpkgs";
+    srvos.url = "github:nix-community/srvos";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = inputs @ { flake-parts, self, ... }:
