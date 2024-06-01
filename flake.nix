@@ -24,6 +24,8 @@
     flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-utils.inputs.systems.follows = "systems";
+    flake-utils.url = "github:numtide/flake-utils";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nixpkgs-update-github-releases.flake = false;
