@@ -15,7 +15,7 @@
   ];
 
   sops.secrets.buildbot-github-oauth-secret = { };
-  sops.secrets.buildbot-github-token = { };
+  sops.secrets.buildbot-github-app-secret-key = { };
   sops.secrets.buildbot-github-webhook-secret = { };
   sops.secrets.buildbot-nix-workers = { };
   sops.secrets.cachix-auth-token = { };
@@ -33,12 +33,13 @@
       authTokenFile = config.sops.secrets.cachix-auth-token.path;
     };
     github = {
-      authType.legacy = {
-        tokenFile = config.sops.secrets.buildbot-github-token.path;
+      authType.app = {
+        id = 920387;
+        secretKeyFile = config.sops.secrets.buildbot-github-app-secret-key.path;
       };
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
-      oauthId = "9bbd3e8bbfebb197d2ca";
+      oauthId = "Iv23liN9rjd1Bm3bvYKZ";
       topic = "nix-community-buildbot";
     };
   };
