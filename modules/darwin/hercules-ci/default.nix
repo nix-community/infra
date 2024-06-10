@@ -20,4 +20,8 @@
     binaryCachesPath = config.age.secrets.binary-caches.path;
     clusterJoinTokenPath = config.age.secrets.cluster-join-token.path;
   };
+
+  system.systemBuilderArgs.sandboxProfile = ''
+    (allow file-read* file-write* process-exec mach-lookup (subpath "${builtins.storeDir}"))
+  '';
 }
