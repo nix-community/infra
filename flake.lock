@@ -44,13 +44,13 @@
       "locked": {
         "lastModified": 1717983619,
         "narHash": "sha256-HUv3M9M2YX1ynL3Mhvd1IitsGqFLvkLnfu87X+07zC8=",
-        "owner": "Mic92",
+        "owner": "nix-community",
         "repo": "buildbot-nix",
         "rev": "2058d5e8ca47f69b204fe2ddd07bc1ea417ffdba",
         "type": "github"
       },
       "original": {
-        "owner": "Mic92",
+        "owner": "nix-community",
         "repo": "buildbot-nix",
         "type": "github"
       }
