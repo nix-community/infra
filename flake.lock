@@ -52,6 +52,7 @@
       "original": {
         "owner": "nix-community",
         "repo": "buildbot-nix",
+        "rev": "2058d5e8ca47f69b204fe2ddd07bc1ea417ffdba",
         "type": "github"
       }
     },
