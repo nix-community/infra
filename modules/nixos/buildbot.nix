@@ -33,11 +33,12 @@
       authTokenFile = config.sops.secrets.cachix-auth-token.path;
     };
     github = {
-      tokenFile = config.sops.secrets.buildbot-github-token.path;
+      authType.legacy = {
+        tokenFile = config.sops.secrets.buildbot-github-token.path;
+      };
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "9bbd3e8bbfebb197d2ca";
-      user = "nix-community-buildbot";
       topic = "nix-community-buildbot";
     };
   };
