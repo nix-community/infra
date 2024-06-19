@@ -50,6 +50,12 @@ let
       keys = ./keys/flokli;
     };
 
+    fmzakari = {
+      # github: @fzakaria
+      trusted = true;
+      keys = ./keys/fmzakari;
+    };
+
     glepage = {
       trusted = true;
       keys = ./keys/glepage;
