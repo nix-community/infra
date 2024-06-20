@@ -19,7 +19,6 @@ in
   ];
 
   # TODO: refactor this to share /users with nixos
-  # if user is removed the keys need to be removed manually from /etc/ssh/authorized_keys.d
   users.users = {
     customer.openssh = { inherit authorizedKeys; };
     hetzner.openssh = { inherit authorizedKeys; };
@@ -69,14 +68,11 @@ in
   system.defaults.alf.globalstate = 0;
 
   # srvos
-  services.openssh.authorizedKeysFiles = pkgs.lib.mkForce [ "/etc/ssh/authorized_keys.d/%u" ];
-
-  # srvos
   environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
+    AuthorizedKeysFile none
     HostKey /etc/ssh/ssh_host_ed25519_key
     KbdInteractiveAuthentication no
     PasswordAuthentication no
-    StrictModes no
   '';
 
   # Make sure to disable netbios on activation
