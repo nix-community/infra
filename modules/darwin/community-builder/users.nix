@@ -209,6 +209,12 @@ let
       trusted = true;
       uid = 541;
     }
+    {
+      # lib.maintainers.emily, https://github.com/emilazy
+      name = "emily";
+      trusted = true;
+      uid = 542;
+    }
   ];
 in
 {
