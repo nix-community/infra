@@ -153,15 +153,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1718662658,
-        "narHash": "sha256-AKG7BsqtVWDlefgzyKz7vjaKTLi4+bmTSBhowbQoZtM=",
-        "owner": "LnL7",
+        "lastModified": 1718450113,
+        "narHash": "sha256-VPsCxnRu7iHi1E1Ml7Ba9Zn5gc1BBechw7c2UlmNle4=",
+        "owner": "emilazy",
         "repo": "nix-darwin",
-        "rev": "29b3096a6e283d7e6779187244cb2a3942239fdf",
+        "rev": "36a15e8c6c4686be29ccbf0ae0ac1d6133074615",
         "type": "github"
       },
       "original": {
-        "owner": "LnL7",
+        "owner": "emilazy",
+        "ref": "openssh-use-links-for-authorized-keys",
         "repo": "nix-darwin",
         "type": "github"
       }
