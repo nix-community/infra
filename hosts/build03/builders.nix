@@ -10,7 +10,7 @@
       protocol = "ssh-ng";
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
-      systems = [ "aarch64-linux" ];
+      systems = [ "aarch64-linux" "armv7l-linux" ];
       supportedFeatures = inputs.self.outputs.nixosConfigurations.build04.config.nix.settings.system-features;
     }
     {

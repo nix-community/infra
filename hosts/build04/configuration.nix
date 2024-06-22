@@ -7,6 +7,7 @@
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.remote-builder
+    ./armv7l.nix
   ];
 
   nixCommunity.remote-builder.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
