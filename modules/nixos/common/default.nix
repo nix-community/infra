@@ -1,10 +1,10 @@
 { config, inputs, pkgs, ... }:
 {
   imports = [
-    ./comin.nix
+    #./comin.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
-    ./reboot.nix
+    #./reboot.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix
