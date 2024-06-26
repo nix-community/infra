@@ -215,6 +215,12 @@ let
       trusted = true;
       uid = 542;
     }
+    {
+      # lib.maintainers.johnrtitor, https://github.com/JohnRTitor
+      name = "johnrtitor";
+      trusted = true;
+      uid = 543;
+    }
   ];
 in
 {
