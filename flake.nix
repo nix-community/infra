@@ -26,8 +26,15 @@
     flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-utils.inputs.systems.follows = "systems";
+    flake-utils.url = "github:numtide/flake-utils";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-topology.inputs.devshell.follows = "empty";
+    nix-topology.inputs.flake-utils.follows = "flake-utils";
+    nix-topology.inputs.nixpkgs.follows = "nixpkgs";
+    nix-topology.inputs.pre-commit-hooks.follows = "empty";
+    nix-topology.url = "github:oddlama/nix-topology";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
@@ -54,6 +61,7 @@
         systems = import inputs.systems;
 
         imports = [
+          ./dev/topology.nix
           inputs.treefmt-nix.flakeModule
         ];
 

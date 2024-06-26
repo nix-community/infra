@@ -18,9 +18,11 @@
             ../mkdocs.yml
           ];
         };
+        inherit (config.topology.config) output;
       }
       ''
-        cd $files
+        cp --no-preserve=mode -r $files/* .
+        cp --no-preserve=mode -r $output/* docs
         mkdocs build --strict --site-dir $out
       '';
     docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
