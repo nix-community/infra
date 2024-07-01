@@ -7,7 +7,7 @@
     inputs.self.darwinModules.community-builder
   ];
 
-  nix.settings.sandbox = "relaxed";
+  nix.settings.sandbox = false;
   nix.settings.extra-platforms = [ "x86_64-darwin" ];
 
   # disable nixos-tests
