@@ -1,10 +1,10 @@
 { config, inputs, pkgs, ... }:
 {
   imports = [
-    ./comin.nix
+    #./comin.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
-    ./reboot.nix
+    #./reboot.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix
@@ -26,7 +26,7 @@
 
   boot.kernelPackages = pkgs.lib.mkIf (!config.boot.supportedFilesystems.zfs or false) pkgs.linuxPackages_latest;
 
-  zramSwap.enable = true;
+  zramSwap.enable = pkgs.lib.mkIf (config.swapDevices == [ ]) true;
 
   security.acme.defaults.email = "trash@nix-community.org";
   security.acme.acceptTerms = true;
