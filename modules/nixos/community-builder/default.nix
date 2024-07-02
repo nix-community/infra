@@ -1,8 +1,10 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ./packages.nix
     ./users.nix
   ];
+
+  networking.domains.subDomains."build-box.${config.networking.domain}" = { };
 
   programs.fish.enable = true;
   # disable generated completion

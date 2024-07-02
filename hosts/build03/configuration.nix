@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [
     inputs.srvos.nixosModules.mixins-nginx
@@ -16,6 +16,11 @@
     inputs.self.nixosModules.nur-update
     ./postgresql.nix
   ];
+
+  networking.domains.baseDomains."${config.networking.domain}" = {
+    a.data = "65.21.139.242";
+    aaaa.data = "2a01:4f9:3b:2946::1";
+  };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";
 

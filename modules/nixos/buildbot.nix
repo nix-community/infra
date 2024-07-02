@@ -1,11 +1,16 @@
 { config, inputs, pkgs, ... }:
+let
+  domain = "buildbot.${config.networking.domain}";
+in
 {
   imports = [
     inputs.buildbot-nix.nixosModules.buildbot-master
     inputs.buildbot-nix.nixosModules.buildbot-worker
   ];
 
-  services.nginx.virtualHosts."buildbot.nix-community.org" = {
+  networking.domains.subDomains."${domain}" = { };
+
+  services.nginx.virtualHosts."${domain}" = {
     enableACME = true;
     forceSSL = true;
   };

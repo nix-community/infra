@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  domain = "hydra.${config.networking.domain}";
+in
 {
   config = {
     sops.secrets.hydra-admin-password.owner = "hydra";
@@ -43,8 +46,10 @@
       '';
     };
 
+    networking.domains.subDomains."${domain}" = { };
+
     services.nginx.virtualHosts = {
-      "hydra.nix-community.org" = {
+      "${domain}" = {
         forceSSL = true;
         enableACME = true;
         locations."/".proxyPass = "http://localhost:${toString config.services.hydra.port}";

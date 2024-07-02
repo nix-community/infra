@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 
 {
   imports = [
@@ -15,6 +15,11 @@
 
   networking.hostName = "build02";
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+
+  networking.domains.baseDomains."${config.networking.domain}" = {
+    a.data = "65.21.133.211";
+    aaaa.data = "2a01:4f9:3b:41d9::1";
+  };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:41d9::1";
 

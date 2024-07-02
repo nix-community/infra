@@ -2,6 +2,7 @@
 {
   imports = [
     ./comin.nix
+    ./dns.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
     ./reboot.nix

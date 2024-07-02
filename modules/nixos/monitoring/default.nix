@@ -1,4 +1,7 @@
 { config, inputs, ... }:
+let
+  domain = "monitoring.${config.networking.domain}";
+in
 {
   imports = [
     inputs.srvos.nixosModules.roles-prometheus
@@ -10,7 +13,9 @@
 
   sops.secrets.nginx-basic-auth-file.owner = "nginx";
 
-  services.nginx.virtualHosts."monitoring.nix-community.org" = {
+  networking.domains.subDomains."${domain}" = { };
+
+  services.nginx.virtualHosts."${domain}" = {
     enableACME = true;
     forceSSL = true;
     locations."/".return = "302 https://nix-community.org/monitoring";

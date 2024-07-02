@@ -1,1 +1,1 @@
-DNS is managed by terraform in this [file](https://github.com/nix-community/infra/blob/master/terraform/cloudflare_nix-community_org.tf).
+DNS is managed by [NixOS-DNS](https://github.com/Janik-Haag/NixOS-DNS), if it isn't set inline with the host or module config then it will be in this [file](https://github.com/nix-community/infra/blob/master/dev/dns.nix).
