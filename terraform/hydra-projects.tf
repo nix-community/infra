@@ -69,3 +69,55 @@ resource "hydra_project" "simple_nixos_mailserver" {
     value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
   }
 }
+
+resource "hydra_project" "nixpkgs" {
+  name         = "nixpkgs"
+  display_name = "nixpkgs"
+  description  = "you know what this is"
+  homepage     = "https://github.com/NixOS/nixpkgs"
+  owner        = "admin"
+  enabled      = true
+  visible      = true
+}
+
+resource "hydra_jobset" "nixpkgs_cuda" {
+  project     = hydra_project.nixpkgs.name
+  state       = "enabled"
+  visible     = true
+  name        = "cuda"
+  type        = "legacy"
+  description = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
+
+  nix_expression {
+    file  = "pkgs/top-level/release-cuda.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"x86_64-linux\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 1800
+  scheduling_shares = 3000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
