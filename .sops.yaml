@@ -27,15 +27,6 @@ creation_rules:
           - *zimbatm
           - *zowoq
           - *adisbladis
-  - path_regex: hosts/build01/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *build01
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis
   - path_regex: hosts/build02/[^/]+\.yaml$
     key_groups:
       - age:
@@ -49,15 +40,6 @@ creation_rules:
     key_groups:
       - age:
           - *build03
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis
-  - path_regex: hosts/build04/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *build04
           - *mic92
           - *ryantm
           - *zimbatm
