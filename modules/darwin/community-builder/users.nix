@@ -221,6 +221,12 @@ let
       trusted = true;
       uid = 543;
     }
+    {
+      # lib.maintainers.kashw2, https://github.com/kashw2
+      name = "kashw2";
+      trusted = true;
+      uid = 544;
+    }
   ];
 in
 {
