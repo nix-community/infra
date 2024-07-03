@@ -227,6 +227,12 @@ let
       trusted = true;
       uid = 544;
     }
+    {
+      # lib.maintainers.superherointj, https://github.com/superherointj
+      name = "superherointj";
+      trusted = true;
+      uid = 545;
+    }
   ];
 in
 {
