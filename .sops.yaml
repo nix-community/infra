@@ -1,56 +1,23 @@
 keys:
-  - &build01 age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
-  - &build02 age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d
-  - &build03 age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
-  - &build04 age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
-  - &web02 age158v8dpppnw3yt2kqgqekwamaxpst5alfrnvvt7z36wfdk4veydrsqxc2tl
+  - &adisbladis age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
   - &mic92 age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
   - &ryantm age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
   - &zimbatm age1jrh8yyq3swjru09s75s4mspu0mphh7h6z54z946raa9wx3pcdegq0x8t4h
   - &zowoq age1m7xhem3qll35d539f364pm6txexvnp6k0tk34d8jxu4ry3pptv7smm0k5n
-  - &adisbladis age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
-# scan new hosts with `scan-age-keys` task
 creation_rules:
   - path_regex: ^secrets.yaml$
     key_groups:
       - age:
+          - *adisbladis
           - *mic92
           - *ryantm
           - *zimbatm
           - *zowoq
-          - *adisbladis
   - path_regex: terraform/secrets.yaml$
     key_groups:
       - age:
+          - *adisbladis
           - *mic92
           - *ryantm
           - *zimbatm
           - *zowoq
-          - *adisbladis
-  - path_regex: hosts/build02/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *build02
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis
-  - path_regex: hosts/build03/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *build03
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis
-  - path_regex: hosts/web02/[^/]+\.yaml$
-    key_groups:
-      - age:
-          - *web02
-          - *mic92
-          - *ryantm
-          - *zimbatm
-          - *zowoq
-          - *adisbladis

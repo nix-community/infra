@@ -10,7 +10,9 @@
     locations."/".proxyPass = "http://unix:/run/nur-update/gunicorn.sock";
   };
 
-  sops.secrets.nur-update-github-token = { };
+  age.secrets.nur-update-github-token = {
+    file = "${inputs.self}/secrets/nur-update-github-token.age";
+  };
 
   systemd.services.nur-update =
     let
@@ -33,7 +35,7 @@
       '';
       serviceConfig = {
         DynamicUser = true;
-        LoadCredential = [ "github-token:${config.sops.secrets.nur-update-github-token.path}" ];
+        LoadCredential = [ "github-token:${config.age.secrets.nur-update-github-token.path}" ];
         Restart = "always";
         RuntimeDirectory = "nur-update";
       };

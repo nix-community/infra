@@ -86,13 +86,6 @@ def print_keys(c: Any, flake_attr: str) -> None:
         )
         print("###### Public keys ######")
         print(pubkey.stdout)
-        print("###### Age keys ######")
-        subprocess.run(
-            ["ssh-to-age"],
-            input=pubkey.stdout,
-            check=True,
-            text=True,
-        )
 
 
 @task

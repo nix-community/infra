@@ -10,7 +10,6 @@
     ../../shared/nix-daemon.nix
     ./agenix.nix
     ./security.nix
-    ./sops-nix.nix
     ./telegraf.nix
     ./update.nix
     ./users.nix

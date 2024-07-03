@@ -18,6 +18,11 @@ let
   web02 = knownHosts.web02.publicKey;
 
   secrets = {
+    buildbot-github-oauth-secret = [ build03 ];
+    buildbot-github-webhook-secret = [ build03 ];
+    buildbot-nix-worker-password = [ build03 ];
+    buildbot-nix-workers = [ build03 ];
+    cachix-auth-token = [ build03 ];
     grafana-client-secret = [ web02 ];
     hercules-binary-caches = [
       build03
@@ -38,8 +43,16 @@ let
       build02
       build03
     ];
+    hydra-admin-password = [ build03 ];
+    hydra-users = [ build03 ];
+    id_buildfarm = [ build03 ];
     nginx-basic-auth-file = [ web02 ];
     nix-community-matrix-bot-token = [ web02 ];
+    nixpkgs-update-github-r-ryantm-key = [ build02 ];
+    nixpkgs-update-github-r-ryantm-token = [ build02 ];
+    nixpkgs-update-github-token-with-username = [ build02 ];
+    nixpkgs-update-nix-community-cachix = [ build02 ];
+    nur-update-github-token = [ build03 ];
   };
 in
 builtins.listToAttrs (
