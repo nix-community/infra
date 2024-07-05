@@ -22,7 +22,7 @@
 
   services.buildbot-nix.master = {
     enable = true;
-    admins = [ "adisbladis" "Mic92" "ryantm" "zimbatm" "zowoq" ];
+    admins = [ "adisbladis" "ryantm" "zimbatm" "zowoq" ];
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     domain = "buildbot.nix-community.org";
     evalMaxMemorySize = "4096";
