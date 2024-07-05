@@ -33,6 +33,6 @@ To enable hydra add a new project in this [file](https://github.com/nix-communit
 
 #### Cache
 
-[https://nix-community.cachix.org/](https://nix-community.cachix.org/)
+All of the above builds are pushed to the cache.
 
-All of the above CI builds are pushed to the cache.
+See [here](./cache.md) for details.

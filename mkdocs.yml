@@ -5,6 +5,8 @@ nav:
   - Services:
       - continuous-integration.md
       - Faster GitHub Actions: namespace-actions.md
+      - package-sets.md
+      - cache.md
       - community-builder.md
       - R. RyanTM nixpkgs-update bot: update-bot.md
       - NUR update: nur-update.md
