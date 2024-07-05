@@ -4,6 +4,9 @@
     sops.secrets.hydra-admin-password.owner = "hydra";
     sops.secrets.hydra-users.owner = "hydra";
 
+    # hydra-queue-runner needs to read this key for remote building
+    sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
+
     nix.settings.allowed-uris = [
       "git+https:"
       "github:"
@@ -11,6 +14,8 @@
       "https:"
       "sourcehut:"
     ];
+
+    sops.secrets.id_buildfarm = { };
 
     # delete build logs older than 30 days
     systemd.services.hydra-delete-old-logs = {
