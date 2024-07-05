@@ -33,6 +33,16 @@ in
 
   programs.info.enable = false;
 
+  # fix darwin sandboxing
+  nix.package = pkgs.nix.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [
+      (pkgs.fetchpatch {
+        url = "https://github.com/NixOS/nix/commit/217fadd993da88294d0393af374b638afd99b169.patch";
+        hash = "sha256-nkJouBmEj3vqgjRKhXjbHysgQqqhwebdKBArFAzIBvc=";
+      })
+    ];
+  });
+
   nix.settings.trusted-users = [
     "@admin"
   ];
