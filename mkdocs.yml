@@ -3,7 +3,9 @@ nav:
   - Open Collective: open-collective.md
   - sponsors.md
   - Services:
+      - cache.md
       - continuous-integration.md
+      - package-sets.md
       - Faster GitHub Actions: namespace-actions.md
       - community-builder.md
       - R. RyanTM nixpkgs-update bot: update-bot.md
