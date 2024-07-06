@@ -146,6 +146,23 @@
         "type": "github"
       }
     },
+    "hydra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723022337,
+        "narHash": "sha256-XlFPfu6j44qeBrWpbumDGCQgGhC+epVjcR0MwPeCLHg=",
+        "owner": "qowoz",
+        "repo": "hydra",
+        "rev": "edbd2b45e714a70a05b7a74bd0065454fff651af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "community",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -268,6 +285,7 @@
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
+        "hydra": "hydra",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
