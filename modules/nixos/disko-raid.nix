@@ -55,6 +55,8 @@ in
       ];
     };
 
+    services.telegraf.extraConfig.inputs.mdstat = { };
+
     disko.devices = {
       disk = {
         x = mirrorBoot "0";

@@ -33,21 +33,40 @@ in
       };
     };
 
-  services.telegraf.extraConfig.inputs = {
-    exec = [
-      {
-        commands = [ hostInfo ];
-        data_format = "influx";
-      }
-    ];
-    file = [
-      {
-        data_format = "prometheus";
-        files = [ "/etc/flake-inputs.prom" ];
-      }
-    ];
-    prometheus = {
-      metric_version = 2;
+  services.telegraf = {
+    enable = true;
+    extraConfig = {
+      agent.interval = "60s";
+      inputs = {
+        diskio = { };
+        internal = { };
+        mem = { };
+        swap = { };
+        system = { };
+        disk.tagdrop = {
+          fstype = [ "aufs" "devfs" "devtmpfs" "efivarfs" "iso9660" "overlay" "ramfs" "squashfs" "tmpfs" ];
+          device = [ "borgfs" "lxcfs" "nsfs" "rpc_pipefs" ];
+        };
+        exec = [
+          {
+            commands = [ hostInfo ];
+            data_format = "influx";
+          }
+        ];
+        file = [
+          {
+            data_format = "prometheus";
+            files = [ "/etc/flake-inputs.prom" ];
+          }
+        ];
+        prometheus = {
+          metric_version = 2;
+        };
+      };
+      outputs.prometheus_client = {
+        listen = ":9273";
+        metric_version = 2;
+      };
     };
   };
 }
