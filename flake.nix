@@ -24,6 +24,8 @@
     flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    hydra.flake = false;
+    hydra.url = "github:qowoz/hydra/community";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -61,6 +63,15 @@
         {
           nixpkgs = {
             config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
+            overlays = [
+              (final: prev: {
+                hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_22; }).overrideAttrs (o: {
+                  version = inputs.hydra.shortRev;
+                  src = inputs.hydra;
+                  buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
+                });
+              })
+            ];
           };
 
           hostModuleDir = ./hosts;
