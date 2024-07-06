@@ -20,7 +20,7 @@
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
 - RAM: 128GB DDR4 ECC
-- Drives: 2 x 1.92 TB NVME in RAID 1
+- Drives: 2 x 1.92 TB NVME in RAID 0
 
 ### `build04`
 
