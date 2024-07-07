@@ -7,8 +7,6 @@
 
 {
   services.nginx.virtualHosts."nur-update.nix-community.org" = {
-    enableACME = true;
-    forceSSL = true;
     locations."/".proxyPass = "http://unix:/run/nur-update/gunicorn.sock";
   };
 

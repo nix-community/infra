@@ -160,6 +160,7 @@
         hercules-ci = ./modules/nixos/hercules-ci.nix;
         hydra = ./modules/nixos/hydra.nix;
         monitoring = ./modules/nixos/monitoring;
+        nginx = ./modules/nixos/nginx.nix;
         nur-update = ./modules/nixos/nur-update.nix;
         remote-builder = ./modules/nixos/remote-builder.nix;
         watch-store = ./modules/nixos/watch-store.nix;

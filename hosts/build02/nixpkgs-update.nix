@@ -292,8 +292,6 @@ in
   services.nginx.recommendedZstdSettings = false;
 
   services.nginx.virtualHosts."nixpkgs-update-logs.nix-community.org" = {
-    forceSSL = true;
-    enableACME = true;
     locations."/" = {
       alias = "/var/log/nixpkgs-update/";
       extraConfig = ''
@@ -305,8 +303,6 @@ in
 
   # TODO: permanent redirect r.ryantm.com/log/ -> nixpkgs-update-logs.nix-community.org
   services.nginx.virtualHosts."r.ryantm.com" = {
-    forceSSL = true;
-    enableACME = true;
     locations."/log/" = {
       alias = "/var/log/nixpkgs-update/";
       extraConfig = ''

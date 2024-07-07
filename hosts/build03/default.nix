@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.srvos.nixosModules.mixins-nginx
+    inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.buildbot
