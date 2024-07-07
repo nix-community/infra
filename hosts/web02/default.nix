@@ -3,7 +3,7 @@
   imports = [
     ./gandi.nix
     inputs.self.nixosModules.monitoring
-    inputs.srvos.nixosModules.mixins-nginx
+    inputs.self.nixosModules.nginx
   ];
 
   networking.useDHCP = true;

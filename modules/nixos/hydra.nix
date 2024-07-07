@@ -51,12 +51,8 @@
       '';
     };
 
-    services.nginx.virtualHosts = {
-      "hydra.nix-community.org" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/".proxyPass = "http://localhost:${toString config.services.hydra.port}";
-      };
+    services.nginx.virtualHosts."hydra.nix-community.org" = {
+      locations."/".proxyPass = "http://localhost:${toString config.services.hydra.port}";
     };
 
     # Create user accounts

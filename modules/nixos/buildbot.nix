@@ -9,10 +9,7 @@
     inputs.buildbot-nix.nixosModules.buildbot-worker
   ];
 
-  services.nginx.virtualHosts."buildbot.nix-community.org" = {
-    enableACME = true;
-    forceSSL = true;
-  };
+  services.nginx.virtualHosts."buildbot.nix-community.org" = { };
 
   sops.secrets.buildbot-github-oauth-secret = { };
   sops.secrets.buildbot-github-app-secret-key = { };

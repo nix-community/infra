@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.srvos.nixosModules.mixins-nginx
+    inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ./nixpkgs-update.nix
     ./nixpkgs-update-backup.nix
