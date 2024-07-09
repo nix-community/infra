@@ -2,9 +2,8 @@
   # Used to find the project root
   projectRootFile = ".git/config";
 
-  package = pkgs.treefmt2;
-
   programs = {
+    actionlint.enable = true;
     deadnix.enable = true;
     nixpkgs-fmt.enable = true;
     prettier.enable = true;
@@ -30,20 +29,15 @@
   };
 
   settings.global.excludes = [
+    "*.age"
     # vendored from external source
     "hosts/build02/packages-with-update-script.nix"
   ];
 
   settings.formatter = {
-    actionlint = {
-      command = pkgs.actionlint;
-      includes = [ ".github/workflows/*.yml" ];
-    };
-
     editorconfig-checker = {
       command = pkgs.editorconfig-checker;
       includes = [ "*" ];
-      excludes = [ "*.age" ];
       priority = 9; # last
     };
 
