@@ -17,6 +17,8 @@
     ./postgresql.nix
   ];
 
+  nixCommunity.gc.gbFree = 500;
+
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";
 
   networking.hostName = "build03";
