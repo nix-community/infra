@@ -11,6 +11,8 @@
     inputs.self.nixosModules.disko-zfs
   ];
 
+  nixCommunity.gc.gbFree = 500;
+
   boot.kernelParams = [ "zfs.zfs_arc_max=${toString (24 * 1024 * 1024 * 1024)}" ]; # 24GB, try to limit OOM kills / reboots
 
   networking.hostName = "build02";
