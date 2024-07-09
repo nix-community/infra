@@ -24,6 +24,7 @@
     enable = true;
     admins = [ "adisbladis" "ryantm" "zimbatm" "zowoq" ];
     buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    buildRetries = 0;
     domain = "buildbot.nix-community.org";
     evalMaxMemorySize = "4096";
     evalWorkerCount = 16;
