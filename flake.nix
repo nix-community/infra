@@ -147,7 +147,7 @@
 
           builder = ./modules/darwin/builder.nix;
           community-builder = ./modules/darwin/community-builder;
-          hercules-ci = ./modules/darwin/hercules-ci;
+          hercules-ci = ./modules/darwin/hercules-ci.nix;
           remote-builder = ./modules/darwin/remote-builder.nix;
         };
 
@@ -159,7 +159,7 @@
           community-builder = ./modules/nixos/community-builder;
           disko-zfs = ./modules/nixos/disko-zfs.nix;
           github-org-backup = ./modules/nixos/github-org-backup.nix;
-          hercules-ci = ./modules/nixos/hercules-ci;
+          hercules-ci = ./modules/nixos/hercules-ci.nix;
           hydra = ./modules/nixos/hydra.nix;
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
