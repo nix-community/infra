@@ -63,16 +63,9 @@ def update_agenix_files(c: Any) -> None:
 @task
 def update_sops_files(c: Any) -> None:
     """
-    Update all sops yaml and json files according to .sops.yaml rules
+    Update all sops yaml files according to .sops.yaml rules
     """
-    c.run(
-        """
-find . \
-        -type f \
-        \( -iname '*.enc.json' -o -iname 'secrets.yaml' \) \
-        -exec sops updatekeys --yes {} \;
-"""
-    )
+    c.run("shopt -s globstar && sops updatekeys --yes **/secrets.yaml")
 
 
 @task
