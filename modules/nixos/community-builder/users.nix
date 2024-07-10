@@ -136,6 +136,12 @@ let
       trusted = true;
       keys = ./keys/matthewcroughan;
     };
+
+    emily = {
+      # lib.maintainers.emily, https://github.com/emilazy
+      trusted = true;
+      keys = ./keys/emily;
+    };
   };
 
   ifAttr = key: default: result: opts:
