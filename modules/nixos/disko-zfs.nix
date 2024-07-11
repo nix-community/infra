@@ -13,6 +13,9 @@
     efiInstallAsRemovable = true;
   };
 
+  # Sometimes fails after the first try, with duplicate pool name errors
+  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.Restart = "on-failure";
+
   disko.devices = {
     disk = {
       nvme0n1 = {
