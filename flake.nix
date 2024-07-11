@@ -82,7 +82,7 @@
                 devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
                 nixosConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
               in
-              darwinConfigurations // devShells // /* { inherit (self') formatter; } // */ nixosConfigurations
+              darwinConfigurations // devShells // { inherit (self') formatter; } // nixosConfigurations
               // pkgs.lib.optionalAttrs (system == "x86_64-linux")
                 {
                   inherit (self'.packages) docs docs-linkcheck;
