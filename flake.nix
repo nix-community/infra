@@ -161,7 +161,7 @@
           github-org-backup = ./modules/nixos/github-org-backup.nix;
           hercules-ci = ./modules/nixos/hercules-ci.nix;
           hydra = ./modules/nixos/hydra.nix;
-          initrd-ssh = ./modules/nixos/initrd-ssh.nix;
+          emergency-access = ./modules/nixos/emergency-access.nix;
           monitoring = ./modules/nixos/monitoring;
           nur-update = ./modules/nixos/nur-update.nix;
           remote-builder = ./modules/nixos/remote-builder.nix;
