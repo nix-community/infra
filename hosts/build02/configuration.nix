@@ -9,7 +9,6 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.disko-zfs
-    inputs.self.nixosModules.initrd-ssh
   ];
 
   nixCommunity.gc.gbFree = 500;
