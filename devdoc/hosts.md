@@ -98,6 +98,12 @@ $ curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-
 $ /root/kexec/run
 ```
 
+## Fix up broken installations with disko-install
+
+```
+nix run github:nix-community/disko#disko-install -- --mode mount --flake github:nix-community/infra/initrd-ssh#build02 --disk nvme0n1 /dev/nvme1n1 --disk nvme1n1 /dev/nvme0n1
+```
+
 ### Debug VM
 
 You can start a vm from the rescue system in order to debug the boot:
