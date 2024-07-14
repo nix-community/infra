@@ -46,14 +46,6 @@
 - RAM: 16GB
 - Drives: 256GB SSD
 
-### `darwin03`
-
-- Provider: Hetzner
-- Instance type: [Apple Mac mini M1](https://docs.hetzner.com/robot/dedicated-server/mac-mini/getting-started/)
-- CPU: Apple M1
-- RAM: 16GB
-- Drives: 256GB SSD
-
 ### `web02`
 
 - Provider: Gandi

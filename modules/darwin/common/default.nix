@@ -21,7 +21,6 @@ in
   # TODO: refactor this to share /users with nixos
   users.users = {
     customer.openssh = { inherit authorizedKeys; };
-    hetzner.openssh = { inherit authorizedKeys; };
   };
 
   services.nix-daemon.enable = true;

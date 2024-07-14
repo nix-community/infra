@@ -12,10 +12,9 @@ let
   build03 = knownHosts.build03.publicKey;
   build04 = knownHosts.build04.publicKey;
   darwin02 = knownHosts.darwin02.publicKey;
-  darwin03 = knownHosts.darwin03.publicKey;
 in
 {
-  "hercules-binary-caches.age".publicKeys = users ++ [ build03 build04 darwin02 darwin03 ];
-  "hercules-cluster-join-token.age".publicKeys = users ++ [ build03 build04 darwin02 darwin03 ];
+  "hercules-binary-caches.age".publicKeys = users ++ [ build03 build04 darwin02 ];
+  "hercules-cluster-join-token.age".publicKeys = users ++ [ build03 build04 darwin02 ];
   "hercules-secrets.age".publicKeys = users ++ [ build03 build04 ]; # hercules-secrets are only needed on linux
 }
