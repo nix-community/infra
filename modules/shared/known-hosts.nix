@@ -22,7 +22,7 @@
     };
     darwin02 = {
       hostNames = [ "darwin02.nix-community.org" ];
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJqwpMUEl1/iwrBakeDb1rlheXlE5mfDLICVz8w6yi6";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIIcqYTe10t/jJitpfr0lr55lKVltAQkWiMp4tNY7mZQ";
     };
     hetzner-storage-box = {
       hostNames = [ "[u348918.your-storagebox.de]:23" ];
