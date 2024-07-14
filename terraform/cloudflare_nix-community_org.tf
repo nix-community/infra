@@ -92,14 +92,14 @@ resource "cloudflare_record" "nix-community-org-darwin01-AAAA" {
 resource "cloudflare_record" "nix-community-org-darwin02-A" {
   zone_id = local.nix_community_zone_id
   name    = "darwin02"
-  value   = "167.235.38.49"
+  value   = "85.209.53.203"
   type    = "A"
 }
 
 resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
   zone_id = local.nix_community_zone_id
   name    = "darwin02"
-  value   = "2a01:4f8:262:24af::1"
+  value   = "2a09:9340:808:60b::1"
   type    = "AAAA"
 }
 
