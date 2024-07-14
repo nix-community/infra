@@ -5,6 +5,5 @@
   "build04.nix-community.org"
   "darwin01.nix-community.org"
   "darwin02.nix-community.org"
-  "darwin03.nix-community.org"
   #"web02.nix-community.org"
 ]

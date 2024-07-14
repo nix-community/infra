@@ -108,10 +108,6 @@
               pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
               modules = [ ./hosts/darwin02/configuration.nix ];
             };
-            darwin03 = darwinSystem {
-              pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-              modules = [ ./hosts/darwin03/configuration.nix ];
-            };
           };
 
         flake.nixosConfigurations =

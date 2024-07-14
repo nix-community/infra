@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [darwin01, darwin02, darwin03]
+        host: [darwin01, darwin02]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
