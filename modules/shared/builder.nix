@@ -2,7 +2,7 @@
 {
   options.nixCommunity.gc.gbFree = lib.mkOption {
     type = lib.types.int;
-    default = 50;
+    default = 150;
     description = "Amount of free space in GB to keep on disk.";
   };
 
