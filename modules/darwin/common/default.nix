@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./apfs-cleanup.nix
+    ./optimise.nix
     ./reboot.nix
     ./telegraf.nix
     ./upgrade-diff.nix
