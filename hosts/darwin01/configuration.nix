@@ -7,9 +7,6 @@
     inputs.self.darwinModules.community-builder
   ];
 
-  # https://github.com/NixOS/nix/issues/7273
-  nix.settings.auto-optimise-store = false;
-
   nix.settings.sandbox = "relaxed";
   nix.settings.extra-platforms = [ "x86_64-darwin" ];
 
