@@ -15,6 +15,11 @@ let
       keys = ./keys/0x4A6F;
     };
 
+    afh = {
+      trusted = true;
+      keys = ./keys/afh;
+    };
+
     a-kenji = {
       trusted = true;
       keys = ./keys/a-kenji;
