@@ -277,6 +277,13 @@ let
       uid = 545;
       keys = ./keys/superherointj;
     }
+    {
+      # lib.maintainers.SuperSandro2000, https://github.com/SuperSandro2000
+      name = "sandro";
+      trusted = true;
+      uid = 546;
+      keys = ./keys/sandro;
+    }
   ];
 in
 {
