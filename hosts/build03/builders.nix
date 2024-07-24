@@ -11,7 +11,8 @@
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
       systems = [ "aarch64-linux" ];
-      supportedFeatures = inputs.self.outputs.nixosConfigurations.build04.config.nix.settings.system-features;
+      supportedFeatures =
+        inputs.self.outputs.nixosConfigurations.build04.config.nix.settings.system-features;
     }
     {
       hostName = "darwin02.nix-community.org";
@@ -19,8 +20,12 @@
       protocol = "ssh-ng";
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
-      systems = [ "aarch64-darwin" "x86_64-darwin" ];
-      supportedFeatures = inputs.self.outputs.darwinConfigurations.darwin02.config.nix.settings.system-features;
+      systems = [
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      supportedFeatures =
+        inputs.self.outputs.darwinConfigurations.darwin02.config.nix.settings.system-features;
     }
   ];
 }

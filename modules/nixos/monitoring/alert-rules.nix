@@ -2,15 +2,17 @@
 {
   srvos.prometheus = {
     ruleGroups.srvosAlerts.alertRules =
-      (lib.genAttrs [
-        "borgbackup-job-github-org.service"
-        "borgbackup-job-nixpkgs-update.service"
-      ]
+      (lib.genAttrs
+        [
+          "borgbackup-job-github-org.service"
+          "borgbackup-job-nixpkgs-update.service"
+        ]
         (name: {
           expr = ''absent_over_time(task_last_run{name="${name}"}[1d])'';
           annotations.description = "status of ${name} is unknown: no data for a day";
-        })) //
-      {
+        })
+      )
+      // {
         CominDeploymentDifferentCommits = {
           expr = ''count(count by (commit_id) (comin_deployment_info)) > 1'';
           for = "90m";

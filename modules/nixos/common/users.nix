@@ -5,10 +5,7 @@ let
   userImports =
     let
       toUserPath = f: usersDir + "/${f}";
-      onlyUserFiles = x:
-        lib.hasSuffix ".nix" x &&
-        x != "lib.nix"
-      ;
+      onlyUserFiles = x: lib.hasSuffix ".nix" x && x != "lib.nix";
       userDirEntries = builtins.readDir usersDir;
       userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
     in

@@ -1,4 +1,10 @@
-{ pkgs, lib, inputs, config, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
 let
   userLib = import "${toString inputs.self}/users/lib.nix" { inherit lib; };
 
@@ -18,7 +24,10 @@ let
   ];
 
   mkWorker = name: {
-    after = [ "network-online.target" "nixpkgs-update-supervisor.service" ];
+    after = [
+      "network-online.target"
+      "nixpkgs-update-supervisor.service"
+    ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     description = "nixpkgs-update ${name} service";
@@ -107,8 +116,15 @@ let
     wants = [ "network-online.target" ];
     path = nixpkgsUpdateSystemDependencies ++ [
       # nixpkgs-update-github-releases
-      (pkgs.python3.withPackages (p: with p;
-      [ requests dateutil libversion cachecontrol lockfile filelock ]
+      (pkgs.python3.withPackages (
+        p: with p; [
+          requests
+          dateutil
+          libversion
+          cachecontrol
+          lockfile
+          filelock
+        ]
       ))
     ];
     # API_TOKEN is used by nixpkgs-update-github-releases
@@ -242,7 +258,9 @@ in
     "e /var/cache/nixpkgs-update/worker/nixpkgs-review - - - 1d -"
 
     "d /var/lib/nixpkgs-update/bin/ 700 r-ryantm r-ryantm - -"
-    "L+ ${nixpkgs-update-bin} - - - - ${inputs.nixpkgs-update.packages.${pkgs.system}.default}/bin/nixpkgs-update"
+    "L+ ${nixpkgs-update-bin} - - - - ${
+      inputs.nixpkgs-update.packages.${pkgs.system}.default
+    }/bin/nixpkgs-update"
   ];
 
   sops.secrets.github-r-ryantm-key = {

@@ -1,4 +1,10 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 let
   hostInfo = pkgs.writeShellScript "host-info" ''
     nix_version="$(${config.nix.package}/bin/nix store ping --store daemon --json | ${pkgs.jq}/bin/jq -r '.version')"
@@ -18,10 +24,14 @@ in
   environment.etc =
     let
       inputsWithDate = lib.filterAttrs (_: input: input ? lastModified) inputs.self.inputs;
-      flakeAttrs = input: (lib.mapAttrsToList (n: v: ''${n}="${v}"'')
-        (lib.filterAttrs (_: v: (builtins.typeOf v) == "string") input));
-      lastModified = name: input: ''
-        flake_input_last_modified{input="${name}",${lib.concatStringsSep "," (flakeAttrs input)}} ${toString input.lastModified}'';
+      flakeAttrs =
+        input:
+        (lib.mapAttrsToList (n: v: ''${n}="${v}"'') (
+          lib.filterAttrs (_: v: (builtins.typeOf v) == "string") input
+        ));
+      lastModified =
+        name: input:
+        ''flake_input_last_modified{input="${name}",${lib.concatStringsSep "," (flakeAttrs input)}} ${toString input.lastModified}'';
     in
     {
       "flake-inputs.prom" = {

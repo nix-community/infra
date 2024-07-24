@@ -27,10 +27,7 @@
       enable = true;
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
-        (pkgs.runCommand "etc-nix-machines"
-          {
-            machines = config.environment.etc."nix/machines".text;
-          } ''
+        (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
           printf "$machines" > $out
           substituteInPlace $out --replace 'ssh-ng://' 'ssh://'
         '')
@@ -70,7 +67,10 @@
       environment = {
         inherit (config.systemd.services.hydra-init.environment) HYDRA_DBI;
       };
-      path = [ config.services.hydra.package pkgs.netcat ];
+      path = [
+        config.services.hydra.package
+        pkgs.netcat
+      ];
       script = ''
         set -e
         while IFS=';' read -r user role passwordhash email fullname; do

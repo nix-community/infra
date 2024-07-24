@@ -1,7 +1,5 @@
 {
-  imports = [
-    ../shared/remote-builder.nix
-  ];
+  imports = [ ../shared/remote-builder.nix ];
 
   users.users.nix = {
     isNormalUser = true;

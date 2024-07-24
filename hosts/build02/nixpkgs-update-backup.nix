@@ -6,15 +6,11 @@
 
   systemd.services.borgbackup-job-nixpkgs-update = {
     after = [ "nixpkgs-update-delete-old-logs.service" ];
-    serviceConfig.ReadWritePaths = [
-      "/var/log/telegraf"
-    ];
+    serviceConfig.ReadWritePaths = [ "/var/log/telegraf" ];
   };
 
   services.borgbackup.jobs.nixpkgs-update = {
-    paths = [
-      "/var/log/nixpkgs-update"
-    ];
+    paths = [ "/var/log/nixpkgs-update" ];
     repo = "u348918@u348918.your-storagebox.de:/./nixpkgs-update";
     encryption.mode = "none";
     compression = "auto,zstd";

@@ -8,7 +8,10 @@
     enable = true;
     checkConfig = true;
     webExternalUrl = "https://monitoring.nix-community.org/prometheus/";
-    extraFlags = [ "--storage.tsdb.retention.time=30d" "--web.route-prefix=/" ];
+    extraFlags = [
+      "--storage.tsdb.retention.time=30d"
+      "--web.route-prefix=/"
+    ];
     scrapeConfigs = [
       {
         job_name = "telegraf";
@@ -26,15 +29,7 @@
           ];
       }
     ];
-    alertmanagers = [
-      {
-        static_configs = [
-          {
-            targets = [ "localhost:9093" ];
-          }
-        ];
-      }
-    ];
+    alertmanagers = [ { static_configs = [ { targets = [ "localhost:9093" ]; } ]; } ];
   };
 
   services.telegraf.extraConfig.inputs.prometheus.urls = [
@@ -46,7 +41,10 @@
     enable = true;
     webExternalUrl = "https://monitoring.nix-community.org/alertmanager/";
     listenAddress = "[::1]";
-    extraFlags = [ "--cluster.listen-address=''" "--web.route-prefix=/" ];
+    extraFlags = [
+      "--cluster.listen-address=''"
+      "--web.route-prefix=/"
+    ];
     configuration = {
       route = {
         receiver = "default";
@@ -70,9 +68,7 @@
             }
           ];
         }
-        {
-          name = "default";
-        }
+        { name = "default"; }
       ];
     };
   };

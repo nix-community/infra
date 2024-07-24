@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [
-    ../../shared/telegraf.nix
-  ];
+  imports = [ ../../shared/telegraf.nix ];
 
   services.telegraf = {
     enable = true;
@@ -14,8 +12,22 @@
         mem = { };
         swap = { };
         disk.tagdrop = {
-          fstype = [ "tmpfs" "ramfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" ];
-          device = [ "rpc_pipefs" "lxcfs" "nsfs" "borgfs" ];
+          fstype = [
+            "tmpfs"
+            "ramfs"
+            "devtmpfs"
+            "devfs"
+            "iso9660"
+            "overlay"
+            "aufs"
+            "squashfs"
+          ];
+          device = [
+            "rpc_pipefs"
+            "lxcfs"
+            "nsfs"
+            "borgfs"
+          ];
         };
         diskio = { };
         internal = { };

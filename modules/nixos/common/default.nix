@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./comin.nix
@@ -25,7 +30,9 @@
     Restart = "on-failure";
   };
 
-  boot.kernelPackages = pkgs.lib.mkIf (!config.boot.supportedFilesystems.zfs or false) pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.lib.mkIf (
+    !config.boot.supportedFilesystems.zfs or false
+  ) pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
 
