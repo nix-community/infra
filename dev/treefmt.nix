@@ -5,7 +5,7 @@
   programs = {
     actionlint.enable = true;
     deadnix.enable = true;
-    nixpkgs-fmt.enable = true;
+    nixfmt.enable = true;
     prettier.enable = true;
     ruff.check = true;
     ruff.format = true;
@@ -44,7 +44,7 @@
     # nix
     deadnix.priority = 1;
     statix.priority = 2;
-    nixpkgs-fmt.priority = 3;
+    nixfmt.priority = 3;
 
     # python
     ruff-check.priority = 1;
