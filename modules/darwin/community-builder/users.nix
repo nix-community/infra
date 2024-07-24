@@ -287,20 +287,18 @@ let
   ];
 in
 {
-  users.users = builtins.listToAttrs (builtins.map
-    (u: {
+  users.users = builtins.listToAttrs (
+    builtins.map (u: {
       inherit (u) name;
       value = {
         inherit (u) uid;
         home = "/Users/${u.name}";
         createHome = true;
         shell = "/bin/zsh";
-        openssh.authorizedKeys.keyFiles = [
-          u.keys
-        ];
+        openssh.authorizedKeys.keyFiles = [ u.keys ];
       };
-    })
-    users);
+    }) users
+  );
 
   users.knownUsers = builtins.map (u: u.name) users;
 

@@ -1,11 +1,17 @@
 { lib }:
 let
-  chrs = lib.listToAttrs (lib.imap (i: v: { name = v; value = i + 96; }) lib.lowerChars);
+  chrs = lib.listToAttrs (
+    lib.imap (i: v: {
+      name = v;
+      value = i + 96;
+    }) lib.lowerChars
+  );
   ord = c: builtins.getAttr c chrs;
 in
 {
   # Make a unique UID from a 4-char identifier
-  mkUid = id:
+  mkUid =
+    id:
     let
       chars = lib.stringToCharacters (builtins.substring 0 4 id);
       n = builtins.map (c: lib.mod (ord c) 10) chars;

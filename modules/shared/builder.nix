@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.nixCommunity.gc.gbFree = lib.mkOption {
     type = lib.types.int;

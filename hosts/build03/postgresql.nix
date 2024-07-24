@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  services.postgresql.ensureUsers = [{
-    name = "telegraf";
-  }];
+  services.postgresql.ensureUsers = [ { name = "telegraf"; } ];
 
   systemd.services.postgresql.postStart = ''
     $PSQL -tAc 'GRANT pg_read_all_stats TO telegraf' -d postgres
@@ -52,7 +50,6 @@
       # 2x default, hint from service logs
       max_wal_size = "2 GB";
       min_wal_size = "1 GB";
-
 
       # WAL writing
       wal_compression = "on";

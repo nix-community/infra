@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Used to find the project root
   projectRootFile = ".git/config";
 
@@ -57,9 +58,7 @@
         "--prose-wrap"
         "never"
       ];
-      excludes = [
-        "*secrets.yaml"
-      ];
+      excludes = [ "*secrets.yaml" ];
     };
   };
 }

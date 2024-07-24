@@ -21,7 +21,9 @@ in
 
   # TODO: refactor this to share /users with nixos
   users.users = {
-    customer.openssh = { inherit authorizedKeys; };
+    customer.openssh = {
+      inherit authorizedKeys;
+    };
   };
 
   services.nix-daemon.enable = true;
@@ -32,9 +34,7 @@ in
 
   programs.info.enable = false;
 
-  nix.settings.trusted-users = [
-    "@admin"
-  ];
+  nix.settings.trusted-users = [ "@admin" ];
 
   # shouldn't need to set this for a nix multi-user install
   nix.gc.user = "root";
@@ -48,9 +48,7 @@ in
     "flakes"
   ];
 
-  environment.systemPackages = with pkgs; [
-    htop
-  ];
+  environment.systemPackages = with pkgs; [ htop ];
 
   system.includeUninstaller = false;
 

@@ -149,29 +149,23 @@ let
     };
   };
 
-  ifAttr = key: default: result: opts:
-    if (opts ? "${key}") && opts."${key}"
-    then result
-    else default;
+  ifAttr =
+    key: default: result: opts:
+    if (opts ? "${key}") && opts."${key}" then result else default;
 
   maybeTrusted = ifAttr "trusted" [ ] [ "trusted" ];
   maybeWheel = ifAttr "sudo" [ ] [ "wheel" ];
 
-  userGroups = opts:
-    (maybeTrusted opts) ++
-    (maybeWheel opts);
+  userGroups = opts: (maybeTrusted opts) ++ (maybeWheel opts);
 
-  descToUser = name: opts:
-    {
-      isNormalUser = true;
-      extraGroups = userGroups opts;
-      createHome = true;
-      home = "/home/${name}";
-      hashedPassword = opts.password or null;
-      openssh.authorizedKeys.keyFiles = [
-        opts.keys
-      ];
-    };
+  descToUser = name: opts: {
+    isNormalUser = true;
+    extraGroups = userGroups opts;
+    createHome = true;
+    home = "/home/${name}";
+    hashedPassword = opts.password or null;
+    openssh.authorizedKeys.keyFiles = [ opts.keys ];
+  };
 in
 {
   users = {

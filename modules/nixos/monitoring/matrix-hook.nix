@@ -27,9 +27,7 @@ in
     serviceConfig = {
       Type = "simple";
       ExecStart = "${matrixHook}/bin/matrix-hook";
-      EnvironmentFile = [
-        config.sops.secrets.nix-community-matrix-bot-token.path
-      ];
+      EnvironmentFile = [ config.sops.secrets.nix-community-matrix-bot-token.path ];
       Restart = "always";
       RestartSec = "10";
       User = "matrix-hook";

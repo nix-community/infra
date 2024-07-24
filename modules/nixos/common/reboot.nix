@@ -7,7 +7,11 @@
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
     serviceConfig.Type = "oneshot";
-    path = [ config.systemd.package pkgs.coreutils pkgs.kexec-tools ];
+    path = [
+      config.systemd.package
+      pkgs.coreutils
+      pkgs.kexec-tools
+    ];
     script = ''
       booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules} && cat /run/booted-system/kernel-params)"
       p="$(readlink -f /nix/var/nix/profiles/system)"

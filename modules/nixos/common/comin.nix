@@ -1,12 +1,8 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.comin.nixosModules.comin
-  ];
+  imports = [ inputs.comin.nixosModules.comin ];
 
-  services.telegraf.extraConfig.inputs.prometheus.urls = [
-    "http://localhost:4243/metrics"
-  ];
+  services.telegraf.extraConfig.inputs.prometheus.urls = [ "http://localhost:4243/metrics" ];
 
   services.comin = {
     enable = true;

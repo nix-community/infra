@@ -1,8 +1,6 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.disko.nixosModules.disko
-  ];
+  imports = [ inputs.disko.nixosModules.disko ];
 
   networking.hostId = "deadbeef";
 

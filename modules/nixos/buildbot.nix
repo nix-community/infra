@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.buildbot-nix.nixosModules.buildbot-master
@@ -10,9 +15,7 @@
     forceSSL = true;
   };
 
-  services.telegraf.extraConfig.inputs.prometheus.urls = [
-    "http://localhost:8011/metrics"
-  ];
+  services.telegraf.extraConfig.inputs.prometheus.urls = [ "http://localhost:8011/metrics" ];
 
   sops.secrets.buildbot-github-oauth-secret = { };
   sops.secrets.buildbot-github-app-secret-key = { };
@@ -22,8 +25,18 @@
 
   services.buildbot-nix.master = {
     enable = true;
-    admins = [ "adisbladis" "ryantm" "zimbatm" "zowoq" ];
-    buildSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    admins = [
+      "adisbladis"
+      "ryantm"
+      "zimbatm"
+      "zowoq"
+    ];
+    buildSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
     buildRetries = 0;
     domain = "buildbot.nix-community.org";
     evalMaxMemorySize = "4096";

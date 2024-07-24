@@ -1,9 +1,7 @@
 # This is the configuration required to run NixOS on GandiCloud.
 { lib, modulesPath, ... }:
 {
-  imports = [
-    (modulesPath + "/virtualisation/openstack-config.nix")
-  ];
+  imports = [ (modulesPath + "/virtualisation/openstack-config.nix") ];
   config = {
     boot.initrd.kernelModules = [
       "xen-blkfront"

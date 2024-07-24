@@ -30,19 +30,15 @@
       let
         hosts = import ./hosts.nix;
       in
-      map
-        (host: {
-          protocol = "tcp";
-          address = "${host}:22";
-          send = "SSH-2.0-Telegraf";
-          expect = "SSH-2.0";
-          tags.host = host;
-          tags.org = "nix-community";
-          timeout = "10s";
-        })
-        hosts;
-    prometheus.urls = [
-      "https://events.ofborg.org/prometheus.php"
-    ];
+      map (host: {
+        protocol = "tcp";
+        address = "${host}:22";
+        send = "SSH-2.0-Telegraf";
+        expect = "SSH-2.0";
+        tags.host = host;
+        tags.org = "nix-community";
+        timeout = "10s";
+      }) hosts;
+    prometheus.urls = [ "https://events.ofborg.org/prometheus.php" ];
   };
 }

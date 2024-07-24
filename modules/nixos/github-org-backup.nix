@@ -4,7 +4,10 @@
   # https://github.com/gabrie30/ghorg/blob/92965c8b25ca423223888e1138d175bfc2f4b39b/README.md#creating-backups
   systemd.services.github-org-backup = {
     environment.HOME = "/var/lib/github-org-backup";
-    path = [ pkgs.git pkgs.ghorg ];
+    path = [
+      pkgs.git
+      pkgs.ghorg
+    ];
     # exclude nix, nixpkgs
     script = ''
       ghorg clone nix-community \
@@ -25,15 +28,11 @@
 
   systemd.services.borgbackup-job-github-org = {
     after = [ "github-org-backup.service" ];
-    serviceConfig.ReadWritePaths = [
-      "/var/log/telegraf"
-    ];
+    serviceConfig.ReadWritePaths = [ "/var/log/telegraf" ];
   };
 
   services.borgbackup.jobs.github-org = {
-    paths = [
-      "/var/lib/github-org-backup"
-    ];
+    paths = [ "/var/lib/github-org-backup" ];
     repo = "u348918@u348918.your-storagebox.de:/./github-org";
     encryption.mode = "none";
     compression = "auto,zstd";
