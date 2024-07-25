@@ -143,20 +143,30 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
     t = Path(tmpdir)
     t.mkdir(parents=True, exist_ok=True)
     t.chmod(0o755)
-    host_key = t / "var/lib/ssh_secrets/ssh_host_ed25519_key"
-    host_key.parent.mkdir(parents=True, exist_ok=True)
-    with open(host_key, "w", opener=opener) as fh:
-        subprocess.run(
-            [
-                "sops",
-                "--extract",
-                f'["ssh_host_ed25519_key"]["{flake_attr}"]',
-                "--decrypt",
-                f"{ROOT}/secrets.yaml",
-            ],
-            check=True,
-            stdout=fh,
-        )
+
+    def decrypt(path: str, secret: str) -> None:
+        file = t / path
+        file.parent.mkdir(parents=True, exist_ok=True)
+        with open(file, "w", opener=opener) as fh:
+            subprocess.run(
+                [
+                    "sops",
+                    "--extract",
+                    secret,
+                    "--decrypt",
+                    f"{ROOT}/secrets.yaml",
+                ],
+                check=True,
+                stdout=fh,
+            )
+
+    decrypt(
+        "var/lib/ssh_secrets/ssh_host_ed25519_key",
+        f'["ssh_host_ed25519_key"]["{flake_attr}"]',
+    )
+    decrypt(
+        "var/lib/ssh_secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]'
+    )
 
 
 @task
