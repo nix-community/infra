@@ -6,21 +6,21 @@
 - Instance type: [AX41](https://www.hetzner.com/dedicated-rootserver/ax41-nvme)
 - CPU: AMD Ryzen 5 3600 6-Core Processor
 - RAM: 64GB DDR4 ECC
-- Drives: 2 x 512 GB NVME in RAID 0
+- Drives: 2 x 512 GB NVME
 
 ### `build02`
 
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
 - RAM: 128GB DDR4 ECC
-- Drives: 2 x 1.92 TB NVME in RAID 0
+- Drives: 2 x 1.92 TB NVME
 
 ### `build03`
 
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
 - RAM: 128GB DDR4 ECC
-- Drives: 2 x 1.92 TB NVME in RAID 0
+- Drives: 2 x 1.92 TB NVME
 
 ### `build04`
 
@@ -28,7 +28,7 @@
 - Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
 - CPU: Ampere Altra Q80-30 80-Core Processor
 - RAM: 128GB DDR4 ECC
-- Drives: 2 x 960 GB NVME in RAID 0
+- Drives: 2 x 960 GB NVME
 
 ### `darwin01`
 
