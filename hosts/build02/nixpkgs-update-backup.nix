@@ -1,8 +1,10 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
-  # 100GB storagebox is under the nix-community hetzner account
+  # 100GB storagebox is attached to the build02 server
 
-  sops.secrets.hetzner-borgbackup-ssh = { };
+  age.secrets.hetzner-borgbackup-ssh = {
+    file = "${toString inputs.self}/secrets/hetzner-borgbackup-ssh.age";
+  };
 
   systemd.services.borgbackup-job-nixpkgs-update = {
     after = [ "nixpkgs-update-delete-old-logs.service" ];
@@ -11,11 +13,11 @@
 
   services.borgbackup.jobs.nixpkgs-update = {
     paths = [ "/var/log/nixpkgs-update" ];
-    repo = "u348918@u348918.your-storagebox.de:/./nixpkgs-update";
+    repo = "u416406@u416406.your-storagebox.de:/./nixpkgs-update";
     encryption.mode = "none";
     compression = "auto,zstd";
     startAt = "daily";
-    environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-borgbackup-ssh.path}";
+    environment.BORG_RSH = "ssh -oPort=23 -i ${config.age.secrets.hetzner-borgbackup-ssh.path}";
     preHook = ''
       set -x
     '';

@@ -15,6 +15,7 @@ let
 
   inherit ((import ../modules/shared/known-hosts.nix).programs.ssh) knownHosts;
 
+  build02 = knownHosts.build02.publicKey;
   build03 = knownHosts.build03.publicKey;
   build04 = knownHosts.build04.publicKey;
   darwin02 = knownHosts.darwin02.publicKey;
@@ -34,4 +35,8 @@ in
     build03
     build04
   ]; # hercules-secrets are only needed on linux
+  "hetzner-borgbackup-ssh.age".publicKeys = users ++ [
+    build02
+    build03
+  ];
 }
