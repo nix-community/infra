@@ -2,8 +2,6 @@
 {
   imports = [ inputs.disko.nixosModules.disko ];
 
-  networking.hostId = "deadbeef";
-
   # this is both efi and bios compatible
   boot.loader.grub = {
     enable = true;
