@@ -25,7 +25,7 @@
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIIcqYTe10t/jJitpfr0lr55lKVltAQkWiMp4tNY7mZQ";
     };
     hetzner-storage-box = {
-      hostNames = [ "[u348918.your-storagebox.de]:23" ];
+      hostNames = [ "[u416406.your-storagebox.de]:23" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
     };
     web02 = {

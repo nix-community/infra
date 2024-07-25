@@ -1,5 +1,12 @@
-{ config, pkgs, ... }:
 {
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  # 100GB storagebox is attached to the build02 server
+
   # upstream docs show how to restore these backups
   # https://github.com/gabrie30/ghorg/blob/92965c8b25ca423223888e1138d175bfc2f4b39b/README.md#creating-backups
   systemd.services.github-org-backup = {
@@ -24,7 +31,9 @@
     serviceConfig.Type = "oneshot";
   };
 
-  sops.secrets.hetzner-borgbackup-ssh = { };
+  age.secrets.hetzner-borgbackup-ssh = {
+    file = "${toString inputs.self}/secrets/hetzner-borgbackup-ssh.age";
+  };
 
   systemd.services.borgbackup-job-github-org = {
     after = [ "github-org-backup.service" ];
@@ -33,11 +42,11 @@
 
   services.borgbackup.jobs.github-org = {
     paths = [ "/var/lib/github-org-backup" ];
-    repo = "u348918@u348918.your-storagebox.de:/./github-org";
+    repo = "u416406@u416406.your-storagebox.de:/./github-org";
     encryption.mode = "none";
     compression = "auto,zstd";
     startAt = "daily";
-    environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-borgbackup-ssh.path}";
+    environment.BORG_RSH = "ssh -oPort=23 -i ${config.age.secrets.hetzner-borgbackup-ssh.path}";
     preHook = ''
       set -x
     '';
