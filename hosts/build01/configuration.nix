@@ -3,10 +3,12 @@
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.common
-    inputs.self.nixosModules.disko-zfs
+    inputs.self.nixosModules.disko-zfs-swap
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.community-builder
   ];
+
+  nixCommunity.disko.swapSize = 64;
 
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
