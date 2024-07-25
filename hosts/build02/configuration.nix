@@ -9,7 +9,6 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.disko-zfs
-    inputs.self.nixosModules.emergency-access
   ];
 
   # set in srvos, remove when reinstalling
