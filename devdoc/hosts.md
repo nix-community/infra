@@ -3,10 +3,9 @@
 ### `build01`
 
 - Provider: Hetzner
-- Instance type: [AX41](https://www.hetzner.com/dedicated-rootserver/ax41-nvme)
-- CPU: AMD Ryzen 5 3600 6-Core Processor
-- RAM: 64GB DDR4 ECC
-- Drives: 2 x 512 GB NVME
+- CPU: AMD Ryzen 9 3900 12-Core Processor
+- RAM: 128GB DDR4 ECC
+- Drives: 2 x 1.92 TB NVME
 
 ### `build02`
 
