@@ -40,7 +40,7 @@
     buildRetries = 0;
     domain = "buildbot.nix-community.org";
     evalMaxMemorySize = "4096";
-    evalWorkerCount = 16;
+    evalWorkerCount = 32;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
     cachix = {
       name = "nix-community";

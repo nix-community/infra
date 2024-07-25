@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [
     inputs.srvos.nixosModules.mixins-nginx
@@ -17,12 +17,12 @@
     ./postgresql.nix
   ];
 
-  # set in srvos, remove when reinstalling
-  networking.hostId = "deadbeef";
+  # the default zpool import services somehow times out while this import works fine?
+  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.ExecStartPre = "${config.boot.zfs.package}/bin/zpool import -N -f zroot";
 
   nixCommunity.gc.gbFree = 500;
 
-  systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3b:2946::1/64";
+  systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:2190:2698::2";
 
   networking.hostName = "build03";
 
