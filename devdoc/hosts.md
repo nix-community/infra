@@ -18,8 +18,9 @@
 ### `build03`
 
 - Provider: Hetzner
-- CPU: AMD Ryzen 9 3900 12-Core Processor
-- RAM: 128GB DDR4 ECC
+- Instance type: [AX162-R](https://www.hetzner.com/dedicated-rootserver/ax162-r)
+- CPU: AMD EPYC 9454P 48-Core Processor
+- RAM: 256GB DDR5 ECC
 - Drives: 2 x 1.92 TB NVME
 
 ### `build04`
