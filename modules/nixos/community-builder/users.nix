@@ -132,6 +132,11 @@ let
       keys = ./keys/teto;
     };
 
+    thecomputerguy = {
+      trusted = true;
+      keys = ./keys/thecomputerguy;
+    };
+
     winter = {
       trusted = true;
       keys = ./keys/winter;
