@@ -18,18 +18,24 @@
 
     enableJIT = true;
 
-    # From https://pgconfigurator.cybertec.at/
+    # https://pgtune.leopard.in.ua/#/
+    # https://pgconfigurator.cybertec.at/
+    # https://github.com/NixOS/infra/blob/4b5dd4f974d3f707b64ad60793b8182e645631ed/build/haumea/postgresql.nix
+
     settings = {
       # Connectivity
-      max_connections = 500;
+      max_connections = 2000;
       superuser_reserved_connections = 3;
 
+      # https://vadosware.io/post/everything-ive-seen-on-optimizing-postgres-on-zfs-on-linux/#zfs-related-tunables-on-the-postgres-side
+      full_page_writes = "off";
+
       # Memory Settings
-      shared_buffers = "8 GB";
-      work_mem = "32 MB";
-      maintenance_work_mem = "420 MB";
+      shared_buffers = "32 GB";
+      work_mem = "128 MB";
+      maintenance_work_mem = "2 GB";
       huge_pages = "off";
-      effective_cache_size = "22 GB";
+      effective_cache_size = "64 GB";
       effective_io_concurrency = 100; # concurrent IO only really activated if OS supports posix_fadvise function
       random_page_cost = 1.25; # speed of random disk access relative to sequential access (1.0)
 
@@ -48,7 +54,7 @@
       checkpoint_completion_target = 0.9;
 
       # 2x default, hint from service logs
-      max_wal_size = "2 GB";
+      max_wal_size = "5 GB";
       min_wal_size = "1 GB";
 
       # WAL writing
@@ -64,10 +70,10 @@
       bgwriter_flush_after = 0;
 
       # Parallel queries:
-      max_worker_processes = 8;
-      max_parallel_workers_per_gather = 4;
-      max_parallel_maintenance_workers = 4;
-      max_parallel_workers = 8;
+      max_worker_processes = 24;
+      max_parallel_workers_per_gather = 12;
+      max_parallel_maintenance_workers = 12;
+      max_parallel_workers = 24;
       parallel_leader_participation = "on";
 
       # Advanced features
