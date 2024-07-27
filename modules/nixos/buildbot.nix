@@ -39,12 +39,13 @@
     ];
     buildRetries = 0;
     domain = "buildbot.nix-community.org";
-    evalMaxMemorySize = "4096";
+    evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
     cachix = {
+      enable = true;
       name = "nix-community";
-      authTokenFile = config.sops.secrets.cachix-auth-token.path;
+      auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
     };
     github = {
       authType.app = {
