@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
@@ -7,9 +7,6 @@
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.community-builder
   ];
-
-  # the default zpool import services somehow times out while this import works fine?
-  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.ExecStartPre = "${config.boot.zfs.package}/bin/zpool import -N -f zroot";
 
   nixCommunity.gc.gbFree = 500;
 

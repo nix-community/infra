@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -14,9 +14,6 @@
 
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
-
-  # the default zpool import services somehow times out while this import works fine?
-  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.ExecStartPre = "${config.boot.zfs.package}/bin/zpool import -N -f zroot";
 
   nixCommunity.gc.gbFree = 500;
 
