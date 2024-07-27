@@ -284,6 +284,13 @@ let
       uid = 546;
       keys = ./keys/sandro;
     }
+    {
+      # lib.maintainers.linj, https://github.com/jian-lin
+      name = "linj";
+      trusted = true;
+      uid = 547;
+      keys = ./keys/linj;
+    }
   ];
 in
 {
