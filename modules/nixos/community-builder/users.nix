@@ -137,6 +137,11 @@ let
       keys = ./keys/thecomputerguy;
     };
 
+    tomberek = {
+      trusted = true;
+      keys = ./keys/tomberek;
+    };
+
     winter = {
       trusted = true;
       keys = ./keys/winter;
