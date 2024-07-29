@@ -11,9 +11,6 @@ in
 
     settings.substituters = [ "https://nix-community.cachix.org" ];
 
-    # Hard-link duplicated files
-    settings.auto-optimise-store = pkgs.lib.mkDefault true;
-
     # auto-free the /nix/store
     settings.min-free = asGB 10;
     settings.max-free = asGB 50;
