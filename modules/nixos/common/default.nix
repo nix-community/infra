@@ -19,6 +19,10 @@
     inputs.srvos.nixosModules.server
   ];
 
+  # Hard-link duplicated files
+  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = false;
+
   # users in trusted group are trusted by the nix-daemon
   nix.settings.trusted-users = [ "@trusted" ];
 
