@@ -45,8 +45,6 @@
           for = "1h";
           annotations.description = "ofborg evaluator queue is more than 2x the number of evaluators";
         };
-
-        SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build01"} != 1'';
       };
   };
 }
