@@ -30,12 +30,13 @@
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
         (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
-          printf "$machines" > $out
-          substituteInPlace $out --replace 'ssh-ng://' 'ssh://'
+          printf "$machines" | grep build04 > $out
+          substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
+          substituteInPlace $out --replace-fail ' 80 ' ' 2 '
         '')
 
         (pkgs.writeText "local" ''
-          localhost x86_64-linux,builtin - 8 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
+          localhost x86_64-linux,builtin - 2 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
         '')
       ];
       hydraURL = "https://hydra.nix-community.org";
