@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./apfs-cleanup.nix
+    ./network.nix
     ./optimise.nix
     ./reboot.nix
     ./telegraf.nix
@@ -49,9 +50,6 @@ in
 
   system.includeUninstaller = false;
 
-  # disable application layer firewall, telegraf needs an incoming connection
-  system.defaults.alf.globalstate = 0;
-
   # srvos
   environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
     AuthorizedKeysFile none
@@ -60,11 +58,7 @@ in
     PasswordAuthentication no
   '';
 
-  # Make sure to disable netbios on activation
   system.activationScripts.postActivation.text = ''
-    echo disabling netbios... >&2
-    launchctl disable system/netbiosd
-    launchctl unload -w /System/Library/LaunchDaemons/com.apple.netbiosd.plist 2>/dev/null || true
     echo disabling spotlight indexing... >&2
     mdutil -a -i off -d &> /dev/null
     mdutil -a -E &> /dev/null
