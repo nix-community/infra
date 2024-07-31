@@ -7,6 +7,8 @@
     # hydra-queue-runner needs to read this key for remote building
     sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
+    nix.settings.keep-outputs = pkgs.lib.mkForce false;
+
     nix.settings.allowed-uris = [
       "git+https:"
       "github:"
