@@ -24,6 +24,9 @@
     flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
+    hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nixpkgs-update-github-releases.flake = false;
@@ -50,7 +53,11 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
-      imports = [ inputs.treefmt-nix.flakeModule ];
+      imports = [
+        ./dev/effect-pages.nix
+        inputs.hercules-ci-effects.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
 
       perSystem =
         {
