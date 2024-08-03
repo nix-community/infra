@@ -15,7 +15,8 @@
           };
         }
         ''
-          cd $files
+          cp --no-preserve=mode -r $files/* .
+          cp --no-preserve=mode -r ${config.packages.topology}/* docs
           mkdocs build --strict --site-dir $out
         '';
     docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
