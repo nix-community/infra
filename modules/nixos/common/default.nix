@@ -14,7 +14,6 @@
     ./sops-nix.nix
     ./telegraf.nix
     ./users.nix
-    inputs.sops-nix.nixosModules.sops
     inputs.agenix.nixosModules.age
     inputs.srvos.nixosModules.server
   ];
