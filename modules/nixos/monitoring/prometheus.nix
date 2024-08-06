@@ -53,7 +53,7 @@
             group_by = [ "host" ];
             group_wait = "5m";
             group_interval = "5m";
-            repeat_interval = "4h";
+            repeat_interval = "12h";
             receiver = "nix-community";
           }
         ];
