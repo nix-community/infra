@@ -5,6 +5,7 @@ locals {
       description          = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
+      check_interval       = 1800
       scheduling_shares    = 6000
       supported_systems    = "[ \"x86_64-linux\" ]"
     }
@@ -13,6 +14,7 @@ locals {
       description          = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
+      check_interval       = 1800
       scheduling_shares    = 6000
       supported_systems    = "[ \"x86_64-linux\" ]"
     }
@@ -21,6 +23,7 @@ locals {
       description          = "Testing ROCm support."
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
+      check_interval       = 1800
       scheduling_shares    = 6000
       supported_systems    = "[ \"x86_64-linux\" ]"
       variant              = "rocm"
@@ -75,7 +78,7 @@ resource "hydra_jobset" "nixpkgs_jobset" {
     notify_committers = false
   }
 
-  check_interval    = 1800
+  check_interval    = each.value.check_interval
   scheduling_shares = each.value.scheduling_shares
   keep_evaluations  = 1
 
