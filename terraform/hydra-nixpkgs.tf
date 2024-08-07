@@ -28,6 +28,25 @@ locals {
       supported_systems    = "[ \"x86_64-linux\" ]"
       variant              = "rocm"
     }
+    unfree_redist = {
+      name                 = "unfree-redist"
+      description          = "nixos-unstable-small unfree+redistributable"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      nixpkgs_release_file = "pkgs/top-level/release-unfree-redistributable.nix"
+      check_interval       = 1800
+      scheduling_shares    = 5000
+      supported_systems    = "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+    }
+    unfree_redist_full = {
+      name                 = "unfree-redist-full"
+      description          = "nixos-unstable unfree+redistributable full"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable"
+      nixpkgs_release_file = "pkgs/top-level/release-unfree-redistributable.nix"
+      check_interval       = 604800
+      scheduling_shares    = 1000
+      supported_systems    = "[ \"x86_64-linux\" ]"
+      full                 = "true"
+    }
   }
 }
 
@@ -51,6 +70,17 @@ resource "hydra_jobset" "nixpkgs_jobset" {
     type              = "git"
     value             = each.value.nixpkgs_channel
     notify_committers = false
+  }
+
+  dynamic "input" {
+    for_each = [for full in [lookup(each.value, "full", null)] : full if full != null]
+
+    content {
+      name              = "full"
+      type              = "boolean"
+      value             = input.value
+      notify_committers = false
+    }
   }
 
   dynamic "input" {
