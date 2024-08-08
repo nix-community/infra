@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   config = {
     sops.secrets.hydra-admin-password.owner = "hydra";
@@ -27,6 +32,13 @@
 
     services.hydra = {
       enable = true;
+
+      package = (pkgs.hydra_unstable.override { nix = pkgs.nixVersions.nix_2_22; }).overrideAttrs (o: {
+        version = "${pkgs.lib.substring 0 8 inputs.hydra.rev}";
+        src = inputs.hydra;
+        buildInputs = o.buildInputs ++ [ pkgs.perlPackages.DBIxClassHelpers ];
+      });
+
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
         (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
