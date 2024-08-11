@@ -7,8 +7,6 @@
     inputs.self.nixosModules.community-builder
   ];
 
-  nixCommunity.gc.gbFree = 500;
-
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 

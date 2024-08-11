@@ -13,8 +13,6 @@
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
 
-  nixCommunity.gc.gbFree = 500;
-
   boot.kernelParams = [ "zfs.zfs_arc_max=${toString (24 * 1024 * 1024 * 1024)}" ]; # 24GB, try to limit OOM kills / reboots
 
   networking.nameservers = [
