@@ -91,6 +91,12 @@ let
       keys = ./keys/lily;
     };
 
+    linj = {
+      # lib.maintainers.linj, https://github.com/jian-lin
+      trusted = true;
+      keys = ./keys/linj;
+    };
+
     nicoo = {
       # lib.maintainers.nicoo, @nbraud on github.com
       trusted = true;
