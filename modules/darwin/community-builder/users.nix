@@ -291,6 +291,13 @@ let
       uid = 547;
       keys = ./keys/linj;
     }
+    {
+      # lib.maintainers.sebtm, https://github.com/sebtm
+      name = "sebtm";
+      trusted = true;
+      uid = 548;
+      keys = ./keys/sebtm;
+    }
   ];
 in
 {
