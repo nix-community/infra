@@ -291,6 +291,13 @@ let
       uid = 547;
       keys = ./keys/linj;
     }
+    {
+      # lib.maintainers.pbsds, https://github.com/pbsds
+      name = "pbsds";
+      trusted = true;
+      uid = 548;
+      keys = ./keys/pbsds;
+    }
   ];
 in
 {
