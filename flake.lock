@@ -147,6 +147,21 @@
         "type": "github"
       }
     },
+    "lite-config": {
+      "locked": {
+        "lastModified": 1723691425,
+        "narHash": "sha256-xOroQo/+CAtocvJQsGPE5ukr1Btp72xlcWPB4tBZp6M=",
+        "owner": "yelite",
+        "repo": "lite-config",
+        "rev": "34357ad12ad0a66b2de55a2457159bda36c71a06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yelite",
+        "repo": "lite-config",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -269,6 +284,7 @@
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
+        "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",

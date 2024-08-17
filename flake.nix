@@ -24,6 +24,7 @@
     flake-compat.url = "github:nix-community/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nixpkgs-update-github-releases.flake = false;
@@ -50,7 +51,41 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
-      imports = [ inputs.treefmt-nix.flakeModule ];
+      imports = [
+        inputs.lite-config.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
+
+      lite-config =
+        { lib, ... }:
+        {
+          nixpkgs = {
+            config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
+          };
+
+          hostModuleDir = ./hosts;
+
+          hosts = {
+            build01.system = "x86_64-linux";
+            build02.system = "x86_64-linux";
+            build03.system = "x86_64-linux";
+            build04.system = "aarch64-linux";
+            darwin01.system = "aarch64-darwin";
+            darwin02.system = "aarch64-darwin";
+            web02.system = "x86_64-linux";
+          };
+
+          systemModules = [
+            (
+              { hostPlatform, ... }:
+              {
+                imports =
+                  lib.optionals hostPlatform.isDarwin [ ./modules/darwin/common ]
+                  ++ lib.optionals hostPlatform.isLinux [ ./modules/nixos/common ];
+              }
+            )
+          ];
+        };
 
       perSystem =
         {
@@ -70,11 +105,6 @@
           treefmt = {
             flakeCheck = system == "x86_64-linux";
             imports = [ ./dev/treefmt.nix ];
-          };
-
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
           };
 
           checks =
@@ -103,69 +133,7 @@
             };
         };
 
-      flake.darwinConfigurations =
-        let
-          darwinSystem =
-            args:
-            inputs.nix-darwin.lib.darwinSystem (
-              {
-                specialArgs = {
-                  inherit inputs;
-                };
-              }
-              // args
-            );
-        in
-        {
-          darwin01 = darwinSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-            modules = [ ./hosts/darwin01/configuration.nix ];
-          };
-          darwin02 = darwinSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-            modules = [ ./hosts/darwin02/configuration.nix ];
-          };
-        };
-
-      flake.nixosConfigurations =
-        let
-          nixosSystem =
-            args:
-            inputs.nixpkgs.lib.nixosSystem (
-              {
-                specialArgs = {
-                  inherit inputs;
-                };
-              }
-              // args
-            );
-        in
-        {
-          build01 = nixosSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            modules = [ ./hosts/build01/configuration.nix ];
-          };
-          build02 = nixosSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            modules = [ ./hosts/build02/configuration.nix ];
-          };
-          build03 = nixosSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            modules = [ ./hosts/build03/configuration.nix ];
-          };
-          build04 = nixosSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
-            modules = [ ./hosts/build04/configuration.nix ];
-          };
-          web02 = nixosSystem {
-            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-            modules = [ ./hosts/web02/configuration.nix ];
-          };
-        };
-
       flake.darwinModules = {
-        common = ./modules/darwin/common;
-
         builder = ./modules/darwin/builder.nix;
         community-builder = ./modules/darwin/community-builder;
         hercules-ci = ./modules/darwin/hercules-ci.nix;
@@ -173,8 +141,6 @@
       };
 
       flake.nixosModules = {
-        common = ./modules/nixos/common;
-
         buildbot = ./modules/nixos/buildbot.nix;
         builder = ./modules/nixos/builder.nix;
         community-builder = ./modules/nixos/community-builder;
