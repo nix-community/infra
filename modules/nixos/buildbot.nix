@@ -43,11 +43,11 @@
     evalWorkerCount = 32;
     jobReportLimit = 100;
     workersFile = config.sops.secrets.buildbot-nix-workers.path;
-    #cachix = {
-    #  enable = true;
-    #  name = "nix-community";
-    #  auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
-    #};
+    cachix = {
+      enable = true;
+      name = "nix-community";
+      auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
+    };
     github = {
       authType.app = {
         id = 920387;
