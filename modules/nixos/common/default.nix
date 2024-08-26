@@ -8,10 +8,10 @@
   imports = [
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
-    ./reboot.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix
+    ./update.nix
     ./users.nix
     inputs.sops-nix.nixosModules.sops
     inputs.agenix.nixosModules.age
