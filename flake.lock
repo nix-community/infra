@@ -55,27 +55,6 @@
         "type": "github"
       }
     },
-    "comin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1714766748,
-        "narHash": "sha256-//fP25eh1f9eA+0TEgWqusWjv9SuKh8rIF1ZJQNL1jo=",
-        "owner": "nlewo",
-        "repo": "comin",
-        "rev": "d3658c452024824235de2355ac3e156b10c3eaaf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nlewo",
-        "repo": "comin",
-        "rev": "d3658c452024824235de2355ac3e156b10c3eaaf",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -315,7 +294,6 @@
       "inputs": {
         "agenix": "agenix",
         "buildbot-nix": "buildbot-nix",
-        "comin": "comin",
         "disko": "disko",
         "empty": "empty",
         "flake-compat": "flake-compat",

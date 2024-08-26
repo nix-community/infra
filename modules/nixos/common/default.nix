@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./comin.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
     ./reboot.nix
