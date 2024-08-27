@@ -45,8 +45,23 @@
       useSubstitutes = true;
       extraConfig = ''
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+
+        queue_runner_metrics_address = [::]:9198
+
+        <hydra_notify>
+          <prometheus>
+            listen_address = 0.0.0.0
+            port = 9199
+          </prometheus>
+        </hydra_notify>
       '';
     };
+
+    services.telegraf.extraConfig.inputs.prometheus.urls = [
+      "http://localhost:${toString config.services.hydra.port}/metrics"
+      "http://localhost:9198/metrics"
+      "http://localhost:9199/metrics"
+    ];
 
     services.nginx.virtualHosts = {
       "hydra.nix-community.org" = {
