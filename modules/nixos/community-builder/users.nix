@@ -133,6 +133,11 @@ let
       keys = ./keys/stephank;
     };
 
+    supinie = {
+      trusted = true;
+      keys = ./keys/supinie;
+    };
+
     teto = {
       trusted = true;
       keys = ./keys/teto;
