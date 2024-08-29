@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  pkgs,
   ...
 }:
 {
@@ -14,8 +13,6 @@
     enableACME = true;
     forceSSL = true;
   };
-
-  services.telegraf.extraConfig.inputs.prometheus.urls = [ "http://localhost:8011/metrics" ];
 
   sops.secrets.buildbot-github-oauth-secret = { };
   sops.secrets.buildbot-github-app-secret-key = { };
@@ -58,26 +55,6 @@
       oauthId = "Iv23liN9rjd1Bm3bvYKZ";
       topic = "nix-community-buildbot";
     };
-  };
-
-  services.buildbot-master = {
-    extraConfig = ''
-      c['services'].append(reporters.Prometheus(port=8011))
-    '';
-    pythonPackages = ps: [
-      (ps.buildPythonPackage rec {
-        pname = "buildbot-prometheus";
-        version = "0c81a89bbe34628362652fbea416610e215b5d1e";
-        src = pkgs.fetchFromGitHub {
-          owner = "claws";
-          repo = "buildbot-prometheus";
-          rev = version;
-          hash = "sha256-bz2Nv2RZ44i1VoPvQ/XjGMfTT6TmW6jhEVwItPk23SM=";
-        };
-        propagatedBuildInputs = [ ps.prometheus-client ];
-        doCheck = false;
-      })
-    ];
   };
 
   sops.secrets.buildbot-nix-worker-password = { };
