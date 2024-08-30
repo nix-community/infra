@@ -8,8 +8,8 @@
     deadnix.enable = true;
     nixfmt.enable = true;
     prettier.enable = true;
-    ruff.check = true;
-    ruff.format = true;
+    ruff-check.enable = true;
+    ruff-format.enable = true;
     statix.enable = true;
     terraform.enable = true;
   };
