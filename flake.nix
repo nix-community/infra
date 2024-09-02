@@ -129,7 +129,7 @@
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
               nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
-              nixosTests-hydra = pkgs.nixosTests.hydra.hydra_unstable;
+              nixosTests-hydra = pkgs.nixosTests.hydra.hydra;
             };
         };
 
