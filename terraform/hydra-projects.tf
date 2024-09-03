@@ -122,6 +122,48 @@ resource "hydra_jobset" "nixpkgs_cuda" {
   email_override      = ""
 }
 
+resource "hydra_jobset" "nixpkgs_cuda_stable" {
+  project     = hydra_project.nixpkgs.name
+  state       = "enabled"
+  visible     = true
+  name        = "cuda-stable"
+  type        = "legacy"
+  description = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
+
+  nix_expression {
+    file  = "pkgs/top-level/release-cuda.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"x86_64-linux\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 1800
+  scheduling_shares = 6000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
+
 resource "hydra_jobset" "nixpkgs_rocm" {
   project     = hydra_project.nixpkgs.name
   state       = "enabled"
