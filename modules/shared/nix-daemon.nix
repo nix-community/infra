@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 let
   asGB = size: toString (size * 1024 * 1024 * 1024);
@@ -15,9 +20,23 @@ in
     settings.min-free = asGB 1;
     settings.max-free = asGB 50;
 
-    # useful for ad-hoc nix-shell's for debugging
-    # use mkForce to avoid search path warnings with nix-darwin
-    nixPath = pkgs.lib.mkForce [ "nixpkgs=${pkgs.path}" ];
+    channel.enable = false;
+    # disable global registry
+    settings.flake-registry = "";
+    # set system registry
+    registry = {
+      nixpkgs.to = {
+        type = "path";
+        path = inputs.nixpkgs;
+      };
+      self.to = {
+        type = "path";
+        path = inputs.self;
+      };
+    };
+    # explicitly set nix-path, NIX_PATH to nixpkgs from system registry
+    settings.nix-path = [ "nixpkgs=flake:nixpkgs" ];
+    nixPath = config.nix.settings.nix-path;
 
     gc.automatic = pkgs.lib.mkDefault true;
     gc.options = pkgs.lib.mkDefault "--delete-older-than 14d";
