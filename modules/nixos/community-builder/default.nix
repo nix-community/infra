@@ -1,21 +1,24 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
-    ./packages.nix
+    "${inputs.self}/modules/shared/community-builder.nix"
     ./users.nix
   ];
+
+  environment.systemPackages = [
+    # terminfo packages
+    pkgs.foot.terminfo
+    pkgs.kitty.terminfo
+    pkgs.termite.terminfo
+    pkgs.wezterm.terminfo
+  ];
+
+  programs.mosh = {
+    enable = true;
+    withUtempter = false;
+  };
 
   programs.fish.enable = true;
   # disable generated completion
   environment.etc."fish/generated_completions".text = pkgs.lib.mkForce "";
-
-  programs.zsh = {
-    enable = true;
-    # https://grml.org/zsh/grmlzshrc.html
-    # https://grml.org/zsh/grml-zsh-refcard.pdf
-    interactiveShellInit = ''
-      source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
-    '';
-    promptInit = ""; # otherwise it'll override the grml prompt
-  };
 }
