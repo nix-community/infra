@@ -8,10 +8,12 @@
 let
   deps = [
     config.nix.package
+    pkgs.gnused
     pkgs.jq
   ];
   hostInfo = pkgs.writeShellScript "host-info" ''
     export PATH=${lib.makeBinPath deps}:$PATH
+    flake=$(nix flake metadata self --json | jq -r '.path' | sed -e 's|/nix/store/||' -e 's|-source||')
     nix_version="$(nix store ping --store daemon --json | jq -r '.version')"
     case "$(uname -s)" in
     Darwin)
@@ -22,7 +24,7 @@ let
       ;;
     esac
     system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
-    echo "host,nix_version=$nix_version,os_version=$os_version,system=$system info=1"
+    echo "host,flake=$flake,nix_version=$nix_version,os_version=$os_version,system=$system info=1"
   '';
 in
 {
