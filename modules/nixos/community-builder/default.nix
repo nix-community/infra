@@ -2,6 +2,7 @@
 {
   imports = [
     "${inputs.self}/modules/shared/community-builder.nix"
+    inputs.nix-index-database.nixosModules.nix-index
     ./users.nix
   ];
 
