@@ -12,6 +12,8 @@
     pkgs.tig
   ];
 
+  programs.nix-index-database.comma.enable = true;
+
   programs.zsh = {
     enable = true;
     # https://grml.org/zsh/grmlzshrc.html
