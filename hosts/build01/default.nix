@@ -7,6 +7,12 @@
     inputs.self.nixosModules.community-builder
   ];
 
+  system.etc.overlay = {
+    enable = true;
+    mutable = false;
+  };
+  services.userborn.enable = true;
+
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
