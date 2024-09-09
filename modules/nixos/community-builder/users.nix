@@ -168,6 +168,12 @@ let
       trusted = true;
       keys = ./keys/emily;
     };
+
+    doronbehar = {
+      # lib.maintainers.doronbehar, https://github.com/doronbehar
+      trusted = true;
+      keys = ./keys/doronbehar;
+    };
   };
 
   ifAttr =
