@@ -17,7 +17,7 @@ jobs:
             experimental-features = nix-command flakes
       - name: Update flake.lock
         id: update
-        uses: DeterminateSystems/update-flake-lock@v23
+        uses: DeterminateSystems/update-flake-lock@v24
       - name: Enable Automerge
         run: gh pr merge --rebase --auto "${{ steps.update.outputs.pull-request-number }}"
         env:
