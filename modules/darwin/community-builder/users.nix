@@ -298,6 +298,13 @@ let
       uid = 548;
       keys = ./keys/pbsds;
     }
+    {
+      # lib.maintainers.doronbehar, https://github.com/doronbehar
+      name = "doronbehar";
+      trusted = true;
+      uid = 549;
+      keys = ./keys/doronbehar;
+    }
   ];
 in
 {
