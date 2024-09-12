@@ -23,11 +23,6 @@
   nix.settings.auto-optimise-store = true;
   nix.optimise.automatic = false;
 
-  # users in trusted group are trusted by the nix-daemon
-  nix.settings.trusted-users = [ "@trusted" ];
-
-  users.groups.trusted = { };
-
   # Sometimes it fails if a store path is still in use.
   # This should fix intermediate issues.
   systemd.services.nix-gc.serviceConfig = {
