@@ -1,12 +1,4 @@
 { inputs, pkgs, ... }:
-let
-  authorizedKeys = {
-    keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPVjRBomWFJNNkZb0g5ymLmc3pdRddIScitmJ9yC+ap" # deployment
-    ];
-    keyFiles = pkgs.lib.filesystem.listFilesRecursive "${toString inputs.self}/users/keys";
-  };
-in
 {
   imports = [
     ./apfs-cleanup.nix
@@ -16,17 +8,11 @@ in
     ./software-update.nix
     ./telegraf.nix
     ./upgrade-diff.nix
+    ./users.nix
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
     inputs.agenix.darwinModules.age
   ];
-
-  # TODO: refactor this to share /users with nixos
-  users.users = {
-    customer.openssh = {
-      inherit authorizedKeys;
-    };
-  };
 
   services.nix-daemon.enable = true;
 
@@ -35,8 +21,6 @@ in
   documentation.enable = false;
 
   programs.info.enable = false;
-
-  nix.settings.trusted-users = [ "@admin" ];
 
   # srvos
   nix.settings.builders-use-substitutes = true;
