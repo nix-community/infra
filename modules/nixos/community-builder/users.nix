@@ -195,8 +195,5 @@ let
   };
 in
 {
-  users = {
-    mutableUsers = false;
-    users = lib.mapAttrs descToUser users;
-  };
+  users.users = lib.mapAttrs descToUser users;
 }

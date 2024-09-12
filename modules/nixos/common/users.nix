@@ -14,6 +14,11 @@ in
 {
   imports = userImports;
 
+  # users in trusted group are trusted by the nix-daemon
+  nix.settings.trusted-users = [ "@trusted" ];
+
+  users.groups.trusted = { };
+
   # No mutable users
   users.mutableUsers = false;
 }
