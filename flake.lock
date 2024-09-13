@@ -42,16 +42,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1724107491,
-        "narHash": "sha256-x5PH8y1X7ppy9HPX8vFAq9gHuzezuydubCBgOm9IDeQ=",
+        "lastModified": 1726182549,
+        "narHash": "sha256-KL/9xQpcLKc3CRNG5bTZ3+QnSrXVkotpwhFpHMIco2I=",
         "owner": "qowoz",
         "repo": "buildbot-nix",
-        "rev": "8229ddc0a4fa968ad04a32bdfda7099da6f9d533",
+        "rev": "745d24f7f2fdbf96b9325e2ae94eb328902c0f6e",
         "type": "github"
       },
       "original": {
         "owner": "qowoz",
-        "ref": "skipped-build-workers",
+        "ref": "more-skipped-build-workers",
         "repo": "buildbot-nix",
         "type": "github"
       }

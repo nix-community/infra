@@ -15,7 +15,7 @@
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
-    buildbot-nix.url = "github:qowoz/buildbot-nix/skipped-build-workers";
+    buildbot-nix.url = "github:qowoz/buildbot-nix/more-skipped-build-workers";
     comin.inputs.nixpkgs.follows = "nixpkgs";
     comin.url = "github:nlewo/comin/d3658c452024824235de2355ac3e156b10c3eaaf";
     disko.inputs.nixpkgs.follows = "nixpkgs";
