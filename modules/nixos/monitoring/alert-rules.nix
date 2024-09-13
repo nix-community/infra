@@ -13,18 +13,6 @@
         })
       )
       // {
-        CominDeploymentDifferentCommits = {
-          expr = ''count(count by (commit_id) (comin_deployment_info)) > 1'';
-          for = "90m";
-          annotations.description = "One or more comin deployments are on different commits";
-        };
-
-        CominDeploymentFailing = {
-          expr = ''comin_deployment_info{status!="done"}'';
-          for = "30m";
-          annotations.description = "{{$labels.host}} deployment failing";
-        };
-
         Filesystem80percentFull.enable = false;
 
         Filesystem95percentFull = {
