@@ -48,6 +48,7 @@
         evaluator_workers = 8
         max_concurrent_evals = 2
         max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+        compress_build_logs_compression = bzip2
       '';
     };
 
