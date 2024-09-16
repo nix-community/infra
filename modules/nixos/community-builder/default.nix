@@ -22,4 +22,13 @@
   programs.fish.enable = true;
   # disable generated completion
   environment.etc."fish/generated_completions".text = pkgs.lib.mkForce "";
+
+  systemd.services.nixpkgs-clone = {
+    serviceConfig.Type = "oneshot";
+    startAt = "daily";
+    path = [
+      pkgs.git
+    ];
+    script = builtins.readFile "${inputs.self}/modules/shared/nixpkgs-clone.bash";
+  };
 }
