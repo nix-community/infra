@@ -187,7 +187,7 @@ resource "hydra_jobset" "nixpkgs_unfree" {
   input {
     name              = "nixpkgs"
     type              = "git"
-    value             = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+    value             = "https://github.com/NixOS/nixpkgs.git nixpkgs-unfree-release"
     notify_committers = false
   }
 
@@ -237,7 +237,7 @@ resource "hydra_jobset" "nixpkgs_unfree_full" {
   input {
     name              = "nixpkgs"
     type              = "git"
-    value             = "https://github.com/NixOS/nixpkgs.git nixos-unstable"
+    value             = "https://github.com/NixOS/nixpkgs.git nixpkgs-unfree-release"
     notify_committers = false
   }
 
