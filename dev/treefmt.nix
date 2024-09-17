@@ -10,6 +10,8 @@
     prettier.enable = true;
     ruff-check.enable = true;
     ruff-format.enable = true;
+    shellcheck.enable = true;
+    shfmt.enable = true;
     statix.enable = true;
     terraform.enable = true;
   };
@@ -41,6 +43,9 @@
       includes = [ "*" ];
       priority = 9; # last
     };
+
+    shellcheck.priority = 1;
+    shfmt.priority = 2;
 
     # nix
     deadnix.priority = 1;
