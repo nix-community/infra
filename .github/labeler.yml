@@ -1,3 +1,9 @@
+"docs":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**/*"
+          - "mkdocs.yml"
+
 "secrets":
   - changed-files:
       - any-glob-to-any-file:
