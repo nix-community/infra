@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   lib,
   pkgs,
@@ -7,7 +6,7 @@
 }:
 let
   deps = [
-    config.nix.package
+    pkgs.nixVersions.nix_2_18
     pkgs.gnused
     pkgs.jq
   ];
