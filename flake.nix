@@ -123,11 +123,11 @@
           checks =
             let
               darwinConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair name config.config.system.build.toplevel
+                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
               ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
               devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
               nixosConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel
+                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
               ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
             in
             darwinConfigurations
