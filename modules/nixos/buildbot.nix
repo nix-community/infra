@@ -35,6 +35,7 @@
       "aarch64-darwin"
     ];
     domain = "buildbot.nix-community.org";
+    outputsPath = "/var/www/buildbot/nix-outputs/";
     evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
     jobReportLimit = 0;
