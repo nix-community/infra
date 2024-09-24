@@ -11,6 +11,8 @@
     ./users.nix
   ];
 
+  environment.etc.motd.text = config.nixCommunity.motd;
+
   environment.systemPackages = [
     pkgs.vim
   ];

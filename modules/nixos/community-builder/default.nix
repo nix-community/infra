@@ -1,10 +1,17 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     "${inputs.self}/modules/shared/community-builder.nix"
     inputs.nix-index-database.nixosModules.nix-index
     ./users.nix
   ];
+
+  users.motd = config.nixCommunity.motd;
 
   environment.systemPackages = [
     # terminfo packages
