@@ -305,6 +305,13 @@ let
       uid = 549;
       keys = ./keys/doronbehar;
     }
+    {
+      # lib.maintainers.aleksana, https://github.com/Aleksanaa
+      name = "aleksana";
+      trusted = true;
+      uid = 550;
+      keys = ./keys/aleksana;
+    }
   ];
 in
 {
