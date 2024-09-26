@@ -3,10 +3,10 @@ hostname=$(uname -n)
 p=$(curl -L https://buildbot.nix-community.org/nix-outputs/nix-community/infra/master/"$arch"-linux.host-"$hostname")
 
 if [[ "$(readlink /run/booted-system)" == "$p" ]]; then
-  return
+  exit 0
 fi
 if [[ "$(readlink /run/current-system)" == "$p" ]]; then
-  return
+  exit 0
 fi
 
 nix-store --realise "$p"
