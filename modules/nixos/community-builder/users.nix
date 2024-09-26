@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   inherit (pkgs) lib;
 
@@ -190,6 +190,7 @@ let
     extraGroups = userGroups opts;
     createHome = true;
     home = "/home/${name}";
+    shell = opts.shell or config.users.defaultUserShell;
     hashedPassword = opts.password or null;
     openssh.authorizedKeys.keyFiles = [ opts.keys ];
   };

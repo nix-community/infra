@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 let
   # To add yourself:
   # 1. Add an entry to this list, using the next UID.
@@ -329,7 +330,7 @@ in
         inherit (u) uid;
         home = "/Users/${u.name}";
         createHome = true;
-        shell = "/bin/zsh";
+        shell = u.shell or "/bin/zsh";
         openssh.authorizedKeys.keyFiles = [ u.keys ];
       };
     }) users

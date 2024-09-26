@@ -13,6 +13,14 @@
 
   environment.etc.motd.text = config.nixCommunity.motd;
 
+  programs.bash.enable = true;
+
+  environment.shells = [
+    pkgs.bashInteractive
+    pkgs.fish
+    pkgs.zsh
+  ];
+
   environment.systemPackages = [
     pkgs.vim
   ];
