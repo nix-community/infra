@@ -1,9 +1,10 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     ./apfs-cleanup.nix
     ./network.nix
     ./optimise.nix
+    ./packages.nix
     ./reboot.nix
     ./software-update.nix
     ./telegraf.nix
@@ -30,8 +31,6 @@
     "nix-command"
     "flakes"
   ];
-
-  environment.systemPackages = with pkgs; [ htop ];
 
   system.includeUninstaller = false;
 
