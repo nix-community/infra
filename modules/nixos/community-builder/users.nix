@@ -94,6 +94,7 @@ let
     linj = {
       # lib.maintainers.linj, https://github.com/jian-lin
       trusted = true;
+      shell = pkgs.fish;
       keys = ./keys/linj;
     };
 
