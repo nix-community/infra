@@ -18,6 +18,7 @@
 
     # useful for people that want to test stuff
     environment.systemPackages = [
+      pkgs.emacs
       pkgs.fd
       pkgs.git
       pkgs.nano
