@@ -312,6 +312,13 @@ let
       uid = 550;
       keys = ./keys/aleksana;
     }
+    {
+      # lib.maintainers.khaneliman, https://github.com/khaneliman
+      name = "khaneliman";
+      trusted = true;
+      uid = 551;
+      keys = ./keys/khaneliman;
+    }
   ];
 in
 {
