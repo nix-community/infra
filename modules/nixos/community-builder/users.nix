@@ -63,6 +63,7 @@ let
 
     glepage = {
       trusted = true;
+      shell = pkgs.fish;
       keys = ./keys/glepage;
     };
 

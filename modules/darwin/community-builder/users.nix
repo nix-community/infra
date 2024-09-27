@@ -126,6 +126,7 @@ let
       name = "glepage";
       trusted = true;
       uid = 521;
+      shell = pkgs.fish;
       keys = ./keys/glepage;
     }
     {
