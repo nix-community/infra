@@ -119,6 +119,7 @@ let
       name = "toonn";
       trusted = true;
       uid = 520;
+      shell = pkgs.fish;
       keys = ./keys/toonn;
     }
     {
