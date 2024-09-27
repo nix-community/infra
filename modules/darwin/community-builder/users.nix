@@ -291,6 +291,7 @@ let
       name = "linj";
       trusted = true;
       uid = 547;
+      shell = pkgs.fish;
       keys = ./keys/linj;
     }
     {
