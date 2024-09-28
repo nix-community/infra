@@ -18,6 +18,7 @@ let
   web02 = knownHosts.web02.publicKey;
 
   secrets = {
+    grafana-client-secret = [ web02 ];
     hercules-binary-caches = [
       build03
       build04
