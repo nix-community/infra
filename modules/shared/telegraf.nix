@@ -5,26 +5,15 @@
   ...
 }:
 let
-  deps = [
-    pkgs.nixVersions.nix_2_18
-    pkgs.gnused
-    pkgs.jq
-  ];
-  hostInfo = pkgs.writeShellScript "host-info" ''
-    export PATH=${lib.makeBinPath deps}:$PATH
-    flake=$(nix flake metadata self --json | jq -r '.path' | sed -e 's|/nix/store/||' -e 's|-source||')
-    nix_version="$(nix store ping --store daemon --json | jq -r '.version')"
-    case "$(uname -s)" in
-    Darwin)
-      os_version="$(/usr/bin/sw_vers --productVersion)_$(/usr/bin/sw_vers --buildVersion)"
-      ;;
-    Linux)
-      os_version="$(uname -r)"
-      ;;
-    esac
-    system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
-    echo "host,flake=$flake,nix_version=$nix_version,os_version=$os_version,system=$system info=1"
-  '';
+  hostInfo = pkgs.writeShellApplication {
+    name = "host-info";
+    runtimeInputs = [
+      pkgs.nixVersions.nix_2_18
+      pkgs.gnused
+      pkgs.jq
+    ];
+    text = builtins.readFile ./host-info.bash;
+  };
 in
 {
   environment.etc =
@@ -52,7 +41,7 @@ in
   services.telegraf.extraConfig.inputs = {
     exec = [
       {
-        commands = [ hostInfo ];
+        commands = [ (lib.getExe hostInfo) ];
         data_format = "influx";
       }
     ];
