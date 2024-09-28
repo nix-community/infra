@@ -57,6 +57,11 @@
     };
   };
 
+  services.buildbot-master = {
+    title = "Nix Community";
+    titleUrl = "https://nix-community.org/";
+  };
+
   sops.secrets.buildbot-nix-worker-password = { };
 
   services.buildbot-nix.worker = {
