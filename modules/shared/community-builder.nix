@@ -32,7 +32,11 @@
 
     programs.nix-index-database.comma.enable = true;
 
-    programs.fish.enable = true;
+    programs.fish = {
+      enable = true;
+      # puts /run/current-system/sw/bin in PATH for remote builds on darwin
+      useBabelfish = true;
+    };
 
     programs.zsh = {
       enable = true;
