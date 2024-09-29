@@ -88,6 +88,12 @@ let
       keys = ./keys/katexochen;
     }
     {
+      # lib.maintainers.khaneliman, https://github.com/khaneliman
+      name = "khaneliman";
+      trusted = true;
+      keys = ./keys/khaneliman;
+    }
+    {
       name = "lewo";
       trusted = true;
       keys = ./keys/lewo;
