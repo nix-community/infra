@@ -8,13 +8,12 @@
   imports = [
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
+    ./agenix.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix
     ./update.nix
     ./users.nix
-    inputs.sops-nix.nixosModules.sops
-    inputs.agenix.nixosModules.age
     inputs.srvos.nixosModules.server
   ];
 
