@@ -16,6 +16,8 @@
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
     buildbot-nix.url = "github:nix-community/buildbot-nix";
+    cgroup-exporter.inputs.nixpkgs.follows = "nixpkgs";
+    cgroup-exporter.url = "github:arianvp/cgroup-exporter";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
