@@ -323,6 +323,14 @@ let
       uid = 551;
       keys = ./keys/khaneliman;
     }
+    {
+      # lib.maintainers.perchun, https://github.com/PerchunPak
+      name = "perchun";
+      trusted = true;
+      uid = 552;
+      shell = pkgs.fish;
+      keys = ./keys/perchun;
+    }
   ];
 in
 {
