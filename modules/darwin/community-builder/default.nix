@@ -13,6 +13,10 @@
 
   environment.etc.motd.text = config.nixCommunity.motd;
 
+  environment.systemPackages = [
+    pkgs.ncurses # for terminfo
+  ];
+
   programs.bash.enable = true;
 
   environment.shells = [

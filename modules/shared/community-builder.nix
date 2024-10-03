@@ -21,18 +21,25 @@
     '';
 
     # useful for people that want to test stuff
-    environment.systemPackages = [
-      pkgs.btop
-      pkgs.emacs
-      pkgs.fd
-      pkgs.git
-      pkgs.nano
-      pkgs.nix-output-monitor
-      pkgs.nix-tree
-      pkgs.nixpkgs-review
-      pkgs.ripgrep
-      pkgs.tig
-    ];
+    environment.systemPackages =
+      [
+        pkgs.btop
+        pkgs.emacs
+        pkgs.fd
+        pkgs.git
+        pkgs.nano
+        pkgs.nix-output-monitor
+        pkgs.nix-tree
+        pkgs.nixpkgs-review
+        pkgs.ripgrep
+        pkgs.tig
+      ]
+      ++ builtins.filter (lib.meta.availableOn pkgs.stdenv.hostPlatform) [
+        pkgs.foot.terminfo
+        pkgs.kitty.terminfo
+        pkgs.termite.terminfo
+        pkgs.wezterm.terminfo
+      ];
 
     programs.nix-index-database.comma.enable = true;
 
