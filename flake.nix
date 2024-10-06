@@ -160,6 +160,7 @@
       flake.nixosModules = {
         buildbot = ./modules/nixos/buildbot.nix;
         builder = ./modules/nixos/builder.nix;
+        cgroups = ./modules/nixos/cgroups.nix;
         community-builder = ./modules/nixos/community-builder;
         disko-zfs = ./modules/nixos/disko-zfs.nix;
         github-org-backup = ./modules/nixos/github-org-backup.nix;
