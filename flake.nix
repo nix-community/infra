@@ -71,7 +71,7 @@
             config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
             overlays = [
               (final: prev: {
-                hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_23; }).overrideAttrs (o: {
+                hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_24; }).overrideAttrs (o: {
                   version = inputs.hydra.shortRev;
                   src = inputs.hydra;
                   buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
