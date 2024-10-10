@@ -12,9 +12,16 @@
         config = {
           enableACME = lib.mkDefault true;
           forceSSL = lib.mkDefault true;
+          # http3_hq = true; ?
           kTLS = true;
+          quic = true;
 
           extraConfig = ''
+            # ?
+            # quic_gso on;
+            # quic_retry on;
+            # ssl_early_data on;
+            # add_header Alt-Svc 'h3=":$server_port"; ma=86400';
             add_header X-Robots-Tag "none, noarchive, nosnippet";
           '';
 
@@ -30,7 +37,12 @@
   imports = [ inputs.srvos.nixosModules.mixins-nginx ];
 
   config = {
+    networking.firewall.allowedUDPPorts = [ 443 ];
+
     services.nginx = {
+      package = pkgs.nginxQuic;
+      enableQuicBPF = true;
+
       appendConfig = ''
         pcre_jit on;
         worker_processes auto;
@@ -40,7 +52,8 @@
       virtualHosts."${config.networking.hostName}.nix-community.org" = {
         default = true;
         locations."/".return = "404";
-        reuseport = true; # should only be set for one virtualHost
+        # required for (quic && `worker_processes auto`), should only be set for one virtualHost
+        reuseport = true;
       };
 
       # localhost is used by the nginx status page
