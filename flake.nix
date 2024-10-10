@@ -162,6 +162,7 @@
         builder = ./modules/nixos/builder.nix;
         community-builder = ./modules/nixos/community-builder;
         disko-zfs = ./modules/nixos/disko-zfs.nix;
+        disko-zfs-zvol = ./modules/nixos/disko-zfs-zvol.nix;
         github-org-backup = ./modules/nixos/github-org-backup.nix;
         hercules-ci = ./modules/nixos/hercules-ci.nix;
         hydra = ./modules/nixos/hydra.nix;
