@@ -9,6 +9,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.hostPlatform.gcc.arch = "znver2";
+
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
 

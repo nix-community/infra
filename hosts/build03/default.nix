@@ -16,6 +16,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.hostPlatform.gcc.arch = "znver4";
+
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:2190:2698::2";
 
   system.stateVersion = "23.11";
