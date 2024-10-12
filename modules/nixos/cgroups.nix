@@ -24,6 +24,8 @@
         "cgroups"
       ];
 
+      system-features = [ "uid-range" ];
+
       auto-allocate-uids = true;
       use-cgroups = true;
     };
