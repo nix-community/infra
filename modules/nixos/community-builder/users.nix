@@ -120,6 +120,12 @@ let
       keys = ./keys/pinpox;
     };
 
+    raboof = {
+      # lib.maintainers.raboof, https://github.com/raboof
+      trusted = true;
+      keys = ./keys/raboof;
+    };
+
     schmittlauch = {
       trusted = true;
       keys = ./keys/schmittlauch;
