@@ -8,6 +8,14 @@ Built on `nixos-unstable-small` for `x86_64-linux`, `aarch64-linux`.
 
 [https://hydra.nix-community.org/jobset/nixpkgs/rocm](https://hydra.nix-community.org/jobset/nixpkgs/rocm)
 
+#### Nixpkgs unfree redistributable
+
+[unfree redistributable release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/pkgs/top-level/release-unfree-redistributable.nix)
+
+Built on `nixos-unstable-small` for `x86_64-linux`, `aarch64-linux`:
+
+- [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist)
+
 #### Cache
 
 All of the above builds are pushed to the cache.
