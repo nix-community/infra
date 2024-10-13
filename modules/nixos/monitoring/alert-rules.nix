@@ -29,9 +29,9 @@
         };
 
         OfBorgEvalQueue = {
-          expr = ''ofborg_queue_evaluator_waiting > (2 * ofborg_queue_evaluator_consumers)'';
+          expr = ''ofborg_queue_evaluator_waiting > (3 * ofborg_queue_evaluator_consumers)'';
           for = "1h";
-          annotations.description = "ofborg evaluator queue is more than 2x the number of evaluators";
+          annotations.description = "ofborg evaluator queue is more than 3x the number of evaluators";
         };
       };
   };
