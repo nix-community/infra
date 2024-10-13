@@ -10,6 +10,10 @@
 
       Welcome to Nix Community!
 
+      Please join our matrix room:
+
+      https://matrix.to/#/#nix-community:nixos.org
+
       For a faster Nixpkgs clone use:
 
       git clone --reference /var/lib/nixpkgs.git https://github.com/NixOS/nixpkgs.git
