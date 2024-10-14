@@ -4,6 +4,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.builder
+    inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.remote-builder
   ];
