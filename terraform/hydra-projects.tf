@@ -110,7 +110,7 @@ resource "hydra_jobset" "nixpkgs_cuda" {
   input {
     name              = "supportedSystems"
     type              = "nix"
-    value             = "[ \"x86_64-linux\" \"aarch64-linux\" ]"
+    value             = "[ \"x86_64-linux\" ]"
     notify_committers = false
   }
 
@@ -159,7 +159,7 @@ resource "hydra_jobset" "nixpkgs_rocm" {
   input {
     name              = "supportedSystems"
     type              = "nix"
-    value             = "[ \"x86_64-linux\" \"aarch64-linux\" ]"
+    value             = "[ \"x86_64-linux\" ]"
     notify_committers = false
   }
 
