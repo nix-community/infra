@@ -3,7 +3,6 @@
 import json
 import os
 import subprocess
-import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any, List, Union
@@ -94,7 +93,7 @@ def print_keys(c: Any, flake_attr: str) -> None:
 
 
 @task
-def mkdocs(c: Any) -> None:
+def docs(c: Any) -> None:
     """
     Serve docs (mkdoc serve)
     """
@@ -179,73 +178,6 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
 
 
 @task
-def build_local(c: Any, hosts: str = "") -> None:
-    """
-    Build all servers. Use inv build-local --hosts build01 to build a single server
-    """
-    g = DeployGroup(get_hosts(hosts))
-
-    def build_local(h: DeployHost) -> None:
-        hostname = h.host.replace(".nix-community.org", "")
-        h.run_local(
-            [
-                "nixos-rebuild",
-                "build",
-                "--option",
-                "accept-flake-config",
-                "true",
-                "--flake",
-                f".#{hostname}",
-            ]
-        )
-
-    g.run_function(build_local)
-
-
-def wait_for_port(host: str, port: int, shutdown: bool = False) -> None:
-    import socket
-    import time
-
-    while True:
-        try:
-            with socket.create_connection((host, port), timeout=1):
-                if shutdown:
-                    time.sleep(1)
-                    sys.stdout.write(".")
-                    sys.stdout.flush()
-                else:
-                    break
-        except OSError:
-            if shutdown:
-                break
-            else:
-                time.sleep(0.01)
-                sys.stdout.write(".")
-                sys.stdout.flush()
-
-
-@task
-def reboot(c: Any, hosts: str = "") -> None:
-    """
-    Reboot hosts. example usage: inv reboot --hosts build01,build02
-    """
-    for h in get_hosts(hosts):
-        h.run("sudo reboot &")
-
-        print(f"Wait for {h.host} to shutdown", end="")
-        sys.stdout.flush()
-        port = h.port or 22
-        wait_for_port(h.host, port, shutdown=True)
-        print("")
-
-        print(f"Wait for {h.host} to start", end="")
-        sys.stdout.flush()
-        wait_for_port(h.host, port)
-        print("")
-
-
-@task
 def cleanup_gcroots(c: Any, hosts: str = "") -> None:
     g = DeployGroup(get_hosts(hosts))
     g.run("sudo find /nix/var/nix/gcroots/auto -type s -delete")
-    g.run("sudo systemctl restart nix-gc")
