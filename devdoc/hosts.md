@@ -69,12 +69,6 @@ Host *.nix-community.org
 $ ./inv deploy
 ```
 
-If you want to reboot a machine, use the following command:
-
-```console
-$ inv deploy --hosts build02 reboot --hosts build02
-```
-
 ## Install/Fix system from Hetzner recovery mode
 
 1. Copy your ssh key to the recovery system so that the kexec image can re-use it.
