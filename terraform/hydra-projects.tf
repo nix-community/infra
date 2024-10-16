@@ -212,3 +212,95 @@ resource "hydra_jobset" "nixpkgs_rocm" {
   email_notifications = false
   email_override      = ""
 }
+
+resource "hydra_jobset" "nixpkgs_unfree_redist" {
+  project     = hydra_project.nixpkgs.name
+  state       = "enabled"
+  visible     = true
+  name        = "unfree-redist"
+  type        = "legacy"
+  description = "nixos-unstable-small unfree+redistributable"
+
+  nix_expression {
+    file  = "pkgs/top-level/release-unfree-redistributable.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/zimbatm/nixpkgs.git nixpkgs-unfree-release"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 1800
+  scheduling_shares = 5000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
+
+
+resource "hydra_jobset" "nixpkgs_unfree_redist_full" {
+  project     = hydra_project.nixpkgs.name
+  state       = "enabled"
+  visible     = true
+  name        = "unfree-redist-full"
+  type        = "legacy"
+  description = "nixos-unstable unfree+redistributable full"
+
+  nix_expression {
+    file  = "pkgs/top-level/release-unfree-redistributable.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "full"
+    type              = "boolean"
+    value             = "true"
+    notify_committers = false
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/zimbatm/nixpkgs.git nixpkgs-unfree-release"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"x86_64-linux\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 604800
+  scheduling_shares = 1000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
