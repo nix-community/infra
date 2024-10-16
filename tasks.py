@@ -112,13 +112,16 @@ def docs_linkcheck(c: Any) -> None:
 
 
 def get_hosts(hosts: str) -> List[DeployHost]:
-    if "darwin" in hosts:
-        return [
-            DeployHost(f"{h}.nix-community.org", user="customer")
-            for h in hosts.split(",")
-        ]
+    deploy_hosts = []
+    for host in hosts.split(","):
+        if host.startswith("darwin"):
+            deploy_hosts.append(
+                DeployHost(f"{host}.nix-community.org", user="customer")
+            )
+        else:
+            deploy_hosts.append(DeployHost(f"{host}.nix-community.org"))
 
-    return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
+    return deploy_hosts
 
 
 def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
