@@ -14,9 +14,12 @@ ROOT = Path(__file__).parent.resolve()
 os.chdir(ROOT)
 
 
-# Deploy to all hosts in parallel
-def deploy_nixos(hosts: List[DeployHost]) -> None:
-    g = DeployGroup(hosts)
+@task
+def deploy(c: Any, hosts: str) -> None:
+    """
+    Use inv deploy --hosts build01,darwin01
+    """
+    g = DeployGroup(get_hosts(hosts))
 
     def deploy(h: DeployHost) -> None:
         if "darwin" in h.host:
@@ -109,17 +112,6 @@ def docs_linkcheck(c: Any) -> None:
 
 
 def get_hosts(hosts: str) -> List[DeployHost]:
-    if hosts == "":
-        res = subprocess.run(
-            ["nix", "flake", "show", "--json", "--all-systems"],
-            check=True,
-            text=True,
-            stdout=subprocess.PIPE,
-        )
-        data = json.loads(res.stdout)
-        systems = data["nixosConfigurations"]
-        return [DeployHost(f"{n}.nix-community.org") for n in systems]
-
     if "darwin" in hosts:
         return [
             DeployHost(f"{h}.nix-community.org", user="customer")
@@ -127,14 +119,6 @@ def get_hosts(hosts: str) -> List[DeployHost]:
         ]
 
     return [DeployHost(f"{h}.nix-community.org") for h in hosts.split(",")]
-
-
-@task
-def deploy(c: Any, hosts: str = "") -> None:
-    """
-    Deploy to all servers. Use inv deploy --hosts build01 to deploy to a single server
-    """
-    deploy_nixos(get_hosts(hosts))
 
 
 def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
@@ -178,6 +162,6 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
 
 
 @task
-def cleanup_gcroots(c: Any, hosts: str = "") -> None:
+def cleanup_gcroots(c: Any, hosts: str) -> None:
     g = DeployGroup(get_hosts(hosts))
     g.run("sudo find /nix/var/nix/gcroots/auto -type s -delete")
