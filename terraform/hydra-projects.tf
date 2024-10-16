@@ -255,6 +255,47 @@ resource "hydra_jobset" "nixpkgs_unfree_redist" {
   email_override      = ""
 }
 
+resource "hydra_jobset" "nixpkgs_unfree_redist_darwin" {
+  project     = hydra_project.nixpkgs.name
+  state       = "enabled"
+  visible     = true
+  name        = "unfree-redist-darwin"
+  type        = "legacy"
+  description = "nixpkgs-unstable darwin unfree+redistributable"
+
+  nix_expression {
+    file  = "pkgs/top-level/release-unfree-redistributable.nix"
+    input = "nixpkgs"
+  }
+
+  input {
+    name              = "nixpkgs"
+    type              = "git"
+    value             = "https://github.com/NixOS/nixpkgs.git nixpkgs-unstable"
+    notify_committers = false
+  }
+
+  input {
+    name              = "officialRelease"
+    type              = "boolean"
+    value             = "false"
+    notify_committers = false
+  }
+
+  input {
+    name              = "supportedSystems"
+    type              = "nix"
+    value             = "[ \"aarch64-darwin\" \"x86_64-darwin\" ]"
+    notify_committers = false
+  }
+
+  check_interval    = 1800
+  scheduling_shares = 5000
+  keep_evaluations  = 1
+
+  email_notifications = false
+  email_override      = ""
+}
 
 resource "hydra_jobset" "nixpkgs_unfree_redist_full" {
   project     = hydra_project.nixpkgs.name
