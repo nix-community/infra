@@ -16,6 +16,7 @@ nav:
       - FAQ: faq.md
       - administrators.md
       - contact.md
+      - hosts.md
       - security.md
 
 theme:
