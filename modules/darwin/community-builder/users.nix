@@ -331,6 +331,14 @@ let
       shell = pkgs.fish;
       keys = ./keys/perchun;
     }
+    {
+      # lib.maintainers.mrcjkb, https://github.com/mrcjkb
+      name = "mrcjkb";
+      trusted = true;
+      uid = 553;
+      shell = pkgs.nushell;
+      keys = ./keys/mrcjkb;
+    }
   ];
 in
 {
