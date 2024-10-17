@@ -99,6 +99,13 @@ let
       keys = ./keys/linj;
     };
 
+    mrcjkb = {
+      # lib.maintainers.mrcjkb https://github.com/mrcjkb
+      trusted = true;
+      shell = pkgs.nushell;
+      keys = ./keys/mrcjkb;
+    };
+
     nicoo = {
       # lib.maintainers.nicoo, @nbraud on github.com
       trusted = true;
