@@ -7,6 +7,8 @@
     inputs.self.nixosModules.community-builder
   ];
 
+  nixpkgs.hostPlatform.gcc.arch = "znver2";
+
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 
