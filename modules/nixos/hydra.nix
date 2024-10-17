@@ -30,9 +30,10 @@
       # remote builders set in /etc/nix/machines + localhost
       buildMachinesFiles = [
         (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
-          printf "$machines" | grep build04 > $out
+          printf "$machines" > $out
           substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
           substituteInPlace $out --replace-fail ' 80 ' ' 2 '
+          substituteInPlace $out --replace-fail ' 8 ' ' 1 '
         '')
 
         (pkgs.writeText "local" ''
