@@ -44,6 +44,27 @@ def deploy_nixos(hosts: List[DeployHost]) -> None:
 
 
 @task
+def facter_report(c: Any, hosts: str = "") -> None:
+    """
+    Generate facter report
+    """
+    g = DeployGroup(get_hosts(hosts))
+
+    def facter(h: DeployHost) -> None:
+        res = h.run(
+            ["sudo", "nix", "run", "nixpkgs#nixos-facter"],
+            stdout=subprocess.PIPE,
+        )
+        hostname = h.host.replace(".nix-community.org", "")
+        path = f"{ROOT}/hosts/{hostname}/report.json"
+        with open(path, "w") as f:
+            f.write(res.stdout)
+        # h.run_local(f"jq -c < {path} | sponge {path}")
+
+    g.run_function(facter)
+
+
+@task
 def sotp(c: Any, acct: str) -> None:
     """
     Get TOTP token from sops
