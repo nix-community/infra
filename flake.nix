@@ -76,15 +76,6 @@
                   src = inputs.hydra;
                   buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
                 });
-                python3 = prev.python3.override {
-                  packageOverrides = _: super: {
-                    pymdown-extensions = super.pymdown-extensions.overridePythonAttrs (o: {
-                      disabledTests = o.disabledTests ++ [
-                        "test_windows_root_conversion"
-                      ];
-                    });
-                  };
-                };
               })
             ];
           };
