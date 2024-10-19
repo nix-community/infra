@@ -1,14 +1,14 @@
 mkdir -p "$LOGS_DIRECTORY/~workers/"
 # This is for public logs at nixpkgs-update-logs.nix-community.org/~workers
-exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stdout.log' 86400)
-exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~workers/%Y-%m-%d-${name}.stderr.log' 86400 >&2)
+exec  > >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.stdout.log" 86400)
+exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.stderr.log" 86400 >&2)
 
 socket=/run/nixpkgs-update-supervisor/work.sock
 
 function run-nixpkgs-update {
   exit_code=0
   set -x
-  timeout 6h ${nixpkgs-update-bin} update-batch --pr --outpaths --nixpkgs-review "$attr_path $payload" || exit_code=$?
+  timeout 6h "${NIXPKGS_UPDATE_BIN}" update-batch --pr --outpaths --nixpkgs-review "$attr_path $payload" || exit_code=$?
   set +x
   if [ $exit_code -eq 124 ]; then
     echo "Update was interrupted because it was taking too long."
@@ -28,7 +28,7 @@ while true; do
       sleep 60
       ;;
     JOB\ *)
-      read -r attr_path payload <<< "''${response#JOB }"
+      read -r attr_path payload <<< "${response#JOB }"
       # If one worker is initializing the nixpkgs clone, the other will
       # try to use the incomplete clone, consuming a bunch of jobs and
       # throwing them away. So we use a crude locking mechanism to
