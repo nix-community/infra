@@ -56,6 +56,9 @@ let
       StandardOutput = "journal";
     };
 
+    environment.NIXPKGS_UPDATE_BIN = nixpkgs-update-bin;
+    environment.WORKER_NAME = name;
+
     script = builtins.readFile ./worker.bash;
   };
 
