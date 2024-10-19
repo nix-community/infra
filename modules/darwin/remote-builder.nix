@@ -1,13 +1,12 @@
 {
   imports = [ ../shared/remote-builder.nix ];
 
-  users.knownUsers = [ "nix" ];
-
   users.users.nix = {
     name = "nix";
-    uid = 8765;
+    isNormalUser = true;
     home = "/Users/nix";
     createHome = true;
+    # build user should always use the system default shell
     shell = "/bin/zsh";
   };
 }

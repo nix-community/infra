@@ -14,6 +14,8 @@
     group = "_hercules-ci-agent";
   };
 
+  users.users._hercules-ci-agent.isSystemUser = true; # should be set upstream
+
   services.hercules-ci-agent = {
     enable = true;
     settings = {

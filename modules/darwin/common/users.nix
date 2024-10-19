@@ -10,10 +10,21 @@ in
 {
   # TODO: refactor this to share /users with nixos
   users.users = {
-    customer.openssh = {
-      inherit authorizedKeys;
+    customer = {
+      isAdminUser = true;
+      isNormalUser = true;
+      isTokenUser = true;
+      openssh = {
+        inherit authorizedKeys;
+      };
+      # admin user should always use the system default shell
+      shell = "/bin/zsh";
     };
   };
+
+  users.mutableUsers = false; # reinstall
+
+  nix.configureBuildUsers = true; # reinstall
 
   nix.settings.trusted-users = [ "@admin" ];
 }

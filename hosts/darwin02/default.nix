@@ -17,5 +17,5 @@
   # disable nixos-tests
   nix.settings.system-features = [ "big-parallel" ];
 
-  system.stateVersion = 4;
+  system.stateVersion = 5; # reinstall
 }
