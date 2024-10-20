@@ -138,7 +138,7 @@ resource "hydra_jobset" "nixpkgs_cuda_stable" {
   input {
     name              = "nixpkgs"
     type              = "git"
-    value             = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
+    value             = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
     notify_committers = false
   }
 
