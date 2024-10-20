@@ -13,14 +13,6 @@
 
   users.motd = config.nixCommunity.motd;
 
-  environment.systemPackages = [
-    # terminfo packages
-    pkgs.foot.terminfo
-    pkgs.kitty.terminfo
-    pkgs.termite.terminfo
-    pkgs.wezterm.terminfo
-  ];
-
   programs.mosh = {
     enable = true;
     withUtempter = false;
