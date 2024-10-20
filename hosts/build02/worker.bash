@@ -5,6 +5,31 @@ exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.stder
 
 socket=/run/nixpkgs-update-supervisor/work.sock
 
+function ofborg-sleep {
+  while true; do
+    # url needs to be kept in sync with untilOfBorgFree in
+    # https://github.com/nix-community/nixpkgs-update/blob/main/src/Update.hs
+    ofborg=$(curl -s "https://events.ofborg.org/stats.php" | jq '.evaluator')
+    consumers="$(jq -r '.consumers' <<<"$ofborg")"
+    waiting="$(jq -r '.messages.waiting' <<<"$ofborg")"
+
+    if [[ $waiting -gt consumers ]]; then
+      case "$WORKER_NAME" in
+      # exclude worker1
+      worker1)
+        break
+        ;;
+      *)
+        echo "sleeping for 15 minutes, $waiting > $consumers"
+        sleep $((60 * 15))
+        ;;
+      esac
+    else
+      break
+    fi
+  done
+}
+
 function run-nixpkgs-update {
   exit_code=0
   set -x
@@ -46,6 +71,7 @@ while true; do
     while [ -e "$lockdir" ]; do
       sleep 10
     done
+    ofborg-sleep
     run-nixpkgs-update
     ;;
   esac

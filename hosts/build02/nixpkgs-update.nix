@@ -33,7 +33,7 @@ let
     description = "nixpkgs-update ${name} service";
     enable = true;
     restartIfChanged = true;
-    path = nixpkgsUpdateSystemDependencies;
+    path = nixpkgsUpdateSystemDependencies ++ [ pkgs.jq ];
     environment.XDG_CONFIG_HOME = "/var/lib/nixpkgs-update/worker";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/worker";
     environment.XDG_RUNTIME_DIR = "/run/nixpkgs-update-worker"; # for nix-update update scripts
