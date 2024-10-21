@@ -11,6 +11,10 @@
     ./users.nix
   ];
 
+  environment.etc."ssh/sshd_config.d/security-key.conf".text = ''
+    SecurityKeyProvider ${pkgs.sk-libfido2}/sk-libfido2.dylib
+  '';
+
   environment.etc.motd.text = config.nixCommunity.motd;
 
   environment.systemPackages = [
