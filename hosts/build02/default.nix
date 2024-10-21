@@ -10,6 +10,8 @@
     inputs.self.nixosModules.disko-zfs
   ];
 
+  nixpkgs.hostPlatform.gcc.arch = "znver2";
+
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
 
