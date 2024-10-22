@@ -19,3 +19,7 @@ Built on `nixos-$RELEASE-small` for `x86_64-linux`:
 All of the above builds are pushed to the cache.
 
 See [here](./cache.md) for details.
+
+#### Hydra
+
+The hydra configuration for these package sets is managed in this [file](https://github.com/nix-community/infra/blob/master/terraform/hydra-nixpkgs.tf).
