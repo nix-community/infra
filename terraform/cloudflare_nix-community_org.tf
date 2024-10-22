@@ -5,6 +5,75 @@ locals {
   nix_community_github_pages = [
     "nur"
   ]
+
+  host = {
+    "build01" = {
+      ipv4 = "65.21.139.242"
+      ipv6 = "2a01:4f9:3b:2946::1"
+    }
+    "build02" = {
+      ipv4 = "65.21.133.211"
+      ipv6 = "2a01:4f9:3b:41d9::1"
+    }
+    "build03" = {
+      ipv4 = "162.55.14.99"
+      ipv6 = "2a01:4f8:2190:2698::2"
+    }
+    "build04" = {
+      ipv4 = "65.109.107.32"
+      ipv6 = "2a01:4f9:3051:3962::2"
+    }
+    "darwin01" = {
+      ipv4 = "85.209.53.240"
+      ipv6 = "2a09:9340:808:630::1"
+    }
+    "darwin02" = {
+      ipv4 = "85.209.53.203"
+      ipv6 = "2a09:9340:808:60b::1"
+    }
+    "web02" = {
+      ipv4 = "46.226.105.188"
+      ipv6 = "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
+    }
+  }
+
+  cname = {
+    "build-box"           = "build01.nix-community.org"
+    "buildbot"            = "build03.nix-community.org"
+    "darwin-build-box"    = "darwin01.nix-community.org"
+    "docker"              = "zimbatm.docker.scarf.sh" # Used by nix-community/nixpkgs-docker
+    "hydra"               = "build03.nix-community.org"
+    "monitoring"          = "web02.nix-community.org"
+    "nixpkgs-update-logs" = "build02.nix-community.org"
+    "nur-update"          = "build03.nix-community.org"
+  }
+}
+
+resource "cloudflare_record" "nix-community-org-host-A" {
+  for_each = local.host
+
+  zone_id = local.nix_community_zone_id
+  name    = each.key
+  type    = "A"
+  content = each.value.ipv4
+}
+
+resource "cloudflare_record" "nix-community-org-host-AAAA" {
+  for_each = local.host
+
+  zone_id = local.nix_community_zone_id
+  name    = each.key
+  type    = "AAAA"
+  content = each.value.ipv6
+}
+
+resource "cloudflare_record" "nix-community-org-CNAME" {
+  for_each = local.cname
+
+  zone_id = local.nix_community_zone_id
+  name    = each.key
+  content = each.value
+  type    = "CNAME"
 }
 
 # blocks other CAs from issuing certificates for the domain
@@ -17,161 +86,6 @@ resource "cloudflare_record" "nix-community-org-caa" {
     tag   = "issue"
     value = "letsencrypt.org"
   }
-}
-
-resource "cloudflare_record" "nix-community-org-build01-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "build01"
-  content = "65.21.139.242"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-build01-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "build01"
-  content = "2a01:4f9:3b:2946::1"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-build02-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "build02"
-  content = "65.21.133.211"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-build02-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "build02"
-  content = "2a01:4f9:3b:41d9::1"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-build03-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "build03"
-  content = "162.55.14.99"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-build03-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "build03"
-  content = "2a01:4f8:2190:2698::2"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-build04-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "build04"
-  content = "65.109.107.32"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-build04-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "build04"
-  content = "2a01:4f9:3051:3962::2"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-darwin01-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin01"
-  content = "85.209.53.240"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-darwin01-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin01"
-  content = "2a09:9340:808:630::1"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-darwin02-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin02"
-  content = "85.209.53.203"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-darwin02-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin02"
-  content = "2a09:9340:808:60b::1"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-web02-A" {
-  zone_id = local.nix_community_zone_id
-  name    = "web02"
-  content = "46.226.105.188"
-  type    = "A"
-}
-
-resource "cloudflare_record" "nix-community-org-web02-AAAA" {
-  zone_id = local.nix_community_zone_id
-  name    = "web02"
-  content = "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
-  type    = "AAAA"
-}
-
-resource "cloudflare_record" "nix-community-org-build-box-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "build-box"
-  content = "build01.nix-community.org"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-darwin-build-box-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "darwin-build-box"
-  content = "darwin01.nix-community.org"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-nixpkgs-update-logs-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "nixpkgs-update-logs"
-  content = "build02.nix-community.org"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-buildbot-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "buildbot"
-  content = "build03.nix-community.org"
-  type    = "CNAME"
-}
-
-# Used by nix-community/nixpkgs-docker
-resource "cloudflare_record" "nix-community-org-docker-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "docker"
-  content = "zimbatm.docker.scarf.sh"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-hydra-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "hydra"
-  content = "build03.nix-community.org"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-nur-update-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "nur-update"
-  content = "build03.nix-community.org"
-  type    = "CNAME"
-}
-
-resource "cloudflare_record" "nix-community-org-monitoring-CNAME" {
-  zone_id = local.nix_community_zone_id
-  name    = "monitoring"
-  content = "web02.nix-community.org"
-  type    = "CNAME"
 }
 
 resource "cloudflare_record" "nix-community-org-apex-A" {
