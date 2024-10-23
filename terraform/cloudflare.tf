@@ -4,7 +4,10 @@ locals {
     for role in data.cloudflare_account_roles.account_roles.roles :
     role.name => role
   }
-  cf_admins = local.admins
+  cf_admins = {
+    for key, value in local.admins :
+    key => value if key != "adisbladis"
+  }
 }
 
 data "cloudflare_account_roles" "account_roles" {
