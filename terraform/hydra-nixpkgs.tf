@@ -18,6 +18,15 @@ locals {
       scheduling_shares    = 6000
       supported_systems    = "[ \"x86_64-linux\" ]"
     }
+    cuda_stable_previous = {
+      name                 = "cuda-stable-previous"
+      description          = "nixos-24.05-small cuda"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
+      nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
+      check_interval       = 1800
+      scheduling_shares    = 6000
+      supported_systems    = "[ \"x86_64-linux\" ]"
+    }
     rocm = {
       name                 = "rocm"
       description          = "Testing ROCm support."
