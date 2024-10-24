@@ -357,7 +357,5 @@ in
 
   users.knownUsers = builtins.map (u: u.name) users;
 
-  users.forceRecreate = true;
-
   nix.settings.trusted-users = builtins.map (u: u.name) (builtins.filter (u: u.trusted) users);
 }
