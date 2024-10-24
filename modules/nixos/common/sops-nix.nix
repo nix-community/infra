@@ -5,7 +5,7 @@
   ...
 }:
 let
-  defaultSopsPath = "${toString inputs.self}/hosts/${config.networking.hostName}/secrets.yaml";
+  defaultSopsPath = "${inputs.self}/hosts/${config.networking.hostName}/secrets.yaml";
 in
 {
   imports = [
