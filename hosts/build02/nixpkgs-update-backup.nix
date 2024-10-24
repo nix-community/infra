@@ -3,7 +3,7 @@
   # 100GB storagebox is attached to the build02 server
 
   age.secrets.hetzner-borgbackup-ssh = {
-    file = "${toString inputs.self}/secrets/hetzner-borgbackup-ssh.age";
+    file = "${inputs.self}/secrets/hetzner-borgbackup-ssh.age";
   };
 
   systemd.services.borgbackup-job-nixpkgs-update = {

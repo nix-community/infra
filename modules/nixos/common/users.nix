@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
 
 let
-  usersDir = "${toString inputs.self}/users";
+  usersDir = "${inputs.self}/users";
   userImports =
     let
       toUserPath = f: usersDir + "/${f}";

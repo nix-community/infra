@@ -1,14 +1,14 @@
 { config, inputs, ... }:
 {
   age.secrets.hercules-binary-caches = {
-    file = "${toString inputs.self}/secrets/hercules-binary-caches.age";
+    file = "${inputs.self}/secrets/hercules-binary-caches.age";
     mode = "600";
     owner = "_hercules-ci-agent";
     group = "_hercules-ci-agent";
   };
 
   age.secrets.hercules-cluster-join-token = {
-    file = "${toString inputs.self}/secrets/hercules-cluster-join-token.age";
+    file = "${inputs.self}/secrets/hercules-cluster-join-token.age";
     mode = "600";
     owner = "_hercules-ci-agent";
     group = "_hercules-ci-agent";

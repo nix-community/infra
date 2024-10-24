@@ -6,7 +6,7 @@
   ...
 }:
 let
-  userLib = import "${toString inputs.self}/users/lib.nix" { inherit lib; };
+  userLib = import "${inputs.self}/users/lib.nix" { inherit lib; };
 
   nixpkgs-update-bin = "/var/lib/nixpkgs-update/bin/nixpkgs-update";
 
