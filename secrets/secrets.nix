@@ -15,6 +15,7 @@ let
   build03 = knownHosts.build03.publicKey;
   build04 = knownHosts.build04.publicKey;
   darwin02 = knownHosts.darwin02.publicKey;
+  web02 = knownHosts.web02.publicKey;
 
   secrets = {
     hercules-binary-caches = [
@@ -36,6 +37,8 @@ let
       build02
       build03
     ];
+    nginx-basic-auth-file = [ web02 ];
+    nix-community-matrix-bot-token = [ web02 ];
   };
 in
 builtins.listToAttrs (
