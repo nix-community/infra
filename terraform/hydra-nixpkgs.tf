@@ -11,6 +11,14 @@ locals {
     cuda_stable = {
       name                 = "cuda-stable"
       description          = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
+      nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
+      scheduling_shares    = 6000
+      supported_systems    = "[ \"x86_64-linux\" ]"
+    }
+    cuda_oldstable = {
+      name                 = "cuda-cuda_oldstable"
+      description          = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
       scheduling_shares    = 6000
