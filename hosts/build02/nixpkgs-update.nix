@@ -191,6 +191,30 @@ in
     '';
   };
 
+  systemd.services.nixpkgs-update-queue = {
+    after = [ config.systemd.services.nixpkgs-update-supervisor.name ];
+    wantedBy = [ config.systemd.targets.multi-user.name ];
+
+    serviceConfig = {
+      Type = "simple";
+      User = "r-ryantm";
+      Group = "r-ryantm";
+      Restart = "on-failure";
+      RestartSec = "5s";
+      LogsDirectory = "nixpkgs-update/";
+      LogsDirectoryMode = "755";
+      RuntimeDirectory = "nixpkgs-update-queue";
+      RuntimeDirectoryMode = "755";
+    };
+
+    path = [ pkgs.python3 ];
+
+    script = ''
+      cd "$LOGS_DIRECTORY/~supervisor"
+      python3 ${./update_queue.py}
+    '';
+  };
+
   systemd.services.nixpkgs-update-delete-old-logs = {
     startAt = "daily";
     # delete logs older than 18 months, delete worker logs older than 3 months, delete empty directories
