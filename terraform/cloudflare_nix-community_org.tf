@@ -1,5 +1,6 @@
 locals {
   nix_community_zone_id = "8965c5ff4e19a3ca46b5df6965f2bc36"
+  ttl_auto              = 1
 
   # For each github page, create a CNAME alias to nix-community.github.io
   nix_community_github_pages = [
@@ -57,27 +58,30 @@ locals {
   }
 }
 
-resource "cloudflare_record" "nix-community-org-host-A" {
+resource "cloudflare_dns_record" "nix-community-org-host-A" {
   for_each = local.host
 
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = each.key
   type    = "A"
   content = each.value.ipv4
 }
 
-resource "cloudflare_record" "nix-community-org-host-AAAA" {
+resource "cloudflare_dns_record" "nix-community-org-host-AAAA" {
   for_each = local.host
 
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = each.key
   type    = "AAAA"
   content = each.value.ipv6
 }
 
-resource "cloudflare_record" "nix-community-org-CNAME" {
+resource "cloudflare_dns_record" "nix-community-org-CNAME" {
   for_each = local.cname
 
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = each.key
   content = each.value
@@ -85,18 +89,20 @@ resource "cloudflare_record" "nix-community-org-CNAME" {
 }
 
 # blocks other CAs from issuing certificates for the domain
-resource "cloudflare_record" "nix-community-org-caa" {
+resource "cloudflare_dns_record" "nix-community-org-caa" {
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = "@"
   type    = "CAA"
-  data {
+  data = {
     flags = "0"
     tag   = "issue"
     value = "letsencrypt.org"
   }
 }
 
-resource "cloudflare_record" "nix-community-org-apex-A" {
+resource "cloudflare_dns_record" "nix-community-org-apex-A" {
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = "@"
   content = "nix-community.github.io"
@@ -104,18 +110,20 @@ resource "cloudflare_record" "nix-community-org-apex-A" {
   proxied = false
 }
 
-resource "cloudflare_record" "nix-community-org-apex-TXT" {
+resource "cloudflare_dns_record" "nix-community-org-apex-TXT" {
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = "@"
   content = "v=spf1 include:_mailcust.gandi.net -all"
   type    = "TXT"
 }
 
-resource "cloudflare_record" "nix-community-org-apex-MX" {
+resource "cloudflare_dns_record" "nix-community-org-apex-MX" {
   for_each = {
     "spool.mail.gandi.net." = 10
     "fb.mail.gandi.net."    = 50
   }
+  ttl      = local.ttl_auto
   zone_id  = local.nix_community_zone_id
   name     = "@"
   content  = each.key
@@ -123,23 +131,26 @@ resource "cloudflare_record" "nix-community-org-apex-MX" {
   priority = each.value
 }
 
-resource "cloudflare_record" "nix-community-org-github-challenge-TXT" {
+resource "cloudflare_dns_record" "nix-community-org-github-challenge-TXT" {
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = "_github-challenge-nix-community-org"
   content = "2eee7c1945"
   type    = "TXT"
 }
 
-resource "cloudflare_record" "nix-community-org-github-pages-challenge-TXT" {
+resource "cloudflare_dns_record" "nix-community-org-github-pages-challenge-TXT" {
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = "_github-pages-challenge-nix-community.nix-community.org."
   content = "6d236784300b9b1e80fdc496b7bfce"
   type    = "TXT"
 }
 
-resource "cloudflare_record" "nix-community-org-github-pages" {
+resource "cloudflare_dns_record" "nix-community-org-github-pages" {
   for_each = { for page in local.nix_community_github_pages : page => page }
 
+  ttl     = local.ttl_auto
   zone_id = local.nix_community_zone_id
   name    = each.value
   content = "nix-community.github.io"
