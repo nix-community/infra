@@ -14,7 +14,7 @@
   services.postgresql = {
     enable = true;
     # enableJIT seems to be broken, can't set a version without also needing to add withJIT
-    package = pkgs.postgresql_16.withJIT;
+    package = pkgs.postgresql_17.withJIT;
 
     enableJIT = true;
 
