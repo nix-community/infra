@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.nixCommunity.motd = lib.mkOption {
     type = lib.types.str;
@@ -18,6 +24,15 @@
 
       git clone --reference /var/lib/nixpkgs.git https://github.com/NixOS/nixpkgs.git
 
+    '';
+
+    age.secrets.community-builder-nix-access-tokens = {
+      file = "${inputs.self}/secrets/community-builder-nix-access-tokens.age";
+      mode = "444";
+    };
+
+    nix.extraOptions = ''
+      !include ${config.age.secrets.community-builder-nix-access-tokens.path}
     '';
 
     # useful for people that want to test stuff
