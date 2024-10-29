@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 let
-  inherit (pkgs) lib;
-
-  users = {
+  users = [
     # 1. Generate an SSH key for your root account and add the public
     #    key to a file matching your name in ./keys/
     #
@@ -10,206 +8,200 @@ let
     #
     #    youruser.keys = ./keys/youruser;
     #
-    "0x4A6F" = {
+    {
+      name = "0x4A6F";
       trusted = true;
       keys = ./keys/0x4A6F;
-    };
-
-    afh = {
+    }
+    {
+      name = "afh";
       trusted = true;
       keys = ./keys/afh;
-    };
-
-    a-kenji = {
+    }
+    {
+      name = "a-kenji";
       trusted = true;
       keys = ./keys/a-kenji;
-    };
-
-    binarycat = {
+    }
+    {
+      name = "binarycat";
       trusted = true;
       keys = ./keys/binarycat;
-    };
-
-    binarycat-untrusted = {
+    }
+    {
+      name = "binarycat-untrusted";
       trusted = false;
       keys = ./keys/binarycat;
-    };
-
-    bobby285271 = {
+    }
+    {
+      name = "bobby285271";
       trusted = true;
       keys = ./keys/bobby285271;
-    };
-
-    ckie = {
+    }
+    {
+      name = "ckie";
       trusted = true;
       keys = ./keys/ckie;
-    };
-
-    fgaz = {
+    }
+    {
+      name = "fgaz";
       trusted = true;
       keys = ./keys/fgaz;
-    };
-
-    flokli = {
+    }
+    {
+      name = "flokli";
       trusted = true;
       keys = ./keys/flokli;
-    };
-
-    fmzakari = {
+    }
+    {
+      name = "fmzakari";
       # github: @fzakaria
       trusted = true;
       keys = ./keys/fmzakari;
-    };
-
-    glepage = {
+    }
+    {
+      name = "glepage";
       trusted = true;
       shell = pkgs.fish;
       keys = ./keys/glepage;
-    };
-
-    hexchen = {
+    }
+    {
+      name = "hexchen";
       trusted = true;
       keys = ./keys/hexchen;
-    };
-
-    janik = {
+    }
+    {
+      name = "janik";
       trusted = true;
       keys = ./keys/janik;
-    };
-
-    jtojnar = {
+    }
+    {
+      name = "jtojnar";
       trusted = true;
       keys = ./keys/jtojnar;
-    };
-
-    lewo = {
+    }
+    {
+      name = "lewo";
       trusted = true;
       keys = ./keys/lewo;
-    };
-
-    lily = {
+    }
+    {
+      name = "lily";
       trusted = true;
       keys = ./keys/lily;
-    };
-
-    linj = {
+    }
+    {
+      name = "linj";
       # lib.maintainers.linj, https://github.com/jian-lin
       trusted = true;
       shell = pkgs.fish;
       keys = ./keys/linj;
-    };
-
-    mrcjkb = {
+    }
+    {
+      name = "mrcjkb";
       # lib.maintainers.mrcjkb https://github.com/mrcjkb
       trusted = true;
       shell = pkgs.nushell;
       keys = ./keys/mrcjkb;
-    };
-
-    nicoo = {
+    }
+    {
+      name = "nicoo";
       # lib.maintainers.nicoo, @nbraud on github.com
       trusted = true;
       keys = ./keys/nicoo;
-    };
-
-    raitobezarius = {
+    }
+    {
+      name = "raitobezarius";
       trusted = true;
       keys = ./keys/raitobezarius;
-    };
-
-    networkexception = {
+    }
+    {
+      name = "networkexception";
       trusted = true;
       keys = ./keys/networkexception;
-    };
-
-    pinpox = {
+    }
+    {
+      name = "pinpox";
       trusted = true;
       keys = ./keys/pinpox;
-    };
-
-    raboof = {
+    }
+    {
+      name = "raboof";
       # lib.maintainers.raboof, https://github.com/raboof
       trusted = true;
       keys = ./keys/raboof;
-    };
-
-    schmittlauch = {
+    }
+    {
+      name = "schmittlauch";
       trusted = true;
       keys = ./keys/schmittlauch;
-    };
-
-    matthiasbeyer = {
+    }
+    {
+      name = "matthiasbeyer";
       trusted = true;
       keys = ./keys/matthiasbeyer;
-    };
-
-    stephank = {
+    }
+    {
+      name = "stephank";
       trusted = true;
       keys = ./keys/stephank;
-    };
-
-    supinie = {
+    }
+    {
+      name = "supinie";
       trusted = true;
       keys = ./keys/supinie;
-    };
-
-    teto = {
+    }
+    {
+      name = "teto";
       trusted = true;
       keys = ./keys/teto;
-    };
-
-    thecomputerguy = {
+    }
+    {
+      name = "thecomputerguy";
       trusted = true;
       keys = ./keys/thecomputerguy;
-    };
-
-    tomberek = {
+    }
+    {
+      name = "tomberek";
       trusted = true;
       keys = ./keys/tomberek;
-    };
-
-    winter = {
+    }
+    {
+      name = "winter";
       trusted = true;
       keys = ./keys/winter;
-    };
-
-    matthewcroughan = {
+    }
+    {
+      name = "matthewcroughan";
       trusted = true;
       keys = ./keys/matthewcroughan;
-    };
-
-    emily = {
+    }
+    {
+      name = "emily";
       # lib.maintainers.emily, https://github.com/emilazy
       trusted = true;
       keys = ./keys/emily;
-    };
-
-    doronbehar = {
+    }
+    {
+      name = "doronbehar";
       # lib.maintainers.doronbehar, https://github.com/doronbehar
       trusted = true;
       keys = ./keys/doronbehar;
-    };
-  };
-
-  ifAttr =
-    key: default: result: opts:
-    if (opts ? "${key}") && opts."${key}" then result else default;
-
-  maybeTrusted = ifAttr "trusted" [ ] [ "trusted" ];
-  maybeWheel = ifAttr "sudo" [ ] [ "wheel" ];
-
-  userGroups = opts: (maybeTrusted opts) ++ (maybeWheel opts);
-
-  descToUser = name: opts: {
-    isNormalUser = true;
-    extraGroups = userGroups opts;
-    createHome = true;
-    home = "/home/${name}";
-    shell = opts.shell or config.users.defaultUserShell;
-    hashedPassword = opts.password or null;
-    openssh.authorizedKeys.keyFiles = [ opts.keys ];
-  };
+    }
+  ];
 in
 {
-  users.users = lib.mapAttrs descToUser users;
+  users.users = builtins.listToAttrs (
+    builtins.map (u: {
+      inherit (u) name;
+      value = {
+        isNormalUser = true;
+        extraGroups = if (u ? trusted && u.trusted) then [ "trusted" ] else [ ];
+        home = "/home/${u.name}";
+        createHome = true;
+        shell = u.shell or config.users.defaultUserShell;
+        openssh.authorizedKeys.keyFiles = [ u.keys ];
+      };
+    }) users
+  );
 }
