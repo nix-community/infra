@@ -18,9 +18,13 @@ Built on `nixos-$RELEASE-small` for `x86_64-linux`:
 
 [unfree redistributable release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/release-unfree-redistributable.nix)
 
-Built on `nixos-unstable-small` for `x86_64-linux`, `aarch64-linux`:
+Built on `nixos-unstable-small` for `aarch64-linux`, `x86_64-linux`:
 
 - [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist)
+
+Built on `nixos-$RELEASE-small` for `aarch64-linux`, `x86_64-linux`:
+
+- [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-stable](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-stable)
 
 #### Cache
 
