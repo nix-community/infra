@@ -27,12 +27,6 @@
           expr = ''systemd_units_active_code{name="matrix-hook.service", sub!="running"}'';
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
         };
-
-        OfBorgEvalQueue = {
-          expr = ''ofborg_queue_evaluator_waiting > (3 * ofborg_queue_evaluator_consumers)'';
-          for = "1h";
-          annotations.description = "ofborg evaluator queue is more than 3x the number of evaluators";
-        };
       };
   };
 }
