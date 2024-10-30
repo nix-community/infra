@@ -1,11 +1,13 @@
-{ config, ... }:
+{ config, inputs, ... }:
 
 {
-  sops.secrets.cachix-auth-token = { };
+  age.secrets.cachix-auth-token = {
+    file = "${inputs.self}/secrets/cachix-auth-token.age";
+  };
 
   services.cachix-watch-store = {
     enable = true;
     cacheName = "nix-community";
-    cachixTokenFile = config.sops.secrets.cachix-auth-token.path;
+    cachixTokenFile = config.age.secrets.cachix-auth-token.path;
   };
 }

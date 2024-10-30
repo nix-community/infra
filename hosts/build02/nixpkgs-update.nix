@@ -129,7 +129,7 @@ let
     ];
     # API_TOKEN is used by nixpkgs-update-github-releases
     # using a token from another account so the rate limit doesn't block opening PRs
-    environment.API_TOKEN_FILE = "${config.sops.secrets.github-token-with-username.path}";
+    environment.API_TOKEN_FILE = "${config.age.secrets.github-token-with-username.path}";
     environment.XDG_CACHE_HOME = "/var/cache/nixpkgs-update/fetcher/";
 
     serviceConfig = {
@@ -264,24 +264,28 @@ in
     }/bin/nixpkgs-update"
   ];
 
-  sops.secrets.github-r-ryantm-key = {
+  age.secrets.github-r-ryantm-key = {
+    file = "${inputs.self}/secrets/github-r-ryantm-key.age";
     path = "/home/r-ryantm/.ssh/id_rsa";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
 
-  sops.secrets.github-r-ryantm-token = {
+  age.secrets.github-r-ryantm-token = {
+    file = "${inputs.self}/secrets/github-r-ryantm-token.age";
     path = "/var/lib/nixpkgs-update/worker/github_token.txt";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
 
-  sops.secrets.github-token-with-username = {
+  age.secrets.github-token-with-username = {
+    file = "${inputs.self}/secrets/github-token-with-username.age";
     owner = "r-ryantm";
     group = "r-ryantm";
   };
 
-  sops.secrets.nix-community-cachix = {
+  age.secrets.nix-community-cachix = {
+    file = "${inputs.self}/secrets/nix-community-cachix.age";
     path = "/var/lib/nixpkgs-update/worker/cachix/cachix.dhall";
     owner = "r-ryantm";
     group = "r-ryantm";

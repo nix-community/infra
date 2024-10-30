@@ -1,10 +1,24 @@
-{ pkgs, config, ... }:
 {
-  sops.secrets.hydra-admin-password.owner = "hydra";
-  sops.secrets.hydra-users.owner = "hydra";
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
+  age.secrets.hydra-admin-password = {
+    file = "${inputs.self}/secrets/hydra-admin-password.age";
+    owner = "hydra";
+  };
+  age.secrets.hydra-users = {
+    file = "${inputs.self}/secrets/hydra-users.age";
+    owner = "hydra";
+  };
 
   # hydra-queue-runner needs to read this key for remote building
-  sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
+  age.secrets.id_buildfarm = {
+    file = "${inputs.self}/secrets/id_buildfarm.age";
+    owner = "hydra-queue-runner";
+  };
 
   nix.settings.keep-outputs = pkgs.lib.mkForce false;
 
@@ -16,7 +30,7 @@
     "sourcehut:"
   ];
 
-  sops.secrets.id_buildfarm = { };
+  age.secrets.id_buildfarm = { };
 
   # delete build logs older than 30 days
   systemd.services.hydra-delete-old-logs = {
@@ -83,13 +97,13 @@
           opts+=("--full-name" "$fullname")
         fi
         hydra-create-user "''${opts[@]}"
-      done < ${config.sops.secrets.hydra-users.path}
+      done < ${config.age.secrets.hydra-users.path}
 
       while ! nc -z localhost ${toString config.services.hydra.port}; do
         sleep 1
       done
 
-      export HYDRA_ADMIN_PASSWORD=$(cat ${config.sops.secrets.hydra-admin-password.path})
+      export HYDRA_ADMIN_PASSWORD=$(cat ${config.age.secrets.hydra-admin-password.path})
       export URL=http://localhost:${toString config.services.hydra.port}
     '';
   };
