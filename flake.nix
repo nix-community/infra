@@ -158,6 +158,7 @@
       };
 
       flake.nixosModules = {
+        backup = ./modules/nixos/backup.nix;
         buildbot = ./modules/nixos/buildbot.nix;
         builder = ./modules/nixos/builder.nix;
         community-builder = ./modules/nixos/community-builder;
