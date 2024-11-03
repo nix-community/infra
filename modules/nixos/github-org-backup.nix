@@ -40,6 +40,7 @@
       name = "github-org";
       after = [ config.systemd.services.github-org-backup.name ];
       paths = [ "/var/lib/github-org-backup" ];
+      startAt = "daily";
     }
   ];
 }

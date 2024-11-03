@@ -18,6 +18,12 @@
           paths = lib.mkOption {
             type = lib.types.listOf lib.types.str;
           };
+          startAt = lib.mkOption {
+            type = lib.types.enum [
+              "daily"
+              "hourly"
+            ];
+          };
         };
       }
     );
@@ -39,16 +45,15 @@
       builtins.map (backup: {
         inherit (backup) name;
         value = {
-          inherit (backup) paths;
+          inherit (backup) paths startAt;
           repo = "u416406@u416406.your-storagebox.de:/./${config.networking.hostName}-${backup.name}";
           encryption.mode = "none";
           compression = "auto,zstd";
-          startAt = "daily";
           environment.BORG_RSH = "ssh -oPort=23 -i ${config.age.secrets.hetzner-borgbackup-ssh.path}";
           preHook = "set -x";
           postHook = ''
             cat > /var/log/telegraf/borgbackup-job-${backup.name}.service <<EOF
-            task,frequency=daily last_run=$(date +%s)i,state="$([[ $exitStatus == 0 ]] && echo ok || echo fail)"
+            task,frequency=${backup.startAt} last_run=$(date +%s)i,state="$([[ $exitStatus == 0 ]] && echo ok || echo fail)"
             EOF
           '';
           prune.keep = {
