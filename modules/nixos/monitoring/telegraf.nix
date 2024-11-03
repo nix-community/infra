@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   services.telegraf.extraConfig.inputs = {
     http_response = [
@@ -28,17 +29,17 @@
     ];
     net_response =
       let
-        hosts = import ./hosts.nix;
+        hosts = (import "${inputs.self}/modules/shared/known-hosts.nix").programs.ssh.knownHosts;
       in
       map (host: {
         protocol = "tcp";
-        address = "${host}:22";
+        address = "${toString host.hostNames}:22";
         send = "SSH-2.0-Telegraf";
         expect = "SSH-2.0";
-        tags.host = host;
+        tags.host = toString host.hostNames;
         tags.org = "nix-community";
         timeout = "10s";
-      }) hosts;
+      }) (builtins.attrValues hosts);
     prometheus.urls = [ "https://events.ofborg.org/prometheus.php" ];
   };
 }

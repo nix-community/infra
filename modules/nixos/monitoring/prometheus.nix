@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   systemd.services.prometheus.after = pkgs.lib.mkForce [ "network-online.target" ];
   systemd.services.prometheus.wants = [ "network-online.target" ];
@@ -19,11 +19,13 @@
         metrics_path = "/metrics";
         static_configs =
           let
-            hosts = import ./hosts.nix;
+            hosts = (import "${inputs.self}/modules/shared/known-hosts.nix").programs.ssh.knownHosts;
           in
           [
             {
-              targets = map (host: "${host}:9273") hosts ++ [ "localhost:9273" ];
+              targets = builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (
+                builtins.attrValues hosts
+              );
               labels.org = "nix-community";
             }
           ];

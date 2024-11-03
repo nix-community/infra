@@ -1,9 +1,0 @@
-[
-  "build01.nix-community.org"
-  "build02.nix-community.org"
-  "build03.nix-community.org"
-  "build04.nix-community.org"
-  "darwin01.nix-community.org"
-  "darwin02.nix-community.org"
-  #"web02.nix-community.org"
-]
