@@ -12,6 +12,15 @@
           annotations.description = "status of ${name} is unknown: no data for a day";
         })
       )
+      // (lib.genAttrs
+        [
+        ]
+        (name: {
+          expr = ''absent_over_time(task_last_run{name="${name}"}[1h])'';
+          for = "1h";
+          annotations.description = "status of ${name} is unknown: no data for a hour";
+        })
+      )
       // {
         Filesystem80percentFull.enable = false;
 
@@ -19,6 +28,12 @@
           expr = ''disk_used_percent{mode!="ro"} >= 95'';
           for = "10m";
           annotations.description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 5% space left on its filesystem";
+        };
+
+        HourlyTaskNotRun = {
+          expr = ''time() - task_last_run{state="ok",frequency="hourly"} > 60 * 60'';
+          for = "1h";
+          annotations.description = "{{$labels.host}}: {{$labels.name}} was not run in the last hour";
         };
 
         Load15.expr = lib.mkForce ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
