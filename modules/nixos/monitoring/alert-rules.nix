@@ -5,7 +5,6 @@
       (lib.genAttrs
         [
           "borgbackup-job-github-org.service"
-          "borgbackup-job-nixpkgs-update.service"
         ]
         (name: {
           expr = ''absent_over_time(task_last_run{name="${name}"}[1d])'';
@@ -14,6 +13,7 @@
       )
       // (lib.genAttrs
         [
+          "borgbackup-job-nixpkgs-update.service"
         ]
         (name: {
           expr = ''absent_over_time(task_last_run{name="${name}"}[1h])'';

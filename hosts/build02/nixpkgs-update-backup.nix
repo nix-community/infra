@@ -11,7 +11,7 @@
       name = "nixpkgs-update";
       after = [ config.systemd.services.nixpkgs-update-delete-old-logs.name ];
       paths = [ "/var/log/nixpkgs-update" ];
-      startAt = "daily";
+      startAt = "hourly";
     }
   ];
 }
