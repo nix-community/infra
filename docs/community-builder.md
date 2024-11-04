@@ -57,3 +57,77 @@ $ $path
 ```
 
 _(My [implementation](https://github.com/ckiee/nixfiles/blob/aac57f56e417e31f00fd495d8a30fb399ecbc19b/deploy/hm-only.nix#L10) of [this](https://github.com/ckiee/nixfiles/blob/aac57f56e417e31f00fd495d8a30fb399ecbc19b/bin/c#L92-L95) ~ckie)_
+
+### Configuring a NixOS system for remote builds
+
+Warning: **_DO NOT_** use this builder to build your NixOS configuration or any derivation of this sort. This is a huge security risk that can compromise your system.
+
+The following reference configuration can be used to configure the nix cli to use the remote builder when building "aarch64-darwin", "x86_64-darwin" packages:
+
+```nix
+{
+  programs.ssh.knownHosts."darwin-build-box.nix-community.org".publicKey =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFz8FXSVEdf8FvDMfboxhB5VjSe7y2WgSa09q1L4t099";
+
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "darwin-build-box.nix-community.org";
+        maxJobs = 32;
+        sshKey = "/root/a-private-key";
+        sshUser = "your-user-name";
+        systems = [ "aarch64-darwin" "x86_64-darwin" ];
+        supportedFeatures = [ "big-parallel" "benchmark" ];
+      }
+    ];
+  };
+}
+```
+
+Or for `x86_64-linux` builder:
+
+```nix
+{
+  programs.ssh.knownHosts."build-box.nix-community.org".publicKey =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H";
+
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "build-box.nix-community.org";
+        maxJobs = 64;
+        sshKey = "/root/a-private-key";
+        sshUser = "your-user-name";
+        system = "x86_64-linux";
+        supportedFeatures = [ "big-parallel" "benchmark" "nixos-test" ];
+      }
+    ];
+  };
+}
+
+**Note:** Make sure the SSH key specified above does *not* have a
+password, otherwise `nix-build` will give an error along the lines of:
+
+> unable to open SSH connection to
+> 'ssh://your-user-name@darwin-build-box.nix-community.org': cannot connect to
+> 'your-user-name@darwin-build-box.nix-community.org'; trying other available
+> machines...
+
+Then run an initial SSH connection as root to setup the trust
+fingerprint:
+
+```
+$ sudo -i
+# ssh your-user-name@darwin-build-box.nix-community.org -i /root/a-private-key
+```
+
+Or for `x86_64-linux` builder:
+
+```
+$ sudo -i
+# ssh your-user-name@build-box.nix-community.org -i /root/a-private-key
+```
+
+Now commands like `nix-build . -A hello --argstr system aarch64-darwin` should work.
