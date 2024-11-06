@@ -26,4 +26,14 @@
       value = "20480";
     }
   ];
+
+  boot.kernelPatches = [
+    {
+      patch = pkgs.fetchpatch {
+        url = "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=8d09a88ef9d3cb7d21d45c39b7b7c31298d23998";
+        hash = "sha256-PCHSnsF0Vrd2nOKbDApyozLu8OUXw/6u6MrGkAWVAYc=";
+      };
+    }
+  ];
+
 }
