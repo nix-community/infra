@@ -188,6 +188,12 @@ let
       trusted = true;
       keys = ./keys/doronbehar;
     }
+    {
+      name = "fpletz";
+      # lib.maintainers.fpletz, https://github.com/fpletz
+      trusted = true;
+      keys = ./keys/fpletz;
+    }
   ];
 in
 {

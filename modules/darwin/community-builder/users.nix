@@ -339,6 +339,13 @@ let
       shell = pkgs.nushell;
       keys = ./keys/mrcjkb;
     }
+    {
+      # lib.maintainers.fpletz, https://github.com/fpletz
+      name = "fpletz";
+      trusted = true;
+      uid = 554;
+      keys = ./keys/fpletz;
+    }
   ];
 in
 {
