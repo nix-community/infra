@@ -52,7 +52,7 @@
       ++ builtins.filter (lib.meta.availableOn pkgs.stdenv.hostPlatform) [
         pkgs.foot.terminfo
         pkgs.kitty.terminfo
-        #pkgs.termite.terminfo
+        pkgs.termite.terminfo
         pkgs.wezterm.terminfo
       ];
 
