@@ -1,8 +1,13 @@
-{ inputs, pkgs, ... }:
 {
-  systemd.services.prometheus.after = pkgs.lib.mkForce [ "network-online.target" ];
-  systemd.services.prometheus.wants = [ "network-online.target" ];
-  systemd.services.alertmanager.after = [ "prometheus.service" ];
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  systemd.services.prometheus.after = pkgs.lib.mkForce [ config.systemd.targets.network-online.name ];
+  systemd.services.prometheus.wants = [ config.systemd.targets.network-online.name ];
+  systemd.services.alertmanager.after = [ config.systemd.services.prometheus.name ];
 
   services.prometheus = {
     enable = true;

@@ -62,9 +62,9 @@
       Type = "oneshot";
       TimeoutStartSec = "60";
     };
-    wantedBy = [ "multi-user.target" ];
-    after = [ "hydra-server.service" ];
-    requires = [ "hydra-server.service" ];
+    wantedBy = [ config.systemd.targets.multi-user.name ];
+    after = [ config.systemd.services.hydra-server.name ];
+    requires = [ config.systemd.services.hydra-server.name ];
     environment = {
       inherit (config.systemd.services.hydra-init.environment) HYDRA_DBI;
     };
