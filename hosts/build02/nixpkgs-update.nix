@@ -25,11 +25,11 @@ let
 
   mkWorker = name: {
     after = [
-      "network-online.target"
-      "nixpkgs-update-supervisor.service"
+      config.systemd.targets.network-online.name
+      config.systemd.services.nixpkgs-update-supervisor.name
     ];
-    wants = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
+    wants = [ config.systemd.targets.network-online.name ];
+    wantedBy = [ config.systemd.targets.multi-user.name ];
     description = "nixpkgs-update ${name} service";
     enable = true;
     restartIfChanged = true;
@@ -63,8 +63,8 @@ let
   };
 
   mkFetcher = name: cmd: {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = [ config.systemd.targets.network-online.name ];
+    wants = [ config.systemd.targets.network-online.name ];
     path = nixpkgsUpdateSystemDependencies ++ [
       # nixpkgs-update-github-releases
       (pkgs.python3.withPackages (
@@ -121,8 +121,8 @@ in
 
   systemd.services.nixpkgs-update-delete-done = {
     startAt = "0/12:10"; # every 12 hours
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = [ config.systemd.targets.network-online.name ];
+    wants = [ config.systemd.targets.network-online.name ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
     path = nixpkgsUpdateSystemDependencies;
@@ -160,7 +160,7 @@ in
   # Too many workers cause out-of-memory.
 
   systemd.services.nixpkgs-update-supervisor = {
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ config.systemd.targets.multi-user.name ];
     description = "nixpkgs-update supervisor service";
     enable = true;
     restartIfChanged = true;

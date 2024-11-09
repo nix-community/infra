@@ -5,7 +5,7 @@
   ...
 }:
 {
-  systemd.services.grafana.after = [ "prometheus.service" ];
+  systemd.services.grafana.after = [ config.systemd.services.prometheus.name ];
 
   age.secrets.grafana-client-secret = {
     file = "${inputs.self}/secrets/grafana-client-secret.age";

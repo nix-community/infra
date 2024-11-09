@@ -37,6 +37,6 @@
         Restart = "always";
         RuntimeDirectory = "nur-update";
       };
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [ config.systemd.targets.multi-user.name ];
     };
 }
