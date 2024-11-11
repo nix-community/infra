@@ -146,6 +146,7 @@
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
               nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+              nixosTests-disko-installTest = self.nixosConfigurations.build01.config.system.build.installTest;
               nixosTests-hydra = pkgs.nixosTests.hydra.hydra;
             };
         };
@@ -163,6 +164,7 @@
         builder = ./modules/nixos/builder.nix;
         community-builder = ./modules/nixos/community-builder;
         disko-zfs = ./modules/nixos/disko-zfs.nix;
+        disko-zfs-zvol = ./modules/nixos/disko-zfs-zvol.nix;
         github-org-backup = ./modules/nixos/github-org-backup.nix;
         hercules-ci = ./modules/nixos/hercules-ci.nix;
         hydra = ./modules/nixos/hydra.nix;
