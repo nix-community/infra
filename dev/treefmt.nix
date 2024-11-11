@@ -59,11 +59,13 @@
 
     prettier = {
       options = [
-        "--write"
         "--prose-wrap"
         "never"
       ];
-      excludes = [ "*secrets.yaml" ];
+      excludes = [
+        "config.yaml"
+        "*secrets.yaml"
+      ];
     };
   };
 }
