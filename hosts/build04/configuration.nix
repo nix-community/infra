@@ -1,12 +1,17 @@
 { inputs, ... }:
 {
   imports = [
+    inputs.self.nixosModules.common
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.remote-builder
   ];
+
+  networking.hostName = "build04";
+
+  nixpkgs.hostPlatform = "aarch64-linux";
 
   # error: failed to start SSH connection
   # https://github.com/nix-community/infra/issues/1416

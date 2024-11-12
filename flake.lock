@@ -29,6 +29,29 @@
         "type": "github"
       }
     },
+    "blueprint": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730470544,
+        "narHash": "sha256-0CVvVXYUOk6KnJHCjnPWC0jwZJwhG9Sd4EwZbahTDMc=",
+        "owner": "numtide",
+        "repo": "blueprint",
+        "rev": "19df68dde6fe1aeaf15c747b16708136b40d2ab7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "blueprint",
+        "type": "github"
+      }
+    },
     "buildbot-nix": {
       "inputs": {
         "flake-parts": [
@@ -185,21 +208,6 @@
         "type": "github"
       }
     },
-    "lite-config": {
-      "locked": {
-        "lastModified": 1723691425,
-        "narHash": "sha256-xOroQo/+CAtocvJQsGPE5ukr1Btp72xlcWPB4tBZp6M=",
-        "owner": "yelite",
-        "repo": "lite-config",
-        "rev": "34357ad12ad0a66b2de55a2457159bda36c71a06",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yelite",
-        "repo": "lite-config",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -351,6 +359,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "blueprint": "blueprint",
         "buildbot-nix": "buildbot-nix",
         "cgroup-exporter": "cgroup-exporter",
         "disko": "disko",
@@ -359,7 +368,6 @@
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
-        "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-facter-modules": "nixos-facter-modules",

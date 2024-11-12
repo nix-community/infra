@@ -1,11 +1,16 @@
 { inputs, ... }:
 {
   imports = [
+    inputs.self.nixosModules.common
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.community-builder
   ];
+
+  networking.hostName = "build01";
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
