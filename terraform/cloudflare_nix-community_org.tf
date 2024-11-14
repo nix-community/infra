@@ -23,6 +23,10 @@ locals {
       ipv4 = "65.109.107.32"
       ipv6 = "2a01:4f9:3051:3962::2"
     }
+    "build05" = {
+      ipv4 = "65.109.82.88"
+      ipv6 = "2a01:4f9:3051:5066::1"
+    }
     "darwin01" = {
       ipv4 = "49.12.162.22"
       ipv6 = "2a01:4f8:d1:5716::2"
@@ -38,6 +42,7 @@ locals {
   }
 
   cname = {
+    "aarch64-build-box"    = "build05.nix-community.org"
     "alertmanager"         = "web02.nix-community.org"
     "build-box"            = "build01.nix-community.org"
     "buildbot"             = "build03.nix-community.org"

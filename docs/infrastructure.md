@@ -30,6 +30,14 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 960GB NVME
 
+#### `build05` - [`aarch64-build-box.nix-community.org`](./community-builder.md)
+
+- Provider: Hetzner
+- Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
+- CPU: Ampere Altra Q80-30 80-Core Processor
+- RAM: 128GB DDR4 ECC
+- Drives: 2 x 960GB NVME
+
 #### `darwin01` - [`darwin-build-box.nix-community.org`](./community-builder.md)
 
 - Provider: OakHost

@@ -6,6 +6,12 @@ We provide machines as public builders for the nix community.
 build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
 ```
 
+`aarch64-linux`
+
+```
+aarch64-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1
+```
+
 `aarch64-darwin`, `x86_64-darwin`
 
 ```
