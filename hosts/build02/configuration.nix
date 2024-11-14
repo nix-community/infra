@@ -2,6 +2,7 @@
 
 {
   imports = [
+    inputs.self.nixosModules.common
     inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
     ./nixpkgs-update.nix
@@ -9,6 +10,10 @@
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.disko-zfs
   ];
+
+  networking.hostName = "build02";
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";

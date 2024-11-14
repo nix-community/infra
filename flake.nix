@@ -12,6 +12,9 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.systems.follows = "systems";
     agenix.url = "github:ryantm/agenix";
+    blueprint.inputs.nixpkgs.follows = "nixpkgs";
+    blueprint.inputs.systems.follows = "systems";
+    blueprint.url = "github:numtide/blueprint";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
@@ -29,7 +32,6 @@
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     hydra.flake = false;
     hydra.url = "github:qowoz/hydra/community";
-    lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -54,101 +56,46 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
+  # overlays = [
+  #   (final: prev: {
+  #     hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_24; }).overrideAttrs (o: {
+  #       version = inputs.hydra.shortRev;
+  #       src = inputs.hydra;
+  #       buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
+  #     });
+  #   })
+  # ];
+
+  # checks =
+  #   let
+  #     darwinConfigurations = lib.mapAttrs' (
+  #       name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
+  #     ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
+  #     devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
+  #     nixosConfigurations = lib.mapAttrs' (
+  #       name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
+  #     ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
+  #   in
+  #   darwinConfigurations
+  #   // devShells
+  #   // {
+  #     inherit (self') formatter;
+  #   }
+  #   // nixosConfigurations
+  #   // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
+  #     inherit (self'.packages) docs docs-linkcheck;
+  #     nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
+  #     nixosTests-buildbot = pkgs.nixosTests.buildbot;
+  #     nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
+  #     nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+  #     nixosTests-hydra = pkgs.nixosTests.hydra.hydra;
+  #   };
+
   outputs =
-    inputs@{ flake-parts, self, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
-
-      imports = [
-        ./modules
-        inputs.lite-config.flakeModule
-        inputs.treefmt-nix.flakeModule
-      ];
-
-      lite-config =
-        { lib, ... }:
-        {
-          nixpkgs = {
-            config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
-            overlays = [
-              (final: prev: {
-                hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_24; }).overrideAttrs (o: {
-                  version = inputs.hydra.shortRev;
-                  src = inputs.hydra;
-                  buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
-                });
-              })
-            ];
-          };
-
-          hostModuleDir = ./hosts;
-
-          hosts = {
-            build01.system = "x86_64-linux";
-            build02.system = "x86_64-linux";
-            build03.system = "x86_64-linux";
-            build04.system = "aarch64-linux";
-            darwin01.system = "aarch64-darwin";
-            darwin02.system = "aarch64-darwin";
-            web02.system = "x86_64-linux";
-          };
-
-          systemModules = [
-            (
-              { hostPlatform, ... }:
-              {
-                imports =
-                  lib.optionals hostPlatform.isDarwin [ ./modules/darwin/common ]
-                  ++ lib.optionals hostPlatform.isLinux [ ./modules/nixos/common ];
-              }
-            )
-          ];
-        };
-
-      perSystem =
-        {
-          inputs',
-          lib,
-          pkgs,
-          self',
-          system,
-          ...
-        }:
-        {
-          imports = [
-            ./dev/docs.nix
-            ./dev/shell.nix
-            ./terraform/shell.nix
-          ];
-          treefmt = {
-            flakeCheck = system == "x86_64-linux";
-            imports = [ ./dev/treefmt.nix ];
-          };
-
-          checks =
-            let
-              darwinConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
-              devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
-              nixosConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
-            in
-            darwinConfigurations
-            // devShells
-            // {
-              inherit (self') formatter;
-            }
-            // nixosConfigurations
-            // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
-              inherit (self'.packages) docs docs-linkcheck;
-              nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
-              nixosTests-buildbot = pkgs.nixosTests.buildbot;
-              nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
-              nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
-              nixosTests-hydra = pkgs.nixosTests.hydra.hydra;
-            };
-        };
+    inputs:
+    inputs.blueprint {
+      inherit inputs;
+      nixpkgs.config.allowUnfreePredicate =
+        pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "terraform" ];
     };
 }

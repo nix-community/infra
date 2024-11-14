@@ -108,7 +108,7 @@ def docs_linkcheck(c: Any) -> None:
     """
     Run docs online linkchecker
     """
-    c.run("nix run .#docs-linkcheck.online")
+    c.run("nix run .#docs.tests.linkcheck.online")
 
 
 def get_hosts(hosts: str) -> List[DeployHost]:
