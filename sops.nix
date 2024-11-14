@@ -30,6 +30,7 @@ let
       ];
       "modules/secrets/community-builder.yaml" = [
         "build01"
+        "build05"
         "darwin01"
       ];
       "modules/secrets/hercules-ci.yaml" = [

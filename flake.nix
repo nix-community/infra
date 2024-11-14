@@ -77,6 +77,7 @@
             build02.system = "x86_64-linux";
             build03.system = "x86_64-linux";
             build04.system = "aarch64-linux";
+            build05.system = "aarch64-linux";
             darwin01.system = "aarch64-darwin";
             darwin02.system = "aarch64-darwin";
             web02.system = "x86_64-linux";
