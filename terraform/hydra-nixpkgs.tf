@@ -2,7 +2,7 @@ locals {
   jobset = {
     cuda = {
       name                 = "cuda"
-      description          = "Testing CUDA support. Come help the CUDA team! https://nixos.org/community/teams/cuda/"
+      description          = "nixos-unstable-small cuda"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
       check_interval       = 1800
@@ -29,7 +29,7 @@ locals {
     }
     rocm = {
       name                 = "rocm"
-      description          = "Testing ROCm support."
+      description          = "nixos-unstable-small rocm"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
       check_interval       = 1800
