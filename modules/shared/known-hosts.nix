@@ -16,6 +16,10 @@
       hostNames = [ "build04.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINvzMJfCiVKGfEjCfBZqDD7Kib5y+2zz04YI8XrCZ68O";
     };
+    build05 = {
+      hostNames = [ "build05.nix-community.org" ];
+      publicKey = "ssh-ed25519 ?";
+    };
     darwin01 = {
       hostNames = [ "darwin01.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFz8FXSVEdf8FvDMfboxhB5VjSe7y2WgSa09q1L4t099";

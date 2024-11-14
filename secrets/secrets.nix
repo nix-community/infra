@@ -15,6 +15,7 @@ let
   build02 = knownHosts.build02.publicKey;
   build03 = knownHosts.build03.publicKey;
   build04 = knownHosts.build04.publicKey;
+  build05 = knownHosts.build05.publicKey;
   darwin01 = knownHosts.darwin01.publicKey;
   darwin02 = knownHosts.darwin02.publicKey;
   web02 = knownHosts.web02.publicKey;
@@ -24,6 +25,7 @@ let
     # from `nix-community-buildbot` (user account, not the github app)
     community-builder-nix-access-tokens = [
       build01
+      build05
       darwin01
     ];
     grafana-client-secret = [ web02 ];
