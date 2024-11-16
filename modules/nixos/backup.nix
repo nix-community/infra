@@ -72,6 +72,7 @@
         value = {
           inherit (backup) after;
           serviceConfig.ReadWritePaths = [ "/var/log/telegraf" ];
+          serviceConfig.Restart = "on-failure";
         };
       }) config.nixCommunity.backup
     );
