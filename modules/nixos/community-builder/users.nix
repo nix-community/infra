@@ -194,6 +194,12 @@ let
       trusted = true;
       keys = ./keys/fpletz;
     }
+    {
+      # lib.maintainers.Enzime, https://github.com/Enzime
+      name = "enzime";
+      trusted = true;
+      keys = ./keys/enzime;
+    }
   ];
 in
 {
