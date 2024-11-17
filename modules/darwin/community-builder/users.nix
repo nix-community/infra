@@ -346,6 +346,13 @@ let
       uid = 554;
       keys = ./keys/fpletz;
     }
+    {
+      # lib.maintainers.Enzime, https://github.com/Enzime
+      name = "enzime";
+      trusted = true;
+      uid = 555;
+      keys = ./keys/enzime;
+    }
   ];
 in
 {
