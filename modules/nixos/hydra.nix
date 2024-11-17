@@ -38,11 +38,11 @@
       (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
         printf "$machines" | grep build04 > $out
         substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
-        substituteInPlace $out --replace-fail ' 80 ' ' 2 '
+        substituteInPlace $out --replace-fail ' 80 ' ' 3 '
       '')
 
       (pkgs.writeText "local" ''
-        localhost x86_64-linux,builtin - 2 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
+        localhost x86_64-linux,builtin - 3 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
       '')
     ];
     hydraURL = "https://hydra.nix-community.org";
