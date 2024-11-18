@@ -44,7 +44,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
-    sops-nix.inputs.nixpkgs-stable.follows = "empty";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
