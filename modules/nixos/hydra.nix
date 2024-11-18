@@ -24,6 +24,13 @@
     serviceConfig.ExecStart = "${pkgs.findutils}/bin/find /var/lib/hydra/build-logs -type f -mtime +30 -delete";
   };
 
+  # not currently needed
+  systemd.services = {
+    hydra-check-space.enable = false;
+    hydra-notify.enable = false;
+    hydra-send-stats.enable = false;
+  };
+
   services.hydra = {
     enable = true;
     # remote builders set in /etc/nix/machines + localhost
