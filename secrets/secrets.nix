@@ -45,6 +45,7 @@ let
     hetzner-borgbackup-ssh = [
       build02
       build03
+      web02
     ];
     nginx-basic-auth-file = [ web02 ];
     nix-community-matrix-bot-token = [ web02 ];
