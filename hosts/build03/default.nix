@@ -6,6 +6,7 @@
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.builder
+    inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.watch-store
     ./builders.nix
