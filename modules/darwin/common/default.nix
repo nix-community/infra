@@ -2,7 +2,6 @@
 {
   imports = [
     inputs.srvos.darwinModules.server
-    ./apfs-cleanup.nix
     ./network.nix
     ./packages.nix
     ./reboot.nix
@@ -26,4 +25,14 @@
     mdutil -a -i off -d &> /dev/null
     mdutil -a -E &> /dev/null
   '';
+
+  services.rosetta2-gc = {
+    enable = true;
+    interval = [
+      {
+        Hour = 2;
+        Minute = 30;
+      }
+    ];
+  };
 }
