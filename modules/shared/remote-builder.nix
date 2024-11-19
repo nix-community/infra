@@ -23,7 +23,7 @@ in
 {
   options.nixCommunity.remote-builder.key = lib.mkOption {
     type = lib.types.singleLineStr;
-    default = null;
+    default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
     description = "ssh public key for the remote build user";
   };
 
