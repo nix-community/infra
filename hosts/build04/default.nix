@@ -16,8 +16,6 @@
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
 
-  nixCommunity.remote-builder.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
-
   system.stateVersion = "23.11";
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f9:3051:3962::2";
