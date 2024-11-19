@@ -1,4 +1,7 @@
 { config, inputs, ... }:
+let
+  inherit (inputs.self) darwinConfigurations nixosConfigurations;
+in
 {
   sops.secrets.id_buildfarm = { };
 
@@ -11,8 +14,7 @@
       sshKey = config.sops.secrets.id_buildfarm.path;
       sshUser = "nix";
       systems = [ "aarch64-linux" ];
-      supportedFeatures =
-        inputs.self.outputs.nixosConfigurations.build04.config.nix.settings.system-features;
+      supportedFeatures = nixosConfigurations.build04.config.nix.settings.system-features;
     }
     {
       hostName = "darwin02.nix-community.org";
@@ -24,8 +26,7 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-      supportedFeatures =
-        inputs.self.outputs.darwinConfigurations.darwin02.config.nix.settings.system-features;
+      supportedFeatures = darwinConfigurations.darwin02.config.nix.settings.system-features;
     }
   ];
 }
