@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.self.darwinModules.builder
     inputs.self.darwinModules.community-builder
   ];
 
