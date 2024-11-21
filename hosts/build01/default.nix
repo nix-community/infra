@@ -6,6 +6,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nix.settings.max-jobs = 24;
+
   nixpkgs.hostPlatform.gcc.arch = "znver2";
 
   # Emulate riscv64 until we have proper builders
