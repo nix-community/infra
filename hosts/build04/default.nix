@@ -9,6 +9,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
+  nix.settings.max-jobs = 80;
+
   nixpkgs.hostPlatform.gcc.arch = "armv8-a";
 
   # error: failed to start SSH connection
