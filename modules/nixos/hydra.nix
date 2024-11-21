@@ -1,4 +1,16 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  inherit (lib) concatStringsSep;
+  localSystems = [
+    "builtin"
+    config.nixpkgs.hostPlatform.system
+  ] ++ config.nix.settings.extra-platforms;
+in
 {
   sops.secrets.hydra-admin-password.owner = "hydra";
   sops.secrets.hydra-users.owner = "hydra";
@@ -6,7 +18,7 @@
   # hydra-queue-runner needs to read this key for remote building
   sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
-  nix.settings.keep-outputs = pkgs.lib.mkForce false;
+  nix.settings.keep-outputs = lib.mkForce false;
 
   nix.settings.allowed-uris = [
     "git+https:"
@@ -42,7 +54,7 @@
       '')
 
       (pkgs.writeText "local" ''
-        localhost x86_64-linux,builtin - 3 1 ${pkgs.lib.concatStringsSep "," config.nix.settings.system-features} - -
+        localhost ${concatStringsSep "," localSystems} - 3 1 ${concatStringsSep "," config.nix.settings.system-features} - -
       '')
     ];
     hydraURL = "https://hydra.nix-community.org";

@@ -19,10 +19,6 @@
       script = builtins.readFile "${inputs.self}/modules/shared/free-space.bash";
     };
 
-    nixpkgs.hostPlatform = {
-      inherit (pkgs.hostPlatform) system;
-    };
-
     nix.settings.extra-platforms = lib.mkIf (config.nixpkgs.hostPlatform.system == "x86_64-linux") [
       (lib.mkIf (config.boot.binfmt.emulatedSystems == [ ]) "i686-linux")
       "x86_64-v1-linux"
