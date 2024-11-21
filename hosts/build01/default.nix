@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.community-builder
+    inputs.self.nixosModules.disko-zfs
+    inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
   # Emulate riscv64 until we have proper builders

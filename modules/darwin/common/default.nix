@@ -1,7 +1,8 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.srvos.darwinModules.server
+    ../../shared/known-hosts.nix
+    ../../shared/nix-daemon.nix
     ./apfs-cleanup.nix
     ./network.nix
     ./packages.nix
@@ -9,9 +10,8 @@
     ./software-update.nix
     ./telegraf.nix
     ./users.nix
-    ../../shared/known-hosts.nix
-    ../../shared/nix-daemon.nix
     inputs.agenix.darwinModules.age
+    inputs.srvos.darwinModules.server
   ];
 
   # https://github.com/NixOS/nix/issues/7273

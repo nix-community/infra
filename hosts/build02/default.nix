@@ -2,12 +2,12 @@
 
 {
   imports = [
-    inputs.self.nixosModules.nginx
-    inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    ./nixpkgs-update.nix
     ./nixpkgs-update-backup.nix
+    ./nixpkgs-update.nix
     inputs.self.nixosModules.builder
     inputs.self.nixosModules.disko-zfs
+    inputs.self.nixosModules.nginx
+    inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
   # set in srvos, remove when reinstalling
