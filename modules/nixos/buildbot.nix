@@ -3,6 +3,14 @@
   inputs,
   ...
 }:
+let
+  buildSystems =
+    [
+      config.nixpkgs.hostPlatform.system
+    ]
+    ++ config.nix.settings.extra-platforms
+    ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
+in
 {
   imports = [
     inputs.buildbot-nix.nixosModules.buildbot-master
@@ -25,12 +33,7 @@
       "zimbatm"
       "zowoq"
     ];
-    buildSystems = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    inherit buildSystems;
     domain = "buildbot.nix-community.org";
     outputsPath = "/var/www/buildbot/nix-outputs/";
     evalMaxMemorySize = 4096;

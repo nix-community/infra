@@ -6,27 +6,21 @@ in
   sops.secrets.id_buildfarm = { };
 
   nix.distributedBuilds = true;
-  nix.buildMachines = [
-    {
-      hostName = "build04.nix-community.org";
-      maxJobs = 80;
-      protocol = "ssh-ng";
-      sshKey = config.sops.secrets.id_buildfarm.path;
-      sshUser = "nix";
-      systems = [ "aarch64-linux" ];
-      supportedFeatures = nixosConfigurations.build04.config.nix.settings.system-features;
-    }
-    {
-      hostName = "darwin02.nix-community.org";
-      maxJobs = 8;
-      protocol = "ssh-ng";
-      sshKey = config.sops.secrets.id_buildfarm.path;
-      sshUser = "nix";
-      systems = [
-        "aarch64-darwin"
-        "x86_64-darwin"
+  nix.buildMachines =
+    map
+      (x: {
+        hostName = "${x.config.networking.hostName}.nix-community.org";
+        maxJobs = x.config.nix.settings.max-jobs;
+        protocol = "ssh-ng";
+        sshKey = config.sops.secrets.id_buildfarm.path;
+        sshUser = "nix";
+        systems = [
+          x.config.nixpkgs.hostPlatform.system
+        ] ++ (x.config.nix.settings.extra-platforms or [ ]);
+        supportedFeatures = x.config.nix.settings.system-features;
+      })
+      [
+        darwinConfigurations.darwin02
+        nixosConfigurations.build04
       ];
-      supportedFeatures = darwinConfigurations.darwin02.config.nix.settings.system-features;
-    }
-  ];
 }
