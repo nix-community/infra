@@ -353,6 +353,13 @@ let
       uid = 555;
       keys = ./keys/enzime;
     }
+    {
+      # lib.maintainers.artemist, https://github.com/artemist
+      name = "artemist";
+      trusted = true;
+      uid = 556;
+      keys = ./keys/artemist;
+    }
   ];
 in
 {
