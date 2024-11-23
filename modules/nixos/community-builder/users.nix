@@ -101,7 +101,7 @@ let
       name = "mrcjkb";
       # lib.maintainers.mrcjkb https://github.com/mrcjkb
       trusted = true;
-      shell = pkgs.nushell;
+      shell = pkgs.zsh;
       keys = ./keys/mrcjkb;
     }
     {
