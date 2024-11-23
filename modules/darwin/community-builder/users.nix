@@ -336,7 +336,7 @@ let
       name = "mrcjkb";
       trusted = true;
       uid = 553;
-      shell = pkgs.nushell;
+      shell = pkgs.zsh;
       keys = ./keys/mrcjkb;
     }
     {
