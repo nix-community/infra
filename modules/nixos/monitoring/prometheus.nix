@@ -12,10 +12,9 @@
   services.prometheus = {
     enable = true;
     checkConfig = true;
-    webExternalUrl = "https://monitoring.nix-community.org/prometheus/";
+    webExternalUrl = "https://prometheus.nix-community.org/";
     extraFlags = [
       "--storage.tsdb.retention.time=30d"
-      "--web.route-prefix=/"
     ];
     scrapeConfigs = [
       {
@@ -46,11 +45,10 @@
 
   services.prometheus.alertmanager = {
     enable = true;
-    webExternalUrl = "https://monitoring.nix-community.org/alertmanager/";
+    webExternalUrl = "https://alertmanager.nix-community.org/";
     listenAddress = "[::1]";
     extraFlags = [
       "--cluster.listen-address=''"
-      "--web.route-prefix=/"
     ];
     configuration = {
       route = {
