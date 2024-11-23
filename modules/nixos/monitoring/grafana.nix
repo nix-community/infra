@@ -32,8 +32,8 @@
       };
 
       server = {
-        root_url = "https://monitoring.nix-community.org/grafana/";
-        domain = "monitoring.nix-community.org";
+        root_url = "https://grafana.nix-community.org/";
+        domain = "grafana.nix-community.org";
         enforce_domain = true;
         enable_gzip = true;
       };

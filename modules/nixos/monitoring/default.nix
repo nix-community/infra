@@ -14,16 +14,19 @@
     owner = "nginx";
   };
 
-  services.nginx.virtualHosts."monitoring.nix-community.org" = {
-    locations."/".return = "302 https://nix-community.org/monitoring";
-    locations."/alertmanager/" = {
+  services.nginx.virtualHosts."alertmanager.nix-community.org" = {
+    locations."/" = {
       basicAuthFile = config.age.secrets.nginx-basic-auth-file.path;
       proxyPass = "http://localhost:9093/";
     };
-    locations."/grafana/" = {
+  };
+  services.nginx.virtualHosts."grafana.nix-community.org" = {
+    locations."/" = {
       proxyPass = "http://localhost:3000/";
       proxyWebsockets = true;
     };
-    locations."/prometheus/".proxyPass = "http://localhost:9090/";
+  };
+  services.nginx.virtualHosts."prometheus.nix-community.org" = {
+    locations."/".proxyPass = "http://localhost:9090/";
   };
 }
