@@ -2,14 +2,11 @@ arch=$(uname -m)
 hostname=$(uname -n)
 p=$(curl -L https://buildbot.nix-community.org/nix-outputs/nix-community/infra/master/"$arch"-linux.host-"$hostname")
 
-if [[ "$(readlink /run/booted-system)" == "$p" ]]; then
-  exit 0
-fi
 if [[ "$(readlink /run/current-system)" == "$p" ]]; then
   exit 0
 fi
 
-nix-store --realise "$p"
+nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
 nix-env --profile /nix/var/nix/profiles/system --set "$p"
 
 booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules} && cat /run/booted-system/kernel-params)"
