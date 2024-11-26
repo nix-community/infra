@@ -8,7 +8,7 @@ let
   hostInfo = pkgs.writeShellApplication {
     name = "host-info";
     runtimeInputs = [
-      pkgs.nixVersions.nix_2_18
+      pkgs.nix
       pkgs.gnused
       pkgs.jq
     ];
