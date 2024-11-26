@@ -34,6 +34,9 @@
         "flake-parts": [
           "flake-parts"
         ],
+        "hercules-ci-effects": [
+          "hercules-ci-effects"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -42,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732102561,
-        "narHash": "sha256-4dJrWa1srQu9JUCGaTH7Kzewf+MqZRSAAasSE4uFCtE=",
+        "lastModified": 1732578586,
+        "narHash": "sha256-kR2RwG4H32zRkyVVfDKUnoPxORb6DzztE16oc98ZzSg=",
         "owner": "nix-community",
         "repo": "buildbot-nix",
-        "rev": "2bbd199879062ed4fdd512e8c48cc9786e0043bd",
+        "rev": "037344cad03e933ea370c0766b39b959820446e5",
         "type": "github"
       },
       "original": {
