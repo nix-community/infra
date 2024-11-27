@@ -13,9 +13,9 @@
     agenix.inputs.systems.follows = "systems";
     agenix.url = "github:ryantm/agenix";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
+    buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
-    buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.url = "github:nix-community/buildbot-nix";
     cgroup-exporter.inputs.nixpkgs.follows = "nixpkgs";
     cgroup-exporter.url = "github:arianvp/cgroup-exporter";
