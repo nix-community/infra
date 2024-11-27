@@ -149,8 +149,7 @@ in
 
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" "${nixpkgs-update-bin} fetch-repology";
 
-  # breaks with nix 2.24
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nixVersions.nix_2_18}/bin/nix eval --raw -f ${./packages-with-update-script.nix}";
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" "${inputs.nixpkgs-update-github-releases}/main.py";
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
