@@ -40,6 +40,5 @@
         tags.org = "nix-community";
         timeout = "10s";
       }) (builtins.attrValues hosts);
-    prometheus.urls = [ "https://events.ofborg.org/prometheus.php" ];
   };
 }
