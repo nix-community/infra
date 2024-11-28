@@ -39,7 +39,6 @@ in
   # not currently needed
   systemd.services = {
     hydra-check-space.enable = false;
-    hydra-notify.enable = false;
     hydra-send-stats.enable = false;
   };
 
