@@ -109,6 +109,14 @@ let
     startAt = "0/12:10"; # every 12 hours
   };
 
+  repology = pkgs.writeShellApplication {
+    name = "repology";
+    runtimeInputs = [
+      pkgs.jq
+      pkgs.moreutils
+    ];
+    text = builtins.readFile ./repology.bash;
+  };
 in
 {
   users.groups.r-ryantm = { };
@@ -147,10 +155,9 @@ in
     script = "${nixpkgs-update-bin} delete-done --delete";
   };
 
-  systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" "${nixpkgs-update-bin} fetch-repology";
-
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
   systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" "${inputs.nixpkgs-update-github-releases}/main.py";
+  systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" (lib.getExe repology);
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
   systemd.services.nixpkgs-update-worker2 = mkWorker "worker2";
