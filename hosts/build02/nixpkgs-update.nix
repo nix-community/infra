@@ -102,7 +102,7 @@ let
       cd "$LOGS_DIRECTORY/~fetchers"
       run_name="${name}.$(date +%s).txt"
       rm -f ${name}.*.txt.part
-      ${cmd} > "$run_name.part"
+      ${cmd} | sed -f ${./filter.sed} > "$run_name.part"
       rm -f ${name}.*.txt
       mv "$run_name.part" "$run_name"
     '';
