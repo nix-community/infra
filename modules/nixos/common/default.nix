@@ -33,6 +33,7 @@
   ) pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
+  zramSwap.memoryPercent = 100;
 
   # https://github.com/NixOS/nixpkgs/pull/268121
   # https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram
