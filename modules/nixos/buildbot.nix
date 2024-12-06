@@ -25,6 +25,16 @@ in
   sops.secrets.buildbot-nix-workers = { };
   sops.secrets.cachix-auth-token = { };
 
+  services.buildbot-nix.master.pullBased = {
+    pollInterval = 1800;
+    repositories = {
+      "astro/microvm.nix" = {
+        url = "https://github.com/astro/microvm.nix.git";
+        defaultBranch = "main";
+      };
+    };
+  };
+
   services.buildbot-nix.master = {
     enable = true;
     admins = [
