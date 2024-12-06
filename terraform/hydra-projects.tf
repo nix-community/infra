@@ -70,33 +70,6 @@ resource "hydra_project" "simple_nixos_mailserver" {
   }
 }
 
-resource "hydra_project" "microvm_nix" {
-  name         = "microvm-nix"
-  display_name = "MicroVM.nix"
-  description  = "NixOS MicroVMs"
-  homepage     = "https://github.com/astro/microvm.nix"
-  owner        = "admin"
-  enabled      = true
-  visible      = true
-}
-
-resource "hydra_jobset" "microvm_nix" {
-  project     = hydra_project.microvm_nix.name
-  state       = "disabled"
-  visible     = true
-  name        = "main"
-  type        = "flake"
-  description = "main branch"
-
-  flake_uri = "github:astro/microvm.nix"
-
-  check_interval    = 1800
-  scheduling_shares = 3000
-  keep_evaluations  = 1
-
-  email_notifications = false
-}
-
 resource "hydra_project" "nixbsd" {
   name         = "nixbsd"
   display_name = "NixBSD"
