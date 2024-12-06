@@ -360,6 +360,13 @@ let
       uid = 556;
       keys = ./keys/artemist;
     }
+    {
+      # lib.maintainers.fliegendewurst, https://github.com/FliegendeWurst
+      name = "fliegendewurst";
+      trusted = true;
+      uid = 557;
+      keys = ./keys/FliegendeWurst;
+    }
   ];
 in
 {
