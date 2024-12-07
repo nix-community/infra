@@ -22,6 +22,10 @@ Built on `nixos-unstable-small` for `aarch64-linux`, `x86_64-linux`:
 
 - [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist)
 
+Built on `nixpkgs-unstable` for `aarch64-darwin`, `x86_64-darwin`:
+
+- [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-darwin](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-darwin)
+
 Built on `nixos-$RELEASE-small` for `aarch64-linux`, `x86_64-linux`:
 
 - [https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-stable](https://hydra.nix-community.org/jobset/nixpkgs/unfree-redist-stable)
