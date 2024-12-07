@@ -29,7 +29,7 @@ in
     pollInterval = 1800;
     repositories = {
       "astro/microvm.nix" = {
-        url = "https://github.com/astro/microvm.nix.git";
+        url = "https://github.com/qowoz/microvm.nix.git";
         defaultBranch = "main";
       };
     };
