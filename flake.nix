@@ -70,13 +70,7 @@
           nixpkgs = {
             config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
             overlays = [
-              (final: prev: {
-                hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_24; }).overrideAttrs (o: {
-                  version = inputs.hydra.shortRev;
-                  src = inputs.hydra;
-                  buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
-                });
-              })
+              (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
           };
 
