@@ -33,9 +33,9 @@
 #### `darwin01` - [`darwin-build-box.nix-community.org`](./community-builder.md)
 
 - Provider: OakHost
-- Instance type: [Apple Mac mini M2](https://www.oakhost.net/product/mac-mini-hosting-m2-24gb)
-- CPU: Apple M2
-- RAM: 24GB
+- Instance type: [Apple Mac mini M4.M](https://www.oakhost.net/product/mac-mini-hosting-m4-32gb)
+- CPU: Apple M4
+- RAM: 32GB
 - Drives: 1TB SSD
 
 #### `darwin02` - [`CI builder`](./continuous-integration.md)
