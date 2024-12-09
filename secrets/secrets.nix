@@ -9,6 +9,8 @@ let
     "zowoq"
   ];
 
+  # inv update-agenix-files
+
   inherit ((import ../modules/shared/known-hosts.nix).programs.ssh) knownHosts;
 
   build01 = knownHosts.build01.publicKey;
