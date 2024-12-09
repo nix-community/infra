@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.self.darwinModules.community-builder
+    #inputs.self.darwinModules.community-builder
   ];
 
   nix.settings.max-jobs = 10;
