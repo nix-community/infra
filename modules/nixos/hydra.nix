@@ -50,7 +50,7 @@ in
         printf "$machines" > $out
         substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
         substituteInPlace $out --replace-fail ' 80 ' ' 3 '
-        substituteInPlace $out --replace-fail ' 8 ' ' 1 '
+        substituteInPlace $out --replace-fail ' 10 ' ' 1 '
       '')
 
       (pkgs.writeText "local" ''
