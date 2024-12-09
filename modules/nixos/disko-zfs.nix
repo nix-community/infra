@@ -10,7 +10,8 @@
   };
 
   # the default zpool import services somehow times out while this import works fine?
-  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.ExecStartPre = "${config.boot.zfs.package}/bin/zpool import -N -f zroot";
+  boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.ExecStartPre =
+    "${config.boot.zfs.package}/bin/zpool import -N -f zroot";
 
   # Sometimes fails after the first try, with duplicate pool name errors
   boot.initrd.systemd.services.zfs-import-zroot.serviceConfig.Restart = "on-failure";
