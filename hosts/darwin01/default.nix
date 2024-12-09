@@ -5,9 +5,9 @@
     inputs.self.darwinModules.community-builder
   ];
 
-  nix.settings.max-jobs = 8;
+  nix.settings.max-jobs = 10;
 
-  nixCommunity.darwin.ipv6 = "2a09:9340:808:630::1 64 fe80::1";
+  nixCommunity.darwin.ipv6 = "?";
 
   nix.settings.sandbox = "relaxed";
   nix.settings.extra-platforms = [ "x86_64-darwin" ];
@@ -15,5 +15,5 @@
   # disable nixos-tests
   nix.settings.system-features = [ "big-parallel" ];
 
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }
