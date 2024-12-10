@@ -35,7 +35,9 @@ let
 
           somewhatUniqueRepresentant =
             { package, attrPath }: {
-              inherit (package) updateScript;
+              # disable for now
+              # inherit (package) updateScript;
+
               # Some updaters use the same `updateScript` value for all packages.
               # Also compare `meta.description`.
               position = package.meta.position or null;
