@@ -77,6 +77,24 @@
                   src = inputs.hydra;
                   buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
                 });
+                sk-libfido2 = prev.openssh.overrideAttrs (o: {
+                  pname = "sk-libfido2";
+                  patches = o.patches ++ [
+                    (final.fetchpatch {
+                      name = "sk-libfido2-makefile-target.patch";
+                      # https://github.com/openssh/openssh-portable/pull/524
+                      url = "https://github.com/openssh/openssh-portable/commit/f63e2ce283b703a58c1bd9db0ccd078561ac3b3a.patch";
+                      hash = "sha256-V5XObADNT2im0dA38PWcKTPSNJ8C3+waIALIHrYkyYA=";
+                    })
+                  ];
+                  buildFlags = [
+                    "PATHS="
+                    "sk-libfido2.so"
+                  ];
+                  installPhase = "install sk-libfido2.so -Dt $out";
+                  postInstall = null;
+                  doCheck = false;
+                });
               })
             ];
           };
