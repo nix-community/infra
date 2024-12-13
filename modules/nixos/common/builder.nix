@@ -9,6 +9,8 @@
   config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
     nix.gc.automatic = false;
 
+    boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+
     systemd.services.free-space = {
       serviceConfig.Type = "oneshot";
       startAt = "hourly";
