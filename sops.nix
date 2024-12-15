@@ -22,7 +22,13 @@ let
       "secrets.yaml" = [ ];
       "terraform/secrets.yaml" = [ ];
     }
-    // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) { }
+    // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
+      "modules/secrets/hercules-ci.yaml" = [
+        "build03"
+        "build04"
+        "darwin02"
+      ];
+    }
     // builtins.listToAttrs (
       mapAttrsToList (hostname: key: {
         name = "hosts/${hostname}/secrets.yaml";

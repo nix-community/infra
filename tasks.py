@@ -71,7 +71,9 @@ def update_sops_files(c: Any) -> None:
         print("# AUTOMATICALLY GENERATED WITH: $ inv update-sops-files", file=f)
 
     c.run(f"nix eval --json -f {ROOT}/sops.nix | yq e -P - >> {ROOT}/.sops.yaml")
-    c.run("shopt -s globstar && sops updatekeys --yes **/secrets.yaml")
+    c.run(
+        "shopt -s globstar && sops updatekeys --yes **/secrets.yaml modules/secrets/*.yaml"
+    )
 
 
 @task

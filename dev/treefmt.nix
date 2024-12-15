@@ -65,6 +65,7 @@
       excludes = [
         "config.yaml"
         "*secrets.yaml"
+        "modules/secrets/*.yaml"
       ];
     };
   };
