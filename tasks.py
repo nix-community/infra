@@ -65,8 +65,12 @@ def update_agenix_files(c: Any) -> None:
 @task
 def update_sops_files(c: Any) -> None:
     """
-    Update all sops yaml files according to .sops.yaml rules
+    Update all sops yaml files according to sops.nix rules
     """
+    with open(f"{ROOT}/.sops.yaml", "w") as f:
+        print("# AUTOMATICALLY GENERATED WITH: $ inv update-sops-files", file=f)
+
+    c.run(f"nix eval --json -f {ROOT}/sops.nix | yq e -P - >> {ROOT}/.sops.yaml")
     c.run("shopt -s globstar && sops updatekeys --yes **/secrets.yaml")
 
 

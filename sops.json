@@ -1,0 +1,13 @@
+{
+  "admins": {
+    "adisbladis": "age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy",
+    "mic92": "age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz",
+    "ryantm": "age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay",
+    "zimbatm": "age1jrh8yyq3swjru09s75s4mspu0mphh7h6z54z946raa9wx3pcdegq0x8t4h",
+    "zowoq": "age1m7xhem3qll35d539f364pm6txexvnp6k0tk34d8jxu4ry3pptv7smm0k5n"
+  },
+  "hosts": {
+    "build02": "age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d",
+    "build03": "age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq"
+  }
+}

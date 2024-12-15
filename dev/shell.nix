@@ -11,6 +11,7 @@
           python3.pkgs.invoke
           sops
           ssh-to-age
+          yq-go
         ];
       };
     sotp =
