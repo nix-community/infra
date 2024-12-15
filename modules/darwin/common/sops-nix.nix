@@ -2,6 +2,6 @@
 {
   imports = [
     ../../shared/sops-nix.nix
-    inputs.sops-nix.nixosModules.sops
+    inputs.sops-nix.darwinModules.sops
   ];
 }
