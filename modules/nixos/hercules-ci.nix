@@ -1,27 +1,24 @@
 { config, inputs, ... }:
+let
+  secret = {
+    owner = "hercules-ci-agent";
+    sopsFile = "${inputs.self}/modules/secrets/hercules-ci.yaml";
+  };
+in
 {
-  age.secrets.hercules-binary-caches = {
-    file = "${inputs.self}/secrets/hercules-binary-caches.age";
-    owner = "hercules-ci-agent";
-  };
+  sops.secrets.hercules-binary-caches = secret;
 
-  age.secrets.hercules-cluster-join-token = {
-    file = "${inputs.self}/secrets/hercules-cluster-join-token.age";
-    owner = "hercules-ci-agent";
-  };
+  sops.secrets.hercules-cluster-join-token = secret;
 
-  age.secrets.hercules-secrets = {
-    file = "${inputs.self}/secrets/hercules-secrets.age";
-    owner = "hercules-ci-agent";
-  };
+  sops.secrets.hercules-secrets = secret;
 
   services.hercules-ci-agent = {
     enable = true;
     settings = {
-      binaryCachesPath = config.age.secrets.hercules-binary-caches.path;
-      clusterJoinTokenPath = config.age.secrets.hercules-cluster-join-token.path;
+      binaryCachesPath = config.sops.secrets.hercules-binary-caches.path;
+      clusterJoinTokenPath = config.sops.secrets.hercules-cluster-join-token.path;
       # secrets file is needed for effects
-      secretsJsonPath = config.age.secrets.hercules-secrets.path;
+      secretsJsonPath = config.sops.secrets.hercules-secrets.path;
     };
   };
 }
