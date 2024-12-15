@@ -9,6 +9,7 @@
     ./packages.nix
     ./reboot.nix
     ./software-update.nix
+    ./sops-nix.nix
     ./telegraf.nix
     ./users.nix
     inputs.agenix.darwinModules.age
