@@ -21,10 +21,22 @@ let
   '';
 in
 {
-  options.nixCommunity.remote-builder.key = lib.mkOption {
-    type = lib.types.singleLineStr;
-    default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
-    description = "ssh public key for the remote build user";
+  options.nixCommunity.remote-builder = {
+    key = lib.mkOption {
+      type = lib.types.singleLineStr;
+      default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmdo1x1QkRepZf7nSe+OdEWX+wOjkBLF70vX9F+xf68 builder";
+      description = "ssh public key for the remote build user";
+    };
+    mandatoryFeatures = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "mandatory features for the remote builder";
+    };
+    maxJobs = lib.mkOption {
+      type = lib.types.ints.positive;
+      default = config.nix.settings.max-jobs;
+      description = "max jobs for the remote builder";
+    };
   };
 
   config.users.users.nix.openssh.authorizedKeys.keys = [
