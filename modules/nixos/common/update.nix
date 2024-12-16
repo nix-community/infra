@@ -16,10 +16,19 @@
       pkgs.coreutils
       pkgs.curl
       pkgs.kexec-tools
-      pkgs.nvd
     ];
     script = builtins.readFile ./update.bash;
   };
+
+  # https://gist.github.com/Ma27/6650d10f772511931647d3189b3eb1d7
+  # https://github.com/NuschtOS/nixos-modules/blob/39d26dddae2f117d7f9c33dd1efc866ff684ff94/modules/nix.nix
+  boot.loader.grub.extraInstallCommands = ''
+    if [[ "''${NIXOS_ACTION-}" == boot && -e /run/current-system && -e "''${1-}" ]]; then
+      echo "--- diff to current-system"
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${config.nix.package}/bin diff /run/current-system "''${1-}"
+      echo "---"
+    fi
+  '';
 
   systemd.timers.update-host = {
     wantedBy = [ "timers.target" ];
