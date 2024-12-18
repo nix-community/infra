@@ -20,8 +20,8 @@ in
 
   systemd.services.matrix-hook = {
     description = "Matrix Hook";
-    after = [ config.systemd.targets.network-online.name ];
-    wants = [ config.systemd.targets.network-online.name ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ config.systemd.targets.multi-user.name ];
     environment = {
       HTTP_ADDRESS = "localhost";

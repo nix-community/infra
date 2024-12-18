@@ -25,10 +25,10 @@ let
 
   mkWorker = name: {
     after = [
-      config.systemd.targets.network-online.name
+      "network-online.target"
       config.systemd.services.nixpkgs-update-supervisor.name
     ];
-    wants = [ config.systemd.targets.network-online.name ];
+    wants = [ "network-online.target" ];
     wantedBy = [ config.systemd.targets.multi-user.name ];
     description = "nixpkgs-update ${name} service";
     enable = true;
@@ -63,8 +63,8 @@ let
   };
 
   mkFetcher = name: cmd: {
-    after = [ config.systemd.targets.network-online.name ];
-    wants = [ config.systemd.targets.network-online.name ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     path = nixpkgsUpdateSystemDependencies ++ [
       # nixpkgs-update-github-releases
       (pkgs.python3.withPackages (
@@ -129,8 +129,8 @@ in
 
   systemd.services.nixpkgs-update-delete-done = {
     startAt = "0/12:10"; # every 12 hours
-    after = [ config.systemd.targets.network-online.name ];
-    wants = [ config.systemd.targets.network-online.name ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     description = "nixpkgs-update delete done branches";
     restartIfChanged = true;
     path = nixpkgsUpdateSystemDependencies;
