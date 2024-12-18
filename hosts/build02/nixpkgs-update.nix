@@ -262,12 +262,6 @@ in
     group = "r-ryantm";
   };
 
-  sops.secrets.nix-community-cachix = {
-    path = "/var/lib/nixpkgs-update/worker/cachix/cachix.dhall";
-    owner = "r-ryantm";
-    group = "r-ryantm";
-  };
-
   # autoindex is truncated on some browsers
   services.nginx.recommendedZstdSettings = false;
 
