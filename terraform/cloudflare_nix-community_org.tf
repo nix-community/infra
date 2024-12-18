@@ -38,16 +38,17 @@ locals {
   }
 
   cname = {
-    "alertmanager"        = "web02.nix-community.org"
-    "build-box"           = "build01.nix-community.org"
-    "buildbot"            = "build03.nix-community.org"
-    "darwin-build-box"    = "darwin01.nix-community.org"
-    "docker"              = "zimbatm.docker.scarf.sh" # Used by nix-community/nixpkgs-docker
-    "grafana"             = "web02.nix-community.org"
-    "hydra"               = "build03.nix-community.org"
-    "nixpkgs-update-logs" = "build02.nix-community.org"
-    "nur-update"          = "build03.nix-community.org"
-    "prometheus"          = "web02.nix-community.org"
+    "alertmanager"         = "web02.nix-community.org"
+    "build-box"            = "build01.nix-community.org"
+    "buildbot"             = "build03.nix-community.org"
+    "darwin-build-box"     = "darwin01.nix-community.org"
+    "docker"               = "zimbatm.docker.scarf.sh" # Used by nix-community/nixpkgs-docker
+    "grafana"              = "web02.nix-community.org"
+    "hydra"                = "build03.nix-community.org"
+    "nixpkgs-update-cache" = "build02.nix-community.org"
+    "nixpkgs-update-logs"  = "build02.nix-community.org"
+    "nur-update"           = "build03.nix-community.org"
+    "prometheus"           = "web02.nix-community.org"
   }
 }
 
