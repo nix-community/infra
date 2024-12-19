@@ -1,9 +1,8 @@
-{ config, inputs, ... }:
+{ config, ... }:
 {
   systemd.services.grafana.after = [ config.systemd.services.prometheus.name ];
 
-  age.secrets.grafana-client-secret = {
-    file = "${inputs.self}/secrets/grafana-client-secret.age";
+  sops.secrets.grafana-client-secret = {
     owner = "grafana";
   };
 
@@ -19,7 +18,7 @@
       "auth.github" = {
         enabled = true;
         client_id = "ea6aa36488df8b2dede6";
-        client_secret = "$__file{${config.age.secrets.grafana-client-secret.path}}";
+        client_secret = "$__file{${config.sops.secrets.grafana-client-secret.path}}";
         auth_url = "https://github.com/login/oauth/authorize";
         token_url = "https://github.com/login/oauth/access_token";
         api_url = "https://api.github.com/user";

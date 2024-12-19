@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
@@ -8,9 +7,7 @@ let
   matrixHook = pkgs.matrix-hook;
 in
 {
-  age.secrets.nix-community-matrix-bot-token = {
-    file = "${inputs.self}/secrets/nix-community-matrix-bot-token.age";
-  };
+  sops.secrets.nix-community-matrix-bot-token = { };
 
   users.users.matrix-hook = {
     isSystemUser = true;
@@ -34,7 +31,7 @@ in
     serviceConfig = {
       Type = "simple";
       ExecStart = "${matrixHook}/bin/matrix-hook";
-      EnvironmentFile = [ config.age.secrets.nix-community-matrix-bot-token.path ];
+      EnvironmentFile = [ config.sops.secrets.nix-community-matrix-bot-token.path ];
       Restart = "always";
       RestartSec = "10";
       User = "matrix-hook";

@@ -1,7 +1,6 @@
-{ config, inputs, ... }:
+{ config, ... }:
 {
-  age.secrets.oauth2-proxy-key-file = {
-    file = "${inputs.self}/secrets/oauth2-proxy-key-file.age";
+  sops.secrets.oauth2-proxy-key-file = {
     owner = "oauth2-proxy";
   };
 
@@ -14,7 +13,7 @@
       team = "admin";
     };
     clientID = "Ov23liKOQPREko8sCk6F";
-    keyFile = config.age.secrets.oauth2-proxy-key-file.path;
+    keyFile = config.sops.secrets.oauth2-proxy-key-file.path;
     nginx.domain = "alertmanager.nix-community.org";
     nginx.virtualHosts = {
       "alertmanager.nix-community.org" = { };
