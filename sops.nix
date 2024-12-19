@@ -23,6 +23,11 @@ let
       "terraform/secrets.yaml" = [ ];
     }
     // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
+      "modules/secrets/backup.yaml" = [
+        "build02"
+        "build03"
+        "web02"
+      ];
       "modules/secrets/community-builder.yaml" = [
         "build01"
         "darwin01"
