@@ -7,11 +7,6 @@
   ];
 
   inputs = {
-    agenix.inputs.darwin.follows = "nix-darwin";
-    agenix.inputs.home-manager.follows = "empty";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "systems";
-    agenix.url = "github:ryantm/agenix";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
