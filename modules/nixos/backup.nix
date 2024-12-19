@@ -32,8 +32,8 @@
   config = {
     # 100GB storagebox is attached to the build02 server
 
-    age.secrets.hetzner-borgbackup-ssh = {
-      file = "${inputs.self}/secrets/hetzner-borgbackup-ssh.age";
+    sops.secrets.hetzner-borgbackup-ssh = {
+      sopsFile = "${inputs.self}/modules/secrets/backup.yaml";
     };
 
     programs.ssh.knownHosts.hetzner-storage-box = {
@@ -49,7 +49,7 @@
           repo = "u416406@u416406.your-storagebox.de:/./${config.networking.hostName}-${backup.name}";
           encryption.mode = "none";
           compression = "auto,zstd";
-          environment.BORG_RSH = "ssh -oPort=23 -i ${config.age.secrets.hetzner-borgbackup-ssh.path}";
+          environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-borgbackup-ssh.path}";
           preHook = "set -x";
           postHook = ''
             cat > /var/log/telegraf/borgbackup-job-${backup.name}.service <<EOF
