@@ -26,13 +26,15 @@
 
     '';
 
-    age.secrets.community-builder-nix-access-tokens = {
-      file = "${inputs.self}/secrets/community-builder-nix-access-tokens.age";
+    sops.secrets.community-builder-nix-access-tokens = {
+      sopsFile = "${inputs.self}/modules/secrets/community-builder.yaml";
       mode = "444";
     };
 
+    # fine-grained, no permissions github token, expires 2025-10-29
+    # from `nix-community-buildbot` (user account, not the github app)
     nix.extraOptions = ''
-      !include ${config.age.secrets.community-builder-nix-access-tokens.path}
+      !include ${config.sops.secrets.community-builder-nix-access-tokens.path}
     '';
 
     # useful for people that want to test stuff
