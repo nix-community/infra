@@ -11,7 +11,7 @@
           - "secrets.yaml"
           - "**/*/*.enc.json"
           - "**/*/secrets.yaml"
-          - "secrets/**/*"
+          - "modules/secrets/**/*"
 
 "terraform":
   - changed-files:

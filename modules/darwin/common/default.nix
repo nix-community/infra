@@ -12,7 +12,6 @@
     ./sops-nix.nix
     ./telegraf.nix
     ./users.nix
-    inputs.agenix.darwinModules.age
     inputs.srvos.darwinModules.server
   ];
 

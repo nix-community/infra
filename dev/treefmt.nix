@@ -32,7 +32,6 @@
   };
 
   settings.global.excludes = [
-    "*.age"
     # vendored from external source
     "hosts/build02/packages-with-update-script.nix"
   ];
