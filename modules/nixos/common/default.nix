@@ -8,6 +8,7 @@
   imports = [
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
+    ./armv7l.nix
     ./builder.nix
     ./security.nix
     ./sops-nix.nix
