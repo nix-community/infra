@@ -10,6 +10,8 @@ let
     ]
     ++ config.nix.settings.extra-platforms
     ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
+
+  WORKER_COUNT = toString config.nix.settings.max-jobs;
 in
 {
   imports = [
@@ -22,8 +24,16 @@ in
   sops.secrets.buildbot-github-oauth-secret = { };
   sops.secrets.buildbot-github-app-secret-key = { };
   sops.secrets.buildbot-github-webhook-secret = { };
-  sops.secrets.buildbot-nix-workers = { };
+  sops.secrets.buildbot-nix-worker-password = { };
   sops.secrets.cachix-auth-token = { };
+
+  sops.templates.buildbot-nix-workers.content = ''
+    [{
+      "name": "${config.networking.hostName}",
+      "pass": "${config.sops.placeholder.buildbot-nix-worker-password}",
+      "cores": ${WORKER_COUNT}
+    }]
+  '';
 
   services.buildbot-nix.master = {
     enable = true;
@@ -39,7 +49,7 @@ in
     evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
     jobReportLimit = 0;
-    workersFile = config.sops.secrets.buildbot-nix-workers.path;
+    workersFile = config.sops.templates.buildbot-nix-workers.path;
     cachix = {
       enable = true;
       name = "nix-community";
@@ -62,7 +72,7 @@ in
     titleUrl = "https://nix-community.org/";
   };
 
-  sops.secrets.buildbot-nix-worker-password = { };
+  systemd.services.buildbot-worker.environment = { inherit WORKER_COUNT; };
 
   services.buildbot-nix.worker = {
     enable = true;
