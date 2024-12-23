@@ -14,6 +14,9 @@
     # kernel samepage merging
     hardware.ksm.enable = true;
 
+    hardware.rasdaemon.enable = true;
+    services.telegraf.extraConfig.inputs.ras = { };
+
     systemd.services.free-space = {
       serviceConfig.Type = "oneshot";
       startAt = "hourly";
