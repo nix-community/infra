@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -8,7 +9,7 @@ let
   hostInfo = pkgs.writeShellApplication {
     name = "host-info";
     runtimeInputs = [
-      pkgs.nix
+      config.nix.package
       pkgs.gnused
       pkgs.jq
     ];
