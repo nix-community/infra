@@ -104,53 +104,37 @@ teams:
     # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
     permission: admin
 
-branches:
-  # gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/nix-community/infra/branches/master/protection
-
-  # not available in the api yet
-  # `Require merge queue`: true
-  # `Merge method`: Rebase and merge
-  # `Maximum pull requests to build`: 1
-  # `Maximum pull requests to merge`: 1
-  # defaults:
-  # `Maximum pull requests to build`: 5
-  # `Minimum pull requests to merge`: 1 or 5 minutes
-  # `Maximum pull requests to merge`: 5
-  # `Only merge non-failing pull requests`: true
-  # `Consider check failed after`: 60 minutes
-
+# See https://docs.github.com/en/rest/repos/rules#update-a-repository-ruleset for all available ruleset properties and a description of each.
+rulesets:
   - name: master
-    # https://docs.github.com/en/rest/reference/repos#update-branch-protection
-    # Branch Protection settings. Set to null to disable
-    protection:
-      # Required. Require at least one approving review on a pull request, before merging. Set to null to disable.
-
-      # these settings are the same as manually enabling "Require a pull request before merging" but not setting any other restrictions
-      required_pull_request_reviews:
-        # # The number of approvals required. (1-6)
-        required_approving_review_count: 0
-        # # Dismiss approved reviews automatically when a new commit is pushed.
-        dismiss_stale_reviews: false
-        # # Blocks merge until code owners have reviewed.
-        require_code_owner_reviews: false
-        # # Specify which users and teams can dismiss pull request reviews. Pass an empty dismissal_restrictions object to disable. User and team dismissal_restrictions are only available for organization-owned repositories. Omit this parameter for personal repositories.
-        # dismissal_restrictions:
-        #   users: []
-        #   teams: []
-        require_last_push_approval: false
-      # Required. Require status checks to pass before merging. Set to null to disable
-      required_status_checks:
-        # Required. Require branches to be up to date before merging.
-        strict: false
-        # Required. The list of status checks to require in order to merge into this branch
-        contexts:
-          - buildbot/nix-build
-      # Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable.
-      enforce_admins: true
-      # Disabled for bors to work
-      required_linear_history: false
-      # Required. Restrict who can push to this branch. Team and user restrictions are only available for organization-owned repositories. Set to null to disable.
-      restrictions:
-        apps: []
-        users: ["nix-infra-bot"]
-        teams: []
+    target: branch
+    enforcement: active
+    conditions:
+      ref_name:
+        include:
+          - "~DEFAULT_BRANCH"
+        exclude: []
+    rules:
+      - type: deletion
+      - type: non_fast_forward
+      - type: required_status_checks
+        parameters:
+          strict_required_status_checks_policy: false
+          required_status_checks:
+            - context: buildbot/nix-build
+      - type: pull_request
+        parameters:
+          dismiss_stale_reviews_on_push: false
+          require_code_owner_review: false
+          require_last_push_approval: false
+          required_approving_review_count: 0
+          required_review_thread_resolution: false
+      - type: merge_queue
+        parameters:
+          check_response_timeout_minutes: 60
+          grouping_strategy: ALLGREEN
+          max_entries_to_build: 1
+          max_entries_to_merge: 1
+          merge_method: REBASE
+          min_entries_to_merge: 1
+          min_entries_to_merge_wait_minutes: 5
