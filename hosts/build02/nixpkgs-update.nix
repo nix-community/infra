@@ -21,6 +21,11 @@ let
     cachix
     apacheHttpd # for rotatelogs, used by worker script
     socat # used by worker script
+
+    coreutils
+    gist
+    nixpkgs-review
+    tree
   ];
 
   mkWorker = name: {

@@ -34,9 +34,8 @@
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
-    nixpkgs-update.inputs.runtimeDeps.follows = "nixpkgs";
     nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
-    nixpkgs-update.url = "github:nix-community/nixpkgs-update";
+    nixpkgs-update.url = "github:nix-community/nixpkgs-update/infra";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
