@@ -24,7 +24,17 @@ let
 
     coreutils
     gist
-    nixpkgs-review
+    # https://github.com/Mic92/nixpkgs-review/issues/446
+    (nixpkgs-review.overrideAttrs (_: {
+      name = "nixpkgs-review-2.12.0";
+      version = "2.12.0";
+      src = fetchFromGitHub {
+        owner = "Mic92";
+        repo = "nixpkgs-review";
+        tag = "2.12.0";
+        hash = "sha256-yNdBqL3tceuoUHx8/j2y5ZTq1zeVDAm37RZtlCbC6rg=";
+      };
+    }))
     tree
   ];
 
