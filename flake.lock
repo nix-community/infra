@@ -251,23 +251,21 @@
           "empty"
         ],
         "nixpkgs": "nixpkgs_2",
-        "runtimeDeps": [
-          "nixpkgs"
-        ],
         "treefmt-nix": [
           "treefmt-nix"
         ]
       },
       "locked": {
-        "lastModified": 1734559477,
-        "narHash": "sha256-Jwvow0ri+ZgCdP6jpNQVjxub14Pxs1kyjvDV3BbvNzE=",
+        "lastModified": 1736218503,
+        "narHash": "sha256-X88+dZu7WALRh+2F6YLltROJthpOmluOYsJTyNtFIRQ=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "7f089591e8f595011323c8a7370b195fa3dfe0b7",
+        "rev": "450b814004c86a7880a95d6a0e40ab8260c9367f",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "infra",
         "repo": "nixpkgs-update",
         "type": "github"
       }
