@@ -131,7 +131,7 @@
             }
             // nixosConfigurations
             // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
-              inherit (self'.packages) docs docs-linkcheck;
+              inherit (self'.packages) docs; # docs-linkcheck
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
