@@ -16,6 +16,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  systemd.targets.network-online.wantedBy = [ "multi-user.target" ];
+
   nix.settings.max-jobs = 96;
 
   nixpkgs.hostPlatform.gcc.arch = "znver4";
