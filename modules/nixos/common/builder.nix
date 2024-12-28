@@ -11,6 +11,9 @@
 
     boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
+    # kernel samepage merging
+    hardware.ksm.enable = true;
+
     systemd.services.free-space = {
       serviceConfig.Type = "oneshot";
       startAt = "hourly";
