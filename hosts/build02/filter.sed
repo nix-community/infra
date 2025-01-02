@@ -1,3 +1,6 @@
+# replace versioned with the most-compatible (26) not the latest (27)
+s|beam\w*2[0-9]*Packages|beam26Packages|g
+
 # 1. replace versioned generic kernels with unversioned
 s|linuxKernel.packages.linux_[0-9_]*\.|linuxPackages.|g
 # 2. drop other kernels (hardened, xanmod, zen, etc)
