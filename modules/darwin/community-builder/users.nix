@@ -367,6 +367,13 @@ let
       uid = 557;
       keys = ./keys/FliegendeWurst;
     }
+    {
+      # lib.maintainers.numinit, https://github.com/numinit
+      name = "numinit";
+      trusted = true;
+      uid = 558;
+      keys = ./keys/numinit;
+    }
   ];
 in
 {
