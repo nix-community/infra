@@ -9,6 +9,9 @@
   config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
     nix.gc.automatic = false;
 
+    hardware.rasdaemon.enable = true;
+    services.telegraf.extraConfig.inputs.ras = { };
+
     boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
     systemd.services.free-space = {
