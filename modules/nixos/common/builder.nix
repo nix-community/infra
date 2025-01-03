@@ -9,7 +9,7 @@
   config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
     nix.gc.automatic = false;
 
-    boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
 
     # kernel samepage merging
     hardware.ksm.enable = true;
