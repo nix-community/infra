@@ -16,7 +16,6 @@
       pkgs.coreutils
       pkgs.curl
       pkgs.kexec-tools
-      pkgs.nvd
     ];
     script = builtins.readFile ./update.bash;
   };
