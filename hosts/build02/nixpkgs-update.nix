@@ -21,6 +21,20 @@ let
     cachix
     apacheHttpd # for rotatelogs, used by worker script
     socat # used by worker script
+
+    coreutils
+    gist
+    (nixpkgs-review.overrideAttrs (_: {
+      name = "nixpkgs-review-2.12.0";
+      version = "2.12.0";
+      src = fetchFromGitHub {
+        owner = "Mic92";
+        repo = "nixpkgs-review";
+        tag = "2.12.0";
+        hash = "sha256-yNdBqL3tceuoUHx8/j2y5ZTq1zeVDAm37RZtlCbC6rg=";
+      };
+    }))
+    tree
   ];
 
   mkWorker = name: {
