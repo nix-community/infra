@@ -38,7 +38,7 @@ creation_rules:
     path_regex: ^hosts/build04/secrets.yaml$
   - key_groups:
       - age:
-          - age1tc0yavxcq9hnf8rl5akv4twzaqkz5p9g80r2kf8cdv4urxgm4qnszccsy3
+          - age15dljvnazm0njdt7fh7drlsqnqx35766aex8zsv634zzpecu9cdgssmqv9a
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
           - age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
@@ -77,7 +77,7 @@ creation_rules:
   - key_groups:
       - age:
           - age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
-          - age1tc0yavxcq9hnf8rl5akv4twzaqkz5p9g80r2kf8cdv4urxgm4qnszccsy3
+          - age15dljvnazm0njdt7fh7drlsqnqx35766aex8zsv634zzpecu9cdgssmqv9a
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
           - age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
