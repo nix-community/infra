@@ -58,6 +58,8 @@
         pkgs.wezterm.terminfo
       ];
 
+    srvos.server.docs.enable = true;
+
     programs.nix-index-database.comma.enable = true;
 
     programs.fish = {
