@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     ./builders.nix
@@ -15,8 +15,6 @@
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
-
-  boot.kernelPackages = pkgs.lib.mkForce pkgs.linuxKernel.packages.linux_6_6;
 
   nix.settings.max-jobs = 96;
 
