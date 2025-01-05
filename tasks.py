@@ -30,12 +30,16 @@ def deploy(c: Any, hosts: str) -> None:
             command = "sudo nixos-rebuild"
             target = f"{h.host}"
 
-        res = h.run_local(
-            ["nix", "flake", "archive", "--to", f"ssh://{target}", "--json"],
+        res = subprocess.run(
+            ["nix", "flake", "metadata", "--json"],
+            text=True,
+            check=True,
             stdout=subprocess.PIPE,
         )
         data = json.loads(res.stdout)
         path = data["path"]
+
+        h.run_local(f"nix copy --to ssh://{target} {path}")
 
         hostname = h.host.replace(".nix-community.org", "")
         h.run(
