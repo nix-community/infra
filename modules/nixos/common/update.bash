@@ -2,7 +2,15 @@ arch=$(uname -m)
 hostname=$(uname -n)
 p=$(curl -L https://buildbot.nix-community.org/nix-outputs/nix-community/infra/master/"$arch"-linux.host-"$hostname")
 
+cancel_reboot() {
+  if [[ -e /run/systemd/shutdown/scheduled ]]; then
+    shutdown -c
+    kexec --unload
+  fi
+}
+
 if [[ "$(readlink /run/current-system)" == "$p" ]]; then
+  cancel_reboot
   exit 0
 fi
 
@@ -26,5 +34,6 @@ if [[ $booted != "$built" ]]; then
     shutdown -r "+$(shuf -i 5-60 -n 1)"
   fi
 else
+  cancel_reboot
   /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 fi
