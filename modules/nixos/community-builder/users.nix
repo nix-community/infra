@@ -126,6 +126,11 @@ let
       keys = ./keys/pinpox;
     }
     {
+      name = "perchun";
+      trusted = true;
+      keys = ./keys/perchun;
+    }
+    {
       name = "raboof";
       # lib.maintainers.raboof, https://github.com/raboof
       trusted = true;
