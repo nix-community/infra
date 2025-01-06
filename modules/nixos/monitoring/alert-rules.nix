@@ -43,6 +43,8 @@
           expr = ''systemd_units_active_code{name="matrix-hook.service", sub!="running"}'';
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
         };
+
+        SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build05"} != 1'';
       };
   };
 }
