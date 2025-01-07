@@ -30,7 +30,7 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
