@@ -205,6 +205,12 @@ let
       trusted = true;
       keys = ./keys/enzime;
     }
+    {
+      # lib.maintainers.hexa, https://github.com/mweinelt
+      name = "hexa";
+      trusted = true;
+      keys = ./keys/hexa;
+    }
   ];
 in
 {
