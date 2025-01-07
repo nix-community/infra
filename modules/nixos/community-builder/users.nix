@@ -44,6 +44,11 @@ let
       keys = ./keys/ckie;
     }
     {
+      name = "dandellion";
+      trusted = true;
+      keys = ./keys/dandellion;
+    }
+    {
       name = "fgaz";
       trusted = true;
       keys = ./keys/fgaz;
