@@ -371,6 +371,13 @@ let
       uid = 558;
       keys = ./keys/numinit;
     }
+    {
+      # lib.maintainers.leona, https://github.com/leona-ya
+      name = "leona";
+      trusted = true;
+      uid = 559;
+      keys = ./keys/leona;
+    }
   ];
 in
 {
