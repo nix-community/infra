@@ -216,6 +216,12 @@ let
       trusted = true;
       keys = ./keys/hexa;
     }
+    {
+      # lib.maintainers.leona, https://github.com/leona-ya
+      name = "leona";
+      trusted = true;
+      keys = ./keys/leona;
+    }
   ];
 in
 {
