@@ -177,6 +177,11 @@ let
       keys = ./keys/tomberek;
     }
     {
+      name = "tomfitzhenry";
+      trusted = true;
+      keys = ./keys/tomfitzhenry;
+    }
+    {
       name = "winter";
       trusted = true;
       keys = ./keys/winter;
