@@ -232,6 +232,12 @@ let
       trusted = true;
       keys = ./keys/leona;
     }
+    {
+      # lib.maintainers.zimward, https://github.com/zimward
+      name = "zimward";
+      trusted = true;
+      keys = ./keys/zimward;
+    }
   ];
 in
 {
