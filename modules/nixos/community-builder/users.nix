@@ -116,6 +116,11 @@ let
       keys = ./keys/nicoo;
     }
     {
+      name = "NobbZ";
+      trusted = true;
+      keys = ./keys/nobbz;
+    }
+    {
       name = "raitobezarius";
       trusted = true;
       keys = ./keys/raitobezarius;
