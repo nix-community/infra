@@ -232,6 +232,11 @@ let
       trusted = true;
       keys = ./keys/leona;
     }
+    {
+      name = "wolfgangwalther";
+      trusted = true;
+      keys = ./keys/wolfgangwalther;
+    }
   ];
 in
 {
