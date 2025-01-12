@@ -237,6 +237,12 @@ let
       trusted = true;
       keys = ./keys/wolfgangwalther;
     }
+    {
+      # lib.maintainers.numinit, https://github.com/numinit
+      name = "numinit";
+      trusted = true;
+      keys = ./keys/numinit;
+    }
   ];
 in
 {
