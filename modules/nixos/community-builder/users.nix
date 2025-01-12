@@ -103,6 +103,12 @@ let
       keys = ./keys/linj;
     }
     {
+      name = "misuzu";
+      # lib.maintainers.misuzu https://github.com/misuzu
+      trusted = true;
+      keys = ./keys/misuzu;
+    }
+    {
       name = "mrcjkb";
       # lib.maintainers.mrcjkb https://github.com/mrcjkb
       trusted = true;
