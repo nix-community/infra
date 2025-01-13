@@ -14,6 +14,4 @@ in
       inherit authorizedKeys;
     };
   };
-
-  nix.settings.trusted-users = [ "@admin" ];
 }
