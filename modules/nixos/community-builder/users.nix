@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 let
   users = [
-    # 1. Generate an SSH key for your root account and add the public
-    #    key to a file matching your name in ./keys/
-    #
-    # 2. Copy / paste this in order, alphabetically:
-    #
-    #    youruser.keys = ./keys/youruser;
-    #
+    # To add yourself:
+    # 1. Add an entry to this list.
+    # 2. Create a file in `keys` named your user name that contains your SSH key(s), separated by newlines.
     {
       name = "0x4A6F";
       trusted = true;
