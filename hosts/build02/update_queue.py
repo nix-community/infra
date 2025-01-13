@@ -27,9 +27,9 @@ def generate_html_table(rows):
     table_rows = "".join(
         f"""
         <tr>
-            <td>{row['number']}</td>
-            <td>{row['attr_path']}</td>
-            <td>{row['payload']}</td>
+            <td>{row["number"]}</td>
+            <td>{row["attr_path"]}</td>
+            <td>{row["payload"]}</td>
         </tr>
         """
         for row in rows
