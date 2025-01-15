@@ -194,6 +194,12 @@ let
       keys = ./keys/winter;
     }
     {
+      # lib.maintainers.pbsds, https://github.com/pbsds
+      name = "pbsds";
+      trusted = true;
+      keys = ./keys/pbsds;
+    }
+    {
       name = "matthewcroughan";
       trusted = true;
       keys = ./keys/matthewcroughan;
