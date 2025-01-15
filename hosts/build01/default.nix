@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.self.nixosModules.cgroups
@@ -6,8 +6,6 @@
     inputs.self.nixosModules.disko-zfs
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
-
-  boot.zfs.package = pkgs.zfs_unstable;
 
   nix.settings.max-jobs = 24;
 
