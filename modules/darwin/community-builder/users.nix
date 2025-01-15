@@ -378,6 +378,13 @@ let
       uid = 559;
       keys = ./keys/leona;
     }
+    {
+      # lib.maintainers.katexochen, https://github.com/katexochen
+      name = "katexochen";
+      trusted = true;
+      uid = 560;
+      keys = ./keys/katexochen;
+    }
   ];
 in
 {

@@ -82,6 +82,12 @@ let
       keys = ./keys/jtojnar;
     }
     {
+      # lib.maintainers.katexochen, https://github.com/katexochen
+      name = "katexochen";
+      trusted = true;
+      keys = ./keys/katexochen;
+    }
+    {
       name = "lewo";
       trusted = true;
       keys = ./keys/lewo;
