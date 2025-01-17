@@ -63,6 +63,7 @@
       ];
       excludes = [
         "config.yaml"
+        "docs/sponsors.md"
         "*secrets.yaml"
         "modules/secrets/*.yaml"
       ];

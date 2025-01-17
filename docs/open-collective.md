@@ -1,8 +1,8 @@
-<style>
-div.opencollective-banner > iframe {
-    height: 700px;
-}
-</style>
+---
+hide:
+  - navigation
+---
+
 <noscript>
   <a href="https://opencollective.com/nix-community">https://opencollective.com/nix-community</a>
 </noscript>

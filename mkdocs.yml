@@ -35,6 +35,8 @@ theme:
     repo: fontawesome/brands/github
 
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - toc:
       toc_depth: 0
 
