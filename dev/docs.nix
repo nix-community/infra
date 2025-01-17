@@ -5,7 +5,10 @@
     docs =
       pkgs.runCommand "docs"
         {
-          buildInputs = [ pkgs.python3.pkgs.mkdocs-material ];
+          buildInputs = [
+            pkgs.python3.pkgs.mkdocs-material
+            pkgs.python3.pkgs.mkdocs-material.optional-dependencies.recommended
+          ];
           files = pkgs.lib.fileset.toSource {
             root = ../.;
             fileset = pkgs.lib.fileset.unions [
