@@ -223,6 +223,12 @@ let
       keys = ./keys/emily;
     }
     {
+      name = "emilylange";
+      # lib.maintainers.emilylange, https://github.com/emilylange
+      trusted = true;
+      keys = ./keys/emilylange;
+    }
+    {
       name = "doronbehar";
       # lib.maintainers.doronbehar, https://github.com/doronbehar
       trusted = true;
