@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   # Used to find the project root
   projectRootFile = ".git/config";
@@ -43,6 +43,18 @@
       priority = 9; # last
     };
 
+    json-sort-compact = {
+      command = pkgs.writeShellScriptBin "json-sort-compact" ''
+        for file in "$@"; do
+          ${lib.getExe pkgs.jq} \
+            'walk(if type == "array" then sort else . end)' \
+            --compact-output --sort-keys < "$file" |
+            ${lib.getExe' pkgs.moreutils "sponge"} "$file"
+        done
+      '';
+      includes = [ "*report.json" ];
+    };
+
     shellcheck.priority = 1;
     shfmt.priority = 2;
 
@@ -62,6 +74,7 @@
         "never"
       ];
       excludes = [
+        "*report.json"
         "config.yaml"
         "*secrets.yaml"
         "modules/secrets/*.yaml"
