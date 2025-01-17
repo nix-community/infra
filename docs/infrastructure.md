@@ -1,6 +1,6 @@
 ### Hosts
 
-#### `build01` - [`build-box.nix-community.org`](./community-builder.md)
+#### `build01` - [`build-box.nix-community.org`](./community-builders.md)
 
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
@@ -30,7 +30,7 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 960GB NVME
 
-#### `build05` - [`aarch64-build-box.nix-community.org`](./community-builder.md)
+#### `build05` - [`aarch64-build-box.nix-community.org`](./community-builders.md)
 
 - Provider: Hetzner
 - Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
@@ -38,7 +38,7 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 960GB NVME
 
-#### `darwin01` - [`darwin-build-box.nix-community.org`](./community-builder.md)
+#### `darwin01` - [`darwin-build-box.nix-community.org`](./community-builders.md)
 
 - Provider: OakHost
 - Instance type: [Apple Mac mini M4.M](https://www.oakhost.net/product/mac-mini-hosting-m4-32gb)

@@ -7,7 +7,7 @@ nav:
       - Faster GitHub Actions: namespace-actions.md
       - package-sets.md
       - cache.md
-      - community-builder.md
+      - community-builders.md
       - R. RyanTM nixpkgs-update bot: update-bot.md
       - NUR update: nur-update.md
       - nix-community.org DNS: dns.md
@@ -37,6 +37,12 @@ theme:
 markdown_extensions:
   - toc:
       toc_depth: 0
+
+plugins:
+  - redirects:
+      redirect_maps:
+        "community-builder.md": "community-builders.md"
+  - search
 
 extra:
   social:
