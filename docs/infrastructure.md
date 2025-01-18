@@ -7,6 +7,10 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 1.92TB NVME
 
+```json
+--8<-- "docs/build01.json"
+```
+
 #### [`aarch64-build-box.nix-community.org`](./community-builders.md) - `build05`
 
 - Provider: Hetzner
@@ -15,6 +19,10 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 960GB NVME
 
+```json
+--8<-- "docs/build05.json"
+```
+
 #### [`darwin-build-box.nix-community.org`](./community-builders.md) - `darwin01`
 
 - Provider: OakHost
@@ -22,6 +30,10 @@
 - CPU: Apple M4
 - RAM: 32GB
 - Drives: 1TB SSD
+
+```json
+--8<-- "docs/darwin01.json"
+```
 
 ### Continuous Integration
 
@@ -33,6 +45,10 @@
 - RAM: 256GB DDR5 ECC
 - Drives: 2 x 1.92TB NVME
 
+```json
+--8<-- "docs/build03.json"
+```
+
 #### [`CI builder`](./continuous-integration.md) - `build04`
 
 - Provider: Hetzner
@@ -40,6 +56,10 @@
 - CPU: Ampere Altra Q80-30 80-Core Processor
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 960GB NVME
+
+```json
+--8<-- "docs/build04.json"
+```
 
 #### [`CI builder`](./continuous-integration.md) - `darwin02`
 
@@ -49,6 +69,10 @@
 - RAM: 32GB
 - Drives: 1TB SSD
 
+```json
+--8<-- "docs/darwin02.json"
+```
+
 ### Other
 
 #### [`R. RyanTM nixpkgs-update bot`](./update-bot.md) - `build02`
@@ -57,6 +81,10 @@
 - CPU: AMD Ryzen 9 3900 12-Core Processor
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 1.92TB NVME
+
+```json
+--8<-- "docs/build02.json"
+```
 
 #### [`Monitoring`](./monitoring.md) - `web02`
 

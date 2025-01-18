@@ -37,6 +37,8 @@ theme:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - pymdownx.snippets
+  - pymdownx.superfences
   - toc:
       toc_depth: 0
 
