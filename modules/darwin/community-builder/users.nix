@@ -385,6 +385,13 @@ let
       uid = 560;
       keys = ./keys/katexochen;
     }
+    {
+      # lib.maintainers.booxter, https://github.com/booxter
+      name = "booxter";
+      trusted = true;
+      uid = 561;
+      keys = ./keys/booxter;
+    }
   ];
 in
 {
