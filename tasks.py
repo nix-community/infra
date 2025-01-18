@@ -39,7 +39,19 @@ def deploy(c: Any, hosts: str) -> None:
         data = json.loads(res.stdout)
         path = data["path"]
 
-        h.run_local(f"nix copy --to ssh://{target} {path}")
+        send = (
+            "nix flake archive"
+            if any(
+                (
+                    n.get("locked", {}).get("type") == "path"
+                    or n.get("locked", {}).get("url", "").startswith("file:")
+                )
+                for n in data["locks"]["nodes"].values()
+            )
+            else f"nix copy {path}"
+        )
+
+        h.run_local(f"{send} --to ssh://{target}")
 
         hostname = h.host.replace(".nix-community.org", "")
         h.run(
