@@ -54,6 +54,7 @@
       systems = import inputs.systems;
 
       imports = [
+        ./dev/docs.nix
         ./dev/effect-deploy.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
@@ -107,7 +108,6 @@
         }:
         {
           imports = [
-            ./dev/docs.nix
             ./dev/shell.nix
             ./terraform/shell.nix
           ];
