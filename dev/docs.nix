@@ -23,10 +23,6 @@
         '';
     docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
       extraConfig = {
-        exclude = [
-          "https://fonts.gstatic.com"
-          "https://monitoring.nix-community.org/alertmanager" # 401 behind auth
-        ];
         include_mail = true;
         include_verbatim = true;
       };
