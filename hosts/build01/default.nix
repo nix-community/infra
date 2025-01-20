@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     inputs.self.nixosModules.cgroups
@@ -6,6 +6,8 @@
     inputs.self.nixosModules.disko-zfs
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
   nix.settings.max-jobs = 24;
 
