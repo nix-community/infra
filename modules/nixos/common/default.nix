@@ -35,6 +35,26 @@
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
 
+  systemd.services.sysctl-after-boot = {
+    serviceConfig.Restart = "on-failure";
+    serviceConfig.Type = "oneshot";
+    path = [
+      pkgs.procps
+    ];
+    script = ''
+      sysctl -w kernel.hardlockup_panic=1
+      sysctl -w kernel.hung_task_panic=1
+      sysctl -w kernel.panic_on_oops=1
+      sysctl -w kernel.panic=60
+      sysctl -w kernel.softlockup_panic=1
+    '';
+  };
+
+  systemd.timers.sysctl-after-boot = {
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnBootSec = "5m";
+  };
+
   # https://github.com/NixOS/nixpkgs/pull/268121
   # https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram
   boot.kernel.sysctl = {
