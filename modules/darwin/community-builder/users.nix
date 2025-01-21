@@ -392,6 +392,13 @@ let
       uid = 561;
       keys = ./keys/booxter;
     }
+    {
+      # lib.maintainers.natsukium, https://github.com/natsukium
+      name = "natsukium";
+      trusted = true;
+      uid = 562;
+      keys = ./keys/natsukium;
+    }
   ];
 in
 {

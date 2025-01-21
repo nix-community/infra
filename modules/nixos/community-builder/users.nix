@@ -269,6 +269,12 @@ let
       trusted = true;
       keys = ./keys/numinit;
     }
+    {
+      # lib.maintainers.natsukium, https://github.com/natsukium
+      name = "natsukium";
+      trusted = true;
+      keys = ./keys/natsukium;
+    }
   ];
 in
 {
