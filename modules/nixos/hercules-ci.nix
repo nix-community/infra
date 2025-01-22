@@ -21,4 +21,7 @@ in
       secretsJsonPath = config.sops.secrets.hercules-secrets.path;
     };
   };
+
+  # State 'stop-sigterm' timed out. Killing.
+  systemd.services.hercules-ci-agent.serviceConfig.TimeoutStopSec = 15;
 }
