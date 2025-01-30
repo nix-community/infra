@@ -275,6 +275,12 @@ let
       trusted = true;
       keys = ./keys/natsukium;
     }
+    {
+      # lib.maintainers.nilp0inter, https://github.com/nilp0inter
+      name = "nilp0inter";
+      trusted = true;
+      keys = ./keys/nilp0inter;
+    }
   ];
 in
 {
