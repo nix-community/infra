@@ -3,6 +3,9 @@ terraform {
     cloudflare = {
       source = "cloudflare/cloudflare"
     }
+    github = {
+      source = "integrations/github"
+    }
     hydra = {
       source = "DeterminateSystems/hydra"
     }
@@ -27,6 +30,11 @@ provider "hydra" {
   host     = "https://hydra.nix-community.org"
   password = data.sops_file.nix-community.data["HYDRA_PASSWORD"]
   username = "admin"
+}
+
+provider "github" {
+  # admin provides their own token
+  owner = "nix-community"
 }
 
 provider "tfe" {
