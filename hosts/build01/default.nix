@@ -7,9 +7,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  # zfs create zroot/writeback -V 128G
-  zramSwap.writebackDevice = "/dev/zvol/zroot/writeback";
-
   nix.settings.max-jobs = 24;
 
   nixpkgs.hostPlatform.gcc.arch = "znver2";
