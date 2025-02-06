@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737589680,
-        "narHash": "sha256-XCNU00rPJX0Ca7S4fXbGR1gCrP1tXQlP0+0vorqVmUw=",
+        "lastModified": 1738838780,
+        "narHash": "sha256-cbRznTfcsGeXE74wOnVAr39bkZhp0NwgCvjOy9GnhWY=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "3c21e195ad53ffef484b956902dc1c28a2c1f3d7",
+        "rev": "bac8de03bc8c3cc5d05c5ded05693d15c759e888",
         "type": "github"
       },
       "original": {
