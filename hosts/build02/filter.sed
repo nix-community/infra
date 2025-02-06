@@ -6,6 +6,9 @@ s|linuxKernel.packages.linux_[0-9_]*\.|linuxPackages.|g
 # 2. drop other kernels (hardened, xanmod, zen, etc)
 /linuxKernel.packages.linux_\w*/d
 
+# replace versioned/jit with the version used by neovim
+s|lua\w*Packages|lua51Packages|g
+
 # replace versioned with unversioned
 s|php\w*Extensions|phpExtensions|g
 s|php\w*Packages|phpPackages|g
