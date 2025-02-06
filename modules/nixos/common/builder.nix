@@ -11,8 +11,6 @@
 
     boot.kernelPackages = lib.mkDefault pkgs.linuxKernel.packages.linux_6_6;
 
-    boot.zfs.package = pkgs.zfs_2_3;
-
     # kernel samepage merging
     hardware.ksm.enable = true;
 
