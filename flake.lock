@@ -29,26 +29,6 @@
         "type": "github"
       }
     },
-    "cgroup-exporter": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1736508617,
-        "narHash": "sha256-YV49EvJWc+uae6R3REuk/XWZfKBKzfwx1Mu0/SlmBWE=",
-        "owner": "arianvp",
-        "repo": "cgroup-exporter",
-        "rev": "30eca88d60087e2cc7e9339acbaa6fae1f167d81",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arianvp",
-        "repo": "cgroup-exporter",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -323,7 +303,6 @@
     "root": {
       "inputs": {
         "buildbot-nix": "buildbot-nix",
-        "cgroup-exporter": "cgroup-exporter",
         "disko": "disko",
         "empty": "empty",
         "flake-compat": "flake-compat",
