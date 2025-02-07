@@ -24,6 +24,18 @@
       script = builtins.readFile "${inputs.self}/modules/shared/free-space.bash";
     };
 
+    nix.package = pkgs.nixVersions.nix_2_25;
+
+    nix.settings = {
+      experimental-features = [
+        "auto-allocate-uids"
+        "cgroups"
+      ];
+
+      auto-allocate-uids = true;
+      use-cgroups = true;
+    };
+
     nix.settings.extra-platforms = lib.mkIf (config.nixpkgs.hostPlatform.system == "x86_64-linux") [
       (lib.mkIf (config.boot.binfmt.emulatedSystems == [ ]) "i686-linux")
       "x86_64-v1-linux"
@@ -38,6 +50,7 @@
         "big-parallel"
         "kvm"
         "nixos-test"
+        "uid-range"
         "gccarch-${config.nixpkgs.hostPlatform.gcc.arch}"
       ]
       ++ map (x: "gccarch-${x}") (
