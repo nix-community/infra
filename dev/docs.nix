@@ -10,7 +10,7 @@
             {
               buildInputs = [
                 pkgs.python3.pkgs.mkdocs-material
-                pkgs.python3.pkgs.mkdocs-material.optional-dependencies.recommended
+                pkgs.python3.pkgs.mkdocs-redirects
               ];
               files = pkgs.lib.fileset.toSource {
                 root = ../.;
