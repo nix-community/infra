@@ -281,6 +281,12 @@ let
       trusted = true;
       keys = ./keys/nilp0inter;
     }
+    {
+      # lib.maintainers.booxter, https://github.com/booxter
+      name = "booxter";
+      trusted = true;
+      keys = ./keys/booxter;
+    }
   ];
 in
 {
