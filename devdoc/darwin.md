@@ -46,6 +46,14 @@ sudo rm -rf /Applications/Xcode.app
 sudo xcode-select --reset
 ```
 
+### Disable Apple Intelligence
+
+Should save about ~5GB of disk space.
+
+System Settings -> Apple Intelligence & Siri -> Toggle `Apple Intelligence` off.
+
+(Also need to check that it hasn't been re-enabled after each macOS update.)
+
 #### Check and install updates for current macOS version
 
 Updating beyond the currently installed macOS version may not be advisable.
