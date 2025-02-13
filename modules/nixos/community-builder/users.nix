@@ -292,6 +292,11 @@ let
       trusted = true;
       keys = ./keys/sinrohit;
     }
+    {
+      name = "getpsyched";
+      trusted = true;
+      keys = ./keys/getpsyched;
+    }
   ];
 in
 {
