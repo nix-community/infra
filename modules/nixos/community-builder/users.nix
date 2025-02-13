@@ -287,6 +287,11 @@ let
       trusted = true;
       keys = ./keys/booxter;
     }
+    {
+      name = "sinrohit";
+      trusted = true;
+      keys = ./keys/sinrohit;
+    }
   ];
 in
 {
