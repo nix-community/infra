@@ -5,6 +5,32 @@
   ...
 }:
 let
+  repoAllowlist = [
+    # keep-sorted start case=no
+    "nix-community/authentik-nix"
+    "nix-community/autofirma-nix"
+    "nix-community/dream2nix"
+    "nix-community/ethereum.nix"
+    "nix-community/infra"
+    "nix-community/lanzaboote"
+    "nix-community/neovim-nightly-overlay"
+    "nix-community/nh"
+    "nix-community/nix-direnv"
+    "nix-community/nix-eval-jobs"
+    "nix-community/nix-index"
+    "nix-community/nix4nvchad"
+    "nix-community/NixNG"
+    "nix-community/nixos-facter"
+    "nix-community/nixos-facter-modules"
+    "nix-community/nixos-generators"
+    "nix-community/nixos-images"
+    "nix-community/nixpkgs-update"
+    "nix-community/nixpkgs-xr"
+    "nix-community/nixvim"
+    "nix-community/srvos"
+    # keep-sorted end
+  ];
+
   buildSystems = [
     pkgs.stdenv.hostPlatform.system
   ] ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
@@ -61,7 +87,8 @@ in
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "Iv23liN9rjd1Bm3bvYKZ";
-      topic = "nix-community-buildbot";
+      topic = null;
+      inherit repoAllowlist;
     };
   };
 

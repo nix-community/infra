@@ -4,7 +4,6 @@ resource "github_repository" "infra" {
   homepage_url = "https://nix-community.org"
 
   topics = [
-    "nix-community-buildbot",
     "nix-darwin",
     "nixos",
     "terraform",

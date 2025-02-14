@@ -17,9 +17,7 @@ See [here](./infrastructure.md#continuous-integration) for details about the har
 
 _Buildbot is the only CI system that supports pull requests from forked repositories._
 
-To enable buildbot add the [`nix-community-buildbot`](https://github.com/topics/nix-community-buildbot) topic to the repository.
-
-_Newly enabled repos are imported into buildbot twice a day, you can also ask the admins to trigger an import manually._
+To enable buildbot add the repository to the `repoAllowlist` in this [file](https://github.com/nix-community/infra/blob/master/modules/nixos/buildbot.nix).
 
 #### Hercules
 
