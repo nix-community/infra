@@ -399,6 +399,13 @@ let
       uid = 562;
       keys = ./keys/natsukium;
     }
+    {
+      # lib.maintainers.hadilq, https://github.com/hadilq
+      name = "hadilq";
+      trusted = true;
+      uid = 563;
+      keys = ./keys/hadilq;
+    }
   ];
 in
 {
