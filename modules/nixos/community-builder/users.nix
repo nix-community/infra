@@ -67,6 +67,11 @@ let
       keys = ./keys/glepage;
     }
     {
+      name = "hadilq";
+      trusted = true;
+      keys = ./keys/hadilq;
+    }
+    {
       name = "hexchen";
       trusted = true;
       keys = ./keys/hexchen;
