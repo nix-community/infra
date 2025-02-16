@@ -104,7 +104,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ### Install nix-darwin
 
 ```sh
-nix --extra-experimental-features 'flakes nix-command' --option accept-flake-config true \
+sudo -H nix --extra-experimental-features 'flakes nix-command' --option accept-flake-config true \
   run 'github:LnL7/nix-darwin#darwin-rebuild' -- switch --option accept-flake-config true --flake 'github:nix-community/infra#$HOSTNAME'
 ```
 
