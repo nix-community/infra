@@ -14,7 +14,9 @@
 
 - Add their user to the list of `hydra-github-users` in [modules/nixos/hydra.nix](../modules/nixos/hydra.nix).
 
-- Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community) and a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members).
+[^1]: ["Secure two-factor methods are passkeys, security keys, authenticator apps, and the GitHub mobile app"](https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-two-factor-authentication-for-your-organization/requiring-two-factor-authentication-in-your-organization#requiring-secure-methods-of-two-factor-authentication-in-your-organization)
+
+- Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community), a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members) and ensure that they are using [secure two-factor authentication](https://github.com/orgs/nix-community/people?query=role%3Aowner+two-factor%3Asecure)[^1].
 
   - `owner` will give them admin access to [Hercules CI](https://hercules-ci.com/github/nix-community).
 
