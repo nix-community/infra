@@ -23,8 +23,7 @@ def deploy(c: Any, hosts: str) -> None:
 
     def deploy(h: DeployHost) -> None:
         if "darwin" in h.host:
-            # don't use sudo for darwin-rebuild
-            command = "darwin-rebuild"
+            command = "sudo -H darwin-rebuild"
             target = f"{h.user}@{h.host}"
         else:
             command = "sudo nixos-rebuild"
