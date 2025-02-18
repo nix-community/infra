@@ -7,9 +7,8 @@
         packages = [
           (terraform.withPlugins (p: [
             p.cloudflare
-            p.external
+            p.github
             p.hydra
-            p.null
             p.sops
             p.tfe
           ]))
