@@ -23,11 +23,10 @@ def deploy(c: Any, hosts: str) -> None:
 
     def deploy(h: DeployHost) -> None:
         if "darwin" in h.host:
-            # don't use sudo for darwin-rebuild
             command = "darwin-rebuild"
             target = f"{h.user}@{h.host}"
         else:
-            command = "sudo nixos-rebuild"
+            command = "nixos-rebuild"
             target = f"{h.host}"
 
         res = subprocess.run(
@@ -55,7 +54,7 @@ def deploy(c: Any, hosts: str) -> None:
 
         hostname = h.host.replace(".nix-community.org", "")
         h.run(
-            f"{command} switch --option accept-flake-config true --flake {path}#{hostname}"
+            f"sudo {command} switch --option accept-flake-config true --flake {path}#{hostname}"
         )
 
     g.run_function(deploy)
