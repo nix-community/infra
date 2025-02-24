@@ -34,7 +34,7 @@
     nixpkgs-update.inputs.mmdoc.follows = "empty";
     nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
     nixpkgs-update.url = "github:nix-community/nixpkgs-update/infra";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "https://nixos.org/channels/nixos-unstable-small/nixexprs.tar.xz";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
