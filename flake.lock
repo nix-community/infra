@@ -231,18 +231,14 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1740211615,
-        "narHash": "sha256-MLncFG6kIZnwX+yM84At2n1umIzUzkkEcE9F6lUD4Xw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d8e690e75da20892e6e65134e1a52b6909197f22",
-        "type": "github"
+        "lastModified": 1740304407,
+        "narHash": "sha256-EoagHqbTGJgUOV8u48ghNL/RwfGKNLCTa+TVRX599iA=",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-25.05beta757839.b7fe81518095/nixexprs.tar.xz"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://nixos.org/channels/nixos-unstable-small/nixexprs.tar.xz"
       }
     },
     "nixpkgs-update": {
