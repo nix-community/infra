@@ -53,7 +53,7 @@
       ]
       ++ builtins.filter (lib.meta.availableOn pkgs.stdenv.hostPlatform) [
         pkgs.foot.terminfo
-        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux pkgs.kitty.terminfo)
+        pkgs.kitty.terminfo
         pkgs.termite.terminfo
         pkgs.wezterm.terminfo
       ];
