@@ -406,6 +406,13 @@ let
       uid = 563;
       keys = ./keys/hadilq;
     }
+    {
+      # lib.maintainers.aciceri, https://github.com/aciceri
+      name = "aciceri";
+      trusted = true;
+      uid = 564;
+      keys = ./keys/aciceri;
+    }
   ];
 in
 {

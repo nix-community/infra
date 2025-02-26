@@ -10,6 +10,11 @@ let
       keys = ./keys/0x4A6F;
     }
     {
+      name = "aciceri";
+      trusted = true;
+      keys = ./keys/aciceri;
+    }
+    {
       name = "afh";
       trusted = true;
       keys = ./keys/afh;
