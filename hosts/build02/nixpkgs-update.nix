@@ -278,9 +278,6 @@ in
     group = "r-ryantm";
   };
 
-  # autoindex is truncated on some browsers
-  services.nginx.recommendedZstdSettings = false;
-
   services.nginx.virtualHosts."nixpkgs-update-logs.nix-community.org" = {
     locations."/" = {
       alias = "/var/log/nixpkgs-update/";
