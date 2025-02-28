@@ -170,7 +170,11 @@ in
     script = "${nixpkgs-update-bin} delete-done --delete";
   };
 
-  systemd.services.nixpkgs-update-fetch-github = mkFetcher "github" "${inputs.nixpkgs-update-github-releases}/main.py";
+  systemd.services.nixpkgs-update-fetch-github =
+    mkFetcher "github" "${inputs.nixpkgs-update-github-releases}/main.py"
+    // {
+      startAt = "0/6:10"; # every 6 hours
+    };
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" (lib.getExe repology);
   systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
 
