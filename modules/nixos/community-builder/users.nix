@@ -72,6 +72,12 @@ let
       keys = ./keys/glepage;
     }
     {
+      # lib.maintainers.grimmauld, https://github.com/lordgrimmauld
+      name = "grimmauld";
+      trusted = true;
+      keys = ./keys/grimmauld;
+    }
+    {
       name = "hadilq";
       trusted = true;
       keys = ./keys/hadilq;
