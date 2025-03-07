@@ -87,6 +87,11 @@ let
       keys = ./keys/janik;
     }
     {
+      name = "jfly";
+      trusted = true;
+      keys = ./keys/jfly;
+    }
+    {
       name = "jtojnar";
       trusted = true;
       keys = ./keys/jtojnar;
