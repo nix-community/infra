@@ -413,6 +413,12 @@ let
       uid = 564;
       keys = ./keys/aciceri;
     }
+    {
+      name = "jfly";
+      trusted = true;
+      uid = 565;
+      keys = ./keys/jfly;
+    }
   ];
 in
 {
