@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     ./builders.nix
@@ -15,6 +15,8 @@
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
+
+  systemd.watchdog.runtimeTime = lib.mkForce "30s";
 
   nix.settings.max-jobs = 96;
 
