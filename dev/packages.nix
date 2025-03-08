@@ -20,6 +20,12 @@
     src = inputs.hydra;
     buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
   });
+  kitty = prev.kitty.overrideAttrs (
+    _:
+    final.lib.optionalAttrs (final.stdenv.hostPlatform.system == "aarch64-darwin") {
+      doInstallCheck = false;
+    }
+  );
   sk-libfido2 = prev.openssh.overrideAttrs (o: {
     pname = "sk-libfido2";
     # rebase of https://github.com/openssh/openssh-portable/commit/ca0697a90e5720ba4d76cb0ae9d5572b5260a16c
