@@ -419,6 +419,14 @@ let
       uid = 565;
       keys = ./keys/jfly;
     }
+    {
+      # lib.maintainers.HeitorAugustoLN, https://github.com/HeitorAugustoLN
+      name = "heitor";
+      trusted = true;
+      uid = 566;
+      shell = pkgs.fish;
+      keys = ./keys/heitor;
+    }
   ];
 in
 {
