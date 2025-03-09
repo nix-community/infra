@@ -109,15 +109,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1739595404,
-        "narHash": "sha256-0CjCfbq0yHWexOrpO06e2WU1r5JAqR6ffy1zgM3NksI=",
-        "owner": "hercules-ci",
+        "lastModified": 1741497511,
+        "narHash": "sha256-Etb3XEeFxj/8OyPrKmOH6ULv7PlxfQPtC3bterTv63I=",
+        "owner": "qowoz",
         "repo": "hercules-ci-effects",
-        "rev": "06519cec8fb32d219006da6eacd255504a9996af",
+        "rev": "e129a705754c7dff65239e04c3b7f42f84790690",
         "type": "github"
       },
       "original": {
-        "owner": "hercules-ci",
+        "owner": "qowoz",
+        "ref": "darwin-sudo",
         "repo": "hercules-ci-effects",
         "type": "github"
       }
@@ -161,15 +162,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1741229100,
-        "narHash": "sha256-0HwrTDXp9buEwal/1ymK9uQmzUD5ozIA7CJGqnT/gLs=",
-        "owner": "LnL7",
+        "lastModified": 1741495710,
+        "narHash": "sha256-0y4rgdVnX5yw6Dma90URwjareAOBIX96i/xxFLWx7S4=",
+        "owner": "qowoz",
         "repo": "nix-darwin",
-        "rev": "adf5c88ba1fe21af5c083b4d655004431f20c5ab",
+        "rev": "6ff917b5dc3fdd5e5381dcfb3082c6047a67f517",
         "type": "github"
       },
       "original": {
-        "owner": "LnL7",
+        "owner": "qowoz",
+        "ref": "darwin-sudo",
         "repo": "nix-darwin",
         "type": "github"
       }

@@ -20,12 +20,12 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/darwin-sudo";
     hydra.flake = false;
     hydra.url = "github:qowoz/hydra/community";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.url = "github:qowoz/nix-darwin/darwin-sudo";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
