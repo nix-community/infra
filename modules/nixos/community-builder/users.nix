@@ -318,6 +318,13 @@ let
       trusted = true;
       keys = ./keys/getpsyched;
     }
+    {
+      # lib.maintainers.HeitorAugustoLN, https://github.com/HeitorAugustoLN
+      name = "heitor";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/heitor;
+    }
   ];
 in
 {
