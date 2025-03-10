@@ -15,6 +15,31 @@ os.chdir(ROOT)
 
 
 @task
+def redeploykeys(c: Any, hosts: str) -> None:
+    g = DeployGroup(get_hosts(hosts))
+
+    def deploy(h: DeployHost) -> None:
+        with TemporaryDirectory() as tmpdir:
+            hostname = h.host.replace(".nix-community.org", "")
+            flake_attr = hostname
+            dir = "/var/lib/ssh_secrets"
+            decrypt_host_key(flake_attr, tmpdir)
+            h.run(f"sudo rm -rfv {dir}")
+            h.run(f"sudo mkdir -pv {dir}")
+            h.run_local(
+                f"cat {tmpdir}{dir}/ssh_host_ed25519_key | ssh {h.host} 'sudo tee {dir}/ssh_host_ed25519_key'"
+            )
+            h.run_local(
+                f"cat {tmpdir}{dir}/initrd_host_ed25519_key | ssh {h.host} 'sudo tee {dir}/initrd_host_ed25519_key'"
+            )
+            h.run(f"sudo chown root:root {dir}/*")
+            h.run(f"sudo chmod 400 {dir}/*")
+            h.run(f"stat -c '%a %U %G %n' {dir}/*")
+
+    g.run_function(deploy)
+
+
+@task
 def deploy(c: Any, hosts: str) -> None:
     """
     Use inv deploy --hosts build01,darwin01
@@ -89,7 +114,7 @@ def print_keys(c: Any, flake_attr: str) -> None:
     """
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
-        key = f"{tmpdir}/etc/ssh/ssh_host_ed25519_key"
+        key = f"{tmpdir}/var/lib/ssh_secrets/ssh_host_ed25519_key"
         pubkey = subprocess.run(
             ["ssh-keygen", "-y", "-f", f"{key}"],
             stdout=subprocess.PIPE,
@@ -143,20 +168,30 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
     t = Path(tmpdir)
     t.mkdir(parents=True, exist_ok=True)
     t.chmod(0o755)
-    host_key = t / "etc/ssh/ssh_host_ed25519_key"
-    host_key.parent.mkdir(parents=True, exist_ok=True)
-    with open(host_key, "w", opener=opener) as fh:
-        subprocess.run(
-            [
-                "sops",
-                "--extract",
-                f'["ssh_host_ed25519_key"]["{flake_attr}"]',
-                "--decrypt",
-                f"{ROOT}/secrets.yaml",
-            ],
-            check=True,
-            stdout=fh,
-        )
+
+    def decrypt(path: str, secret: str) -> None:
+        file = t / path
+        file.parent.mkdir(parents=True, exist_ok=True)
+        with open(file, "w", opener=opener) as fh:
+            subprocess.run(
+                [
+                    "sops",
+                    "--extract",
+                    secret,
+                    "--decrypt",
+                    f"{ROOT}/secrets.yaml",
+                ],
+                check=True,
+                stdout=fh,
+            )
+
+    decrypt(
+        "var/lib/ssh_secrets/ssh_host_ed25519_key",
+        f'["ssh_host_ed25519_key"]["{flake_attr}"]',
+    )
+    decrypt(
+        "var/lib/ssh_secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]'
+    )
 
 
 @task
