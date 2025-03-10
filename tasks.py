@@ -89,7 +89,7 @@ def print_keys(c: Any, flake_attr: str) -> None:
     """
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
-        key = f"{tmpdir}/etc/ssh/ssh_host_ed25519_key"
+        key = f"{tmpdir}/var/lib/ssh_secrets/ssh_host_ed25519_key"
         pubkey = subprocess.run(
             ["ssh-keygen", "-y", "-f", f"{key}"],
             stdout=subprocess.PIPE,
@@ -143,7 +143,7 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
     t = Path(tmpdir)
     t.mkdir(parents=True, exist_ok=True)
     t.chmod(0o755)
-    host_key = t / "etc/ssh/ssh_host_ed25519_key"
+    host_key = t / "var/lib/ssh_secrets/ssh_host_ed25519_key"
     host_key.parent.mkdir(parents=True, exist_ok=True)
     with open(host_key, "w", opener=opener) as fh:
         subprocess.run(
