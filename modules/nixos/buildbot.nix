@@ -63,7 +63,8 @@ in
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "Iv23liN9rjd1Bm3bvYKZ";
-      topic = "nix-community-buildbot";
+      topic = null;
+      repoAllowlist = import ./buildbot-repo-allowlist.nix;
     };
   };
 
