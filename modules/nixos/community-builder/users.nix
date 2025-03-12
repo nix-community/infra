@@ -49,6 +49,12 @@ let
       trusted = true;
       keys = ./keys/dandellion;
     }
+    # lib.maintainers.davhau, https://github.com/davhau
+    {
+      name = "davhau";
+      trusted = true;
+      keys = ./keys/davhau;
+    }
     {
       name = "fgaz";
       trusted = true;

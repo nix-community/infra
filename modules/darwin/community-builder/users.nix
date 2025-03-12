@@ -427,6 +427,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/heitor;
     }
+    # lib.maintainers.davhau, https://github.com/davhau
+    {
+      name = "davhau";
+      trusted = true;
+      uid = 567;
+      keys = ./keys/davhau;
+    }
   ];
 in
 {
