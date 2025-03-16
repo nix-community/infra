@@ -61,6 +61,12 @@ let
       keys = ./keys/davhau;
     }
     {
+      # https://github.com/dwt
+      name = "dwt";
+      trusted = true;
+      keys = ./keys/dwt;
+    }
+    {
       name = "fgaz";
       trusted = true;
       keys = ./keys/fgaz;
