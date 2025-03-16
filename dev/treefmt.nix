@@ -6,6 +6,7 @@
   programs = {
     actionlint.enable = true;
     deadnix.enable = true;
+    keep-sorted.enable = true;
     nixfmt.enable = true;
     prettier.enable = true;
     ruff-check.enable = true;

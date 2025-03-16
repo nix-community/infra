@@ -7,6 +7,7 @@
   ];
 
   inputs = {
+    # keep-sorted start
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +45,7 @@
     systems.url = "github:nix-systems/default";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    # keep-sorted end
   };
 
   outputs =
