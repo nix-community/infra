@@ -27,9 +27,11 @@
           in
           [
             {
-              targets = builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (
-                builtins.attrValues hosts
-              );
+              targets =
+                builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (builtins.attrValues hosts)
+                ++ [
+                  "build01.nix-community.org:39273" # build01-freebsd
+                ];
               labels.org = "nix-community";
             }
           ];
