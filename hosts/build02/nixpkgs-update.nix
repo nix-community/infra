@@ -183,6 +183,7 @@ in
   systemd.services.nixpkgs-update-worker3 = mkWorker "worker3";
   systemd.services.nixpkgs-update-worker4 = mkWorker "worker4";
   systemd.services.nixpkgs-update-worker5 = mkWorker "worker5";
+  systemd.services.nixpkgs-update-worker6 = mkWorker "worker6";
   # Too many workers cause out-of-memory.
 
   systemd.services.nixpkgs-update-supervisor = {
