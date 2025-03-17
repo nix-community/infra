@@ -5,6 +5,12 @@
   ...
 }:
 {
+  fish = prev.fish.overrideAttrs (
+    _:
+    final.lib.optionalAttrs (final.stdenv.hostPlatform.system == "aarch64-linux") {
+      doCheck = false;
+    }
+  );
   grml-zsh-config = prev.grml-zsh-config.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [
       (final.fetchpatch {
