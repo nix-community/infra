@@ -33,7 +33,7 @@
       (lib.mkIf (builtins.elem "gccarch-x86-64-v4" config.nix.settings.system-features) "x86_64-v4-linux")
     ];
 
-    nix.settings.system-features =
+    nix.settings.system-features = lib.mkForce (
       [
         "benchmark"
         "big-parallel"
@@ -43,7 +43,8 @@
       ]
       ++ map (x: "gccarch-${x}") (
         lib.systems.architectures.inferiors.${config.nixpkgs.hostPlatform.gcc.arch} or [ ]
-      );
+      )
+    );
 
     # Bump the open files limit so that non-root users can run NixOS VM tests
     security.pam.loginLimits = [
