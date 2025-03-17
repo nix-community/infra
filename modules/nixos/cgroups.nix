@@ -12,7 +12,7 @@
         "cgroups"
       ];
 
-      system-features = [ "uid-range" ];
+      system-features = pkgs.lib.mkForce [ "uid-range" ];
 
       auto-allocate-uids = true;
       use-cgroups = true;
