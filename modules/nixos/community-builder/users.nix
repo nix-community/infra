@@ -15,6 +15,11 @@ let
       keys = ./keys/aciceri;
     }
     {
+      name = "adamcstephens";
+      trusted = true;
+      keys = ./keys/adamcstephens;
+    }
+    {
       name = "afh";
       trusted = true;
       keys = ./keys/afh;

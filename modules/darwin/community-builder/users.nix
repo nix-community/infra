@@ -434,6 +434,12 @@ let
       uid = 567;
       keys = ./keys/davhau;
     }
+    {
+      name = "adamcstephens";
+      trusted = true;
+      uid = 568;
+      keys = ./keys/adamcstephens;
+    }
   ];
 in
 {
