@@ -82,9 +82,13 @@
         "flakes"
         "nix-command"
       ];
-      substituters = [ "https://nix-community.cachix.org" ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://temp-cache.nix-community.org/default"
+      ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "temp-cache.nix-community.org-1:RSXIfGjilfBsilDvj03/VnL/9qAxacBnb1YQvSdCoDc="
       ];
     };
 
