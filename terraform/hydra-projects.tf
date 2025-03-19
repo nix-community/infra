@@ -96,3 +96,30 @@ resource "hydra_jobset" "microvm_nix" {
 
   email_notifications = false
 }
+
+resource "hydra_project" "nixbsd" {
+  name         = "nixbsd"
+  display_name = "NixBSD"
+  description  = "NixBSD"
+  homepage     = "https://github.com/nixos-bsd/nixbsd"
+  owner        = "admin"
+  enabled      = true
+  visible      = true
+}
+
+resource "hydra_jobset" "nixbsd" {
+  project     = hydra_project.nixbsd.name
+  state       = "enabled"
+  visible     = true
+  name        = "main"
+  type        = "flake"
+  description = "main branch"
+
+  flake_uri = "github:nixos-bsd/nixbsd"
+
+  check_interval    = 1800
+  scheduling_shares = 1000
+  keep_evaluations  = 1
+
+  email_notifications = false
+}
