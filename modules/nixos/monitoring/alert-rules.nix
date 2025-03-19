@@ -39,6 +39,11 @@
 
         Load15.expr = lib.mkForce ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
 
+        RASDaemon = {
+          expr = ''{__name__=~"ras_.*"} != 0'';
+          annotations.description = "RAS daemon reports a non-zero value";
+        };
+
         MatrixHookNotRunning = {
           expr = ''systemd_units_active_code{name="matrix-hook.service", sub!="running"}'';
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
