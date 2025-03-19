@@ -54,6 +54,7 @@ locals {
     "nixpkgs-update-logs"  = "build02.nix-community.org"
     "nur-update"           = "build03.nix-community.org"
     "prometheus"           = "web02.nix-community.org"
+    "temp-cache"           = "build03.nix-community.org"
   }
 }
 
