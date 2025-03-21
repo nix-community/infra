@@ -61,4 +61,15 @@
     ];
     doCheck = false;
   };
+  terraform-providers = prev.terraform-providers // {
+    cloudflare = (prev.terraform-providers.cloudflare.override { rev = "v4.52.0"; }).overrideAttrs (_: {
+      src = final.fetchFromGitHub {
+        owner = "cloudflare";
+        repo = "terraform-provider-cloudflare";
+        rev = "v4.52.0";
+        hash = "sha256-rgXsROzfjtUw994JH8x+j/UNMyl7E9cZ+77Fczc3uB8=";
+      };
+      vendorHash = "sha256-RULgejA/RTDHhRJRiqlgckK4Ut3GLvIE081/i6gQTjI=";
+    });
+  };
 }
