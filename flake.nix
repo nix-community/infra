@@ -117,23 +117,22 @@
           };
 
           checks =
-            let
-              darwinConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
-              devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
-              nixosConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
-            in
-            darwinConfigurations
-            // devShells
-            // {
+            {
               inherit (self') formatter;
             }
-            // nixosConfigurations
+            // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
+            //
+              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+                (
+                  (lib.filterAttrs (_: config: config.pkgs.hostPlatform.system == system)) (
+                    self.darwinConfigurations // self.nixosConfigurations
+                  )
+                )
             // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
-              inherit (self'.packages) docs docs-linkcheck;
+              inherit (self'.packages)
+                docs
+                docs-linkcheck
+                ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
