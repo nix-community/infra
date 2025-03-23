@@ -30,7 +30,7 @@
     freebsd-nix.url = "github:NixOS/nix/02abc7a8c990cf8bf97b084dfc2852b59dfcdfef";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/infra";
     lite-config.url = "github:yelite/lite-config";
     mimalloc-nix.inputs.flake-compat.follows = "flake-compat";
     mimalloc-nix.inputs.flake-parts.follows = "flake-parts";
@@ -81,6 +81,7 @@
         ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/effect-flake-update.nix
         ./dev/effect-pages.nix
         ./dev/sops.nix
         ./dev/terraform.nix
