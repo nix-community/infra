@@ -440,6 +440,14 @@ let
       uid = 568;
       keys = ./keys/adamcstephens;
     }
+    # lib.maintainers.marie, https://github.com/NyCodeGHG
+    {
+      name = "marie";
+      trusted = true;
+      uid = 569;
+      shell = pkgs.fish;
+      keys = ./keys/marie;
+    }
   ];
 in
 {
