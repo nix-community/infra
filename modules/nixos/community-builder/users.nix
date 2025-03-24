@@ -336,6 +336,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/heitor;
     }
+    {
+      # lib.maintainers.marie, https://github.com/NyCodeGHG
+      name = "marie";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/marie;
+    }
   ];
 in
 {
