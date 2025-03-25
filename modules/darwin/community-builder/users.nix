@@ -448,6 +448,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/marie;
     }
+    {
+      name = "thecomputerguy";
+      trusted = true;
+      uid = 570;
+      shell = pkgs.zsh;
+      keys = ./keys/thecomputerguy;
+    }
   ];
 in
 {
