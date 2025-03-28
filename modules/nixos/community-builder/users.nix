@@ -50,6 +50,11 @@ let
       keys = ./keys/ckie;
     }
     {
+      name = "craige";
+      trusted = true;
+      keys = ./keys/craige;
+    }
+    {
       name = "dandellion";
       trusted = true;
       keys = ./keys/dandellion;
