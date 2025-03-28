@@ -29,6 +29,8 @@
     nix-darwin.url = "github:qowoz/nix-darwin/darwin-sudo";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nixbsd.inputs.flake-compat.follows = "flake-compat";
+    nixbsd.url = "github:qowoz/nixbsd/community"; # increase disk size at freebsdRootPartition
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
@@ -128,6 +130,11 @@
             in
             darwinConfigurations
             // devShells
+            //
+              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+                (
+                  (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
+                )
             // {
               inherit (self') formatter;
             }
@@ -141,6 +148,30 @@
               nixosTests-harmonia = pkgs.nixosTests.harmonia;
               nixosTests-hydra = pkgs.nixosTests.hydra.hydra;
             };
+        };
+
+      flake.nixbsdConfigurations =
+        let
+          inherit (inputs.nixbsd.lib) nixbsdSystem;
+          common = [ ./hosts/freebsd/configuration.nix ];
+        in
+        {
+          build01-freebsd = nixbsdSystem {
+            modules = common ++ [
+              {
+                virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 64 * 1024; # 1/2
+              }
+            ];
+          };
+          build03-freebsd = nixbsdSystem {
+            modules = common ++ [
+              {
+                virtualisation.vmVariant.virtualisation.cores = 48; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 128 * 1024; # 1/2
+              }
+            ];
+          };
         };
     };
 }

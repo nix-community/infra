@@ -8,6 +8,11 @@
 let
   hostInfo = pkgs.writeShellApplication {
     name = "host-info";
+    bashOptions = [
+      "errexit"
+      "nounset"
+    ];
+    checkPhase = lib.optional pkgs.stdenv.hostPlatform.isFreeBSD null;
     runtimeInputs = [
       config.nix.package
       pkgs.gnused
@@ -29,7 +34,7 @@ in
         name: input:
         ''flake_input_last_modified{input="${name}",${lib.concatStringsSep "," (flakeAttrs input)}} ${toString input.lastModified}'';
     in
-    {
+    lib.mkIf (!pkgs.stdenv.hostPlatform.isFreeBSD) {
       "flake-inputs.prom" = {
         text = builtins.unsafeDiscardStringContext ''
           # HELP flake_registry_last_modified Last modification date of flake input in unixtime
@@ -46,7 +51,7 @@ in
         data_format = "influx";
       }
     ];
-    file = [
+    file = lib.mkIf (!pkgs.stdenv.hostPlatform.isFreeBSD) [
       {
         data_format = "prometheus";
         files = [ "/etc/flake-inputs.prom" ];
