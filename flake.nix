@@ -56,6 +56,7 @@
       imports = [
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/effect-flake-update.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
