@@ -56,6 +56,7 @@
       systems = import inputs.systems;
 
       imports = [
+        ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
         ./dev/terraform.nix
@@ -132,6 +133,7 @@
                 )
             // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
               inherit (self'.packages)
+                dnscontrol-check
                 docs
                 docs-linkcheck
                 terraform-validate
