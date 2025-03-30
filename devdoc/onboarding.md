@@ -13,6 +13,8 @@
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
 
+- Add their user to the list of `hydra-github-users` in [modules/nixos/hydra.nix](../modules/nixos/hydra.nix).
+
 - Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community) and a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members).
 
   - `owner` will give them admin access to [Hercules CI](https://hercules-ci.com/github/nix-community).
