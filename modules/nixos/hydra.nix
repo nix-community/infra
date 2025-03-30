@@ -66,16 +66,21 @@ in
       evaluator_workers = 8
       max_concurrent_evals = 2
       max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+
+      github_client_id = Ov23ligaoPhIyuYCJ1pp
+      github_client_secret_file = ${config.sops.secrets.hydra-github-client-secret.path}
     '';
+  };
+
+  sops.secrets.hydra-github-client-secret = {
+    owner = "hydra-www";
+    group = "hydra";
   };
 
   services.nginx.virtualHosts."hydra.nix-community.org" = {
     locations."/".proxyPass = "http://localhost:${toString config.services.hydra.port}";
   };
 
-  # Create user accounts
-  # format: user;role;password-hash;email-address;full-name
-  # Password hash is computed by applying sha1 to the password.
   systemd.services.hydra-post-init = {
     serviceConfig = {
       Type = "oneshot";
@@ -91,25 +96,36 @@ in
       config.services.hydra.package
       pkgs.netcat
     ];
-    script = ''
-      set -e
-      while IFS=';' read -r user role passwordhash email fullname; do
-        opts=("$user" "--role" "$role" "--password-hash" "$passwordhash")
-        if [[ -n "$email" ]]; then
-          opts+=("--email-address" "$email")
-        fi
-        if [[ -n "$fullname" ]]; then
-          opts+=("--full-name" "$fullname")
-        fi
-        hydra-create-user "''${opts[@]}"
-      done < ${config.sops.secrets.hydra-users.path}
+    script =
+      let
+        # Create user accounts, github or hydra, format:
+        # github;email;$role;;
+        # hydra;user;$role;password-hash;
+        # Password hash is computed by applying sha1 to the password.
+        hydra-github-users = pkgs.writeText "hydra-github-users" ''
+          github;zowoq.gh@gmail.com;admin;;
+          github;me@linj.tech;restart-jobs;;
+        '';
+      in
+      ''
+        set -e
+        users=("${config.sops.secrets.hydra-users.path}" "${hydra-github-users}")
+        for f in "''${users[@]}"; do
+          while IFS=';' read -r type user role passwordhash; do
+            opts=("$user" "--role" "$role" "--type" "$type")
+            if [[ -n "$passwordhash" ]]; then
+              opts+=("--password-hash" "$passwordhash")
+            fi
+            hydra-create-user "''${opts[@]}"
+          done < $f
+        done
 
-      while ! nc -z localhost ${toString config.services.hydra.port}; do
-        sleep 1
-      done
+        while ! nc -z localhost ${toString config.services.hydra.port}; do
+          sleep 1
+        done
 
-      export HYDRA_ADMIN_PASSWORD=$(cat ${config.sops.secrets.hydra-admin-password.path})
-      export URL=http://localhost:${toString config.services.hydra.port}
-    '';
+        export HYDRA_ADMIN_PASSWORD=$(cat ${config.sops.secrets.hydra-admin-password.path})
+        export URL=http://localhost:${toString config.services.hydra.port}
+      '';
   };
 }
