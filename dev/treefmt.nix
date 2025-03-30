@@ -6,6 +6,7 @@
   programs = {
     actionlint.enable = true;
     deadnix.enable = true;
+    dnscontrol.enable = true;
     keep-sorted.enable = true;
     nixfmt.enable = true;
     prettier.enable = true;
@@ -44,6 +45,8 @@
       priority = 9; # last
     };
 
+    dnscontrol.includes = [ "*dnsconfig.js" ];
+
     shellcheck.priority = 1;
     shfmt.priority = 2;
 
@@ -64,6 +67,7 @@
       ];
       excludes = [
         "config.yaml"
+        "*dnsconfig.js"
         "docs/sponsors.md"
         "*secrets.yaml"
         "modules/secrets/*.yaml"
