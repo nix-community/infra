@@ -94,7 +94,6 @@ in
     };
     path = [
       config.services.hydra.package
-      pkgs.netcat
     ];
     script =
       let
@@ -119,13 +118,6 @@ in
             hydra-create-user "''${opts[@]}"
           done < $f
         done
-
-        while ! nc -z localhost ${toString config.services.hydra.port}; do
-          sleep 1
-        done
-
-        export HYDRA_ADMIN_PASSWORD=$(cat ${config.sops.secrets.hydra-admin-password.path})
-        export URL=http://localhost:${toString config.services.hydra.port}
       '';
   };
 }
