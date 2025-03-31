@@ -102,6 +102,8 @@ in
         # hydra;user;$role;password-hash;
         # Password hash is computed by applying sha1 to the password.
         hydra-github-users = pkgs.writeText "hydra-github-users" ''
+          github;adisbladis@gmail.com;admin;;
+          github;zimbatm@zimbatm.com;admin;;
           github;zowoq.gh@gmail.com;admin;;
           github;me@linj.tech;restart-jobs;;
         '';
