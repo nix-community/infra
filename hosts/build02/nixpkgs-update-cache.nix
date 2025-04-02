@@ -7,6 +7,7 @@
   services.harmonia = {
     enable = true;
     signKeyPaths = [ config.sops.secrets.harmonia-key.path ];
+    settings.priority = 50;
   };
 
   services.nginx.virtualHosts."nixpkgs-update-cache.nix-community.org" = {
