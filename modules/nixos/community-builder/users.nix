@@ -115,6 +115,11 @@ let
       keys = ./keys/jfly;
     }
     {
+      name = "johnrtitor";
+      trusted = true;
+      keys = ./keys/johnrtitor;
+    }
+    {
       name = "jtojnar";
       trusted = true;
       keys = ./keys/jtojnar;
