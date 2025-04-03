@@ -1,10 +1,14 @@
 {
+  inputs,
   pkgs,
   ...
 }:
 {
   nix = {
-    package = pkgs.nixVersions.nix_2_25;
+    package = pkgs.nixVersions.nix_2_25.overrideAttrs (o: {
+      version = o.version + inputs.nix.shortRev;
+      src = inputs.nix;
+    });
 
     settings = {
       experimental-features = [
