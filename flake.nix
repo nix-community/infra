@@ -58,6 +58,7 @@
       imports = [
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/terraform.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
@@ -111,7 +112,6 @@
         {
           imports = [
             ./dev/shell.nix
-            ./terraform/shell.nix
           ];
           treefmt = {
             flakeCheck = system == "x86_64-linux";
@@ -134,6 +134,7 @@
               inherit (self'.packages)
                 docs
                 docs-linkcheck
+                terraform-validate
                 ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
