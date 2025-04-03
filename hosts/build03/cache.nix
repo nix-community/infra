@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  # nixpkgs-update-cache.nix-community.org-1:U8d6wiQecHUPJFSqHN9GSSmNkmdiFW7GW7WNAnHW0SM=
+  # temp-cache.nix-community.org-1:RSXIfGjilfBsilDvj03/VnL/9qAxacBnb1YQvSdCoDc=
 
   sops.secrets.harmonia-key = { };
 
@@ -10,7 +10,7 @@
     settings.priority = 50;
   };
 
-  services.nginx.virtualHosts."nixpkgs-update-cache.nix-community.org" = {
+  services.nginx.virtualHosts."temp-cache.nix-community.org" = {
     locations."/" = {
       extraConfig = ''
         proxy_pass http://127.0.0.1:5000;
