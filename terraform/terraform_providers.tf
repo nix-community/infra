@@ -9,9 +9,6 @@ terraform {
     sops = {
       source = "carlpett/sops"
     }
-    tfe = {
-      source = "hashicorp/tfe"
-    }
   }
 }
 
@@ -28,8 +25,4 @@ provider "hydra" {
   host     = "https://hydra.nix-community.org"
   password = data.sops_file.nix-community.data["HYDRA_PASSWORD"]
   username = "admin"
-}
-
-provider "tfe" {
-  token = data.sops_file.nix-community.data["TFE_TOKEN"]
 }
