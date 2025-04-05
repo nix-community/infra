@@ -142,6 +142,7 @@
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
               nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+              nixosTests-garage = pkgs.nixosTests.garage.basic1_x;
               nixosTests-harmonia = pkgs.nixosTests.harmonia;
               nixosTests-hydra = pkgs.nixosTests.hydra;
             };
