@@ -29,8 +29,6 @@
     nix-darwin.url = "github:qowoz/nix-darwin/darwin-sudo";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nix.flake = false;
-    nix.url = "github:NixOS/nix/2.25-maintenance";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
