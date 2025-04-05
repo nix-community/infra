@@ -4,7 +4,7 @@
     {
       devShells.terraform = pkgs.mkShellNoCC { inputsFrom = [ config.packages.terraform ]; };
       packages = {
-        terraform = pkgs.terraform.withPlugins (p: [
+        terraform = pkgs.opentofu.withPlugins (p: [
           p.github
           p.hydra
           p.sops
@@ -24,8 +24,8 @@
             # https://code.tvl.fyi/commit/tools/checks/default.nix?id=e0c6198d582970fa7b03fd885ca151ec4964f670
             ''
               cp --no-preserve=mode -r $files/* .
-              terraform init -upgrade -backend=false -input=false
-              terraform validate
+              tofu init -upgrade -backend=false -input=false
+              tofu validate
               touch $out
             '';
       };
