@@ -5,7 +5,6 @@
       devShells.terraform = pkgs.mkShellNoCC { inputsFrom = [ config.packages.terraform ]; };
       packages = {
         terraform = pkgs.terraform.withPlugins (p: [
-          p.cloudflare
           p.github
           p.hydra
           p.sops

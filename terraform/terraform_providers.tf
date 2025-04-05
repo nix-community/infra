@@ -1,8 +1,5 @@
 terraform {
   required_providers {
-    cloudflare = {
-      source = "cloudflare/cloudflare"
-    }
     github = {
       source = "integrations/github"
     }
@@ -20,10 +17,6 @@ terraform {
 
 data "sops_file" "nix-community" {
   source_file = "secrets.yaml"
-}
-
-provider "cloudflare" {
-  api_token = data.sops_file.nix-community.data["CLOUDFLARE_API_TOKEN"]
 }
 
 provider "github" {
