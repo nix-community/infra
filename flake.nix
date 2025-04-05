@@ -56,8 +56,10 @@
       systems = import inputs.systems;
 
       imports = [
+        ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/terraform.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
@@ -111,7 +113,6 @@
         {
           imports = [
             ./dev/shell.nix
-            ./terraform/shell.nix
           ];
           treefmt = {
             flakeCheck = system == "x86_64-linux";
@@ -119,27 +120,29 @@
           };
 
           checks =
-            let
-              darwinConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
-              devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
-              nixosConfigurations = lib.mapAttrs' (
-                name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel
-              ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
-            in
-            darwinConfigurations
-            // devShells
-            // {
+            {
               inherit (self') formatter;
             }
-            // nixosConfigurations
+            // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
+            //
+              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+                (
+                  (lib.filterAttrs (_: config: config.pkgs.hostPlatform.system == system)) (
+                    self.darwinConfigurations // self.nixosConfigurations
+                  )
+                )
             // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
-              inherit (self'.packages) docs docs-linkcheck;
+              inherit (self'.packages)
+                dnscontrol-check
+                docs
+                docs-linkcheck
+                terraform-validate
+                ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
               nixosTests-buildbot = pkgs.nixosTests.buildbot;
               nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
               nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+              nixosTests-garage = pkgs.nixosTests.garage.basic1_x;
               nixosTests-harmonia = pkgs.nixosTests.harmonia;
               nixosTests-hydra = pkgs.nixosTests.hydra;
             };
