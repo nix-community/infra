@@ -8,7 +8,6 @@
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
 
-  - [Cloudflare](https://dash.cloudflare.com/login)
   - [Terraform Cloud](https://app.terraform.io)
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
@@ -32,6 +31,7 @@
 - They will also need to be added manually to these services:
 
   - [Cachix](https://app.cachix.org/organization/nix-community/settings)
+  - [Cloudflare](https://dash.cloudflare.com/e4a2db52c495db230973c839a0699ae1/members)
   - [GitLab](https://gitlab.com/groups/nix-community/-/group_members)
   - [Hetzner Robot](https://robot.hetzner.com/key/index)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)
