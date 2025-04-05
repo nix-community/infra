@@ -75,7 +75,6 @@
         { lib, ... }:
         {
           nixpkgs = {
-            config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
