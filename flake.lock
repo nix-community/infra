@@ -155,23 +155,6 @@
         "type": "github"
       }
     },
-    "nix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743493776,
-        "narHash": "sha256-DPqyLkUT8NrdB177VNLxI1fYr3+ipkyQdhHnr5cIgL8=",
-        "owner": "NixOS",
-        "repo": "nix",
-        "rev": "38de6fbe3867d405820cbed17615523c2e00557d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "2.25-maintenance",
-        "repo": "nix",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -329,7 +312,6 @@
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
         "lite-config": "lite-config",
-        "nix": "nix",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-facter-modules": "nixos-facter-modules",
