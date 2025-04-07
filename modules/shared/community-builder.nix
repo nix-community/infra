@@ -41,7 +41,7 @@
     environment.systemPackages =
       [
         pkgs.btop
-        pkgs.emacs
+        (pkgs.emacs.override { withNativeCompilation = !pkgs.stdenv.hostPlatform.isDarwin; })
         pkgs.fd
         pkgs.git
         pkgs.nano
