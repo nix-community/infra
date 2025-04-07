@@ -2,7 +2,7 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.terraform = pkgs.mkShellNoCC { inputsFrom = [ config.packages.terraform ]; };
+      devShells.terraform = pkgs.mkShellNoCC { packages = [ config.packages.terraform ]; };
       packages = {
         terraform = pkgs.terraform.withPlugins (p: [
           p.cloudflare
