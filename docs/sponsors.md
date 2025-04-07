@@ -3,6 +3,12 @@ hide:
   - navigation
 ---
 
+<style>
+.md-content .md-typeset h1 {
+    display: none;
+  }
+</style>
+
 Thanks to all our sponsors.
 
 <div style="text-align:center" class="grid cards" markdown>
