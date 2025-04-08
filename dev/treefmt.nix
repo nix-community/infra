@@ -9,13 +9,18 @@
     dnscontrol.enable = true;
     keep-sorted.enable = true;
     nixfmt.enable = true;
-    prettier.enable = true;
     ruff-check.enable = true;
     ruff-format.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;
     statix.enable = true;
     terraform.enable = true;
+  };
+
+  programs.mdformat = {
+    enable = true;
+    excludes = [ "docs/*.md" ];
+    settings.wrap = "no";
   };
 
   programs.mypy = {
@@ -33,6 +38,16 @@
     };
   };
 
+  programs.yamlfmt = {
+    enable = true;
+    settings.formatter.retain_line_breaks_single = true;
+    excludes = [
+      "config.yaml"
+      "*secrets.yaml"
+      "modules/secrets/*.yaml"
+    ];
+  };
+
   settings.global.excludes = [
     # vendored from external source
     "hosts/build02/packages-with-update-script.nix"
@@ -47,6 +62,20 @@
 
     dnscontrol.includes = [ "*dnsconfig.js" ];
 
+    mdformat-mkdocs = {
+      command = pkgs.mdformat.withPlugins (p: [
+        p.mdformat-frontmatter
+        p.mdformat-mkdocs
+      ]);
+      options = [
+        "--wrap"
+        "no"
+      ];
+      includes = [
+        "docs/*.md"
+      ];
+    };
+
     shellcheck.priority = 1;
     shfmt.priority = 2;
 
@@ -59,19 +88,5 @@
     ruff-check.priority = 1;
     ruff-format.priority = 2;
     mypy-tasks.priority = 3;
-
-    prettier = {
-      options = [
-        "--prose-wrap"
-        "never"
-      ];
-      excludes = [
-        "config.yaml"
-        "*dnsconfig.js"
-        "docs/sponsors.md"
-        "*secrets.yaml"
-        "modules/secrets/*.yaml"
-      ];
-    };
   };
 }
