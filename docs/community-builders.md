@@ -42,9 +42,9 @@ Nix's model of remote builders requires users to be able to directly import file
 
 1. **_DO NOT_** trust this builder for systems that contain private data or tools.
 
-2. **_DO NOT_** trust this builder to make binary bootstrap tools, because we have to trust those bootstrap tools for a long time to not be compromised.
+1. **_DO NOT_** trust this builder to make binary bootstrap tools, because we have to trust those bootstrap tools for a long time to not be compromised.
 
-3. **_DO NOT_** trust this builder to make tools used to make binary bootstrap tools, because we have to trust those bootstrap tools for a long time to not be compromised.
+1. **_DO NOT_** trust this builder to make tools used to make binary bootstrap tools, because we have to trust those bootstrap tools for a long time to not be compromised.
 
 IF YOU ARE: making binary bootstrap tools, please only use tools built on a system which have never been exposed to things built on these builders.
 
