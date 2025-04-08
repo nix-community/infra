@@ -9,13 +9,31 @@
     dnscontrol.enable = true;
     keep-sorted.enable = true;
     nixfmt.enable = true;
-    prettier.enable = true;
     ruff-check.enable = true;
     ruff-format.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;
     statix.enable = true;
     terraform.enable = true;
+  };
+
+  programs.mdformat = {
+    enable = true;
+    excludes = [ "docs/*.md" ];
+    settings = {
+      number = true;
+      wrap = "no";
+    };
+  };
+
+  programs.yamlfmt = {
+    enable = true;
+    settings.formatter.retain_line_breaks_single = true;
+    excludes = [
+      "config.yaml"
+      "*secrets.yaml"
+      "modules/secrets/*.yaml"
+    ];
   };
 
   settings.global.excludes = [
@@ -31,6 +49,22 @@
     };
 
     dnscontrol.includes = [ "*dnsconfig.js" ];
+
+    mdformat-mkdocs = {
+      command = pkgs.mdformat.withPlugins (p: [
+        p.mdformat-frontmatter
+        p.mdformat-mkdocs
+        p.mdformat-simple-breaks
+      ]);
+      options = [
+        "--number"
+        "--wrap"
+        "no"
+      ];
+      includes = [
+        "docs/*.md"
+      ];
+    };
 
     shellcheck.priority = 1;
     shfmt.priority = 2;
@@ -61,20 +95,6 @@
         "--"
       ];
       includes = [ "tasks.py" ];
-    };
-
-    prettier = {
-      options = [
-        "--prose-wrap"
-        "never"
-      ];
-      excludes = [
-        "config.yaml"
-        "*dnsconfig.js"
-        "docs/sponsors.md"
-        "*secrets.yaml"
-        "modules/secrets/*.yaml"
-      ];
     };
   };
 }
