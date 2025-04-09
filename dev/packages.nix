@@ -1,7 +1,6 @@
 {
   final,
   prev,
-  inputs,
   ...
 }:
 {
@@ -20,11 +19,6 @@
         revert = true;
       })
     ];
-  });
-  hydra = (prev.hydra.override { nix = final.nixVersions.nix_2_24; }).overrideAttrs (o: {
-    version = inputs.hydra.shortRev;
-    src = inputs.hydra;
-    buildInputs = o.buildInputs ++ [ final.perlPackages.DBIxClassHelpers ];
   });
   kitty = prev.kitty.overrideAttrs (
     _:

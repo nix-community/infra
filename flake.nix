@@ -22,8 +22,6 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/darwin-sudo";
-    hydra.flake = false;
-    hydra.url = "github:qowoz/hydra/community";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:qowoz/nix-darwin/darwin-sudo";
