@@ -455,6 +455,13 @@ let
       shell = pkgs.zsh;
       keys = ./keys/thecomputerguy;
     }
+    {
+      name = "raboof";
+      # lib.maintainers.raboof, https://github.com/raboof
+      trusted = true;
+      uid = 571;
+      keys = ./keys/raboof;
+    }
   ];
 in
 {
