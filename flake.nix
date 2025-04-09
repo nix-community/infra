@@ -54,7 +54,7 @@
       imports = [
         ./dev/dnscontrol.nix
         ./dev/docs.nix
-        ./dev/effect-deploy.nix
+        #./dev/effect-deploy.nix
         ./dev/terraform.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
