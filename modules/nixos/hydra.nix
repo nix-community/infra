@@ -42,20 +42,24 @@ in
     hydra-send-stats.enable = false;
   };
 
-  services.hydra = {
-    enable = true;
-    # remote builders set in /etc/nix/machines + localhost
-    buildMachinesFiles = [
-      (pkgs.runCommand "etc-nix-machines" { machines = config.environment.etc."nix/machines".text; } ''
+  environment.etc."nix/hydra/localhost".text = ''
+    localhost ${concatStringsSep "," localSystems} - 3 1 ${concatStringsSep "," config.nix.settings.system-features} - -
+  '';
+  environment.etc."nix/hydra/machines".source =
+    pkgs.runCommand "machines" { machines = config.environment.etc."nix/machines".text; }
+      ''
         printf "$machines" > $out
         substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
         substituteInPlace $out --replace-fail ' 80 ' ' 3 '
         substituteInPlace $out --replace-fail ' 10 ' ' 1 '
-      '')
+      '';
 
-      (pkgs.writeText "local" ''
-        localhost ${concatStringsSep "," localSystems} - 3 1 ${concatStringsSep "," config.nix.settings.system-features} - -
-      '')
+  services.hydra = {
+    enable = true;
+    # remote builders set in /etc/nix/machines + localhost
+    buildMachinesFiles = [
+      "/etc/nix/hydra/localhost"
+      "/etc/nix/hydra/machines"
     ];
     hydraURL = "https://hydra.nix-community.org";
     notificationSender = "hydra@hydra.nix-community.org";
