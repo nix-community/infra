@@ -11,7 +11,7 @@ let
     ++ config.nix.settings.extra-platforms
     ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
 
-  WORKER_COUNT = toString config.nix.settings.max-jobs;
+  WORKER_COUNT = config.nix.settings.max-jobs;
 in
 {
   imports = [
@@ -31,7 +31,7 @@ in
     [{
       "name": "${config.networking.hostName}",
       "pass": "${config.sops.placeholder.buildbot-nix-worker-password}",
-      "cores": ${WORKER_COUNT}
+      "cores": ${toString WORKER_COUNT}
     }]
   '';
 
@@ -78,10 +78,9 @@ in
     titleUrl = "https://nix-community.org/";
   };
 
-  systemd.services.buildbot-worker.environment = { inherit WORKER_COUNT; };
-
   services.buildbot-nix.worker = {
     enable = true;
     workerPasswordFile = config.sops.secrets.buildbot-nix-worker-password.path;
+    workers = WORKER_COUNT;
   };
 }
