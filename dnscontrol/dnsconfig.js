@@ -13,8 +13,8 @@ var nix_community_github_pages = [
 
 var hosts = {
     "build01": {
-        ipv4: "65.21.139.242",
-        ipv6: "2a01:4f9:3b:2946::1"
+        ipv4: "?",
+        ipv6: "?"
     },
     "build02": {
         ipv4: "65.21.133.211",
