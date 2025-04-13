@@ -138,6 +138,62 @@
         "type": "github"
       }
     },
+    "lix": {
+      "inputs": {
+        "flake-compat": [
+          "nixbsd",
+          "flake-compat"
+        ],
+        "nix2container": [
+          "nixbsd"
+        ],
+        "nixpkgs": [
+          "nixbsd",
+          "nixpkgs"
+        ],
+        "nixpkgs-regression": [
+          "nixbsd"
+        ],
+        "pre-commit-hooks": [
+          "nixbsd"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732339771,
+        "narHash": "sha256-/ViH3RRdFm9R9WN4szwdwMSbnDnRzNqgkFNR5dBh+Og=",
+        "ref": "freebsd-build",
+        "rev": "a26c6228c31cc66b31a75f24a95f420952a6cbb2",
+        "revCount": 16516,
+        "type": "git",
+        "url": "https://git.lix.systems/artemist/lix.git"
+      },
+      "original": {
+        "ref": "freebsd-build",
+        "type": "git",
+        "url": "https://git.lix.systems/artemist/lix.git"
+      }
+    },
+    "mini-tmpfiles": {
+      "inputs": {
+        "nixpkgs": [
+          "nixbsd",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741473245,
+        "narHash": "sha256-32ekQLovnjpb1NBvt1/WCEn98khSGljX+QkS+SLSNpM=",
+        "owner": "nixos-bsd",
+        "repo": "mini-tmpfiles",
+        "rev": "1ff4fc98963421e0e6b099ccda721d5a1ca4c887",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos-bsd",
+        "repo": "mini-tmpfiles",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -179,6 +235,30 @@
         "type": "github"
       }
     },
+    "nixbsd": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "lix": "lix",
+        "mini-tmpfiles": "mini-tmpfiles",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1742260227,
+        "narHash": "sha256-ENxG6y0hA0guiUa70mwns7YpS210rCIaMwX5fhXJzD8=",
+        "owner": "qowoz",
+        "repo": "nixbsd",
+        "rev": "17cfdcf9bb520231f27dbe3023910945508a5603",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "community",
+        "repo": "nixbsd",
+        "type": "github"
+      }
+    },
     "nixos-facter-modules": {
       "locked": {
         "lastModified": 1743671943,
@@ -196,16 +276,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1744371553,
-        "narHash": "sha256-KjvhD+DkQsOAggIFyuxSAZIs84UahDb/O9ojpvyFNe0=",
-        "owner": "NixOS",
+        "lastModified": 1741684394,
+        "narHash": "sha256-6G65wM+dJUgt0RfzxbN08OnhdY+YiYFdEpExFvPU6yg=",
+        "owner": "nixos-bsd",
         "repo": "nixpkgs",
-        "rev": "6f061f35682410185d9a1582601e9241bfa6ad96",
+        "rev": "30f30c8fdf82dfcbceb0c4e1dafda15e6faaa76d",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
+        "owner": "nixos-bsd",
+        "ref": "nixbsd-dev-new",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -215,7 +295,7 @@
         "mmdoc": [
           "empty"
         ],
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "treefmt-nix": [
           "treefmt-nix"
         ]
@@ -252,6 +332,22 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1744371553,
+        "narHash": "sha256-KjvhD+DkQsOAggIFyuxSAZIs84UahDb/O9ojpvyFNe0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6f061f35682410185d9a1582601e9241bfa6ad96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1672428209,
         "narHash": "sha256-eejhqkDz2cb2vc5VeaWphJz8UXNuoNoM8/Op8eWv2tQ=",
@@ -296,8 +392,9 @@
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
+        "nixbsd": "nixbsd",
         "nixos-facter-modules": "nixos-facter-modules",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
