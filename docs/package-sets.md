@@ -1,5 +1,7 @@
 #### Nixpkgs CUDA and ROCm
 
+See [here](./cuda.md) for more information.
+
 [CUDA and ROCm release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/release-cuda.nix)
 
 Built on `nixos-unstable-small` for `x86_64-linux`:
