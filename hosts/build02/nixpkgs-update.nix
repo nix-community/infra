@@ -18,7 +18,6 @@ let
     gnused
     curl
     getent # used by hub
-    cachix
     apacheHttpd # for rotatelogs, used by worker script
     socat # used by worker script
 
