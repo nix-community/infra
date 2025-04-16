@@ -26,6 +26,7 @@ in
 
   services.nginx.virtualHosts."nixbot.nix-community.org" = { };
 
+  sops.secrets.nixbot-gitlab-token = { };
   sops.secrets.nixbot-github-oauth-secret = { };
   sops.secrets.nixbot-github-app-secret-key = { };
   sops.secrets.nixbot-github-webhook-secret = { };
@@ -36,6 +37,7 @@ in
     admins = [
       "github:adisbladis"
       "github:mdaniels5757"
+      "github:mweinelt"
       "github:ryantm"
       "github:zimbatm"
       "github:zowoq"
@@ -63,6 +65,15 @@ in
       oauthId = "Iv23li2s1vLGoe5sUdwL";
       topic = null;
       inherit repoAllowlist;
+    };
+    gitlab = {
+      enable = true;
+      # https://github.com/nix-community-buildbot -> https://gitlab.com/nix-community-buildbot
+      tokenFile = config.sops.secrets.nixbot-gitlab-token.path; # token expires 2027-06-13
+      topic = null;
+      repoAllowlist = [
+        "simple-nixos-mailserver/nixos-mailserver"
+      ];
     };
   };
 }
