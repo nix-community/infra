@@ -54,22 +54,6 @@ resource "hydra_jobset" "emacs_overlay" {
   email_notifications = false
 }
 
-resource "hydra_project" "simple_nixos_mailserver" {
-  name         = "simple-nixos-mailserver"
-  display_name = "Simple NixOS MailServer"
-  description  = "A complete and Simple Nixos Mailserver"
-  homepage     = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
-  owner        = "admin"
-  enabled      = true
-  visible      = true
-
-  declarative {
-    file  = ".hydra/spec.json"
-    type  = "git"
-    value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
-  }
-}
-
 resource "hydra_project" "microvm_nix" {
   name         = "microvm-nix"
   display_name = "MicroVM.nix"

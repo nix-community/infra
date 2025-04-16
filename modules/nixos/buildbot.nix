@@ -65,6 +65,12 @@ in
       oauthId = "Iv23liN9rjd1Bm3bvYKZ";
       topic = "nix-community-buildbot";
     };
+    gitlab = {
+      topic = null;
+      repoAllowlist = [
+        "simple-nixos-mailserver/nixos-mailserver"
+      ];
+    };
   };
 
   sops.secrets.buildbot-effects-nix-community-infra = { };
