@@ -331,6 +331,12 @@ let
       keys = ./keys/booxter;
     }
     {
+      # lib.maintainers.lukegb, https://github.com/lukegb
+      name = "lukegb";
+      trusted = true;
+      keys = ./keys/lukegb;
+    }
+    {
       name = "sinrohit";
       trusted = true;
       keys = ./keys/sinrohit;

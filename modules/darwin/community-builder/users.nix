@@ -462,6 +462,13 @@ let
       uid = 571;
       keys = ./keys/raboof;
     }
+    {
+      # lib.maintainers.lukegb, https://github.com/lukegb
+      name = "lukegb";
+      trusted = true;
+      uid = 572;
+      keys = ./keys/lukegb;
+    }
   ];
 in
 {
