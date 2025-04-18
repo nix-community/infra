@@ -26,7 +26,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "buildbot-nix",
-        "rev": "7b9470b52144566fe1a2c7372fae245628d1fbb6",
         "type": "github"
       }
     },
