@@ -14,6 +14,22 @@
       })
     ];
   });
+  python3 = prev.python3.override {
+    packageOverrides = _: super: {
+      mdformat = super.mdformat.overridePythonAttrs (_: rec {
+        version = "0.7.22";
+        src = final.fetchFromGitHub {
+          owner = "executablebooks";
+          repo = "mdformat";
+          tag = version;
+          hash = "sha256-WvbGCqfzh7KlNXIGJq09goiyLzVgU7c1+qmsLrIW38k=";
+        };
+      });
+      mdformat-mkdocs = super.mdformat-mkdocs.overridePythonAttrs (o: {
+        propagatedBuildInputs = super.lib.lists.remove super.mdformat-admon o.propagatedBuildInputs;
+      });
+    };
+  };
   sk-libfido2 = prev.openssh.overrideAttrs (o: {
     pname = "sk-libfido2";
     # rebase of https://github.com/openssh/openssh-portable/commit/ca0697a90e5720ba4d76cb0ae9d5572b5260a16c
