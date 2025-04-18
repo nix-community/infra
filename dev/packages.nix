@@ -4,12 +4,6 @@
   ...
 }:
 {
-  dnsutils = prev.dnsutils.overrideAttrs (
-    o:
-    final.lib.optionalAttrs (final.stdenv.hostPlatform.system == "aarch64-darwin") {
-      buildInputs = final.lib.lists.remove final.jemalloc o.buildInputs;
-    }
-  );
   grml-zsh-config = prev.grml-zsh-config.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [
       (final.fetchpatch {
