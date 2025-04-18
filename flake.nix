@@ -117,7 +117,7 @@
 
           checks =
             {
-              # inherit (self') formatter;
+              inherit (self') formatter;
             }
             // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
             //
