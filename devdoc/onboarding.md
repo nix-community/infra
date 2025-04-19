@@ -8,7 +8,7 @@
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
 
-  - [Terraform Cloud](https://app.terraform.io)
+  - ??
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
 
