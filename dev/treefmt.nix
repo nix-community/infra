@@ -18,21 +18,6 @@
     terraform.enable = true;
   };
 
-  programs.mypy = {
-    enable = true;
-    directories = {
-      "tasks" = {
-        directory = ".";
-        files = [ "*tasks.py" ];
-        modules = [ ];
-        extraPythonPackages = [
-          pkgs.python3.pkgs.deploykit
-          pkgs.python3.pkgs.invoke
-        ];
-      };
-    };
-  };
-
   settings.global.excludes = [
     # vendored from external source
     "hosts/build02/packages-with-update-script.nix"
@@ -58,7 +43,25 @@
     # python
     ruff-check.priority = 1;
     ruff-format.priority = 2;
-    mypy-tasks.priority = 3;
+
+    python-mypy = {
+      priority = 3;
+      command = pkgs.bash;
+      options = with pkgs.python3.pkgs; [
+        "-euc"
+        ''
+          export PYTHONPATH="${
+            makePythonPath [
+              deploykit
+              invoke
+            ]
+          }"
+          ${pkgs.lib.getExe mypy} "$@"
+        ''
+        "--"
+      ];
+      includes = [ "tasks.py" ];
+    };
 
     prettier = {
       options = [
