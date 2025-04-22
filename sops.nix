@@ -3,6 +3,10 @@ let
   keys = builtins.fromJSON (builtins.readFile ./sops.json);
   admins = builtins.attrValues keys.admins;
 
+  hosts =
+    builtins.mapAttrs (_: v: v.publicKey)
+      (import ./modules/shared/known-hosts.nix).programs.ssh.knownHosts;
+
   mapAttrsToList = f: attrs: map (name: f name attrs.${name}) (builtins.attrNames attrs);
 
   renderPermissions =
@@ -22,7 +26,7 @@ let
       "secrets.yaml" = [ ];
       "terraform/secrets.yaml" = [ ];
     }
-    // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
+    // builtins.mapAttrs (_: value: (map (x: hosts.${x}) value)) {
       "modules/secrets/backup.yaml" = [
         "build02"
         "build03"
@@ -43,7 +47,7 @@ let
       mapAttrsToList (hostname: key: {
         name = "hosts/${hostname}/secrets.yaml";
         value = [ key ];
-      }) keys.hosts
+      }) hosts
     );
 in
 {
