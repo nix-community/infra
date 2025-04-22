@@ -1,7 +1,12 @@
 # https://github.com/TUM-DSE/doctor-cluster-config/blob/8c11c117e66af1cc205eb2094ab94e8a3317ff2e/sops.yaml.nix
 let
   keys = builtins.fromJSON (builtins.readFile ./sops.json);
-  admins = builtins.attrValues keys.admins;
+  admins = builtins.attrValues (
+    builtins.mapAttrs (
+      name: _: builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile (./users/keys + "/${name}"))
+    ) (builtins.readDir ./users/keys)
+    // keys.admins
+  );
 
   hosts =
     builtins.mapAttrs (_: v: v.publicKey)
