@@ -82,7 +82,7 @@ def update_sops_files(c: Any) -> None:
 @task
 def print_keys(c: Any, flake_attr: str) -> None:
     """
-    Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01
+    Decrypt host private key, print ssh public key. Use inv print-keys --flake-attr build01
     """
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
@@ -95,13 +95,6 @@ def print_keys(c: Any, flake_attr: str) -> None:
         )
         print("###### Public keys ######")
         print(pubkey.stdout)
-        print("###### Age keys ######")
-        subprocess.run(
-            ["ssh-to-age"],
-            input=pubkey.stdout,
-            check=True,
-            text=True,
-        )
 
 
 @task
