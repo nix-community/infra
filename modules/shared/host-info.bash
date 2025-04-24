@@ -1,4 +1,4 @@
-flake=$(nix flake metadata self --json | jq -r '.path' | sed -e 's|/nix/store/||' -e 's|-source||')
+flake=$(nix registry list | grep 'flake:self' | cut -d ':' -f3 | sed -e 's|/nix/store/||' -e 's|-source||')
 nix_version="$(nix store ping --store daemon --json | jq -r '.version')"
 case "$(uname -s)" in
 Darwin)
