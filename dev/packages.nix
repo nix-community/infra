@@ -14,6 +14,17 @@
       })
     ];
   });
+  prometheus = prev.prometheus.overrideAttrs (_: rec {
+    version = "3.1.0";
+    src = final.fetchFromGitHub {
+      owner = "prometheus";
+      repo = "prometheus";
+      tag = "v${version}";
+      hash = "sha256-Q3f0L6cRVQRL1AHgUI3VNbMG9eTfcApbXfSjOTHr7Go=";
+    };
+    vendorHash = "sha256-vQwBnSxoyIYTeWLk3GD9pKDuUjjsMfwPptgyVnzcTok=";
+    doCheck = false;
+  });
   sk-libfido2 = prev.openssh.overrideAttrs (o: {
     pname = "sk-libfido2";
     # rebase of https://github.com/openssh/openssh-portable/commit/ca0697a90e5720ba4d76cb0ae9d5572b5260a16c
