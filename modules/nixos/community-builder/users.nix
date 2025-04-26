@@ -195,6 +195,7 @@ let
     {
       name = "perchun";
       trusted = true;
+      shell = pkgs.fish;
       keys = ./keys/perchun;
     }
     {
