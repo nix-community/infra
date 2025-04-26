@@ -10,7 +10,6 @@ let
     name = "host-info";
     runtimeInputs = [
       config.nix.package
-      pkgs.gnugrep
       pkgs.gnused
       pkgs.jq
     ];
