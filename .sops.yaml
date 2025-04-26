@@ -1,4 +1,3 @@
-# AUTOMATICALLY GENERATED WITH: $ inv update-sops-files
 creation_rules:
   - key_groups:
       - age:
