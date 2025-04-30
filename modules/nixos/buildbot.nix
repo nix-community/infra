@@ -1,15 +1,13 @@
 {
   config,
   inputs,
+  pkgs,
   ...
 }:
 let
-  buildSystems =
-    [
-      config.nixpkgs.hostPlatform.system
-    ]
-    ++ config.nix.settings.extra-platforms
-    ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
+  buildSystems = [
+    pkgs.stdenv.hostPlatform.system
+  ] ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
 
   WORKER_COUNT = config.nix.settings.max-jobs;
 in

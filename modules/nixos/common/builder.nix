@@ -25,27 +25,6 @@
       script = builtins.readFile "${inputs.self}/modules/shared/free-space.bash";
     };
 
-    nix.settings.extra-platforms = lib.mkIf (config.nixpkgs.hostPlatform.system == "x86_64-linux") [
-      (lib.mkIf (config.boot.binfmt.emulatedSystems == [ ]) "i686-linux")
-      "x86_64-v1-linux"
-      "x86_64-v2-linux"
-      "x86_64-v3-linux"
-      (lib.mkIf (builtins.elem "gccarch-x86-64-v4" config.nix.settings.system-features) "x86_64-v4-linux")
-    ];
-
-    nix.settings.system-features = lib.mkForce (
-      [
-        "benchmark"
-        "big-parallel"
-        "kvm"
-        "nixos-test"
-        "gccarch-${config.nixpkgs.hostPlatform.gcc.arch}"
-      ]
-      ++ map (x: "gccarch-${x}") (
-        lib.systems.architectures.inferiors.${config.nixpkgs.hostPlatform.gcc.arch} or [ ]
-      )
-    );
-
     # Bump the open files limit so that non-root users can run NixOS VM tests
     security.pam.loginLimits = [
       {

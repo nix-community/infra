@@ -18,7 +18,7 @@ in
     sshKey = config.sops.secrets.id_buildfarm.path;
     sshUser = "nix";
     systems = [
-      x.config.nixpkgs.hostPlatform.system
+      x.pkgs.stdenv.hostPlatform.system
     ] ++ (x.config.nix.settings.extra-platforms or [ ]);
     supportedFeatures = x.config.nix.settings.system-features;
   }) machines;
