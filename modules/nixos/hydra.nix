@@ -8,8 +8,8 @@ let
   inherit (lib) concatStringsSep;
   localSystems = [
     "builtin"
-    config.nixpkgs.hostPlatform.system
-  ] ++ config.nix.settings.extra-platforms;
+    pkgs.stdenv.hostPlatform.system
+  ];
 in
 {
   sops.secrets.hydra-admin-password.owner = "hydra";

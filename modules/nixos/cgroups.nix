@@ -1,8 +1,4 @@
 {
-  pkgs,
-  ...
-}:
-{
   nix = {
     settings = {
       experimental-features = [
@@ -10,7 +6,7 @@
         "cgroups"
       ];
 
-      system-features = pkgs.lib.mkForce [ "uid-range" ];
+      system-features = [ "uid-range" ];
 
       auto-allocate-uids = true;
       use-cgroups = true;

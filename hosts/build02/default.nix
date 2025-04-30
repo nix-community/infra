@@ -13,8 +13,6 @@
 
   nix.settings.max-jobs = 24;
 
-  nixpkgs.hostPlatform.gcc.arch = "znver2";
-
   # set in srvos, remove when reinstalling
   networking.hostId = "deadbeef";
 

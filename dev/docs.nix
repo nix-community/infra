@@ -45,7 +45,7 @@
                     experimental-features = x.config.nix.settings.experimental-features or [ ];
                     extra-platforms = x.config.nix.settings.extra-platforms or [ ];
                     system-features = x.config.nix.settings.system-features or [ ];
-                    inherit (x.config.nixpkgs.hostPlatform) system;
+                    inherit (x.pkgs.stdenv.hostPlatform) system;
                     inherit (x.config.nix.settings) sandbox;
                   }) (self.darwinConfigurations // self.nixosConfigurations)
                 )
