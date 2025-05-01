@@ -10,6 +10,7 @@ let
   machines = [
     darwinConfigurations.darwin02
     nixosConfigurations.build04
+    nixosConfigurations.build06
   ];
 in
 {

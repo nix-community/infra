@@ -61,6 +61,19 @@
 --8<-- "docs/build04.json"
 ```
 
+#### [`CI builder`](./continuous-integration.md) - `build06`
+
+- Provider: Hetzner
+- Instance type: [GEX44](https://www.hetzner.com/dedicated-rootserver/gex44)
+- GPU: Nvidia RTX 4000 SFF Ada Generation
+- CPU: Intel Core i5-13500 14-Core Processor
+- RAM: 64GB DDR4 ECC
+- Drives: 2 x 1.92TB NVME
+
+```json
+--8<-- "docs/build06.json"
+```
+
 #### [`CI builder`](./continuous-integration.md) - `darwin02`
 
 - Provider: OakHost
