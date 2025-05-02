@@ -16,8 +16,8 @@ s|php\w*Packages|phpPackages|g
 # replace versioned/jit with unversioned
 s|postgresql\w*Packages|postgresqlPackages|g
 
-# replace versioned with the default version
-s|python3\w*Packages|python312Packages|g
+# replace versioned with unversioned
+s|python3\w*Packages|python3Packages|g
 
 # drop > 4000 packages that can't be updated
 /^rPackages.\w*/d
