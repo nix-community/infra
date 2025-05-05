@@ -361,6 +361,11 @@ let
       shell = pkgs.fish;
       keys = ./keys/marie;
     }
+    {
+      name = "dotlambda";
+      trusted = true;
+      keys = ./keys/dotlambda;
+    }
   ];
 in
 {
