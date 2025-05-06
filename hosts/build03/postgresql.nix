@@ -14,12 +14,19 @@
     enable = true;
     compression = "none";
     startAt = "daily";
+    databases = [
+      "buildbot"
+      "hydra"
+    ];
   };
 
   nixCommunity.backup = [
     {
       name = "postgresql";
-      after = [ config.systemd.services.postgresqlBackup.name ];
+      after = [
+        config.systemd.services.postgresqlBackup-buildbot.name
+        config.systemd.services.postgresqlBackup-hydra.name
+      ];
       paths = [ config.services.postgresqlBackup.location ];
       startAt = "daily";
     }
