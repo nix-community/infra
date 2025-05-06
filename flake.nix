@@ -36,6 +36,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
+    pr-tracker.inputs.flake-parts.follows = "flake-parts";
+    pr-tracker.inputs.nixpkgs.follows = "nixpkgs";
+    pr-tracker.inputs.systems.follows = "systems";
+    pr-tracker.inputs.treefmt-nix.follows = "treefmt-nix";
+    pr-tracker.url = "github:molybdenumsoftware/pr-tracker";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";

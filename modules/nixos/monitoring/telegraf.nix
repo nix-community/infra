@@ -26,6 +26,12 @@
         tags.host = "build02.nix-community.org";
         tags.org = "nix-community";
       }
+      {
+        urls = [ "https://pr-tracker.nix-community.org/" ];
+        response_string_match = "pr-tracker-api";
+        tags.host = "build03.nix-community.org";
+        tags.org = "nix-community";
+      }
     ];
     net_response =
       let
