@@ -9,9 +9,7 @@ nav:
       - cache.md
       - community-builders.md
       - R. RyanTM nixpkgs-update bot: update-bot.md
-      - NUR update: nur-update.md
-      - nix-community.org DNS: dns.md
-      - monitoring.md
+      - other-services.md
   - About:
       - FAQ: faq.md
       - administrators.md
