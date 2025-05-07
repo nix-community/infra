@@ -6,6 +6,9 @@ Darwin)
   ;;
 Linux)
   os_version="$(uname -r)"
+  if [[ -e /run/systemd/shutdown/scheduled ]]; then
+    flake=reboot
+  fi
   ;;
 esac
 system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
