@@ -73,10 +73,7 @@ def update_sops_files(c: Any) -> None:
     """
     Update all sops yaml files according to sops.nix rules
     """
-    with open(f"{ROOT}/.sops.yaml", "w") as f:
-        print("# AUTOMATICALLY GENERATED WITH: $ inv update-sops-files", file=f)
-
-    c.run(f"nix eval --json -f {ROOT}/sops.nix | yq e -P - >> {ROOT}/.sops.yaml")
+    c.run(f"nix eval --json -f {ROOT}/sops.nix | yq e -P - > {ROOT}/.sops.yaml")
     c.run(
         "shopt -s globstar && sops updatekeys --yes **/secrets.yaml modules/secrets/*.yaml"
     )
@@ -85,7 +82,7 @@ def update_sops_files(c: Any) -> None:
 @task
 def print_keys(c: Any, flake_attr: str) -> None:
     """
-    Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01
+    Decrypt host private key, print ssh public key. Use inv print-keys --flake-attr build01
     """
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
@@ -98,13 +95,6 @@ def print_keys(c: Any, flake_attr: str) -> None:
         )
         print("###### Public keys ######")
         print(pubkey.stdout)
-        print("###### Age keys ######")
-        subprocess.run(
-            ["ssh-to-age"],
-            input=pubkey.stdout,
-            check=True,
-            text=True,
-        )
 
 
 @task

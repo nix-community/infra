@@ -2,9 +2,9 @@
 
 - Add them to the [list of administrators](../docs/administrators.md)
 
-- Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
+- Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups and run `inv update-sops-files`.
 
-- Add their age key to [sops.json](../sops.json) and run `inv update-sops-files`.
+  - Their age key could also be added to [sops.json](../sops.json) as an alternative to using an ssh key with sops.
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
 
