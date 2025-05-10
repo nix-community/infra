@@ -55,6 +55,7 @@
         ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
         inputs.hercules-ci-effects.flakeModule
@@ -132,6 +133,7 @@
                 dnscontrol-check
                 docs
                 docs-linkcheck
+                sops-check
                 terraform-validate
                 ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
