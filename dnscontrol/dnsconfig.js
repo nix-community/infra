@@ -58,6 +58,7 @@ var cnames = {
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
     "nur-update": "build03",
+    "pr-tracker": "build03",
     "prometheus": "web02",
 };
 
