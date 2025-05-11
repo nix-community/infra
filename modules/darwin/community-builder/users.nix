@@ -3,6 +3,9 @@ let
   # To add yourself:
   # 1. Add an entry to this list, using the next UID.
   # 2. Create a file in `keys` named your user name that contains your SSH key(s), separated by newlines.
+
+  # Note: currently the darwin build box doesn't support FIDO keys.
+  # https://github.com/nix-community/infra/issues/1007
   users = [
     {
       name = "winter";
