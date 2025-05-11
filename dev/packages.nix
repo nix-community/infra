@@ -14,18 +14,6 @@
       })
     ];
   });
-  sk-libfido2 = prev.openssh.overrideAttrs (o: {
-    pname = "sk-libfido2";
-    configureFlags = o.configureFlags ++ [ "--with-security-key-standalone" ];
-    buildFlags = [
-      "PATHS="
-      "SK_STANDALONE=sk-libfido2.dylib"
-    ];
-    installPhase = "install sk-libfido2.dylib -Dt $out";
-    postInstall = null;
-    doCheck = false;
-    doInstallCheck = false;
-  });
   sotp = final.buildGoModule rec {
     pname = "sotp";
     version = "e7f7c804b1641169ce850d8352fb07294881609e";
