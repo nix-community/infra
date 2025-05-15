@@ -11,8 +11,8 @@ locals {
     }
     cuda_stable = {
       name                 = "cuda-stable"
-      description          = "nixos-24.11-small cuda"
-      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
+      description          = "nixos-25.05-small cuda"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
       check_interval       = 1800
       scheduling_shares    = 6000
@@ -20,8 +20,8 @@ locals {
     }
     cuda_stable_previous = {
       name                 = "cuda-stable-previous"
-      description          = "nixos-24.05-small cuda"
-      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.05-small"
+      description          = "nixos-24.11-small cuda"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
       nixpkgs_release_file = "pkgs/top-level/release-cuda.nix"
       check_interval       = 1800
       scheduling_shares    = 6000
@@ -67,6 +67,15 @@ locals {
     }
     unfree_redist_stable = {
       name                 = "unfree-redist-stable"
+      description          = "nixos-25.05-small unfree+redistributable"
+      nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
+      nixpkgs_release_file = "pkgs/top-level/release-unfree-redistributable.nix"
+      check_interval       = 1800
+      scheduling_shares    = 5000
+      supported_systems    = "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+    }
+    unfree_redist_stable_previous = {
+      name                 = "unfree-redist-stable-previous"
       description          = "nixos-24.11-small unfree+redistributable"
       nixpkgs_channel      = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
       nixpkgs_release_file = "pkgs/top-level/release-unfree-redistributable.nix"
