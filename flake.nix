@@ -24,7 +24,7 @@
     hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/darwin-sudo";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-darwin.url = "github:qowoz/nix-darwin/darwin-sudo";
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
