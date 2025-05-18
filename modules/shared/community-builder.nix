@@ -51,8 +51,9 @@
         pkgs.ripgrep
         pkgs.tig
       ]
-      ++ builtins.filter (lib.meta.availableOn pkgs.stdenv.hostPlatform) [
+      ++ builtins.filter (pkg: !pkg.meta.broken && lib.meta.availableOn pkgs.stdenv.hostPlatform pkg) [
         pkgs.foot.terminfo
+        pkgs.ghostty.terminfo
         pkgs.kitty.terminfo
         pkgs.termite.terminfo
         pkgs.wezterm.terminfo
