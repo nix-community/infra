@@ -15,6 +15,7 @@
               root = ../.;
               fileset = pkgs.lib.fileset.unions [
                 (pkgs.lib.fileset.fromSource (pkgs.lib.sources.sourceFilesBySuffices ../. [ ".yaml" ]))
+                ../modules/secrets
                 ../modules/shared/known-hosts.nix
                 ../sops.json
                 ../sops.nix
@@ -28,7 +29,7 @@
             cp --no-preserve=mode -rT $files .
             nix --extra-experimental-features nix-command eval --json -f sops.nix | yq e -P - > .sops.yaml
             diff -u $files/.sops.yaml .sops.yaml
-            shopt -s globstar && sops updatekeys --yes **/secrets.yaml modules/secrets/*.yaml
+            shopt -s globstar && sops updatekeys --yes **/secrets.yaml modules/secrets/*
             touch $out
           '';
     };
