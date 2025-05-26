@@ -8,7 +8,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  nix.settings.max-jobs = 24;
+  nixCommunity.threads = 24;
 
   # Emulate riscv64 until we have proper builders
   boot.binfmt.emulatedSystems = [ "riscv64-linux" ];

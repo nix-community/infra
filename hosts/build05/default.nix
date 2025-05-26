@@ -7,7 +7,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
-  nix.settings.max-jobs = 80;
+  nixCommunity.threads = 80;
 
   system.stateVersion = "23.11";
 
