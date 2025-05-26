@@ -5,8 +5,7 @@
     inputs.self.darwinModules.community-builder
   ];
 
-  nix.settings.cores = 5;
-  nix.settings.max-jobs = 8;
+  nixCommunity.threads = 10;
 
   nixCommunity.darwin.ipv6 = "2a01:4f8:d1:5716::2 64 2a01:4f8:d1:5716::1";
 

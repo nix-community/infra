@@ -10,6 +10,9 @@
     type = lib.types.str;
     description = "message of the day";
   };
+  options.nixCommunity.threads = lib.mkOption {
+    type = lib.types.int;
+  };
 
   config = {
     nixCommunity.motd = ''
@@ -25,6 +28,9 @@
       git clone --reference /var/lib/nixpkgs.git https://github.com/NixOS/nixpkgs.git
 
     '';
+
+    nix.settings.cores = config.nixCommunity.threads / 2;
+    nix.settings.max-jobs = config.nixCommunity.threads / 4;
 
     sops.secrets.community-builder-nix-access-tokens = {
       sopsFile = "${inputs.self}/modules/secrets/community-builder.yaml";
