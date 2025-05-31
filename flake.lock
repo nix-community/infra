@@ -137,6 +137,62 @@
         "type": "github"
       }
     },
+    "lix": {
+      "inputs": {
+        "flake-compat": [
+          "nixbsd",
+          "flake-compat"
+        ],
+        "nix2container": [
+          "nixbsd"
+        ],
+        "nixpkgs": [
+          "nixbsd",
+          "nixpkgs"
+        ],
+        "nixpkgs-regression": [
+          "nixbsd"
+        ],
+        "pre-commit-hooks": [
+          "nixbsd"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741969094,
+        "narHash": "sha256-N9URV6eRf3FfWPuFHwEpTjrDBwvP9ekNPeMe5HqPycY=",
+        "ref": "freebsd-build",
+        "rev": "d003841587befb47d41373cba00d9921df8e237b",
+        "revCount": 17650,
+        "type": "git",
+        "url": "https://git.lix.systems/artemist/lix.git"
+      },
+      "original": {
+        "ref": "freebsd-build",
+        "type": "git",
+        "url": "https://git.lix.systems/artemist/lix.git"
+      }
+    },
+    "mini-tmpfiles": {
+      "inputs": {
+        "nixpkgs": [
+          "nixbsd",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741473245,
+        "narHash": "sha256-32ekQLovnjpb1NBvt1/WCEn98khSGljX+QkS+SLSNpM=",
+        "owner": "nixos-bsd",
+        "repo": "mini-tmpfiles",
+        "rev": "1ff4fc98963421e0e6b099ccda721d5a1ca4c887",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos-bsd",
+        "repo": "mini-tmpfiles",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -175,6 +231,50 @@
         "owner": "nix-community",
         "repo": "nix-index-database",
         "type": "github"
+      }
+    },
+    "nixbsd": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "lix": "lix",
+        "mini-tmpfiles": "mini-tmpfiles",
+        "nixpkgs": [
+          "nixbsd-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748654155,
+        "narHash": "sha256-/HT+tmZTISs0UfQ9ZCqxyK26admCv95TQvvwQqG3h+c=",
+        "owner": "qowoz",
+        "repo": "nixbsd",
+        "rev": "6de10e16330cf87ec39d8637844180ef2e0d3522",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "tmp3-community",
+        "repo": "nixbsd",
+        "type": "github"
+      }
+    },
+    "nixbsd-nixpkgs": {
+      "locked": {
+        "lastModified": 1748404084,
+        "narHash": "sha256-i/oKVGbA3hvxVJwZi7dyWpyN6gGTxtq8lslPzOcLUT4=",
+        "ref": "nixbsd-dev-tmp",
+        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/rhelmot/nixpkgs"
+      },
+      "original": {
+        "ref": "nixbsd-dev-tmp",
+        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/rhelmot/nixpkgs"
       }
     },
     "nixos-facter-modules": {
@@ -295,6 +395,8 @@
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
+        "nixbsd": "nixbsd",
+        "nixbsd-nixpkgs": "nixbsd-nixpkgs",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
