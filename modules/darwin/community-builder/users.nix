@@ -256,6 +256,7 @@ let
       # lib.maintainers.emily, https://github.com/emilazy
       name = "emily";
       trusted = true;
+      # wheel = true; admin group set manually
       uid = 542;
       keys = ./keys/emily;
     }
