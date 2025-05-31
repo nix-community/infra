@@ -392,7 +392,10 @@ in
       inherit (u) name;
       value = {
         isNormalUser = true;
-        extraGroups = if (u ? trusted && u.trusted) then [ "trusted" ] else [ ];
+        extraGroups = builtins.concatLists [
+          (if u ? trusted && u.trusted then [ "trusted" ] else [ ])
+          (if u ? wheel && u.wheel then [ "wheel" ] else [ ])
+        ];
         home = "/home/${u.name}";
         createHome = true;
         shell = u.shell or config.users.defaultUserShell;
