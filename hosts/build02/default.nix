@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -10,6 +15,8 @@
     inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
+
+  nix.settings.auto-optimise-store = lib.mkForce false;
 
   nix.settings.cores = config.nix.settings.max-jobs / 3 * 2;
   nix.settings.max-jobs = 24;
