@@ -27,6 +27,10 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nixbsd-nixpkgs.url = "git+https://github.com/rhelmot/nixpkgs?shallow=1&ref=nixbsd-dev-tmp&rev=33d5774c0ae99ad4d62743eb004a5bd24b248791";
+    nixbsd.inputs.flake-compat.follows = "flake-compat";
+    nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
+    nixbsd.url = "github:qowoz/nixbsd/tmp3-community";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
@@ -128,6 +132,11 @@
                     self.darwinConfigurations // self.nixosConfigurations
                   )
                 )
+            //
+              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+                (
+                  (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
+                )
             // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
               inherit (self'.packages)
                 dnscontrol-check
@@ -143,6 +152,30 @@
               nixosTests-harmonia = pkgs.nixosTests.harmonia;
               nixosTests-hydra = pkgs.nixosTests.hydra;
             };
+        };
+
+      flake.nixbsdConfigurations =
+        let
+          inherit (inputs.nixbsd.lib) nixbsdSystem;
+          common = [ ./hosts/freebsd/configuration.nix ];
+        in
+        {
+          build01-freebsd = nixbsdSystem {
+            modules = common ++ [
+              {
+                virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 64 * 1024; # 1/2
+              }
+            ];
+          };
+          build03-freebsd = nixbsdSystem {
+            modules = common ++ [
+              {
+                virtualisation.vmVariant.virtualisation.cores = 48; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 128 * 1024; # 1/2
+              }
+            ];
+          };
         };
     };
 }
