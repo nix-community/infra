@@ -276,6 +276,7 @@ let
       name = "emily";
       # lib.maintainers.emily, https://github.com/emilazy
       trusted = true;
+      wheel = true;
       keys = ./keys/emily;
     }
     {
