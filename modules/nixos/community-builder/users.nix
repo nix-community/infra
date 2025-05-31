@@ -205,6 +205,12 @@ let
       keys = ./keys/raboof;
     }
     {
+      # lib.maintainers.rhelmot, https://github.com/rhelmot
+      name = "rhelmot";
+      trusted = true;
+      keys = ./keys/rhelmot;
+    }
+    {
       name = "schmittlauch";
       trusted = true;
       keys = ./keys/schmittlauch;
