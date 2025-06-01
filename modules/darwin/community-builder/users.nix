@@ -472,6 +472,13 @@ let
       uid = 572;
       keys = ./keys/lukegb;
     }
+    {
+      # lib.maintainers.grimmauld, https://github.com/lordgrimmauld
+      name = "grimmauld";
+      trusted = true;
+      uid = 573;
+      keys = ./keys/grimmauld;
+    }
   ];
 in
 {
