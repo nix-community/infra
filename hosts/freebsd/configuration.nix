@@ -71,6 +71,7 @@
       asGB = size: toString (size * 1024 * 1024 * 1024);
     in
     {
+      max-jobs = 4;
       min-free = asGB 20;
       max-free = asGB 50;
       trusted-users = [
