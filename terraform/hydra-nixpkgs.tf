@@ -1,5 +1,25 @@
 locals {
   jobset = {
+    bsd = {
+      name              = "bsd"
+      description       = "nixos-unstable-small bsd"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      release_file      = "hydra/bsd.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["x86_64-freebsd"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
+    bsd_staging_next = {
+      name              = "bsd-staging-next"
+      description       = "staging-next bsd"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git staging-next"
+      release_file      = "hydra/bsd.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["x86_64-freebsd"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
     cuda = {
       name              = "cuda"
       description       = "nixos-unstable-small cuda"
