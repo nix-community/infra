@@ -98,7 +98,18 @@ resource "hydra_jobset" "nixpkgs_jobset" {
 
   nix_expression {
     file  = each.value.release_file
-    input = "nixpkgs"
+    input = lookup(each.value, "release_source", null) != null ? "release_source" : "nixpkgs"
+  }
+
+  dynamic "input" {
+    for_each = lookup(each.value, "release_source", null) != null ? [each.value.release_source] : []
+
+    content {
+      name              = "release_source"
+      type              = "git"
+      value             = input.value
+      notify_committers = false
+    }
   }
 
   input {
