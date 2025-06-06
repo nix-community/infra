@@ -223,6 +223,102 @@
         "type": "legacy",
         "visible": true
       },
+      "linux_variants": {
+        "check_interval": 1800,
+        "description": "nixos-unstable-small linux-variants",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "release_source",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/nix-community/infra.git master"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "linux-variants",
+        "nix_expression": {
+          "file": "hydra/linux-variants.nix",
+          "input": "release_source"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 1000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "linux_variants_staging_next": {
+        "check_interval": 1800,
+        "description": "staging-next linux-variants",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git staging-next"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "release_source",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/nix-community/infra.git master"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "linux-variants-staging-next",
+        "nix_expression": {
+          "file": "hydra/linux-variants.nix",
+          "input": "release_source"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 1000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
       "rocm": {
         "check_interval": 1800,
         "description": "nixos-unstable-small rocm",

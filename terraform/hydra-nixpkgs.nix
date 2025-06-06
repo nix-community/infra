@@ -1,6 +1,7 @@
 let
   stable = "nixos-25.05-small";
   stable_previous = "nixos-24.11-small";
+  infra_repo = "https://github.com/nix-community/infra.git master";
 
   base_jobsets = {
     bsd = {
@@ -8,7 +9,7 @@ let
       description = "nixos-unstable-small bsd";
       nixpkgs_channel = "nixos-unstable-small";
       release_file = "hydra/bsd.nix";
-      release_source = "https://github.com/nix-community/infra.git master";
+      release_source = infra_repo;
       scheduling_shares = 1000;
       supported_systems = [ "x86_64-freebsd" ];
       staging_next = true;
@@ -21,6 +22,19 @@ let
       scheduling_shares = 6000;
       supported_systems = [ "x86_64-linux" ];
       stable = true;
+    };
+    linux_variants = {
+      name = "linux-variants";
+      description = "nixos-unstable-small linux-variants";
+      nixpkgs_channel = "nixos-unstable-small";
+      release_file = "hydra/linux-variants.nix";
+      release_source = infra_repo;
+      scheduling_shares = 1000;
+      supported_systems = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+      staging_next = true;
     };
     rocm = {
       name = "rocm";
