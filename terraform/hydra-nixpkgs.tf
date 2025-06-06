@@ -27,6 +27,16 @@ locals {
       scheduling_shares = 6000
       supported_systems = ["x86_64-linux"]
     }
+    linux = {
+      name              = "linux"
+      description       = "nixos-unstable-small pkgsLLVM, pkgsMusl"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      release_file      = "hydra/release-linux.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["aarch64-linux", "x86_64-linux"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
     rocm = {
       name              = "rocm"
       description       = "nixos-unstable-small rocm"
