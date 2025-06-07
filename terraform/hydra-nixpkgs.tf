@@ -1,5 +1,15 @@
 locals {
   jobset = {
+    bsd = {
+      name              = "bsd"
+      description       = "nixos-unstable-small bsd"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      release_file      = "hydra/release-bsd.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["x86_64-freebsd"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
     cuda = {
       name              = "cuda"
       description       = "nixos-unstable-small cuda"
@@ -98,7 +108,18 @@ resource "hydra_jobset" "nixpkgs_jobset" {
 
   nix_expression {
     file  = each.value.release_file
-    input = "nixpkgs"
+    input = lookup(each.value, "release_source", null) != null ? "release_source" : "nixpkgs"
+  }
+
+  dynamic "input" {
+    for_each = lookup(each.value, "release_source", null) != null ? [each.value.release_source] : []
+
+    content {
+      name              = "release_source"
+      type              = "git"
+      value             = input.value
+      notify_committers = false
+    }
   }
 
   input {
