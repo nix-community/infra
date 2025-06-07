@@ -27,6 +27,16 @@ locals {
       scheduling_shares = 6000
       supported_systems = ["x86_64-linux"]
     }
+    linux = {
+      name              = "linux"
+      description       = "nixos-unstable-small pkgsLLVM, pkgsMusl"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      release_file      = "hydra/release-linux.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["aarch64-linux", "x86_64-linux"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
     rocm = {
       name              = "rocm"
       description       = "nixos-unstable-small rocm"
@@ -98,7 +108,18 @@ resource "hydra_jobset" "nixpkgs_jobset" {
 
   nix_expression {
     file  = each.value.release_file
-    input = "nixpkgs"
+    input = lookup(each.value, "release_source", null) != null ? "release_source" : "nixpkgs"
+  }
+
+  dynamic "input" {
+    for_each = lookup(each.value, "release_source", null) != null ? [each.value.release_source] : []
+
+    content {
+      name              = "release_source"
+      type              = "git"
+      value             = input.value
+      notify_committers = false
+    }
   }
 
   input {
