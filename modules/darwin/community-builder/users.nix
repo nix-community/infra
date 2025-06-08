@@ -479,6 +479,13 @@ let
       uid = 573;
       keys = ./keys/grimmauld;
     }
+    {
+      # lib.maintainers.cryolitia, https://github.com/cryolitia
+      name = "cryolitia";
+      trusted = true;
+      uid = 574;
+      keys = ./keys/cryolitia;
+    }
   ];
 in
 {
