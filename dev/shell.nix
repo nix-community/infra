@@ -9,7 +9,6 @@
           python3.pkgs.deploykit
           python3.pkgs.invoke
           sops
-          ssh-to-age
           yq-go
         ];
       };

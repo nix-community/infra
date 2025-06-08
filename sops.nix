@@ -1,7 +1,16 @@
 # https://github.com/TUM-DSE/doctor-cluster-config/blob/8c11c117e66af1cc205eb2094ab94e8a3317ff2e/sops.yaml.nix
 let
   keys = builtins.fromJSON (builtins.readFile ./sops.json);
-  admins = builtins.attrValues keys.admins;
+  admins = builtins.attrValues (
+    builtins.mapAttrs (
+      name: _: builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile (./users/keys + "/${name}"))
+    ) (builtins.readDir ./users/keys)
+    // keys.admins
+  );
+
+  hosts =
+    builtins.mapAttrs (_: v: v.publicKey)
+      (import ./modules/shared/known-hosts.nix).programs.ssh.knownHosts;
 
   mapAttrsToList = f: attrs: map (name: f name attrs.${name}) (builtins.attrNames attrs);
 
@@ -22,7 +31,7 @@ let
       "secrets.yaml" = [ ];
       "terraform/secrets.yaml" = [ ];
     }
-    // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
+    // builtins.mapAttrs (_: value: (map (x: hosts.${x}) value)) {
       "modules/secrets/backup.yaml" = [
         "build02"
         "build03"
@@ -43,7 +52,7 @@ let
       mapAttrsToList (hostname: key: {
         name = "hosts/${hostname}/secrets.yaml";
         value = [ key ];
-      }) keys.hosts
+      }) hosts
     );
 in
 {
