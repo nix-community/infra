@@ -8,7 +8,7 @@ locals {
       check_interval    = 1800
       scheduling_shares = 1000
       supported_systems = ["x86_64-freebsd"]
-      release_source    = "https://github.com/nix-community/infra.git master"
+      release_source    = "https://github.com/nix-community/infra.git tf-bsd"
     }
     bsd_staging_next = {
       name              = "bsd-staging-next"
@@ -18,7 +18,7 @@ locals {
       check_interval    = 1800
       scheduling_shares = 1000
       supported_systems = ["x86_64-freebsd"]
-      release_source    = "https://github.com/nix-community/infra.git master"
+      release_source    = "https://github.com/nix-community/infra.git tf-bsd"
     }
     cuda = {
       name              = "cuda"
