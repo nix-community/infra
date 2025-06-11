@@ -59,6 +59,7 @@ var cnames = {
     "nixpkgs-update-logs": "build02",
     "nur-update": "build03",
     "prometheus": "web02",
+    "temp-cache": "build03",
 };
 
 var records = [];

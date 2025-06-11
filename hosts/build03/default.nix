@@ -2,6 +2,7 @@
 {
   imports = [
     ./builders.nix
+    ./cache.nix
     ./postgresql.nix
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.cgroups
