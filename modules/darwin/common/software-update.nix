@@ -1,12 +1,4 @@
-{ lib, ... }:
 {
-  system.activationScripts.postActivation.text = lib.mkBefore ''
-    if ! pgrep -q oahd; then
-      echo installing rosetta... >&2
-      softwareupdate --install-rosetta --agree-to-license
-    fi
-  '';
-
   system.defaults.CustomSystemPreferences = {
     # check daily, install critical updates, disable macos updates
     "/Library/Preferences/com.apple.SoftwareUpdate" = {
