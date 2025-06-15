@@ -1,9 +1,13 @@
 {
   description = "NixOS configuration of our builders";
 
-  nixConfig.extra-substituters = [ "https://nix-community.cachix.org" ];
+  nixConfig.extra-substituters = [
+    "https://nix-community.cachix.org"
+    "https://temp-cache.nix-community.org/default"
+  ];
   nixConfig.extra-trusted-public-keys = [
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    "temp-cache.nix-community.org-1:RSXIfGjilfBsilDvj03/VnL/9qAxacBnb1YQvSdCoDc="
   ];
 
   inputs = {
@@ -40,6 +44,10 @@
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
+    queued-build-hook.flake = false;
+    queued-build-hook.url = "github:nix-community/queued-build-hook";
+    snix-cache.flake = false;
+    snix-cache.url = "git+https://git.dgnum.eu/zowoq/snix-cache?ref=priority";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +82,7 @@
             config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
+              (import "${inputs.snix-cache}/nix/overlay.nix")
             ];
           };
 
@@ -137,21 +146,30 @@
                 (
                   (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
                 )
-            // pkgs.lib.optionalAttrs (system == "x86_64-linux") {
-              inherit (self'.packages)
-                dnscontrol-check
-                docs
-                docs-linkcheck
-                sops-check
-                terraform-validate
-                ;
-              nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
-              nixosTests-buildbot = pkgs.nixosTests.buildbot;
-              nixosTests-buildbot-nix-master = inputs'.buildbot-nix.checks.master;
-              nixosTests-buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
-              nixosTests-harmonia = pkgs.nixosTests.harmonia;
-              nixosTests-hydra = pkgs.nixosTests.hydra;
-            };
+            // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
+              {
+                inherit (self'.packages)
+                  dnscontrol-check
+                  docs
+                  docs-linkcheck
+                  sops-check
+                  terraform-validate
+                  ;
+                nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
+              }
+              // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
+                inherit (pkgs.nixosTests)
+                  buildbot
+                  harmonia
+                  hydra
+                  ;
+                buildbot-nix-master = inputs'.buildbot-nix.checks.master;
+                buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+                queued-build-hook =
+                  (import "${inputs.queued-build-hook}/tests" { inherit pkgs system; }).multipleHosts;
+                snix-cache = (import "${inputs.snix-cache}/tests" { inherit pkgs; }).substitution;
+              }
+            );
         };
 
       flake.nixbsdConfigurations =
