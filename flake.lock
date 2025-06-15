@@ -384,6 +384,26 @@
         "type": "github"
       }
     },
+    "rfc39": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1747805352,
+        "narHash": "sha256-tyt7Mz7+varMQuKxQtqTHN7KXZEnBVLTaHBP/FI+wNY=",
+        "owner": "NixOS",
+        "repo": "rfc39",
+        "rev": "5f40cb211f39f22e68e10075e5875f0b692e1ae1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "rfc39",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "buildbot-nix": "buildbot-nix",
@@ -402,6 +422,7 @@
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
+        "rfc39": "rfc39",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems",
