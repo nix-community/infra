@@ -487,6 +487,13 @@ let
       uid = 574;
       keys = ./keys/cryolitia;
     }
+    {
+      # lib.maintainers.defelo, https://github.com/Defelo
+      name = "defelo";
+      trusted = true;
+      uid = 575;
+      keys = ./keys/defelo;
+    }
   ];
 in
 {
