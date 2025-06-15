@@ -385,6 +385,12 @@ let
       trusted = true;
       keys = ./keys/zimward;
     }
+    {
+      # lib.maintainers.defelo, https://github.com/Defelo
+      name = "defelo";
+      trusted = true;
+      keys = ./keys/defelo;
+    }
   ];
 in
 {
