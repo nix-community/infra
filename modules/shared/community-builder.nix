@@ -50,7 +50,7 @@
         pkgs.emacs
         pkgs.fd
         pkgs.git
-        pkgs.nano
+        (lib.mkIf (!pkgs.stdenv.isDarwin) pkgs.nano)
         pkgs.nix-output-monitor
         pkgs.nix-tree
         pkgs.nixpkgs-review
