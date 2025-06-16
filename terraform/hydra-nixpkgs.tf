@@ -60,7 +60,7 @@ locals {
       description       = "nixos-unstable unfree+redistributable full"
       nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable"
       release_file      = "pkgs/top-level/release-unfree-redistributable.nix"
-      check_interval    = 604800
+      check_interval    = 1800
       scheduling_shares = 1000
       supported_systems = ["x86_64-linux"]
       full              = "true"
