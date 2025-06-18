@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 
 {
   imports = [
@@ -11,6 +11,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nix.settings.cores = config.nix.settings.max-jobs / 2;
   nix.settings.max-jobs = 24;
 
   # set in srvos, remove when reinstalling
