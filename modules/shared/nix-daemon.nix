@@ -17,7 +17,7 @@ in
 
     settings.substituters = [
       "https://nix-community.cachix.org"
-      "https://temp-cache.nix-community.org/default"
+      "https://temp-cache.nix-community.org"
     ];
 
     # auto-free the /nix/store

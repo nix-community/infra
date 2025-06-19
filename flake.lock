@@ -384,22 +384,6 @@
         "type": "github"
       }
     },
-    "queued-build-hook": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750040594,
-        "narHash": "sha256-RqrXfURFRwACyem/gBQc3OosTPHGNqqvJjU3WQX4DrE=",
-        "owner": "nix-community",
-        "repo": "queued-build-hook",
-        "rev": "b88086bac3fbfea55a2ab1a3dc013eacda9abb30",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "queued-build-hook",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "buildbot-nix": "buildbot-nix",
@@ -418,29 +402,10 @@
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
-        "queued-build-hook": "queued-build-hook",
-        "snix-cache": "snix-cache",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"
-      }
-    },
-    "snix-cache": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1749782735,
-        "narHash": "sha256-ydU8n73qUUFT4uxVAhaf7aAkbCC1OmKu70ztzNwzyMA=",
-        "ref": "priority",
-        "rev": "2bbf7e5109e3435847ad8106967b44c4d6e49d83",
-        "revCount": 36,
-        "type": "git",
-        "url": "https://git.dgnum.eu/zowoq/snix-cache"
-      },
-      "original": {
-        "ref": "priority",
-        "type": "git",
-        "url": "https://git.dgnum.eu/zowoq/snix-cache"
       }
     },
     "sops-nix": {
