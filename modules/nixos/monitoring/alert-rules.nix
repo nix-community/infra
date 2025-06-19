@@ -44,6 +44,8 @@
           annotations.description = "RAS daemon reports a non-zero value";
         };
 
+        Reboot.expr = lib.mkForce ''system_uptime{host!="nixbsd-freebsd"} < 300'';
+
         MatrixHookNotRunning = {
           expr = ''systemd_units_active_code{name="matrix-hook.service", sub!="running"}'';
           annotations.description = "{{$labels.host}} should have a running {{$labels.name}}";
