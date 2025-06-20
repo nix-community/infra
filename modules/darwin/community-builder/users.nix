@@ -508,6 +508,13 @@ let
       uid = 577;
       keys = ./keys/prince213;
     }
+    {
+      # lib.maintainers.mdaniels5757, https://github.com/mdaniels5757
+      name = "mdaniels5757";
+      trusted = true;
+      uid = 578;
+      keys = ./keys/mdaniels5757;
+    }
   ];
 in
 {
