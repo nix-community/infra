@@ -494,6 +494,13 @@ let
       uid = 575;
       keys = ./keys/defelo;
     }
+    {
+      # lib.maintainers.mdaniels5757, https://github.com/mdaniels5757
+      name = "mdaniels5757";
+      trusted = true;
+      uid = 576;
+      keys = ./keys/mdaniels5757;
+    }
   ];
 in
 {
