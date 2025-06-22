@@ -80,6 +80,7 @@
       # https://grml.org/zsh/grmlzshrc.html
       # https://grml.org/zsh/grml-zsh-refcard.pdf
       interactiveShellInit = ''
+        export NOPATHHELPER=1 # disable macos path_helper
         source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
       '';
       promptInit = ""; # otherwise it'll override the grml prompt
