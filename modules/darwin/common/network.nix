@@ -10,7 +10,7 @@
 
   config = {
     # disable application layer firewall, telegraf needs an incoming connection
-    system.defaults.alf.globalstate = 0;
+    networking.applicationFirewall.enable = false;
 
     # Make sure to disable netbios on activation
     system.activationScripts.postActivation.text = lib.mkBefore ''
