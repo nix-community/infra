@@ -29,7 +29,7 @@
 
     '';
 
-    nix.settings.cores = config.nixCommunity.threads / 2;
+    nix.settings.cores = config.nixCommunity.threads / 4;
     nix.settings.max-jobs = config.nixCommunity.threads / 4;
 
     sops.secrets.community-builder-nix-access-tokens = {
