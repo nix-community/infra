@@ -35,7 +35,7 @@ locals {
       check_interval    = 1800
       scheduling_shares = 1000
       supported_systems = ["aarch64-linux", "x86_64-linux"]
-      release_source    = "https://github.com/nix-community/infra.git master"
+      release_source    = "https://github.com/nix-community/infra.git tf-hydra-linux"
     }
     rocm = {
       name              = "rocm"
