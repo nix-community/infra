@@ -67,6 +67,13 @@ let
       keys = ./keys/dwt;
     }
     {
+      # https://github.com/ethancedwards8
+      # lib.maintainers.ethancedwards8
+      name = "ethancedwards8";
+      trusted = true;
+      keys = ./keys/ethancedwards8;
+    }
+    {
       name = "fgaz";
       trusted = true;
       keys = ./keys/fgaz;
