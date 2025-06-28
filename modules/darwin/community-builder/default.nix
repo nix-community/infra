@@ -22,7 +22,6 @@
   environment.shells = [
     pkgs.bashInteractive
     pkgs.fish
-    pkgs.nushell
     pkgs.zsh
   ];
 
