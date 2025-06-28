@@ -1,0 +1,503 @@
+{
+  "resource": {
+    "hydra_jobset": {
+      "bsd": {
+        "check_interval": 1800,
+        "description": "nixos-unstable-small bsd",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "release_source",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/nix-community/infra.git master"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-freebsd\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "bsd",
+        "nix_expression": {
+          "file": "hydra/bsd.nix",
+          "input": "release_source"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 1000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "bsd_staging_next": {
+        "check_interval": 1800,
+        "description": "staging-next bsd",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git staging-next"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "release_source",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/nix-community/infra.git master"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-freebsd\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "bsd-staging-next",
+        "nix_expression": {
+          "file": "hydra/bsd.nix",
+          "input": "release_source"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 1000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "cuda": {
+        "check_interval": 1800,
+        "description": "nixos-unstable-small cuda",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "cuda",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-cuda.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 6000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "cuda_stable": {
+        "check_interval": 1800,
+        "description": "nixos-25.05-small cuda",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "cuda-stable",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-cuda.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 6000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "cuda_stable_previous": {
+        "check_interval": 1800,
+        "description": "nixos-24.11-small cuda",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "cuda-stable-previous",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-cuda.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 6000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "rocm": {
+        "check_interval": 1800,
+        "description": "nixos-unstable-small rocm",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-linux\" ]"
+          },
+          {
+            "name": "variant",
+            "notify_committers": false,
+            "type": "string",
+            "value": "rocm"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "rocm",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-cuda.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 6000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "unfree_redist": {
+        "check_interval": 1800,
+        "description": "nixos-unstable-small unfree+redistributable",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "unfree-redist",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-unfree-redistributable.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 5000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "unfree_redist_darwin": {
+        "check_interval": 1800,
+        "description": "nixpkgs-unstable darwin unfree+redistributable",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixpkgs-unstable"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-darwin\" \"x86_64-darwin\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "unfree-redist-darwin",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-unfree-redistributable.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 5000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "unfree_redist_full": {
+        "check_interval": 1800,
+        "description": "nixos-unstable unfree+redistributable full",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "full",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "true"
+          },
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-unstable"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "unfree-redist-full",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-unfree-redistributable.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 1000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "unfree_redist_stable": {
+        "check_interval": 1800,
+        "description": "nixos-25.05-small unfree+redistributable",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "unfree-redist-stable",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-unfree-redistributable.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 5000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      },
+      "unfree_redist_stable_previous": {
+        "check_interval": 1800,
+        "description": "nixos-24.11-small unfree+redistributable",
+        "email_notifications": false,
+        "email_override": "",
+        "input": [
+          {
+            "name": "nixpkgs",
+            "notify_committers": false,
+            "type": "git",
+            "value": "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
+          },
+          {
+            "name": "officialRelease",
+            "notify_committers": false,
+            "type": "boolean",
+            "value": "false"
+          },
+          {
+            "name": "supportedSystems",
+            "notify_committers": false,
+            "type": "nix",
+            "value": "[ \"aarch64-linux\" \"x86_64-linux\" ]"
+          }
+        ],
+        "keep_evaluations": 1,
+        "lifecycle": {
+          "ignore_changes": [
+            "state"
+          ]
+        },
+        "name": "unfree-redist-stable-previous",
+        "nix_expression": {
+          "file": "pkgs/top-level/release-unfree-redistributable.nix",
+          "input": "nixpkgs"
+        },
+        "project": "nixpkgs",
+        "scheduling_shares": 5000,
+        "state": "enabled",
+        "type": "legacy",
+        "visible": true
+      }
+    },
+    "hydra_project": {
+      "nixpkgs": {
+        "description": "you know what this is",
+        "display_name": "nixpkgs",
+        "enabled": true,
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "name": "nixpkgs",
+        "owner": "admin",
+        "visible": true
+      }
+    }
+  }
+}
