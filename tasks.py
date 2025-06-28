@@ -80,6 +80,16 @@ def update_sops_files(c: Any) -> None:
 
 
 @task
+def update_tf_json(c: Any) -> None:
+    """
+    Update terraform json files
+    """
+    c.run(
+        f"nix eval --json -f {ROOT}/terraform/hydra-nixpkgs.nix | json-sort > {ROOT}/terraform/hydra-nixpkgs.tf.json"
+    )
+
+
+@task
 def print_keys(c: Any, flake_attr: str) -> None:
     """
     Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01

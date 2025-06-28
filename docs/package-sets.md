@@ -38,4 +38,4 @@ See [here](./cache.md) for details.
 
 #### Hydra
 
-The hydra configuration for these package sets is managed in this [file](https://github.com/nix-community/infra/blob/master/terraform/hydra-nixpkgs.tf).
+The hydra configuration for these package sets is managed in this [file](https://github.com/nix-community/infra/blob/master/terraform/hydra-nixpkgs.nix).
