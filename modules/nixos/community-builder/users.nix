@@ -398,6 +398,12 @@ let
       trusted = true;
       keys = ./keys/defelo;
     }
+    {
+      # lib.maintainers.kashw2, https://github.com/kashw2
+      name = "kashw2";
+      trusted = true;
+      keys = ./keys/kashw2;
+    }
   ];
 in
 {
