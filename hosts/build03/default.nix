@@ -14,6 +14,7 @@
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nur-update
+    inputs.self.nixosModules.rfc39
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
