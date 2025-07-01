@@ -26,5 +26,6 @@ s|python3\w*Packages|python3Packages|g
 /haskellPackages.\w*/d
 /home-assistant-component-tests.\w*/d
 /perl\w*Packages.\w*/d
+/python3Packages.mypy-boto3-\w*/{/mypy-boto3-builder/!d}
 /python3Packages.types-aiobotocore-\w*/d
 /typstPackages.\w*/d
