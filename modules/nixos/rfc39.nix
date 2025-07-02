@@ -30,7 +30,7 @@
       config.nix.package
       pkgs.git
       pkgs.openssh
-      inputs.rfc39.packages.${pkgs.stdenv.hostPlatform.system}.rfc39
+      pkgs.rfc39
     ];
     startAt = "hourly";
     serviceConfig.User = "rfc39";
