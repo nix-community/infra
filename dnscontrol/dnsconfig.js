@@ -62,6 +62,7 @@ var cnames = {
     "hydra": "build03",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
+    "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "build03",
     "prometheus": "web02",
     "temp-cache": "build03",
