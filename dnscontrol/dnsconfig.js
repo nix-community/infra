@@ -8,10 +8,13 @@ var DSP_CLOUDFLARE = NewDnsProvider("cloudflare");
 
 // # For each github page, create a CNAME alias to nix-community.github.io
 var nix_community_github_pages = [
+    // keep-sorted start
     "nur",
+    // keep-sorted end
 ];
 
 var hosts = {
+    // keep-sorted start block=yes
     "build01": {
         ipv4: "65.21.139.242",
         ipv6: "2a01:4f9:3b:2946::1"
@@ -43,10 +46,12 @@ var hosts = {
     "web02": {
         ipv4: "46.226.105.188",
         ipv6: "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
-    }
+    },
+    // keep-sorted end
 };
 
 var cnames = {
+    // keep-sorted start
     "aarch64-build-box": "build05",
     "alertmanager": "web02",
     "build-box": "build01",
@@ -60,6 +65,7 @@ var cnames = {
     "nur-update": "build03",
     "prometheus": "web02",
     "temp-cache": "build03",
+    // keep-sorted end
 };
 
 var records = [];
