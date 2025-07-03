@@ -27,7 +27,7 @@
         allowed_organizations = [ "nix-community" ];
         role_attribute_strict = true;
         allow_assign_grafana_admin = true;
-        role_attribute_path = "contains(groups[*], '@nix-community/admin') && 'GrafanaAdmin' || 'Editor'";
+        role_attribute_path = "contains(groups[*], '@nix-community/admin') && 'GrafanaAdmin' || 'None'";
       };
 
       server = {
