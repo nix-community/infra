@@ -2,12 +2,11 @@ We provide CI for these platforms:
 
 - `aarch64-darwin`
 - `aarch64-linux`
-- `x86_64-darwin`
 - `x86_64-linux`
 
 Both `aarch64-linux` and `x86_64-linux` have support for `kvm`/`nixos-test`.
 
-We only have limited build capacity for `*-darwin` so please don't use it excessively.
+We only have limited build capacity for `aarch64-darwin` so please don't use it excessively.
 
 See [here](./infrastructure.md#continuous-integration) for details about the hardware.
 
