@@ -6,6 +6,8 @@
 
   - `wheel` will give them access to the terraform state storage.
 
+  - Their ssh key will be added to [Hetzner Robot](https://robot.hetzner.com/key/index) via terraform.
+
 - Add their age key to [sops.json](../sops.json) and run `inv update-sops-files`.
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
@@ -31,6 +33,5 @@
   - [Cachix](https://app.cachix.org/organization/nix-community/settings)
   - [Cloudflare](https://dash.cloudflare.com/e4a2db52c495db230973c839a0699ae1/members)
   - [GitLab](https://gitlab.com/groups/nix-community/-/group_members)
-  - [Hetzner Robot](https://robot.hetzner.com/key/index)
   - [Namespace](https://cloud.namespace.so/4l6g3pb71m64u/settings/users)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)

@@ -3,6 +3,9 @@ terraform {
     github = {
       source = "integrations/github"
     }
+    hrobot = {
+      source = "midwork-finds-jobs/hrobot"
+    }
     hydra = {
       source = "DeterminateSystems/hydra"
     }
@@ -19,6 +22,11 @@ ephemeral "sops_file" "nix-community" {
 provider "github" {
   # admin provides their own token
   owner = "nix-community"
+}
+
+provider "hrobot" {
+  username = ephemeral.sops_file.nix-community.data["HROBOT_USERNAME"]
+  password = ephemeral.sops_file.nix-community.data["HROBOT_PASSWORD"]
 }
 
 provider "hydra" {

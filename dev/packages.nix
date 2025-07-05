@@ -4,6 +4,17 @@
   ...
 }:
 {
+  hrobot = final.buildGoModule {
+    pname = "hrobot";
+    inherit (final.terraform-providers.midwork-finds-jobs_hrobot)
+      src
+      version
+      vendorHash
+      ldflags
+      ;
+    subPackages = [ "cmd/hrobot" ];
+    doCheck = false;
+  };
   hydra = prev.hydra.overrideAttrs (_: {
     doCheck = false;
   });
@@ -39,5 +50,16 @@
       "-w"
     ];
     doCheck = false;
+  };
+  terraform-providers = prev.terraform-providers // {
+    midwork-finds-jobs_hrobot = final.terraform-providers.mkProvider {
+      hash = "sha256-kqxJqTLZ862sFdtHcSWUfhJ1JYJZ6nPrH0yzKOpwXb0=";
+      homepage = "https://registry.terraform.io/providers/midwork-finds-jobs/hrobot";
+      owner = "midwork-finds-jobs";
+      repo = "terraform-provider-hrobot";
+      rev = "v0.5.0";
+      spdx = "MPL-2.0";
+      vendorHash = "sha256-171GyH9/l7hB/GiTOtW1xt7gT25yOVq/cy0+X9Z3APs=";
+    };
   };
 }
