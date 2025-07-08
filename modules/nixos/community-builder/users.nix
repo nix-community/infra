@@ -404,6 +404,12 @@ let
       trusted = true;
       keys = ./keys/kashw2;
     }
+    {
+      name = "marcin-serwin";
+      # lib.maintainers.marcin-serwin, https://github.com/marcin-serwin
+      trusted = true;
+      keys = ./keys/marcin-serwin;
+    }
   ];
 in
 {
