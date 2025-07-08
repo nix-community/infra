@@ -161,6 +161,8 @@ resource "hydra_jobset" "nixpkgs_jobset" {
 
   email_notifications = false
   email_override      = ""
+
+  lifecycle { ignore_changes = [state] }
 }
 
 resource "hydra_project" "nixpkgs" {
