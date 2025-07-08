@@ -494,6 +494,13 @@ let
       uid = 575;
       keys = ./keys/defelo;
     }
+    {
+      # lib.maintainers.marcin-serwin, https://github.com/marcin-serwin
+      name = "marcin-serwin";
+      trusted = true;
+      uid = 576;
+      keys = ./keys/marcin-serwin;
+    }
   ];
 in
 {
