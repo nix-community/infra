@@ -1,5 +1,5 @@
 let
-  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") { config.allowAliases = false; config.allowUnfree = true; };
+  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable-small.tar.gz") { config.allowAliases = false; config.allowUnfree = true; };
 in
 # code in the following let block was copied from nixos/nixpkgs under
   # the MIT License
