@@ -113,6 +113,7 @@ let
     };
 
     script = ''
+      set -eo pipefail
       mkdir -p "$LOGS_DIRECTORY/~fetchers"
       cd "$LOGS_DIRECTORY/~fetchers"
       run_name="${name}.$(date +%s).txt"
