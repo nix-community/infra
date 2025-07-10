@@ -21,9 +21,6 @@
   nix.settings.cores = config.nix.settings.max-jobs / 3 * 2;
   nix.settings.max-jobs = 24;
 
-  # set in srvos, remove when reinstalling
-  networking.hostId = "deadbeef";
-
   boot.kernelParams = [ "zfs.zfs_arc_max=${toString (24 * 1024 * 1024 * 1024)}" ]; # 24GB, try to limit OOM kills / reboots
 
   networking.nameservers = [
