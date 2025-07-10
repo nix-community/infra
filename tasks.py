@@ -176,7 +176,7 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
         return
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
-        flags = "--build-on-remote --debug --option accept-flake-config true"
+        flags = "--build-on remote --debug --option accept-flake-config true"
         c.run(
             f"nix run --inputs-from . nixpkgs#nixos-anywhere -- {hostname} --extra-files {tmpdir} --flake .#{flake_attr} {flags}",
             echo=True,
