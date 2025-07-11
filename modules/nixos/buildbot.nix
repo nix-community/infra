@@ -92,6 +92,11 @@ in
     };
   };
 
+  # reset github project cache when starting service
+  systemd.services.buildbot-master.preStart = pkgs.lib.mkAfter ''
+    rm /var/lib/buildbot/github-*.json
+  '';
+
   sops.secrets.buildbot-effects-nix-community-infra = { };
 
   services.buildbot-nix.master.effects.perRepoSecretFiles = {
