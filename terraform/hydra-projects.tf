@@ -123,3 +123,30 @@ resource "hydra_jobset" "nixbsd" {
 
   email_notifications = false
 }
+
+resource "hydra_project" "cuda_legacy" {
+  name         = "cuda-legacy"
+  display_name = "cuda-legacy"
+  description  = "CUDA package sets which have aged out of Nixpkgs"
+  homepage     = "https://github.com/nix-community/cuda-legacy"
+  owner        = "admin"
+  enabled      = true
+  visible      = true
+}
+
+resource "hydra_jobset" "cuda_legacy" {
+  project     = hydra_project.cuda_legacy.name
+  state       = "enabled"
+  visible     = true
+  name        = "master"
+  type        = "flake"
+  description = "master branch"
+
+  flake_uri = "github:nix-community/cuda-legacy"
+
+  check_interval    = 1800
+  scheduling_shares = 3000
+  keep_evaluations  = 1
+
+  email_notifications = false
+}
