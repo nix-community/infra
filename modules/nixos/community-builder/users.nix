@@ -410,6 +410,12 @@ let
       trusted = true;
       keys = ./keys/marcin-serwin;
     }
+    {
+      # lib.maintainers.prince213, https://github.com/Prince213
+      name = "prince213";
+      trusted = true;
+      keys = ./keys/prince213;
+    }
   ];
 in
 {
