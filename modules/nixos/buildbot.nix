@@ -70,6 +70,7 @@ in
     inherit buildSystems;
     domain = "buildbot.nix-community.org";
     outputsPath = "/var/www/buildbot/nix-outputs/";
+    showTrace = true;
     evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
     jobReportLimit = 0;
