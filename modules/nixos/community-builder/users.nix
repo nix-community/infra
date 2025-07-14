@@ -195,12 +195,6 @@ let
       keys = ./keys/networkexception;
     }
     {
-      # lib.maintainers.onny, https://github.com/onny
-      name = "onny";
-      trusted = true;
-      keys = ./keys/onny;
-    }
-    {
       name = "pinpox";
       trusted = true;
       keys = ./keys/pinpox;
