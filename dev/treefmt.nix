@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   # Used to find the project root
   projectRootFile = ".git/config";
@@ -49,6 +49,16 @@
     };
 
     dnscontrol.includes = [ "*dnsconfig.js" ];
+
+    json-sort = {
+      command = pkgs.writeShellScriptBin "json-sort" ''
+        for file in "$@"; do
+          ${lib.getExe pkgs.json-sort} < "$file" |
+          ${lib.getExe' pkgs.moreutils "sponge"} "$file"
+        done
+      '';
+      includes = [ "*.json" ];
+    };
 
     mdformat-mkdocs = {
       command = pkgs.mdformat.withPlugins (p: [
