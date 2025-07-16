@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   excludes = [
     # vendored from external source, file is formatted but isn't compliant with statix
@@ -50,6 +50,16 @@ in
     };
 
     dnscontrol.includes = [ "*dnsconfig.js" ];
+
+    json-sort = {
+      command = pkgs.writeShellScriptBin "json-sort" ''
+        for file in "$@"; do
+          ${lib.getExe pkgs.json-sort} < "$file" |
+          ${lib.getExe' pkgs.moreutils "sponge"} "$file"
+        done
+      '';
+      includes = [ "*.json" ];
+    };
 
     mdformat-mkdocs = {
       command = pkgs.mdformat.withPlugins (p: [

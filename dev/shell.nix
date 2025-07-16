@@ -6,6 +6,7 @@
       mkShellNoCC {
         packages = [
           jq
+          json-sort
           python3.pkgs.deploykit
           python3.pkgs.invoke
           sops
