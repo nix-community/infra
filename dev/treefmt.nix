@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  excludes = [
+    # vendored from external source, file is formatted but isn't compliant with statix
+    "hosts/build02/packages-with-update-script.nix"
+  ];
+in
 {
   # Used to find the project root
   projectRootFile = ".git/config";
@@ -36,11 +42,6 @@
     ];
   };
 
-  settings.global.excludes = [
-    # vendored from external source
-    "hosts/build02/packages-with-update-script.nix"
-  ];
-
   settings.formatter = {
     editorconfig-checker = {
       command = pkgs.editorconfig-checker;
@@ -70,8 +71,14 @@
     shfmt.priority = 2;
 
     # nix
-    deadnix.priority = 1;
-    statix.priority = 2;
+    deadnix = {
+      inherit excludes;
+      priority = 1;
+    };
+    statix = {
+      inherit excludes;
+      priority = 2;
+    };
     nixfmt.priority = 3;
 
     # python
