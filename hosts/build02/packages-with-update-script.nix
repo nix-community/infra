@@ -1,8 +1,8 @@
 let
   pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable-small.tar.gz") { config.allowAliases = false; config.allowUnfree = true; };
 in
-# code in the following let block was copied from nixos/nixpkgs under
-  # the MIT License
+# code in the following let block was copied under the MIT License from
+# https://github.com/NixOS/nixpkgs/blob/5422d9b1f44033691eb17149a463de693d68de52/maintainers/scripts/update.nix
 let
   inherit (pkgs) lib;
 
