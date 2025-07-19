@@ -19,7 +19,8 @@ in
     sshUser = "nix";
     systems = [
       x.pkgs.stdenv.hostPlatform.system
-    ] ++ (x.config.nix.settings.extra-platforms or [ ]);
+    ]
+    ++ (x.config.nix.settings.extra-platforms or [ ]);
     supportedFeatures = x.config.nix.settings.system-features;
   }) machines;
 

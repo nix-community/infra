@@ -11,23 +11,22 @@ in
   # telegraf metrics from vm
   networking.firewall.allowedTCPPorts = [ 39273 ];
 
-  environment.etc."nix/freebsd-builder-key" =
-    {
-      mode = "0600";
-      # https://github.com/NixOS/nixpkgs/blob/1a4711b6be669d31f21b417a7f8b60801367dfee/nixos/modules/profiles/keys/ssh_host_ed25519_key
-      text = ''
-        -----BEGIN OPENSSH PRIVATE KEY-----
-        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-        QyNTUxOQAAACCQVnMW/wZWqrdWrjrRPhfEFFq1KLYguagSflLhFnVQmwAAAJASuMMnErjD
-        JwAAAAtzc2gtZWQyNTUxOQAAACCQVnMW/wZWqrdWrjrRPhfEFFq1KLYguagSflLhFnVQmw
-        AAAEDIN2VWFyggtoSPXcAFy8dtG1uAig8sCuyE21eMDt2GgJBWcxb/Blaqt1auOtE+F8QU
-        WrUotiC5qBJ+UuEWdVCbAAAACnJvb3RAbml4b3MBAgM=
-        -----END OPENSSH PRIVATE KEY-----
-      '';
-    }
-    // lib.optionalAttrs config.services.hydra.enable {
-      user = "hydra-queue-runner";
-    };
+  environment.etc."nix/freebsd-builder-key" = {
+    mode = "0600";
+    # https://github.com/NixOS/nixpkgs/blob/1a4711b6be669d31f21b417a7f8b60801367dfee/nixos/modules/profiles/keys/ssh_host_ed25519_key
+    text = ''
+      -----BEGIN OPENSSH PRIVATE KEY-----
+      b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+      QyNTUxOQAAACCQVnMW/wZWqrdWrjrRPhfEFFq1KLYguagSflLhFnVQmwAAAJASuMMnErjD
+      JwAAAAtzc2gtZWQyNTUxOQAAACCQVnMW/wZWqrdWrjrRPhfEFFq1KLYguagSflLhFnVQmw
+      AAAEDIN2VWFyggtoSPXcAFy8dtG1uAig8sCuyE21eMDt2GgJBWcxb/Blaqt1auOtE+F8QU
+      WrUotiC5qBJ+UuEWdVCbAAAACnJvb3RAbml4b3MBAgM=
+      -----END OPENSSH PRIVATE KEY-----
+    '';
+  }
+  // lib.optionalAttrs config.services.hydra.enable {
+    user = "hydra-queue-runner";
+  };
 
   nix.distributedBuilds = true;
   nix.buildMachines = [
