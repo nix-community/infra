@@ -17,37 +17,36 @@ let
     }) attrs;
 
   # This is the list of permissions per file. The admins have permissions for all files.
-  sopsPermissions =
-    {
-      "secrets.yaml" = [ ];
-      "terraform/secrets.yaml" = [ ];
-    }
-    // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
-      "modules/secrets/backup.yaml" = [
-        "build02"
-        "build03"
-        "web02"
-      ];
-      "modules/secrets/community-builder.yaml" = [
-        "build01"
-        "build05"
-        "darwin01"
-      ];
-      "modules/secrets/hercules-ci.yaml" = [
-        "build03"
-        "build04"
-        "darwin02"
-      ];
-      "modules/secrets/rfc39_private_key.der" = [
-        "build03"
-      ];
-    }
-    // builtins.listToAttrs (
-      mapAttrsToList (hostname: key: {
-        name = "hosts/${hostname}/secrets.yaml";
-        value = [ key ];
-      }) keys.hosts
-    );
+  sopsPermissions = {
+    "secrets.yaml" = [ ];
+    "terraform/secrets.yaml" = [ ];
+  }
+  // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
+    "modules/secrets/backup.yaml" = [
+      "build02"
+      "build03"
+      "web02"
+    ];
+    "modules/secrets/community-builder.yaml" = [
+      "build01"
+      "build05"
+      "darwin01"
+    ];
+    "modules/secrets/hercules-ci.yaml" = [
+      "build03"
+      "build04"
+      "darwin02"
+    ];
+    "modules/secrets/rfc39_private_key.der" = [
+      "build03"
+    ];
+  }
+  // builtins.listToAttrs (
+    mapAttrsToList (hostname: key: {
+      name = "hosts/${hostname}/secrets.yaml";
+      value = [ key ];
+    }) keys.hosts
+  );
 in
 {
   creation_rules = renderPermissions sopsPermissions;

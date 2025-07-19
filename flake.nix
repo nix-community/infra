@@ -125,44 +125,43 @@
             imports = [ ./dev/treefmt.nix ];
           };
 
-          checks =
+          checks = {
+            inherit (self') formatter;
+          }
+          // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
+          //
+            lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+              (
+                (lib.filterAttrs (_: config: config.pkgs.hostPlatform.system == system)) (
+                  self.darwinConfigurations // self.nixosConfigurations
+                )
+              )
+          //
+            lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+              (
+                (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
+              )
+          // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
             {
-              inherit (self') formatter;
+              inherit (self'.packages)
+                dnscontrol-check
+                docs
+                docs-linkcheck
+                sops-check
+                terraform-validate
+                ;
+              nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
             }
-            // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
-            //
-              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
-                (
-                  (lib.filterAttrs (_: config: config.pkgs.hostPlatform.system == system)) (
-                    self.darwinConfigurations // self.nixosConfigurations
-                  )
-                )
-            //
-              lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
-                (
-                  (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
-                )
-            // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
-              {
-                inherit (self'.packages)
-                  dnscontrol-check
-                  docs
-                  docs-linkcheck
-                  sops-check
-                  terraform-validate
-                  ;
-                nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
-              }
-              // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
-                inherit (pkgs.nixosTests)
-                  buildbot
-                  harmonia
-                  hydra
-                  ;
-                buildbot-nix-master = inputs'.buildbot-nix.checks.master;
-                buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
-              }
-            );
+            // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
+              inherit (pkgs.nixosTests)
+                buildbot
+                harmonia
+                hydra
+                ;
+              buildbot-nix-master = inputs'.buildbot-nix.checks.master;
+              buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+            }
+          );
         };
 
       flake.nixbsdConfigurations =

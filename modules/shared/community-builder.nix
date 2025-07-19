@@ -44,26 +44,25 @@
     '';
 
     # useful for people that want to test stuff
-    environment.systemPackages =
-      [
-        pkgs.btop
-        pkgs.emacs
-        pkgs.fd
-        pkgs.git
-        pkgs.nano
-        pkgs.nix-output-monitor
-        pkgs.nix-tree
-        pkgs.nixpkgs-review
-        pkgs.ripgrep
-        pkgs.tig
-      ]
-      ++ builtins.filter (pkg: !pkg.meta.broken && lib.meta.availableOn pkgs.stdenv.hostPlatform pkg) [
-        pkgs.foot.terminfo
-        pkgs.ghostty.terminfo
-        pkgs.kitty.terminfo
-        pkgs.termite.terminfo
-        pkgs.wezterm.terminfo
-      ];
+    environment.systemPackages = [
+      pkgs.btop
+      pkgs.emacs
+      pkgs.fd
+      pkgs.git
+      pkgs.nano
+      pkgs.nix-output-monitor
+      pkgs.nix-tree
+      pkgs.nixpkgs-review
+      pkgs.ripgrep
+      pkgs.tig
+    ]
+    ++ builtins.filter (pkg: !pkg.meta.broken && lib.meta.availableOn pkgs.stdenv.hostPlatform pkg) [
+      pkgs.foot.terminfo
+      pkgs.ghostty.terminfo
+      pkgs.kitty.terminfo
+      pkgs.termite.terminfo
+      pkgs.wezterm.terminfo
+    ];
 
     srvos.server.docs.enable = true;
 
