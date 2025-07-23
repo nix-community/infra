@@ -308,6 +308,22 @@
         "type": "github"
       }
     },
+    "nixos-infra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755041580,
+        "narHash": "sha256-DqUPcQ99MFCoSDB+ImndZQSOGN4l1I1N/bHbmQ2Jib8=",
+        "owner": "NixOS",
+        "repo": "infra",
+        "rev": "c3609f5419588184e91986758cb8380931a88dc1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "infra",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1755061300,
@@ -415,6 +431,7 @@
         "nixbsd": "nixbsd",
         "nixbsd-nixpkgs": "nixbsd-nixpkgs",
         "nixos-facter-modules": "nixos-facter-modules",
+        "nixos-infra": "nixos-infra",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
