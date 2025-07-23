@@ -38,6 +38,8 @@
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
     nixbsd.url = "github:qowoz/nixbsd/tmp3-community";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+    nixos-infra.flake = false;
+    nixos-infra.url = "github:NixOS/infra";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
