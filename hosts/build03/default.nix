@@ -4,6 +4,7 @@
     ./builders.nix
     ./cache.nix
     ./postgresql.nix
+    ./queue-runner.nix
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.ci-builder

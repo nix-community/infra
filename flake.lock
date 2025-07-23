@@ -308,6 +308,23 @@
         "type": "github"
       }
     },
+    "nixos-infra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754379056,
+        "narHash": "sha256-aXTMBvGyJOfQML1KXo5AnDjkZ0OQ1oeAj0+MFfCmih4=",
+        "owner": "helsinki-systems",
+        "repo": "nixos-infra",
+        "rev": "222c51c8e346216a0b8cc9df23af6633a99c3cc0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "helsinki-systems",
+        "ref": "feat/init-queue-runner-v2",
+        "repo": "nixos-infra",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754151594,
@@ -415,6 +432,7 @@
         "nixbsd": "nixbsd",
         "nixbsd-nixpkgs": "nixbsd-nixpkgs",
         "nixos-facter-modules": "nixos-facter-modules",
+        "nixos-infra": "nixos-infra",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
