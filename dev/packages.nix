@@ -1,8 +1,14 @@
 {
   final,
+  inputs,
   ...
 }:
 {
+  hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
+    inherit (final.lib) fileset;
+    nixComponents = final.nixVersions.nixComponents_2_29;
+    rawSrc = inputs.hydra;
+  };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
