@@ -138,6 +138,23 @@
         "type": "github"
       }
     },
+    "hydra-queue-runner": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756677376,
+        "narHash": "sha256-l5ERRgyeXYSOZAo3CvCtAihlhpDkJhVNlaArgDUT79I=",
+        "owner": "qowoz",
+        "repo": "hydra-queue-runner",
+        "rev": "9aaade3cb49f1396d9e1bc10b6dbce62d780b4d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "infra",
+        "repo": "hydra-queue-runner",
+        "type": "github"
+      }
+    },
     "lite-config": {
       "locked": {
         "lastModified": 1748349708,
@@ -432,6 +449,7 @@
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
+        "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",

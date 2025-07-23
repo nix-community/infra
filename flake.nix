@@ -26,6 +26,8 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hydra-queue-runner.flake = false;
+    hydra-queue-runner.url = "github:qowoz/hydra-queue-runner/infra";
     hydra.flake = false;
     hydra.url = "github:NixOS/hydra";
     lite-config.url = "github:yelite/lite-config";
