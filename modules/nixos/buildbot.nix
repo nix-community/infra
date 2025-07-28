@@ -11,6 +11,7 @@ let
     "nix-community/autofirma-nix"
     "nix-community/dream2nix"
     "nix-community/ethereum.nix"
+    "nix-community/home-manager"
     "nix-community/infra"
     "nix-community/lanzaboote"
     "nix-community/neovim-nightly-overlay"
