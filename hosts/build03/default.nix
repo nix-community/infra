@@ -19,7 +19,7 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  systemd.watchdog.runtimeTime = "30s";
+  systemd.settings.Manager.RuntimeWatchdogSec = "30s";
 
   nix.settings.max-jobs = 96;
 
