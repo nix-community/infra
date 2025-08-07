@@ -65,6 +65,7 @@ var cnames = {
     "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "build03",
     "prometheus": "web02",
+    "queue-runner.hydra": "build03",
     "temp-cache": "build03",
     // keep-sorted end
 };

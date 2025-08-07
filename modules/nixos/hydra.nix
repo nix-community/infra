@@ -18,6 +18,7 @@ in
   # hydra-queue-runner needs to read this key for remote building
   sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
+  nix.settings.allowed-users = [ "hydra-www" ];
   nix.settings.keep-outputs = lib.mkForce false;
 
   nix.settings.allowed-uris = [
