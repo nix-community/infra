@@ -26,5 +26,6 @@
         ];
 
         nix.settings.extra-platforms = [ "armv7l-linux" ];
+        nix.settings.system-features = [ "gccarch-armv7-a" ];
       };
 }
