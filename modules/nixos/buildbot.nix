@@ -21,6 +21,7 @@ let
     "nix-community/nix-index"
     "nix-community/nix4nvchad"
     "nix-community/NixNG"
+    "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
     "nix-community/nixos-facter-modules"
     "nix-community/nixos-generators"
