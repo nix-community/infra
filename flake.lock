@@ -125,11 +125,11 @@
     "hydra": {
       "flake": false,
       "locked": {
-        "lastModified": 1755067698,
-        "narHash": "sha256-GERG8TEdgRruWOvTKjeGNW3MhzUkv7L+SE9FkRg8twU=",
+        "lastModified": 1755188769,
+        "narHash": "sha256-KjrSIln4H7q/9FgiwI77Zjq0vPubvLP49JgZ3j91Ivw=",
         "owner": "NixOS",
         "repo": "hydra",
-        "rev": "81fd47df42e83d9844b4ed7d53e4a0154a2edb30",
+        "rev": "0d2a030661fb1a6ba3f5cb83c627a72b562ebe74",
         "type": "github"
       },
       "original": {
@@ -336,11 +336,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754952858,
-        "narHash": "sha256-gtTT8aGYnloJLab8LAq1z7xv2S84IAd7sLpkzA635ss=",
+        "lastModified": 1755212791,
+        "narHash": "sha256-Io2Rgn4AxQ4tN0h7pRY3vW7fCNM4kC/3kFk+OskAtaA=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "bb6476523d184ddf5893ab992567316e686f0d7e",
+        "rev": "8b953cf8e3c16ff4cb53ba8a368587e6cbfd5e17",
         "type": "github"
       },
       "original": {
