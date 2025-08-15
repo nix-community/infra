@@ -76,15 +76,6 @@ locals {
       scheduling_shares = 5000
       supported_systems = ["aarch64-linux", "x86_64-linux"]
     }
-    unfree_redist_darwin = {
-      name              = "unfree-redist-darwin"
-      description       = "nixpkgs-unstable darwin unfree+redistributable"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixpkgs-unstable"
-      release_file      = "pkgs/top-level/release-unfree-redistributable.nix"
-      check_interval    = 1800
-      scheduling_shares = 5000
-      supported_systems = ["aarch64-darwin", "x86_64-darwin"]
-    }
     unfree_redist_full = {
       name              = "unfree-redist-full"
       description       = "nixos-unstable unfree+redistributable full"
