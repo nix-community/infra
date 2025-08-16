@@ -17,6 +17,7 @@
 
         boot.kernelPatches = [
           {
+            name = "compat_uts_machine";
             patch = pkgs.fetchpatch {
               name = "compat_uts_machine.patch";
               url = "https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/jammy/patch/?id=c1da50fa6eddad313360249cadcd4905ac9f82ea";
