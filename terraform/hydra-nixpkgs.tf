@@ -1,5 +1,15 @@
 locals {
   jobset = {
+    armv7l-linux = {
+      name              = "armv7l-linux"
+      description       = "nixos-unstable-small armv7l-linux"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
+      release_file      = "hydra/armv7l-linux.nix"
+      check_interval    = 1800
+      scheduling_shares = 1000
+      supported_systems = ["armv7l-linux"]
+      release_source    = "https://github.com/nix-community/infra.git master"
+    }
     bsd = {
       name              = "bsd"
       description       = "nixos-unstable-small bsd"
