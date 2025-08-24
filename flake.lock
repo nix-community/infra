@@ -401,6 +401,29 @@
         "type": "github"
       }
     },
+    "quadlet-nix": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755890166,
+        "narHash": "sha256-H/koNiFUCPVR+d3kxg9NjRk5PbvKrdNZvZ6XoyZViI0=",
+        "owner": "mirkolenz",
+        "repo": "quadlet-nix",
+        "rev": "a1734e36f90b3671783a4ee30fa0293fc1e782bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mirkolenz",
+        "repo": "quadlet-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "buildbot-nix": "buildbot-nix",
@@ -420,6 +443,7 @@
         "nixpkgs-update": "nixpkgs-update",
         "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
+        "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems",
