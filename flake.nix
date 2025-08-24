@@ -46,6 +46,9 @@
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
+    quadlet-nix.inputs.flake-parts.follows = "flake-parts";
+    quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
+    quadlet-nix.url = "github:mirkolenz/quadlet-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
@@ -160,6 +163,7 @@
                 ;
               buildbot-nix-master = inputs'.buildbot-nix.checks.master;
               buildbot-nix-worker = inputs'.buildbot-nix.checks.worker;
+              quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
         };
