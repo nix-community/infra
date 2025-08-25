@@ -83,7 +83,7 @@ locals {
       release_file      = "pkgs/top-level/release-unfree-redistributable.nix"
       check_interval    = 1800
       scheduling_shares = 5000
-      supported_systems = ["aarch64-darwin", "x86_64-darwin"]
+      supported_systems = ["aarch64-darwin"]
     }
     unfree_redist_full = {
       name              = "unfree-redist-full"
