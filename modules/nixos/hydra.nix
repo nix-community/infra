@@ -4,13 +4,6 @@
   lib,
   ...
 }:
-let
-  inherit (lib) concatStringsSep;
-  localSystems = [
-    "builtin"
-    pkgs.stdenv.hostPlatform.system
-  ];
-in
 {
   sops.secrets.hydra-admin-password.owner = "hydra";
   sops.secrets.hydra-users.owner = "hydra";
@@ -18,6 +11,10 @@ in
   # hydra-queue-runner needs to read this key for remote building
   sops.secrets.id_buildfarm.owner = "hydra-queue-runner";
 
+  nix.settings.extra-allowed-users = [
+    "hydra-www"
+    "hydra"
+  ];
   nix.settings.keep-outputs = lib.mkForce false;
 
   nix.settings.allowed-uris = [
@@ -42,22 +39,15 @@ in
     hydra-send-stats.enable = false;
   };
 
-  environment.etc."nix/hydra/localhost".text = ''
-    localhost ${concatStringsSep "," localSystems} - 3 1 ${concatStringsSep "," config.nix.settings.system-features} - -
-  '';
   environment.etc."nix/hydra/machines".source =
     pkgs.runCommand "machines" { machines = config.environment.etc."nix/machines".text; }
       ''
-        printf "$machines" | grep -e bsd -e linux > $out
-        substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
-        substituteInPlace $out --replace-fail ' 80 ' ' 3 '
+        printf "$machines" | grep -e bsd > $out
       '';
 
   services.hydra = {
     enable = true;
-    # remote builders set in /etc/nix/machines + localhost
     buildMachinesFiles = [
-      "/etc/nix/hydra/localhost"
       "/etc/nix/hydra/machines"
     ];
     hydraURL = "https://hydra.nix-community.org";
