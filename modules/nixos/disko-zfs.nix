@@ -2,9 +2,6 @@
 {
   imports = [ inputs.disko.nixosModules.disko ];
 
-  # https://github.com/NixOS/nix/issues/13515
-  boot.kernelParams = [ "zfs.zfs_txg_timeout=2" ];
-
   # this is both efi and bios compatible
   boot.loader.grub = {
     enable = true;
