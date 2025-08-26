@@ -48,10 +48,9 @@ in
   environment.etc."nix/hydra/machines".source =
     pkgs.runCommand "machines" { machines = config.environment.etc."nix/machines".text; }
       ''
-        printf "$machines" > $out
+        printf "$machines" | grep -e bsd -e linux > $out
         substituteInPlace $out --replace-fail 'ssh-ng://' 'ssh://'
         substituteInPlace $out --replace-fail ' 80 ' ' 3 '
-        substituteInPlace $out --replace-fail ' 10 ' ' 1 '
       '';
 
   services.hydra = {
