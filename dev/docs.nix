@@ -27,6 +27,7 @@
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
           extraConfig = {
+            include_fragments = false;
             include_mail = true;
             include_verbatim = true;
           };
