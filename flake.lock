@@ -37,11 +37,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755519972,
-        "narHash": "sha256-bU4nqi3IpsUZJeyS8Jk85ytlX61i4b0KCxXX9YcOgVc=",
+        "lastModified": 1756115622,
+        "narHash": "sha256-iv8xVtmLMNLWFcDM/HcAPLRGONyTRpzL9NS09RnryRM=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "4073ff2f481f9ef3501678ff479ed81402caae6d",
+        "rev": "bafad29f89e83b2d861b493aa23034ea16595560",
         "type": "github"
       },
       "original": {
@@ -296,11 +296,11 @@
     },
     "nixos-facter-modules": {
       "locked": {
-        "lastModified": 1755678220,
-        "narHash": "sha256-Yvmm03o7Z7gTAOfCnIetHomaDDJVBdLBPHD9dZ5kUcc=",
+        "lastModified": 1756109073,
+        "narHash": "sha256-5pjFEziluVwJ0Z50h9laKfWbDluXuA5ada05xb/QiV4=",
         "owner": "nix-community",
         "repo": "nixos-facter-modules",
-        "rev": "25122ee37b0c1f22b07c9fe5f970a7487093a4c0",
+        "rev": "a1042c81126d9c9314c1eb1a7b89ab4d81b5dea7",
         "type": "github"
       },
       "original": {
@@ -311,10 +311,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1756050191,
-        "narHash": "sha256-lMtTT4rv5On7D0P4Z+k7UkvbAKKuVGRbJi/VJeRCQwI=",
+        "lastModified": 1756193349,
+        "narHash": "sha256-s9mVQll30JhqPklsDhpyPYhavoJA30tLausoJMfuyPY=",
         "ref": "nixos-unstable-small",
-        "rev": "759dcc6981cd4aa222d36069f78fe7064d563305",
+        "rev": "77ae3f85d5e814698380c00ad3a867ebc3204cb1",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
@@ -388,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755611539,
-        "narHash": "sha256-/89XTojGqMNxNfmxhy7Rl4WYFWzPH38s4xbxvpRBirc=",
+        "lastModified": 1756186310,
+        "narHash": "sha256-Es9GkjQw6xOf8lJYXFGdhI2QhNEpqMLJyE0HsjjvTFA=",
         "owner": "nix-community",
         "repo": "nur-update",
-        "rev": "124662f88c7c52194e2225d74187e96ab859c910",
+        "rev": "3a0742df6b5566cd4d3cde5b90ca070ce7714aab",
         "type": "github"
       },
       "original": {
@@ -411,11 +411,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755890166,
-        "narHash": "sha256-H/koNiFUCPVR+d3kxg9NjRk5PbvKrdNZvZ6XoyZViI0=",
+        "lastModified": 1756096381,
+        "narHash": "sha256-Btuo4T6OestghwBlSMyFs39DMbRqL+iKl/7swgYn/w8=",
         "owner": "mirkolenz",
         "repo": "quadlet-nix",
-        "rev": "a1734e36f90b3671783a4ee30fa0293fc1e782bc",
+        "rev": "9c23558dceac438a6ffb5c1e4d2e36bc76f97b3b",
         "type": "github"
       },
       "original": {
