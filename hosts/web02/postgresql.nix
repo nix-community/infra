@@ -13,6 +13,7 @@
     enable = true;
     compression = "none";
     startAt = "daily";
+    pgdumpOptions = "";
   };
 
   nixCommunity.backup = [
