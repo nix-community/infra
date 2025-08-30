@@ -34,7 +34,12 @@
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
+  system.etc.overlay = {
+    enable = true;
+    mutable = false;
+  };
   services.userborn.enable = true;
+  system.nixos-init.enable = true;
 
   system.disableInstallerTools = lib.mkDefault true;
   system.tools.nixos-rebuild.enable = true;
