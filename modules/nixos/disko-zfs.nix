@@ -85,6 +85,12 @@
             mountpoint = "/";
             options.mountpoint = "legacy";
           };
+          tmp = {
+            type = "zfs_fs";
+            mountpoint = "/tmp";
+            options.mountpoint = "legacy";
+            options.sync = "disabled";
+          };
         };
       };
     };
