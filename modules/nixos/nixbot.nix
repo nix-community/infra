@@ -24,6 +24,16 @@ in
     inputs.nixbot.nixosModules.nixbot
   ];
 
+  services.nixbot.pullBased = {
+    pollInterval = 3600;
+    repositories = {
+      "nix-darwin" = {
+        url = "https://github.com/nix-darwin/nix-darwin.git";
+        defaultBranch = "master";
+      };
+    };
+  };
+
   services.nginx.virtualHosts."nixbot.nix-community.org" = { };
 
   sops.secrets.nixbot-gitlab-token = { };
