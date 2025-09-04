@@ -8,7 +8,6 @@ let
   repoAllowlist = [
     # keep-sorted start case=no
     "nix-community/authentik-nix"
-    "nix-community/autofirma-nix"
     "nix-community/dream2nix"
     "nix-community/ethereum.nix"
     "nix-community/home-manager"
