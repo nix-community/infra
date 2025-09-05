@@ -82,6 +82,12 @@
         { lib, ... }:
         {
           nixpkgs = {
+            config.allowUnfreePredicate =
+              pkg:
+              builtins.elem (lib.getName pkg) [
+                "nvidia-settings"
+                "nvidia-x11"
+              ];
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
@@ -95,6 +101,7 @@
             build03.system = "x86_64-linux";
             build04.system = "aarch64-linux";
             build05.system = "aarch64-linux";
+            build06.system = "x86_64-linux";
             darwin01.system = "aarch64-darwin";
             darwin02.system = "aarch64-darwin";
             web02.system = "x86_64-linux";
