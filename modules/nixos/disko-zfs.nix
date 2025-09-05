@@ -85,6 +85,12 @@
             mountpoint = "/";
             options.mountpoint = "legacy";
           };
+          build = {
+            type = "zfs_fs";
+            mountpoint = "/nix/var/nix/builds";
+            options.mountpoint = "legacy";
+            options.sync = "disabled";
+          };
           tmp = {
             type = "zfs_fs";
             mountpoint = "/tmp";
