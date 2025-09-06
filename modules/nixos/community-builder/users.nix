@@ -248,6 +248,12 @@ let
       keys = ./keys/thecomputerguy;
     }
     {
+      # lib.maintainers.thefossguy; part of the @NixOS/COSMIC team
+      name = "thefossguy";
+      trusted = true;
+      keys = ./keys/thefossguy;
+    }
+    {
       name = "tomberek";
       trusted = true;
       keys = ./keys/tomberek;
