@@ -36,6 +36,7 @@ let
     in
     lib.optionalAttrs (builtins.pathExists path) (fn combined);
 
+  # deadnix: skip
   modules = path: importDir path (lib.mapAttrs (_name: { path, type }: path));
 in
 {
