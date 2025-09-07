@@ -32,6 +32,17 @@
     HostKey /etc/ssh/ssh_host_ed25519_key
   '';
 
+  launchd.daemons.nix-build-cleanup = {
+    script = "${pkgs.findutils}/bin/find /nix/var/nix/builds -delete || true";
+    serviceConfig = {
+      KeepAlive = false;
+      LaunchOnlyOnce = true;
+      RunAtLoad = true;
+      StandardErrorPath = "/var/log/nix-build-cleanup.log";
+      StandardOutPath = "/var/log/nix-build-cleanup.log";
+    };
+  };
+
   system.activationScripts.postActivation.text = ''
     echo disabling spotlight indexing... >&2
     mdutil -a -i off -d &> /dev/null

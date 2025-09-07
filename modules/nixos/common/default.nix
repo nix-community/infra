@@ -35,6 +35,8 @@
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
 
+  systemd.tmpfiles.rules = [ "D! /nix/var/nix/builds 0755 root root" ];
+
   systemd.services.sysctl-after-boot = {
     serviceConfig.Restart = "on-failure";
     serviceConfig.Type = "oneshot";
