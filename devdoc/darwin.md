@@ -89,10 +89,10 @@ Software Update found the following new or updated software:
 
 ### Install nix
 
-https://github.com/DeterminateSystems/nix-installer
+https://github.com/NixOS/nix-installer
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-modify-profile
+curl --proto '=https' --tlsv1.2 -sSf -L https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile
 ```
 
 `/nix/receipt.json` has a record of all the changes done by the nix installer.
