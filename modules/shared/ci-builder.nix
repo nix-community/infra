@@ -9,4 +9,17 @@
   nix.settings.max-silent-time = toString (60 * 20 * 3); # 3x buildbot
 
   nix.settings.timeout = toString (60 * 60 * 3);
+
+  sops.secrets.queue-runner-client-key.owner = "hydra-queue-builder";
+
+  nixCommunity.hydra-queue-builder-v2 = {
+    enable = true;
+    queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
+    mtls = {
+      serverRootCaCertPath = "${../../hosts/build03/ca.crt}";
+      clientCertPath = "${../../hosts/${config.networking.hostName}/client.crt}";
+      clientKeyPath = config.sops.secrets.queue-runner-client-key.path;
+      domainName = "queue-runner.hydra.nix-community.org";
+    };
+  };
 }
