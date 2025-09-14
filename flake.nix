@@ -141,11 +141,6 @@
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
-          //
-            lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
-              (
-                (lib.filterAttrs (_: config: config.pkgs.buildPlatform.system == system)) self.nixbsdConfigurations
-              )
           // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
             {
               inherit (self'.packages)
