@@ -9,4 +9,12 @@
   nix.settings.max-silent-time = toString (60 * 20 * 3); # 3x nixbot
 
   nix.settings.timeout = toString (60 * 60 * 3);
+
+  sops.secrets.hydra-queue-builder-token.owner = "hydra-queue-builder";
+
+  services.hydra-queue-builder-dev = {
+    enable = true;
+    authorizationFile = config.sops.secrets.hydra-queue-builder-token.path;
+    queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
+  };
 }
