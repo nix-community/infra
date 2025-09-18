@@ -75,7 +75,7 @@ in
     showTrace = true;
     evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
-    jobReportLimit = 0;
+    cacheFailedBuilds = true;
     workersFile = config.sops.templates.buildbot-nix-workers.path;
     cachix = {
       enable = true;
