@@ -515,6 +515,12 @@ let
       uid = 578;
       keys = ./keys/mdaniels5757;
     }
+    {
+      name = "adisbladis";
+      trusted = true;
+      uid = 579;
+      keys = ./keys/adisbladis;
+    }
   ];
 in
 {
