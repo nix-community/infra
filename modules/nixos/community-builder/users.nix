@@ -218,6 +218,12 @@ let
       keys = ./keys/rhelmot;
     }
     {
+      # lib.maintainers.sarcasticadmin, https://github.com/sarcasticadmin
+      name = "sarcasticadmin";
+      trusted = true;
+      keys = ./keys/sarcasticadmin;
+    }
+    {
       name = "schmittlauch";
       trusted = true;
       keys = ./keys/schmittlauch;
