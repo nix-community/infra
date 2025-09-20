@@ -1,21 +1,3 @@
-#### Nixpkgs CUDA and ROCm
-
-See the [CUDA section of the nixpkgs manual](https://nixos.org/manual/nixpkgs/unstable/#cuda) for more information.
-
-[CUDA and ROCm release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/release-cuda.nix)
-
-Built on `nixos-unstable-small` for `x86_64-linux`:
-
-- [https://hydra.nix-community.org/jobset/nixpkgs/cuda](https://hydra.nix-community.org/jobset/nixpkgs/cuda)
-
-Built on `nixos-unstable-small` for `x86_64-linux`:
-
-- [https://hydra.nix-community.org/jobset/nixpkgs/rocm](https://hydra.nix-community.org/jobset/nixpkgs/rocm)
-
-Built on `nixos-$RELEASE-small` for `x86_64-linux`:
-
-- [https://hydra.nix-community.org/jobset/nixpkgs/cuda-stable](https://hydra.nix-community.org/jobset/nixpkgs/cuda-stable)
-
 #### Nixpkgs unfree redistributable
 
 [unfree redistributable release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/release-unfree-redistributable.nix)
