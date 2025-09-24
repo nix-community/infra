@@ -37,8 +37,7 @@
 
   services.postgresql = {
     enable = true;
-    # enableJIT seems to be broken, can't set a version without also needing to add withJIT
-    package = pkgs.postgresql_17.withJIT;
+    package = pkgs.postgresql_17;
 
     enableJIT = true;
 
@@ -103,7 +102,6 @@
       # Advanced features
       enable_partitionwise_join = "on";
       enable_partitionwise_aggregate = "on";
-      jit = "on";
       max_slot_wal_keep_size = "1000 MB";
       track_wal_io_timing = "on";
       maintenance_io_concurrency = 100;
