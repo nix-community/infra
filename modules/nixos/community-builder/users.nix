@@ -206,6 +206,13 @@ let
       keys = ./keys/perchun;
     }
     {
+      # lib.maintainers.pluiedev, https://github.com/pluiedev
+      name = "pluiedev";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/pluiedev;
+    }
+    {
       name = "raboof";
       # lib.maintainers.raboof, https://github.com/raboof
       trusted = true;
