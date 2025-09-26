@@ -83,10 +83,8 @@ in
       auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
     };
     github = {
-      authType.app = {
-        id = 920387;
-        secretKeyFile = config.sops.secrets.buildbot-github-app-secret-key.path;
-      };
+      appId = 920387;
+      appSecretKeyFile = config.sops.secrets.buildbot-github-app-secret-key.path;
       webhookSecretFile = config.sops.secrets.buildbot-github-webhook-secret.path;
       oauthSecretFile = config.sops.secrets.buildbot-github-oauth-secret.path;
       oauthId = "Iv23liN9rjd1Bm3bvYKZ";
