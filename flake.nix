@@ -16,7 +16,7 @@
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
-    buildbot-nix.url = "github:nix-community/buildbot-nix/4431467c1102963ee27f1e09e14e59588d73bc5c";
+    buildbot-nix.url = "github:qowoz/buildbot-nix/infra";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
