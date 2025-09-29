@@ -1,15 +1,9 @@
 {
   final,
   inputs,
-  prev,
   ...
 }:
 {
-  ghostty = prev.ghostty.overrideAttrs (o: {
-    meta = o.meta // {
-      broken = true;
-    };
-  });
   hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
     inherit (final.lib) fileset;
     nixComponents = final.nixVersions.nixComponents_2_29;
