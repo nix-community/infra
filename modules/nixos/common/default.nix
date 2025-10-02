@@ -10,6 +10,7 @@
     ../../shared/nix-daemon.nix
     ./armv7l.nix
     ./builder.nix
+    ./cgroups.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix

@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.community-builder
     inputs.self.nixosModules.disko-zfs
     inputs.srvos.nixosModules.hardware-hetzner-online-arm

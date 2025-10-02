@@ -1,6 +1,7 @@
+{ config, lib, ... }:
 {
-  nix = {
-    settings = {
+  config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
+    nix.settings = {
       experimental-features = [
         "auto-allocate-uids"
         "cgroups"
