@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.hercules-ci

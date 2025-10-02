@@ -10,7 +10,6 @@
     ./nixpkgs-update-backup.nix
     ./nixpkgs-update-cache.nix
     ./nixpkgs-update.nix
-    inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd

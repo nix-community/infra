@@ -7,7 +7,6 @@
     ./postgresql.nix
     ./queue-runner.nix
     inputs.self.nixosModules.buildbot
-    inputs.self.nixosModules.cgroups
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.github-org-backup
