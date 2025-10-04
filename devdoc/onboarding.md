@@ -32,4 +32,5 @@
   - [Cloudflare](https://dash.cloudflare.com/e4a2db52c495db230973c839a0699ae1/members)
   - [GitLab](https://gitlab.com/groups/nix-community/-/group_members)
   - [Hetzner Robot](https://robot.hetzner.com/key/index)
+  - [Namespace](https://cloud.namespace.so/4l6g3pb71m64u/settings/users)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)
