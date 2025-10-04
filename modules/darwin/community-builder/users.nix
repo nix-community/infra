@@ -515,6 +515,13 @@ let
       uid = 578;
       keys = ./keys/mdaniels5757;
     }
+    {
+      # lib.maintainers.dramforever, https://github.com/dramforever
+      name = "dramforever";
+      trusted = true;
+      uid = 579;
+      keys = ./keys/dramforever;
+    }
   ];
 in
 {
