@@ -10,7 +10,7 @@ in
   projectRootFile = ".git/config";
 
   programs = {
-    actionlint.enable = true;
+    actionlint.enable = pkgs.stdenv.hostPlatform.isLinux;
     deadnix.enable = true;
     dnscontrol.enable = true;
     keep-sorted.enable = true;
