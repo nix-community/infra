@@ -1,9 +1,16 @@
 {
   final,
   inputs,
+  prev,
   ...
 }:
 {
+  civetweb = prev.civetweb.overrideAttrs (o: {
+    # https://github.com/NixOS/nixpkgs/pull/446986
+    cmakeFlags = o.cmakeFlags ++ [
+      "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    ];
+  });
   hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
     inherit (final.lib) fileset;
     nixComponents = final.nixVersions.nixComponents_2_29;
