@@ -329,10 +329,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759670943,
-        "narHash": "sha256-JBjTDfwzAwtd8+5X/Weg27WE/3hVYOP3uggP2JPaQVQ=",
+        "lastModified": 1759756860,
+        "narHash": "sha256-7QLUQZein1TbpouPOAsTka8vQLujHRmmTqze2IkdrqY=",
         "ref": "nixos-unstable-small",
-        "rev": "21980a9c20f34648121f60bda15f419fa568db21",
+        "rev": "d3baaf296366efdea6737124f05b65d1cf25fa7c",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
@@ -429,11 +429,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759127223,
-        "narHash": "sha256-Szy0LkVGzy/VjNiiwqr9CnMcHzkznU6aHwbk/a4mwLw=",
+        "lastModified": 1759729808,
+        "narHash": "sha256-vLOEEy03mlcZ1yNb4lTB/iqg7RAgU0UvJjvG3c9ZjEc=",
         "owner": "mirkolenz",
         "repo": "quadlet-nix",
-        "rev": "efff19dd915dabd704d86f7a3410f26012a98c15",
+        "rev": "b3397b4f4b736f00d6222986461fae2ecc8c59e5",
         "type": "github"
       },
       "original": {
