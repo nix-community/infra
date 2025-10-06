@@ -11,6 +11,7 @@
     ./armv7l.nix
     ./builder.nix
     ./cgroups.nix
+    ./kernel.nix
     ./security.nix
     ./sops-nix.nix
     ./telegraf.nix

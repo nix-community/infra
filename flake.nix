@@ -141,6 +141,9 @@
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
+          // pkgs.lib.optionalAttrs (system == "aarch64-linux" || system == "x86_64-linux") {
+            nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
+          }
           // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
             {
               inherit (self'.packages)
