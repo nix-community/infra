@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.self.nixosModules.ci-builder
+    inputs.self.nixosModules.clang-lto-kernel
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.remote-builder
