@@ -136,6 +136,7 @@
       "original": {
         "owner": "NixOS",
         "repo": "hydra",
+        "rev": "274027eb504c7fe090e00c16fd94f4b832981095",
         "type": "github"
       }
     },
