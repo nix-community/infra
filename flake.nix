@@ -29,7 +29,7 @@
     hydra-queue-runner.flake = false;
     hydra-queue-runner.url = "github:qowoz/hydra-queue-runner/infra";
     hydra.flake = false;
-    hydra.url = "github:NixOS/hydra/274027eb504c7fe090e00c16fd94f4b832981095";
+    hydra.url = "github:NixOS/hydra";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";

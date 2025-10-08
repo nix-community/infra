@@ -7,7 +7,7 @@
 {
   hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
     inherit (final.lib) fileset;
-    nixComponents = final.nixVersions.nixComponents_2_29;
+    nixComponents = final.nixVersions.nixComponents_2_31;
     rawSrc = inputs.hydra;
   };
   hydra-queue-runner = final.callPackage (import "${inputs.hydra-queue-runner}/default.nix") {
