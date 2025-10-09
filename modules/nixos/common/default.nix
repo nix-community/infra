@@ -34,6 +34,8 @@
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
+  services.dbus.implementation = "broker";
+
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
 
