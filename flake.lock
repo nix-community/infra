@@ -142,11 +142,11 @@
     "hydra-queue-runner": {
       "flake": false,
       "locked": {
-        "lastModified": 1759357155,
-        "narHash": "sha256-1HlxYAQ4tmiWQcdONoxShI+AfhlCFGWr9F/fBptoqnY=",
+        "lastModified": 1760049566,
+        "narHash": "sha256-UI669TUp5aydTCxnxClus0wBCzptOZVzSKLQxlk9yWU=",
         "owner": "qowoz",
         "repo": "hydra-queue-runner",
-        "rev": "e38d75a52e8b5c4d010ca052ac16612743a8b49b",
+        "rev": "6ce9cc87eda5a37172a25ea390ae134e68c43583",
         "type": "github"
       },
       "original": {
@@ -345,10 +345,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759756860,
-        "narHash": "sha256-7QLUQZein1TbpouPOAsTka8vQLujHRmmTqze2IkdrqY=",
+        "lastModified": 1759989671,
+        "narHash": "sha256-3Wk0I5TYsd7cyIO8vYGxjOuQ8zraZEUFZqEhSSIhQLs=",
         "ref": "nixos-unstable-small",
-        "rev": "d3baaf296366efdea6737124f05b65d1cf25fa7c",
+        "rev": "837076de579c67aa0c2ce2ab49948b24d907d449",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
@@ -371,11 +371,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758752967,
-        "narHash": "sha256-6jP2uql12syj/MMZ/3nhVzx49ImI6610MVRQreroPZw=",
+        "lastModified": 1759903457,
+        "narHash": "sha256-bL0U2UMsnS+6fZBBoFfqAAudkFQhD2h+icP16ZZ42TI=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "9e701227edfe145813d9340ad3f91cd732e355ff",
+        "rev": "e24bdfb331d0da29fa70d04b329d8437d8e4087f",
         "type": "github"
       },
       "original": {
