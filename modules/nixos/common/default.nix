@@ -30,6 +30,12 @@
     Restart = "on-failure";
   };
 
+  system.etc.overlay = {
+    enable = true;
+    mutable = false;
+  };
+  services.userborn.enable = true;
+
   boot.kernelPackages = pkgs.lib.mkIf (
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
