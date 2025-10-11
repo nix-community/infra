@@ -1,7 +1,6 @@
 {
   final,
   inputs,
-  prev,
   ...
 }:
 {
@@ -54,9 +53,4 @@
     ];
     doCheck = false;
   };
-  termite = prev.termite.overrideAttrs (o: {
-    meta = o.meta // {
-      broken = final.stdenv.hostPlatform.isDarwin;
-    };
-  });
 }
