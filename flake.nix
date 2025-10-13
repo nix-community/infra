@@ -139,7 +139,7 @@
           //
             lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
               (
-                (lib.filterAttrs (_: config: config.pkgs.hostPlatform.system == system)) (
+                (lib.filterAttrs (_: config: config.pkgs.stdenv.hostPlatform.system == system)) (
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
