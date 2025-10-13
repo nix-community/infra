@@ -16,7 +16,7 @@
     let
       python = pkgs.python3.withPackages (
         ps: with ps; [
-          (ps.toPythonModule inputs.nur-update.packages.${pkgs.system}.default)
+          (ps.toPythonModule inputs.nur-update.packages.${pkgs.stdenv.hostPlatform.system}.default)
           gunicorn
         ]
       );
