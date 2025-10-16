@@ -126,16 +126,33 @@
     "hydra": {
       "flake": false,
       "locked": {
-        "lastModified": 1760105998,
-        "narHash": "sha256-/j1S3uya0cxvpJRHgIJvkMUkh+dzqcQ9RMJJJPTi9lQ=",
+        "lastModified": 1760595422,
+        "narHash": "sha256-JMC6cX8dk5MwZSHQ8O3nrYaqXcGHi2xciBgfI45Z/KE=",
         "owner": "NixOS",
         "repo": "hydra",
-        "rev": "f1463d4bce3265da0bb2c6cf2bf769131d220765",
+        "rev": "0414ae64ebeea4ca0121515bdff42d7a3869862b",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "hydra",
+        "type": "github"
+      }
+    },
+    "hydra-nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760573252,
+        "narHash": "sha256-mcvNeNdJP5R7huOc8Neg0qZESx/0DMg8Fq6lsdx0x8U=",
+        "owner": "NixOS",
+        "repo": "nix",
+        "rev": "3c39583e5512729f9c5a44c3b03b6467a2acd963",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "2.32-maintenance",
+        "repo": "nix",
         "type": "github"
       }
     },
@@ -264,23 +281,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
-    "nix231": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760138832,
-        "narHash": "sha256-jFwKeIPMFIkkQB5zfL4kElWa0YKjUSstZC+xZ/6fFgE=",
-        "owner": "NixOS",
-        "repo": "nix",
-        "rev": "a042b379fafd0296fe1afd45271a7180649cc60a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "2.31-maintenance",
-        "repo": "nix",
         "type": "github"
       }
     },
@@ -467,11 +467,11 @@
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra": "hydra",
+        "hydra-nix": "hydra-nix",
         "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
-        "nix231": "nix231",
         "nixbsd": "nixbsd",
         "nixbsd-nixpkgs": "nixbsd-nixpkgs",
         "nixos-facter-modules": "nixos-facter-modules",
