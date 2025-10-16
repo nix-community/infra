@@ -5,9 +5,9 @@
       devShells.terraform = pkgs.mkShellNoCC { packages = [ config.packages.terraform ]; };
       packages = {
         terraform = pkgs.opentofu.withPlugins (p: [
-          p.github
-          p.hydra
-          p.sops
+          p.carlpett_sops
+          p.determinatesystems_hydra
+          p.integrations_github
         ]);
         terraform-validate =
           pkgs.runCommand "terraform-validate"
