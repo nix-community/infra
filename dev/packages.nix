@@ -7,11 +7,11 @@
   hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
     inherit (final.lib) fileset;
     nixComponents = final.lib.makeScope final.newScope (
-      import "${inputs.nix231}/packaging/components.nix" {
+      import "${inputs.hydra-nix}/packaging/components.nix" {
         officialRelease = true;
         pkgs = final;
         inherit (final) lib;
-        src = inputs.nix;
+        src = inputs.hydra-nix;
         maintainers = [ ];
       }
     );
