@@ -1,8 +1,9 @@
-# https://github.com/NixOS/infra/blob/b15878728090c9d22608546a75a3eb8c36beba11/non-critical-infra/modules/hydra-queue-runner-v2.nix
+# https://github.com/helsinki-systems/nixos-infra/blob/972b2233c8748133c05372783d551d2494152771/non-critical-infra/modules/hydra-queue-builder-v2.nix
 {
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -112,6 +113,11 @@ in
               type = lib.types.ints.positive;
               default = 5;
             };
+            tokenListPath = lib.mkOption {
+              description = "Path to a list of allowed authentication tokens.";
+              type = lib.types.nullOr lib.types.path;
+              default = null;
+            };
           };
         };
         default = { };
@@ -181,7 +187,7 @@ in
       };
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.hydra-queue-runner;
+        default = (pkgs.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).runner;
       };
     };
   };
@@ -216,7 +222,7 @@ in
 
         ExecStart = lib.escapeShellArgs (
           [
-            (lib.getExe' cfg.package "queue-runner")
+            (lib.getExe cfg.package)
             "--rest-bind"
             "${cfg.rest.address}:${toString cfg.rest.port}"
             "--grpc-bind"
