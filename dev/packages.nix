@@ -17,9 +17,6 @@
     );
     rawSrc = inputs.hydra;
   };
-  hydra-queue-runner = final.callPackage (import "${inputs.hydra-queue-runner}/default.nix") {
-    pkgs = final;
-  };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";

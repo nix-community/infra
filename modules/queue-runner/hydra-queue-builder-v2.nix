@@ -1,8 +1,9 @@
-# https://github.com/NixOS/infra/blob/b15878728090c9d22608546a75a3eb8c36beba11/non-critical-infra/modules/hydra-queue-builder-v2.nix
+# https://github.com/helsinki-systems/nixos-infra/blob/972b2233c8748133c05372783d551d2494152771/non-critical-infra/modules/hydra-queue-builder-v2.nix
 {
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -99,6 +100,12 @@ in
         default = true;
       };
 
+      authorizationFile = lib.mkOption {
+        description = "Path to token authorization file if token auth should be used.";
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+      };
+
       mtls = lib.mkOption {
         description = "mtls options";
         default = null;
@@ -128,7 +135,7 @@ in
 
       package = lib.mkOption {
         type = lib.types.package;
-        default = pkgs.hydra-queue-runner;
+        default = (pkgs.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).builder;
       };
     };
   };
@@ -159,7 +166,7 @@ in
 
         ExecStart = lib.escapeShellArgs (
           [
-            (lib.getExe' cfg.package "builder")
+            (lib.getExe cfg.package)
             "--gateway-endpoint"
             cfg.queueRunnerAddr
             "--ping-interval"
@@ -197,6 +204,10 @@ in
           ]) cfg.mandatoryFeatures)
           ++ lib.optionals (cfg.useSubstitutes != null) [
             "--use-substitutes"
+          ]
+          ++ lib.optionals (cfg.authorizationFile != null) [
+            "--authorization-file"
+            cfg.authorizationFile
           ]
           ++ lib.optionals (cfg.mtls != null) [
             "--server-root-ca-cert-path"
