@@ -22,6 +22,10 @@ s|python3\w*Packages|python3Packages|g
 # drop > 4000 packages that can't be updated
 /^rPackages.\w*/d
 
+# lix/nix specific overrides of other packages
+/lixPackageSets.\w*/d
+/nixDependencies.\w*/d
+
 # drop > 100s of other packages that can't be updated
 /haskellPackages.\w*/d
 /home-assistant-component-tests.\w*/d
