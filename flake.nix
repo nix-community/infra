@@ -29,7 +29,7 @@
     hydra-nix.flake = false;
     hydra-nix.url = "github:NixOS/nix/2.32-maintenance";
     hydra-queue-runner.flake = false;
-    hydra-queue-runner.url = "github:helsinki-systems/hydra-queue-runner/983070a953da185c264754dc381c8c64b989f04b";
+    hydra-queue-runner.url = "github:helsinki-systems/hydra-queue-runner";
     hydra.flake = false;
     hydra.url = "github:NixOS/hydra";
     lite-config.url = "github:yelite/lite-config";
