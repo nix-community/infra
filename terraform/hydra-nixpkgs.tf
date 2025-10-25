@@ -30,15 +30,6 @@ locals {
       supported_systems = ["x86_64-freebsd"]
       release_source    = "https://github.com/nix-community/infra.git master"
     }
-    cuda = {
-      name              = "cuda"
-      description       = "nixos-unstable-small cuda"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
-      release_file      = "pkgs/top-level/release-cuda.nix"
-      check_interval    = 1800
-      scheduling_shares = 6000
-      supported_systems = ["x86_64-linux"]
-    }
     cuda_stable = {
       name              = "cuda-stable"
       description       = "nixos-25.05-small cuda"
@@ -47,25 +38,6 @@ locals {
       check_interval    = 1800
       scheduling_shares = 6000
       supported_systems = ["x86_64-linux"]
-    }
-    cuda_stable_previous = {
-      name              = "cuda-stable-previous"
-      description       = "nixos-24.11-small cuda"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
-      release_file      = "pkgs/top-level/release-cuda.nix"
-      check_interval    = 1800
-      scheduling_shares = 6000
-      supported_systems = ["x86_64-linux"]
-    }
-    rocm = {
-      name              = "rocm"
-      description       = "nixos-unstable-small rocm"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-unstable-small"
-      release_file      = "pkgs/top-level/release-cuda.nix"
-      check_interval    = 1800
-      scheduling_shares = 6000
-      supported_systems = ["x86_64-linux"]
-      variant           = "rocm"
     }
     unfree_redist = {
       name              = "unfree-redist"
@@ -146,17 +118,6 @@ resource "hydra_jobset" "nixpkgs_jobset" {
     content {
       name              = "full"
       type              = "boolean"
-      value             = input.value
-      notify_committers = false
-    }
-  }
-
-  dynamic "input" {
-    for_each = lookup(each.value, "variant", null) != null ? [each.value.variant] : []
-
-    content {
-      name              = "variant"
-      type              = "string"
       value             = input.value
       notify_committers = false
     }
