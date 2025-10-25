@@ -1,3 +1,7 @@
+{ inputs, ... }:
 {
-  imports = [ ../shared/ci-builder.nix ];
+  imports = [
+    ../shared/ci-builder.nix
+    "${inputs.self}/modules/queue-runner/hydra-queue-builder-v2-darwin.nix"
+  ];
 }
