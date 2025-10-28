@@ -26,8 +26,6 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    hydra-nix.flake = false;
-    hydra-nix.url = "github:NixOS/nix/2.32-maintenance";
     hydra-queue-runner.flake = false;
     hydra-queue-runner.url = "github:helsinki-systems/hydra-queue-runner";
     hydra.flake = false;
