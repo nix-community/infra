@@ -20,7 +20,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
-    flake-compat.url = "github:nix-community/flake-compat";
+    flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
@@ -39,7 +39,6 @@
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
     nixbsd.url = "github:qowoz/nixbsd/tmp3-community";
-    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
