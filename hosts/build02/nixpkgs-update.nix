@@ -75,7 +75,7 @@ let
       (pkgs.python3.withPackages (
         p: with p; [
           requests
-          dateutil
+          python-dateutil
           libversion
           cachecontrol
           lockfile
