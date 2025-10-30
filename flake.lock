@@ -142,11 +142,11 @@
     "hydra-queue-runner": {
       "flake": false,
       "locked": {
-        "lastModified": 1761559962,
-        "narHash": "sha256-pC9XBEYtvO6e44EGCvEF+lFqI+AkTtApe9agSBAdxLA=",
+        "lastModified": 1761842411,
+        "narHash": "sha256-91xg5dON/EyukpZAD53XAaGxEkhT5YEfyqPgNrDkPJ8=",
         "owner": "helsinki-systems",
         "repo": "hydra-queue-runner",
-        "rev": "ae388319a535e7400ab99f8b20ea4fd14a2fd4f0",
+        "rev": "32ae9390dbd7291e304b7c8a8f80d62565a3afeb",
         "type": "github"
       },
       "original": {
@@ -312,10 +312,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1761631514,
-        "narHash": "sha256-VsXz+2W4DFBozzppbF9SXD9pNcv17Z+c/lYXvPJi/eI=",
+        "lastModified": 1761853358,
+        "narHash": "sha256-1tBdsBzYJOzVzNOmCFzFMWHw7UUbhkhiYCFGr+OjPTs=",
         "ref": "nixos-unstable-small",
-        "rev": "a0b0d4b52b5f375658ca8371dc49bff171dbda91",
+        "rev": "262333bca9b49964f8e3cad3af655466597c01d4",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
@@ -478,11 +478,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761526984,
-        "narHash": "sha256-o63BGWD4HtDEGdhzJwW6Sa7zTB1b3NA35QKM03VtL64=",
+        "lastModified": 1761825566,
+        "narHash": "sha256-RG1Z8nkvFcZzuIavlVfUsRISBFKET12yUVaLqvtX+SI=",
         "owner": "nix-community",
         "repo": "srvos",
-        "rev": "109abf3c735c3cde590f22c484e28a71cca8b27c",
+        "rev": "6b4d766155b07e5d9c14a0c761b495ac9d25a8ae",
         "type": "github"
       },
       "original": {
