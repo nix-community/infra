@@ -32,7 +32,7 @@
     hydra.url = "github:NixOS/hydra";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.url = "github:qowoz/nix-darwin/vim";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nixbsd-nixpkgs.url = "git+https://github.com/rhelmot/nixpkgs?shallow=1&ref=nixbsd-dev-tmp&rev=33d5774c0ae99ad4d62743eb004a5bd24b248791";
