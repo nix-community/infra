@@ -20,7 +20,7 @@ let
   src = inputs.hydra-queue-runner;
   cargoLock.lockFile = "${src}/Cargo.lock";
   cargoLock.outputHashes = {
-    "nix-diff-0.1.0" = "sha256-lLHn3hAQhinCUXXbc+FTJ/NJpsZu04/BwSW8dtWUsOE=";
+    "nix-diff-0.1.0" = "sha256-heUqcAnGmMogyVXskXc4FMORb8ZaK6vUX+mMOpbfSUw=";
   };
   nativeBuildInputs = [
     pkg-config
