@@ -142,11 +142,11 @@
     "hydra-queue-runner": {
       "flake": false,
       "locked": {
-        "lastModified": 1761842411,
-        "narHash": "sha256-91xg5dON/EyukpZAD53XAaGxEkhT5YEfyqPgNrDkPJ8=",
+        "lastModified": 1762118657,
+        "narHash": "sha256-DuV/bcXsyoJDUMxQoWd6iwH561tfby6YEGKq5IIVT1Y=",
         "owner": "helsinki-systems",
         "repo": "hydra-queue-runner",
-        "rev": "32ae9390dbd7291e304b7c8a8f80d62565a3afeb",
+        "rev": "cac6a1d7c8edc4aa3cc1f4ba871901e3a5aede3a",
         "type": "github"
       },
       "original": {
@@ -339,11 +339,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760947478,
-        "narHash": "sha256-woRBLvreezXz/uDBuZV9vjD2T8pF/dSt4pPUbbFVRww=",
+        "lastModified": 1762084183,
+        "narHash": "sha256-wIh3snz+BO1FxBbLYq51l/LS6luCwq/cqCvS5qpZJTw=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "ee13699e98ec91db2a16cbc685b324b05200de19",
+        "rev": "501465a04214f243b956d406cb437c308db82136",
         "type": "github"
       },
       "original": {
