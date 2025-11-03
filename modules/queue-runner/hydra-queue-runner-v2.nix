@@ -187,7 +187,7 @@ in
       };
       package = lib.mkOption {
         type = lib.types.package;
-        default = (pkgs.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).runner;
+        default = (pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).runner;
       };
     };
   };

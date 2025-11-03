@@ -135,7 +135,7 @@ in
 
       package = lib.mkOption {
         type = lib.types.package;
-        default = (pkgs.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).builder;
+        default = (pkgs.lib.recurseIntoAttrs (pkgs.callPackage ./package.nix { inherit inputs; })).builder;
       };
     };
   };
