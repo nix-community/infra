@@ -12,7 +12,6 @@
   libsodium,
   boost,
   withOtel ? false,
-  withTokioConsole ? false,
   inputs,
 }:
 let
@@ -20,7 +19,7 @@ let
   src = inputs.hydra-queue-runner;
   cargoLock.lockFile = "${src}/Cargo.lock";
   cargoLock.outputHashes = {
-    "nix-diff-0.1.0" = "sha256-lLHn3hAQhinCUXXbc+FTJ/NJpsZu04/BwSW8dtWUsOE=";
+    "nix-diff-0.1.0" = "sha256-heUqcAnGmMogyVXskXc4FMORb8ZaK6vUX+mMOpbfSUw=";
   };
   nativeBuildInputs = [
     pkg-config
@@ -59,7 +58,7 @@ in
       ;
 
     buildAndTestSubdir = "queue-runner";
-    buildFeatures = lib.optional withOtel "otel" ++ lib.optional withTokioConsole "tokio-console";
+    buildFeatures = lib.optional withOtel "otel";
 
     postInstall = ''
       wrapProgram $out/bin/queue-runner \
@@ -85,6 +84,7 @@ in
       ;
 
     buildAndTestSubdir = "builder";
+    buildFeatures = lib.optional withOtel "otel";
 
     postInstall = ''
       wrapProgram $out/bin/builder \
