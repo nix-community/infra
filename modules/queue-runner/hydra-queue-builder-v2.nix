@@ -1,4 +1,4 @@
-# https://github.com/helsinki-systems/nixos-infra/blob/972b2233c8748133c05372783d551d2494152771/non-critical-infra/modules/hydra-queue-builder-v2.nix
+# https://github.com/NixOS/infra/blob/9f2511eb33deddcc36d40ca5151163d123264f8a/non-critical-infra/modules/hydra-queue-builder-v2.nix
 {
   config,
   pkgs,

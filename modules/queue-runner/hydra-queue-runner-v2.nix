@@ -1,4 +1,4 @@
-# https://github.com/helsinki-systems/nixos-infra/blob/972b2233c8748133c05372783d551d2494152771/non-critical-infra/modules/hydra-queue-builder-v2.nix
+# https://github.com/NixOS/infra/blob/9f2511eb33deddcc36d40ca5151163d123264f8a/non-critical-infra/modules/hydra-queue-runner-v2.nix
 {
   config,
   pkgs,
@@ -52,6 +52,14 @@ in
                 "Static"
               ];
               default = "Static";
+            };
+            stepSortFn = lib.mkOption {
+              description = "Function name for sorting steps/jobs";
+              type = lib.types.enum [
+                "Legacy"
+                "WithRdeps"
+              ];
+              default = "WithRdeps";
             };
             dispatchTriggerTimerInS = lib.mkOption {
               description = "Timer for triggering dispatch in an interval in seconds. Setting this to a value <= 0 will disable this timer and only trigger the dispatcher if queue changes happend.";
@@ -116,6 +124,25 @@ in
             tokenListPath = lib.mkOption {
               description = "Path to a list of allowed authentication tokens.";
               type = lib.types.nullOr lib.types.path;
+              default = null;
+            };
+            enableFodChecker = lib.mkOption {
+              description = "This will enable the FOD checker. It will collect FOD in a separate queue and scheudle these builds to a separate machine with the mandatory feature FOD.";
+              type = lib.types.bool;
+              default = false;
+            };
+            usePresignedUploads = lib.mkOption {
+              description = ''
+                If enabled the queue runner will no longer upload to s3 but rather the builder will do the uploads.
+                This also requires a s3 remote store, as well as substitution on the builders.
+                You can use forcedSubstituters setting to specify the required substituter on the builders.
+              '';
+              type = lib.types.bool;
+              default = false;
+            };
+            forcedSubstituters = lib.mkOption {
+              description = "Force a list of substituters per builder. Builder will no longer be accepted if they don't have `useSubstitutes` with the substituters listed here.";
+              type = lib.types.nullOr lib.types.singleLineStr;
               default = null;
             };
           };
