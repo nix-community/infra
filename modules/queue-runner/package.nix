@@ -1,4 +1,4 @@
-# https://github.com/helsinki-systems/nixos-infra/blob/972b2233c8748133c05372783d551d2494152771/non-critical-infra/packages/hydra-queue-runner/default.nix
+# https://github.com/NixOS/infra/blob/9f2511eb33deddcc36d40ca5151163d123264f8a/non-critical-infra/packages/hydra-queue-runner/default.nix
 {
   rustPlatform,
   pkg-config,
@@ -12,15 +12,14 @@
   libsodium,
   boost,
   withOtel ? false,
-  withTokioConsole ? false,
   inputs,
 }:
 let
-  nix' = nixVersions.nix_2_31;
+  nix' = nixVersions.nix_2_32;
   src = inputs.hydra-queue-runner;
   cargoLock.lockFile = "${src}/Cargo.lock";
   cargoLock.outputHashes = {
-    "nix-diff-0.1.0" = "sha256-lLHn3hAQhinCUXXbc+FTJ/NJpsZu04/BwSW8dtWUsOE=";
+    "nix-diff-0.1.0" = "sha256-heUqcAnGmMogyVXskXc4FMORb8ZaK6vUX+mMOpbfSUw=";
   };
   nativeBuildInputs = [
     pkg-config
@@ -52,6 +51,10 @@ in
     __structuredAttrs = true;
     strictDeps = true;
 
+    # terminate called after throwing an instance of 'nix::SysError'
+    # what():  error: creating directory '/nix/var/nix/profiles': Permission denied
+    doCheck = false;
+
     inherit
       cargoLock
       nativeBuildInputs
@@ -59,7 +62,7 @@ in
       ;
 
     buildAndTestSubdir = "queue-runner";
-    buildFeatures = lib.optional withOtel "otel" ++ lib.optional withTokioConsole "tokio-console";
+    buildFeatures = lib.optional withOtel "otel";
 
     postInstall = ''
       wrapProgram $out/bin/queue-runner \
@@ -85,6 +88,7 @@ in
       ;
 
     buildAndTestSubdir = "builder";
+    buildFeatures = lib.optional withOtel "otel";
 
     postInstall = ''
       wrapProgram $out/bin/builder \
