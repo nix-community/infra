@@ -18,15 +18,9 @@ resource "github_repository" "infra" {
   has_issues             = true
   vulnerability_alerts   = true
 
-
   pages {
     build_type = "workflow"
     cname      = "nix-community.org"
-
-    source {
-      branch = "master"
-      path   = "/"
-    }
   }
 }
 
