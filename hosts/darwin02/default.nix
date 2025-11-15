@@ -3,7 +3,8 @@
 {
   imports = [
     inputs.self.darwinModules.ci-builder
-    inputs.self.darwinModules.hercules-ci
+    # remotePlatformsWithSameFeatures is enabled on build03
+    # inputs.self.darwinModules.hercules-ci
     inputs.self.darwinModules.remote-builder
   ];
 
