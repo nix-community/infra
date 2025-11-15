@@ -234,16 +234,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1761781395,
-        "narHash": "sha256-Xij+K13rQ866D7kWzm77QdE852PXb/IsdfZVpT2bVVU=",
-        "owner": "qowoz",
+        "lastModified": 1763136804,
+        "narHash": "sha256-6p2ljK42s0S8zS0UU59EsEqupz0GVCaBYRylpUadeBM=",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "a6c7625fba7bdaefa83d490b8afda0f83edd7502",
+        "rev": "973db96394513fd90270ea5a1211a82a4a0ba47f",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "vim",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
         "type": "github"
       }
