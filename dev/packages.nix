@@ -1,9 +1,13 @@
 {
   final,
   inputs,
+  prev,
   ...
 }:
 {
+  fish = prev.fish.overrideAttrs (_: {
+    doCheck = !final.stdenv.hostPlatform.isDarwin;
+  });
   hydra = final.callPackage (import "${inputs.hydra}/package.nix") {
     inherit (final.lib) fileset;
     nixComponents = final.nixVersions.nixComponents_2_32;
