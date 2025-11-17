@@ -29,6 +29,7 @@ let
     "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
     "nix-community/srvos"
+    "nix-community/stylix"
     # keep-sorted end
   ];
 
