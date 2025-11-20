@@ -522,6 +522,13 @@ let
       uid = 579;
       keys = ./keys/dramforever;
     }
+    {
+      # lib.maintainers.sikmir, https://github.com/sikmir
+      name = "sikmir";
+      trusted = true;
+      uid = 580;
+      keys = ./keys/sikmir;
+    }
   ];
 in
 {
