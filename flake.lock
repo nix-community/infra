@@ -123,22 +123,6 @@
         "type": "github"
       }
     },
-    "hydra": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762457028,
-        "narHash": "sha256-ifmzQS+u/dODQXmMVQLIb4AF4dkWI9s7VGYpV6x/Iq4=",
-        "owner": "NixOS",
-        "repo": "hydra",
-        "rev": "241ab718002ca5740b7e3f659d0fbd483ab40523",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "hydra",
-        "type": "github"
-      }
-    },
     "hydra-queue-runner": {
       "flake": false,
       "locked": {
@@ -434,7 +418,6 @@
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
-        "hydra": "hydra",
         "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
