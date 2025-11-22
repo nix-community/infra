@@ -1,4 +1,7 @@
 locals {
+  stable          = "25.05"
+  stable_previous = "24.11"
+
   jobset = {
     armv7l-linux = {
       name              = "armv7l-linux"
@@ -60,8 +63,8 @@ locals {
     }
     unfree_redist_stable = {
       name              = "unfree-redist-stable"
-      description       = "nixos-25.05-small unfree+redistributable"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
+      description       = "nixos-${local.stable}-small unfree+redistributable"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-${local.stable}-small"
       release_file      = "pkgs/top-level/release-unfree-redistributable.nix"
       check_interval    = 1800
       scheduling_shares = 5000
@@ -69,8 +72,8 @@ locals {
     }
     unfree_redist_stable_previous = {
       name              = "unfree-redist-stable-previous"
-      description       = "nixos-24.11-small unfree+redistributable"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-24.11-small"
+      description       = "nixos-${local.stable_previous}-small unfree+redistributable"
+      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-${local.stable_previous}-small"
       release_file      = "pkgs/top-level/release-unfree-redistributable.nix"
       check_interval    = 1800
       scheduling_shares = 5000
