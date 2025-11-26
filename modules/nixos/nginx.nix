@@ -37,7 +37,7 @@
     networking.firewall.allowedUDPPorts = [ 443 ];
 
     services.nginx = {
-      package = pkgs.nginxQuic;
+      package = pkgs.nginxMainline;
       enableQuicBPF = true;
 
       appendConfig = ''
