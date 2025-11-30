@@ -33,15 +33,6 @@ locals {
       supported_systems = ["x86_64-freebsd"]
       release_source    = "https://github.com/nix-community/infra.git master"
     }
-    cuda_stable = {
-      name              = "cuda-stable"
-      description       = "nixos-25.05-small cuda"
-      nixpkgs_channel   = "https://github.com/NixOS/nixpkgs.git nixos-25.05-small"
-      release_file      = "pkgs/top-level/release-cuda.nix"
-      check_interval    = 1800
-      scheduling_shares = 6000
-      supported_systems = ["x86_64-linux"]
-    }
     unfree_redist = {
       name              = "unfree-redist"
       description       = "nixos-unstable-small unfree+redistributable"
