@@ -142,8 +142,8 @@ in
             };
             forcedSubstituters = lib.mkOption {
               description = "Force a list of substituters per builder. Builder will no longer be accepted if they don't have `useSubstitutes` with the substituters listed here.";
-              type = lib.types.nullOr lib.types.singleLineStr;
-              default = null;
+              type = lib.types.listOf lib.types.singleLineStr;
+              default = [ ];
             };
           };
         };
