@@ -10,9 +10,6 @@ jobs:
     if: github.ref == 'refs/heads/master' # ensure workflow_dispatch only runs on master
     steps:
       - uses: actions/checkout@v6
-        with:
-          # https://github.com/DeterminateSystems/update-flake-lock/issues/223
-          persist-credentials: false
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
@@ -20,4 +17,4 @@ jobs:
             experimental-features = nix-command flakes
       - name: Update flake.lock
         id: update
-        uses: DeterminateSystems/update-flake-lock@v27
+        uses: DeterminateSystems/update-flake-lock@v28
