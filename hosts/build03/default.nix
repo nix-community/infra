@@ -5,7 +5,6 @@
     ./cache.nix
     ./landscape.nix
     ./postgresql.nix
-    ./queue-runner.nix
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs
