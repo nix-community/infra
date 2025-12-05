@@ -236,12 +236,13 @@ in
 
   systemd.services.nixpkgs-update-delete-old-logs = {
     startAt = "daily";
-    # delete logs older than 18 months, delete worker logs older than 3 months, delete empty directories
+    # delete logs older than 9 months, delete worker logs older than a month, delete empty directories
     script = ''
-      ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type f -mtime +548 -delete
-      ${pkgs.findutils}/bin/find /var/log/nixpkgs-update/~workers -type f -mtime +90 -delete
-      ${pkgs.findutils}/bin/find /var/log/nixpkgs-update -type d -empty -delete
+      find /var/log/nixpkgs-update -type f -mtime +270 -delete
+      find /var/log/nixpkgs-update/~workers -type f -mtime +30 -delete
+      find /var/log/nixpkgs-update -type d -empty -delete
     '';
+    path = [ pkgs.findutils ];
     serviceConfig.Type = "oneshot";
   };
 
