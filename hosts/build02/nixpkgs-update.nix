@@ -105,12 +105,14 @@ let
     script = ''
       set -eo pipefail
       mkdir -p "$LOGS_DIRECTORY/~fetchers"
+      mkdir -p "$LOGS_DIRECTORY/~fetchers_history"
       cd "$LOGS_DIRECTORY/~fetchers"
-      run_name="${name}.$(date +%s).txt"
+      run_name="${name}.$(date +%s)"
       rm -f ${name}.*.txt.part
-      ${cmd} | sed -f ${./filter.sed} > "$run_name.part"
+      ${cmd} | tee "$LOGS_DIRECTORY/~fetchers_history/$run_name-unprocessed.txt" | sed -f ${./filter.sed} > "$run_name.txt.part"
       rm -f ${name}.*.txt
-      mv "$run_name.part" "$run_name"
+      cp "$run_name.txt.part" "$LOGS_DIRECTORY/~fetchers_history/$run_name.txt"
+      mv "$run_name.txt.part" "$run_name.txt"
     '';
     startAt = "0/12:10"; # every 12 hours
   };
@@ -236,9 +238,10 @@ in
 
   systemd.services.nixpkgs-update-delete-old-logs = {
     startAt = "daily";
-    # delete logs older than 9 months, delete worker logs older than a month, delete empty directories
+    # delete logs older than 9 months, delete fetchers_history/worker logs older than a month, delete empty directories
     script = ''
       find /var/log/nixpkgs-update -type f -mtime +270 -delete
+      find /var/log/nixpkgs-update/~fetchers_history -type f -mtime +30 -delete
       find /var/log/nixpkgs-update/~workers -type f -mtime +30 -delete
       find /var/log/nixpkgs-update -type d -empty -delete
     '';
