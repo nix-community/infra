@@ -39,6 +39,12 @@
     hydra-send-stats.enable = false;
   };
 
+  environment.etc."nix/hydra/machines".source =
+    pkgs.runCommand "machines" { machines = config.environment.etc."nix/machines".text; }
+      ''
+        printf "$machines" | grep -e bsd > $out
+      '';
+
   services.hydra = {
     enable = true;
     buildMachinesFiles = [
