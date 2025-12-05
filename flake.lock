@@ -159,22 +159,6 @@
         "type": "github"
       }
     },
-    "hydra-queue-runner": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1766479235,
-        "narHash": "sha256-dDjBEDi9VP0ThFcMmoRYQ/JWw+h3myxhWotfu3TpYhk=",
-        "owner": "helsinki-systems",
-        "repo": "hydra-queue-runner",
-        "rev": "9e55be7a591b8bcf20eb94519ffea477e5e4d944",
-        "type": "github"
-      },
-      "original": {
-        "owner": "helsinki-systems",
-        "repo": "hydra-queue-runner",
-        "type": "github"
-      }
-    },
     "lite-config": {
       "locked": {
         "lastModified": 1748349708,
@@ -419,7 +403,6 @@
         "flake-parts": "flake-parts",
         "freebsd-nix": "freebsd-nix",
         "hercules-ci-effects": "hercules-ci-effects",
-        "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
