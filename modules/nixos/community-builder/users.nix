@@ -441,6 +441,13 @@ let
       shell = pkgs.zsh;
       keys = ./keys/mdaniels5757;
     }
+    {
+      # lib.maintainers.magnetophon, https://github.com/magnetophon
+      name = "magnetophon";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/magnetophon;
+    }
   ];
 in
 {
