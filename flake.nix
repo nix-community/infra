@@ -138,6 +138,12 @@
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
+          //
+            lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+              (
+                (lib.filterAttrs (_: config: config.pkgs.stdenv.buildPlatform.system == system))
+                  self.nixbsdConfigurations
+              )
           // pkgs.lib.optionalAttrs (system == "aarch64-linux" || system == "x86_64-linux") {
             nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
           }
