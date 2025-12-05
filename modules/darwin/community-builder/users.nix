@@ -529,6 +529,14 @@ let
       uid = 580;
       keys = ./keys/sikmir;
     }
+    {
+      # lib.maintainers.magnetophon, https://github.com/magnetophon
+      name = "magnetophon";
+      trusted = true;
+      uid = 581;
+      shell = pkgs.fish;
+      keys = ./keys/magnetophon;
+    }
   ];
 in
 {
