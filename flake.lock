@@ -100,6 +100,42 @@
         "type": "github"
       }
     },
+    "freebsd-nix": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks-nix": [
+          "empty"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-23-11": [
+          "empty"
+        ],
+        "nixpkgs-regression": [
+          "empty"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765700169,
+        "narHash": "sha256-NdbFtD/DSSAPJBWUEkGl1ycAZZ8cMc1Fme9ltBdaavw=",
+        "owner": "rhelmot",
+        "repo": "nix",
+        "rev": "9799fcbea5e0405b31d121daad34f68c27649511",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rhelmot",
+        "ref": "freebsd",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -154,41 +190,6 @@
         "type": "github"
       }
     },
-    "lix": {
-      "inputs": {
-        "flake-compat": [
-          "nixbsd",
-          "flake-compat"
-        ],
-        "nix2container": [
-          "nixbsd"
-        ],
-        "nixpkgs": [
-          "nixbsd",
-          "nixpkgs"
-        ],
-        "nixpkgs-regression": [
-          "nixbsd"
-        ],
-        "pre-commit-hooks": [
-          "nixbsd"
-        ]
-      },
-      "locked": {
-        "lastModified": 1741969094,
-        "narHash": "sha256-N9URV6eRf3FfWPuFHwEpTjrDBwvP9ekNPeMe5HqPycY=",
-        "ref": "freebsd-build",
-        "rev": "d003841587befb47d41373cba00d9921df8e237b",
-        "revCount": 17650,
-        "type": "git",
-        "url": "https://git.lix.systems/artemist/lix.git"
-      },
-      "original": {
-        "ref": "freebsd-build",
-        "type": "git",
-        "url": "https://git.lix.systems/artemist/lix.git"
-      }
-    },
     "mini-tmpfiles": {
       "inputs": {
         "nixpkgs": [
@@ -197,11 +198,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741473245,
-        "narHash": "sha256-32ekQLovnjpb1NBvt1/WCEn98khSGljX+QkS+SLSNpM=",
+        "lastModified": 1742754557,
+        "narHash": "sha256-nGxgiNhA94eSl8jcQwCboJ5Ed132z8yrFdOoT+rf8bE=",
         "owner": "nixos-bsd",
         "repo": "mini-tmpfiles",
-        "rev": "1ff4fc98963421e0e6b099ccda721d5a1ca4c887",
+        "rev": "534ee577692c7092fdcd035f89bc29b663c6f9ca",
         "type": "github"
       },
       "original": {
@@ -252,46 +253,46 @@
     },
     "nixbsd": {
       "inputs": {
+        "cppnix": [
+          "freebsd-nix"
+        ],
         "flake-compat": [
           "flake-compat"
         ],
-        "lix": "lix",
         "mini-tmpfiles": "mini-tmpfiles",
         "nixpkgs": [
           "nixbsd-nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1748654155,
-        "narHash": "sha256-/HT+tmZTISs0UfQ9ZCqxyK26admCv95TQvvwQqG3h+c=",
-        "owner": "qowoz",
+        "lastModified": 1766268288,
+        "narHash": "sha256-mxz7e9BGeCtAEiB0SbFgE+fN/BXrm3XuPnZ+eaNGa3o=",
+        "owner": "nixos-bsd",
         "repo": "nixbsd",
-        "rev": "6de10e16330cf87ec39d8637844180ef2e0d3522",
+        "rev": "67f0c66f7cdc931780b270a10ee9b198f63c017a",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "tmp3-community",
+        "owner": "nixos-bsd",
         "repo": "nixbsd",
         "type": "github"
       }
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1748404084,
-        "narHash": "sha256-i/oKVGbA3hvxVJwZi7dyWpyN6gGTxtq8lslPzOcLUT4=",
-        "ref": "nixbsd-dev-tmp",
-        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "lastModified": 1766203467,
+        "narHash": "sha256-AI9Ubw62kOKupM80GLYTWaep1s7OGyGTx4JxNZFu3QQ=",
+        "ref": "beachepisode",
+        "rev": "bb43d40d854f608d72de382a51720dff551a2af6",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/rhelmot/nixpkgs"
+        "url": "https://github.com/qowoz/nixpkgs"
       },
       "original": {
-        "ref": "nixbsd-dev-tmp",
-        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "ref": "beachepisode",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/rhelmot/nixpkgs"
+        "url": "https://github.com/qowoz/nixpkgs"
       }
     },
     "nixpkgs": {
@@ -416,6 +417,7 @@
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
+        "freebsd-nix": "freebsd-nix",
         "hercules-ci-effects": "hercules-ci-effects",
         "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
