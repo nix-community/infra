@@ -7,6 +7,16 @@
     ./telegraf-service.nix
   ];
 
+  nixpkgs.overlays = [
+    (_: prev: {
+      wolfssl = prev.wolfssl.overrideAttrs (o: {
+        env = o.env // {
+          NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
+        };
+      });
+    })
+  ];
+
   nixpkgs.buildPlatform = "x86_64-linux";
   nixpkgs.hostPlatform = "x86_64-freebsd";
 

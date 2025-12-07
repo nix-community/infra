@@ -32,7 +32,7 @@ in
   nix.buildMachines = [
     {
       hostName = "freebsd-builder";
-      maxJobs = freebsdVM.config.nix.settings.max-jobs;
+      maxJobs = 1; # https://github.com/nix-community/infra/issues/1928
       protocol = "ssh";
       sshKey = "/etc/nix/freebsd-builder-key";
       sshUser = "nix";
