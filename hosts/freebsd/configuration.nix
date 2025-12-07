@@ -1,10 +1,25 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../modules/shared/telegraf.nix
     ./ssh.nix
-    ./telegraf-config.nix
     ./telegraf-service.nix
+    (import "${inputs.srvos}/shared/mixins/telegraf.nix")
+  ];
+
+  nixpkgs.overlays = [
+    (_: prev: {
+      wolfssl = prev.wolfssl.overrideAttrs (o: {
+        env = o.env // {
+          NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
+        };
+      });
+    })
   ];
 
   nixpkgs.buildPlatform = "x86_64-linux";
@@ -92,9 +107,12 @@
       ];
     };
 
+  readOnlyNixStore.writableLayer = "/nix/.rw-store";
+
   virtualisation.vmVariant.virtualisation = {
-    diskImage = "./disk.qcow2";
-    rootSize = "100g";
+    diskImage = null;
+    netMountNixStore = true;
+    netMountBoot = true;
     graphics = false;
     forwardPorts = [
       {
