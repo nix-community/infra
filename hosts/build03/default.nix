@@ -20,13 +20,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  # hercules-ci is disabled on darwin02
-  # https://github.com/NixOS/nixpkgs/issues/461651#issuecomment-3536203369
-  services.hercules-ci-agent.settings.remotePlatformsWithSameFeatures = [
-    "aarch64-darwin"
-    "x86_64-darwin"
-  ];
-
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
 
   nix.settings.max-jobs = 96;
