@@ -3,9 +3,7 @@
 {
   imports = [
     inputs.self.darwinModules.ci-builder
-    # remotePlatformsWithSameFeatures is enabled on build03
-    # https://github.com/NixOS/nixpkgs/issues/461651#issuecomment-3536203369
-    # inputs.self.darwinModules.hercules-ci
+    inputs.self.darwinModules.hercules-ci
     inputs.self.darwinModules.remote-builder
   ];
 
