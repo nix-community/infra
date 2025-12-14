@@ -12,7 +12,7 @@ terraform {
   }
 }
 
-data "sops_file" "nix-community" {
+ephemeral "sops_file" "nix-community" {
   source_file = "secrets.yaml"
 }
 
@@ -23,6 +23,6 @@ provider "github" {
 
 provider "hydra" {
   host     = "https://hydra.nix-community.org"
-  password = data.sops_file.nix-community.data["HYDRA_PASSWORD"]
+  password = ephemeral.sops_file.nix-community.data["HYDRA_PASSWORD"]
   username = "admin"
 }
