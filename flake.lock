@@ -30,6 +30,44 @@
         "type": "github"
       }
     },
+    "cppnix": {
+      "inputs": {
+        "flake-compat": [
+          "nixbsd",
+          "flake-compat"
+        ],
+        "flake-parts": [
+          "nixbsd"
+        ],
+        "git-hooks-nix": [
+          "nixbsd"
+        ],
+        "nixpkgs": [
+          "nixbsd",
+          "nixpkgs"
+        ],
+        "nixpkgs-23-11": [
+          "nixbsd"
+        ],
+        "nixpkgs-regression": [
+          "nixbsd"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765131401,
+        "narHash": "sha256-gK0zWdEwNUeWaIHn3qRdpkESMYvvCvPCayxp0tpRiA4=",
+        "owner": "rhelmot",
+        "repo": "nix",
+        "rev": "60a4069acc72a58604e0f9f7feb10c0623e7212d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rhelmot",
+        "ref": "freebsd",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -123,22 +161,6 @@
         "type": "github"
       }
     },
-    "hydra-queue-runner": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765231005,
-        "narHash": "sha256-tyNkzT4IK7gp/rVexTXbHuobdIrlxKs3CIkh0QYHUS0=",
-        "owner": "helsinki-systems",
-        "repo": "hydra-queue-runner",
-        "rev": "c8d8a02826903850ecad5c2e43cb68833b5a7e6d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "helsinki-systems",
-        "repo": "hydra-queue-runner",
-        "type": "github"
-      }
-    },
     "lite-config": {
       "locked": {
         "lastModified": 1748349708,
@@ -154,41 +176,6 @@
         "type": "github"
       }
     },
-    "lix": {
-      "inputs": {
-        "flake-compat": [
-          "nixbsd",
-          "flake-compat"
-        ],
-        "nix2container": [
-          "nixbsd"
-        ],
-        "nixpkgs": [
-          "nixbsd",
-          "nixpkgs"
-        ],
-        "nixpkgs-regression": [
-          "nixbsd"
-        ],
-        "pre-commit-hooks": [
-          "nixbsd"
-        ]
-      },
-      "locked": {
-        "lastModified": 1741969094,
-        "narHash": "sha256-N9URV6eRf3FfWPuFHwEpTjrDBwvP9ekNPeMe5HqPycY=",
-        "ref": "freebsd-build",
-        "rev": "d003841587befb47d41373cba00d9921df8e237b",
-        "revCount": 17650,
-        "type": "git",
-        "url": "https://git.lix.systems/artemist/lix.git"
-      },
-      "original": {
-        "ref": "freebsd-build",
-        "type": "git",
-        "url": "https://git.lix.systems/artemist/lix.git"
-      }
-    },
     "mini-tmpfiles": {
       "inputs": {
         "nixpkgs": [
@@ -197,11 +184,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741473245,
-        "narHash": "sha256-32ekQLovnjpb1NBvt1/WCEn98khSGljX+QkS+SLSNpM=",
+        "lastModified": 1742754557,
+        "narHash": "sha256-nGxgiNhA94eSl8jcQwCboJ5Ed132z8yrFdOoT+rf8bE=",
         "owner": "nixos-bsd",
         "repo": "mini-tmpfiles",
-        "rev": "1ff4fc98963421e0e6b099ccda721d5a1ca4c887",
+        "rev": "534ee577692c7092fdcd035f89bc29b663c6f9ca",
         "type": "github"
       },
       "original": {
@@ -252,46 +239,45 @@
     },
     "nixbsd": {
       "inputs": {
+        "cppnix": "cppnix",
         "flake-compat": [
           "flake-compat"
         ],
-        "lix": "lix",
         "mini-tmpfiles": "mini-tmpfiles",
         "nixpkgs": [
           "nixbsd-nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1748654155,
-        "narHash": "sha256-/HT+tmZTISs0UfQ9ZCqxyK26admCv95TQvvwQqG3h+c=",
+        "lastModified": 1765285452,
+        "narHash": "sha256-6CFvV8V6hbi+xqf8wg6LnvuQsXuoJq9B+992Zwx7AHg=",
         "owner": "qowoz",
         "repo": "nixbsd",
-        "rev": "6de10e16330cf87ec39d8637844180ef2e0d3522",
+        "rev": "ba0406f9fc1d1e45b853adc6170c3e96295188f8",
         "type": "github"
       },
       "original": {
         "owner": "qowoz",
-        "ref": "tmp3-community",
+        "ref": "beachepisode",
         "repo": "nixbsd",
         "type": "github"
       }
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1748404084,
-        "narHash": "sha256-i/oKVGbA3hvxVJwZi7dyWpyN6gGTxtq8lslPzOcLUT4=",
-        "ref": "nixbsd-dev-tmp",
-        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "lastModified": 1765250844,
+        "narHash": "sha256-3p1kIyeiI//AWCqhQcYgI3etL5hE940RWpE7xJtv4Hg=",
+        "ref": "beachepisode",
+        "rev": "2109769254ccd17d14f053a8f92065c931e3c670",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/rhelmot/nixpkgs"
+        "url": "https://github.com/qowoz/nixpkgs"
       },
       "original": {
-        "ref": "nixbsd-dev-tmp",
-        "rev": "33d5774c0ae99ad4d62743eb004a5bd24b248791",
+        "ref": "beachepisode",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/rhelmot/nixpkgs"
+        "url": "https://github.com/qowoz/nixpkgs"
       }
     },
     "nixpkgs": {
@@ -417,7 +403,6 @@
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
-        "hydra-queue-runner": "hydra-queue-runner",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",

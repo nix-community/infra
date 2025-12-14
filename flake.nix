@@ -26,17 +26,15 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
-    hydra-queue-runner.flake = false;
-    hydra-queue-runner.url = "github:helsinki-systems/hydra-queue-runner";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nixbsd-nixpkgs.url = "git+https://github.com/rhelmot/nixpkgs?shallow=1&ref=nixbsd-dev-tmp&rev=33d5774c0ae99ad4d62743eb004a5bd24b248791";
+    nixbsd-nixpkgs.url = "git+https://github.com/qowoz/nixpkgs?shallow=1&ref=beachepisode";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    nixbsd.url = "github:qowoz/nixbsd/tmp3-community";
+    nixbsd.url = "github:qowoz/nixbsd/beachepisode";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
@@ -138,6 +136,10 @@
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
+          // lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.vm) (
+            (lib.filterAttrs (_: config: config.pkgs.stdenv.buildPlatform.system == system))
+              self.nixbsdConfigurations
+          )
           // pkgs.lib.optionalAttrs (system == "aarch64-linux" || system == "x86_64-linux") {
             nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
           }
@@ -167,10 +169,12 @@
       flake.nixbsdConfigurations =
         let
           inherit (inputs.nixbsd.lib) nixbsdSystem;
+          specialArgs = { inherit inputs; };
           common = [ ./hosts/freebsd/configuration.nix ];
         in
         {
           build01-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
@@ -179,6 +183,7 @@
             ];
           };
           build03-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 48; # 1/2
