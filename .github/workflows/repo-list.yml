@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort > devdoc/repo_list
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         id: update
         with:
           branch: update-repo-list
