@@ -126,11 +126,11 @@
     "hydra-queue-runner": {
       "flake": false,
       "locked": {
-        "lastModified": 1765231005,
-        "narHash": "sha256-tyNkzT4IK7gp/rVexTXbHuobdIrlxKs3CIkh0QYHUS0=",
+        "lastModified": 1765781482,
+        "narHash": "sha256-qGZLvwwhqwV2cAP6qFmGQ3ZEQ22RjGNmmudWVgvFsOo=",
         "owner": "helsinki-systems",
         "repo": "hydra-queue-runner",
-        "rev": "c8d8a02826903850ecad5c2e43cb68833b5a7e6d",
+        "rev": "2849036848557859b502edb64bb42e1a70154e8a",
         "type": "github"
       },
       "original": {
