@@ -22,6 +22,7 @@ in
           {
             LTO_CLANG_THIN = yes;
             DRM_PANIC_SCREEN_QR_CODE = mkForce unset;
+            RUST_FW_LOADER_ABSTRACTIONS = mkForce unset;
             RUST = mkForce (option yes);
           };
       }
