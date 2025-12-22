@@ -2,7 +2,6 @@
   config,
   inputs,
   lib,
-  pkgs,
   ...
 }:
 
@@ -15,8 +14,6 @@
     inputs.self.nixosModules.nginx
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
-
-  boot.zfs.package = pkgs.zfs_2_4;
 
   nix.settings.auto-optimise-store = lib.mkForce false;
 
