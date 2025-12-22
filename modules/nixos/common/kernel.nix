@@ -6,7 +6,7 @@
 }:
 let
   llvm = pkgs.llvmPackages_21;
-  kernel = pkgs.linuxKernel.kernels.linux_6_12;
+  kernel = pkgs.linuxKernel.kernels.linux_6_18;
 in
 {
   config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
@@ -22,6 +22,7 @@ in
           {
             LTO_CLANG_THIN = yes;
             DEBUG_INFO_BTF = mkForce unset;
+            NET_SCH_BPF = mkForce unset;
             SCHED_CLASS_EXT = mkForce unset;
           };
       }
