@@ -1,5 +1,5 @@
 nav:
-  - index.md
+  - Home: index.md
   - Open Collective: open-collective.md
   - sponsors.md
   - Services:
@@ -18,7 +18,7 @@ nav:
       - security.md
 
 theme:
-  name: material
+  variant: classic
   features:
     - content.action.edit
     - content.code.annotate
@@ -32,19 +32,44 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
+# https://github.com/zensical/docs/blob/b55e1b4c63d4c53d9da88d5b129bd50944c8d509/docs/setup/extensions/index.md?plain=1#L125
 markdown_extensions:
+  - abbr
+  - admonition
   - attr_list
+  - def_list
+  - footnotes
   - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
   - toc:
+      permalink: true
       toc_depth: 0
 
-plugins:
-  - redirects:
-      redirect_maps:
-        "community-builder.md": "community-builders.md"
-  - search
+# `redirects`: https://github.com/zensical/backlog/issues/23
+#plugins:
+#  - redirects:
+#      redirect_maps:
+#        "community-builder.md": "community-builders.md"
 
 extra:
   social:
