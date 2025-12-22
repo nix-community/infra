@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.self.nixosModules.ci-builder
@@ -7,8 +7,6 @@
     inputs.self.nixosModules.remote-builder
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
-
-  boot.zfs.package = pkgs.zfs_2_4;
 
   nix.settings.max-jobs = 80;
 
