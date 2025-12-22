@@ -3,14 +3,13 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.mkdocs = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
+      devShells.zensical = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
       packages = {
         docs =
           pkgs.runCommand "docs"
             {
               buildInputs = [
-                pkgs.python3.pkgs.mkdocs-material
-                pkgs.python3.pkgs.mkdocs-redirects
+                pkgs.zensical # https://github.com/NixOS/nixpkgs/pull/460052
               ];
               files = pkgs.lib.fileset.toSource {
                 root = ../.;
@@ -21,9 +20,11 @@
               };
             }
             ''
-              cp --no-preserve=mode -r $files/* .
-              cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
-              mkdocs build --strict --site-dir $out
+              cp --no-preserve=mode -rT $files .
+              cp --no-preserve=mode ${config.packages.docs-json}/*.json .
+              zensical build --strict
+              mkdir -p $out
+              cp -rT site $out
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
           extraConfig = {
