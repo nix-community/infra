@@ -25,7 +25,7 @@ Thanks to all our sponsors.
 
     Gandi provides us with a free domain and a virtual private server.
 
-- [<img src="../logo_namespace_filled_lightbg.png" width="250" alt="Namespace">](https://cloud.namespace.so)
+- [<img src="logo_namespace_filled_lightbg.png" width="250" alt="Namespace">](https://cloud.namespace.so)
 
     ---
 
