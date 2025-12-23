@@ -24,5 +24,17 @@ let
     ;
 in
 mapTestOn {
+  # keep-sorted start
+  cargo = all;
+  freebsd.sys = all;
+  git = all;
+  go = all;
+  postgresql = all;
+  python3 = all;
   stdenv = all;
+  # keep-sorted end
+
+  # nix deps
+  freebsd.jail = all;
+  pkgsStatic.bash = all;
 }
