@@ -24,5 +24,12 @@ let
     ;
 in
 mapTestOn {
+  # keep-sorted start
+  cargo = all;
+  git = all;
+  go = all;
+  postgresql = all;
+  python3 = all;
   stdenv = all;
+  # keep-sorted end
 }
