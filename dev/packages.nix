@@ -7,6 +7,18 @@
   hydra = prev.hydra.overrideAttrs (_: {
     doCheck = false;
   });
+  opentofu = prev.opentofu.overrideAttrs (
+    finalAttrs: _: {
+      version = "1.11.2";
+      src = final.fetchFromGitHub {
+        owner = "vmvarela";
+        repo = "opentofu";
+        tag = "v${finalAttrs.version}-oras";
+        hash = "sha256-DfKVdGEXABVoUIQrbWnNgg0zjYxrAqp3zzZmHoU8hSE=";
+      };
+      vendorHash = "sha256-tp0/yMGDp+ZCWonpNX2oyxgY42pUU8LTaTD9ZSt7O0E=";
+    }
+  );
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";

@@ -1,6 +1,6 @@
 terraform {
-  backend "pg" {
-    conn_str = "postgres://terraform@localhost/terraform?sslmode=disable"
+  backend "oras" {
+    repository = "ghcr.io/nix-community/infra/terraform-state"
   }
 
   encryption {

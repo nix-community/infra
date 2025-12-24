@@ -4,8 +4,6 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
-  - `wheel` will give them access to the terraform state storage.
-
 - Add their age key to [sops.json](../sops.json) and run `inv update-sops-files`.
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
@@ -15,6 +13,8 @@
 - Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community) and a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members).
 
   - `owner` will give them admin access to [Hercules CI](https://hercules-ci.com/github/nix-community).
+
+  - `owner` will give them access to the terraform state storage.
 
 - Make them an `admin` in these Matrix rooms:
 

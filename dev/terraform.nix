@@ -2,7 +2,12 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.terraform = pkgs.mkShellNoCC { packages = [ config.packages.terraform ]; };
+      devShells.terraform = pkgs.mkShellNoCC {
+        packages = [
+          config.packages.terraform
+          pkgs.docker-credential-env
+        ];
+      };
       packages = {
         terraform = pkgs.opentofu.withPlugins (p: [
           p.carlpett_sops
