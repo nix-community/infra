@@ -1,9 +1,26 @@
 { config, pkgs, ... }:
 {
+  imports = [ ./inhibitors.nix ];
+
   # adapted from:
   # https://github.com/Mic92/dotfiles/blob/020180880d9413e076073889f82c4751a27734e9/nixos/modules/update-prefetch.nix
   # https://github.com/NixOS/nixpkgs/blob/3428bdf3c93a7608615dddd44dec50c3df89b4be/nixos/modules/system/boot/kexec.nix
   # https://github.com/NixOS/nixpkgs/blob/3428bdf3c93a7608615dddd44dec50c3df89b4be/nixos/modules/tasks/auto-upgrade.nix
+
+  system.switch.inhibitors = [
+    config.system.build.initialRamdisk
+    config.system.build.kernel
+    config.system.modulesTree
+    (pkgs.writeTextFile {
+      name = "etc/fstab";
+      inherit (config.environment.etc.fstab) text;
+    })
+    (pkgs.writeTextFile {
+      name = "kernel-params";
+      text = pkgs.lib.concatStringsSep " " config.boot.kernelParams;
+    })
+  ];
+
   systemd.services.update-host = {
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
