@@ -57,7 +57,7 @@
     quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
     quadlet-nix.url = "github:mirkolenz/quadlet-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.url = "github:qowoz/sops-nix/ssh"; # rebased https://github.com/Mic92/sops-nix/pull/779
     srvos.inputs.nixpkgs.follows = "nixpkgs";
     srvos.url = "github:nix-community/srvos";
     systems.url = "github:nix-systems/default";
