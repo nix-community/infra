@@ -40,12 +40,6 @@ markdown_extensions:
   - toc:
       toc_depth: 0
 
-plugins:
-  - redirects:
-      redirect_maps:
-        "community-builder.md": "community-builders.md"
-  - search
-
 extra:
   social:
     - icon: fontawesome/brands/github
