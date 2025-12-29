@@ -14,8 +14,6 @@
 
 - Make them a `owner` of the [nix-community GitHub organisation](https://github.com/nix-community) and a member of the [nix-community GitHub `admin` team](https://github.com/orgs/nix-community/teams/admin/members).
 
-  - `owner` will give them admin access to [Hercules CI](https://hercules-ci.com/github/nix-community).
-
 - Make them an `admin` in these Matrix rooms:
 
   - https://matrix.to/#/#nix-community:nixos.org
