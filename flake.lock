@@ -112,7 +112,7 @@
           "empty"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixbsd-nixpkgs"
         ],
         "nixpkgs-23-11": [
           "empty"
@@ -264,16 +264,16 @@
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1766203467,
-        "narHash": "sha256-AI9Ubw62kOKupM80GLYTWaep1s7OGyGTx4JxNZFu3QQ=",
-        "ref": "beachepisode",
-        "rev": "bb43d40d854f608d72de382a51720dff551a2af6",
+        "lastModified": 1767483800,
+        "narHash": "sha256-9IUtrSDXzOsp9hgQWLKz1g2UQt+nJKt/IkyEjIV7bWw=",
+        "ref": "nixbsd-perl",
+        "rev": "f761e8e1a0d9a6d335c6bf8cef626155feef1cbc",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/qowoz/nixpkgs"
       },
       "original": {
-        "ref": "beachepisode",
+        "ref": "nixbsd-perl",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/qowoz/nixpkgs"
