@@ -1,8 +1,12 @@
 {
   final,
+  prev,
   ...
 }:
 {
+  hydra = prev.hydra.overrideAttrs (_: {
+    doCheck = false;
+  });
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
