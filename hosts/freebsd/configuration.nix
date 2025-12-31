@@ -8,11 +8,9 @@
   ];
 
   nixpkgs.overlays = [
-    (_: prev: {
-      wolfssl = prev.wolfssl.overrideAttrs (o: {
-        env = o.env // {
-          NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
-        };
+    (final: prev: {
+      lowdown = prev.lowdown.overrideAttrs (_: {
+        patches = final.lib.optionals final.stdenv.hostPlatform.isFreeBSD [ ];
       });
     })
   ];

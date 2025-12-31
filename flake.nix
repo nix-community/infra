@@ -28,7 +28,7 @@
     freebsd-nix.inputs.git-hooks-nix.follows = "empty";
     freebsd-nix.inputs.nixpkgs-23-11.follows = "empty";
     freebsd-nix.inputs.nixpkgs-regression.follows = "empty";
-    freebsd-nix.inputs.nixpkgs.follows = "nixpkgs";
+    freebsd-nix.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
     freebsd-nix.url = "github:rhelmot/nix/freebsd";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +38,7 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nixbsd-nixpkgs.url = "git+https://github.com/qowoz/nixpkgs?shallow=1&ref=beachepisode";
+    nixbsd-nixpkgs.url = "git+https://github.com/qowoz/nixpkgs?shallow=1&ref=nixbsd-perl";
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
