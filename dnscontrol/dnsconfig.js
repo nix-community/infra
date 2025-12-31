@@ -45,7 +45,7 @@ var hosts = {
     },
     "web02": {
         ipv4: "46.226.105.188",
-        ipv6: "2001:4b98:dc0:43:f816:3eff:fe99:9fca"
+        ipv6: "2001:4b98:dc0:43:f816:3eff:fec9:5764"
     },
     // keep-sorted end
 };
