@@ -43,6 +43,6 @@
     # This is required to get an IPv6 address on our infrastructure
     networking.tempAddresses = "disabled";
 
-    system.stateVersion = "24.05";
+    system.stateVersion = "24.11";
   };
 }
