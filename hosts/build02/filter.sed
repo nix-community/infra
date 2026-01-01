@@ -10,6 +10,9 @@ s|linuxKernel.packages.linux_[0-9_]*\.|linuxPackages.|g
 s|lua\w*Packages|lua51Packages|g
 
 # replace versioned with unversioned
+s|llvmPackages_\w*|llvmPackages|g
+
+# replace versioned with unversioned
 s|php\w*Extensions|phpExtensions|g
 s|php\w*Packages|phpPackages|g
 
