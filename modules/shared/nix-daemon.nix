@@ -9,8 +9,6 @@ let
   asGB = size: toString (size * 1024 * 1024 * 1024);
 in
 {
-  srvos.update-diff.command = pkgs.lib.getExe pkgs.dix;
-
   nix = {
     settings.trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
