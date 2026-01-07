@@ -7,14 +7,6 @@
     ./telegraf-service.nix
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      lowdown = prev.lowdown.overrideAttrs (_: {
-        patches = final.lib.optionals final.stdenv.hostPlatform.isFreeBSD [ ];
-      });
-    })
-  ];
-
   nixpkgs.buildPlatform = "x86_64-linux";
   nixpkgs.hostPlatform = "x86_64-freebsd";
 
