@@ -122,16 +122,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1765700169,
-        "narHash": "sha256-NdbFtD/DSSAPJBWUEkGl1ycAZZ8cMc1Fme9ltBdaavw=",
-        "owner": "rhelmot",
+        "lastModified": 1767683639,
+        "narHash": "sha256-aY45gcCrQmmStCJvYTcq3ZEAbudTLIbhFgNJZbN7ww0=",
+        "owner": "qowoz",
         "repo": "nix",
-        "rev": "9799fcbea5e0405b31d121daad34f68c27649511",
+        "rev": "595a4dcbb85e0b05b03205d59db8d5c4edd4cb17",
         "type": "github"
       },
       "original": {
-        "owner": "rhelmot",
-        "ref": "freebsd",
+        "owner": "qowoz",
+        "ref": "freebsd-lowdown",
         "repo": "nix",
         "type": "github"
       }
@@ -264,19 +264,19 @@
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1767483800,
-        "narHash": "sha256-9IUtrSDXzOsp9hgQWLKz1g2UQt+nJKt/IkyEjIV7bWw=",
-        "ref": "nixbsd-perl",
-        "rev": "f761e8e1a0d9a6d335c6bf8cef626155feef1cbc",
+        "lastModified": 1767678781,
+        "narHash": "sha256-HlQWzu2drqK4ln54h/LKRJfpY+fhMJItZmNBm0qC+Fs=",
+        "ref": "refs/heads/master",
+        "rev": "b16188e3a1a4ede1e261573a95fbc445df67b784",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/qowoz/nixpkgs"
+        "url": "https://github.com/NixOS/nixpkgs"
       },
       "original": {
-        "ref": "nixbsd-perl",
+        "rev": "b16188e3a1a4ede1e261573a95fbc445df67b784",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/qowoz/nixpkgs"
+        "url": "https://github.com/NixOS/nixpkgs"
       }
     },
     "nixpkgs": {
