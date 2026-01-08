@@ -21,6 +21,7 @@
   ];
 
   systemd.services.update-host = {
+    enable = true;
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
     serviceConfig.Restart = "on-failure";
