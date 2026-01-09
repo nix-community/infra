@@ -15,10 +15,6 @@
     hardware.rasdaemon.enable = true;
     services.telegraf.extraConfig.inputs.ras = { };
 
-    system.switch.inhibitors = [
-      config.hardware.firmware
-    ];
-
     systemd.services.free-space = {
       serviceConfig.Type = "oneshot";
       startAt = "hourly";
