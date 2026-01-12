@@ -168,7 +168,7 @@
                 harmonia
                 hydra
                 ;
-              #buildbot-nix = inputs'.buildbot-nix.checks.poller;
+              buildbot-nix = inputs'.buildbot-nix.checks.poller;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
