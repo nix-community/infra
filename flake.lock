@@ -146,11 +146,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768243660,
-        "narHash": "sha256-6ndmGTW2wrU0+kAzcrv4HPbB8dPeCQiTGwLhxaIG6G0=",
+        "lastModified": 1768263332,
+        "narHash": "sha256-0bWm54W2kkhrLdvVboT2KVxBliEkc2sNf+INaDhvEDU=",
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
-        "rev": "7674575b71d317799ee2c3d1703144d885eb3ea3",
+        "rev": "796ba31ee88bcec5c3cbc80ee34c5e157705aab5",
         "type": "github"
       },
       "original": {
@@ -282,10 +282,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1768207485,
-        "narHash": "sha256-4HuteAAt/c9IXq5u2qRRGxYwL/ohww5J/jml6zJPzpw=",
+        "lastModified": 1768380750,
+        "narHash": "sha256-V5drPOmaGA7bszxKxyViYEZyT2h6RYa/Ll+3aJL4Grs=",
         "ref": "nixos-unstable-small",
-        "rev": "8b162715b04e986c97788e1edf254d319681e4ae",
+        "rev": "5961ffe0035b187988f499b19ad37c072ef9e4e9",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
@@ -308,11 +308,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768205933,
-        "narHash": "sha256-PisBRLgJAEuwaHciH6UUJKiUoeogIA75gEP8xUqswYk=",
+        "lastModified": 1768431716,
+        "narHash": "sha256-f0W7yeLVgh4mqnpEjZWuOXZgZ+SIUWO6qh0WnY6OiWE=",
         "owner": "nix-community",
         "repo": "nixpkgs-update",
-        "rev": "eb65303019f1f68820c36d27f7d34b1776405a1d",
+        "rev": "c2d287b66082e89828fa5951cdd109e7c0892101",
         "type": "github"
       },
       "original": {
