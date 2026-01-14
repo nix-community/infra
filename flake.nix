@@ -42,7 +42,7 @@
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    nixbsd.url = "github:nixos-bsd/nixbsd";
+    nixbsd.url = "github:nixos-bsd/nixbsd/67f0c66f7cdc931780b270a10ee9b198f63c017a";
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
