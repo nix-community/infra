@@ -259,6 +259,7 @@
       "original": {
         "owner": "nixos-bsd",
         "repo": "nixbsd",
+        "rev": "67f0c66f7cdc931780b270a10ee9b198f63c017a",
         "type": "github"
       }
     },
