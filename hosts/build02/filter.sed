@@ -12,6 +12,9 @@ s|lua\w*Packages|lua51Packages|g
 # replace versioned with unversioned
 s|llvmPackages_\w*|llvmPackages|g
 
+# replace latest
+s|ocamlPackages_latest|ocamlPackages|g
+
 # replace versioned with unversioned
 s|php\w*Extensions|phpExtensions|g
 s|php\w*Packages|phpPackages|g
@@ -32,7 +35,10 @@ s|python3\w*Packages|python3Packages|g
 # drop > 100s of other packages that can't be updated
 /haskellPackages.\w*/d
 /home-assistant-component-tests.\w*/d
+/indi-3rdparty.\w*/d
 /perl\w*Packages.\w*/d
 /python3Packages.mypy-boto3-\w*/{/mypy-boto3-builder/!d}
 /python3Packages.types-aiobotocore-\w*/d
 /typstPackages.\w*/d
+/vimPlugins.nvim-treesitter-legacy-parsers\w*/d
+/vimPlugins.nvim-treesitter-parsers\w*/d
