@@ -17,7 +17,6 @@ let
     "nix-community/neovim-nightly-overlay"
     "nix-community/nh"
     "nix-community/nix-direnv"
-    "nix-community/nix-eval-jobs"
     "nix-community/nix-index"
     "nix-community/nix-init"
     "nix-community/nix4nvchad"
