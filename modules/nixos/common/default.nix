@@ -8,6 +8,7 @@
   imports = [
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
+    ../../shared/packages.nix
     ./armv7l.nix
     ./builder.nix
     ./cgroups.nix
