@@ -72,6 +72,12 @@ in
       name = "nix-community";
       auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
     };
+    niks3 = {
+      enable = true;
+      serverUrl = config.services.niks3.nginx.domain;
+      authTokenFile = config.sops.secrets.niks3-api-token.path;
+      package = inputs.niks3.packages.${pkgs.stdenv.hostPlatform.system}.niks3;
+    };
     github = {
       enable = true;
       appId = 4016365;
