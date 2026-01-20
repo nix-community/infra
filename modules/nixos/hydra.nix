@@ -126,7 +126,7 @@ in
               opts+=("--password-hash" "$passwordhash")
             fi
             hydra-create-user "''${opts[@]}"
-          done < $f
+          done < "$f"
         done
       '';
   };

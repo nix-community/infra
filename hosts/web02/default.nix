@@ -9,4 +9,6 @@
   ];
 
   networking.useDHCP = true;
+
+  systemd.services.openstack-init.enableStrictShellChecks = false;
 }

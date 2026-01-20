@@ -24,7 +24,7 @@
     {
       description = "nur-update";
       script = ''
-        GITHUB_TOKEN="$(<$CREDENTIALS_DIRECTORY/github-token)" \
+        GITHUB_TOKEN="$(<"$CREDENTIALS_DIRECTORY"/github-token)" \
           ${python}/bin/gunicorn nur_update:app \
           --bind unix:/run/nur-update/gunicorn.sock \
           --log-level info \

@@ -25,6 +25,8 @@
   nix.settings.auto-optimise-store = true;
   nix.optimise.automatic = false;
 
+  systemd.enableStrictShellChecks = true;
+
   # Sometimes it fails if a store path is still in use.
   # This should fix intermediate issues.
   systemd.services.nix-gc.serviceConfig = {
