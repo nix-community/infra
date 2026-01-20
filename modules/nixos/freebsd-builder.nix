@@ -61,7 +61,7 @@ in
       freebsdVM.config.system.build.vm
     ];
     script = ''
-      rm -f *.qcow2
+      rm -f -- *.qcow2
       run-nixbsd-freebsd-vm
     '';
     serviceConfig = {
