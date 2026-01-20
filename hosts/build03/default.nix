@@ -2,7 +2,7 @@
 {
   imports = [
     ./builders.nix
-    ./cache.nix
+    ./cache-harmonia.nix
     ./landscape.nix
     ./postgresql.nix
     inputs.self.nixosModules.buildbot
