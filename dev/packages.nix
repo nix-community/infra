@@ -1,5 +1,6 @@
 {
   final,
+  prev,
   ...
 }:
 {
@@ -7,6 +8,11 @@
     ps.deploykit
     ps.invoke
   ]);
+  nixos-rebuild-ng = prev.nixos-rebuild-ng.overrideAttrs (o: {
+    patches = o.patches or [ ] ++ [
+      ./nixos-rebuild-ng.patch
+    ];
+  });
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
