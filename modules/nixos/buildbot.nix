@@ -19,6 +19,7 @@ let
     "nix-community/nix-direnv"
     "nix-community/nix-eval-jobs"
     "nix-community/nix-index"
+    "nix-community/nix-init"
     "nix-community/nix4nvchad"
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
