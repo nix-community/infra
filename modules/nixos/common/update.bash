@@ -2,6 +2,8 @@ arch=$(uname -m)
 hostname=$(uname -n)
 p=$(curl -L https://buildbot.nix-community.org/nix-outputs/nix-community/infra/master/"$arch"-linux.host-"$hostname")
 
+export NIXOS_REBUILD_NO_SYSTEMD_RUN=1
+
 cancel_reboot() {
   if [[ -e /run/systemd/shutdown/scheduled ]]; then
     shutdown -c
@@ -15,13 +17,12 @@ if [[ "$(readlink /run/current-system)" == "$p" ]]; then
 fi
 
 nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
-nix-env --profile /nix/var/nix/profiles/system --set "$p"
 
 booted=$(sha256sum - <"$(readlink /run/booted-system)/boot-compare")
 built=$(sha256sum - <"$p/boot-compare")
 
 if [[ $booted != "$built" ]]; then
-  /nix/var/nix/profiles/system/bin/switch-to-configuration boot
+  nixos-rebuild boot --no-reexec --store-path "$p"
   # don't use kexec if system is virtualized, reboots are fast enough
   if ! systemd-detect-virt -q; then
     kexec --load "$p"/kernel --initrd="$p"/initrd --append="$(cat "$p"/kernel-params) init=$p/init"
@@ -31,5 +32,5 @@ if [[ $booted != "$built" ]]; then
   fi
 else
   cancel_reboot
-  /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+  nixos-rebuild switch --no-reexec --store-path "$p"
 fi
