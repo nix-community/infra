@@ -15,12 +15,11 @@ if [[ "$(readlink /run/current-system)" == "$p" ]]; then
 fi
 
 nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
-nix-env --profile /nix/var/nix/profiles/system --set "$p"
 
 booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules} && cat /run/booted-system/kernel-params)"
 built="$(readlink "$p"/{initrd,kernel,kernel-modules} && cat "$p"/kernel-params)"
 if [[ $booted != "$built" ]]; then
-  /nix/var/nix/profiles/system/bin/switch-to-configuration boot
+  nixos-rebuild boot --store-path "$p"
   # don't use kexec if system is virtualized, reboots are fast enough
   if ! systemd-detect-virt -q; then
     kexec --load "$p"/kernel --initrd="$p"/initrd --append="$(cat "$p"/kernel-params) init=$p/init"
@@ -30,5 +29,5 @@ if [[ $booted != "$built" ]]; then
   fi
 else
   cancel_reboot
-  /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+  nixos-rebuild switch --store-path "$p"
 fi

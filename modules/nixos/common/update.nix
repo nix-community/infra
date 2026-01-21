@@ -13,6 +13,7 @@
     serviceConfig.Type = "oneshot";
     path = [
       config.nix.package
+      config.system.build.nixos-rebuild
       config.systemd.package
       pkgs.coreutils
       pkgs.curl
