@@ -25,7 +25,7 @@
         --backup \
         --clone-wiki \
         --concurrency 2 \
-        --exclude-match-regex '^(nix|nixpkgs)$' \
+        --exclude-match-regex '^(nix|nixpkgs|nix4vscode)$' \
         --no-token \
         --path /var/lib/github-org-backup \
         --prune \
