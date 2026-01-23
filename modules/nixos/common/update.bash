@@ -17,8 +17,9 @@ fi
 nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
 nix-env --profile /nix/var/nix/profiles/system --set "$p"
 
-booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules} && cat /run/booted-system/kernel-params)"
-built="$(readlink "$p"/{initrd,kernel,kernel-modules} && cat "$p"/kernel-params)"
+booted=$(sha256sum - <"$(readlink /run/booted-system)/boot-compare")
+built=$(sha256sum - <"$p/boot-compare")
+
 if [[ $booted != "$built" ]]; then
   /nix/var/nix/profiles/system/bin/switch-to-configuration boot
   # don't use kexec if system is virtualized, reboots are fast enough
