@@ -10,6 +10,7 @@
     ../../shared/nix-daemon.nix
     ../../shared/packages.nix
     ./armv7l.nix
+    ./boot-compare.nix
     ./builder.nix
     ./cgroups.nix
     ./kernel.nix
