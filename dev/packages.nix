@@ -7,6 +7,14 @@
   hydra = prev.hydra.overrideAttrs (_: {
     doCheck = false;
   });
+  pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+    (python-final: python-prev: {
+      mdformat = python-prev.mdformat.overridePythonAttrs (o: {
+        nativeBuildInputs = o.dependencies ++ [ python-final.pythonRelaxDepsHook ];
+        pythonRelaxDeps = [ "markdown-it-py" ];
+      });
+    })
+  ];
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
