@@ -21,10 +21,11 @@
   - https://matrix.to/#/#nix-community:nixos.org
   - https://matrix.to/#/#nix-community-monitoring:matrix.org
 
-- Make them an `owner` on [Gandi](https://admin.gandi.net/) and add them to the email forwarding for the `admin@nix-community.org` address.
+- Make them an `owner` on [Gandi](https://admin.gandi.net/), add them to the email forwarding for the `admin@nix-community.org` address and add their ssh key.
 
   - Organisations -> Nix Community -> Teams -> Owner
   - Domain -> nix-community.org -> Email -> Forwarding address -> Forwards to
+  - Gandicloud -> Nix Community -> View SSH keyring
 
 - They will also need to be added manually to these services:
 
