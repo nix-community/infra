@@ -72,7 +72,7 @@
           ashift = "12";
         };
         rootFsOptions = {
-          acltype = "posixacl";
+          acltype = "posix";
           atime = "off";
           compression = "lz4";
           mountpoint = "none";
