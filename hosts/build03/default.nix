@@ -10,7 +10,6 @@
     inputs.self.nixosModules.disko-zfs
     inputs.self.nixosModules.freebsd-builder
     inputs.self.nixosModules.github-org-backup
-    inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nur-update
