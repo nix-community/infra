@@ -4,9 +4,6 @@
   ...
 }:
 {
-  hydra = prev.hydra.overrideAttrs (_: {
-    doCheck = false;
-  });
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (python-final: python-prev: {
       mdformat = python-prev.mdformat.overridePythonAttrs (o: {
