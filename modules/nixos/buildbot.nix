@@ -7,6 +7,7 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
+    #"astro/microvm.nix"
     "nix-community/authentik-nix"
     "nix-community/bun2nix"
     "nix-community/dream2nix"
@@ -62,6 +63,18 @@ in
       "cores": ${toString WORKER_COUNT}
     }]
   '';
+
+  systemd.services.update-host.enable = false;
+
+  services.buildbot-nix.master.pullBased = {
+    pollInterval = 1800;
+    repositories = {
+      "astro/microvm.nix" = {
+        url = "https://github.com/qowoz/microvm.nix.git";
+        defaultBranch = "main";
+      };
+    };
+  };
 
   services.buildbot-nix.master = {
     enable = true;
