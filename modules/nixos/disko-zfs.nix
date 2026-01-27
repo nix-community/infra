@@ -1,6 +1,16 @@
 { config, inputs, ... }:
 {
-  imports = [ inputs.disko.nixosModules.disko ];
+  imports = [
+    inputs.disko.nixosModules.disko
+    inputs.disko-zfs.nixosModules.default
+  ];
+
+  disko.zfs = {
+    enable = true;
+    settings.ignoredProperties = [
+      "nixos:shutdown-time"
+    ];
+  };
 
   # this is both efi and bios compatible
   boot.loader.grub = {
@@ -72,7 +82,7 @@
           ashift = "12";
         };
         rootFsOptions = {
-          acltype = "posixacl";
+          acltype = "posix";
           atime = "off";
           compression = "lz4";
           mountpoint = "none";
