@@ -40,6 +40,9 @@
 
   services.dbus.implementation = "broker";
 
+  # subuid/subgid support: https://github.com/nikstur/userborn/issues/7
+  services.userborn.enable = false;
+
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
 
