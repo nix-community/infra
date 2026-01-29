@@ -61,6 +61,7 @@ var cnames = {
     "grafana": "web02",
     "hydra": "build03",
     "landscape": "build03",
+    "niks3": "build03",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",
