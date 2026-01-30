@@ -87,19 +87,10 @@ in
 
     python-mypy = {
       priority = 3;
-      command = pkgs.bash;
-      options = with pkgs.python3.pkgs; [
-        "-euc"
-        ''
-          export PYTHONPATH="${
-            makePythonPath [
-              deploykit
-              invoke
-            ]
-          }"
-          ${pkgs.lib.getExe mypy} "$@"
-        ''
-        "--"
+      command = pkgs.mypy;
+      options = [
+        "--python-executable"
+        (pkgs.lib.getExe pkgs.deploykitEnv)
       ];
       includes = [ "tasks.py" ];
     };

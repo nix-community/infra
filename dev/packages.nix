@@ -3,6 +3,10 @@
   ...
 }:
 {
+  deploykitEnv = final.python3.withPackages (ps: [
+    ps.deploykit
+    ps.invoke
+  ]);
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
