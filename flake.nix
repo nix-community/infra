@@ -34,6 +34,11 @@
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     lite-config.url = "github:yelite/lite-config";
+    niks3.inputs.flake-parts.follows = "flake-parts";
+    niks3.inputs.nixpkgs.follows = "nixpkgs";
+    niks3.inputs.process-compose.follows = "empty";
+    niks3.inputs.treefmt-nix.follows = "treefmt-nix";
+    niks3.url = "github:Mic92/niks3";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -169,6 +174,7 @@
                 hydra
                 ;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
+              #niks3 = inputs'.niks3.checks.nixos-test-niks3;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
