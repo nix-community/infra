@@ -169,6 +169,7 @@
                 hydra
                 ;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
+              buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
