@@ -36,6 +36,8 @@
     serviceConfig.User = "rfc39";
     serviceConfig.Group = "rfc39";
     serviceConfig.Type = "oneshot";
+    serviceConfig.Restart = "on-failure";
+    serviceConfig.RestartSec = "1m";
     serviceConfig.PrivateTmp = true;
     environment = {
       RFC39_CREDENTIALS = pkgs.writeText "rfc39_credentials" ''
