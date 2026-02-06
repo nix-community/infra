@@ -7,6 +7,19 @@
     ./telegraf-service.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      # https://github.com/NixOS/nixpkgs/pull/485688
+      ncurses = prev.ncurses.overrideAttrs (o: {
+        configureFlags =
+          o.configureFlags
+          ++ final.lib.optionals (final.stdenv.hostPlatform.isFreeBSD && final.stdenv.hostPlatform.isStatic) [
+            "--without-cxx"
+          ];
+      });
+    })
+  ];
+
   nixpkgs.buildPlatform = "x86_64-linux";
   nixpkgs.hostPlatform = "x86_64-freebsd";
 
