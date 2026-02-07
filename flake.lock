@@ -325,11 +325,11 @@
     "nixpkgs-update-github-releases": {
       "flake": false,
       "locked": {
-        "lastModified": 1741998390,
-        "narHash": "sha256-ffy2saTa5KZ3iBGy2yoWWdrM9g2jVpB0r+4aoeJig64=",
+        "lastModified": 1770434792,
+        "narHash": "sha256-LbtsMB+lnbyv3Yh/lomddtYreydIW3apHoDrSy0HV2I=",
         "owner": "nix-community",
         "repo": "nixpkgs-update-github-releases",
-        "rev": "464a64294af857d450fbe5de7ee1502b61482f08",
+        "rev": "90531812d346852de39a10642b9602ab48bb21bf",
         "type": "github"
       },
       "original": {
