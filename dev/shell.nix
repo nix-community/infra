@@ -12,12 +12,5 @@
           yq-go
         ];
       };
-    sotp =
-      with pkgs;
-      mkShellNoCC {
-        packages = [
-          sotp
-        ];
-      };
   };
 }

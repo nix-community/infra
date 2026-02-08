@@ -61,14 +61,6 @@ def deploy(c: Any, hosts: str) -> None:
 
 
 @task
-def sotp(c: Any, acct: str) -> None:
-    """
-    Get TOTP token from sops
-    """
-    c.run(f"nix develop .#sotp -c sotp {acct}")
-
-
-@task
 def update_sops_files(c: Any) -> None:
     """
     Update all sops yaml files according to sops.nix rules
