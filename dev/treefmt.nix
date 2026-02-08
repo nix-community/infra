@@ -18,19 +18,11 @@ in
     nixfmt.enable = true;
     ruff-check.enable = true;
     ruff-format.enable = true;
+    rumdl-check.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;
     statix.enable = true;
     terraform.enable = true;
-  };
-
-  programs.mdformat = {
-    enable = true;
-    excludes = [ "docs/*.md" ];
-    settings = {
-      number = true;
-      wrap = "no";
-    };
   };
 
   programs.yamlfmt = {
@@ -50,22 +42,6 @@ in
     };
 
     dnscontrol.includes = [ "*dnsconfig.js" ];
-
-    mdformat-mkdocs = {
-      command = pkgs.mdformat.withPlugins (p: [
-        p.mdformat-frontmatter
-        p.mdformat-mkdocs
-        p.mdformat-simple-breaks
-      ]);
-      options = [
-        "--number"
-        "--wrap"
-        "no"
-      ];
-      includes = [
-        "docs/*.md"
-      ];
-    };
 
     shellcheck.priority = 1;
     shfmt.priority = 2;
