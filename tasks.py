@@ -1,21 +1,19 @@
-#!/usr/bin/env python3
-
+# ruff: noqa: ARG001, S603, S607
 import json
 import os
 import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Any, List, Union
 
 from deploykit import DeployGroup, DeployHost
-from invoke import task
+from invoke import Context, task
 
 ROOT = Path(__file__).parent.resolve()
 os.chdir(ROOT)
 
 
 @task
-def deploy(c: Any, hosts: str) -> None:
+def deploy(c: Context, hosts: str) -> None:
     """
     Use inv deploy --hosts build01,darwin01
     """
@@ -61,7 +59,7 @@ def deploy(c: Any, hosts: str) -> None:
 
 
 @task
-def update_sops_files(c: Any) -> None:
+def update_sops_files(c: Context) -> None:
     """
     Update all sops yaml files according to sops.nix rules
     """
@@ -72,7 +70,7 @@ def update_sops_files(c: Any) -> None:
 
 
 @task
-def print_keys(c: Any, flake_attr: str) -> None:
+def print_keys(c: Context, flake_attr: str) -> None:
     """
     Decrypt host private key, print ssh public key. Use inv print-keys --flake-attr build01
     """
@@ -90,7 +88,7 @@ def print_keys(c: Any, flake_attr: str) -> None:
 
 
 @task
-def docs(c: Any) -> None:
+def docs(c: Context) -> None:
     """
     Serve docs (mkdoc serve)
     """
@@ -98,14 +96,14 @@ def docs(c: Any) -> None:
 
 
 @task
-def docs_linkcheck(c: Any) -> None:
+def docs_linkcheck(c: Context) -> None:
     """
     Run docs online linkchecker
     """
     c.run("nix run .#docs-linkcheck.online")
 
 
-def get_hosts(hosts: str) -> List[DeployHost]:
+def get_hosts(hosts: str) -> list[DeployHost]:
     deploy_hosts = []
     for host in hosts.split(","):
         if host.startswith("darwin"):
@@ -119,7 +117,7 @@ def get_hosts(hosts: str) -> List[DeployHost]:
 
 
 def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
-    def opener(path: str, flags: int) -> Union[str, int]:
+    def opener(path: str, flags: int) -> int:
         return os.open(path, flags, 0o400)
 
     t = Path(tmpdir)
@@ -129,7 +127,7 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
     def decrypt(path: str, secret: str) -> None:
         file = t / path
         file.parent.mkdir(parents=True, exist_ok=True)
-        with open(file, "w", opener=opener) as fh:
+        with open(str(file), "w", opener=opener) as fh:
             subprocess.run(
                 [
                     "sops",
@@ -152,7 +150,7 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
 
 
 @task
-def install(c: Any, flake_attr: str, hostname: str) -> None:
+def install(c: Context, flake_attr: str, hostname: str) -> None:
     """
     Decrypt host private key, install with nixos-anywhere. Use inv install --flake-attr build01 --hostname build01.nix-community.org
     """
@@ -169,6 +167,6 @@ def install(c: Any, flake_attr: str, hostname: str) -> None:
 
 
 @task
-def cleanup_gcroots(c: Any, hosts: str) -> None:
+def cleanup_gcroots(c: Context, hosts: str) -> None:
     g = DeployGroup(get_hosts(hosts))
     g.run("sudo find /nix/var/nix/gcroots/auto -type s -delete")
