@@ -65,14 +65,17 @@ in
     ruff-check.priority = 1;
     ruff-format.priority = 2;
 
-    python-mypy = {
+    ty = {
       priority = 3;
-      command = pkgs.mypy;
+      command = pkgs.ty;
       options = [
-        "--python-executable"
-        (pkgs.lib.getExe pkgs.deploykitEnv)
+        "check"
+        "--error-on-warning"
+        "--extra-search-path"
+        "${pkgs.deploykitEnv}/${pkgs.deploykitEnv.sitePackages}"
       ];
-      includes = [ "tasks.py" ];
+      includes = [ "*.py" ];
+      excludes = [ "hosts/build02/*.py" ];
     };
   };
 }
