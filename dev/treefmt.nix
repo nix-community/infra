@@ -36,7 +36,6 @@ in
     enable = true;
     settings.formatter.retain_line_breaks_single = true;
     excludes = [
-      "config.yaml"
       "*secrets.yaml"
       "modules/secrets/*.yaml"
     ];
