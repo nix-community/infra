@@ -11,18 +11,21 @@
               buildInputs = [
                 pkgs.python3.pkgs.mkdocs-material
                 pkgs.python3.pkgs.mkdocs-redirects
+                pkgs.rumdl
               ];
               files = pkgs.lib.fileset.toSource {
                 root = ../.;
                 fileset = pkgs.lib.fileset.unions [
                   ../docs
                   ../mkdocs.yml
+                  ../pyproject.toml
                 ];
               };
             }
             ''
               cp --no-preserve=mode -r $files/* .
               cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
+              rumdl check # rumdl-check from treefmt exits with 0
               mkdocs build --strict --site-dir $out
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
