@@ -95,14 +95,6 @@ def docs(c: Context) -> None:
     c.run("nix develop .#mkdocs -c mkdocs serve")
 
 
-@task
-def docs_linkcheck(c: Context) -> None:
-    """
-    Run docs online linkchecker
-    """
-    c.run("nix run .#docs-linkcheck.online")
-
-
 def get_hosts(hosts: str) -> list[DeployHost]:
     deploy_hosts = []
     for host in hosts.split(","):

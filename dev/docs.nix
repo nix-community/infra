@@ -25,18 +25,6 @@
               cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
               mkdocs build --strict --site-dir $out
             '';
-        docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
-          extraConfig = {
-            include_mail = true;
-            include_verbatim = true;
-            index_files = [ "index.html" ];
-            root_dir = site;
-          };
-          remap = {
-            "https://nix-community.org" = site;
-          };
-          site = config.packages.docs;
-        };
         docs-json =
           pkgs.runCommand "docs-json"
             {
