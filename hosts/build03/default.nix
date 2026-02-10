@@ -3,7 +3,7 @@
   imports = [
     ./builders.nix
     ./cache-harmonia.nix
-    #./landscape.nix
+    ./landscape.nix
     ./postgresql.nix
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.ci-builder
@@ -14,7 +14,7 @@
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nur-update
-    #inputs.self.nixosModules.quadlet
+    inputs.self.nixosModules.quadlet
     inputs.self.nixosModules.rfc39
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
