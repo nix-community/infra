@@ -14,12 +14,12 @@
         tags.host = "build03.nix-community.org";
         tags.org = "nix-community";
       }
-      #{
-      #  urls = [ "https://landscape.nix-community.org/" ];
-      #  response_string_match = "NixOS Manual";
-      #  tags.host = "build03.nix-community.org";
-      #  tags.org = "nix-community";
-      #}
+      {
+        urls = [ "https://landscape.nix-community.org/" ];
+        response_string_match = "NixOS Manual";
+        tags.host = "build03.nix-community.org";
+        tags.org = "nix-community";
+      }
       {
         urls = [ "https://nur-update.nix-community.org/" ];
         response_string_match = "NUR update endpoint";
