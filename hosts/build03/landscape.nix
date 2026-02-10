@@ -12,6 +12,6 @@
   };
 
   services.nginx.virtualHosts."landscape.nix-community.org" = {
-    locations."/".proxyPass = "http://localhost:8082";
+    locations."/".proxyPass = "http://127.0.0.1:8082";
   };
 }
