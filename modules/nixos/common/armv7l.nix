@@ -16,13 +16,11 @@
         boot.kernelParams = [ "compat_uts_machine=armv7l" ];
 
         boot.kernelPatches = [
+          # https://lists.ubuntu.com/archives/kernel-team/2016-January/068203.html
+          # https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/jammy/patch/?id=c1da50fa6eddad313360249cadcd4905ac9f82ea
           {
             name = "compat_uts_machine";
-            patch = pkgs.fetchpatch {
-              name = "compat_uts_machine.patch";
-              url = "https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/jammy/patch/?id=c1da50fa6eddad313360249cadcd4905ac9f82ea";
-              hash = "sha256-357+EzMLLt7IINdH0ENE+VcDXwXJMo4qiF/Dorp2Eyw=";
-            };
+            patch = ./compat_uts_machine.patch;
           }
         ];
 
