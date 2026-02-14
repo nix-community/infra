@@ -43,7 +43,7 @@ var hosts = {
         ipv4: "49.12.162.21",
         ipv6: "2a01:4f8:d1:5715::2"
     },
-    "web02": {
+    "web01": {
         ipv4: "46.226.105.188",
         ipv6: "2001:4b98:dc0:43:f816:3eff:fec9:5764"
     },
@@ -53,19 +53,19 @@ var hosts = {
 var cnames = {
     // keep-sorted start
     "aarch64-build-box": "build05",
-    "alertmanager": "web02",
+    "alertmanager": "web01",
     "build-box": "build01",
     "buildbot": "build03",
     "darwin-build-box": "darwin01",
     "docker": "zimbatm.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
-    "grafana": "web02",
+    "grafana": "web01",
     "hydra": "build03",
     "landscape": "build03",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "build03",
-    "prometheus": "web02",
+    "prometheus": "web01",
     "temp-cache": "build03",
     // keep-sorted end
 };

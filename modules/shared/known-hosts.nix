@@ -28,8 +28,8 @@
       hostNames = [ "darwin02.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMb/DRvrCZ65QB8OPimqthgUY9MZ+QO3QcFy6mpiUomV";
     };
-    web02 = {
-      hostNames = [ "web02.nix-community.org" ];
+    web01 = {
+      hostNames = [ "web01.nix-community.org" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILAkBZMRNgsJ/IbLtjMHqBw/9+4tyn9nT+5B5RFiV0vJ";
     };
   };

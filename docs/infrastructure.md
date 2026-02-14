@@ -86,7 +86,7 @@
 --8<-- "docs/build02.json"
 ```
 
-#### [`Monitoring`](./other-services.md#monitoring) - `web02`
+#### [`Monitoring`](./other-services.md#monitoring) - `web01`
 
 - Provider: Gandi
 - Instance type: [V-R4](https://www.gandi.net/en-GB/cloud/vps)

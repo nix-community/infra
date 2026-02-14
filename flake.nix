@@ -100,7 +100,7 @@
             build05.system = "aarch64-linux";
             darwin01.system = "aarch64-darwin";
             darwin02.system = "aarch64-darwin";
-            web02.system = "x86_64-linux";
+            web01.system = "x86_64-linux";
           };
 
           systemModules = [

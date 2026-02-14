@@ -70,7 +70,7 @@ creation_rules:
           - age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay
           - age1jrh8yyq3swjru09s75s4mspu0mphh7h6z54z946raa9wx3pcdegq0x8t4h
           - age1m7xhem3qll35d539f364pm6txexvnp6k0tk34d8jxu4ry3pptv7smm0k5n
-    path_regex: ^hosts/web02/secrets.yaml$
+    path_regex: ^hosts/web01/secrets.yaml$
   - key_groups:
       - age:
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMm3/o1HguyRL1z/nZxLBY9j/YUNXeNuDoiBLZAyt88Z
