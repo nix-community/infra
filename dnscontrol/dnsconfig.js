@@ -58,7 +58,6 @@ var cnames = {
     "buildbot": "build03",
     "darwin-build-box": "darwin01",
     "docker": "zimbatm.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
-    "grafana": "web01",
     "hydra": "build03",
     "landscape": "build03",
     "nixpkgs-update-cache": "build02",
