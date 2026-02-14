@@ -42,7 +42,7 @@ let
       "darwin02"
     ];
     "modules/secrets/rfc39_private_key.der" = [
-      "build03"
+      "web01"
     ];
   }
   // builtins.listToAttrs (

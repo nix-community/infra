@@ -59,11 +59,11 @@ var cnames = {
     "darwin-build-box": "darwin01",
     "docker": "zimbatm.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
-    "landscape": "build03",
+    "landscape": "web01",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",
-    "nur-update": "build03",
+    "nur-update": "web01",
     "prometheus": "web01",
     "temp-cache": "build03",
     // keep-sorted end
