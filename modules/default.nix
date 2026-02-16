@@ -18,7 +18,7 @@ let
         inherit type;
       }) onlyDirs;
 
-      nixPaths = builtins.removeAttrs (lib.mapAttrs' (
+      nixPaths = removeAttrs (lib.mapAttrs' (
         name: type:
         let
           nixName = builtins.match "(.*)\\.nix" name;
@@ -36,8 +36,7 @@ let
     in
     lib.optionalAttrs (builtins.pathExists path) (fn combined);
 
-  # deadnix: skip
-  modules = path: importDir path (lib.mapAttrs (_name: { path, type }: path));
+  modules = path: importDir path (lib.mapAttrs (_name: { path, ... }: path));
 in
 {
   flake = {

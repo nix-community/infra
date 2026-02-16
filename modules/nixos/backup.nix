@@ -42,7 +42,7 @@
     };
 
     services.borgbackup.jobs = builtins.listToAttrs (
-      builtins.map (backup: {
+      map (backup: {
         inherit (backup) name;
         value = {
           inherit (backup) paths startAt;
@@ -67,7 +67,7 @@
     );
 
     systemd.services = builtins.listToAttrs (
-      builtins.map (backup: {
+      map (backup: {
         name = "borgbackup-job-${backup.name}";
         value = {
           inherit (backup) after;
