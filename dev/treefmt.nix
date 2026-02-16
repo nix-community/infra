@@ -14,6 +14,7 @@ in
     deadnix.enable = true;
     dnscontrol.enable = true;
     keep-sorted.enable = true;
+    nixf-diagnose.enable = true;
     nixfmt.enable = true;
     ruff-check.enable = true;
     ruff-format.enable = true;
@@ -74,11 +75,15 @@ in
       inherit excludes;
       priority = 1;
     };
-    statix = {
+    nixf-diagnose = {
       inherit excludes;
       priority = 2;
     };
-    nixfmt.priority = 3;
+    statix = {
+      inherit excludes;
+      priority = 3;
+    };
+    nixfmt.priority = 4;
 
     # python
     ruff-check.priority = 1;
