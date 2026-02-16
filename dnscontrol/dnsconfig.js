@@ -57,7 +57,7 @@ var cnames = {
     "build-box": "build01",
     "buildbot": "build03",
     "darwin-build-box": "darwin01",
-    "docker": "zimbatm.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
+    "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
     "landscape": "web01",
     "nixpkgs-update-cache": "build02",
@@ -111,4 +111,5 @@ D("nix-community.org",
 
     TXT("_github-challenge-nix-community-org", "2eee7c1945"),
     TXT("_github-pages-challenge-nix-community", "6d236784300b9b1e80fdc496b7bfce"),
+    TXT("_scarf-sh-challenge-nix-community.docker", "5GVHX2INP2W7WLQKNFML"),
 );
