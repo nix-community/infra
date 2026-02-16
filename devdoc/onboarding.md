@@ -35,3 +35,4 @@
   - [Hetzner Robot](https://robot.hetzner.com/key/index)
   - [Namespace](https://cloud.namespace.so/4l6g3pb71m64u/settings/users)
   - [OpenCollective](https://opencollective.com/nix-community/admin/team)
+  - [Scarf](https://app.scarf.sh/organizations/nix-community/members)
