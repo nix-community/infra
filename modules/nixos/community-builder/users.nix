@@ -452,7 +452,7 @@ let
 in
 {
   users.users = builtins.listToAttrs (
-    builtins.map (u: {
+    map (u: {
       inherit (u) name;
       value = {
         isNormalUser = true;

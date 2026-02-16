@@ -541,7 +541,7 @@ let
 in
 {
   users.users = builtins.listToAttrs (
-    builtins.map (u: {
+    map (u: {
       inherit (u) name;
       value = {
         inherit (u) uid;
@@ -553,7 +553,7 @@ in
     }) users
   );
 
-  users.knownUsers = builtins.map (u: u.name) users;
+  users.knownUsers = map (u: u.name) users;
 
-  nix.settings.trusted-users = builtins.map (u: u.name) (builtins.filter (u: u.trusted) users);
+  nix.settings.trusted-users = map (u: u.name) (builtins.filter (u: u.trusted) users);
 }

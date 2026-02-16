@@ -9,7 +9,7 @@ let
       userDirEntries = builtins.readDir usersDir;
       userFiles = builtins.filter onlyUserFiles (lib.attrNames userDirEntries);
     in
-    builtins.map toUserPath userFiles;
+    map toUserPath userFiles;
 in
 {
   imports = userImports;

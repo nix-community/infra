@@ -72,7 +72,7 @@ in
       evaluator_max_memory_size = 4096
       evaluator_workers = 8
       max_concurrent_evals = 2
-      max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+      max_output_size = ${toString (8 * 1024 * 1024 * 1024)}
 
       github_client_id = Ov23ligaoPhIyuYCJ1pp
       github_client_secret_file = ${config.sops.secrets.hydra-github-client-secret.path}
