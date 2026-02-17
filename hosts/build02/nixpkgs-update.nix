@@ -205,8 +205,7 @@ in
     script = ''
       mkdir -p "$LOGS_DIRECTORY/~supervisor"
       # This is for public logs at nixpkgs-update-logs.nix-community.org/~supervisor
-      exec  > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stdout.log' 86400)
-      exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.stderr.log' 86400 >&2)
+      exec > >(rotatelogs -eD "$LOGS_DIRECTORY"'/~supervisor/%Y-%m-%d.log' 86400) 2>&1
       # Fetcher output is hosted at nixpkgs-update-logs.nix-community.org/~fetchers
       python3 ${./supervisor.py} "$LOGS_DIRECTORY/~supervisor/state.db" "$LOGS_DIRECTORY/~fetchers" "$RUNTIME_DIRECTORY/work.sock"
     '';

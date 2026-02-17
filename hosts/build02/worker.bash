@@ -1,7 +1,6 @@
 mkdir -p "$LOGS_DIRECTORY/~workers/"
 # This is for public logs at nixpkgs-update-logs.nix-community.org/~workers
-exec > >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.stdout.log" 86400)
-exec 2> >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.stderr.log" 86400 >&2)
+exec > >(rotatelogs -eD "$LOGS_DIRECTORY/~workers/%Y-%m-%d-${WORKER_NAME}.log" 86400) 2>&1
 
 socket=/run/nixpkgs-update-supervisor/work.sock
 
