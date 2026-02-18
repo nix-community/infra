@@ -448,6 +448,12 @@ let
       shell = pkgs.fish;
       keys = ./keys/magnetophon;
     }
+    {
+      # lib.maintainers.erictapen, https://github.com/erictapen
+      name = "erictapen";
+      trusted = true;
+      keys = ./keys/erictapen;
+    }
   ];
 in
 {
