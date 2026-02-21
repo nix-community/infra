@@ -4,9 +4,11 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
-  - `wheel` will give them access to the terraform state storage.
-
 - Add their age key to [sops.json](../sops.json) and run `inv update-sops-files`.
+
+- Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
+
+  - [Terraform Cloud](https://app.terraform.io)
 
 - Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
 

@@ -9,6 +9,9 @@ terraform {
     sops = {
       source = "carlpett/sops"
     }
+    tfe = {
+      source = "hashicorp/tfe"
+    }
   }
 }
 

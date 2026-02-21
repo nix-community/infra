@@ -1,6 +1,8 @@
 terraform {
-  backend "pg" {
-    conn_str = "postgres://terraform@localhost/terraform?sslmode=disable"
+  cloud {
+    hostname     = "app.terraform.io"
+    organization = "nix-community"
+    workspaces { name = "infra" }
   }
 
   encryption {
@@ -25,5 +27,6 @@ terraform {
 }
 
 variable "passphrase" {
+  ephemeral = true
   sensitive = true
 }

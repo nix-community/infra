@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-pushd "$(dirname "$0")" >/dev/null
-
-ssh -f -N -L "$PGPORT":/var/run/postgresql/.s.PGSQL.5432 web01.nix-community.org
-
-popd
