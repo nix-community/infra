@@ -75,7 +75,6 @@ creation_rules:
       - age:
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMm3/o1HguyRL1z/nZxLBY9j/YUNXeNuDoiBLZAyt88Z
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiozp1A1+SUfJQPa5DZUQcVc6CZK2ZxL6FJtNdh+2TP
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILAkBZMRNgsJ/IbLtjMHqBw/9+4tyn9nT+5B5RFiV0vJ
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
           - age1d87z3zqlv6ullnzyng8l722xzxwqr677csacf3zf3l28dau7avfs6pc7ay

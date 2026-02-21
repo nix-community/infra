@@ -3,7 +3,6 @@
   imports = [
     ./gandi.nix
     ./landscape.nix
-    ./postgresql.nix
     inputs.self.nixosModules.monitoring
     inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nur-update

@@ -29,7 +29,6 @@ let
     "modules/secrets/backup.yaml" = [
       "build02"
       "build03"
-      "web01"
     ];
     "modules/secrets/community-builder.yaml" = [
       "build01"
