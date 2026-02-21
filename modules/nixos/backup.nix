@@ -30,14 +30,14 @@
 
   };
   config = {
-    # 100GB storagebox is attached to the build02 server
+    # 100GB storagebox is attached to the build03 server
 
     sops.secrets.hetzner-borgbackup-ssh = {
       sopsFile = "${inputs.self}/modules/secrets/backup.yaml";
     };
 
     programs.ssh.knownHosts.hetzner-storage-box = {
-      hostNames = [ "[u416406.your-storagebox.de]:23" ];
+      hostNames = [ "[u550408.your-storagebox.de]:23" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICf9svRenC/PLKIL9nk6K/pxQgoiFC41wTNvoIncOxs";
     };
 
@@ -46,7 +46,7 @@
         inherit (backup) name;
         value = {
           inherit (backup) paths startAt;
-          repo = "u416406@u416406.your-storagebox.de:/./${config.networking.hostName}-${backup.name}";
+          repo = "u550408@u550408.your-storagebox.de:/./${config.networking.hostName}-${backup.name}";
           encryption.mode = "none";
           compression = "auto,zstd";
           environment.BORG_RSH = "ssh -oPort=23 -i ${config.sops.secrets.hetzner-borgbackup-ssh.path}";

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  # 100GB storagebox is attached to the build02 server
+  # 100GB storagebox is attached to the build03 server
 
   imports = [
     inputs.self.nixosModules.backup
