@@ -454,6 +454,12 @@ let
       trusted = true;
       keys = ./keys/erictapen;
     }
+    {
+      # lib.maintainers.pentane, https://github.com/cyclic-pentane
+      name = "pentane";
+      trusted = true;
+      keys = ./keys/pentane;
+    }
   ];
 in
 {
