@@ -236,6 +236,11 @@ let
       keys = ./keys/schmittlauch;
     }
     {
+      name = "skowalak";
+      trusted = true;
+      keys = ./keys/skowalak;
+    }
+    {
       name = "sternenseemann";
       trusted = true;
       keys = ./keys/sternenseemann;
