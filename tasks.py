@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from deploykit import DeployGroup, DeployHost
+from deploykit import DeployGroup, DeployHost, parse_hosts
 from invoke import Context, task
 
 ROOT = Path(__file__).parent.resolve()
@@ -104,16 +104,14 @@ def docs_linkcheck(c: Context) -> None:
 
 
 def get_hosts(hosts: str) -> list[DeployHost]:
-    deploy_hosts = []
-    for host in hosts.split(","):
-        if host.startswith("darwin"):
-            deploy_hosts.append(
-                DeployHost(f"{host}.nix-community.org", user="customer")
-            )
-        else:
-            deploy_hosts.append(DeployHost(f"{host}.nix-community.org"))
-
-    return deploy_hosts
+    g = parse_hosts(
+        hosts=hosts,
+        domain_suffix=".nix-community.org",
+    )
+    for i in g.hosts:
+        if i.host.startswith("darwin"):
+            i.user = "customer"
+    return g.hosts
 
 
 def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
