@@ -1,5 +1,5 @@
 nav:
-  - index.md
+  - Home: index.md
   - Open Collective: open-collective.md
   - sponsors.md
   - Services:
@@ -18,7 +18,7 @@ nav:
       - security.md
 
 theme:
-  name: material
+  variant: classic
   features:
     - content.action.edit
     - content.code.annotate
@@ -40,11 +40,11 @@ markdown_extensions:
   - toc:
       toc_depth: 0
 
-plugins:
-  - redirects:
-      redirect_maps:
-        "community-builder.md": "community-builders.md"
-  - search
+# `redirects`: https://github.com/zensical/backlog/issues/23
+#plugins:
+#  - redirects:
+#      redirect_maps:
+#        "community-builder.md": "community-builders.md"
 
 extra:
   social:

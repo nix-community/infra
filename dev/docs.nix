@@ -3,14 +3,13 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.mkdocs = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
+      devShells.zensical = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
       packages = {
         docs =
           pkgs.runCommand "docs"
             {
               buildInputs = [
-                pkgs.python3.pkgs.mkdocs-material
-                pkgs.python3.pkgs.mkdocs-redirects
+                pkgs.zensical
               ];
               files = pkgs.lib.fileset.toSource {
                 root = ../.;
@@ -20,10 +19,13 @@
                 ];
               };
             }
+            # `zensical build --strict`: https://github.com/zensical/backlog/issues/72
             ''
-              cp --no-preserve=mode -r $files/* .
+              cp --no-preserve=mode -rT $files .
               cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
-              mkdocs build --strict --site-dir $out
+              zensical build
+              mkdir -p $out
+              cp -rT site $out
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
           extraConfig = {
