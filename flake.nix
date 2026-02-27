@@ -156,7 +156,6 @@
               inherit (self'.packages)
                 dnscontrol-check
                 docs
-                docs-linkcheck
                 sops-check
                 terraform-validate
                 ;

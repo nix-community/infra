@@ -32,3 +32,30 @@ ignore = [
   "S101",
   "SIM117",
 ]
+
+[tool.rumdl]
+disable = ["MD014", "MD041"]
+flavor = "gfm"
+
+[tool.rumdl.MD013]
+line-length = 0
+reflow = true
+reflow-mode = "sentence-per-line"
+
+[tool.rumdl.MD029]
+style = "ordered"
+
+[tool.rumdl.MD057]
+absolute-links = "relative_to_docs"
+compact-paths = true
+
+[tool.rumdl.MD074]
+absolute-links = "warn"
+not-found = "warn"
+omitted-files = "warn"
+
+[tool.rumdl.per-file-flavor]
+"docs/**/*.md" = "mkdocs"
+
+[tool.rumdl.per-file-ignores]
+"docs/**/*.md" = ["MD033", "MD059"]
