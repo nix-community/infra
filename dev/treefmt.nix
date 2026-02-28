@@ -89,14 +89,22 @@ in
     ruff-check.priority = 1;
     ruff-format.priority = 2;
 
-    python-mypy = {
+    ty = {
       priority = 3;
-      command = pkgs.mypy;
+      command = pkgs.ty;
       options = [
-        "--python-executable"
-        (pkgs.lib.getExe pkgs.deploykitEnv)
+        "check"
+        "--extra-search-path"
+        "${pkgs.deploykitEnv}/${pkgs.deploykitEnv.sitePackages}"
+      ]
+      ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+        "--extra-search-path"
+        "${pkgs.supervisorEnv}/${pkgs.supervisorEnv.sitePackages}"
       ];
-      includes = [ "tasks.py" ];
+      includes = [ "*.py" ];
+      excludes = pkgs.lib.optionals (!pkgs.stdenv.hostPlatform.isLinux) [
+        "hosts/build02/supervisor*.py"
+      ];
     };
   };
 }

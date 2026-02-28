@@ -24,4 +24,7 @@
     };
     doCheck = false;
   };
+  supervisorEnv = final.python3.withPackages (ps: [
+    ps.asyncinotify
+  ]);
 }
