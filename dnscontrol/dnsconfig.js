@@ -21,10 +21,6 @@ var hosts = {
         ipv4: "65.21.139.242",
         ipv6: "2a01:4f9:3b:2946::1"
     },
-    "build02": {
-        ipv4: "65.21.133.211",
-        ipv6: "2a01:4f9:3b:41d9::1"
-    },
     "build03": {
         ipv4: "162.55.14.99",
         ipv6: "2a01:4f8:2190:2698::2"
@@ -63,8 +59,6 @@ var cnames = {
     "hydra": "build03",
     "landscape": "web01",
     "nixbot": "build03",
-    "nixpkgs-update-cache": "build02",
-    "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "web01",
     "prometheus": "web01",
@@ -92,6 +86,21 @@ D("nix-community.org",
     DnsProvider(DSP_CLOUDFLARE),
 
     records,
+
+    A("nixpkgs-update-cache", "192.0.2.1", CF_PROXY_ON),
+    CF_SINGLE_REDIRECT(
+        "nixpkgs-update-cache",
+        301,
+        'http.host eq "nixpkgs-update-cache.nix-community.org"',
+        'concat("https://nixpkgs-update-cache.nixos.org", http.request.uri.path)'
+    ),
+    A("nixpkgs-update-logs", "192.0.2.1", CF_PROXY_ON),
+    CF_SINGLE_REDIRECT(
+        "nixpkgs-update-logs",
+        301,
+        'http.host eq "nixpkgs-update-logs.nix-community.org"',
+        'concat("https://nixpkgs-update-logs.nixos.org", http.request.uri.path)'
+    ),
 
     // https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/
     A("buildbot", "192.0.2.1", CF_PROXY_ON),

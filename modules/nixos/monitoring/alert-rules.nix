@@ -12,16 +12,6 @@
           annotations.description = "status of ${name} is unknown: no data for a day";
         })
       )
-      // (lib.genAttrs
-        [
-          "borgbackup-job-nixpkgs-update.service"
-        ]
-        (name: {
-          expr = ''absent_over_time(task_last_run{name="${name}"}[1h])'';
-          for = "1h";
-          annotations.description = "status of ${name} is unknown: no data for a hour";
-        })
-      )
       // {
         Filesystem80percentFull.enable = false;
 

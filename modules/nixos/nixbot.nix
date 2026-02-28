@@ -25,7 +25,6 @@ let
     "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
     "nix-community/nixos-images"
-    "nix-community/nixpkgs-update"
     "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
     "nix-community/nurl"
