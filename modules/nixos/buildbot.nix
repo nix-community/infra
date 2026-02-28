@@ -26,7 +26,6 @@ let
     "nix-community/nixos-facter-modules"
     "nix-community/nixos-generators"
     "nix-community/nixos-images"
-    "nix-community/nixpkgs-update"
     "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
     "nix-community/srvos"

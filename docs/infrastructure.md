@@ -75,17 +75,6 @@
 
 ### Other
 
-#### [`R. RyanTM nixpkgs-update bot`](./update-bot.md) - `build02`
-
-- Provider: Hetzner
-- CPU: AMD Ryzen 9 3900 12-Core Processor
-- RAM: 128GB DDR4 ECC
-- Drives: 2 x 1.92TB NVME
-
-```json
---8<-- "docs/build02.json"
-```
-
 #### [`Monitoring`](./other-services.md#monitoring) - `web01`
 
 - Provider: Gandi
