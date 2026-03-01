@@ -1,9 +1,6 @@
 { pkgs, ... }:
 let
-  excludes = [
-    # vendored from external source, file is formatted but isn't compliant with statix
-    "hosts/build02/packages-with-update-script.nix"
-  ];
+  excludes = [ ];
 in
 {
   # Used to find the project root
