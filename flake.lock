@@ -50,6 +50,32 @@
         "type": "github"
       }
     },
+    "disko-zfs": {
+      "inputs": {
+        "disko": [
+          "disko"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769387661,
+        "narHash": "sha256-BS5hOfFiGQMCkn5T2tefmLun19B6u55CoWvSAtNFiNU=",
+        "owner": "numtide",
+        "repo": "disko-zfs",
+        "rev": "658b3381cdd8c1cb2ce96a890111729972797733",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "disko-zfs",
+        "type": "github"
+      }
+    },
     "empty": {
       "locked": {
         "lastModified": 1708697125,
@@ -399,6 +425,7 @@
       "inputs": {
         "buildbot-nix": "buildbot-nix",
         "disko": "disko",
+        "disko-zfs": "disko-zfs",
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
