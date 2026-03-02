@@ -465,6 +465,12 @@ let
       trusted = true;
       keys = ./keys/pentane;
     }
+    {
+      # lib.maintainers.sedlund, https://github.com/sedlund
+      name = "sedlund";
+      trusted = true;
+      keys = ./keys/sedlund;
+    }
   ];
 in
 {
