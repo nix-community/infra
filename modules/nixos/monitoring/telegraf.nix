@@ -26,12 +26,6 @@
         tags.host = "web01.nix-community.org";
         tags.org = "nix-community";
       }
-      {
-        urls = [ "https://nixpkgs-update-logs.nix-community.org/~supervisor/" ];
-        response_string_match = "state.db";
-        tags.host = "build02.nix-community.org";
-        tags.org = "nix-community";
-      }
     ];
     net_response =
       let

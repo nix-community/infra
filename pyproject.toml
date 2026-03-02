@@ -13,22 +13,3 @@ ignore = [
   "E501",
   "T201",
 ]
-
-[tool.ruff.lint.per-file-ignores]
-"hosts/build02/*.py" = [
-  "ANN",
-  "ASYNC240",
-  "C901",
-  "EXE001",
-  "FBT",
-  "FLY002",
-  "INP001",
-  "N",
-  "PGH003",
-  "PLR",
-  "PT009",
-  "PTH",
-  "RET504",
-  "S101",
-  "SIM117",
-]

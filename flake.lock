@@ -297,61 +297,6 @@
         "url": "https://github.com/NixOS/nixpkgs"
       }
     },
-    "nixpkgs-update": {
-      "inputs": {
-        "mmdoc": [
-          "empty"
-        ],
-        "nixpkgs": "nixpkgs_2",
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1771644265,
-        "narHash": "sha256-PS+ZpQE6+p7ZAZgbKFyMwiBPj5JGz5F4SG/pW1ioobA=",
-        "owner": "nix-community",
-        "repo": "nixpkgs-update",
-        "rev": "1863bedf7cf9770824429512ec24382f36aa5cbf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "infra",
-        "repo": "nixpkgs-update",
-        "type": "github"
-      }
-    },
-    "nixpkgs-update-github-releases": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770450995,
-        "narHash": "sha256-3wQeouRJnqYfZCvjgjLjLuGtEpMmwM3+NvcsxgwrJkg=",
-        "owner": "nix-community",
-        "repo": "nixpkgs-update-github-releases",
-        "rev": "fee014c81b84ca9740f9e2fcb3e61d3f4a90bc0b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs-update-github-releases",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1672428209,
-        "narHash": "sha256-eejhqkDz2cb2vc5VeaWphJz8UXNuoNoM8/Op8eWv2tQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "293a28df6d7ff3dec1e61e37cc4ee6e6c0fb0847",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "nur-update": {
       "inputs": {
         "nixpkgs": [
@@ -410,8 +355,6 @@
         "nixbsd": "nixbsd",
         "nixbsd-nixpkgs": "nixbsd-nixpkgs",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-update": "nixpkgs-update",
-        "nixpkgs-update-github-releases": "nixpkgs-update-github-releases",
         "nur-update": "nur-update",
         "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix",

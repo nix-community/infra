@@ -4,7 +4,9 @@ DEFAULTS(
 );
 
 var REG_NONE = NewRegistrar("none");
-var DSP_CLOUDFLARE = NewDnsProvider("cloudflare");
+var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", {
+    "manage_single_redirects": true,
+});
 
 // # For each github page, create a CNAME alias to nix-community.github.io
 var nix_community_github_pages = [
@@ -18,10 +20,6 @@ var hosts = {
     "build01": {
         ipv4: "65.21.139.242",
         ipv6: "2a01:4f9:3b:2946::1"
-    },
-    "build02": {
-        ipv4: "65.21.133.211",
-        ipv6: "2a01:4f9:3b:41d9::1"
     },
     "build03": {
         ipv4: "162.55.14.99",
@@ -60,8 +58,6 @@ var cnames = {
     "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
     "landscape": "web01",
-    "nixpkgs-update-cache": "build02",
-    "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "web01",
     "prometheus": "web01",
@@ -89,6 +85,9 @@ D("nix-community.org",
     DnsProvider(DSP_CLOUDFLARE),
 
     records,
+
+    CF_REDIRECT("build02.nix-community.org/*", "https://?/$1"), // # TODO
+    CF_REDIRECT("nixpkgs-update-logs.nix-community.org/*", "https://?/$1"), // # TODO
 
     // blocks other CAs from issuing certificates for the domain
     CAA("@", "issue", "letsencrypt.org"),

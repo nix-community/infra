@@ -43,11 +43,6 @@
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
     nixbsd.url = "github:qowoz/nixbsd/infra";
-    nixpkgs-update-github-releases.flake = false;
-    nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
-    nixpkgs-update.inputs.mmdoc.follows = "empty";
-    nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
-    nixpkgs-update.url = "github:nix-community/nixpkgs-update/infra";
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable-small";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
@@ -94,7 +89,6 @@
 
           hosts = {
             build01.system = "x86_64-linux";
-            build02.system = "x86_64-linux";
             build03.system = "x86_64-linux";
             build04.system = "aarch64-linux";
             build05.system = "aarch64-linux";
@@ -160,7 +154,6 @@
                 sops-check
                 terraform-validate
                 ;
-              nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)

@@ -8,7 +8,6 @@ nav:
       - package-sets.md
       - cache.md
       - community-builders.md
-      - R. RyanTM nixpkgs-update bot: update-bot.md
       - other-services.md
   - About:
       - FAQ: faq.md
@@ -44,6 +43,7 @@ plugins:
   - redirects:
       redirect_maps:
         "community-builder.md": "community-builders.md"
+        "update-bot.md": "https://?" # TODO
   - search
 
 extra:
