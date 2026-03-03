@@ -9,7 +9,7 @@ Both `aarch64-linux` and `x86_64-linux` have support for `kvm`/`nixos-test`.
 
 We only have limited build capacity for `*-darwin` so please don't use it excessively.
 
-See [here](./infrastructure.md#continuous-integration) for details about the hardware.
+See [here](infrastructure.md#continuous-integration) for details about the hardware.
 
 #### Buildbot
 
@@ -35,4 +35,4 @@ To enable hydra add a new project in this [file](https://github.com/nix-communit
 
 All of the above builds are pushed to the cache.
 
-See [here](./cache.md) for details.
+See [here](cache.md) for details.

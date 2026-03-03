@@ -89,7 +89,7 @@ Software Update found the following new or updated software:
 
 ### Install nix
 
-https://github.com/NixOS/nix-installer
+<https://github.com/NixOS/nix-installer>
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://artifacts.nixos.org/nix-installer | sh -s -- install --no-modify-profile
