@@ -1,6 +1,6 @@
 ### Community Builders
 
-#### [`build-box.nix-community.org`](./community-builders.md) - `build01`
+#### [`build-box.nix-community.org`](community-builders.md) - `build01`
 
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
@@ -11,7 +11,7 @@
 --8<-- "docs/build01.json"
 ```
 
-#### [`aarch64-build-box.nix-community.org`](./community-builders.md) - `build05`
+#### [`aarch64-build-box.nix-community.org`](community-builders.md) - `build05`
 
 - Provider: Hetzner
 - Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
@@ -23,7 +23,7 @@
 --8<-- "docs/build05.json"
 ```
 
-#### [`darwin-build-box.nix-community.org`](./community-builders.md) - `darwin01`
+#### [`darwin-build-box.nix-community.org`](community-builders.md) - `darwin01`
 
 - Provider: OakHost
 - Instance type: [Apple Mac mini M4.M](https://www.oakhost.net/product/mac-mini-hosting-m4-32gb)
@@ -37,7 +37,7 @@
 
 ### Continuous Integration
 
-#### [`CI builder`](./continuous-integration.md) - `build03`
+#### [`CI builder`](continuous-integration.md) - `build03`
 
 - Provider: Hetzner
 - Instance type: [AX162-R](https://www.hetzner.com/dedicated-rootserver/ax162-r)
@@ -49,7 +49,7 @@
 --8<-- "docs/build03.json"
 ```
 
-#### [`CI builder`](./continuous-integration.md) - `build04`
+#### [`CI builder`](continuous-integration.md) - `build04`
 
 - Provider: Hetzner
 - Instance type: [RX170](https://www.hetzner.com/dedicated-rootserver/rx170)
@@ -61,7 +61,7 @@
 --8<-- "docs/build04.json"
 ```
 
-#### [`CI builder`](./continuous-integration.md) - `darwin02`
+#### [`CI builder`](continuous-integration.md) - `darwin02`
 
 - Provider: OakHost
 - Instance type: [Apple Mac mini M4.M](https://www.oakhost.net/product/mac-mini-hosting-m4-32gb)
@@ -75,7 +75,7 @@
 
 ### Other
 
-#### [`R. RyanTM nixpkgs-update bot`](./update-bot.md) - `build02`
+#### [`R. RyanTM nixpkgs-update bot`](update-bot.md) - `build02`
 
 - Provider: Hetzner
 - CPU: AMD Ryzen 9 3900 12-Core Processor
@@ -86,7 +86,7 @@
 --8<-- "docs/build02.json"
 ```
 
-#### [`Monitoring`](./other-services.md#monitoring) - `web01`
+#### [`Monitoring`](other-services.md#monitoring) - `web01`
 
 - Provider: Gandi
 - Instance type: [V-R4](https://www.gandi.net/en-GB/cloud/vps)

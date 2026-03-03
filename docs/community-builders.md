@@ -2,25 +2,25 @@ We provide machines as public builders for the nix community.
 
 `x86_64-linux`
 
-```
+```text
 build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
 ```
 
 `aarch64-linux`
 
-```
+```text
 aarch64-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1
 ```
 
 `aarch64-darwin`, `x86_64-darwin`
 
-```
+```text
 darwin-build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv
 ```
 
 [_Note: currently the darwin build box doesn't support FIDO keys._](https://github.com/nix-community/infra/issues/1007)
 
-See [here](./infrastructure.md#community-builders) for details about the hardware.
+See [here](infrastructure.md#community-builders) for details about the hardware.
 
 ### Access
 
@@ -28,17 +28,24 @@ We will grant access to well known members of the community, and people well kno
 
 Add your username to [`nixos/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix) or [`darwin/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/darwin/community-builder/users.nix).
 
-Don't keep any important data in your home! We will regularly delete `$HOME` without notice.
+Don't keep any important data in your home!
+We will regularly delete `$HOME` without notice.
 
 ### Notes on Security and Safety
 
-**_TLDR:_** a trusted but malicious actor could hack your system through this builder. Do not use this builder for secret builds. Be careful what you use this system for. Do not trust the results. For a more nuanced understanding, read on.
+**_TLDR:_** a trusted but malicious actor could hack your system through this builder.
+Do not use this builder for secret builds.
+Be careful what you use this system for.
+Do not trust the results.
+For a more nuanced understanding, read on.
 
 For someone to use a server as a remote builder, they must be a `trusted-user` on the remote builder. `man nix.conf` has this to say about Trusted Users:
 
 > User that have additional rights when connecting to the Nix daemon, such as the ability to specify additional binary caches, or to import unsigned NARs.
 >
-> Warning: The users listed here have the ability to compromise the security of a multi-user Nix store. For instance, they could install Trojan horses subsequently executed by other users. So you should consider carefully whether to add users to this list.
+> Warning: The users listed here have the ability to compromise the security of a multi-user Nix store.
+> For instance, they could install Trojan horses subsequently executed by other users.
+> So you should consider carefully whether to add users to this list.
 
 Nix's model of remote builders requires users to be able to directly import files in to the Nix store, and there is no guarantee what they import hasn't been maliciously modified.
 
