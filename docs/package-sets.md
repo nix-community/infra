@@ -14,7 +14,7 @@ Built on `nixos-$RELEASE-small` for `aarch64-linux`, `x86_64-linux`:
 
 All of the above builds are pushed to the cache.
 
-See [here](./cache.md) for details.
+See [here](cache.md) for details.
 
 #### Hydra
 

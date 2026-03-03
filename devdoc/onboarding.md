@@ -20,8 +20,8 @@
 
 - Make them an `admin` in these Matrix rooms:
 
-  - https://matrix.to/#/#nix-community:nixos.org
-  - https://matrix.to/#/#nix-community-monitoring:matrix.org
+  - <https://matrix.to/#/#nix-community:nixos.org>
+  - <https://matrix.to/#/#nix-community-monitoring:matrix.org>
 
 - Make them an `owner` on [Gandi](https://admin.gandi.net/), add them to the email forwarding for the `admin@nix-community.org` address and add their ssh key.
 
