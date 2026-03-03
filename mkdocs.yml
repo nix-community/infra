@@ -12,10 +12,11 @@ nav:
       - other-services.md
   - About:
       - FAQ: faq.md
-      - administrators.md
+      - /administrators.md
       - contact.md
       - infrastructure.md
       - security.md
+      - test.md
 
 theme:
   name: material
