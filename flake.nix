@@ -85,6 +85,7 @@
         { lib, ... }:
         {
           nixpkgs = {
+            config.allowDeprecatedx86_64Darwin = true;
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
