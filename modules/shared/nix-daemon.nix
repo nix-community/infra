@@ -22,6 +22,10 @@ in
       "https://temp-cache.nix-community.org"
     ];
 
+    # Hard-link duplicated files
+    settings.auto-optimise-store = true;
+    optimise.automatic = false;
+
     # auto-free the /nix/store
     settings.min-free = asGB 1;
     settings.max-free = asGB 50;
