@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -16,9 +16,4 @@
   nix.settings.system-features = [ "big-parallel" ];
 
   system.stateVersion = 5;
-
-  # test auto-optimise-store fix
-  # https://github.com/NixOS/nix/pull/14676
-  nix.optimise.automatic = false;
-  nix.settings.auto-optimise-store = pkgs.lib.mkForce true;
 }

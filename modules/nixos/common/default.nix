@@ -22,10 +22,6 @@
     inputs.srvos.nixosModules.server
   ];
 
-  # Hard-link duplicated files
-  nix.settings.auto-optimise-store = true;
-  nix.optimise.automatic = false;
-
   systemd.enableStrictShellChecks = true;
 
   # Sometimes it fails if a store path is still in use.
