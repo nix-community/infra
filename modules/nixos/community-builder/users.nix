@@ -472,7 +472,6 @@ let
       keys = ./keys/sedlund;
     }
     {
-      # lib.maintainers.sedlund, https://github.com/Asshall
       name = "Asshall";
       trusted = true;
       keys = ./keys/Asshall;
