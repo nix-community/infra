@@ -29,7 +29,7 @@
     freebsd-nix.inputs.nixpkgs-23-11.follows = "empty";
     freebsd-nix.inputs.nixpkgs-regression.follows = "empty";
     freebsd-nix.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    freebsd-nix.url = "github:qowoz/nix/freebsd-lowdown";
+    freebsd-nix.url = "github:qowoz/nix/freebsd";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
