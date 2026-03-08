@@ -537,6 +537,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/magnetophon;
     }
+    {
+      # lib.maintainers.ncfavier, https://github.com/ncfavier
+      name = "ncfavier";
+      trusted = true;
+      uid = 582;
+      keys = ./keys/ncfavier;
+    }
   ];
 in
 {
