@@ -2,7 +2,7 @@
 {
   sops.secrets.temp-cache-key = { };
 
-  services.harmonia = {
+  services.harmonia.cache = {
     enable = true;
     signKeyPaths = [ config.sops.secrets.temp-cache-key.path ];
     settings.priority = 50; # prefer c.n.o
