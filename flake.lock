@@ -122,16 +122,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1772772963,
-        "narHash": "sha256-Ypaxbl6kxdfoCt0rhQsOG4QuMP8jIRFWWAg3dOuBnRs=",
-        "owner": "qowoz",
+        "lastModified": 1773010792,
+        "narHash": "sha256-Y/KAPRp9BzjQK8Zcvwdfy7+nI5WGmWd4eM8UF212nDc=",
+        "owner": "NixOS",
         "repo": "nix",
-        "rev": "8c09744374d28da9bbf7c5e1b8450a9b35114ea8",
+        "rev": "984c6287bcbd3b190f17c02593fc77b691cee823",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "freebsd",
+        "owner": "NixOS",
         "repo": "nix",
         "type": "github"
       }
