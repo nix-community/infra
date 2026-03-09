@@ -4,7 +4,7 @@
 
   sops.secrets.harmonia-key = { };
 
-  services.harmonia = {
+  services.harmonia.cache = {
     enable = true;
     signKeyPaths = [ config.sops.secrets.harmonia-key.path ];
     settings.priority = 50; # prefer c.n.o
