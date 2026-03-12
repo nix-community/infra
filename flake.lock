@@ -132,6 +132,7 @@
       "original": {
         "owner": "NixOS",
         "repo": "nix",
+        "rev": "984c6287bcbd3b190f17c02593fc77b691cee823",
         "type": "github"
       }
     },
