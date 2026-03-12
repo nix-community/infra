@@ -483,6 +483,12 @@ let
       trusted = true;
       keys = ./keys/makefu;
     }
+    {
+      # lib.maintainers.miniharinn, https://github.com/MiniHarinn
+      name = "miniharinn";
+      trusted = true;
+      keys = ./keys/miniharinn;
+    }
   ];
 in
 {
