@@ -471,6 +471,12 @@ let
       trusted = true;
       keys = ./keys/sedlund;
     }
+    {
+      # lib.maintainers.miniharinn, https://github.com/MiniHarinn
+      name = "miniharinn";
+      trusted = true;
+      keys = ./keys/miniharinn;
+    }
   ];
 in
 {
