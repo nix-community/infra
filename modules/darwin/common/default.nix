@@ -9,16 +9,13 @@
     ./network.nix
     ./packages.nix
     ./reboot.nix
+    ./security.nix
     ./software-update.nix
     ./sops-nix.nix
     ./telegraf.nix
     ./users.nix
     inputs.srvos.darwinModules.server
   ];
-
-  environment.etc."ssh/sshd_config.d/darwin.conf".text = ''
-    HostKey /etc/ssh/ssh_host_ed25519_key
-  '';
 
   launchd.daemons.nix-build-cleanup = {
     script = "${pkgs.findutils}/bin/find /nix/var/nix/builds -delete || true";
