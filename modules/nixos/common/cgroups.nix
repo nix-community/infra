@@ -11,6 +11,9 @@
 
       auto-allocate-uids = true;
       use-cgroups = true;
+
+      # for networking between containers and VMs in nixosTests
+      extra-sandbox-paths = [ "/dev/net" ];
     };
   };
 }
