@@ -513,7 +513,7 @@ let
       name = "mdaniels5757";
       trusted = true;
       uid = 578;
-      keys = ./keys/mdaniels5757;
+      keys = ../../../users/keys/mdaniels5757;
     }
     {
       # lib.maintainers.dramforever, https://github.com/dramforever
