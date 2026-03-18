@@ -1,5 +1,6 @@
 - [@Mic92](https://github.com/Mic92)
 - [@adisbladis](https://github.com/adisbladis)
+- [@mdaniels5757](https://github.com/mdaniels5757)
 - [@ryantm](https://github.com/ryantm)
 - [@zimbatm](https://github.com/zimbatm)
 - [@zowoq](https://github.com/zowoq)

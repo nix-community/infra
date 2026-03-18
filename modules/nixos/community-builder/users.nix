@@ -440,13 +440,6 @@ let
       keys = ./keys/prince213;
     }
     {
-      # lib.maintainers.mdaniels5757, https://github.com/mdaniels5757
-      name = "mdaniels5757";
-      trusted = true;
-      shell = pkgs.zsh;
-      keys = ./keys/mdaniels5757;
-    }
-    {
       # lib.maintainers.magnetophon, https://github.com/magnetophon
       name = "magnetophon";
       trusted = true;

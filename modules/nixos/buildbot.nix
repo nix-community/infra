@@ -67,6 +67,7 @@ in
     enable = true;
     admins = [
       "adisbladis"
+      "mdaniels5757"
       "ryantm"
       "zimbatm"
       "zowoq"

@@ -110,6 +110,7 @@ in
         # Password hash is computed by applying sha1 to the password.
         hydra-github-users = pkgs.writeText "hydra-github-users" ''
           github;adisbladis@gmail.com;admin;;
+          github;mdaniels5757@gmail.com;admin;;
           github;zimbatm@zimbatm.com;admin;;
           github;zowoq.gh@gmail.com;admin;;
           github;me@linj.tech;restart-jobs;;
