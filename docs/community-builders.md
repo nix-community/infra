@@ -1,6 +1,6 @@
 We provide machines as public builders for the nix community.
 
-`x86_64-linux`
+`x86_64-linux`, `x86_64-freebsd`
 
 ```
 build-box.nix-community.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
