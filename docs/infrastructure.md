@@ -7,6 +7,8 @@
 - RAM: 128GB DDR4 ECC
 - Drives: 2 x 1.92TB NVME
 
+This machine is also hosts a NixBSD VM configured as a nix remote builder (`x86_64-freebsd`).
+
 ```json
 --8<-- "docs/build01.json"
 ```
@@ -44,6 +46,8 @@
 - CPU: AMD EPYC 9454P 48-Core Processor
 - RAM: 256GB DDR5 ECC
 - Drives: 2 x 1.92TB NVME
+
+This machine is also hosts a NixBSD VM configured as a nix remote builder (`x86_64-freebsd`).
 
 ```json
 --8<-- "docs/build03.json"
