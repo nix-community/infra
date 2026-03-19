@@ -5,6 +5,7 @@ resource "github_repository" "infra" {
 
   topics = [
     "nix-darwin",
+    "nixbsd",
     "nixos",
     "terraform",
   ]

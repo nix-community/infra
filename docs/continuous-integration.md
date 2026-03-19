@@ -2,6 +2,7 @@ We provide CI for these platforms:
 
 - `aarch64-darwin`
 - `aarch64-linux`
+- `x86_64-freebsd`
 - `x86_64-linux`
 
 Both `aarch64-linux` and `x86_64-linux` have support for `kvm`/`nixos-test`.
