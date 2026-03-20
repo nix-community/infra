@@ -1,13 +1,13 @@
-## SSH config:
+## SSH config
 
 You will need to set your admin username if it doesn't match your local username.
 
-```
+```text
 Host *.nix-community.org
   User <youradminusername>
 ```
 
-## Deployment commands:
+## Deployment commands
 
 ```console
 $ ./inv deploy
@@ -30,7 +30,10 @@ $ /root/kexec/run
 
 ## Fix up broken installations with disko-install
 
-Disko install allows to update nixos configuration with out re-formatting, if the `--mode` parameter is set to `mount`. This assumes that the file system is still intact. `--disk` may need to be adjusted according to the concrete disko configuration. i.e. disks during installation may have different names than later in the recovery system. Use lsblk or `/dev/disk/by-partlabel` to reason about which disk is which.
+Disko install allows to update nixos configuration with out re-formatting, if the `--mode` parameter is set to `mount`.
+This assumes that the file system is still intact.
+`--disk` may need to be adjusted according to the concrete disko configuration. i.e. disks during installation may have different names than later in the recovery system.
+Use lsblk or `/dev/disk/by-partlabel` to reason about which disk is which.
 
 ```console
 $ ls -la /dev/disk/by-partlabel/
