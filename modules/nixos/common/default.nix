@@ -76,4 +76,6 @@
   security.acme.acceptTerms = true;
 
   networking.domain = "nix-community.org";
+
+  programs.zsh.enable = true;
 }
