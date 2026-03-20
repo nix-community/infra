@@ -67,7 +67,11 @@
   outputs =
     inputs@{ flake-parts, self, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
       imports = [
         ./dev/dnscontrol.nix
@@ -85,7 +89,6 @@
         { lib, ... }:
         {
           nixpkgs = {
-            config.allowDeprecatedx86_64Darwin = true;
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
