@@ -53,7 +53,7 @@
     nur-update.url = "github:nix-community/nur-update";
     quadlet-nix.inputs.flake-parts.follows = "flake-parts";
     quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
-    quadlet-nix.url = "github:mirkolenz/quadlet-nix";
+    quadlet-nix.url = "github:qowoz/quadlet-nix/infra";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:qowoz/sops-nix/ssh"; # rebased https://github.com/Mic92/sops-nix/pull/779
     srvos.inputs.nixpkgs.follows = "nixpkgs";
