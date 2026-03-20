@@ -1,11 +1,16 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   userLib = import ./lib.nix { inherit lib; };
 in
 {
   users.users.mdaniels5757 = {
     openssh.authorizedKeys.keyFiles = [ ./keys/mdaniels5757 ];
-    useDefaultShell = true;
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [
       "wheel"
