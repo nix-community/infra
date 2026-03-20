@@ -111,7 +111,6 @@ in
         hydra-github-users = pkgs.writeText "hydra-github-users" ''
           github;adisbladis@gmail.com;admin;;
           github;mdaniels5757@gmail.com;admin;;
-          github;zimbatm@zimbatm.com;admin;;
           github;zowoq.gh@gmail.com;admin;;
           github;me@linj.tech;restart-jobs;;
           hydra;hexa;restart-jobs;$argon2id$v=19$m=262144,t=3,p=1$U0JEc2FMT2NTYkJQY1VMMQ$JlHT6wBnwHfMDxNKWTEriQ;
