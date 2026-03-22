@@ -382,16 +382,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1774046009,
-        "narHash": "sha256-sdfG7T9nflTgfZz37rDtRnjV1HjztuLblWWSO5M3ZCU=",
-        "owner": "qowoz",
+        "lastModified": 1772442457,
+        "narHash": "sha256-zOlX35pTiVdintAf6CoyJEG3BS1nXjmi+94LUcEHD+4=",
+        "owner": "mirkolenz",
         "repo": "quadlet-nix",
-        "rev": "e891e2a2ddbb912153b09c83ba8b891041efd0c9",
+        "rev": "a8e142e4c288102bd43312b3c2fa5e1c25666e99",
         "type": "github"
       },
       "original": {
-        "owner": "qowoz",
-        "ref": "infra",
+        "owner": "mirkolenz",
         "repo": "quadlet-nix",
         "type": "github"
       }
