@@ -544,6 +544,13 @@ let
       uid = 582;
       keys = ./keys/ncfavier;
     }
+    {
+      # lib.maintainers.amaanq, https://github.com/amaanq
+      name = "amaanq";
+      trusted = true;
+      uid = 583;
+      keys = ./keys/amaanq;
+    }
   ];
 in
 {
