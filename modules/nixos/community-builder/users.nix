@@ -464,6 +464,12 @@ let
       trusted = true;
       keys = ./keys/sedlund;
     }
+    {
+      # lib.maintainers.amaanq, https://github.com/amaanq
+      name = "amaanq";
+      trusted = true;
+      keys = ./keys/amaanq;
+    }
   ];
 in
 {
