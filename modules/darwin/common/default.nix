@@ -4,7 +4,6 @@
     ../../shared/known-hosts.nix
     ../../shared/nix-daemon.nix
     ../../shared/packages.nix
-    ./apfs-cleanup.nix
     ./builder.nix
     ./network.nix
     ./packages.nix
