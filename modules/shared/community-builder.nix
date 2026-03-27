@@ -46,8 +46,7 @@
     # useful for people that want to test stuff
     environment.systemPackages = [
       pkgs.btop
-      # https://github.com/NixOS/nixpkgs/pull/503376
-      (pkgs.emacs.override { withMailutils = !pkgs.stdenv.isDarwin; })
+      pkgs.emacs
       pkgs.fd
       pkgs.git
       pkgs.nano
