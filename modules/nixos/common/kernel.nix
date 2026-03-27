@@ -5,7 +5,7 @@
   ...
 }:
 let
-  llvm = pkgs.llvmPackages_21;
+  llvm = pkgs.llvmPackages_22;
   kernel = pkgs.linuxKernel.kernels.linux_6_18;
 in
 {
