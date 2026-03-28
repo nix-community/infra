@@ -90,9 +90,9 @@ def print_keys(c: Context, flake_attr: str) -> None:
 @task
 def docs(c: Context) -> None:
     """
-    Serve docs (mkdoc serve)
+    Serve docs (zensical serve)
     """
-    c.run("nix develop .#mkdocs -c mkdocs serve")
+    c.run("nix develop .#zensical -c zensical serve")
 
 
 @task

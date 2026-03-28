@@ -3,15 +3,14 @@
   perSystem =
     { config, pkgs, ... }:
     {
-      devShells.mkdocs = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
+      devShells.zensical = pkgs.mkShellNoCC { packages = [ pkgs.zensical ]; };
       packages = {
         docs =
           pkgs.runCommand "docs"
             {
               buildInputs = [
-                pkgs.python3.pkgs.mkdocs-material
-                pkgs.python3.pkgs.mkdocs-redirects
                 pkgs.rumdl
+                pkgs.zensical
               ];
               files = pkgs.lib.fileset.toSource {
                 root = ../.;
@@ -22,12 +21,15 @@
                 ];
               };
             }
+            # `zensical build --strict`: https://github.com/zensical/backlog/issues/72
             ''
-              cp --no-preserve=mode -r $files/* .
+              cp --no-preserve=mode -rT $files .
               cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
               # run rumdl as part of the build, rumdl-check from treefmt-nix doesn't catch all errors
               rumdl check
-              mkdocs build --strict --site-dir $out
+              zensical build
+              mkdir -p $out
+              cp -rT site $out
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
           extraConfig = {
