@@ -1,11 +1,10 @@
 {
-  lib,
   self,
   withSystem,
   ...
 }:
 {
-  herculesCI = herculesCI: {
+  herculesCI = _herculesCI: {
     onPush.default.outputs.effects = withSystem "x86_64-linux" (
       { hci-effects, ... }:
       let
@@ -16,20 +15,18 @@
           (x: {
             name = x;
             value =
-              hci-effects.runIf (lib.hasPrefix "gh-readonly-queue/master/" herculesCI.config.repo.branch)
-                (
-                  hci-effects.runNixDarwin {
-                    ssh.destination = "customer@${x}.nix-community.org";
-                    configuration = self.darwinConfigurations.${x};
-                    secretsMap.ssh-deployment = "ssh-deployment";
-                    userSetupScript = ''
-                      writeSSHKey ssh-deployment
-                      cat >>~/.ssh/known_hosts <<EOF
-                      ${toString hosts.${x}.hostNames} ${hosts.${x}.publicKey}
-                      EOF
-                    '';
-                  }
-                );
+              #hci-effects.runIf (lib.hasPrefix "gh-readonly-queue/master/" herculesCI.config.repo.branch)
+              hci-effects.runNixDarwin {
+                ssh.destination = "customer@${x}.nix-community.org";
+                configuration = self.darwinConfigurations.${x};
+                secretsMap.ssh-deployment = "ssh-deployment";
+                userSetupScript = ''
+                  writeSSHKey ssh-deployment
+                  cat >>~/.ssh/known_hosts <<EOF
+                  ${toString hosts.${x}.hostNames} ${hosts.${x}.publicKey}
+                  EOF
+                '';
+              };
           })
           [
             "darwin01"
