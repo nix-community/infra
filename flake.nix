@@ -34,6 +34,13 @@
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     lite-config.url = "github:yelite/lite-config";
+    mimalloc-nix.inputs.flake-compat.follows = "flake-compat";
+    mimalloc-nix.inputs.flake-parts.follows = "flake-parts";
+    mimalloc-nix.inputs.git-hooks-nix.follows = "empty";
+    mimalloc-nix.inputs.nixpkgs-23-11.follows = "empty";
+    mimalloc-nix.inputs.nixpkgs-regression.follows = "empty";
+    mimalloc-nix.inputs.nixpkgs.follows = "nixpkgs";
+    mimalloc-nix.url = "github:qowoz/nix/mimalloc";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
