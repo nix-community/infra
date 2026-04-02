@@ -15,6 +15,10 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  # https://github.com/NixOS/nix/commit/8dbb3daee0d435ec54441146f46ecfb1a45c8d83
+  # mimalloc cherry picked on latest nix
+  nixpkgs.overlays = [ inputs.mimalloc-nix.overlays.internal ];
+
   nix.settings.auto-optimise-store = lib.mkForce false;
 
   nix.settings.cores = config.nix.settings.max-jobs / 3 * 2;
