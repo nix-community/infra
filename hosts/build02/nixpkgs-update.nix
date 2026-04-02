@@ -11,7 +11,7 @@ let
   nixpkgs-update-bin = "/var/lib/nixpkgs-update/bin/nixpkgs-update";
 
   nixpkgsUpdateSystemDependencies = with pkgs; [
-    nix # for nix-shell used by python packges to update fetchers
+    config.nix.package
     git # used by update-scripts
     git-lfs
     openssh # used by git
@@ -169,7 +169,7 @@ in
       startAt = "0/6:10"; # every 6 hours
     };
   systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" (lib.getExe repology);
-  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${pkgs.nix}/bin/nix eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
+  systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${lib.getExe config.nix.package} eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
   systemd.services.nixpkgs-update-worker2 = mkWorker "worker2";
