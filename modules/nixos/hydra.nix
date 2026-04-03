@@ -40,9 +40,10 @@ in
     serviceConfig.ExecStart = "${pkgs.findutils}/bin/find /var/lib/hydra/build-logs -type f -mtime +30 -delete";
   };
 
-  # not currently needed
+  # not currently needed, hydra-notify would need to be enabled for declarative jobsets
   systemd.services = {
     hydra-check-space.enable = false;
+    hydra-notify.enable = false;
     hydra-send-stats.enable = false;
   };
 

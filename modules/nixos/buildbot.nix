@@ -94,6 +94,12 @@ in
       topic = null;
       inherit repoAllowlist;
     };
+    gitlab = {
+      topic = null;
+      repoAllowlist = [
+        "simple-nixos-mailserver/nixos-mailserver"
+      ];
+    };
   };
 
   # reset github project cache when starting service
