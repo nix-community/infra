@@ -17,6 +17,10 @@
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
     buildbot-nix.url = "github:qowoz/buildbot-nix/infra";
+    disko-zfs.inputs.disko.follows = "disko";
+    disko-zfs.inputs.flake-parts.follows = "flake-parts";
+    disko-zfs.inputs.nixpkgs.follows = "nixpkgs";
+    disko-zfs.url = "github:numtide/disko-zfs";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
