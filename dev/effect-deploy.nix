@@ -1,6 +1,10 @@
-{ self, withSystem, ... }:
 {
-  herculesCI = herculesCI: {
+  self,
+  withSystem,
+  ...
+}:
+{
+  herculesCI = _herculesCI: {
     onPush.default.outputs.effects = withSystem "x86_64-linux" (
       { hci-effects, ... }:
       let
@@ -10,7 +14,8 @@
         map
           (x: {
             name = x;
-            value = hci-effects.runIf (herculesCI.config.repo.branch == "master") (
+            value =
+              #hci-effects.runIf (lib.hasPrefix "gh-readonly-queue/master/" herculesCI.config.repo.branch)
               hci-effects.runNixDarwin {
                 ssh.destination = "customer@${x}.nix-community.org";
                 configuration = self.darwinConfigurations.${x};
@@ -21,8 +26,7 @@
                   ${toString hosts.${x}.hostNames} ${hosts.${x}.publicKey}
                   EOF
                 '';
-              }
-            );
+              };
           })
           [
             "darwin01"
