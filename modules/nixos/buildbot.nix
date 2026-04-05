@@ -37,6 +37,7 @@ let
   buildSystems = [
     pkgs.stdenv.hostPlatform.system
   ]
+  ++ config.nix.settings.extra-platforms
   ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
 
   WORKER_COUNT = config.nix.settings.max-jobs;

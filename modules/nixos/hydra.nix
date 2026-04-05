@@ -9,7 +9,8 @@ let
   localSystems = [
     "builtin"
     pkgs.stdenv.hostPlatform.system
-  ];
+  ]
+  ++ config.nix.settings.extra-platforms;
 in
 {
   sops.secrets.hydra-admin-password.owner = "hydra";
