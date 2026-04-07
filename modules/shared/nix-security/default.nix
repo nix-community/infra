@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # Vendored fixes for two FOD-related nix vulnerabilities still in
   # upstream review:
@@ -14,9 +14,13 @@
   # against the 2.31.3 tag that nixpkgs pins. Override only nix.package so
   # we don't perturb the rest of pkgs; drop this module once the fixes land
   # upstream.
-  nix.package =
-    (pkgs.nixVersions.nixComponents_2_31.appendPatches [
-      ./patches/ghsa-g3g9-5vj6-r3gj-2.31.patch
-      ./patches/CVE-2025-46416-2.31.patch
-    ]).nix-everything;
+  nix =
+    { }
+    // pkgs.lib.optionalAttrs (config.networking.hostName != "build02") {
+      package =
+        (pkgs.nixVersions.nixComponents_2_31.appendPatches [
+          ./patches/ghsa-g3g9-5vj6-r3gj-2.31.patch
+          ./patches/CVE-2025-46416-2.31.patch
+        ]).nix-everything;
+    };
 }
