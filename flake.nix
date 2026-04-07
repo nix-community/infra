@@ -29,7 +29,7 @@
     freebsd-nix.inputs.nixpkgs-23-11.follows = "empty";
     freebsd-nix.inputs.nixpkgs-regression.follows = "empty";
     freebsd-nix.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    freebsd-nix.url = "github:NixOS/nix/984c6287bcbd3b190f17c02593fc77b691cee823";
+    freebsd-nix.url = "github:NixOS/nix/a37db9d249afd61a81ae26368696f60e065d6f61";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
