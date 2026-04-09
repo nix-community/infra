@@ -29,12 +29,10 @@ mapTestOn {
   freebsd.sys = all;
   git = all;
   go = all;
+  nixVersions.latest = all;
+  nixVersions.nix_2_35 = all; # first version with sandboxing
   postgresql = all;
   python3 = all;
   stdenv = all;
   # keep-sorted end
-
-  # nix deps
-  freebsd.jail = all;
-  pkgsStatic.bash = all;
 }
