@@ -12,7 +12,7 @@ def get_db_connection(db_path):
 def fetch_queue_data(conn):
     query = """
     SELECT
-        ROW_NUMBER() OVER (ORDER BY last_started ASC) AS number,
+        DENSE_RANK() OVER (ORDER BY last_started ASC) AS number,
         attr_path,
         payload
     FROM
