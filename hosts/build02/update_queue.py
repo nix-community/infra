@@ -12,7 +12,7 @@ def get_db_connection(db_path):
 def fetch_queue_data(conn):
     query = """
     SELECT
-        ROW_NUMBER() OVER (ORDER BY last_started ASC) AS number,
+        DENSE_RANK() OVER (ORDER BY last_started ASC) AS number,
         attr_path,
         payload
     FROM
@@ -21,6 +21,26 @@ def fetch_queue_data(conn):
         last_started ASC
     """
     return conn.execute(query).fetchall()
+
+
+def cycle_time(conn):
+    row = conn.execute("""
+    SELECT
+        (MAX(finished) - MIN(started)) / 86400.0
+    FROM log
+    WHERE attr_path IN (
+        SELECT attr_path
+        FROM queue
+        WHERE fetcher_id = (
+            SELECT fetcher_id
+            FROM fetchers
+            WHERE name = 'updatescript'
+        )
+    )
+    AND started IS NOT NULL
+    AND finished IS NOT NULL
+    """).fetchone()
+    return "-" if row[0] is None else f"{row[0]:.1f} days"
 
 
 def generate_html_table(rows):
@@ -40,6 +60,7 @@ def generate_html_table(rows):
 def export_html(db_path):
     with get_db_connection(db_path) as conn:
         results = fetch_queue_data(conn)
+        cycle = cycle_time(conn)
 
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -51,6 +72,7 @@ def export_html(db_path):
     <body>
         <h1>nixpkgs-update queue</h1>
         <h3>this page is updated every 15 minutes, last updated: {generated}</h3>
+        <h3>cycle time: {cycle}</h3>
         <table>
             <thead>
                 <tr>
