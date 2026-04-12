@@ -66,7 +66,7 @@ resource "hydra_project" "simple_nixos_mailserver" {
   declarative {
     file  = ".hydra/spec.json"
     type  = "git"
-    value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver"
+    value = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver main"
   }
 }
 
