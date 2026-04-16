@@ -23,8 +23,6 @@ let
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
-    "nix-community/nixos-facter-modules"
-    "nix-community/nixos-generators"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
     "nix-community/nixpkgs-xr"
