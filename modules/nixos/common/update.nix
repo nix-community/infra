@@ -5,7 +5,7 @@
   # https://github.com/NixOS/nixpkgs/blob/3428bdf3c93a7608615dddd44dec50c3df89b4be/nixos/modules/system/boot/kexec.nix
   # https://github.com/NixOS/nixpkgs/blob/3428bdf3c93a7608615dddd44dec50c3df89b4be/nixos/modules/tasks/auto-upgrade.nix
   systemd.services.update-host = {
-    enable = true;
+    enable = false;
     restartIfChanged = false;
     unitConfig.X-StopOnRemoval = false;
     serviceConfig.Restart = "on-failure";

@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.self.nixosModules.ci-builder
+    #inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs-systemd-boot
-    inputs.self.nixosModules.hercules-ci
-    inputs.self.nixosModules.remote-builder
+    #inputs.self.nixosModules.hercules-ci
+    #inputs.self.nixosModules.remote-builder
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
