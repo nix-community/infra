@@ -1,10 +1,10 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.self.nixosModules.ci-builder
-    inputs.self.nixosModules.disko-zfs
-    inputs.self.nixosModules.hercules-ci
-    inputs.self.nixosModules.remote-builder
+    #inputs.self.nixosModules.ci-builder
+    inputs.self.nixosModules.disko-zfs-systemd-boot
+    #inputs.self.nixosModules.hercules-ci
+    #inputs.self.nixosModules.remote-builder
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
@@ -13,9 +13,6 @@
   # error: failed to start SSH connection
   # https://github.com/nix-community/infra/issues/1416
   services.openssh.settings.MaxStartups = 100;
-
-  # set in srvos, remove when reinstalling
-  networking.hostId = "deadbeef";
 
   system.stateVersion = "23.11";
 
