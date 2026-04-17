@@ -79,14 +79,16 @@
       imports = [
         ./dev/dnscontrol.nix
         ./dev/docs.nix
-        ./dev/effect-deploy.nix
         ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
-        inputs.hercules-ci-effects.flakeModule
         inputs.lite-config.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
+
+      flake.herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
+        imports = [ ./dev/effect-deploy.nix ];
+      };
 
       lite-config =
         { lib, ... }:
