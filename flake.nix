@@ -83,7 +83,6 @@
         ./dev/terraform.nix
         ./modules
         inputs.lite-config.flakeModule
-        inputs.treefmt-nix.flakeModule
       ];
 
       flake.herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
@@ -134,14 +133,14 @@
           system,
           ...
         }:
+        let
+          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./dev/treefmt.nix;
+        in
         {
           imports = [
             ./dev/shell.nix
           ];
-          treefmt = {
-            flakeCheck = system == "x86_64-linux";
-            imports = [ ./dev/treefmt.nix ];
-          };
+          formatter = treefmtEval.config.build.wrapper;
 
           checks = {
             inherit (self') formatter;
@@ -171,6 +170,7 @@
                 terraform-validate
                 ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
+              treefmt = treefmtEval.config.build.check self;
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
