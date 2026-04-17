@@ -7,6 +7,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   nixCommunity.threads = 24;
 
   # Emulate riscv64 until we have proper builders

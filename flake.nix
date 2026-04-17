@@ -82,47 +82,11 @@
         ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
-        inputs.lite-config.flakeModule
       ];
 
       flake.herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
         imports = [ ./dev/effect-deploy.nix ];
       };
-
-      lite-config =
-        { lib, ... }:
-        {
-          nixpkgs = {
-            config.allowDeprecatedx86_64Darwin = true;
-            overlays = [
-              (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
-            ];
-          };
-
-          hostModuleDir = ./hosts;
-
-          hosts = {
-            build01.system = "x86_64-linux";
-            build02.system = "x86_64-linux";
-            build03.system = "x86_64-linux";
-            build04.system = "aarch64-linux";
-            build05.system = "aarch64-linux";
-            darwin01.system = "aarch64-darwin";
-            darwin02.system = "aarch64-darwin";
-            web01.system = "x86_64-linux";
-          };
-
-          systemModules = [
-            (
-              { hostPlatform, ... }:
-              {
-                imports =
-                  lib.optionals hostPlatform.isDarwin [ ./modules/darwin/common ]
-                  ++ lib.optionals hostPlatform.isLinux [ ./modules/nixos/common ];
-              }
-            )
-          ];
-        };
 
       perSystem =
         {
@@ -141,6 +105,12 @@
             ./dev/shell.nix
           ];
           formatter = treefmtEval.config.build.wrapper;
+
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowDeprecatedx86_64Darwin = true;
+            overlays = [ self.overlays.default ];
+          };
 
           checks = {
             inherit (self') formatter;
@@ -184,6 +154,58 @@
             }
           );
         };
+
+      flake.overlays.default = final: prev: (import ./dev/packages.nix { inherit final prev inputs; });
+
+      flake.darwinConfigurations =
+        let
+          darwinSystem =
+            hostName:
+            inputs.nix-darwin.lib.darwinSystem {
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./hosts/${hostName}
+                ./modules/darwin/common
+                {
+                  nixpkgs.overlays = [ self.overlays.default ];
+                  networking = { inherit hostName; };
+                }
+              ];
+            };
+
+          hosts = [
+            "darwin01"
+            "darwin02"
+          ];
+        in
+        inputs.nixpkgs.lib.genAttrs hosts darwinSystem;
+
+      flake.nixosConfigurations =
+        let
+          nixosSystem =
+            hostName:
+            inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./hosts/${hostName}
+                ./modules/nixos/common
+                {
+                  nixpkgs.overlays = [ self.overlays.default ];
+                  networking = { inherit hostName; };
+                }
+              ];
+            };
+
+          hosts = [
+            "build01"
+            "build02"
+            "build03"
+            "build04"
+            "build05"
+            "web01"
+          ];
+        in
+        inputs.nixpkgs.lib.genAttrs hosts nixosSystem;
 
       flake.nixbsdConfigurations =
         let

@@ -7,6 +7,8 @@
     inputs.self.darwinModules.remote-builder
   ];
 
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
   nix.settings.max-jobs = 10;
 
   nixCommunity.darwin.ipv6 = "2a01:4f8:d1:5715::2 64 2a01:4f8:d1:5715::1";
