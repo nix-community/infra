@@ -470,6 +470,12 @@ let
       trusted = true;
       keys = ./keys/amaanq;
     }
+    {
+      # lib.maintainers.makefu, https://github.com/makefu
+      name = "makefu";
+      trusted = true;
+      keys = ./keys/makefu;
+    }
   ];
 in
 {
