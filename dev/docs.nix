@@ -1,9 +1,9 @@
 { self, ... }:
 {
   perSystem =
-    { config, pkgs, ... }:
+    { pkgs, self', ... }:
     {
-      devShells.mkdocs = pkgs.mkShellNoCC { inputsFrom = [ config.packages.docs ]; };
+      devShells.mkdocs = pkgs.mkShellNoCC { inputsFrom = [ self'.packages.docs ]; };
       packages = {
         docs =
           pkgs.runCommand "docs"
@@ -24,7 +24,7 @@
             }
             ''
               cp --no-preserve=mode -r $files/* .
-              cp --no-preserve=mode ${config.packages.docs-json}/*.json docs
+              cp --no-preserve=mode ${self'.packages.docs-json}/*.json docs
               # run rumdl as part of the build, rumdl-check from treefmt-nix doesn't catch all errors
               rumdl check
               mkdocs build --strict --site-dir $out
@@ -39,7 +39,7 @@
           remap = {
             "https://nix-community.org" = site;
           };
-          site = config.packages.docs;
+          site = self'.packages.docs;
         };
         docs-json =
           pkgs.runCommand "docs-json"

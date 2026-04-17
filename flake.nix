@@ -12,6 +12,7 @@
 
   inputs = {
     # keep-sorted start
+    adios-flake.url = "github:Mic92/adios-flake/flake-parts-compat";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -72,8 +73,8 @@
   };
 
   outputs =
-    inputs@{ flake-parts, self, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs@{ adios-flake, self, ... }:
+    adios-flake.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
       imports = [
@@ -90,7 +91,6 @@
 
       perSystem =
         {
-          inputs',
           lib,
           pkgs,
           self',
@@ -98,19 +98,33 @@
           ...
         }:
         let
-          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./dev/treefmt.nix;
-        in
-        {
-          imports = [
-            ./dev/shell.nix
-          ];
-          formatter = treefmtEval.config.build.wrapper;
-
-          _module.args.pkgs = import inputs.nixpkgs {
+          pkgs' = import inputs.nixpkgs {
             inherit system;
             config.allowDeprecatedx86_64Darwin = true;
             overlays = [ self.overlays.default ];
           };
+          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs' ./dev/treefmt.nix;
+        in
+        {
+          #_module.args.pkgs = import inputs.nixpkgs {
+          #  inherit system;
+          #  config.allowDeprecatedx86_64Darwin = true;
+          #  overlays = [ self.overlays.default ];
+          #};
+
+          devShells.default =
+            with pkgs';
+            mkShellNoCC {
+              packages = [
+                deploykitEnv
+                jq
+                sops
+                ssh-to-age
+                yq-go
+              ];
+            };
+
+          formatter = treefmtEval.config.build.wrapper;
 
           checks = {
             inherit (self') formatter;
@@ -148,9 +162,9 @@
                 harmonia
                 hydra
                 ;
-              buildbot-nix = inputs'.buildbot-nix.checks.poller;
-              buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
-              quadlet-nix = inputs'.quadlet-nix.checks.nixos;
+              buildbot-nix = inputs.buildbot-nix.checks.${system}.poller;
+              buildbot-nix-scheduled-effects = inputs.buildbot-nix.checks.${system}.scheduled-effects;
+              quadlet-nix = inputs.quadlet-nix.checks.${system}.nixos;
             }
           );
         };
