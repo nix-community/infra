@@ -6,6 +6,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
+  nixpkgs.hostPlatform = "aarch64-linux";
+
   nixCommunity.threads = 80;
 
   system.stateVersion = "23.11";

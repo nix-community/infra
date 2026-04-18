@@ -16,6 +16,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
 
   nix.settings.max-jobs = 96;

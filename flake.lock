@@ -1,5 +1,39 @@
 {
   "nodes": {
+    "adios": {
+      "locked": {
+        "lastModified": 1772186395,
+        "narHash": "sha256-NshyMZYZwjKMLKEX0eDf9Fcekq8MFNFk02wW5knzlZU=",
+        "owner": "adisbladis",
+        "repo": "adios",
+        "rev": "6a54071689ec9ec784a16e4eec8ddb864eca2982",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adisbladis",
+        "repo": "adios",
+        "type": "github"
+      }
+    },
+    "adios-flake": {
+      "inputs": {
+        "adios": "adios"
+      },
+      "locked": {
+        "lastModified": 1775216774,
+        "narHash": "sha256-nCkvXuSl0DTliogsqU/shqpj0fV6W8pdIqC/dytrgnA=",
+        "owner": "Mic92",
+        "repo": "adios-flake",
+        "rev": "82ae3cb398715221a6ed391172e5ec653a209f5e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "ref": "flake-parts-compat",
+        "repo": "adios-flake",
+        "type": "github"
+      }
+    },
     "buildbot-nix": {
       "inputs": {
         "flake-parts": [
@@ -433,6 +467,7 @@
     },
     "root": {
       "inputs": {
+        "adios-flake": "adios-flake",
         "buildbot-nix": "buildbot-nix",
         "disko": "disko",
         "empty": "empty",
