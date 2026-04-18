@@ -1,7 +1,7 @@
 { inputs, testers, ... }:
 testers.nixosTest {
   name = "kernel-clang-lto";
-  nodes.machine = {
+  nodes.host = {
     # needed to match the armv7l mkIf
     networking.hostName = "build";
     networking.hostId = "deadbeef";
@@ -14,13 +14,13 @@ testers.nixosTest {
     ];
   };
   testScript = ''
-    machine.start()
-    machine.wait_for_unit("multi-user.target")
-    machine.succeed("zgrep CONFIG_CC_IS_CLANG=y /proc/config.gz")
-    machine.succeed("zgrep CONFIG_LD_IS_LLD=y /proc/config.gz")
-    machine.succeed("zgrep CONFIG_RUST_IS_AVAILABLE=y /proc/config.gz")
-    machine.succeed("zgrep CONFIG_LTO_CLANG_THIN=y /proc/config.gz")
-    machine.succeed("lsmod | grep ^zfs")
-    machine.shutdown()
+    host.start()
+    host.wait_for_unit("multi-user.target")
+    host.succeed("zgrep CONFIG_CC_IS_CLANG=y /proc/config.gz")
+    host.succeed("zgrep CONFIG_LD_IS_LLD=y /proc/config.gz")
+    host.succeed("zgrep CONFIG_RUST_IS_AVAILABLE=y /proc/config.gz")
+    host.succeed("zgrep CONFIG_LTO_CLANG_THIN=y /proc/config.gz")
+    host.succeed("lsmod | grep ^zfs")
+    host.shutdown()
   '';
 }
