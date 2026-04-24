@@ -12,6 +12,7 @@
 
   inputs = {
     # keep-sorted start
+    crane.url = "github:ipetkov/crane/v0.24.0";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
@@ -21,6 +22,8 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/infra";
+    hydra.flake = false;
+    hydra.url = "github:qowoz/hydra/downstream";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
@@ -124,6 +127,7 @@
 
           checks = {
             inherit (self') formatter;
+            inherit (pkgs.hydraPackages) hydra-rust-tests;
           }
           // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
           //
@@ -149,15 +153,17 @@
                 sops-check
                 terraform-validate
                 ;
+              inherit (pkgs.hydraPackages) hydra-tests;
               nixbot-tests = inputs'.nixbot.packages.nixbot.tests.pytest;
               nixbot-effects-tests = inputs'.nixbot.packages.nixbot-effects.tests.pytest;
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
                 harmonia
-                hydra
                 ;
               inherit (inputs'.nixbot.checks) nixbot;
+              hydra-install = import "${inputs.hydra}/nixos-tests/install.nix" { inherit pkgs; };
+              hydra-limits = import "${inputs.hydra}/nixos-tests/limits.nix" { inherit pkgs; };
               prometheus-alertmanager = pkgs.nixosTests.prometheus.alertmanager;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }

@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "crane": {
+      "locked": {
+        "lastModified": 1787326676,
+        "narHash": "sha256-lWhBbBvC05/xwivKBBiM2YNizpmgqCgyOIzomvRuwxs=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "692f7e9ef2ece8125b466f66f2af532b3edaed0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "ref": "v0.24.0",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -91,6 +107,23 @@
         "owner": "qowoz",
         "ref": "infra",
         "repo": "hercules-ci-effects",
+        "type": "github"
+      }
+    },
+    "hydra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791074923,
+        "narHash": "sha256-5IBw/+pL6+ArhfV85tNwIOcJVueLJMbma5FvGwVuMyU=",
+        "owner": "qowoz",
+        "repo": "hydra",
+        "rev": "3e7b83281900306dffcc6ce157c5ab0f38c37a77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "downstream",
+        "repo": "hydra",
         "type": "github"
       }
     },
@@ -301,11 +334,13 @@
     },
     "root": {
       "inputs": {
+        "crane": "crane",
         "disko": "disko",
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
+        "hydra": "hydra",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
