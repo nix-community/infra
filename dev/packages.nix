@@ -9,6 +9,9 @@
     ps.deploykit
     ps.invoke
   ]);
+  hydraPackages = import ./hydra-packages.nix {
+    inherit final inputs;
+  };
   nixVersions = prev.nixVersions.extend (
     _: super:
     let
