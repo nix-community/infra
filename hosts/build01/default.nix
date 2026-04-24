@@ -3,7 +3,7 @@
   imports = [
     inputs.self.nixosModules.community-builder
     inputs.self.nixosModules.freebsd-builder
-    inputs.self.nixosModules.disko-zfs
+    inputs.self.nixosModules.disko-zfs-systemd-boot
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
