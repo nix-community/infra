@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }:
 let
@@ -23,9 +22,6 @@ in
       WrUotiC5qBJ+UuEWdVCbAAAACnJvb3RAbml4b3MBAgM=
       -----END OPENSSH PRIVATE KEY-----
     '';
-  }
-  // lib.optionalAttrs config.services.hydra.enable {
-    user = "hydra-queue-runner";
   };
 
   nix.distributedBuilds = true;

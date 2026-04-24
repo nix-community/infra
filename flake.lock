@@ -159,6 +159,30 @@
         "type": "github"
       }
     },
+    "hydra": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777343643,
+        "narHash": "sha256-HaelXlDHLUzhsWyXHzigsA5vVvqgd93IBAqVcoBjX+s=",
+        "owner": "qowoz",
+        "repo": "hydra",
+        "rev": "ce097e99bf06935d071555e7b6b55cf91efa9ee4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "infra",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "lite-config": {
       "locked": {
         "lastModified": 1748349708,
@@ -440,6 +464,7 @@
         "flake-parts": "flake-parts",
         "freebsd-nix": "freebsd-nix",
         "hercules-ci-effects": "hercules-ci-effects",
+        "hydra": "hydra",
         "lite-config": "lite-config",
         "mimalloc-nix": "mimalloc-nix",
         "nix-darwin": "nix-darwin",

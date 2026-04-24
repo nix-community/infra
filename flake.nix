@@ -33,6 +33,9 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hydra.inputs.nixpkgs.follows = "nixpkgs";
+    hydra.inputs.treefmt-nix.follows = "treefmt-nix";
+    hydra.url = "github:qowoz/hydra/infra";
     lite-config.url = "github:yelite/lite-config";
     mimalloc-nix.inputs.flake-compat.follows = "flake-compat";
     mimalloc-nix.inputs.flake-parts.follows = "flake-parts";
@@ -176,10 +179,10 @@
               inherit (pkgs.nixosTests)
                 buildbot
                 harmonia
-                hydra
                 ;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
               buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
+              hydra = inputs.hydra.hydraJobs.nixosTests.notifications.${system};
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
