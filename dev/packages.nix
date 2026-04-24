@@ -9,6 +9,26 @@
     ps.deploykit
     ps.invoke
   ]);
+  hydraPackages = {
+    inherit
+      (final.lib.makeScope final.newScope (
+        import "${inputs.hydra}/packaging/components.nix" {
+          version = builtins.substring 0 8 inputs.hydra.lastModifiedDate;
+          releaseVersion = builtins.substring 0 8 inputs.hydra.lastModifiedDate;
+          craneLib = inputs.crane.mkLib final;
+          nixComponents = final.nixVersions.nixComponents_2_35;
+          rawSrc = inputs.hydra;
+        }
+      ))
+      hydra
+      hydra-ad-hoc
+      hydra-builder
+      hydra-evaluator
+      hydra-queue-runner
+      hydra-tests
+      hydra-ws
+      ;
+  };
   nix-eval-jobs = prev.nix-eval-jobs.overrideAttrs (
     _: p: {
       version = "2.35.2-unstable-2026-09-01";
