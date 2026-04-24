@@ -33,6 +33,9 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hydra.inputs.nixpkgs.follows = "nixpkgs";
+    hydra.inputs.treefmt-nix.follows = "treefmt-nix";
+    hydra.url = "github:NixOS/hydra";
     lite-config.url = "github:yelite/lite-config";
     mimalloc-nix.inputs.flake-compat.follows = "flake-compat";
     mimalloc-nix.inputs.flake-parts.follows = "flake-parts";
