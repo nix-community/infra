@@ -34,5 +34,15 @@ in
           };
       }
     );
+
+    systemd.package = pkgs.systemd.overrideAttrs (o: {
+      patches = o.patches ++ [
+        (pkgs.fetchpatch {
+          name = "tmpfiles:_do_not_require_STATX_ATIME.patch";
+          url = "https://github.com/systemd/systemd/pull/41232.patch";
+          hash = "sha256-PDh4mP9rYGCglp25346nExU2v6P0WYPfLZgu+YwzZ9c=";
+        })
+      ];
+    });
   };
 }
