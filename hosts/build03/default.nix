@@ -6,7 +6,7 @@
     ./postgresql.nix
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.ci-builder
-    inputs.self.nixosModules.disko-zfs
+    inputs.self.nixosModules.disko-zfs-systemd-boot
     inputs.self.nixosModules.freebsd-builder
     inputs.self.nixosModules.github-org-backup
     inputs.self.nixosModules.hercules-ci
