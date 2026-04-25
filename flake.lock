@@ -159,6 +159,31 @@
         "type": "github"
       }
     },
+    "hydra": {
+      "inputs": {
+        "nix": "nix",
+        "nix-eval-jobs": "nix-eval-jobs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776996879,
+        "narHash": "sha256-DdjsmxSOViZ9NU8FqSliuhzS2mHYJI/8IPFNd7Hq0po=",
+        "owner": "NixOS",
+        "repo": "hydra",
+        "rev": "834e997bea60ff4c11e6b63b621af106a46e1964",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "lite-config": {
       "locked": {
         "lastModified": 1748349708,
@@ -231,6 +256,23 @@
         "type": "github"
       }
     },
+    "nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775983978,
+        "narHash": "sha256-xhPI/luFx13eATD7+WwL/WwaeunVgzy1pth3yo24B40=",
+        "owner": "NixOS",
+        "repo": "nix",
+        "rev": "c523db667cc43f48ac639f46b0b59485438dd156",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "2.34-maintenance",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -248,6 +290,23 @@
       "original": {
         "owner": "nix-darwin",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-eval-jobs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773356729,
+        "narHash": "sha256-OFGRoJOYhvZ3Enk5a8vMy0QNcG5ZxyzFhyHMrwKXde8=",
+        "owner": "NixOS",
+        "repo": "nix-eval-jobs",
+        "rev": "65ebf5b7cd453a27af09cf02b1fc57b3568cc4b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "v2.34.1",
+        "repo": "nix-eval-jobs",
         "type": "github"
       }
     },
@@ -440,6 +499,7 @@
         "flake-parts": "flake-parts",
         "freebsd-nix": "freebsd-nix",
         "hercules-ci-effects": "hercules-ci-effects",
+        "hydra": "hydra",
         "lite-config": "lite-config",
         "mimalloc-nix": "mimalloc-nix",
         "nix-darwin": "nix-darwin",
