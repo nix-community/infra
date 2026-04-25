@@ -1,8 +1,8 @@
 {
   perSystem =
-    { config, pkgs, ... }:
+    { pkgs, self', ... }:
     {
-      devShells.terraform = pkgs.mkShellNoCC { packages = [ config.packages.terraform ]; };
+      devShells.terraform = pkgs.mkShellNoCC { packages = [ self'.packages.terraform ]; };
       packages = {
         terraform = pkgs.opentofu.withPlugins (p: [
           p.carlpett_sops
@@ -13,7 +13,7 @@
         terraform-validate =
           pkgs.runCommand "terraform-validate"
             {
-              buildInputs = [ config.packages.terraform ];
+              buildInputs = [ self'.packages.terraform ];
               files = pkgs.lib.fileset.toSource rec {
                 root = ../terraform;
                 fileset = pkgs.lib.fileset.unions [

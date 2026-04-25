@@ -15,6 +15,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   # https://github.com/NixOS/nix/commit/8dbb3daee0d435ec54441146f46ecfb1a45c8d83
   # mimalloc cherry picked on latest nix
   nixpkgs.overlays = [ inputs.mimalloc-nix.overlays.internal ];
