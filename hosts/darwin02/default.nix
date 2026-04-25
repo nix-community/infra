@@ -12,7 +12,6 @@
   nixCommunity.darwin.ipv6 = "2a01:4f8:d1:5715::2 64 2a01:4f8:d1:5715::1";
 
   nix.settings.sandbox = "relaxed";
-  nix.settings.extra-platforms = [ "x86_64-darwin" ];
 
   # disable nixos-tests
   nix.settings.system-features = [ "big-parallel" ];
