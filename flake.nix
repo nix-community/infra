@@ -45,7 +45,7 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=f84d6f6cd5f17d594439710f40349ba7d0706f4b";
+    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=15ebe06759175c2e98dba23c0b125913589094e7";
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
