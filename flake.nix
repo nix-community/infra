@@ -192,9 +192,11 @@
         let
           inherit (inputs.nixbsd.lib) nixbsdSystem;
           common = [ ./hosts/freebsd/configuration.nix ];
+          specialArgs = { inherit inputs; };
         in
         {
           build01-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
@@ -203,6 +205,7 @@
             ];
           };
           build03-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 48; # 1/2
