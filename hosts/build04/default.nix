@@ -8,6 +8,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-arm
   ];
 
+  nixpkgs.hostPlatform = "aarch64-linux";
+
   nix.settings.max-jobs = 80;
 
   # error: failed to start SSH connection

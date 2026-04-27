@@ -10,6 +10,8 @@
     inputs.self.nixosModules.rfc39
   ];
 
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   networking.useDHCP = true;
 
   systemd.services.openstack-init.enableStrictShellChecks = false;

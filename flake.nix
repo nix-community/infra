@@ -12,6 +12,7 @@
 
   inputs = {
     # keep-sorted start
+    adios-flake.url = "github:Mic92/adios-flake/flake-parts-compat";
     buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -72,74 +73,58 @@
   };
 
   outputs =
-    inputs@{ flake-parts, self, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs@{ adios-flake, self, ... }:
+    adios-flake.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
       imports = [
         ./dev/dnscontrol.nix
         ./dev/docs.nix
-        ./dev/effect-deploy.nix
         ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
-        inputs.hercules-ci-effects.flakeModule
-        inputs.lite-config.flakeModule
-        inputs.treefmt-nix.flakeModule
       ];
 
-      lite-config =
-        { lib, ... }:
-        {
-          nixpkgs = {
-            config.allowDeprecatedx86_64Darwin = true;
-            overlays = [
-              (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
-            ];
-          };
-
-          hostModuleDir = ./hosts;
-
-          hosts = {
-            build01.system = "x86_64-linux";
-            build02.system = "x86_64-linux";
-            build03.system = "x86_64-linux";
-            build04.system = "aarch64-linux";
-            build05.system = "aarch64-linux";
-            darwin01.system = "aarch64-darwin";
-            darwin02.system = "aarch64-darwin";
-            web01.system = "x86_64-linux";
-          };
-
-          systemModules = [
-            (
-              { hostPlatform, ... }:
-              {
-                imports =
-                  lib.optionals hostPlatform.isDarwin [ ./modules/darwin/common ]
-                  ++ lib.optionals hostPlatform.isLinux [ ./modules/nixos/common ];
-              }
-            )
-          ];
-        };
+      flake.herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
+        imports = [ ./dev/effect-deploy.nix ];
+      };
 
       perSystem =
         {
-          inputs',
           lib,
           pkgs,
           self',
           system,
           ...
         }:
-        {
-          imports = [
-            ./dev/shell.nix
-          ];
-          treefmt = {
-            flakeCheck = system == "x86_64-linux";
-            imports = [ ./dev/treefmt.nix ];
+        let
+          pkgs' = import inputs.nixpkgs {
+            inherit system;
+            config.allowDeprecatedx86_64Darwin = true;
+            overlays = [ self.overlays.default ];
           };
+          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs' ./dev/treefmt.nix;
+        in
+        {
+          #_module.args.pkgs = import inputs.nixpkgs {
+          #  inherit system;
+          #  config.allowDeprecatedx86_64Darwin = true;
+          #  overlays = [ self.overlays.default ];
+          #};
+
+          devShells.default =
+            with pkgs';
+            mkShellNoCC {
+              packages = [
+                deploykitEnv
+                jq
+                sops
+                ssh-to-age
+                yq-go
+              ];
+            };
+
+          formatter = treefmtEval.config.build.wrapper;
 
           checks = {
             inherit (self') formatter;
@@ -169,6 +154,7 @@
                 terraform-validate
                 ;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
+              treefmt = treefmtEval.config.build.check self;
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
@@ -176,12 +162,64 @@
                 harmonia
                 hydra
                 ;
-              buildbot-nix = inputs'.buildbot-nix.checks.poller;
-              buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
-              quadlet-nix = inputs'.quadlet-nix.checks.nixos;
+              buildbot-nix = inputs.buildbot-nix.checks.${system}.poller;
+              buildbot-nix-scheduled-effects = inputs.buildbot-nix.checks.${system}.scheduled-effects;
+              quadlet-nix = inputs.quadlet-nix.checks.${system}.nixos;
             }
           );
         };
+
+      flake.overlays.default = final: prev: (import ./dev/packages.nix { inherit final prev inputs; });
+
+      flake.darwinConfigurations =
+        let
+          darwinSystem =
+            hostName:
+            inputs.nix-darwin.lib.darwinSystem {
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./hosts/${hostName}
+                ./modules/darwin/common
+                {
+                  nixpkgs.overlays = [ self.overlays.default ];
+                  networking = { inherit hostName; };
+                }
+              ];
+            };
+
+          hosts = [
+            "darwin01"
+            "darwin02"
+          ];
+        in
+        inputs.nixpkgs.lib.genAttrs hosts darwinSystem;
+
+      flake.nixosConfigurations =
+        let
+          nixosSystem =
+            hostName:
+            inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./hosts/${hostName}
+                ./modules/nixos/common
+                {
+                  nixpkgs.overlays = [ self.overlays.default ];
+                  networking = { inherit hostName; };
+                }
+              ];
+            };
+
+          hosts = [
+            "build01"
+            "build02"
+            "build03"
+            "build04"
+            "build05"
+            "web01"
+          ];
+        in
+        inputs.nixpkgs.lib.genAttrs hosts nixosSystem;
 
       flake.nixbsdConfigurations =
         let
