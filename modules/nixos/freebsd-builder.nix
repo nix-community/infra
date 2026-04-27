@@ -58,7 +58,7 @@ in
       config.systemd.targets.multi-user.name
     ];
     path = [
-      freebsdVM.config.system.build.vm
+      #freebsdVM.config.system.build.vm
     ];
     script = ''
       rm -f -- *.qcow2
