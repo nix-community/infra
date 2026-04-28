@@ -12,7 +12,6 @@
 
   inputs = {
     # keep-sorted start
-    buildbot-nix.inputs.flake-parts.follows = "flake-parts";
     buildbot-nix.inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
     buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
