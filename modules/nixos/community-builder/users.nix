@@ -236,6 +236,12 @@ let
       keys = ./keys/schmittlauch;
     }
     {
+      # lib.maintainers.Scrumplex, https://github.com/Scrumplex
+      name = "scrumplex";
+      trusted = true;
+      keys = ./keys/scrumplex;
+    }
+    {
       name = "skowalak";
       trusted = true;
       keys = ./keys/skowalak;
