@@ -28,6 +28,7 @@
     freebsd-nix.inputs.nixpkgs-23-11.follows = "empty";
     freebsd-nix.inputs.nixpkgs-regression.follows = "empty";
     freebsd-nix.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
+    # TODO: change to freebsd-nix.url = "github:NixOS/nix/latest-release";
     freebsd-nix.url = "github:NixOS/nix/a37db9d249afd61a81ae26368696f60e065d6f61";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
