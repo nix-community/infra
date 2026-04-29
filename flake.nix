@@ -64,7 +64,7 @@
     sops-nix.url = "github:qowoz/sops-nix/ssh"; # rebased https://github.com/Mic92/sops-nix/pull/779
     srvos.inputs.nixpkgs.follows = "nixpkgs";
     srvos.url = "github:nix-community/srvos";
-    systems.url = "github:nix-systems/default";
+    systems.url = "github:nix-systems/default/future-26.11";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     # keep-sorted end
@@ -91,7 +91,6 @@
         { lib, ... }:
         {
           nixpkgs = {
-            config.allowDeprecatedx86_64Darwin = true;
             overlays = [
               (final: prev: (import ./dev/packages.nix { inherit final prev inputs; }))
             ];
