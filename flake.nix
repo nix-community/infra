@@ -32,6 +32,9 @@
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hydra.inputs.nixpkgs.follows = "nixpkgs";
+    hydra.inputs.treefmt-nix.follows = "treefmt-nix";
+    hydra.url = "github:qowoz/hydra/infra";
     lite-config.url = "github:yelite/lite-config";
     mimalloc-nix.inputs.flake-compat.follows = "flake-compat";
     mimalloc-nix.inputs.flake-parts.follows = "flake-parts";
@@ -151,10 +154,12 @@
                   self.darwinConfigurations // self.nixosConfigurations
                 )
               )
-          // lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.vm) (
-            (lib.filterAttrs (_: config: config.pkgs.stdenv.buildPlatform.system == system))
-              self.nixbsdConfigurations
-          )
+          //
+            lib.mapAttrs' (name: config: lib.nameValuePair "host-${name}" config.config.system.build.toplevel)
+              (
+                (lib.filterAttrs (_: config: config.pkgs.stdenv.buildPlatform.system == system))
+                  self.nixbsdConfigurations
+              )
           // pkgs.lib.optionalAttrs (system == "aarch64-linux" || system == "x86_64-linux") {
             nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
           }
@@ -173,10 +178,10 @@
               inherit (pkgs.nixosTests)
                 buildbot
                 harmonia
-                hydra
                 ;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
               buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
+              hydra = inputs.hydra.hydraJobs.nixosTests.notifications.${system};
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
@@ -186,9 +191,11 @@
         let
           inherit (inputs.nixbsd.lib) nixbsdSystem;
           common = [ ./hosts/freebsd/configuration.nix ];
+          specialArgs = { inherit inputs; };
         in
         {
           build01-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
@@ -197,6 +204,7 @@
             ];
           };
           build03-freebsd = nixbsdSystem {
+            inherit specialArgs;
             modules = common ++ [
               {
                 virtualisation.vmVariant.virtualisation.cores = 48; # 1/2

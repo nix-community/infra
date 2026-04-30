@@ -2,6 +2,8 @@
 {
   imports = [
     ../../modules/shared/telegraf.nix
+    ./queue-builder-config.nix
+    ./queue-builder-service.nix
     ./ssh.nix
     ./telegraf-config.nix
     ./telegraf-service.nix
@@ -108,5 +110,11 @@
         guest.port = 9273;
       }
     ];
+    sharedDirectories.secrets = {
+      source = "/var/lib/vm-builder/secrets";
+      target = "/mnt/secrets";
+      type = "fat";
+      readOnly = true;
+    };
   };
 }

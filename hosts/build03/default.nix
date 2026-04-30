@@ -16,6 +16,11 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  sops.secrets.freebsd-hydra-queue-builder-token = {
+    owner = "vm-builder";
+    path = "/var/lib/vm-builder/secrets/hydra-token";
+  };
+
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
 
   nix.settings.max-jobs = 96;
