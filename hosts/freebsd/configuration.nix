@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../modules/shared/telegraf.nix
+    (import "${inputs.srvos}/shared/mixins/telegraf.nix")
     ./ssh.nix
-    ./telegraf-config.nix
     ./telegraf-service.nix
   ];
 
