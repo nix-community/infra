@@ -25,6 +25,10 @@
 
   nixbsd.enableExtraSubstituters = false;
 
+  documentation.enable = false;
+
+  system.includeInstallerDependencies = false;
+
   users.users.root.initialPassword = "toor";
 
   users.users.admin = {
@@ -38,6 +42,11 @@
 
   boot.tmp.useTmpfs = false;
 
+  boot.kernelModules = [
+    "p9fs"
+    "virtio_p9fs"
+  ];
+
   fileSystems."/" = {
     device = "/dev/gpt/nixos";
     fsType = "ufs";
@@ -50,6 +59,7 @@
 
   environment.systemPackages = with pkgs; [
     file
+    freebsd.service
     freebsd.truss
     gitMinimal
     htop
@@ -76,6 +86,8 @@
       asGB = size: toString (size * 1024 * 1024 * 1024);
     in
     {
+      # disable nixos-tests
+      system-features = pkgs.lib.mkForce [ "big-parallel" ];
       max-jobs = 4;
       min-free = asGB 20;
       max-free = asGB 50;
