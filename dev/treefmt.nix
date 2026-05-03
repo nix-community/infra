@@ -21,7 +21,6 @@ in
     rumdl-format.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;
-    statix.enable = true;
     terraform.enable = true;
   };
 
@@ -56,6 +55,14 @@ in
       priority = 2;
     };
     statix = {
+      command = pkgs.statix;
+      options = [
+        "check"
+        "--config"
+        "${(pkgs.formats.toml { }).generate "statix.toml" { disabled = [ "repeated_keys" ]; }}"
+      ];
+      no-positional-arg-support = true;
+      includes = [ "*.nix" ];
       inherit excludes;
       priority = 3;
     };
