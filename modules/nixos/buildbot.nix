@@ -27,6 +27,7 @@ let
     "nix-community/nixpkgs-update"
     "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
+    "nix-community/patsh"
     "nix-community/srvos"
     "nix-community/stylix"
     # keep-sorted end
