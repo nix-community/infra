@@ -12,6 +12,12 @@
     ./telegraf-service.nix
   ];
 
+  nixpkgs.overrideNix = false;
+
+  # using latest for sandboxing
+  # TODO: switch back to stable nix >= 2.35
+  nix.package = pkgs.nixVersions.latest;
+
   nixpkgs.buildPlatform = "x86_64-linux";
   nixpkgs.hostPlatform = "x86_64-freebsd";
 

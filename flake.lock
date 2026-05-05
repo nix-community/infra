@@ -94,42 +94,6 @@
         "type": "github"
       }
     },
-    "freebsd-nix": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "git-hooks-nix": [
-          "empty"
-        ],
-        "nixpkgs": [
-          "nixbsd-nixpkgs"
-        ],
-        "nixpkgs-23-11": [
-          "empty"
-        ],
-        "nixpkgs-regression": [
-          "empty"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783551883,
-        "narHash": "sha256-yQagc7VJFHrZIRdHgkwa2n7dXIs9QvcSlzoAncaK3s0=",
-        "owner": "NixOS",
-        "repo": "nix",
-        "rev": "e36e4aa5368be9b027db06cd1a8d993ea4a79b38",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nix",
-        "rev": "e36e4aa5368be9b027db06cd1a8d993ea4a79b38",
-        "type": "github"
-      }
-    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -256,7 +220,7 @@
     "nixbsd": {
       "inputs": {
         "cppnix": [
-          "freebsd-nix"
+          "empty"
         ],
         "flake-compat": [
           "flake-compat"
@@ -420,7 +384,6 @@
         "empty": "empty",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
-        "freebsd-nix": "freebsd-nix",
         "hercules-ci-effects": "hercules-ci-effects",
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
