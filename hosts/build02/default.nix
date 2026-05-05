@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 
@@ -15,9 +16,9 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  # https://github.com/NixOS/nix/commit/8dbb3daee0d435ec54441146f46ecfb1a45c8d83
-  # mimalloc cherry picked on latest nix
-  nixpkgs.overlays = [ inputs.mimalloc-nix.overlays.internal ];
+  # using latest for mimalloc
+  # TODO: switch back to stable nix >= 2.35
+  nix.package = pkgs.nixVersions.latest;
 
   nix.settings.auto-optimise-store = lib.mkForce false;
 
