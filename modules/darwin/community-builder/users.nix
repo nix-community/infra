@@ -551,6 +551,14 @@ let
       uid = 583;
       keys = ./keys/amaanq;
     }
+    {
+      # https://github.com/dwt
+      # lib.maintainers.dwt
+      name = "dwt";
+      trusted = true;
+      uid = 584;
+      keys = ./keys/dwt;
+    }
   ];
 in
 {

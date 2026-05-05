@@ -62,6 +62,7 @@ let
     }
     {
       # https://github.com/dwt
+      # lib.maintainers.dwt
       name = "dwt";
       trusted = true;
       keys = ./keys/dwt;
