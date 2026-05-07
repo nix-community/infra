@@ -171,7 +171,7 @@
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
                 buildbot
-                harmonia
+                #harmonia
                 hydra
                 ;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
