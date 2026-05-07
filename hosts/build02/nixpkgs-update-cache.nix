@@ -10,6 +10,8 @@
     settings.priority = 50; # prefer c.n.o
   };
 
+  services.harmonia.daemon.enable = true;
+
   services.nginx.virtualHosts."nixpkgs-update-cache.nix-community.org" = {
     locations."/" = {
       extraConfig = ''
