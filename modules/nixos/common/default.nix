@@ -13,7 +13,6 @@
     ./boot-compare.nix
     ./builder.nix
     ./cgroups.nix
-    ./dirty-frag.nix
     ./kernel.nix
     ./security.nix
     ./sops-nix.nix
