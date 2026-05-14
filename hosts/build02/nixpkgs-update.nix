@@ -25,6 +25,7 @@ let
     coreutils
     gist
     nixpkgs-review
+    nix-eval-jobs
     tree
   ];
 
