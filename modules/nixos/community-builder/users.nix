@@ -489,6 +489,12 @@ let
       trusted = true;
       keys = ./keys/miniharinn;
     }
+    {
+      # lib.maintainers.herbetom, https://github.com/herbetom
+      name = "herbetom";
+      trusted = true;
+      keys = ./keys/herbetom;
+    }
   ];
 in
 {
