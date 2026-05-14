@@ -495,6 +495,13 @@ let
       trusted = true;
       keys = ./keys/herbetom;
     }
+    {
+      # lib.maintainers.wegank, https://github.com/wegank
+      name = "wegank";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/wegank;
+    }
   ];
 in
 {
