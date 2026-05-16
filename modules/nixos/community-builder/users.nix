@@ -128,6 +128,11 @@ let
       keys = ./keys/johnrtitor;
     }
     {
+      name = "jopejoe1";
+      trusted = true;
+      keys = ./keys/jopejoe1;
+    }
+    {
       name = "jtojnar";
       trusted = true;
       keys = ./keys/jtojnar;
