@@ -502,6 +502,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/wegank;
     }
+    # lib.maintainers.quantenzitrone, https://github.com/quantenzitrone
+    {
+      name = "quantenzitrone";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/quantenzitrone;
+    }
   ];
 in
 {
