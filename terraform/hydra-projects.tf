@@ -41,14 +41,31 @@ resource "hydra_jobset" "emacs_overlay" {
   project     = hydra_project.emacs_overlay.name
   state       = "enabled"
   visible     = true
-  name        = "master"
+  name        = "emacsen"
   type        = "flake"
-  description = "master branch"
+  description = "master branch emacsen"
 
-  flake_uri = "github:nix-community/emacs-overlay"
+  flake_uri = "github:nix-community/emacs-overlay#hydraEmacsen"
 
   check_interval    = 1800
   scheduling_shares = 3000
+  keep_evaluations  = 1
+
+  email_notifications = false
+}
+
+resource "hydra_jobset" "emacs_overlay_package_set" {
+  project     = hydra_project.emacs_overlay.name
+  state       = "enabled"
+  visible     = true
+  name        = "package set"
+  type        = "flake"
+  description = "master branch package set"
+
+  flake_uri = "github:nix-community/emacs-overlay#hydraPackageSet"
+
+  check_interval    = 0
+  scheduling_shares = 1000
   keep_evaluations  = 1
 
   email_notifications = false
