@@ -18,6 +18,9 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
+    fast-nix-gc.inputs.nixpkgs.follows = "nixpkgs";
+    fast-nix-gc.inputs.treefmt-nix.follows = "treefmt-nix";
+    fast-nix-gc.url = "github:Mic92/fast-nix-gc";
     flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
