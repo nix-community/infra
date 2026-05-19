@@ -1,10 +1,9 @@
-# https://git.lix.systems/the-distro/infra/commit/15a684c5d7e1ee25cdd6f2941ed17c01aa107781
 nix-env --delete-generations 1d --profile /nix/var/nix/profiles/system
-while :; do
-  used=$(($(stat -f --format="100-(100*%a/%b)" /)))
-  if [[ $used -gt "85" ]]; then
-    nix-store --gc --max-freed 100G
-  else
-    break
+fast-nix-gc --no-vacuum --keep-recent 1d --ensure-free 15%
+# disable optimise store on the nixpkgs-update host
+if [[ "$(uname -n)" != "build02" ]]; then
+  # run optimise every six hours
+  if ((10#$(date +%H) % 6 == 0)); then
+    fast-nix-optimise
   fi
-done
+fi
