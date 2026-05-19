@@ -1,8 +1,6 @@
 {
   config,
   inputs,
-  lib,
-  pkgs,
   ...
 }:
 
@@ -19,23 +17,6 @@
   # https://github.com/NixOS/nix/commit/8dbb3daee0d435ec54441146f46ecfb1a45c8d83
   # mimalloc cherry picked on latest nix
   nixpkgs.overlays = [ inputs.mimalloc-nix.overlays.internal ];
-
-  nix.settings.auto-optimise-store = lib.mkForce false;
-
-  systemd.services.free-space.serviceConfig.ExecStart = lib.mkForce (
-    lib.getExe (
-      pkgs.writeShellApplication {
-        name = "free-space-fast";
-        runtimeInputs = [
-          config.nix.package
-          inputs.fast-nix-gc.packages.${pkgs.stdenv.hostPlatform.system}.default
-          pkgs.coreutils
-          pkgs.gawk
-        ];
-        text = builtins.readFile ./free-space.bash;
-      }
-    )
-  );
 
   nix.settings.cores = config.nix.settings.max-jobs / 3 * 2;
   nix.settings.max-jobs = 24;
