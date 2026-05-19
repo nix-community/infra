@@ -20,7 +20,7 @@
       startAt = "hourly";
       path = [
         config.nix.package
-        pkgs.coreutils
+        pkgs.harmonia
       ];
       script = builtins.readFile "${inputs.self}/modules/shared/free-space.bash";
     };
