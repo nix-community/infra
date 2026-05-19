@@ -34,8 +34,6 @@
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
-  services.dbus.implementation = "broker";
-
   # subuid/subgid support: https://github.com/nikstur/userborn/issues/7
   services.userborn.enable = false;
 
