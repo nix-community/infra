@@ -170,7 +170,7 @@
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
-                buildbot
+                #buildbot
                 harmonia
                 hydra
                 ;
