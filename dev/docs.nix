@@ -47,13 +47,30 @@
               buildInputs = [ pkgs.jq ];
               hosts = pkgs.writeText "hosts.json" (
                 builtins.toJSON (
-                  pkgs.lib.mapAttrs (_: x: {
-                    experimental-features = x.config.nix.settings.experimental-features or [ ];
-                    extra-platforms = x.config.nix.settings.extra-platforms or [ ];
-                    system-features = x.config.nix.settings.system-features or [ ];
-                    inherit (x.pkgs.stdenv.hostPlatform) system;
-                    inherit (x.config.nix.settings) sandbox;
-                  }) (self.darwinConfigurations // self.nixosConfigurations)
+                  pkgs.lib.mapAttrs (
+                    _: x:
+                    let
+                      settings = x.config.nix.settings;
+                    in
+                    {
+                      experimental-features = settings.experimental-features or [ ];
+                      system-features = settings.system-features or [ ];
+                      inherit (x.pkgs.stdenv.hostPlatform) system;
+                      inherit (x.config.nix.settings) sandbox;
+                    }
+                    // pkgs.lib.optionalAttrs (settings ? extra-platforms) {
+                      inherit (settings) extra-platforms;
+                    }
+                    // pkgs.lib.optionalAttrs x.pkgs.stdenv.hostPlatform.isLinux (
+                      pkgs.lib.filterAttrs (
+                        n: _:
+                        builtins.elem n [
+                          "auto-allocate-uids"
+                          "use-cgroups"
+                        ]
+                      ) settings
+                    )
+                  ) (self.darwinConfigurations // self.nixosConfigurations)
                 )
               );
             }
