@@ -10,7 +10,7 @@
     locations."/".proxyPass = "http://unix:/run/nur-update/gunicorn.sock";
   };
 
-  sops.secrets.nur-update-github-token = { };
+  sops.secrets.nur-update-github-app-private-key = { };
 
   systemd.services.nur-update =
     let
@@ -24,7 +24,9 @@
     {
       description = "nur-update";
       script = ''
-        GITHUB_TOKEN="$(<"$CREDENTIALS_DIRECTORY"/github-token)" \
+        GITHUB_APP_PRIVATE_KEY="$(<"$CREDENTIALS_DIRECTORY"/github-app-private-key)" \
+        GITHUB_APP_ID=3842714 \
+        GITHUB_APP_INSTALLATION_ID=135242817 \
           ${python}/bin/gunicorn nur_update:app \
           --bind unix:/run/nur-update/gunicorn.sock \
           --log-level info \
@@ -33,7 +35,9 @@
       '';
       serviceConfig = {
         DynamicUser = true;
-        LoadCredential = [ "github-token:${config.sops.secrets.nur-update-github-token.path}" ];
+        LoadCredential = [
+          "github-app-private-key:${config.sops.secrets.nur-update-github-app-private-key.path}"
+        ];
         Restart = "always";
         RuntimeDirectory = "nur-update";
       };
