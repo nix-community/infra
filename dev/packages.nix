@@ -1,6 +1,5 @@
 {
   final,
-  prev,
   ...
 }:
 {
@@ -25,9 +24,4 @@
     };
     doCheck = false;
   };
-  termite = prev.termite.overrideAttrs (o: {
-    meta = o.meta // {
-      broken = true;
-    };
-  });
 }

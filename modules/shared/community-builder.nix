@@ -60,7 +60,6 @@
       pkgs.foot.terminfo
       pkgs.ghostty.terminfo
       pkgs.kitty.terminfo
-      pkgs.termite.terminfo
       pkgs.wezterm.terminfo
     ];
 
