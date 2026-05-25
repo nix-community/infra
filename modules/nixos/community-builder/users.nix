@@ -514,6 +514,12 @@ let
       shell = pkgs.fish;
       keys = ./keys/quantenzitrone;
     }
+    {
+      # lib.maintainers.britter, https://github.com/britter
+      name = "britter";
+      trusted = true;
+      keys = ./keys/britter;
+    }
   ];
 in
 {

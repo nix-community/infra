@@ -559,6 +559,13 @@ let
       uid = 584;
       keys = ./keys/dwt;
     }
+    {
+      # lib.maintainers.britter, https://github.com/britter
+      name = "britter";
+      trusted = true;
+      uid = 585;
+      keys = ./keys/britter;
+    }
   ];
 in
 {
