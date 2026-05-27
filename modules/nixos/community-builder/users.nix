@@ -520,6 +520,12 @@ let
       trusted = true;
       keys = ./keys/britter;
     }
+    {
+      # lib.maintainers.chpatrick, https://github.com/chpatrick
+      name = "chpatrick";
+      trusted = true;
+      keys = ./keys/chpatrick;
+    }
   ];
 in
 {
