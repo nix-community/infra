@@ -520,6 +520,13 @@ let
       trusted = true;
       keys = ./keys/britter;
     }
+    {
+      # lib.maintainers.stepbrobd https://github.com/stepbrobd
+      name = "ysun";
+      trusted = true;
+      shell = pkgs.zsh;
+      keys = ./keys/ysun;
+    }
   ];
 in
 {
