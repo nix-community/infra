@@ -566,6 +566,13 @@ let
       uid = 585;
       keys = ./keys/britter;
     }
+    {
+      # lib.maintainers.chpatrick, https://github.com/chpatrick
+      name = "chpatrick";
+      trusted = true;
+      uid = 586;
+      keys = ./keys/chpatrick;
+    }
   ];
 in
 {
