@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -29,12 +30,15 @@
     Restart = "on-failure";
   };
 
-  boot.kernelPackages = pkgs.lib.mkIf (
+  boot.kernelPackages = lib.mkIf (
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
   # subuid/subgid support: https://github.com/nikstur/userborn/issues/7
   services.userborn.enable = false;
+
+  system.disableInstallerTools = lib.mkDefault true;
+  system.tools.nixos-rebuild.enable = true;
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;

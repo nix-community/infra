@@ -11,6 +11,8 @@
     ./users.nix
   ];
 
+  system.disableInstallerTools = false;
+
   users.motd = config.nixCommunity.motd;
 
   programs.mosh = {
