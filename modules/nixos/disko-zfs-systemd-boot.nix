@@ -31,6 +31,7 @@ in
   imports = [ inputs.disko.nixosModules.disko ];
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.bootCounting.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # suppress warning, https://github.com/NixOS/nixpkgs/commit/dfd0f18d9df417bb185d95ac806c220049fbfca1
