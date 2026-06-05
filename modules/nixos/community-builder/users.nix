@@ -527,6 +527,13 @@ let
       shell = pkgs.zsh;
       keys = ./keys/ysun;
     }
+    {
+      # lib.maintainers.gepbird, https://github.com/gepbird
+      name = "gepbird";
+      trusted = true;
+      shell = pkgs.zsh;
+      keys = ./keys/gepbird;
+    }
   ];
 in
 {
