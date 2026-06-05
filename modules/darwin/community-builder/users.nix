@@ -566,6 +566,13 @@ let
       uid = 585;
       keys = ./keys/britter;
     }
+    {
+      # lib.maintainers.gepbird, https://github.com/gepbird
+      name = "gepbird";
+      trusted = true;
+      uid = 586;
+      keys = ./keys/gepbird;
+    }
   ];
 in
 {
