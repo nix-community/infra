@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   # adapted from:
   # https://github.com/Mic92/dotfiles/blob/020180880d9413e076073889f82c4751a27734e9/nixos/modules/update-prefetch.nix
@@ -27,4 +32,29 @@
     timerConfig.OnBootSec = "5m";
     timerConfig.OnUnitInactiveSec = "5m";
   };
+
+  system.switch.inhibitors = {
+    fstab = toString config.environment.etc.fstab.source;
+    initrd = toString config.system.build.initialRamdisk;
+    kernel = toString config.system.build.kernel;
+    kernel-params = toString config.boot.kernelParams;
+    modules = toString config.system.modulesTree;
+    systemd = toString config.systemd.package;
+  }
+  // lib.optionalAttrs (lib.hasPrefix "build" config.networking.hostName) {
+    firmware = toString config.hardware.firmware;
+  };
+
+  # TODO: upstream?
+  system.systemBuilderCommands =
+    let
+      script = pkgs.writeShellScript "switch-inhibitors-script" config.system.preSwitchChecks.switchInhibitors;
+
+      check = pkgs.writeShellScript "check-switch-inhibitors" ''
+        exec ${script} "$(dirname "$0")"
+      '';
+    in
+    ''
+      ln -s ${check} $out/check-switch-inhibitors
+    '';
 }

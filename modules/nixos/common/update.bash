@@ -18,10 +18,7 @@ fi
 
 nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
 
-booted=$(sha256sum - <"$(readlink /run/booted-system)/boot-compare")
-built=$(sha256sum - <"$p/boot-compare")
-
-if [[ $booted != "$built" ]]; then
+if ! "$p"/check-switch-inhibitors; then
   nixos-rebuild boot --no-reexec --store-path "$p"
   # don't use kexec if system is virtualized, reboots are fast enough
   if ! systemd-detect-virt -q; then
