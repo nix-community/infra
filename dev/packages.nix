@@ -8,6 +8,9 @@
     ps.deploykit
     ps.invoke
   ]);
+  dix = prev.dix.overrideAttrs {
+    doCheck = !final.stdenv.hostPlatform.isDarwin;
+  };
   nixos-rebuild-ng = prev.nixos-rebuild-ng.overrideAttrs (o: {
     patches = o.patches or [ ] ++ [
       ./nixos-rebuild-ng.patch
