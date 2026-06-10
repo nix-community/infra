@@ -62,7 +62,7 @@ var cnames = {
     "landscape": "web01",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
-    "nl.meet": "nixnl.codeberg.page.",
+    "nl.meet": "nixnl.engelen.eu.",
     "nur-update": "web01",
     "prometheus": "web01",
     "temp-cache": "build03",
