@@ -60,6 +60,7 @@ var cnames = {
     "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
     "landscape": "web01",
+    "nixbot": "build03",
     "nixpkgs-update-cache": "build02",
     "nixpkgs-update-logs": "build02",
     "nl.meet": "nixnl.codeberg.page.",

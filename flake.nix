@@ -43,6 +43,9 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nixbot.inputs.nixpkgs.follows = "nixpkgs";
+    nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
+    nixbot.url = "github:qowoz/nixbot/infra";
     nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=15ebe06759175c2e98dba23c0b125913589094e7";
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
@@ -166,6 +169,7 @@
                 sops-check
                 terraform-validate
                 ;
+              nixbot-tests = inputs'.nixbot.packages.nixbot.tests.pytest;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
@@ -174,6 +178,7 @@
                 harmonia
                 hydra
                 ;
+              inherit (inputs'.nixbot.checks) nixbot;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
               buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
