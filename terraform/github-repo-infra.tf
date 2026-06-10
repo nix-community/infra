@@ -16,12 +16,19 @@ resource "github_repository" "infra" {
   delete_branch_on_merge = true
   has_discussions        = true
   has_issues             = true
-  vulnerability_alerts   = true
 
-  pages {
-    build_type = "workflow"
-    cname      = "nix-community.org"
+  lifecycle {
+    ignore_changes = [
+      pages,
+      vulnerability_alerts
+    ]
   }
+}
+
+resource "github_repository_pages" "infra" {
+  repository = github_repository.infra.name
+  build_type = "workflow"
+  cname      = "nix-community.org"
 }
 
 resource "github_repository_ruleset" "infra" {
