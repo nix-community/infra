@@ -12,6 +12,7 @@
     inputs.self.nixosModules.hercules-ci
     inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nginx
+    inputs.self.nixosModules.nixbot
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];

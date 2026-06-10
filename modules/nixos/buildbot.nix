@@ -23,12 +23,9 @@ let
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
-    "nix-community/nixos-images"
-    "nix-community/nixpkgs-update"
     "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
     "nix-community/patsh"
-    "nix-community/srvos"
     "nix-community/stylix"
     # keep-sorted end
   ];

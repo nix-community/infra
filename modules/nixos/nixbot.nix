@@ -1,0 +1,68 @@
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  repoAllowlist = [
+    # keep-sorted start case=no
+    "nix-community/nixos-images"
+    "nix-community/nixpkgs-update"
+    "nix-community/srvos"
+    # keep-sorted end
+  ];
+
+  buildSystems = [
+    pkgs.stdenv.hostPlatform.system
+  ]
+  ++ config.nix.settings.extra-platforms
+  ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
+in
+{
+  imports = [
+    inputs.nixbot.nixosModules.nixbot
+  ];
+
+  services.nginx.virtualHosts."nixbot.nix-community.org" = { };
+
+  sops.secrets.nixbot-github-oauth-secret = { };
+  sops.secrets.nixbot-github-app-secret-key = { };
+  sops.secrets.nixbot-github-webhook-secret = { };
+  sops.secrets.cachix-auth-token = { };
+
+  services.nixbot = {
+    enable = true;
+    admins = [
+      "github:adisbladis"
+      "github:mdaniels5757"
+      "github:ryantm"
+      "github:zimbatm"
+      "github:zowoq"
+    ];
+    port = 8020;
+    statusContextPrefix = "buildbot";
+    inherit buildSystems;
+    domain = "nixbot.nix-community.org";
+    outputsPath = "/var/www/nixbot/nix-outputs/";
+    showTrace = true;
+    evalMaxMemorySize = 4096;
+    evalWorkerCount = 32;
+    cacheFailedBuilds = false;
+    cachix = {
+      enable = true;
+      name = "nix-community";
+      auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
+    };
+    github = {
+      enable = true;
+      appId = 4016365;
+      appSecretKeyFile = config.sops.secrets.nixbot-github-app-secret-key.path;
+      webhookSecretFile = config.sops.secrets.nixbot-github-webhook-secret.path;
+      oauthSecretFile = config.sops.secrets.nixbot-github-oauth-secret.path;
+      oauthId = "Iv23li2s1vLGoe5sUdwL";
+      topic = null;
+      inherit repoAllowlist;
+    };
+  };
+}

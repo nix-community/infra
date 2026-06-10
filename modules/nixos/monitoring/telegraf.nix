@@ -9,6 +9,12 @@
         tags.org = "nix-community";
       }
       {
+        urls = [ "https://nixbot.nix-community.org/" ];
+        response_string_match = "Repositories";
+        tags.host = "build03.nix-community.org";
+        tags.org = "nix-community";
+      }
+      {
         urls = [ "https://hydra.nix-community.org/" ];
         response_string_match = "hosted on this server";
         tags.host = "build03.nix-community.org";
