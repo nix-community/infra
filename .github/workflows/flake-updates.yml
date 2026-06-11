@@ -2,8 +2,6 @@ name: "Update flakes"
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: "51 2 * * 1,4"
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
