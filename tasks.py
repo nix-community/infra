@@ -24,7 +24,7 @@ def deploy(c: Context, hosts: str) -> None:
             command = "sudo -H darwin-rebuild"
             target = f"{h.user}@{h.host}"
         else:
-            command = "nixos-rebuild --sudo"
+            command = "nixos-rebuild --elevate=run0"
             target = f"{h.host}"
 
         res = subprocess.run(
