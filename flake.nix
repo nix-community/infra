@@ -27,7 +27,7 @@
     freebsd-nix.inputs.nixpkgs-23-11.follows = "empty";
     freebsd-nix.inputs.nixpkgs-regression.follows = "empty";
     freebsd-nix.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    freebsd-nix.url = "github:NixOS/nix/d4979d9f84297870ff8ed22596af59991b53303c";
+    freebsd-nix.url = "github:NixOS/nix/02abc7a8c990cf8bf97b084dfc2852b59dfcdfef";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
@@ -46,7 +46,7 @@
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     nixbot.url = "github:qowoz/nixbot/infra";
-    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=15ebe06759175c2e98dba23c0b125913589094e7";
+    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=6079c8387de10bcbd1ba9f802163d48a9b610f27";
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
