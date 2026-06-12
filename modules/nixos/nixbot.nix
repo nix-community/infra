@@ -7,6 +7,7 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
+    "nix-community/infra"
     "nix-community/neovim-nightly-overlay"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
@@ -87,5 +88,11 @@ in
         "simple-nixos-mailserver/nixos-mailserver"
       ];
     };
+  };
+
+  sops.secrets.nixbot-effects-nix-community-infra = { };
+
+  services.nixbot.effects.perRepoSecretFiles = {
+    "github:nix-community/infra" = config.sops.secrets.nixbot-effects-nix-community-infra.path;
   };
 }

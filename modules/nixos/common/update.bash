@@ -1,6 +1,6 @@
 arch=$(uname -m)
 hostname=$(uname -n)
-p=$(curl -L https://buildbot.nix-community.org/nix-outputs/nix-community/infra/master/"$arch"-linux.host-"$hostname")
+p=$(curl -L https://nixbot.nix-community.org/nix-outputs/github/nix-community/infra/master/"$arch"-linux.host-"$hostname")
 
 export NIXOS_REBUILD_NO_SYSTEMD_RUN=1
 
