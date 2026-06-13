@@ -12,7 +12,6 @@ let
     "nix-community/dream2nix"
     "nix-community/ethereum.nix"
     "nix-community/home-manager"
-    "nix-community/infra"
     "nix-community/lanzaboote"
     "nix-community/neovim-nightly-overlay"
     "nix-community/nh"
@@ -97,12 +96,6 @@ in
   systemd.services.buildbot-master.preStart = pkgs.lib.mkAfter ''
     rm -f /var/lib/buildbot/github-*.json
   '';
-
-  sops.secrets.buildbot-effects-nix-community-infra = { };
-
-  services.buildbot-nix.master.effects.perRepoSecretFiles = {
-    "github:nix-community/infra" = config.sops.secrets.buildbot-effects-nix-community-infra.path;
-  };
 
   services.buildbot-master = {
     title = "Nix Community";

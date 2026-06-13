@@ -7,6 +7,7 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
+    "nix-community/infra"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
     "nix-community/srvos"
@@ -64,5 +65,11 @@ in
       topic = null;
       inherit repoAllowlist;
     };
+  };
+
+  sops.secrets.nixbot-effects-nix-community-infra = { };
+
+  services.nixbot.effects.perRepoSecretFiles = {
+    "github:nix-community/infra" = config.sops.secrets.nixbot-effects-nix-community-infra.path;
   };
 }
