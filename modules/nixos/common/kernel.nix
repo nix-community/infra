@@ -35,14 +35,16 @@ in
       }
     );
 
-    systemd.package = pkgs.systemd.overrideAttrs (o: {
-      patches = o.patches ++ [
-        (pkgs.fetchpatch {
-          name = "tmpfiles:_do_not_require_STATX_ATIME.patch";
-          url = "https://github.com/systemd/systemd/pull/41232.patch";
-          hash = "sha256-PDh4mP9rYGCglp25346nExU2v6P0WYPfLZgu+YwzZ9c=";
-        })
-      ];
-    });
+    # https://discourse.nixos.org/t/26-05-systemd-tmpfiles-clean-protocol-driver-not-attached/78101/3
+    systemd.package =
+      lib.throwIfNot (pkgs.systemd.version == "260.1") "systemd version override outdated!"
+        (
+          pkgs.systemd.overrideAttrs (prevAttrs: {
+            version = "260.2";
+            src = prevAttrs.src.override {
+              hash = "sha256-NXmmSV7/9WIW6C8wjdOwaerCy4v7Zcrd8+XDzcS8rEk=";
+            };
+          })
+        );
   };
 }
