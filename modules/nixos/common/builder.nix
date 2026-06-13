@@ -1,13 +1,15 @@
 {
   config,
-  inputs,
   lib,
-  pkgs,
   ...
 }:
 {
+  imports = [ ../../shared/free-space.nix ];
+
   config = lib.mkIf (lib.hasPrefix "build" config.networking.hostName) {
+    # use fast-nix-gc for gc and optimise
     nix.gc.automatic = false;
+    nix.settings.auto-optimise-store = false;
 
     # kernel samepage merging
     hardware.ksm.enable = true;
@@ -18,11 +20,7 @@
     systemd.services.free-space = {
       serviceConfig.Type = "oneshot";
       startAt = "hourly";
-      path = [
-        config.nix.package
-        pkgs.coreutils
-      ];
-      script = builtins.readFile "${inputs.self}/modules/shared/free-space.bash";
+      serviceConfig.ExecStart = config.nixCommunity.free-space-cmd;
     };
 
     # Bump the open files limit so that non-root users can run NixOS VM tests
