@@ -28,6 +28,7 @@ in
           in
           {
             LTO_CLANG_THIN = yes;
+            LTO_CLANG_THIN_DIST = yes;
             DEBUG_INFO_BTF = mkForce unset;
             NET_SCH_BPF = mkForce unset;
             SCHED_CLASS_EXT = mkForce unset;
