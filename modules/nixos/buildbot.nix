@@ -27,6 +27,7 @@ let
     "nix-community/nixvim"
     "nix-community/patsh"
     "nix-community/stylix"
+    "NixOS/home-manager"
     # keep-sorted end
   ];
 
