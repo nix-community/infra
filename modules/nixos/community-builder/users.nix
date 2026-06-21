@@ -534,6 +534,13 @@ let
       shell = pkgs.zsh;
       keys = ./keys/gepbird;
     }
+    {
+      # lib.maintainers.sikmir, https://github.com/sikmir
+      name = "sikmir";
+      trusted = true;
+      uid = 580;
+      keys = ./keys/sikmir;
+    }
   ];
 in
 {
