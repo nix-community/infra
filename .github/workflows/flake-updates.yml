@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' # ensure workflow_dispatch only runs on master
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install Nix
         uses: cachix/install-nix-action@v31
       - name: Update flake.lock
