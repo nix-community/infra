@@ -1,3 +1,13 @@
+#### x86_64-freebsd
+
+[nix-community bsd jobset](https://github.com/nix-community/infra/blob/master/hydra/bsd.nix)
+
+Built on `nixos-unstable-small`, `staging-next` for `x86_64-freebsd`:
+
+- [https://hydra.nix-community.org/jobset/nixpkgs/bsd](https://hydra.nix-community.org/jobset/nixpkgs/bsd)
+
+- [https://hydra.nix-community.org/jobset/nixpkgs/bsd-staging-next](https://hydra.nix-community.org/jobset/nixpkgs/bsd-staging-next)
+
 #### Nixpkgs unfree redistributable
 
 [unfree redistributable release set in nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/top-level/release-unfree-redistributable.nix)
