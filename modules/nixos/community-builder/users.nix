@@ -541,6 +541,12 @@ let
       uid = 580;
       keys = ./keys/sikmir;
     }
+    {
+      # lib.maintainers.SuperSandro2000, https://github.com/SuperSandro2000
+      name = "sandro";
+      trusted = true;
+      keys = ./keys/sandro;
+    }
   ];
 in
 {
