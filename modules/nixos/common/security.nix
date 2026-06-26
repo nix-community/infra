@@ -16,8 +16,13 @@
     ];
   };
 
+  security.account-utils.enable = true;
+
   security.run0 = {
     enable = true;
+    sudo-shim.enable = true;
     wheelNeedsPassword = false;
   };
+
+  security.sudo.enable = false;
 }
