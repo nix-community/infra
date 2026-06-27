@@ -58,7 +58,6 @@ var cnames = {
     "alertmanager": "web01",
     "auth": "web01",
     "build-box": "build01",
-    "buildbot": "build03",
     "darwin-build-box": "darwin01",
     "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
@@ -93,6 +92,13 @@ D("nix-community.org",
     DnsProvider(DSP_CLOUDFLARE),
 
     records,
+
+    CF_SINGLE_REDIRECT(
+        "buildbot",
+        301,
+        'http.host eq "buildbot.nix-community.org"',
+        'concat("https://nix-community.org/continuous-integration", "")'
+    ),
 
     // blocks other CAs from issuing certificates for the domain
     CAA("@", "issue", "letsencrypt.org"),
