@@ -58,7 +58,7 @@
                       inherit (x.pkgs.stdenv.hostPlatform) system;
                       inherit (x.config.nix.settings) sandbox;
                     }
-                    // pkgs.lib.optionalAttrs (settings ? extra-platforms) {
+                    // pkgs.lib.optionalAttrs (settings ? extra-platforms && settings.extra-platforms != [ ]) {
                       inherit (settings) extra-platforms;
                     }
                     // pkgs.lib.optionalAttrs x.pkgs.stdenv.hostPlatform.isLinux (
