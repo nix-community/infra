@@ -10,7 +10,7 @@
 
   - [Terraform Cloud](https://app.terraform.io)
 
-- Add their user to the list of `admins` in [modules/nixos/buildbot.nix](../modules/nixos/buildbot.nix).
+- Add their user to the list of `admins` in [modules/nixos/nixbot.nix](../modules/nixos/nixbot.nix).
 
 - Add their user to the list of `hydra-github-users` in [modules/nixos/hydra.nix](../modules/nixos/hydra.nix).
 
