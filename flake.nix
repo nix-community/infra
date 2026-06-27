@@ -12,9 +12,6 @@
 
   inputs = {
     # keep-sorted start
-    buildbot-nix.inputs.nixpkgs.follows = "nixpkgs";
-    buildbot-nix.inputs.treefmt-nix.follows = "treefmt-nix";
-    buildbot-nix.url = "github:qowoz/buildbot-nix/infra";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     empty.url = "github:nix-systems/empty";
@@ -173,13 +170,10 @@
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
               inherit (pkgs.nixosTests)
-                buildbot
                 harmonia
                 hydra
                 ;
               inherit (inputs'.nixbot.checks) nixbot;
-              buildbot-nix = inputs'.buildbot-nix.checks.poller;
-              buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
