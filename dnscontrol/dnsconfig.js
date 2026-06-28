@@ -4,7 +4,9 @@ DEFAULTS(
 );
 
 var REG_NONE = NewRegistrar("none");
-var DSP_CLOUDFLARE = NewDnsProvider("cloudflare");
+var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", {
+    "manage_single_redirects": true,
+});
 
 // # For each github page, create a CNAME alias to nix-community.github.io
 var nix_community_github_pages = [
@@ -55,7 +57,6 @@ var cnames = {
     "aarch64-build-box": "build05",
     "alertmanager": "web01",
     "build-box": "build01",
-    "buildbot": "build03",
     "darwin-build-box": "darwin01",
     "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
     "hydra": "build03",
@@ -90,6 +91,8 @@ D("nix-community.org",
     DnsProvider(DSP_CLOUDFLARE),
 
     records,
+
+    CF_REDIRECT("buildbot-nix.nix-community.org/*", "https://nix-community.org/continuous-integration"),
 
     // blocks other CAs from issuing certificates for the domain
     CAA("@", "issue", "letsencrypt.org"),
