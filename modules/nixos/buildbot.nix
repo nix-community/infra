@@ -22,7 +22,6 @@ let
     "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
     "nix-community/nixpkgs-xr"
-    "nix-community/nixvim"
     "nix-community/patsh"
     "nix-community/stylix"
     "NixOS/home-manager"
