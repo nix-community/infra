@@ -14,7 +14,6 @@ let
     "nix-community/home-manager"
     "nix-community/infra"
     "nix-community/lanzaboote"
-    "nix-community/neovim-nightly-overlay"
     "nix-community/nh"
     "nix-community/nix-direnv"
     "nix-community/nix-index"
