@@ -10,6 +10,7 @@ let
     "nix-community/neovim-nightly-overlay"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
+    "nix-community/nixvim"
     "nix-community/srvos"
     # keep-sorted end
   ];
