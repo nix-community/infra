@@ -3,7 +3,7 @@
     enable = true;
     createPullRequest = true;
     baseMerge.enable = true;
-    baseMerge.method = "fast-forward";
+    baseMerge.method = "reset";
     when = {
       hour = [ 0 ];
       minute = 0;
