@@ -72,7 +72,7 @@ resource "github_repository_ruleset" "infra" {
 
     required_status_checks {
       required_check {
-        context = "buildbot/nix-build"
+        context = "nixbot/nix-build"
       }
     }
   }
