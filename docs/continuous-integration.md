@@ -18,12 +18,6 @@ _Nixbot is the only CI system that supports pull requests from forked repositori
 
 To enable nixbot add the repository to the `repoAllowlist` in this [file](https://github.com/nix-community/infra/blob/master/modules/nixos/nixbot.nix).
 
-#### Hercules
-
-[https://hercules-ci.com/github/nix-community](https://hercules-ci.com/github/nix-community)
-
-To enable hercules go to `https://hercules-ci.com/github/nix-community/$REPO` and click "Build this repository".
-
 #### Hydra
 
 [https://hydra.nix-community.org](https://hydra.nix-community.org)
