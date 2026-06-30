@@ -1,0 +1,14 @@
+{
+  "experimental-features": [
+    "flakes",
+    "nix-command"
+  ],
+  "sandbox": true,
+  "system": "x86_64-linux",
+  "system-features": [
+    "benchmark",
+    "big-parallel",
+    "kvm",
+    "nixos-test"
+  ]
+}

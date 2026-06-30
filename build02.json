@@ -1,0 +1,19 @@
+{
+  "auto-allocate-uids": true,
+  "experimental-features": [
+    "auto-allocate-uids",
+    "cgroups",
+    "flakes",
+    "nix-command"
+  ],
+  "sandbox": true,
+  "system": "x86_64-linux",
+  "system-features": [
+    "benchmark",
+    "big-parallel",
+    "kvm",
+    "nixos-test",
+    "uid-range"
+  ],
+  "use-cgroups": true
+}

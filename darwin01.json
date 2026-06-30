@@ -1,0 +1,11 @@
+{
+  "experimental-features": [
+    "flakes",
+    "nix-command"
+  ],
+  "sandbox": "relaxed",
+  "system": "aarch64-darwin",
+  "system-features": [
+    "big-parallel"
+  ]
+}

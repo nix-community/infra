@@ -1,0 +1,24 @@
+{
+  "auto-allocate-uids": true,
+  "experimental-features": [
+    "auto-allocate-uids",
+    "cgroups",
+    "flakes",
+    "nix-command"
+  ],
+  "extra-platforms": [
+    "armv7l-linux"
+  ],
+  "sandbox": true,
+  "system": "aarch64-linux",
+  "system-features": [
+    "benchmark",
+    "big-parallel",
+    "gccarch-armv7-a",
+    "gccarch-armv8-a",
+    "kvm",
+    "nixos-test",
+    "uid-range"
+  ],
+  "use-cgroups": true
+}
