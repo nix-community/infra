@@ -17,7 +17,6 @@ git reset --hard origin/main
 git maintenance run --auto
 
 repos=(
-  "home-manager all-maintainers.nix 13467276"
   "nixvim generated/all-maintainers.nix 13503498"
   "stylix generated/all-maintainers.nix 13054517"
 )
