@@ -56,7 +56,6 @@ in
       "github:zowoq"
     ];
     port = 8020;
-    statusContextPrefix = "buildbot";
     inherit buildSystems;
     domain = "nixbot.nix-community.org";
     outputsPath = "/var/www/nixbot/nix-outputs/";
