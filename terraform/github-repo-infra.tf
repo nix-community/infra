@@ -27,8 +27,12 @@ resource "github_repository" "infra" {
 
 resource "github_repository_pages" "infra" {
   repository = github_repository.infra.name
-  build_type = "workflow"
+  build_type = "legacy"
   cname      = "nix-community.org"
+
+  source {
+    branch = "gh-pages"
+  }
 }
 
 resource "github_repository_ruleset" "infra" {
