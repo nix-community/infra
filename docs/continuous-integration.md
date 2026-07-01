@@ -10,19 +10,13 @@ We only have limited build capacity for `aarch64-darwin` so please don't use it 
 
 See [here](infrastructure.md#continuous-integration) for details about the hardware.
 
-#### Buildbot
+#### Nixbot
 
-[https://buildbot.nix-community.org](https://buildbot.nix-community.org)
+[https://nixbot.nix-community.org](https://nixbot.nix-community.org)
 
-_Buildbot is the only CI system that supports pull requests from forked repositories._
+_Nixbot is the only CI system that supports pull requests from forked repositories._
 
-To enable buildbot add the repository to the `repoAllowlist` in this [file](https://github.com/nix-community/infra/blob/master/modules/nixos/buildbot.nix).
-
-#### Hercules
-
-[https://hercules-ci.com/github/nix-community](https://hercules-ci.com/github/nix-community)
-
-To enable hercules go to `https://hercules-ci.com/github/nix-community/$REPO` and click "Build this repository".
+To enable nixbot add the repository to the `repoAllowlist` in this [file](https://github.com/nix-community/infra/blob/master/modules/nixos/nixbot.nix).
 
 #### Hydra
 
