@@ -34,11 +34,6 @@ let
       "build05"
       "darwin01"
     ];
-    "modules/secrets/hercules-ci.yaml" = [
-      "build03"
-      "build04"
-      "darwin02"
-    ];
     "modules/secrets/rfc39_private_key.der" = [
       "web01"
     ];
