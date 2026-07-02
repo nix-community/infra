@@ -21,7 +21,7 @@ in
     ];
 
     # Hard-link duplicated files
-    settings.auto-optimise-store = true;
+    settings.auto-optimise-store = pkgs.lib.mkDefault true;
     optimise.automatic = false;
 
     # auto-free the /nix/store
