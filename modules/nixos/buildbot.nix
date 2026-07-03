@@ -11,7 +11,6 @@ let
     "nix-community/bun2nix"
     "nix-community/dream2nix"
     "nix-community/ethereum.nix"
-    "nix-community/home-manager"
     "nix-community/lanzaboote"
     "nix-community/nh"
     "nix-community/nix-index"
@@ -22,7 +21,6 @@ let
     "nix-community/nixpkgs-xr"
     "nix-community/patsh"
     "nix-community/stylix"
-    "NixOS/home-manager"
     # keep-sorted end
   ];
 
