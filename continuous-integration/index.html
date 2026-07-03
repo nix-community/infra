@@ -783,13 +783,10 @@
 <p>Both <code>aarch64-linux</code> and <code>x86_64-linux</code> have support for <code>kvm</code>/<code>nixos-test</code>.</p>
 <p>We only have limited build capacity for <code>aarch64-darwin</code> so please don't use it excessively.</p>
 <p>See <a href="../infrastructure/#continuous-integration">here</a> for details about the hardware.</p>
-<h4 id="buildbot">Buildbot</h4>
-<p><a href="https://buildbot.nix-community.org">https://buildbot.nix-community.org</a></p>
-<p><em>Buildbot is the only CI system that supports pull requests from forked repositories.</em></p>
-<p>To enable buildbot add the repository to the <code>repoAllowlist</code> in this <a href="https://github.com/nix-community/infra/blob/master/modules/nixos/buildbot.nix">file</a>.</p>
-<h4 id="hercules">Hercules</h4>
-<p><a href="https://hercules-ci.com/github/nix-community">https://hercules-ci.com/github/nix-community</a></p>
-<p>To enable hercules go to <code>https://hercules-ci.com/github/nix-community/$REPO</code> and click "Build this repository".</p>
+<h4 id="nixbot">Nixbot</h4>
+<p><a href="https://nixbot.nix-community.org">https://nixbot.nix-community.org</a></p>
+<p><em>Nixbot is the only CI system that supports pull requests from forked repositories.</em></p>
+<p>To enable nixbot add the repository to the <code>repoAllowlist</code> in this <a href="https://github.com/nix-community/infra/blob/master/modules/nixos/nixbot.nix">file</a>.</p>
 <h4 id="hydra">Hydra</h4>
 <p><a href="https://hydra.nix-community.org">https://hydra.nix-community.org</a></p>
 <p>To enable hydra add a new project in this <a href="https://github.com/nix-community/infra/blob/master/terraform/hydra-projects.tf">file</a>.</p>
