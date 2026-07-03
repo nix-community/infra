@@ -7,12 +7,14 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
+    "nix-community/home-manager"
     "nix-community/infra"
     "nix-community/neovim-nightly-overlay"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
     "nix-community/nixvim"
     "nix-community/srvos"
+    "NixOS/home-manager"
     # keep-sorted end
   ];
 
