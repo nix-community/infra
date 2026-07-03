@@ -573,6 +573,13 @@ let
       uid = 586;
       keys = ./keys/gepbird;
     }
+    {
+      # lib.maintainers.hythera, https://github.com/Hythera
+      name = "hythera";
+      trusted = true;
+      uid = 587;
+      keys = ./keys/hythera;
+    }
   ];
 in
 {
