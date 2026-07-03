@@ -8,7 +8,6 @@ let
   repoAllowlist = [
     # keep-sorted start case=no
     "nix-community/bun2nix"
-    "nix-community/home-manager"
     "nix-community/infra"
     "nix-community/neovim-nightly-overlay"
     "nix-community/nix-direnv"
