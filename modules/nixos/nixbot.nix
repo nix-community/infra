@@ -57,7 +57,6 @@ in
       "github:zimbatm"
       "github:zowoq"
     ];
-    port = 8020;
     inherit buildSystems;
     domain = "nixbot.nix-community.org";
     outputsPath = "/var/www/nixbot/nix-outputs/";
