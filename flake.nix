@@ -40,7 +40,7 @@
     mimalloc-nix.inputs.nixpkgs.follows = "nixpkgs";
     mimalloc-nix.url = "github:qowoz/nix/mimalloc";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.url = "github:qowoz/nix-darwin/infra";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,7 @@
     nixbsd.inputs.cppnix.follows = "freebsd-nix";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
-    nixbsd.url = "github:qowoz/nixbsd/infra";
+    nixbsd.url = "github:qowoz/nixbsd/infra"; # https://github.com/nix-darwin/nix-darwin/pull/1818
     nixpkgs-update-github-releases.flake = false;
     nixpkgs-update-github-releases.url = "github:nix-community/nixpkgs-update-github-releases";
     nixpkgs-update.inputs.mmdoc.follows = "empty";
