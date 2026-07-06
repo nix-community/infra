@@ -182,6 +182,7 @@
               inherit (inputs'.nixbot.checks) nixbot;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
               buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
+              prometheus-alertmanager = pkgs.nixosTests.prometheus.alertmanager;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
           );
