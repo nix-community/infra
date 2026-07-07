@@ -1,5 +1,7 @@
 # nix-community infrastructure
 
+[![nixbot](https://nixbot.nix-community.org/repos/github/nix-community/infra/badge.svg)](https://nixbot.nix-community.org/repos/github/nix-community/infra)
+
 Welcome to the Nix Community infrastructure project.
 This repo holds all the NixOS, nix-darwin and Terraform configuration for this organization.
 
