@@ -1,5 +1,6 @@
 {
   final,
+  prev,
   ...
 }:
 {
@@ -7,6 +8,9 @@
     ps.deploykit
     ps.invoke
   ]);
+  kitty = prev.kitty.overrideAttrs {
+    meta.broken = final.stdenv.hostPlatform.isDarwin;
+  };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
