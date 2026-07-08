@@ -547,6 +547,13 @@ let
       trusted = true;
       keys = ./keys/sandro;
     }
+    {
+      # lib.maintainers.jamiemagee, https://github.com/JamieMagee
+      name = "jamiemagee";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/jamiemagee;
+    }
   ];
 in
 {
