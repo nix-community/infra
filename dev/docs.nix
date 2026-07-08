@@ -28,6 +28,8 @@
               # run rumdl as part of the build, rumdl-check from treefmt-nix doesn't catch all errors
               rumdl check
               mkdocs build --strict --site-dir $out
+              # skip gh pages jekyll step
+              touch $out/.nojekyll
             '';
         docs-linkcheck = pkgs.testers.lycheeLinkCheck rec {
           extraConfig = {
