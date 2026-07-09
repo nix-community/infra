@@ -177,7 +177,7 @@
               inherit (pkgs.nixosTests)
                 buildbot
                 harmonia
-                #hydra https://github.com/NixOS/nixpkgs/pull/539756
+                hydra
                 ;
               inherit (inputs'.nixbot.checks) nixbot;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
