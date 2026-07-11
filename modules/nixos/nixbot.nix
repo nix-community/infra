@@ -10,6 +10,8 @@ let
     "nix-community/home-manager"
     "nix-community/infra"
     "nix-community/neovim-nightly-overlay"
+    "nix-community/nix-direnv"
+    "nix-community/nixos-facter"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
     "nix-community/nixvim"
