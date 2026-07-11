@@ -116,17 +116,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1781276175,
-        "narHash": "sha256-16KKQFMS26pzguUE/zuof1ufgsKsSXtcJodwa2Zh/+4=",
+        "lastModified": 1783551883,
+        "narHash": "sha256-yQagc7VJFHrZIRdHgkwa2n7dXIs9QvcSlzoAncaK3s0=",
         "owner": "NixOS",
         "repo": "nix",
-        "rev": "02abc7a8c990cf8bf97b084dfc2852b59dfcdfef",
+        "rev": "e36e4aa5368be9b027db06cd1a8d993ea4a79b38",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nix",
-        "rev": "02abc7a8c990cf8bf97b084dfc2852b59dfcdfef",
+        "rev": "e36e4aa5368be9b027db06cd1a8d993ea4a79b38",
         "type": "github"
       }
     },
@@ -303,11 +303,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781310664,
-        "narHash": "sha256-mTaXRa5GKN5q6ALogn9g88lsa3zyoOhiUQnIoUpvMOQ=",
+        "lastModified": 1783703343,
+        "narHash": "sha256-kt38BGQYWXUtNgTV/hCx0tf8IZJFuEGE3/IYoRutha4=",
         "owner": "qowoz",
         "repo": "nixbsd",
-        "rev": "0d996b1a73827486a1212afa65fb6677a47dde24",
+        "rev": "2b512eda58e6d77378bd20d6027802b158942e24",
         "type": "github"
       },
       "original": {
@@ -319,16 +319,16 @@
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1781290684,
-        "narHash": "sha256-ObWqSJ833hfCZ4G8HoSIai8A/9CVJhrvCGUv6SNOoXE=",
+        "lastModified": 1783608331,
+        "narHash": "sha256-O+k9wh9TFQLTGPUgb42oKMSNqnPERaWSIyg2XGPhnrM=",
         "ref": "refs/heads/master",
-        "rev": "6079c8387de10bcbd1ba9f802163d48a9b610f27",
+        "rev": "248820e4a849b189b3c457945110fa4687ed48da",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
       },
       "original": {
-        "rev": "6079c8387de10bcbd1ba9f802163d48a9b610f27",
+        "rev": "248820e4a849b189b3c457945110fa4687ed48da",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
