@@ -70,3 +70,5 @@ $ ssh build-box.nix-community.org
 $ nix-store -r $path
 $ $path
 ```
+
+_(My implementation of [this](https://gist.github.com/ckiee/f7768f55a938aa7c985406f209a6f114) ~ckie)_
