@@ -219,6 +219,13 @@ let
       keys = ./keys/pluiedev;
     }
     {
+      name = "phanirithvij";
+      # lib.maintainers.phanirithvij, https://github.com/phanirithvij
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/phanirithvij;
+    }
+    {
       name = "raboof";
       # lib.maintainers.raboof, https://github.com/raboof
       trusted = true;

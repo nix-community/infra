@@ -580,6 +580,14 @@ let
       uid = 587;
       keys = ./keys/hythera;
     }
+    {
+      # lib.maintainers.phanirithvij, https://github.com/phanirithvij
+      name = "phanirithvij";
+      trusted = true;
+      uid = 588;
+      shell = pkgs.fish;
+      keys = ./keys/phanirithvij;
+    }
   ];
 in
 {
