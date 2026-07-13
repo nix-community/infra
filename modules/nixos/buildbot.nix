@@ -62,7 +62,6 @@ in
       "adisbladis"
       "mdaniels5757"
       "ryantm"
-      "zimbatm"
       "zowoq"
     ];
     inherit buildSystems;
