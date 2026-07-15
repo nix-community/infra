@@ -10,8 +10,6 @@ in
 {
   sops.secrets.id_buildfarm = { };
 
-  nix.settings.extra-platforms = [ "i686-linux" ];
-
   nix.distributedBuilds = true;
   nix.buildMachines = map (x: {
     hostName = "${x.config.networking.hostName}.nix-community.org";

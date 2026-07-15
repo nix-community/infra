@@ -17,6 +17,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nix.settings.extra-platforms = [ "i686-linux" ];
+
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
 
   nix.settings.max-jobs = 96;
