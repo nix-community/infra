@@ -67,7 +67,7 @@
     file
     freebsd.service
     freebsd.truss
-    #gitMinimal
+    gitMinimal
     htop
     jq
     mini-tmpfiles
