@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783395956,
-        "narHash": "sha256-AAbexQvDoK+6GFJdhY6kqjA+6ECKRkidgWxkn4gMwAA=",
+        "lastModified": 1784123936,
+        "narHash": "sha256-IOWwQMJhUxcojm0MRvuKs1fKLH727u4+hHeEOPhdUyA=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "d5bd9cd77aea4c0a8f49e7fd85545671a208ed15",
+        "rev": "a4cf1d10853b0d2be19b9eca35d749e201d70b55",
         "type": "github"
       },
       "original": {
@@ -264,10 +264,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1784023459,
-        "narHash": "sha256-SdAl2p+bZEwh5akQ0vkaKBnS6yQduvj7kf24q6FHvxY=",
+        "lastModified": 1784157011,
+        "narHash": "sha256-CEHmSwSc+5kzd6tP/4ol4KEA9fMDVSKGTam7rbBPQqw=",
         "ref": "nixos-unstable-small",
-        "rev": "5b6151d7156c90731f5723e0751d2b8684c62433",
+        "rev": "d4a57f162b50db6d7e49580a772ccbdb3a1605a4",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/NixOS/nixpkgs"
