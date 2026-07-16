@@ -32,7 +32,7 @@
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     nixbot.url = "github:Mic92/nixbot";
-    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=5b6151d7156c90731f5723e0751d2b8684c62433";
+    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=d4a57f162b50db6d7e49580a772ccbdb3a1605a4";
     nixbsd.inputs.cppnix.follows = "empty";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
