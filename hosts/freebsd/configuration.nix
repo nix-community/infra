@@ -19,7 +19,6 @@
   nix.package = pkgs.nixVersions.latest;
 
   nixpkgs.buildPlatform = "x86_64-linux";
-  nixpkgs.hostPlatform = "x86_64-freebsd";
 
   networking.hostName = "nixbsd-freebsd";
 
