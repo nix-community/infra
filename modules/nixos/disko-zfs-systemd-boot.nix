@@ -28,7 +28,17 @@ let
   };
 in
 {
-  imports = [ inputs.disko.nixosModules.disko ];
+  imports = [
+    inputs.disko.nixosModules.disko
+    inputs.disko-zfs.nixosModules.default
+  ];
+
+  disko.zfs = {
+    enable = true;
+    settings.ignoredProperties = [
+      "nixos:shutdown-time"
+    ];
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
