@@ -15,7 +15,7 @@ See [here](infrastructure.md#continuous-integration) for details about the hardw
 [https://nixbot.nix-community.org](https://nixbot.nix-community.org)
 
 _Nixbot is the only CI system that supports pull requests from forked repositories._
-_It also includes support for [status badges](https://mic92.github.io/nixbot/index.html#status-badges) and experimental support for [Hercules CI effects](https://mic92.github.io/nixbot/EFFECTS.html)._
+_It also includes support for [status badges](https://mic92.github.io/nixbot/index.html#status-badges) and [Hercules CI effects](https://mic92.github.io/nixbot/EFFECTS.html)._
 
 To enable nixbot add the repository to the `repoAllowlist` in this [file](https://github.com/nix-community/infra/blob/master/modules/nixos/nixbot.nix).
 
