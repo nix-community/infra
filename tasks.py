@@ -27,6 +27,9 @@ def deploy(c: Context, hosts: str) -> None:
             command = "nixos-rebuild --elevate=run0"
             target = f"{h.host}"
 
+        # fix for nix copy in 2.35
+        h.run_local("nix flake archive")
+
         res = subprocess.run(
             ["nix", "flake", "metadata", "--json"],
             text=True,
