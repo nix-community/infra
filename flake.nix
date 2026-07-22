@@ -25,6 +25,9 @@
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
     hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/infra";
     lite-config.url = "github:yelite/lite-config";
+    niks3.inputs.nixpkgs.follows = "nixpkgs";
+    niks3.inputs.treefmt-nix.follows = "treefmt-nix";
+    niks3.url = "github:Mic92/niks3";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -168,6 +171,7 @@
               inherit (inputs'.nixbot.checks) nixbot;
               buildbot-nix = inputs'.buildbot-nix.checks.poller;
               buildbot-nix-scheduled-effects = inputs'.buildbot-nix.checks.scheduled-effects;
+              niks3 = inputs'.niks3.checks.nixos-test-niks3;
               prometheus-alertmanager = pkgs.nixosTests.prometheus.alertmanager;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
             }
