@@ -20,6 +20,7 @@ resource "github_repository" "infra" {
 
   lifecycle {
     ignore_changes = [
+      ignore_vulnerability_alerts_during_read,
       pages,
       vulnerability_alerts
     ]
