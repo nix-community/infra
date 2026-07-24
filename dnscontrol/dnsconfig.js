@@ -91,6 +91,8 @@ D("nix-community.org",
 
     records,
 
+    CNAME("cache", "path.to.cache.", CF_PROXY_ON),
+
     // blocks other CAs from issuing certificates for the domain
     CAA("@", "issue", "letsencrypt.org"),
 
