@@ -36,6 +36,8 @@ in
   # suppress warning, https://github.com/NixOS/nixpkgs/commit/dfd0f18d9df417bb185d95ac806c220049fbfca1
   boot.zfs.forceImportRoot = true;
 
+  services.zfs.autoSnapshot.enable = false; # not used
+
   disko.devices = {
     disk = {
       x = devices "0";
