@@ -12,13 +12,10 @@ let
     "nix-community/ethereum.nix"
     "nix-community/lanzaboote"
     "nix-community/nh"
-    "nix-community/nix-index"
-    "nix-community/nix-init"
     "nix-community/nix4nvchad"
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
     "nix-community/nixpkgs-xr"
-    "nix-community/patsh"
     "nix-community/stylix"
     # keep-sorted end
   ];
