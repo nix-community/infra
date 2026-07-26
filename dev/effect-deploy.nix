@@ -10,7 +10,7 @@
         map
           (x: {
             name = x;
-            value = hci-effects.runIf (herculesCI.config.repo.branch == "master") (
+            value = hci-effects.runIf (herculesCI.config.repo.ref == "refs/heads/master") (
               hci-effects.runNixDarwin {
                 ssh.destination = "customer@${x}.nix-community.org";
                 configuration = self.darwinConfigurations.${x};
