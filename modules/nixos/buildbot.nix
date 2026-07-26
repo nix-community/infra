@@ -9,7 +9,6 @@ let
     # keep-sorted start case=no
     "nix-community/authentik-nix"
     "nix-community/dream2nix"
-    "nix-community/ethereum.nix"
     "nix-community/lanzaboote"
     "nix-community/nh"
     "nix-community/nix4nvchad"
