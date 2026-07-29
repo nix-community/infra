@@ -23,7 +23,7 @@ let
       module.git.update.script = lib.mkForce ''
         gh api --paginate /orgs/nix-community/repos --jq '.[].html_url' | sort --ignore-case > devdoc/repo_list
         git add devdoc/repo_list
-        git commit -m ${commit}
+        git commit -m "${commit}"
       '';
     };
 in
