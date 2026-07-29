@@ -24,6 +24,7 @@ let
     "nix-community/nurl"
     "nix-community/patsh"
     "nix-community/srvos"
+    "nix-community/stylix"
     "nix-community/zon2nix"
     "NixOS/home-manager"
     # keep-sorted end

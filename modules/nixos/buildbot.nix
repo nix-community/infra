@@ -15,7 +15,6 @@ let
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
     "nix-community/nixpkgs-xr"
-    "nix-community/stylix"
     # keep-sorted end
   ];
 
