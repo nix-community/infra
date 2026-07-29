@@ -1,8 +1,4 @@
 https://github.com/nix-community/.github
-https://github.com/nix-community/NUR
-https://github.com/nix-community/NixNG
-https://github.com/nix-community/NixOS-WSL
-https://github.com/nix-community/ZurichZHF
 https://github.com/nix-community/acpi_call
 https://github.com/nix-community/all-cabal-json
 https://github.com/nix-community/authentik-nix
@@ -117,13 +113,14 @@ https://github.com/nix-community/nix-vscode-extensions
 https://github.com/nix-community/nix-zsh-completions
 https://github.com/nix-community/nix4nvchad
 https://github.com/nix-community/nix4vscode
-https://github.com/nix-community/nixGL
 https://github.com/nix-community/nixago
 https://github.com/nix-community/nixago-extensions
 https://github.com/nix-community/nixbox
 https://github.com/nix-community/nixd
 https://github.com/nix-community/nixdoc
+https://github.com/nix-community/nixGL
 https://github.com/nix-community/nixhelm
+https://github.com/nix-community/NixNG
 https://github.com/nix-community/nixops-datadog
 https://github.com/nix-community/nixops-digitalocean
 https://github.com/nix-community/nixops-encrypted-links
@@ -147,6 +144,7 @@ https://github.com/nix-community/nixos-install-scripts
 https://github.com/nix-community/nixos-landscape
 https://github.com/nix-community/nixos-modules-contrib
 https://github.com/nix-community/nixos-vscode-server
+https://github.com/nix-community/NixOS-WSL
 https://github.com/nix-community/nixpkgs
 https://github.com/nix-community/nixpkgs-fmt
 https://github.com/nix-community/nixpkgs-lint
@@ -163,6 +161,7 @@ https://github.com/nix-community/nixvim
 https://github.com/nix-community/noogle
 https://github.com/nix-community/npmlock2nix
 https://github.com/nix-community/nsncd
+https://github.com/nix-community/NUR
 https://github.com/nix-community/nur-combined
 https://github.com/nix-community/nur-packages-template
 https://github.com/nix-community/nur-search
@@ -213,3 +212,4 @@ https://github.com/nix-community/wiki
 https://github.com/nix-community/yarn2nix
 https://github.com/nix-community/zephyr-nix
 https://github.com/nix-community/zon2nix
+https://github.com/nix-community/ZurichZHF
