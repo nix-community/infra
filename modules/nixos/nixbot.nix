@@ -76,6 +76,8 @@ in
     evalMaxMemorySize = 4096;
     evalWorkerCount = 32;
     cacheFailedBuilds = false;
+    buildTimeout = builtins.fromJSON config.nix.settings.timeout;
+    buildMaxSilentTime = builtins.fromJSON config.nix.settings.max-silent-time;
     cachix = {
       enable = true;
       name = "nix-community";
