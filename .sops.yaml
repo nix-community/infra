@@ -1,7 +1,7 @@
 creation_rules:
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
+          - age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -11,7 +11,7 @@ creation_rules:
     path_regex: ^hosts/build01/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMm3/o1HguyRL1z/nZxLBY9j/YUNXeNuDoiBLZAyt88Z
+          - age1kh6yvgxz9ys74as7aufdy8je7gmqjtguhnjuxvj79qdjswk2r3xqxf2n6d
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -21,7 +21,7 @@ creation_rules:
     path_regex: ^hosts/build02/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiozp1A1+SUfJQPa5DZUQcVc6CZK2ZxL6FJtNdh+2TP
+          - age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -31,7 +31,7 @@ creation_rules:
     path_regex: ^hosts/build03/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINvzMJfCiVKGfEjCfBZqDD7Kib5y+2zz04YI8XrCZ68O
+          - age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -41,7 +41,7 @@ creation_rules:
     path_regex: ^hosts/build04/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1
+          - age1kmz80s96paknelzqlz59ezctl7teejdvsm5f48f2udj5sp5m6qaszuauw7
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -51,7 +51,7 @@ creation_rules:
     path_regex: ^hosts/build05/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv
+          - age15dljvnazm0njdt7fh7drlsqnqx35766aex8zsv634zzpecu9cdgssmqv9a
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -61,7 +61,7 @@ creation_rules:
     path_regex: ^hosts/darwin01/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMb/DRvrCZ65QB8OPimqthgUY9MZ+QO3QcFy6mpiUomV
+          - age1xpzexnaulzdjtnwstvgvtq2ar7nkk2lj46u96ewjvtgt7g47jsxs0mhag3
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -71,7 +71,7 @@ creation_rules:
     path_regex: ^hosts/darwin02/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILAkBZMRNgsJ/IbLtjMHqBw/9+4tyn9nT+5B5RFiV0vJ
+          - age158v8dpppnw3yt2kqgqekwamaxpst5alfrnvvt7z36wfdk4veydrsqxc2tl
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -81,7 +81,7 @@ creation_rules:
     path_regex: ^hosts/web01/secrets.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiozp1A1+SUfJQPa5DZUQcVc6CZK2ZxL6FJtNdh+2TP
+          - age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -91,9 +91,9 @@ creation_rules:
     path_regex: ^modules/secrets/backup.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElIQ54qAy7Dh63rBudYKdbzJHrrbrrMXLYl7Pkmk88H
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9uyfhyli+BRtk64y+niqtb+sKquRGGZ87f4YRc8EE1
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMHhlcn7fUpUuiOFeIhDqBzBNFsbNqq+NpzuGX3e6zv
+          - age17jtyn2y4fpey6q7ers9gtnh4580xj89zdjuew9nqhxywmsaw94fs5udupc
+          - age1kmz80s96paknelzqlz59ezctl7teejdvsm5f48f2udj5sp5m6qaszuauw7
+          - age15dljvnazm0njdt7fh7drlsqnqx35766aex8zsv634zzpecu9cdgssmqv9a
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -103,9 +103,9 @@ creation_rules:
     path_regex: ^modules/secrets/community-builder.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiozp1A1+SUfJQPa5DZUQcVc6CZK2ZxL6FJtNdh+2TP
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINvzMJfCiVKGfEjCfBZqDD7Kib5y+2zz04YI8XrCZ68O
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMb/DRvrCZ65QB8OPimqthgUY9MZ+QO3QcFy6mpiUomV
+          - age1qg7tfjwzp6dxwkw9vej6knkhdvqre3fu7ryzsdk5ggvtdx854ycqevlwnq
+          - age1r464z5e2shvnh9ekzapgghevr9wy7spd4d7pt5a89ucdk6kr6yhqzv5gkj
+          - age1xpzexnaulzdjtnwstvgvtq2ar7nkk2lj46u96ewjvtgt7g47jsxs0mhag3
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
@@ -115,7 +115,7 @@ creation_rules:
     path_regex: ^modules/secrets/hercules-ci.yaml$
   - key_groups:
       - age:
-          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILAkBZMRNgsJ/IbLtjMHqBw/9+4tyn9nT+5B5RFiV0vJ
+          - age158v8dpppnw3yt2kqgqekwamaxpst5alfrnvvt7z36wfdk4veydrsqxc2tl
           - age1dzvjjum2p240qtdt2qcxpm7pl2s5w36mh4fs3q9dhhq0uezvdqaq9vrgfy
           - age1egv86plsncnz5cuaua42tzd2xqyty82n5sgnd4xkux9lz8udssds7vymye
           - age17n64ahe3wesh8l8lj0zylf4nljdmqn28hvqns2g7hgm9mdkhlsvsjuvkxz
