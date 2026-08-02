@@ -54,6 +54,7 @@ var cnames = {
     // keep-sorted start
     "aarch64-build-box": "build05",
     "alertmanager": "web01",
+    "auth": "web01",
     "build-box": "build01",
     "buildbot": "build03",
     "darwin-build-box": "darwin01",

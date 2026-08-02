@@ -14,10 +14,12 @@
     };
     clientID = "Ov23liKOQPREko8sCk6F";
     keyFile = config.sops.secrets.oauth2-proxy-key-file.path;
-    nginx.domain = "alertmanager.nix-community.org";
+    nginx.domain = "auth.nix-community.org";
     nginx.virtualHosts = {
       "alertmanager.nix-community.org" = { };
     };
     email.domains = [ "*" ];
+    cookie.domain = ".nix-community.org";
+    extraConfig.whitelist-domain = ".nix-community.org";
   };
 }
