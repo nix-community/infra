@@ -554,6 +554,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/jamiemagee;
     }
+    {
+      # lib.maintainers.lillecarl, https://github.com/lillecarl
+      name = "lillecarl";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/lillecarl;
+    }
   ];
 in
 {
