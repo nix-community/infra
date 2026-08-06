@@ -1,5 +1,6 @@
 {
   final,
+  prev,
   ...
 }:
 {
@@ -7,6 +8,19 @@
     ps.deploykit
     ps.invoke
   ]);
+  # https://github.com/NixOS/nix-eval-jobs/issues/430
+  nix-eval-jobs =
+    (prev.nix-eval-jobs.override { nixComponents = final.nixVersions.nixComponents_2_34; })
+    .overrideAttrs
+      rec {
+        version = "2.34.3";
+        src = final.fetchFromGitHub {
+          owner = "NixOS";
+          repo = "nix-eval-jobs";
+          tag = "v${version}";
+          hash = "sha256-YaVQAgBxWbUBFHXLBLzdUyVvuA/DDw80SEnn9iq0Veo=";
+        };
+      };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
