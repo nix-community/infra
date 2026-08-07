@@ -154,6 +154,29 @@
         "type": "github"
       }
     },
+    "niks3": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784621916,
+        "narHash": "sha256-JGjvWpNNrbhiYhx+z9l/iDw1J48TrirfZC6R3yWjmU4=",
+        "owner": "Mic92",
+        "repo": "niks3",
+        "rev": "abbc291d372d2d821327516b5f5224de03113204",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "niks3",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -386,6 +409,7 @@
         "flake-parts": "flake-parts",
         "hercules-ci-effects": "hercules-ci-effects",
         "lite-config": "lite-config",
+        "niks3": "niks3",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixbot": "nixbot",
