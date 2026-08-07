@@ -186,6 +186,7 @@
             inherit specialArgs;
             modules = common ++ [
               {
+                nixpkgs.hostPlatform = "x86_64-freebsd";
                 virtualisation.vmVariant.virtualisation.cores = 12; # 1/2
                 virtualisation.vmVariant.virtualisation.memorySize = 64 * 1024; # 1/2
               }
@@ -195,8 +196,29 @@
             inherit specialArgs;
             modules = common ++ [
               {
+                nixpkgs.hostPlatform = "x86_64-freebsd";
                 virtualisation.vmVariant.virtualisation.cores = 48; # 1/2
                 virtualisation.vmVariant.virtualisation.memorySize = 128 * 1024; # 1/2
+              }
+            ];
+          };
+          build04-freebsd = nixbsdSystem {
+            inherit specialArgs;
+            modules = common ++ [
+              {
+                nixpkgs.hostPlatform = "aarch64-freebsd";
+                virtualisation.vmVariant.virtualisation.cores = 40; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 64 * 1024; # 1/2
+              }
+            ];
+          };
+          build05-freebsd = nixbsdSystem {
+            inherit specialArgs;
+            modules = common ++ [
+              {
+                nixpkgs.hostPlatform = "aarch64-freebsd";
+                virtualisation.vmVariant.virtualisation.cores = 40; # 1/2
+                virtualisation.vmVariant.virtualisation.memorySize = 64 * 1024; # 1/2
               }
             ];
           };
