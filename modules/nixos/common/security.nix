@@ -16,6 +16,8 @@
     ];
   };
 
+  security.account-utils.enable = true;
+
   security.run0 = {
     enable = true;
     wheelNeedsPassword = false;
