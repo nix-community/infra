@@ -580,6 +580,14 @@ let
       uid = 587;
       keys = ./keys/hythera;
     }
+    {
+      # lib.maintainers.lillecarl, https://github.com/lillecarl
+      name = "lillecarl";
+      trusted = true;
+      uid = 588;
+      shell = pkgs.fish;
+      keys = ./keys/lillecarl;
+    }
   ];
 in
 {
