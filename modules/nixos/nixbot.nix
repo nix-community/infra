@@ -41,6 +41,20 @@ in
     inputs.nixbot.nixosModules.nixbot
   ];
 
+  services.telegraf.extraConfig.inputs = {
+    http_response = [
+      {
+        urls = [ "https://nixbot.nix-community.org/health" ];
+        response_string_match = "ok";
+        tags.host = "build03.nix-community.org";
+        tags.org = "nix-community";
+      }
+    ];
+    prometheus.urls = [
+      "https://nixbot.nix-community.org/metrics"
+    ];
+  };
+
   services.nixbot.pullBased = {
     pollInterval = 3600;
     repositories = {
