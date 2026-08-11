@@ -47,7 +47,9 @@ in
   services.telegraf.extraConfig.inputs = {
     exec = [
       {
-        commands = [ (lib.getExe hostInfo) ];
+        commands = [
+          [ (lib.getExe hostInfo) ]
+        ];
         data_format = "influx";
       }
     ];
