@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.self.darwinModules.community-builder
+    ./rosetta.nix
   ];
 
   nixCommunity.threads = 10;
