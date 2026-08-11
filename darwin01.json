@@ -3,6 +3,9 @@
     "flakes",
     "nix-command"
   ],
+  "extra-platforms": [
+    "x86_64-darwin"
+  ],
   "sandbox": "relaxed",
   "system": "aarch64-darwin",
   "system-features": [
