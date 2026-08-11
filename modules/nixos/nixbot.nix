@@ -59,6 +59,10 @@ in
   sops.secrets.nixbot-github-webhook-secret = { };
   sops.secrets.cachix-auth-token = { };
 
+  environment.systemPackages = [
+    pkgs.nixbot-cli
+  ];
+
   services.nixbot = {
     enable = true;
     admins = [
