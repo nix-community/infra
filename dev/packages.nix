@@ -1,5 +1,6 @@
 {
   final,
+  inputs,
   ...
 }:
 {
@@ -7,6 +8,14 @@
     ps.deploykit
     ps.invoke
   ]);
+  nixbot-cli = final.symlinkJoin {
+    name = "nixbot-cli";
+    paths = [ inputs.nixbot.packages.${final.stdenv.hostPlatform.system}.nixbot-cli ];
+    nativeBuildInputs = [ final.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/nbo --set NIXBOT_URL "https://nixbot.nix-community.org"
+    '';
+  };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
