@@ -588,6 +588,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/lillecarl;
     }
+    {
+      # lib.maintainers.thunze, https://github.com/thunze
+      name = "thunze";
+      trusted = true;
+      uid = 589;
+      keys = ./keys/thunze;
+    }
   ];
 in
 {

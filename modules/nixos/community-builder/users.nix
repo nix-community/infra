@@ -561,6 +561,12 @@ let
       shell = pkgs.fish;
       keys = ./keys/lillecarl;
     }
+    {
+      # lib.maintainers.thunze, https://github.com/thunze
+      name = "thunze";
+      trusted = true;
+      keys = ./keys/thunze;
+    }
   ];
 in
 {
