@@ -31,7 +31,7 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
-    nixbot.url = "github:Mic92/nixbot";
+    nixbot.url = "github:qowoz/nixbot/infra";
     nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=265b7e2dbbdbe2e59609fa31ed8be38cdb517d13";
     nixbsd.inputs.cppnix.follows = "empty";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
