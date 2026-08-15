@@ -17,6 +17,23 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      nix-eval-jobs =
+        (prev.nix-eval-jobs.override { nixComponents = final.nixVersions.nixComponents_2_34; })
+        .overrideAttrs
+          rec {
+            version = "2.34.3";
+            src = final.fetchFromGitHub {
+              owner = "NixOS";
+              repo = "nix-eval-jobs";
+              tag = "v${version}";
+              hash = "sha256-YaVQAgBxWbUBFHXLBLzdUyVvuA/DDw80SEnn9iq0Veo=";
+            };
+          };
+    })
+  ];
+
   nix.settings.extra-platforms = [ "i686-linux" ];
 
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
