@@ -104,11 +104,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785036583,
-        "narHash": "sha256-iCGQFKo2CHM+pYaxImqicARR4XfTE8CsUbwrRNQA/8w=",
+        "lastModified": 1782779278,
+        "narHash": "sha256-nxrcWUqPXcsiy6cUOe3O9dreP8bKWesDPtASCIEyq64=",
         "owner": "qowoz",
         "repo": "hercules-ci-effects",
-        "rev": "3430c052d800205f7573d08485ce97b1a827f144",
+        "rev": "d1ef2f5f6ed85e6e180bc674fc2505020a0998ec",
         "type": "github"
       },
       "original": {
