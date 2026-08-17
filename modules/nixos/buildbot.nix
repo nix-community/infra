@@ -13,7 +13,6 @@ let
     "nix-community/nix4nvchad"
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"
-    "nix-community/nixpkgs-xr"
     # keep-sorted end
   ];
 
