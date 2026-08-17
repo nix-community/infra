@@ -21,6 +21,7 @@ let
     "nix-community/nixos-facter"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
+    "nix-community/nixpkgs-xr"
     "nix-community/nixvim"
     "nix-community/nurl"
     "nix-community/patsh"
