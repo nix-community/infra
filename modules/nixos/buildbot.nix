@@ -10,7 +10,6 @@ let
     "nix-community/authentik-nix"
     "nix-community/dream2nix"
     "nix-community/lanzaboote"
-    "nix-community/nh"
     "nix-community/nix4nvchad"
     "nix-community/NixNG"
     "nix-community/nixos-apple-silicon"

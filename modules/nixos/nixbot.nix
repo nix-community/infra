@@ -13,6 +13,7 @@ let
     "nix-community/infra"
     "nix-community/namaka"
     "nix-community/neovim-nightly-overlay"
+    "nix-community/nh"
     "nix-community/nix-direnv"
     "nix-community/nix-index"
     "nix-community/nix-init"
