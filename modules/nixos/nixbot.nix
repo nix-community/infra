@@ -7,11 +7,13 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
+    "nix-community/authentik-nix"
     "nix-community/bun2nix"
     "nix-community/dream2nix"
     "nix-community/ethereum.nix"
     "nix-community/home-manager"
     "nix-community/infra"
+    "nix-community/lanzaboote"
     "nix-community/namaka"
     "nix-community/neovim-nightly-overlay"
     "nix-community/nh"
@@ -19,6 +21,8 @@ let
     "nix-community/nix-index"
     "nix-community/nix-init"
     "nix-community/nix-melt"
+    "nix-community/nix4nvchad"
+    "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
     "nix-community/nixos-images"
     "nix-community/nixpkgs-update"
