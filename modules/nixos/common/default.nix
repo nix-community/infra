@@ -34,8 +34,7 @@
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
 
-  # subuid/subgid support: https://github.com/nikstur/userborn/issues/7
-  services.userborn.enable = false;
+  services.userborn.enable = true;
 
   system.disableInstallerTools = lib.mkDefault true;
   system.tools.nixos-rebuild.enable = true;
