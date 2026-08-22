@@ -4,7 +4,9 @@ DEFAULTS(
 );
 
 var REG_NONE = NewRegistrar("none");
-var DSP_CLOUDFLARE = NewDnsProvider("cloudflare");
+var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", {
+    "manage_single_redirects": true,
+});
 
 // # For each github page, create a CNAME alias to nix-community.github.io
 var nix_community_github_pages = [
