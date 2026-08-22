@@ -7,7 +7,6 @@
 let
   repoAllowlist = [
     # keep-sorted start case=no
-    "nix-community/NixNG"
     # keep-sorted end
   ];
 
