@@ -1,6 +1,7 @@
 {
   final,
   inputs,
+  prev,
   ...
 }:
 {
@@ -8,6 +9,17 @@
     ps.deploykit
     ps.invoke
   ]);
+  nixVersions = prev.nixVersions.extend (
+    _: super: {
+      nixComponents_2_35 = super.nixComponents_2_35.appendPatches [
+        (final.fetchpatch {
+          name = "fetch-to-store.patch";
+          url = "https://github.com/NixOS/nix/commit/30820a54b112f4842bdb7df28b61b2a607e54033.patch";
+          hash = "sha256-Yvn9a059LvW9FkSGH20LRPlBIhmVqQxGMBXke+hxkgs=";
+        })
+      ];
+    }
+  );
   nixbot-cli = final.symlinkJoin {
     name = "nixbot-cli";
     paths = [ inputs.nixbot.packages.${final.stdenv.hostPlatform.system}.nixbot-cli ];
