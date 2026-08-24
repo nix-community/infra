@@ -4,6 +4,7 @@
     ./builders.nix
     ./cache-harmonia.nix
     ./postgresql.nix
+    inputs.nix-tarmac.nixosModules.default
     inputs.self.nixosModules.buildbot
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs-systemd-boot

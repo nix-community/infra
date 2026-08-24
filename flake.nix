@@ -29,6 +29,8 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-tarmac.inputs.nixpkgs.follows = "nixpkgs";
+    nix-tarmac.url = "github:qowoz/nix-tarmac/infra";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     nixbot.url = "github:qowoz/nixbot/infra";
@@ -157,6 +159,7 @@
                 sops-check
                 terraform-validate
                 ;
+              nix-tarmac-tests = inputs'.nix-tarmac.checks.tests;
               nixbot-tests = inputs'.nixbot.packages.nixbot.tests.pytest;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
             }

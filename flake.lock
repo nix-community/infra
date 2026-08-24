@@ -194,6 +194,27 @@
         "type": "github"
       }
     },
+    "nix-tarmac": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787706031,
+        "narHash": "sha256-4Jiud9jSpNEJsVLyCxv4o0O6TTo8NPMpV3uYCLw4WGk=",
+        "owner": "qowoz",
+        "repo": "nix-tarmac",
+        "rev": "51d414d1687c9deb142cb8de4e28d5a7ca6edeac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qowoz",
+        "ref": "infra",
+        "repo": "nix-tarmac",
+        "type": "github"
+      }
+    },
     "nixbot": {
       "inputs": {
         "nixpkgs": [
@@ -389,6 +410,7 @@
         "lite-config": "lite-config",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
+        "nix-tarmac": "nix-tarmac",
         "nixbot": "nixbot",
         "nixbsd": "nixbsd",
         "nixbsd-nixpkgs": "nixbsd-nixpkgs",
