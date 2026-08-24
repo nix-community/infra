@@ -28,6 +28,19 @@
       wrapProgram $out/bin/nbo --set NIXBOT_URL "https://nixbot.nix-community.org"
     '';
   };
+  prometheus-alertmanager =
+    let
+      ui = prev.prometheus-alertmanager.passthru.elmUi.overrideAttrs (super: {
+        postPatch = super.postPatch + ''
+          substituteInPlace elm.json --replace-fail "0.19.1" "0.19.2"
+        '';
+      });
+    in
+    prev.prometheus-alertmanager.overrideAttrs {
+      postPatch = ''
+        cp -r ${ui}/. ui/app/dist
+      '';
+    };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2025-05-21";
