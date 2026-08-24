@@ -592,6 +592,13 @@ let
       uid = 589;
       keys = ./keys/thunze;
     }
+    {
+      # lib.maintainers.whispersofthedawn, https://github.com/whispersofthedawn
+      name = "whispers";
+      trusted = true;
+      uid = 590;
+      keys = ./keys/whispers;
+    }
   ];
 in
 {
