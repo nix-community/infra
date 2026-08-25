@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     ./gandi.nix
@@ -9,6 +9,8 @@
     inputs.self.nixosModules.quadlet
     inputs.self.nixosModules.rfc39
   ];
+
+  services.userborn.enable = lib.mkForce true;
 
   networking.useDHCP = true;
 
