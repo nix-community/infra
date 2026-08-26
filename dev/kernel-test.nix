@@ -11,6 +11,7 @@ testers.nixosTest {
       # import armv7l kernelPatches to match aarch64 host kernel config
       "${inputs.self}/modules/nixos/common/armv7l.nix"
       "${inputs.self}/modules/nixos/common/kernel.nix"
+      "${inputs.self}/modules/nixos/common/userborn.nix"
     ];
   };
   testScript = ''
