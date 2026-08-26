@@ -18,6 +18,7 @@
     ./sops-nix.nix
     ./telegraf.nix
     ./update.nix
+    ./userborn.nix
     ./users.nix
     inputs.srvos.nixosModules.server
   ];
@@ -33,8 +34,6 @@
   boot.kernelPackages = lib.mkIf (
     !config.boot.supportedFilesystems.zfs or false
   ) pkgs.linuxPackages_latest;
-
-  services.userborn.enable = true;
 
   system.disableInstallerTools = lib.mkDefault true;
   system.tools.nixos-rebuild.enable = true;
