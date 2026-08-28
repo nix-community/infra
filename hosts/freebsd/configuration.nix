@@ -12,6 +12,30 @@
     ./telegraf-service.nix
   ];
 
+  nixpkgs.overlays = [
+    (_: prev: {
+      freebsd = prev.freebsd.overrideScope (
+        _: p:
+        let
+          l =
+            pkg:
+            pkg.overrideAttrs (o: {
+              meta = o.meta // {
+                platforms = o.meta.platforms ++ [ "x86_64-linux" ];
+              };
+            });
+        in
+        {
+          cap_mkdb = l p.cap_mkdb;
+          localedef = l p.localedef;
+          makefs = l p.makefs;
+          mkimg = l p.mkimg;
+          vtfontcvt = l p.vtfontcvt;
+        }
+      );
+    })
+  ];
+
   nixpkgs.overrideNix = false;
 
   # using latest for sandboxing
