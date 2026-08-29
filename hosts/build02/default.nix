@@ -16,6 +16,23 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      nix-eval-jobs = prev.nix-eval-jobs.overrideAttrs (
+        _: p: {
+          version = "2.35.2-unstable-2026-08-30";
+          src = final.fetchFromGitHub {
+            owner = "NixOS";
+            repo = "nix-eval-jobs";
+            rev = "c026cff507d3f5ea067098d323a2f29e2f634c2f";
+            hash = "sha256-FKXrE2qHTHVA7xOHFH+Grm+EaF9Hk+JrTi6VBHrvSuI=";
+          };
+          buildInputs = (p.buildInputs or [ ]) ++ [ final.mimalloc ];
+        }
+      );
+    })
+  ];
+
   # using latest for mimalloc
   # TODO: switch back to stable nix >= 2.35
   nix.package = pkgs.nixVersions.latest;
