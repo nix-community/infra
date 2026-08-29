@@ -204,11 +204,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787955218,
-        "narHash": "sha256-feNytxiEjraTNyq0Fqf0XZczx9575tkX0X9lFhnxkV4=",
+        "lastModified": 1788041978,
+        "narHash": "sha256-SwsE8Ud6RoI3EzZ/BZPuINziBPN+/6P2Fdx8mDu7pUA=",
         "owner": "qowoz",
         "repo": "nixbot",
-        "rev": "6d90f2078c439151f04b00fac519e3119c2998c0",
+        "rev": "df9a79bd79a208576fc5c45faf5314b2eb7b7036",
         "type": "github"
       },
       "original": {
