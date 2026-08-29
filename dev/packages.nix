@@ -9,18 +9,6 @@
     ps.deploykit
     ps.invoke
   ]);
-  nix-eval-jobs =
-    (prev.nix-eval-jobs.override { nixComponents = final.nixVersions.nixComponents_2_34; })
-    .overrideAttrs
-      rec {
-        version = "2.34.3";
-        src = final.fetchFromGitHub {
-          owner = "NixOS";
-          repo = "nix-eval-jobs";
-          tag = "v${version}";
-          hash = "sha256-YaVQAgBxWbUBFHXLBLzdUyVvuA/DDw80SEnn9iq0Veo=";
-        };
-      };
   nixVersions = prev.nixVersions.extend (
     _: super:
     let
