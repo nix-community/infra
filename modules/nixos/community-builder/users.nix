@@ -567,6 +567,12 @@ let
       trusted = true;
       keys = ./keys/thunze;
     }
+    {
+      # lib.maintainers.tyceherrman, https://github.com/TyceHerrman
+      name = "tyceherrman";
+      trusted = true;
+      keys = ./keys/tyceherrman;
+    }
   ];
 in
 {

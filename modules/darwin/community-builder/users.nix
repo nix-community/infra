@@ -599,6 +599,13 @@ let
       uid = 590;
       keys = ./keys/whispers;
     }
+    {
+      # lib.maintainers.tyceherrman, https://github.com/TyceHerrman
+      name = "tyceherrman";
+      trusted = true;
+      uid = 591;
+      keys = ./keys/tyceherrman;
+    }
   ];
 in
 {
