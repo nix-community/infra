@@ -599,6 +599,13 @@ let
       uid = 590;
       keys = ./keys/whispers;
     }
+    {
+      # lib.maintainers.viraptor, https://github.com/viraptor
+      name = "viraptor";
+      trusted = true;
+      uid = 591;
+      keys = ./keys/viraptor;
+    }
   ];
 in
 {
