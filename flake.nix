@@ -23,7 +23,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
     hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
-    hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/infra";
+    hercules-ci-effects.url = "github:qowoz/hercules-ci-effects/onEvent";
     lite-config.url = "github:yelite/lite-config";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
@@ -67,6 +67,7 @@
         ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
+        ./dev/effect-dnscontrol.nix
         ./dev/effect-flake-update.nix
         ./dev/effect-pages.nix
         ./dev/effect-repo-list.nix
