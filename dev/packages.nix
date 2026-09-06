@@ -45,12 +45,12 @@
   };
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
-    version = "0-unstable-2025-05-21";
+    version = "0-unstable-2026-09-05";
     src = final.fetchFromGitHub {
       owner = "NixOS";
       repo = "rfc39";
-      rev = "5f40cb211f39f22e68e10075e5875f0b692e1ae1";
-      hash = "sha256-tyt7Mz7+varMQuKxQtqTHN7KXZEnBVLTaHBP/FI+wNY=";
+      rev = "9e5447bd68a580bcb641e8682b9c63b7a9ebc51e";
+      hash = "sha256-c/9qZ921J0dtyo5+thVpchTOWVAVqeZRpNuhvYTCBow=";
     };
     cargoHash = "sha256-FwQbHgixrPWCw/nMqmUAQ9RRM1Vx3mI4/zUxkE+pgCM=";
     env = {
