@@ -12,7 +12,7 @@ let
         secretsMap.cloudflare-dnscontrol = "cloudflare-dnscontrol";
         userSetupScript = ''
           token=$(jq -r '."cloudflare-dnscontrol".data.token' "$HERCULES_CI_SECRETS_JSON")
-          export CLOUDFLARE_API_TOKEN=$token
+          export CLOUDFLARE_API_TOKEN=$token NO_COLOR=1
           cd dnscontrol
         '';
         lock = "infra-dnscontrol";
