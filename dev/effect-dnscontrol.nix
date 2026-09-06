@@ -29,7 +29,11 @@ in
         status = [ "succeeded" ];
       };
       effectScript = ''
-        dnscontrol preview | nixbot-pr-comment --replace-marker dnscontrol-preview
+        {
+          echo '```'
+          dnscontrol preview
+          echo '```'
+        } | nixbot-pr-comment --replace-marker dnscontrol-preview
       '';
     };
     onEvent.comment.dnscontrol-push = dnscontrol {
@@ -40,7 +44,11 @@ in
         status = [ "succeeded" ];
       };
       effectScript = ''
-        dnscontrol push | nixbot-pr-comment --replace-marker dnscontrol-push
+        {
+          echo '```'
+          dnscontrol push
+          echo '```'
+        } | nixbot-pr-comment --replace-marker dnscontrol-push
       '';
     };
   };
