@@ -88,7 +88,7 @@
             ];
           };
 
-          hostModuleDir = ./hosts;
+          hostModuleDir = "${self}/hosts";
 
           hosts = {
             build01.system = "x86_64-linux";
