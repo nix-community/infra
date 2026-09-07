@@ -93,9 +93,13 @@ in
 
 let
 
-  allPackagesWithUpdateScript = packagesWithUpdateScriptMatchingPredicate (
-    _path: _package: true
-  ) pkgs;
+  allPackagesWithUpdateScript = packagesWithUpdateScriptMatchingPredicate (_path: _package: true) (
+    # exclude lix/nix overrides before deduplication
+    builtins.removeAttrs pkgs [
+      "lixPackageSets"
+      "nixDependencies"
+    ]
+  );
 
 in
 
