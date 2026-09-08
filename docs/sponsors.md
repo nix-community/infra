@@ -13,7 +13,7 @@ Thanks to all our sponsors.
 
 <div style="text-align:center" class="grid cards" markdown>
 
-- [<img src="https://raw.githubusercontent.com/cachix/docs.cachix.org/master/source/logo.png" width="250" alt="Cachix">](https://cachix.org)
+- [<img src="https://raw.githubusercontent.com/cachix/docs.cachix.org/58d79748c417558db4b49f53adb674ab3de45c21/public/_static/logo.png" width="250" alt="Cachix">](https://cachix.org)
 
     ---
 
