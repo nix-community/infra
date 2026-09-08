@@ -37,7 +37,8 @@ Be careful what you use this system for.
 Do not trust the results.
 For a more nuanced understanding, read on.
 
-For someone to use a server as a remote builder, they must be a `trusted-user` on the remote builder. `man nix.conf` has this to say about Trusted Users:
+For someone to use a server as a remote builder, they must be a `trusted-user` on the remote builder.
+`man nix.conf` has this to say about Trusted Users:
 
 > User that have additional rights when connecting to the Nix daemon, such as the ability to specify additional binary caches, or to import unsigned NARs.
 >
