@@ -1,3 +1,9 @@
+<style>
+.md-content .md-typeset h1 {
+    display: none;
+  }
+</style>
+
 <img src="nix-community-logo.svg" width="100" height="100" alt="Nix community">
 
 [@nix-community][nix-community] is a GitHub organization that works alongside the [@NixOS][nixos] organization.
