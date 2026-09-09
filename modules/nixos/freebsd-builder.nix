@@ -37,7 +37,7 @@ in
       sshKey = "/etc/nix/freebsd-builder-key";
       sshUser = "nix";
       supportedFeatures = [ "big-parallel" ];
-      systems = [ "x86_64-freebsd" ];
+      systems = [ freebsdVM.pkgs.stdenv.hostPlatform.system ];
     }
   ];
 
