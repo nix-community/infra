@@ -159,6 +159,7 @@
                 terraform-validate
                 ;
               nixbot-tests = inputs'.nixbot.packages.nixbot.tests.pytest;
+              nixbot-effects-tests = inputs'.nixbot.packages.nixbot-effects.tests.pytest;
               nixpkgs-update-supervisor-test = pkgs.callPackage ./hosts/build02/supervisor_test.nix { };
             }
             // lib.mapAttrs' (name: value: lib.nameValuePair "nixosTests-${name}" value) {
