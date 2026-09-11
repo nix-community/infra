@@ -43,6 +43,13 @@
       wrapProgram $out/bin/nbo --set NIXBOT_URL "https://nixbot.nix-community.org"
     '';
   };
+  perlPackages = prev.perlPackages.overrideScope (
+    _: p: {
+      CatalystRuntime = p.CatalystRuntime.overrideAttrs (o: {
+        propagatedBuildInputs = final.lib.lists.remove p.URIws o.propagatedBuildInputs;
+      });
+    }
+  );
   rfc39 = final.rustPlatform.buildRustPackage {
     pname = "rfc39";
     version = "0-unstable-2026-09-05";
