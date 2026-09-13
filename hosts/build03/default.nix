@@ -17,11 +17,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  # hercules-ci is disabled on darwin02
-  services.hercules-ci-agent.settings.remotePlatformsWithSameFeatures = [
-    "aarch64-darwin"
-  ];
-
   nix.package = pkgs.nixVersions.latest;
 
   nix.settings.extra-platforms = [ "i686-linux" ];
