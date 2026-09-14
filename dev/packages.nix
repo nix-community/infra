@@ -9,9 +9,6 @@
     ps.deploykit
     ps.invoke
   ]);
-  libcap_ng = prev.libcap_ng.overrideAttrs {
-    doCheck = !final.stdenv.hostPlatform.isStatic;
-  };
   nixVersions = prev.nixVersions.extend (
     _: super:
     let
