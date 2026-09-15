@@ -118,14 +118,6 @@ let
     startAt = "0/12:10"; # every 12 hours
   };
 
-  repology = pkgs.writeShellApplication {
-    name = "repology";
-    runtimeInputs = [
-      pkgs.jq
-      pkgs.moreutils
-    ];
-    text = builtins.readFile ./repology.bash;
-  };
 in
 {
   users.groups.r-ryantm = { };
@@ -169,7 +161,6 @@ in
     // {
       startAt = "0/6:10"; # every 6 hours
     };
-  systemd.services.nixpkgs-update-fetch-repology = mkFetcher "repology" (lib.getExe repology);
   systemd.services.nixpkgs-update-fetch-updatescript = mkFetcher "updatescript" "${lib.getExe config.nix.package} eval --option max-call-depth 100000 --raw -f ${./packages-with-update-script.nix}";
 
   systemd.services.nixpkgs-update-worker1 = mkWorker "worker1";
