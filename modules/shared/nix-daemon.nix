@@ -10,25 +10,6 @@ let
   asGB = size: toString (size * 1024 * 1024 * 1024);
 in
 {
-  nixpkgs.overlays =
-    lib.optionals (config.networking.hostName == "build02" || config.networking.hostName == "build03")
-      [
-        (final: prev: {
-          nix-eval-jobs = prev.nix-eval-jobs.overrideAttrs (
-            _: p: {
-              version = "2.35.2-unstable-2026-09-01";
-              src = final.fetchFromGitHub {
-                owner = "NixOS";
-                repo = "nix-eval-jobs";
-                rev = "55e658518ae417cf26f36643fcfdebe5c5db17aa";
-                hash = "sha256-4z5GnNd9cbkKChaovYghlxuh1k5rYlxNT7wpZeR1oU0=";
-              };
-              buildInputs = (p.buildInputs or [ ]) ++ [ final.mimalloc ];
-            }
-          );
-        })
-      ];
-
   nix = {
     settings.trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
