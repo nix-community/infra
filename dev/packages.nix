@@ -5,6 +5,7 @@
   ...
 }:
 {
+  buildGo125Module = final.buildGo126Module; # fix for sops-nix that is pinned to removed go version
   deploykitEnv = final.python3.withPackages (ps: [
     ps.deploykit
     ps.invoke
