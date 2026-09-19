@@ -32,7 +32,7 @@
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     nixbot.url = "github:qowoz/nixbot/infra";
-    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=eaad089433ca2bb662274377d33df3d0e51ef28b";
+    nixbsd-nixpkgs.url = "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1076375.c8ccf87ca646/nixexprs.tar.zst";
     nixbsd.inputs.cppnix.follows = "empty";
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
@@ -42,7 +42,7 @@
     nixpkgs-update.inputs.mmdoc.follows = "empty";
     nixpkgs-update.inputs.treefmt-nix.follows = "treefmt-nix";
     nixpkgs-update.url = "github:nix-community/nixpkgs-update/infra";
-    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable-small";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.zst";
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
     quadlet-nix.inputs.flake-parts.follows = "flake-parts";
