@@ -47,6 +47,12 @@
 
   networking.hostName = "nixbsd-freebsd";
 
+  system.nixos = {
+    label = "";
+    revision = "";
+    version = "";
+  };
+
   system.stateVersion = "25.05"; # silence warning
 
   services.openssh.enable = true;
