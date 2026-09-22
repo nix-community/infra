@@ -19,7 +19,6 @@ let
   # This is the list of permissions per file. The admins have permissions for all files.
   sopsPermissions = {
     "secrets.yaml" = [ ];
-    "terraform/secrets.yaml" = [ ];
   }
   // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
     "modules/secrets/backup.yaml" = [

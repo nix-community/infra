@@ -6,17 +6,10 @@ terraform {
     hydra = {
       source = "DeterminateSystems/hydra"
     }
-    sops = {
-      source = "carlpett/sops"
-    }
     tfe = {
       source = "hashicorp/tfe"
     }
   }
-}
-
-ephemeral "sops_file" "nix-community" {
-  source_file = "secrets.yaml"
 }
 
 provider "github" {
@@ -24,8 +17,13 @@ provider "github" {
   owner = "nix-community"
 }
 
+variable "hydra_admin_password" {
+  ephemeral = true
+  sensitive = true
+}
+
 provider "hydra" {
   host     = "https://hydra.nix-community.org"
-  password = ephemeral.sops_file.nix-community.data["HYDRA_PASSWORD"]
+  password = var.hydra_admin_password
   username = "admin"
 }
