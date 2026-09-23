@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ./builders.nix
     ./cache-harmonia.nix
     ./hydra.nix
     ./hydra-post-init.nix
