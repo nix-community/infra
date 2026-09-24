@@ -53,6 +53,7 @@ in
       freebsdVM.config.system.build.vm
     ];
     script = ''
+      mkdir -p secrets
       rm -f -- *.qcow2
       run-nixbsd-freebsd-vm
     '';

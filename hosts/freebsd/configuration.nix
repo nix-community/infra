@@ -8,6 +8,8 @@
   imports = [
     ../../modules/shared/telegraf.nix
     (import "${inputs.srvos}/shared/mixins/telegraf.nix")
+    ./ci-builder.nix
+    ./queue-builder.nix
     ./ssh.nix
     ./telegraf-service.nix
   ];

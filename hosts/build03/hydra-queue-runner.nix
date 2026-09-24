@@ -18,6 +18,7 @@ in
     hydra-queue-builder-token-build03 = secret;
     hydra-queue-builder-token-build04 = secret;
     hydra-queue-builder-token-darwin02 = secret;
+    hydra-queue-builder-token-build03-freebsd = secret;
   };
 
   services.hydra-queue-runner-dev = {
@@ -30,6 +31,7 @@ in
         config.sops.secrets.hydra-queue-builder-token-build03.path
         config.sops.secrets.hydra-queue-builder-token-build04.path
         config.sops.secrets.hydra-queue-builder-token-darwin02.path
+        config.sops.secrets.hydra-queue-builder-token-build03-freebsd.path
       ];
     };
     rest.port = 9090;
