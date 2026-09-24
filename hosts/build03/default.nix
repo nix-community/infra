@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ./builders.nix
     ./cache-harmonia.nix
     ./postgresql.nix
     inputs.self.nixosModules.buildbot
