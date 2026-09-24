@@ -16,6 +16,8 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  boot.loader.systemd-boot.bootCounting.enable = true;
+
   # using latest for mimalloc
   # TODO: switch back to stable nix >= 2.35
   nix.package = pkgs.nixVersions.latest;
