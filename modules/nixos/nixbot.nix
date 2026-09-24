@@ -94,6 +94,7 @@ in
       "github:zimbatm"
       "github:zowoq"
     ];
+    buildStore.url = "unix://${config.services.hydra-ad-hoc-dev.socketPath}";
     inherit buildSystems;
     domain = "nixbot.nix-community.org";
     outputsPath = "/var/www/nixbot/nix-outputs/";
@@ -103,11 +104,6 @@ in
     cacheFailedBuilds = false;
     buildTimeout = builtins.fromJSON config.nix.settings.timeout;
     buildMaxSilentTime = builtins.fromJSON config.nix.settings.max-silent-time;
-    cachix = {
-      enable = true;
-      name = "nix-community";
-      auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
-    };
     github = {
       enable = true;
       appId = 4016365;
