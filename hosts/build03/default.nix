@@ -4,6 +4,7 @@
     ./builders.nix
     ./cache-harmonia.nix
     ./hydra.nix
+    ./hydra-ad-hoc.nix
     ./hydra-queue-runner.nix
     ./hydra-post-init.nix
     ./postgresql.nix
