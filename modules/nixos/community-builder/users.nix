@@ -567,6 +567,12 @@ let
       trusted = true;
       keys = ./keys/thunze;
     }
+    {
+      # lib.maintainers.graysontinker, https://github.com/GraysonTinker
+      name = "graysontinker";
+      trusted = true;
+      keys = ./keys/graysontinker;
+    }
   ];
 in
 {
