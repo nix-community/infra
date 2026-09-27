@@ -5,7 +5,6 @@
       devShells.terraform = pkgs.mkShellNoCC { packages = [ config.packages.terraform ]; };
       packages = {
         terraform = pkgs.opentofu.withPlugins (p: [
-          p.carlpett_sops
           p.determinatesystems_hydra
           p.hashicorp_tfe
           p.integrations_github
