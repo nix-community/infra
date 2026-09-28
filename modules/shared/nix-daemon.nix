@@ -49,7 +49,7 @@ in
     };
     # explicitly set nix-path, NIX_PATH to nixpkgs from system registry
     settings.nix-path = [ "nixpkgs=flake:nixpkgs" ];
-    nixPath = config.nix.settings.nix-path;
+    nixPath = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin config.nix.settings.nix-path;
 
     gc.automatic = pkgs.lib.mkDefault true;
     gc.options = pkgs.lib.mkDefault "--delete-older-than 14d";
