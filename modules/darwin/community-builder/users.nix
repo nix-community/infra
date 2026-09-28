@@ -606,6 +606,13 @@ let
       uid = 591;
       keys = ./keys/viraptor;
     }
+    {
+      # lib.maintainers.diogotcorreia, https://github.com/diogotcorreia
+      name = "diogotcorreia";
+      trusted = true;
+      uid = 592;
+      keys = ./keys/diogotcorreia;
+    }
   ];
 in
 {
