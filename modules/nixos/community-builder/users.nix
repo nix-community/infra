@@ -573,6 +573,12 @@ let
       trusted = true;
       keys = ./keys/graysontinker;
     }
+    {
+      # lib.maintainers.julienmalka, https://github.com/JulienMalka
+      name = "julienmalka";
+      trusted = true;
+      keys = ./keys/julienmalka;
+    }
   ];
 in
 {
