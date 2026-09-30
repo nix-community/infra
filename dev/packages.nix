@@ -9,14 +9,6 @@
     ps.deploykit
     ps.invoke
   ]);
-  # https://github.com/NixOS/nixpkgs/pull/568002
-  mosh = prev.mosh.override {
-    protobuf = prev.protobuf.override {
-      abseil-cpp = prev.abseil-cpp.override {
-        cxxStandard = "17";
-      };
-    };
-  };
   nixVersions = prev.nixVersions.extend (
     _: super:
     let
