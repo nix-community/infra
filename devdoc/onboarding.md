@@ -12,7 +12,7 @@
 
 - Add their user to the list of `admins` in [modules/nixos/nixbot.nix](../modules/nixos/nixbot.nix).
 
-- Add their user to the list of `hydra-github-users` in [modules/nixos/hydra.nix](../modules/nixos/hydra.nix).
+- Add their user to the list of `hydra-github-users` in [hydra-post-init.nix](../hosts/build03/hydra-post-init.nix).
 
 [^1]: ["Secure two-factor methods are passkeys, security keys, authenticator apps, and the GitHub mobile app"](https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-two-factor-authentication-for-your-organization/requiring-two-factor-authentication-in-your-organization#requiring-secure-methods-of-two-factor-authentication-in-your-organization)
 
