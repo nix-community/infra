@@ -3,12 +3,13 @@
   imports = [
     ./builders.nix
     ./cache-harmonia.nix
+    ./hydra.nix
+    ./hydra-post-init.nix
     ./postgresql.nix
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs-systemd-boot
     inputs.self.nixosModules.freebsd-builder
     inputs.self.nixosModules.github-org-backup
-    inputs.self.nixosModules.hydra
     inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nixbot
     inputs.self.nixosModules.watch-store
