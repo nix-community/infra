@@ -36,11 +36,17 @@ let
     # keep-sorted end
   ];
 
-  buildSystems = [
-    pkgs.stdenv.hostPlatform.system
-  ]
-  ++ config.nix.settings.extra-platforms
-  ++ builtins.concatLists (map (host: host.systems) config.nix.buildMachines);
+  buildSystems =
+    pkgs.lib.concatMap
+      (x: [ x.pkgs.stdenv.hostPlatform.system ] ++ (x.config.nix.settings.extra-platforms or [ ]))
+      [
+        inputs.self.nixosConfigurations.build03
+        inputs.self.nixosConfigurations.build04
+      ]
+    ++ [
+      "aarch64-darwin"
+      "x86_64-freebsd"
+    ];
 in
 {
   imports = [
@@ -77,7 +83,6 @@ in
   sops.secrets.nixbot-github-oauth-secret = { };
   sops.secrets.nixbot-github-app-secret-key = { };
   sops.secrets.nixbot-github-webhook-secret = { };
-  sops.secrets.cachix-auth-token = { };
 
   environment.systemPackages = [
     pkgs.nixbot-cli
@@ -102,11 +107,6 @@ in
     cacheFailedBuilds = false;
     buildTimeout = builtins.fromJSON config.nix.settings.timeout;
     buildMaxSilentTime = builtins.fromJSON config.nix.settings.max-silent-time;
-    cachix = {
-      enable = true;
-      name = "nix-community";
-      auth.authToken.file = config.sops.secrets.cachix-auth-token.path;
-    };
     github = {
       enable = true;
       appId = 4016365;

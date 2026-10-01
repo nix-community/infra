@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ./builders.nix
     ./cache-harmonia.nix
     ./hydra.nix
     ./hydra-post-init.nix
@@ -14,6 +13,7 @@
     inputs.self.nixosModules.nixbot
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
+    ./hydra-ad-hoc.nix
   ];
 
   nix.package = pkgs.nixVersions.latest;
