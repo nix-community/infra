@@ -3,11 +3,6 @@ DEFAULTS(
     CF_PROXY_DEFAULT_OFF
 );
 
-var REG_NONE = NewRegistrar("none");
-var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", {
-    "manage_single_redirects": true,
-});
-
 // # For each github page, create a CNAME alias to nix-community.github.io
 var nix_community_github_pages = [
     // keep-sorted start
@@ -84,8 +79,10 @@ for (var c in cnames) {
 }
 
 D("nix-community.org",
-    REG_NONE,
-    DnsProvider(DSP_CLOUDFLARE),
+    REGISTRAR("none"),
+    SERVICE("cloudflare", ALL_NS, {
+        "manage_single_redirects": true,
+    }),
 
     records,
 
