@@ -13,14 +13,6 @@
         })
       )
       // {
-        Filesystem80percentFull.enable = false;
-
-        Filesystem95percentFull = {
-          expr = ''disk_used_percent{mode!="ro"} >= 95'';
-          for = "10m";
-          annotations.description = "{{$labels.host}} device {{$labels.device}} on {{$labels.path}} got less than 5% space left on its filesystem";
-        };
-
         HourlyTaskNotRun = {
           expr = ''time() - task_last_run{state="ok",frequency="hourly"} > 60 * 60'';
           for = "1h";
