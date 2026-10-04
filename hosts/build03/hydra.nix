@@ -49,6 +49,10 @@
     hydra-send-stats.enable = false;
   };
 
+  services.hydra-ws-dev = {
+    enable = true;
+  };
+
   services.hydra-dev = {
     enable = true;
     hydraURL = "https://hydra.nix-community.org";
@@ -67,6 +71,8 @@
       github_client_secret_file = ${config.sops.secrets.hydra-github-client-secret.path}
 
       queue_runner_endpoint = http://localhost:${toString config.services.hydra-queue-runner-dev.rest.port}
+
+      ws_endpoint = wss://hydra.nix-community.org/ws
     '';
   };
 
@@ -77,5 +83,14 @@
 
   services.nginx.virtualHosts."hydra.nix-community.org" = {
     locations."/".proxyPass = "http://localhost:${toString config.services.hydra-dev.port}";
+
+    locations."/ws" = {
+      proxyPass = "http://${config.services.hydra-ws-dev.bind.address}:${toString config.services.hydra-ws-dev.bind.port}";
+      proxyWebsockets = true;
+      extraConfig = ''
+        proxy_read_timeout 1d;
+        proxy_send_timeout 1d;
+      '';
+    };
   };
 }
