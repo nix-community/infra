@@ -21,16 +21,13 @@ in
       kernel.override {
         # https://github.com/NixOS/nixpkgs/issues/142901
         stdenv = pkgs.overrideCC llvm.stdenv (llvm.stdenv.cc.override { inherit (llvm) bintools; });
+        ignoreConfigErrors = true; # config for clang+rust is broken, needs to be fixed in nixpkgs
         structuredExtraConfig =
           let
-            inherit (pkgs.lib.kernel) yes unset;
-            inherit (pkgs.lib) mkForce;
+            inherit (pkgs.lib.kernel) yes;
           in
           {
             LTO_CLANG_THIN = yes;
-            DEBUG_INFO_BTF = mkForce unset;
-            NET_SCH_BPF = mkForce unset;
-            SCHED_CLASS_EXT = mkForce unset;
           };
       }
     );
