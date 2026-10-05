@@ -24,6 +24,9 @@
         RASDaemon = {
           # https://github.com/influxdata/telegraf/blob/4617e281b0458df847ef5ab57dedf682df843a68/plugins/inputs/ras/README.md#L64
           # processor_base_errors is an aggregate counter
+
+          # build01 memory_ecc_corrected_errors
+          # https://github.com/nix-community/infra/issues/2500
           expr = ''
             increase(ras_cache_l0_l1_errors[15m]) > 0 or
             increase(ras_cache_l2_errors[15m]) > 0 or
@@ -31,7 +34,7 @@
             increase(ras_frc_errors[15m]) > 0 or
             increase(ras_internal_parity_errors[15m]) > 0 or
             increase(ras_internal_timer_errors[15m]) > 0 or
-            increase(ras_memory_ecc_corrected_errors[15m]) > 0 or
+            increase(ras_memory_ecc_corrected_errors{host!="build01"}[15m]) > 0 or
             increase(ras_memory_ecc_uncorrectable_errors[15m]) > 0 or
             increase(ras_memory_read_corrected_errors[15m]) > 0 or
             increase(ras_memory_read_uncorrectable_errors[15m]) > 0 or
@@ -59,6 +62,7 @@
           annotations.description = "{{$labels.host}}: nixpkgs flake is older than two weeks";
         };
 
+        # https://github.com/nix-community/infra/issues/1644
         SmartErrors.expr = lib.mkForce ''smart_device_health_ok{enabled!="Disabled", host!="build05"} != 1'';
       };
   };
