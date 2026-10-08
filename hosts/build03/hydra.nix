@@ -11,6 +11,7 @@
   ];
 
   imports = [
+    (import "${inputs.hydra}/nixos-modules/evaluator-module.nix")
     (import "${inputs.hydra}/nixos-modules/web-app.nix")
     (import "${inputs.hydra}/nixos-modules/ws-server-module.nix")
   ];
@@ -53,15 +54,19 @@
     enable = true;
   };
 
+  services.hydra-evaluator-dev = {
+    enable = true;
+    settings = {
+      max_concurrent_evals = 2;
+    };
+  };
+
   services.hydra-dev = {
     enable = true;
     hydraURL = "https://hydra.nix-community.org";
     notificationSender = "hydra@hydra.nix-community.org";
     port = 3000;
     useSubstitutes = true;
-    evaluatorSettings = {
-      max_concurrent_evals = 2;
-    };
     extraConfig = ''
       evaluator_max_memory_size = 4096
       evaluator_workers = 8
