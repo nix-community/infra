@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [
     ./builders.nix
@@ -16,8 +16,6 @@
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
-
-  nix.package = pkgs.nixVersions.latest;
 
   nix.settings.extra-platforms = [ "i686-linux" ];
 

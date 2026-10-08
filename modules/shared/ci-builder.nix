@@ -1,5 +1,17 @@
-{ config, inputs, ... }:
 {
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  assertions = [
+    {
+      assertion = config.nix.package.version == pkgs.hydraPackages.hydra.nix.version;
+      message = "keep nix versions in sync";
+    }
+  ];
+
   nix.settings.cores = config.nix.settings.max-jobs / 4;
 
   # match nixbot timeouts
@@ -9,6 +21,8 @@
   nix.settings.max-silent-time = toString (60 * 20 * 3); # 3x nixbot
 
   nix.settings.timeout = toString (60 * 60 * 3);
+
+  nix.package = pkgs.nixVersions.nix_2_35;
 
   sops.secrets.hydra-queue-builder = {
     key = "hydra-queue-builder-token-${config.networking.hostName}";
