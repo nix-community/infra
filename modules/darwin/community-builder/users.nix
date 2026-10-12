@@ -613,6 +613,14 @@ let
       uid = 592;
       keys = ./keys/diogotcorreia;
     }
+    {
+      # lib.maintainers.rhendric, https://github.com/rhendric
+      name = "rhendric";
+      trusted = true;
+      uid = 593;
+      shell = pkgs.zsh;
+      keys = ./keys/rhendric;
+    }
   ];
 in
 {
