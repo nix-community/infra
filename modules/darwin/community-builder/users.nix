@@ -613,6 +613,12 @@ let
       uid = 592;
       keys = ./keys/diogotcorreia;
     }
+    {
+      # lib.maintainers.mio, https://github.com/mio-19
+      name = "mio";
+      trusted = true;
+      keys = ./keys/mio;
+    }
   ];
 in
 {

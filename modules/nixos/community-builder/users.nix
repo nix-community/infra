@@ -579,6 +579,12 @@ let
       trusted = true;
       keys = ./keys/julienmalka;
     }
+    {
+      # lib.maintainers.mio, https://github.com/mio-19
+      name = "mio";
+      trusted = true;
+      keys = ./keys/mio;
+    }
   ];
 in
 {
