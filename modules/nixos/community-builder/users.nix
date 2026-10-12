@@ -579,6 +579,13 @@ let
       trusted = true;
       keys = ./keys/julienmalka;
     }
+    {
+      # lib.maintainers.rhendric, https://github.com/rhendric
+      name = "rhendric";
+      trusted = true;
+      shell = pkgs.zsh;
+      keys = ./keys/rhendric;
+    }
   ];
 in
 {
