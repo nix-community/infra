@@ -1,7 +1,6 @@
 {
   final,
   inputs,
-  prev,
   ...
 }:
 {
@@ -12,32 +11,6 @@
   hydraPackages = import ./hydra-packages.nix {
     inherit final inputs;
   };
-  nixVersions = prev.nixVersions.extend (
-    _: super:
-    let
-      prefetchInputsPatch = final.fetchpatch {
-        name = "prefetch-inputs.patch";
-        url = "https://github.com/NixOS/nix/commit/f0008d095dad1554de5f54233f8b5b3541865a89.patch";
-        hash = "sha256-3QBE/cmolXVFcak1T49fC2vftb9CJyUsoJ4Z7WDqVJ4=";
-      };
-    in
-    {
-      nixComponents_2_34 = super.nixComponents_2_34.appendPatches [
-        # backported for 2.34.9
-        prefetchInputsPatch
-      ];
-      nixComponents_2_35 = super.nixComponents_2_35.appendPatches [
-        # backported for 2.35.3
-        (final.fetchpatch {
-          name = "fetch-to-store.patch";
-          url = "https://github.com/NixOS/nix/commit/30820a54b112f4842bdb7df28b61b2a607e54033.patch";
-          hash = "sha256-Yvn9a059LvW9FkSGH20LRPlBIhmVqQxGMBXke+hxkgs=";
-        })
-        # backported for 2.35.3
-        prefetchInputsPatch
-      ];
-    }
-  );
   nixbot-cli = final.symlinkJoin {
     name = "nixbot-cli";
     paths = [ inputs.nixbot.packages.${final.stdenv.hostPlatform.system}.nixbot-cli ];
