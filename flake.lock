@@ -142,27 +142,6 @@
         "type": "github"
       }
     },
-    "mini-tmpfiles": {
-      "inputs": {
-        "nixpkgs": [
-          "nixbsd",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1742754557,
-        "narHash": "sha256-nGxgiNhA94eSl8jcQwCboJ5Ed132z8yrFdOoT+rf8bE=",
-        "owner": "nixos-bsd",
-        "repo": "mini-tmpfiles",
-        "rev": "534ee577692c7092fdcd035f89bc29b663c6f9ca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos-bsd",
-        "repo": "mini-tmpfiles",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -229,23 +208,19 @@
     },
     "nixbsd": {
       "inputs": {
-        "cppnix": [
-          "empty"
-        ],
         "flake-compat": [
           "flake-compat"
         ],
-        "mini-tmpfiles": "mini-tmpfiles",
         "nixpkgs": [
           "nixbsd-nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1791084775,
-        "narHash": "sha256-KL6AA3oKguQC8mfMhddBLBrGa7VyRljy8eD4ZdkeUyM=",
+        "lastModified": 1791928169,
+        "narHash": "sha256-m0rGA5OUWmk95kADr5XoVg0+FCoO5eSjARDTN6d99AA=",
         "owner": "qowoz",
         "repo": "nixbsd",
-        "rev": "f5ac04d22d383e5b81ecd74d6a2769ecf0fb3e73",
+        "rev": "80a11e9233fa24492a6f4a869cb7a9e20516a650",
         "type": "github"
       },
       "original": {
@@ -257,19 +232,19 @@
     },
     "nixbsd-nixpkgs": {
       "locked": {
-        "lastModified": 1790045327,
-        "narHash": "sha256-VnuETNoxhPVRtRfF7lfBXv2WNZ8mQsIrISDo9trvVbA=",
-        "ref": "freebsd-reverts",
-        "rev": "0790908469a172e895525dc8b8cee273b5fbca03",
+        "lastModified": 1791915190,
+        "narHash": "sha256-VP/6QrCMGVqVMikqOhE6N1kWBWhRhbqmJEC2AeX7pyI=",
+        "ref": "refs/heads/master",
+        "rev": "aaba2f7c983efb90f08d5d6d7627ff21dc285f2e",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/qowoz/nixpkgs"
+        "url": "https://github.com/NixOS/nixpkgs"
       },
       "original": {
-        "ref": "freebsd-reverts",
+        "rev": "aaba2f7c983efb90f08d5d6d7627ff21dc285f2e",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/qowoz/nixpkgs"
+        "url": "https://github.com/NixOS/nixpkgs"
       }
     },
     "nixpkgs": {

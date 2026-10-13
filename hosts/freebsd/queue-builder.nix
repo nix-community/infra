@@ -145,6 +145,8 @@ in
 
       path = [ config.nix.package ];
 
+      restart = true;
+
       preStart = "sleep 10";
 
       startCommand = [
