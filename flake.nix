@@ -32,8 +32,7 @@
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     nixbot.url = "github:qowoz/nixbot/infra";
-    nixbsd-nixpkgs.url = "git+https://github.com/qowoz/nixpkgs?shallow=1&ref=freebsd-reverts";
-    nixbsd.inputs.cppnix.follows = "empty";
+    nixbsd-nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=aaba2f7c983efb90f08d5d6d7627ff21dc285f2e"; # staging-next
     nixbsd.inputs.flake-compat.follows = "flake-compat";
     nixbsd.inputs.nixpkgs.follows = "nixbsd-nixpkgs";
     nixbsd.url = "github:qowoz/nixbsd/infra";
