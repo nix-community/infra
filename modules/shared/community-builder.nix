@@ -37,7 +37,7 @@
       mode = "444";
     };
 
-    # fine-grained, no permissions github token, expires 2026-10-23
+    # fine-grained, no permissions github token, expires 2027-10-16
     # from `nix-community-buildbot` (user account, not the github app)
     nix.extraOptions = ''
       !include ${config.sops.secrets.community-builder-nix-access-tokens.path}
