@@ -5,16 +5,7 @@
   ...
 }:
 let
-  llvm = pkgs.llvmPackages.overrideScope (
-    _: p: {
-      lld = p.lld.overrideAttrs (o: {
-        patches = (o.patches or [ ]) ++ [
-          # https://github.com/NixOS/nixpkgs/pull/568680
-          ./initialize-symbol-fields.patch
-        ];
-      });
-    }
-  );
+  llvm = pkgs.llvmPackages;
   kernel = pkgs.linuxKernel.kernels.linux_6_18;
 in
 {
