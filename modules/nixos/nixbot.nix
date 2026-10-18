@@ -21,6 +21,7 @@ let
     "nix-community/nix-index"
     "nix-community/nix-init"
     "nix-community/nix-melt"
+    "nix-community/nix-snapd"
     "nix-community/nix4nvchad"
     "nix-community/nixos-apple-silicon"
     "nix-community/nixos-facter"
