@@ -17,6 +17,7 @@
     nginx.domain = "auth.nix-community.org";
     nginx.virtualHosts = {
       "alertmanager.nix-community.org" = { };
+      "victoriametrics.nix-community.org" = { };
     };
     email.domains = [ "*" ];
     cookie.domain = ".nix-community.org";
