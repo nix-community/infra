@@ -48,7 +48,7 @@
   services.prometheus.alertmanager = {
     enable = true;
     webExternalUrl = "https://alertmanager.nix-community.org/";
-    listenAddress = "[::1]";
+    listenAddress = "127.0.0.1";
     extraFlags = [
       "--cluster.listen-address=''"
     ];
