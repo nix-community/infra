@@ -144,6 +144,12 @@
             nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
           }
           // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
+            let
+              inherit (pkgs.nixosTests.victoriametrics)
+                external-promscrape-config
+                vmalert
+                ;
+            in
             {
               inherit (self'.packages)
                 dnscontrol-check
@@ -166,6 +172,8 @@
               hydra-transient-retry = import "${inputs.hydra}/nixos-tests/transient-retry.nix" { inherit pkgs; };
               prometheus-alertmanager = pkgs.nixosTests.prometheus.alertmanager;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
+              victoriametrics-external-promscrape-config = external-promscrape-config;
+              victoriametrics-vmalert = vmalert;
             }
           );
         };
