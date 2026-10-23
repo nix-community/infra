@@ -1,11 +1,11 @@
 {
   config,
   inputs,
-  pkgs,
+  lib,
   ...
 }:
 {
-  systemd.services.prometheus.after = pkgs.lib.mkForce [ "network-online.target" ];
+  systemd.services.prometheus.after = lib.mkForce [ "network-online.target" ];
   systemd.services.prometheus.wants = [ "network-online.target" ];
   systemd.services.alertmanager.after = [ config.systemd.services.prometheus.name ];
 
@@ -29,7 +29,7 @@
             {
               targets =
                 builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (builtins.attrValues hosts)
-                ++ map (name: "${pkgs.lib.removeSuffix "-freebsd" name}.nix-community.org:39273") (
+                ++ map (name: "${lib.removeSuffix "-freebsd" name}.nix-community.org:39273") (
                   builtins.attrNames inputs.self.nixbsdConfigurations
                 );
               labels.org = "nix-community";
