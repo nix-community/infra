@@ -19,7 +19,7 @@ fi
 nix-store --option narinfo-cache-negative-ttl 0 --realise "$p"
 
 if ! "$p"/check-switch-inhibitors; then
-  nixos-rebuild boot --no-reexec --store-path "$p"
+  nixos-rebuild boot --store-path "$p"
   # don't use kexec if system is virtualized, reboots are fast enough
   if ! systemd-detect-virt -q; then
     kexec --load "$p"/kernel --initrd="$p"/initrd --append="$(cat "$p"/kernel-params) init=$p/init"
@@ -29,5 +29,5 @@ if ! "$p"/check-switch-inhibitors; then
   fi
 else
   cancel_reboot
-  nixos-rebuild switch --no-reexec --store-path "$p"
+  nixos-rebuild switch --store-path "$p"
 fi
