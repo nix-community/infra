@@ -26,9 +26,6 @@
   ];
 
   launchd.daemons.nixpkgs-clone = {
-    environment = {
-      inherit (config.environment.variables) NIX_SSL_CERT_FILE;
-    };
     serviceConfig = {
       StartCalendarInterval = [
         {
