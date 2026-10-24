@@ -64,6 +64,7 @@ var cnames = {
     "prometheus": "web01",
     "queue-runner.hydra": "hydra",
     "temp-cache": "build03",
+    "victoriametrics": "web01",
     // keep-sorted end
 };
 

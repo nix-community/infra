@@ -1,11 +1,11 @@
 {
   config,
   inputs,
-  pkgs,
+  lib,
   ...
 }:
 {
-  systemd.services.prometheus.after = pkgs.lib.mkForce [ "network-online.target" ];
+  systemd.services.prometheus.after = lib.mkForce [ "network-online.target" ];
   systemd.services.prometheus.wants = [ "network-online.target" ];
   systemd.services.alertmanager.after = [ config.systemd.services.prometheus.name ];
 
@@ -17,25 +17,7 @@
       "--storage.tsdb.retention.time=30d"
     ];
     scrapeConfigs = [
-      {
-        job_name = "telegraf";
-        scrape_interval = "60s";
-        metrics_path = "/metrics";
-        static_configs =
-          let
-            hosts = (import "${inputs.self}/modules/shared/known-hosts.nix").programs.ssh.knownHosts;
-          in
-          [
-            {
-              targets =
-                builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (builtins.attrValues hosts)
-                ++ map (name: "${pkgs.lib.removeSuffix "-freebsd" name}.nix-community.org:39273") (
-                  builtins.attrNames inputs.self.nixbsdConfigurations
-                );
-              labels.org = "nix-community";
-            }
-          ];
-      }
+      (import ./scrape-configs.nix { inherit inputs lib; })
     ];
     alertmanagers = [ { static_configs = [ { targets = [ "localhost:9093" ]; } ]; } ];
   };
@@ -48,7 +30,7 @@
   services.prometheus.alertmanager = {
     enable = true;
     webExternalUrl = "https://alertmanager.nix-community.org/";
-    listenAddress = "[::1]";
+    listenAddress = "127.0.0.1";
     extraFlags = [
       "--cluster.listen-address=''"
     ];
