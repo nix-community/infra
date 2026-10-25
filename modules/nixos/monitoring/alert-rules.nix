@@ -1,5 +1,11 @@
 { lib, ... }:
 {
+  # using prometheus.ruleFiles for victoriametrics, not the prometheus service
+  services.prometheus = {
+    enable = false;
+    checkConfig = true;
+  };
+
   srvos.prometheus = {
     ruleGroups.srvosAlerts.alertRules =
       (lib.genAttrs

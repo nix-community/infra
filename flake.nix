@@ -170,7 +170,6 @@
               hydra-install = import "${inputs.hydra}/nixos-tests/install.nix" { inherit pkgs; };
               hydra-limits = import "${inputs.hydra}/nixos-tests/limits.nix" { inherit pkgs; };
               hydra-transient-retry = import "${inputs.hydra}/nixos-tests/transient-retry.nix" { inherit pkgs; };
-              prometheus-alertmanager = pkgs.nixosTests.prometheus.alertmanager;
               quadlet-nix = inputs'.quadlet-nix.checks.nixos;
               victoriametrics-external-promscrape-config = external-promscrape-config;
               victoriametrics-vmalert = vmalert;

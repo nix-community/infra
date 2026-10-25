@@ -1,29 +1,6 @@
 {
-  config,
-  inputs,
-  lib,
-  ...
-}:
-{
-  systemd.services.prometheus.after = lib.mkForce [ "network-online.target" ];
-  systemd.services.prometheus.wants = [ "network-online.target" ];
-  systemd.services.alertmanager.after = [ config.systemd.services.prometheus.name ];
-
-  services.prometheus = {
-    enable = true;
-    checkConfig = true;
-    webExternalUrl = "https://prometheus.nix-community.org/";
-    extraFlags = [
-      "--storage.tsdb.retention.time=30d"
-    ];
-    scrapeConfigs = [
-      (import ./scrape-configs.nix { inherit inputs lib; })
-    ];
-  };
-
   services.telegraf.extraConfig.inputs.prometheus.urls = [
-    "http://localhost:9090/metrics" # prometheus
-    "http://localhost:9093/metrics" # alertmanager
+    "http://localhost:9093/metrics"
   ];
 
   services.prometheus.alertmanager = {
