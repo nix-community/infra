@@ -113,11 +113,11 @@
     "hydra": {
       "flake": false,
       "locked": {
-        "lastModified": 1792620560,
-        "narHash": "sha256-otqb8SjVX9TlPDk0J2HhI64u0mbYxOkzkHO9FxmwKDk=",
+        "lastModified": 1792902064,
+        "narHash": "sha256-c3QyU6UMJ8uxXu10oEpMKOhobiXJ29USU7Nf1eK7Ph4=",
         "owner": "qowoz",
         "repo": "hydra",
-        "rev": "8ced544002cf5f976571c76951e452070f2c5ff1",
+        "rev": "ecbfc8bdb3b3d929b78443a81a46315c1109de6b",
         "type": "github"
       },
       "original": {
@@ -192,11 +192,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792187761,
-        "narHash": "sha256-O4fnBjj3nlzyIsdvJSjFx4PZPq4v2ADRI1LlDuLlr7Q=",
+        "lastModified": 1792963005,
+        "narHash": "sha256-tLTRsEfcEpWq8TNRzzsTsvdFhv02mfxD5AHcLn1Khxg=",
         "owner": "qowoz",
         "repo": "nixbot",
-        "rev": "ad5c37cf2714bbe89900be0101d5fff79df84a2b",
+        "rev": "8400f585556106fa84d786036345d395da64ecc2",
         "type": "github"
       },
       "original": {
