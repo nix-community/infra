@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.self.darwinModules.ci-builder
-    inputs.self.darwinModules.remote-builder
   ];
 
   nix.settings.max-jobs = 10;
