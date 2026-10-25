@@ -38,7 +38,7 @@ in
     };
     onEvent.comment.dnscontrol-push = dnscontrol {
       when = {
-        commands = [ "/nixbot dnscontrol push" ];
+        commands = [ "nixbot dnscontrol push" ];
         modified = [ "dnscontrol/*" ];
         permission = "write";
         status = [ "succeeded" ];
