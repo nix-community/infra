@@ -24,6 +24,7 @@ let
   // builtins.mapAttrs (_: value: (map (x: keys.hosts.${x}) value)) {
     "modules/secrets/backup.yaml" = [
       "build03"
+      "web01"
     ];
     "modules/secrets/community-builder.yaml" = [
       "build01"
