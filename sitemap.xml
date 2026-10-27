@@ -4,19 +4,7 @@
         <loc>https://nix-community.org/</loc>
       </url>
       <url>
-        <loc>https://nix-community.org/open-collective/</loc>
-      </url>
-      <url>
-        <loc>https://nix-community.org/sponsors/</loc>
-      </url>
-      <url>
-        <loc>https://nix-community.org/continuous-integration/</loc>
-      </url>
-      <url>
-        <loc>https://nix-community.org/namespace-actions/</loc>
-      </url>
-      <url>
-        <loc>https://nix-community.org/package-sets/</loc>
+        <loc>https://nix-community.org/administrators/</loc>
       </url>
       <url>
         <loc>https://nix-community.org/cache/</loc>
@@ -25,21 +13,33 @@
         <loc>https://nix-community.org/community-builders/</loc>
       </url>
       <url>
-        <loc>https://nix-community.org/other-services/</loc>
+        <loc>https://nix-community.org/contact/</loc>
+      </url>
+      <url>
+        <loc>https://nix-community.org/continuous-integration/</loc>
       </url>
       <url>
         <loc>https://nix-community.org/faq/</loc>
       </url>
       <url>
-        <loc>https://nix-community.org/administrators/</loc>
-      </url>
-      <url>
-        <loc>https://nix-community.org/contact/</loc>
-      </url>
-      <url>
         <loc>https://nix-community.org/infrastructure/</loc>
       </url>
       <url>
+        <loc>https://nix-community.org/namespace-actions/</loc>
+      </url>
+      <url>
+        <loc>https://nix-community.org/open-collective/</loc>
+      </url>
+      <url>
+        <loc>https://nix-community.org/other-services/</loc>
+      </url>
+      <url>
+        <loc>https://nix-community.org/package-sets/</loc>
+      </url>
+      <url>
         <loc>https://nix-community.org/security/</loc>
+      </url>
+      <url>
+        <loc>https://nix-community.org/sponsors/</loc>
       </url>
 </urlset>
