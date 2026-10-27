@@ -34,6 +34,8 @@ in
   boot.loader.systemd-boot.bootCounting.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  systemd.services.systemd-bless-boot.enable = false;
+
   # suppress warning, https://github.com/NixOS/nixpkgs/commit/dfd0f18d9df417bb185d95ac806c220049fbfca1
   boot.zfs.forceImportRoot = true;
 

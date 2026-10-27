@@ -18,8 +18,6 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
-  systemd.services.systemd-bless-boot.enable = false;
-
   nix.settings.extra-platforms = [ "i686-linux" ];
 
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
