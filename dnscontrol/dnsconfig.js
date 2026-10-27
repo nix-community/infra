@@ -56,6 +56,7 @@ var cnames = {
     "build-box": "build01",
     "darwin-build-box": "darwin01",
     "docker": "nix-community.docker.scarf.sh.", // Used by nix-community/nixpkgs-docker
+    "grafana": "web01",
     "hydra": "build03",
     "landscape": "web01",
     "nixbot": "build03",
