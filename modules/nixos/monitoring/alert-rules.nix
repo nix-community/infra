@@ -19,6 +19,8 @@
           annotations.description = "{{$labels.host}}: {{$labels.name}} was not run in the last hour";
         };
 
+        Http.for = "10m";
+
         Load15.expr = lib.mkForce ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
 
         RASDaemon = {
