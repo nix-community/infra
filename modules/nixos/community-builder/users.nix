@@ -586,6 +586,13 @@ let
       shell = pkgs.zsh;
       keys = ./keys/rhendric;
     }
+    {
+      # lib.maintainers.tmarkus, https://github.com/hesiod
+      name = "tmarkus";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/tmarkus;
+    }
   ];
 in
 {
