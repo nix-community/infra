@@ -63,6 +63,8 @@
           name = "victoriametrics";
           type = "victoriametrics-metrics-datasource";
           url = "http://localhost:8428";
+          isDefault = true;
+          jsonData.vmuiUrl = "https://victoriametrics.nix-community.org/vmui/";
         }
       ];
     };
