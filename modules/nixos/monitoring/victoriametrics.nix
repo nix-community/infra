@@ -14,9 +14,11 @@
     enable = true;
     settings = {
       "datasource.url" = "http://localhost:8428";
+      "remoteRead.url" = "http://localhost:8428";
+      "remoteWrite.url" = "http://localhost:8428";
       "external.url" = "https://victoriametrics.nix-community.org";
       "httpListenAddr" = "127.0.0.1:8880";
-      "notifier.blackhole" = true; # still using prometheus so disable alerts for now
+      "notifier.url" = [ "http://localhost:9093" ];
       rule = config.services.prometheus.ruleFiles;
     };
   };
