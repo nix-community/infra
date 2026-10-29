@@ -7,6 +7,7 @@ DNS is managed by dnscontrol in this [file](https://github.com/nix-community/inf
 - [alertmanager.nix-community.org/](https://alertmanager.nix-community.org/)
 - [grafana.nix-community.org/](https://grafana.nix-community.org/)
 - [prometheus.nix-community.org/](https://prometheus.nix-community.org/)
+- [victoriametrics.nix-community.org/](https://victoriametrics.nix-community.org/)
 
 #### nur-update
 
