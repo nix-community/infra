@@ -18,6 +18,10 @@
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
 
+  services.nginx.eventsConfig = ''
+    worker_connections 1024;
+  '';
+
   nix.settings.extra-platforms = [ "i686-linux" ];
 
   systemd.settings.Manager.RuntimeWatchdogSec = "30s";
