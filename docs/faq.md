@@ -4,7 +4,7 @@ Ideally the type of projects that are accepted have some level of maturity and c
 The goal is to have as much projects maintained and not for the org to become a graveyard.
 
 We don't have a strict procedure.
-For now, ping one of the [nix-community administrators](administrators.md).
+Start a [discussion](https://github.com/orgs/nix-community/discussions).
 
 ### What are the rules of engagement?
 
@@ -25,4 +25,4 @@ The maintainer of a project gets admin access to the project they maintain.
 The maintainer can request that more people be invited into the org so they can join their projects team.
 
 If you see a project that is under-maintained, submit PRs to fix it as if it was your own project.
-If the PRs don't get merged, ping the [nix-community administrators](administrators.md).
+If the PRs don't get merged, open an issue on the repo and ping the [nix-community administrators](administrators.md).
