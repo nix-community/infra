@@ -14,9 +14,11 @@
     enable = true;
     settings = {
       "datasource.url" = "http://localhost:8428";
+      "remoteRead.url" = "http://localhost:8428";
+      "remoteWrite.url" = "http://localhost:8428";
       "external.url" = "https://victoriametrics.nix-community.org";
       "httpListenAddr" = "127.0.0.1:8880";
-      "notifier.blackhole" = true; # still using prometheus so disable alerts for now
+      "notifier.url" = [ "http://localhost:9093" ];
       rule = config.services.prometheus.ruleFiles;
     };
   };
@@ -29,7 +31,25 @@
     retentionPeriod = "30d";
     prometheusConfig = {
       scrape_configs = [
-        (import ./scrape-configs.nix { inherit inputs lib; })
+        {
+          job_name = "telegraf";
+          scrape_interval = "60s";
+          metrics_path = "/metrics";
+          static_configs =
+            let
+              hosts = (import "${inputs.self}/modules/shared/known-hosts.nix").programs.ssh.knownHosts;
+            in
+            [
+              {
+                targets =
+                  builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (builtins.attrValues hosts)
+                  ++ map (name: "${lib.removeSuffix "-freebsd" name}.nix-community.org:39273") (
+                    builtins.attrNames inputs.self.nixbsdConfigurations
+                  );
+                labels.org = "nix-community";
+              }
+            ];
+        }
       ];
     };
   };

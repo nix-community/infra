@@ -62,7 +62,6 @@ var cnames = {
     "nixbot": "build03",
     "nl.meet": "nixnl.codeberg.page.",
     "nur-update": "web01",
-    "prometheus": "web01",
     "queue-runner.hydra": "hydra",
     "temp-cache": "build03",
     "victoriametrics": "web01",
