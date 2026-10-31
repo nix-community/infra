@@ -19,7 +19,6 @@
     scrapeConfigs = [
       (import ./scrape-configs.nix { inherit inputs lib; })
     ];
-    alertmanagers = [ { static_configs = [ { targets = [ "localhost:9093" ]; } ]; } ];
   };
 
   services.telegraf.extraConfig.inputs.prometheus.urls = [
