@@ -18,7 +18,6 @@ let
     "nix-community/neovim-nightly-overlay"
     "nix-community/nh"
     "nix-community/nix-direnv"
-    "nix-community/nix-index"
     "nix-community/nix-init"
     "nix-community/nix-melt"
     "nix-community/nix-snapd"
