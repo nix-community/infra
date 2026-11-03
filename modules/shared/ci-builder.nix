@@ -31,7 +31,7 @@
   };
 
   services.hydra-queue-builder-dev = {
-    enable = true;
+    enable = !pkgs.stdenv.hostPlatform.isDarwin;
     authorizationFile = config.sops.secrets.hydra-queue-builder.path;
     queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
     settings = {
