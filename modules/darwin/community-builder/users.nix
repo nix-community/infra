@@ -629,6 +629,14 @@ let
       shell = pkgs.fish;
       keys = ./keys/tmarkus;
     }
+    # lib.maintainers.RossSmyth, https://github.com/RossSmyth
+    {
+      name = "rsmyth";
+      trusted = true;
+      uid = 595;
+      shell = pkgs.fish;
+      keys = ./keys/rsmyth;
+    }
   ];
 in
 {
