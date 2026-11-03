@@ -7,20 +7,16 @@
     ./hydra-ad-hoc.nix
     ./hydra-queue-runner.nix
     ./hydra-post-init.nix
+    ./nginx.nix
     ./postgresql.nix
     inputs.self.nixosModules.ci-builder
     inputs.self.nixosModules.disko-zfs-systemd-boot
     inputs.self.nixosModules.freebsd-builder
     inputs.self.nixosModules.github-org-backup
-    inputs.self.nixosModules.nginx
     inputs.self.nixosModules.nixbot
     inputs.self.nixosModules.watch-store
     inputs.srvos.nixosModules.hardware-hetzner-online-amd
   ];
-
-  services.nginx.eventsConfig = ''
-    worker_connections 1024;
-  '';
 
   nix.settings.extra-platforms = [ "i686-linux" ];
 
