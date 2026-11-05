@@ -167,6 +167,7 @@
                 harmonia
                 ;
               inherit (inputs'.nixbot.checks) nixbot;
+              grafana = pkgs.nixosTests.grafana.provision;
               hydra-install = import "${inputs.hydra}/nixos-tests/install.nix" { inherit pkgs; };
               hydra-limits = import "${inputs.hydra}/nixos-tests/limits.nix" { inherit pkgs; };
               hydra-transient-retry = import "${inputs.hydra}/nixos-tests/transient-retry.nix" { inherit pkgs; };
