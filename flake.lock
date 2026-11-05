@@ -113,11 +113,11 @@
     "hydra": {
       "flake": false,
       "locked": {
-        "lastModified": 1793740662,
-        "narHash": "sha256-dGTkPK5XE9QIFM4AkD/80tRjJFM3T2M3pAZ65RvcQCM=",
+        "lastModified": 1793838292,
+        "narHash": "sha256-z+zjh8s/w+xUad/uWVeQrOpIm9QkKZ5uh6y4iXBByzc=",
         "owner": "qowoz",
         "repo": "hydra",
-        "rev": "419341d147365eb081e1e58a55a2697d60322aa2",
+        "rev": "2089ad3232ef2bdaf2e67ca2aa284be47309fdcf",
         "type": "github"
       },
       "original": {
