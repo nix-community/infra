@@ -126,6 +126,7 @@
 
           checks = {
             inherit (self') formatter;
+            inherit (pkgs.hydraPackages) hydra-rust-tests;
           }
           // lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells
           //
@@ -141,7 +142,6 @@
           )
           // pkgs.lib.optionalAttrs (system == "aarch64-linux" || system == "x86_64-linux") {
             nixosTests-kernel-clang-lto = pkgs.callPackage ./dev/kernel-test.nix { inherit inputs; };
-            inherit (pkgs.hydraPackages) hydra-rust-tests;
           }
           // pkgs.lib.optionalAttrs (system == "x86_64-linux") (
             let
