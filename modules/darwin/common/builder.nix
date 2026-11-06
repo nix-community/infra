@@ -5,6 +5,15 @@
   ...
 }:
 {
+  nix.settings.sandbox = "relaxed";
+
+  # ensure rosetta is disabled
+  nix.settings.extra-platforms = [ ];
+
+  # disable apple-virt, nixos-tests: the required infra isn't set up and
+  # we don't want to run them on oversubscribed darwin hosts anyway
+  nix.settings.system-features = [ "big-parallel" ];
+
   nix.gc.automatic = false;
 
   launchd.daemons.free-space = {
