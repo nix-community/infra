@@ -19,6 +19,8 @@
           annotations.description = "{{$labels.host}}: {{$labels.name}} was not run in the last hour";
         };
 
+        HostMemoryUnderMemoryPressure.expr = lib.mkForce ''rate(kernel_vmstat_pgmajfault{host!~"build.*"}[1m]) > 1000'';
+
         Http.for = "10m";
 
         Load15.expr = lib.mkForce ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
