@@ -637,6 +637,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/rsmyth;
     }
+    # lib.maintainers.bdd, https://github.com/bdd
+    {
+      name = "bdd";
+      trusted = true;
+      uid = 596;
+      keys = ./keys/bdd;
+    }
   ];
 in
 {

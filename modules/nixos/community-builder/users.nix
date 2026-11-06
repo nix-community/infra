@@ -600,6 +600,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/rsmyth;
     }
+    # lib.maintainers.bdd, https://github.com/bdd
+    {
+      name = "bdd";
+      trusted = true;
+      shell = pkgs.zsh;
+      keys = ./keys/bdd;
+    }
   ];
 in
 {
