@@ -288,17 +288,14 @@
       "inputs": {
         "flake-parts": [
           "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1793832538,
-        "narHash": "sha256-hPtKxoRZ/vNgrgOpQBeJ9V0VIRrr5D+/CNNbYbZHXlI=",
+        "lastModified": 1793890260,
+        "narHash": "sha256-oBREOPcpvh6L3jOPxJ8VVyrO3MwIwCyhfEcf+6+InS0=",
         "owner": "mirkolenz",
         "repo": "quadlet-nix",
-        "rev": "5d19d152b8ecfc7218a086f211473ebba3c9ae83",
+        "rev": "7fed30939938e76c15ade81ddb5221017783987b",
         "type": "github"
       },
       "original": {
