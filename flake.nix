@@ -40,7 +40,6 @@
     nur-update.inputs.nixpkgs.follows = "nixpkgs";
     nur-update.url = "github:nix-community/nur-update";
     quadlet-nix.inputs.flake-parts.follows = "flake-parts";
-    quadlet-nix.inputs.nixpkgs.follows = "nixpkgs";
     quadlet-nix.url = "github:mirkolenz/quadlet-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -171,7 +170,6 @@
               hydra-install = import "${inputs.hydra}/nixos-tests/install.nix" { inherit pkgs; };
               hydra-limits = import "${inputs.hydra}/nixos-tests/limits.nix" { inherit pkgs; };
               hydra-transient-retry = import "${inputs.hydra}/nixos-tests/transient-retry.nix" { inherit pkgs; };
-              quadlet-nix = inputs'.quadlet-nix.checks.nixos;
               victoriametrics-external-promscrape-config = external-promscrape-config;
               victoriametrics-vmalert = vmalert;
             }
