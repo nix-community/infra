@@ -600,6 +600,12 @@ let
       shell = pkgs.fish;
       keys = ./keys/rsmyth;
     }
+    {
+      # lib.maintainers.anthonyroussel, https://github.com/anthonyroussel
+      name = "anthonyroussel";
+      trusted = true;
+      keys = ./keys/anthonyroussel;
+    }
   ];
 in
 {
