@@ -152,7 +152,10 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
         "var/lib/secrets/ssh_host_ed25519_key",
         f'["ssh_host_ed25519_key"]["{flake_attr}"]',
     )
-    decrypt("var/lib/secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]')
+    if not flake_attr.startswith("darwin"):
+        decrypt(
+            "var/lib/secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]'
+        )
 
 
 @task
