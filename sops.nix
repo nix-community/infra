@@ -47,6 +47,9 @@ let
     }) keys.hosts
   );
 in
+assert builtins.all (key: builtins.match "^age1pq.*" key != null) (
+  builtins.attrValues keys.admins ++ builtins.attrValues keys.hosts
+);
 {
   creation_rules = renderPermissions sopsPermissions;
 }

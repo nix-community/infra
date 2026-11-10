@@ -4,7 +4,7 @@
 
 - Add their user and ssh key to [users](../users) as member of the `trusted` and `wheel` groups.
 
-- Add their age key to [sops.json](../sops.json) and run `inv update-sops-files`.
+- Add their post-quantum age key to [sops.json](../sops.json) and run `inv update-sops-files`.
 
 - Add their email in [terraform/locals.tf](../terraform/locals.tf), this will give them access to:
 
