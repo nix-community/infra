@@ -29,11 +29,8 @@
       hash = "sha256-c/9qZ921J0dtyo5+thVpchTOWVAVqeZRpNuhvYTCBow=";
     };
     cargoHash = "sha256-FwQbHgixrPWCw/nMqmUAQ9RRM1Vx3mI4/zUxkE+pgCM=";
-    env = {
-      OPENSSL_DIR = "${final.lib.getDev final.openssl}";
-      OPENSSL_LIB_DIR = "${final.lib.getLib final.openssl}/lib";
-      OPENSSL_NO_VENDOR = 1;
-    };
+    nativeBuildInputs = [ final.pkg-config ];
+    buildInputs = [ final.openssl ];
     doCheck = false;
   };
 }
