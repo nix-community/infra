@@ -22,8 +22,6 @@
 
   nix.settings.timeout = toString (60 * 60 * 3);
 
-  nix.package = pkgs.nixVersions.nix_2_35;
-
   sops.secrets.hydra-queue-builder = {
     key = "hydra-queue-builder-token-${config.networking.hostName}";
     owner = "hydra-queue-builder";
