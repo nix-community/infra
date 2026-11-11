@@ -39,6 +39,7 @@
   documentation.man.enable = false;
   documentation.nixos.enable = false;
 
+  system.disableInstallerTools = true;
   system.includeInstallerDependencies = false;
 
   users.users.root.initialPassword = "toor";
