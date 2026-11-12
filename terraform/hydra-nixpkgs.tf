@@ -1,6 +1,6 @@
 locals {
-  stable          = "26.05"
-  stable_previous = "25.11"
+  stable          = "26.11"
+  stable_previous = "26.05"
 
   jobset = {
     armv7l-linux = {
