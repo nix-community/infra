@@ -637,6 +637,13 @@ let
       shell = pkgs.fish;
       keys = ./keys/rsmyth;
     }
+    # lib.maintainers.pmw, https://github.com/philipmw
+    {
+      name = "pmw";
+      trusted = true;
+      uid = 596;
+      keys = ./keys/pmw;
+    }
   ];
 in
 {
