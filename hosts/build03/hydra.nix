@@ -6,10 +6,6 @@
   ...
 }:
 {
-  disabledModules = [
-    "services/continuous-integration/hydra/default.nix"
-  ];
-
   imports = [
     (import "${inputs.hydra}/nixos-modules/evaluator-module.nix")
     (import "${inputs.hydra}/nixos-modules/web-app.nix")
