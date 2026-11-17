@@ -606,6 +606,13 @@ let
       trusted = true;
       keys = ./keys/anthonyroussel;
     }
+    {
+      # lib.maintainers.iedame, https://github.com/iedame
+      name = "iedame";
+      trusted = true;
+      shell = pkgs.zsh;
+      keys = ./keys/iedame;
+    }
   ];
 in
 {

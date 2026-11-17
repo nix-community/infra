@@ -637,6 +637,14 @@ let
       shell = pkgs.fish;
       keys = ./keys/rsmyth;
     }
+    {
+      # lib.maintainers.iedame, https://github.com/iedame
+      name = "iedame";
+      trusted = true;
+      uid = 596;
+      shell = pkgs.zsh;
+      keys = ./keys/iedame;
+    }
   ];
 in
 {
