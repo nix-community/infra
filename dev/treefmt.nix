@@ -16,9 +16,14 @@ in
     ruff-format.enable = true;
     rumdl-format.enable = true;
     shellcheck.enable = true;
-    shfmt.enable = true;
     statix.enable = true;
     terraform.enable = true;
+  };
+
+  programs.shfmt = {
+    enable = true;
+    indent_size = 2;
+    simplify = true;
   };
 
   programs.yamlfmt = {
