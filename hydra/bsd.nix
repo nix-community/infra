@@ -21,16 +21,20 @@ let
     })
     all
     mapTestOn
+    packagePlatforms
     ;
 in
 mapTestOn {
   # keep-sorted start
   cargo = all;
-  freebsd.sys = all;
+  freebsd = packagePlatforms (packageSet { }).freebsd;
   git = all;
   go = all;
+  nginx = all;
   nixVersions.latest = all;
-  nixVersions.nix_2_35 = all; # first version with sandboxing
+  nixVersions.stable = all;
+  openssh = all;
+  perl = all;
   postgresql = all;
   python3 = all;
   stdenv = all;
