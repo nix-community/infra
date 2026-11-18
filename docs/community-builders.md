@@ -22,7 +22,7 @@ See [here](infrastructure.md#community-builders) for details about the hardware.
 
 ### Access
 
-We will grant access to well known members of the community, and people well known members in the community trust.
+We will grant access to _**nixpkgs committers**_ and, _at our discretion_, other well known members of the community.
 
 Add your username to [`nixos/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/nixos/community-builder/users.nix) or [`darwin/community-builder/users.nix`](https://github.com/nix-community/infra/blob/master/modules/darwin/community-builder/users.nix).
 
