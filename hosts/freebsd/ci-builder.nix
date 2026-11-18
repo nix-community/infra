@@ -12,6 +12,9 @@
     enable = true;
     authorizationFile = "/mnt/secrets/freebsd-queue-builder-token";
     queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
+    settings = {
+      buildCores = 4;
+    };
   };
 
   init.services.hydra-queue-builder-dev = {
