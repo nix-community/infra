@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   imports = [
-    ./builders.nix
     ./cache-harmonia.nix
     ./hydra.nix
     ./hydra-ad-hoc.nix
