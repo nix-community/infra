@@ -8,6 +8,7 @@
 {
   imports = [
     (import "${inputs.hydra}/nixos-modules/evaluator-module.nix")
+    (import "${inputs.hydra}/nixos-modules/notify-module.nix")
     (import "${inputs.hydra}/nixos-modules/web-app.nix")
     (import "${inputs.hydra}/nixos-modules/ws-server-module.nix")
   ];
@@ -38,6 +39,9 @@
     serviceConfig.ExecStart = "${pkgs.findutils}/bin/find /var/lib/hydra/build-logs -type f -mtime +30 -delete";
   };
 
+  # notify enabled here just for hydra-compress-logs, systemd service disabled below
+  services.hydra-notify-dev.enable = true;
+
   # not currently needed, hydra-notify would need to be enabled for declarative jobsets
   systemd.services = {
     hydra-evaluator-check-space.enable = false;
@@ -53,6 +57,8 @@
   services.hydra-evaluator-dev = {
     enable = true;
     settings = {
+      evaluator_max_memory_size = 4096;
+      evaluator_workers = 8;
       max_concurrent_evals = 2;
     };
   };
@@ -64,8 +70,6 @@
     port = 3000;
     useSubstitutes = true;
     extraConfig = ''
-      evaluator_max_memory_size = 4096
-      evaluator_workers = 8
       max_output_size = ${toString (8 * 1024 * 1024 * 1024)}
 
       github_client_id = Ov23ligaoPhIyuYCJ1pp
