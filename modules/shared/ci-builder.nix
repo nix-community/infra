@@ -32,8 +32,5 @@
     enable = true;
     authorizationFile = config.sops.secrets.hydra-queue-builder.path;
     queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
-    settings = {
-      maxJobs = 4;
-    };
   };
 }
