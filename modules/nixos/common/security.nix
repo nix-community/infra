@@ -10,7 +10,7 @@
   services.openssh = {
     hostKeys = [
       {
-        path = "/var/lib/ssh_secrets/ssh_host_ed25519_key";
+        path = "/var/lib/secrets/ssh_host_ed25519_key";
         type = "ed25519";
       }
     ];
