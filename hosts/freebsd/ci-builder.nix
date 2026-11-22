@@ -17,11 +17,4 @@
   init.services.hydra-queue-builder-dev = {
     requiredFiles = [ config.services.hydra-queue-builder-dev.authorizationFile ];
   };
-
-  virtualisation.vmVariant.virtualisation.sharedDirectories.secrets = {
-    source = "/var/lib/vm-builder/secrets";
-    target = "/mnt/secrets";
-    type = "9p";
-    readOnly = true;
-  };
 }

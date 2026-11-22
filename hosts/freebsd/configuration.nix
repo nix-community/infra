@@ -123,20 +123,7 @@
     };
 
   virtualisation.vmVariant.virtualisation = {
-    diskImage = "./disk.qcow2";
     rootSize = "100g";
     graphics = false;
-    forwardPorts = [
-      {
-        from = "host";
-        host.port = 31022;
-        guest.port = 22;
-      }
-      {
-        from = "host";
-        host.port = 39273;
-        guest.port = 9273;
-      }
-    ];
   };
 }
