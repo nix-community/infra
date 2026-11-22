@@ -103,6 +103,12 @@ let
       keys = ./keys/grimmauld;
     }
     {
+      name = "guylamar2006";
+      trusted = true;
+      shell = pkgs.fish;
+      keys = ./keys/guylamar2006;
+    }
+    {
       name = "hadilq";
       trusted = true;
       keys = ./keys/hadilq;

@@ -5,6 +5,13 @@ let
   # 2. Create a file in `keys` named your user name that contains your SSH key(s), separated by newlines.
   users = [
     {
+      name = "guylamar2006";
+      trusted = true;
+      uid = 501;
+      shell = pkgs.fish;
+      keys = ./keys/guylamar2006;
+    }
+    {
       name = "winter";
       trusted = true;
       uid = 502;
