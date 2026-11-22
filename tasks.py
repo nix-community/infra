@@ -19,41 +19,41 @@ def deploy(c: Context, hosts: str) -> None:
     """
     g = DeployGroup(get_hosts(hosts))
 
+    # fix for nix copy in 2.35
+    c.run("nix flake archive")
+
+    res = subprocess.run(
+        ["nix", "flake", "metadata", "--json"],
+        text=True,
+        check=True,
+        stdout=subprocess.PIPE,
+    )
+    data = json.loads(res.stdout)
+    path = data["path"]
+
+    send = (
+        "nix flake archive"
+        if any(
+            (
+                n.get("locked", {}).get("type") == "path"
+                or n.get("locked", {}).get("url", "").startswith("file:")
+            )
+            for n in data["locks"]["nodes"].values()
+        )
+        else f"nix copy {path}"
+    )
+
     def deploy(h: DeployHost) -> None:
-        if "darwin" in h.host:
+        if h.host.startswith("darwin"):
             command = "sudo -H darwin-rebuild"
             target = f"{h.user}@{h.host}"
         else:
             command = "nixos-rebuild --elevate=run0"
             target = f"{h.host}"
 
-        # fix for nix copy in 2.35
-        h.run_local("nix flake archive")
+        h.run_local(f"{send} --to ssh-ng://{target}")
 
-        res = subprocess.run(
-            ["nix", "flake", "metadata", "--json"],
-            text=True,
-            check=True,
-            stdout=subprocess.PIPE,
-        )
-        data = json.loads(res.stdout)
-        path = data["path"]
-
-        send = (
-            "nix flake archive"
-            if any(
-                (
-                    n.get("locked", {}).get("type") == "path"
-                    or n.get("locked", {}).get("url", "").startswith("file:")
-                )
-                for n in data["locks"]["nodes"].values()
-            )
-            else f"nix copy {path}"
-        )
-
-        h.run_local(f"{send} --to ssh://{target}")
-
-        hostname = h.host.replace(".nix-community.org", "")
+        hostname = h.host.removesuffix(".nix-community.org")
         h.run(
             f"{command} switch --option accept-flake-config true --flake {path}#{hostname}"
         )
