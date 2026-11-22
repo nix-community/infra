@@ -61,7 +61,9 @@
                 targets =
                   builtins.concatMap (host: map (name: "${name}:9273") host.hostNames) (builtins.attrValues hosts)
                   ++ map (name: "${lib.removeSuffix "-freebsd" name}.nix-community.org:39273") (
-                    builtins.attrNames inputs.self.nixbsdConfigurations
+                    builtins.filter (name: lib.hasPrefix "build" name) (
+                      builtins.attrNames inputs.self.nixbsdConfigurations
+                    )
                   );
                 labels.org = "nix-community";
               }

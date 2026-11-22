@@ -179,7 +179,7 @@
       flake.nixbsdConfigurations =
         let
           inherit (inputs.nixbsd.lib) nixbsdSystem;
-          common = [ ./hosts/freebsd/configuration.nix ];
+          common = [ ./hosts/freebsd/build.nix ];
           specialArgs = { inherit inputs; };
         in
         {
@@ -200,6 +200,10 @@
                 virtualisation.vmVariant.virtualisation.memorySize = 128 * 1024; # 1/2
               }
             ];
+          };
+          freebsd-netboot = nixbsdSystem {
+            inherit specialArgs;
+            modules = [ ./hosts/freebsd/netboot.nix ];
           };
         };
     };
