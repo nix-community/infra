@@ -1,6 +1,6 @@
-arch=$(uname -m)
 hostname=$(uname -n)
-p=$(curl -L "https://nixbot.nix-community.org/nix-outputs/github/nix-community/infra/master/checks.$arch-linux.host-$hostname")
+o=$(curl -fLs "https://nixbot.nix-community.org/nix-outputs/github/nix-community/infra/master/checks.x86_64-linux.outpaths")
+p=$(jq -r --arg host "$hostname" '.[$host]' "$o")
 
 export NIXOS_REBUILD_NO_SYSTEMD_RUN=1
 
