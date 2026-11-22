@@ -156,6 +156,53 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
 
 
 @task
+def deploy_keys(c: Context, hosts: str) -> None:
+    """
+    Decrypt and deploy host private keys. Use inv deploy-keys --hosts build01,darwin01
+    """
+    g = DeployGroup(get_hosts(hosts))
+
+    def keys(h: DeployHost) -> None:
+        hostname = h.host.removesuffix(".nix-community.org")
+        key_paths = ["var/lib/secrets/ssh_host_ed25519_key"]
+
+        if h.host.startswith("darwin"):
+            target = f"{h.user}@{h.host}"
+            owner, group, mode = "root", "wheel", "600"
+        else:
+            target = f"{h.host}"
+            owner, group, mode = "root", "root", "400"
+            key_paths.append("var/lib/secrets/initrd_host_ed25519_key")
+
+        h.run("sudo mkdir -p /var/lib/secrets")
+
+        with TemporaryDirectory() as tmpdir:
+            decrypt_host_key(hostname, tmpdir)
+
+            for key in key_paths:
+                local = Path(tmpdir) / key
+                remote = f"/{key}"
+
+                install_cmd: list[str] = [
+                    "ssh",
+                    target,
+                    *h._build_ssh_opts(verbose_ssh=False),  # noqa: SLF001
+                    "--",
+                    f"sudo sh -c 'umask 077 && install -o {owner} -g {group} -m {mode} /dev/stdin {remote}'",
+                ]
+
+                print(f"$ {install_cmd}")
+
+                subprocess.run(
+                    install_cmd,
+                    input=local.read_bytes(),
+                    check=True,
+                )
+
+    g.run_function(keys)
+
+
+@task
 def install(c: Context, flake_attr: str, hostname: str) -> None:
     """
     Decrypt host private key, install with nixos-anywhere. Use inv install --flake-attr build01 --hostname build01.nix-community.org
