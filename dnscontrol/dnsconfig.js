@@ -86,13 +86,6 @@ D("nix-community.org",
 
     records,
 
-    A("nixpkgs-update-cache", "192.0.2.1", CF_PROXY_ON),
-    CF_SINGLE_REDIRECT(
-        "nixpkgs-update-cache",
-        301,
-        'http.host eq "nixpkgs-update-cache.nix-community.org"',
-        'concat("https://nixpkgs-update-cache.nixos.org", http.request.uri.path)'
-    ),
     A("nixpkgs-update-logs", "192.0.2.1", CF_PROXY_ON),
     CF_SINGLE_REDIRECT(
         "nixpkgs-update-logs",
