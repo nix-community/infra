@@ -63,6 +63,7 @@
         ./dev/effect-dnscontrol.nix
         ./dev/effect-flake-update.nix
         ./dev/effect-pages.nix
+        ./dev/effect-reboot.nix
         ./dev/effect-repo-list.nix
         ./dev/sops.nix
         ./dev/terraform.nix
