@@ -1,12 +1,16 @@
-# https://github.com/NixOS/hydra/blob/6889b5a3f0f0826c8bd0049de02665c2845254ae/nixos-modules/builder-module.nix
+# https://github.com/NixOS/hydra/blob/873f74a61e17de162601be803d2ac0e019b7bded/nixos-modules/builder-module.nix
 {
   config,
+  inputs,
   pkgs,
   lib,
   ...
 }:
 let
   cfg = config.services.hydra-queue-builder-dev;
+  hydraPrograms = pkgs.callPackage "${inputs.hydra}/packaging/programs.nix" {
+    nix = config.nix.package;
+  };
   user = "hydra-queue-builder";
 
   format = pkgs.formats.toml { };
@@ -142,6 +146,8 @@ in
       startType = "foreground";
       dependencies = [ "NETWORKING" ];
       inherit user;
+
+      environment = { } // hydraPrograms.envFor { } hydraPrograms.programs.hydra-builder;
 
       path = [ config.nix.package ];
 
