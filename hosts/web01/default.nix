@@ -14,4 +14,9 @@
   networking.useDHCP = true;
 
   systemd.services.openstack-init.enableStrictShellChecks = false;
+
+  # metadata fetch failing
+  systemd.services.openstack-init.serviceConfig = {
+    TimeoutStartSec = "30s";
+  };
 }
