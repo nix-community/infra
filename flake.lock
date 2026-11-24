@@ -216,11 +216,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794376698,
-        "narHash": "sha256-pR6p6yFjKrIreWMBrFdos4D8g/kaCAhWW21CqL+UnL8=",
+        "lastModified": 1795479928,
+        "narHash": "sha256-F+DUc/E5kkK9VjIsQw059x82+jvGam0sbz1i6H9/xXM=",
         "owner": "qowoz",
         "repo": "nixbsd",
-        "rev": "760022375e285cbb31ded8906328f8231e7de3d0",
+        "rev": "7afc9feb1f149803bbd69189353975447a6a84ec",
         "type": "github"
       },
       "original": {
