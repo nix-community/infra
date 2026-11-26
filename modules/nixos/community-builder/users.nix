@@ -80,6 +80,11 @@ let
       keys = ./keys/fgaz;
     }
     {
+      name = "figsoda";
+      trusted = true;
+      keys = ./keys/figsoda;
+    }
+    {
       name = "flokli";
       trusted = true;
       keys = ./keys/flokli;
