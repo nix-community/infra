@@ -60,10 +60,8 @@
         ./dev/dnscontrol.nix
         ./dev/docs.nix
         ./dev/effect-deploy.nix
-        ./dev/effect-dnscontrol.nix
         ./dev/effect-flake-update.nix
         ./dev/effect-pages.nix
-        ./dev/effect-repo-list.nix
         ./dev/sops.nix
         ./dev/terraform.nix
         ./modules
