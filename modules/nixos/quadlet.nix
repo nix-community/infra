@@ -8,6 +8,7 @@
     enable = true;
     autoUpdate.enable = true;
     autoUpdate.startAt = "*:0/15";
+    quadletctl.enable = false;
   };
 
   # https://github.com/mirkolenz/quadlet-nix/blob/c68d1c6b07f76c3ce5a53106b6eee934d86c5391/tests/nixos.nix
