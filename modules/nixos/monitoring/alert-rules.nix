@@ -21,6 +21,13 @@
 
         HostMemoryUnderMemoryPressure.expr = lib.mkForce ''rate(kernel_vmstat_pgmajfault{host!~"build.*"}[1m]) > 1000'';
 
+        HQRMachines = {
+          # build03, build03-freebsd, build04, darwin02
+          expr = "hydraqueuerunner_machines_total != 4";
+          for = "15m";
+          annotations.description = "Hydra Queue Runner is missing machines";
+        };
+
         Load15.expr = lib.mkForce ''system_load15 / system_n_cpus{host!~"(build|darwin).*"} >= 2.0'';
 
         RASDaemon = {
