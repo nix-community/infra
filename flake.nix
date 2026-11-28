@@ -62,6 +62,7 @@
         ./dev/effect-deploy.nix
         ./dev/effect-flake-update.nix
         ./dev/effect-pages.nix
+        ./dev/effect-reboot.nix
         ./dev/effect-repo-list.nix
         ./dev/sops.nix
         ./dev/terraform.nix
@@ -122,6 +123,14 @@
             imports = [ ./dev/treefmt.nix ];
           };
 
+          packages.outpaths = pkgs.writeText "outpaths.json" (
+            builtins.toJSON (
+              builtins.mapAttrs (
+                _: n: builtins.unsafeDiscardStringContext n.config.system.build.toplevel
+              ) self.nixosConfigurations
+            )
+          );
+
           checks = {
             inherit (self') formatter;
             inherit (pkgs.hydraPackages) hydra-rust-tests;
@@ -155,6 +164,7 @@
                 docs-linkcheck
                 sops-check
                 terraform-validate
+                outpaths
                 ;
               inherit (pkgs.hydraPackages) hydra-tests;
               nixbot-tests = inputs'.nixbot.packages.nixbot.tests.pytest;
