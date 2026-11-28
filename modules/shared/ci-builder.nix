@@ -1,9 +1,4 @@
-{
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   assertions = [
     {
@@ -21,16 +16,4 @@
   nix.settings.max-silent-time = toString (60 * 20 * 3); # 3x nixbot
 
   nix.settings.timeout = toString (60 * 60 * 3);
-
-  sops.secrets.hydra-queue-builder = {
-    key = "hydra-queue-builder-token-${config.networking.hostName}";
-    owner = "hydra-queue-builder";
-    sopsFile = "${inputs.self}/modules/secrets/hydra-queue-builder.yaml";
-  };
-
-  services.hydra-queue-builder-dev = {
-    enable = true;
-    authorizationFile = config.sops.secrets.hydra-queue-builder.path;
-    queueRunnerAddr = "https://queue-runner.hydra.nix-community.org";
-  };
 }
