@@ -75,11 +75,11 @@ def update_sops_files(c: Context) -> None:
 @task
 def print_keys(c: Context, flake_attr: str) -> None:
     """
-    Decrypt host private key, print ssh and age public keys. Use inv print-keys --flake-attr build01
+    Decrypt host private keys, print ssh and age public keys. Use inv print-keys --flake-attr build01
     """
     with TemporaryDirectory() as tmpdir:
         decrypt_host_key(flake_attr, tmpdir)
-        key = f"{tmpdir}/var/lib/ssh_secrets/ssh_host_ed25519_key"
+        key = f"{tmpdir}/var/lib/secrets/ssh_host_ed25519_key"
         pubkey = subprocess.run(
             ["ssh-keygen", "-y", "-f", f"{key}"],
             stdout=subprocess.PIPE,
@@ -88,13 +88,15 @@ def print_keys(c: Context, flake_attr: str) -> None:
         )
         print("###### Public keys ######")
         print(pubkey.stdout)
-        print("###### Age keys ######")
-        subprocess.run(
-            ["ssh-to-age"],
-            input=pubkey.stdout,
+        agekey = f"{tmpdir}/var/lib/secrets/age_secret_key"
+        agepubkey = subprocess.run(
+            ["age-keygen", "-y", f"{agekey}"],
+            stdout=subprocess.PIPE,
             check=True,
             text=True,
         )
+        print("###### Age keys ######")
+        print(agepubkey.stdout)
 
 
 @task
@@ -149,12 +151,67 @@ def decrypt_host_key(flake_attr: str, tmpdir: str) -> None:
             )
 
     decrypt(
-        "var/lib/ssh_secrets/ssh_host_ed25519_key",
+        "var/lib/secrets/ssh_host_ed25519_key",
         f'["ssh_host_ed25519_key"]["{flake_attr}"]',
     )
     decrypt(
-        "var/lib/ssh_secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]'
+        "var/lib/secrets/age_secret_key",
+        f'["age_secret_key"]["{flake_attr}"]',
     )
+    if not flake_attr.startswith("darwin"):
+        decrypt(
+            "var/lib/secrets/initrd_host_ed25519_key", '["initrd_host_ed25519_key"]'
+        )
+
+
+@task
+def deploy_keys(c: Context, hosts: str) -> None:
+    """
+    Decrypt and deploy host private keys. Use inv deploy-keys --hosts build01,darwin01
+    """
+    g = DeployGroup(get_hosts(hosts))
+
+    def keys(h: DeployHost) -> None:
+        hostname = h.host.removesuffix(".nix-community.org")
+        key_paths = [
+            "var/lib/secrets/ssh_host_ed25519_key",
+            "var/lib/secrets/age_secret_key",
+        ]
+
+        if h.host.startswith("darwin"):
+            target = f"{h.user}@{h.host}"
+            owner, group, mode = "root", "wheel", "600"
+        else:
+            target = f"{h.host}"
+            owner, group, mode = "root", "root", "400"
+            key_paths.append("var/lib/secrets/initrd_host_ed25519_key")
+
+        h.run("sudo mkdir -p /var/lib/secrets")
+
+        with TemporaryDirectory() as tmpdir:
+            decrypt_host_key(hostname, tmpdir)
+
+            for key in key_paths:
+                local = Path(tmpdir) / key
+                remote = f"/{key}"
+
+                install_cmd: list[str] = [
+                    "ssh",
+                    target,
+                    *h._build_ssh_opts(verbose_ssh=False),  # noqa: SLF001
+                    "--",
+                    f"sudo sh -c 'umask 077 && install -o {owner} -g {group} -m {mode} /dev/stdin {remote}'",
+                ]
+
+                print(f"$ {install_cmd}")
+
+                subprocess.run(
+                    install_cmd,
+                    input=local.read_bytes(),
+                    check=True,
+                )
+
+    g.run_function(keys)
 
 
 @task

@@ -5,10 +5,10 @@
       with pkgs;
       mkShellNoCC {
         packages = [
+          age
           deploykitEnv
           jq
           sops
-          ssh-to-age
           yq-go
         ];
       };

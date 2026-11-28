@@ -9,4 +9,6 @@ let
 in
 {
   sops.defaultSopsFile = lib.mkIf (builtins.pathExists defaultSopsPath) defaultSopsPath;
+
+  sops.age.keyFile = "/var/lib/secrets/age_secret_key";
 }
